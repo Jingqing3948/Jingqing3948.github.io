@@ -41,6 +41,54 @@
   </entry>
   
   <entry>
+    <title>关于gets()和scanf()处理空白字符的问题</title>
+    <link href="http://example.com/2022/02/26/gets()%E5%92%8Cscanf()%E5%A4%84%E7%90%86%E7%A9%BA%E7%99%BD%E5%AD%97%E7%AC%A6%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://example.com/2022/02/26/gets()%E5%92%8Cscanf()%E5%A4%84%E7%90%86%E7%A9%BA%E7%99%BD%E5%AD%97%E7%AC%A6%E7%9A%84%E9%97%AE%E9%A2%98/</id>
+    <published>2022-02-25T16:00:00.000Z</published>
+    <updated>2022-02-26T15:40:27.505Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="scanf"><a href="#scanf" class="headerlink" title="scanf()"></a>scanf()</h2><p>scanf()如果读入字符、字符串，就要注意回车、空格、制表符（统称为空白符）的问题。<br>字符还比较好处理，比如要输入abc三个字符，中间就直接不加入任何空白符，直接连着输入”abc”即可。<br>scanf()使用%s读入字符串，读到空白符时会自动结束，所以不能读入英文句子(“hello world”中间有空格，一次只能读一个单词)<br>想要读入带有空格的句子，一种方法是用scanf读入一个个字符串（单词）。字符串以空白符结尾，且当空白符在开头时%s是不会读取空白符的，会跳过这里的空白符（和scanf读入整数或浮点数时类似）</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%s%s&quot;</span>,str1,str2);<span class="hljs-comment">//输入&quot;hello world&quot;</span><br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s%s\n&quot;</span>,str1,str2);<span class="hljs-comment">//输出&quot;helloworld&quot;</span><br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s %s\n&quot;</span>,str1,str2);<span class="hljs-comment">//输出&quot;hello world&quot;</span><br></code></pre></td></tr></table></figure><p>只要补齐空格就可以了。当然这种方法用来读入输出英文句子时局限性很大，每个单词都要定义一个字符串变量（或许可以定义一个char的二维数组/指向char一维数组的指针/指向指针的指针），而且还要自己补空格。<br>另一个有趣的地方是scanf()里可以放空格，意思是跳过这里的空白符。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%s %s&quot;</span>,str1,str2);<span class="hljs-comment">//输入&quot;hello world&quot;</span><br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s%s\n&quot;</span>,str1,str2);<span class="hljs-comment">//输出&quot;helloworld&quot;</span><br></code></pre></td></tr></table></figure><p>如果还是上例，其实没有影响，因为就算scanf里没有这个空格，str2也会自动跳过开头的空格从后面的w开始读入。不过这种方法在读入字符的时候处理输入的空白符，以及下文中和gets()的结合中就比较有用。</p><h2 id="gets"><a href="#gets" class="headerlink" title="gets()"></a>gets()</h2><p>gets()就可以读入空白符，空格、回车、制表符都能读入，并且读入回车时结束。因此可以借助gets()读入英文短句式的字符串（带有空格）</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">gets(str);<span class="hljs-comment">//输入&quot;hello world\n&quot;</span><br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s&quot;</span>,str);<span class="hljs-comment">//输出&quot;hello world&quot;</span><br></code></pre></td></tr></table></figure><p>但是要注意回车的问题。<br>当gets()读入的第一个数据是回车，则停止继续读入，并且str的内容就是回车。<br>当gets()读入”hello world\n”,回车是不会被gets()读入的，还留在缓冲区。<br>所以连着使用两个gets()，而中间不想办法处理掉回车，就会出错。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c">gets(str1);<span class="hljs-comment">//abc\n</span><br>gets(str2);<span class="hljs-comment">//abc\n</span><br>gets(str3);<span class="hljs-comment">//abc\n</span><br><span class="hljs-comment">//输出的结果是：abc\nabc,str2读到的是回车。</span><br></code></pre></td></tr></table></figure><p>此时可以用getchar()读掉中间的回车。<br>在做翁恺老师C语言程序设计的PTA习题时，碰到了这样一道题：<br><img src="https://img-blog.csdnimg.cn/2bf40d6f06ca4f999f51eefe9bea5cfd.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2p0d3F3cQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>要交替输入浮点数和带空格的字符串，一开始没有细想回车的问题：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//循环执行：</span><br><span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%lf&quot;</span>,book[i].price);<span class="hljs-comment">//读入浮点数</span><br>gets(books[i].name);<span class="hljs-comment">//读入字符串</span><br></code></pre></td></tr></table></figure><p>后来经一番查询理解了两种函数对空白符的处理，也写了这篇博文。<br>这道题有趣的地方是scanf和gets的结合，因此除了getchar()读掉中间的回车的办法，还可以在scanf末尾加空格：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//循环执行：</span><br><span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%lf &quot;</span>,book[i].price);<span class="hljs-comment">//读入浮点数，并读掉结尾的空白符（回车）</span><br>gets(books[i].name);<span class="hljs-comment">//读入字符串</span><br></code></pre></td></tr></table></figure><p>非常巧妙。<br>以上是本人经试验、查询资料后得出的结论，也欢迎读者多多尝试，如有错误，还请读者雅正！</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;scanf&quot;&gt;&lt;a href=&quot;#scanf&quot; class=&quot;headerlink&quot; title=&quot;scanf()&quot;&gt;&lt;/a&gt;scanf()&lt;/h2&gt;&lt;p&gt;scanf()如果读入字符、字符串，就要注意回车、空格、制表符（统称为空白符）的问题。&lt;br&gt;字符还比较好处</summary>
+      
+    
+    
+    
+    <category term="problems" scheme="http://example.com/categories/problems/"/>
+    
+    
+    <category term="code" scheme="http://example.com/tags/code/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于C/C++中结构体指针作为形参传入函数，为什么主函数中实参不会被修改的问题</title>
+    <link href="http://example.com/2022/02/26/%E7%BB%93%E6%9E%84%E4%BD%93%E6%8C%87%E9%92%88%E5%9C%A8%E5%87%BD%E6%95%B0%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/"/>
+    <id>http://example.com/2022/02/26/%E7%BB%93%E6%9E%84%E4%BD%93%E6%8C%87%E9%92%88%E5%9C%A8%E5%87%BD%E6%95%B0%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/</id>
+    <published>2022-02-25T16:00:00.000Z</published>
+    <updated>2022-02-26T15:38:33.924Z</updated>
+    
+    <content type="html"><![CDATA[<p>主函数传入函数的变量叫实参，而函数中的对应变量叫形参。形参实际上是实参的拷贝，所以如果我们修改形参的值，实参不会发生变化。<br>后来学习了指针，指针就相当于钥匙，能打开对应房间（地址）的门。当指针作为函数参数时，实参和形参相当于拷贝的两把钥匙，但他们都指向同一个房间，同一个地址。借由形参访问地址，并改变地址中的值，能够真正修改地址中的值。<br>而在学习结构体、链表时，常常进行的操作是对结构体指针赋值。<br>比如添加新链表结点add函数，传入实参head（要修改的链表的头指针）先将新结点的内容赋给临时结构体指针p，然后将p的值赋给head或last-&gt;next，即挂在链表的结尾。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">head=p;<span class="hljs-comment">//当head为NULL的时候</span><br>last-&gt;next=p;<span class="hljs-comment">//当head不为NULL的时候</span><br></code></pre></td></tr></table></figure><p>最后返回head指针。<br>但是这样做并不会直接对主函数中的head指针进行修改，为什么？<br>因为我们修改的不是指针对应地址中的值，而是直接修改指针的值，改变了指针的指向（对钥匙本身的修改，让这把钥匙指向另一个房间；而不是对钥匙指向房间里的内容的修改）。当我们令head=p时，相当于让head自身的地址值改变，和指针p指向的地址一样。这就和修改普通变量一样，对形参的修改不会影响实参。<br>解决方法：(翁恺老师的建议）</p><ol><li>head定义为全局变量，这样在所有函数中都能访问。但这种方法并不好，只对这个链表的head生效。如果还定义了其他链表，此add函数就不能对其他链表生效了。</li><li>add函数返回新的我们想要的head结构体指针，在原函数中把add函数的返回值赋给head.</li><li>既然可以传递指针对应地址的值，我们就让指针所指的地址中的值是我们要修改的指针，即传入*<em>phead指向指针的指针。这样就可以直接修改</em>phead的值了。</li><li>我们定义一个结构list，其中包含*head。在原函数中定义list，list.head=NULL；然后把list的指针<code>&amp;list</code>传入add函数，add的参数是list的指针，在函数中就可以对list-&gt;head进行修改。</li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;主函数传入函数的变量叫实参，而函数中的对应变量叫形参。形参实际上是实参的拷贝，所以如果我们修改形参的值，实参不会发生变化。&lt;br&gt;后来学习了指针，指针就相当于钥匙，能打开对应房间（地址）的门。当指针作为函数参数时，实参和形参相当于拷贝的两把钥匙，但他们都指向同一个房间，同一</summary>
+      
+    
+    
+    
+    <category term="problems" scheme="http://example.com/categories/problems/"/>
+    
+    
+    <category term="code" scheme="http://example.com/tags/code/"/>
+    
+  </entry>
+  
+  <entry>
     <title>大一C语言大作业：函数动画</title>
     <link href="http://example.com/2022/02/25/%E5%A4%A7%E4%B8%80C%E8%AF%AD%E8%A8%80%E5%A4%A7%E4%BD%9C%E4%B8%9A%20%E5%87%BD%E6%95%B0%E5%8A%A8%E7%94%BB/"/>
     <id>http://example.com/2022/02/25/%E5%A4%A7%E4%B8%80C%E8%AF%AD%E8%A8%80%E5%A4%A7%E4%BD%9C%E4%B8%9A%20%E5%87%BD%E6%95%B0%E5%8A%A8%E7%94%BB/</id>
