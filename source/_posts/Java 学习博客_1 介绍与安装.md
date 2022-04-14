@@ -1,5 +1,5 @@
 ---
-title: Java学习博客_1 介绍与安装
+title: Java 学习博客_1 介绍与安装
 date: 2022-04-14
 tags: code
 category: study
