@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-03-26T18:29:20.257Z</updated>
+  <updated>2022-04-14T05:16:57.995Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,55 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java 学习博客_1 介绍与安装</title>
+    <link href="http://example.com/2022/04/14/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_1%20%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%AE%89%E8%A3%85/"/>
+    <id>http://example.com/2022/04/14/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_1%20%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%AE%89%E8%A3%85/</id>
+    <published>2022-04-13T16:00:00.000Z</published>
+    <updated>2022-04-14T05:16:57.995Z</updated>
+    
+    <content type="html"><![CDATA[<p>以黑马程序员网课为主。</p><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Java是一个可以跨平台的语言，借助Java虚拟机（Java Virtual Machine, JVM）能够在任意操作系统（operating system, OS）上运行。</p><p>JVM: Java Virtual Machine，在 JRE 的 bin 目录下。JVM 本质上是一个程序，使得 Java 在不同平台上运行时不需要重新编译，只需要执行保存在某字节码文件（.class）中的指令，不管什么平台，只要装有相应平台的 JVM ，字节码文件就可以在该平台上运行。</p><p>JRE: Java Runtime Environment，运行只需要 JRE 就够了。</p><p>JDK: Java Development Kit，Java 程序开发工具包。</p><p><img src="https://s1.328888.xyz/2022/04/14/iUcNe.png" alt="123"></p><p>尽管 JRE 对于运行 java 文件已经足够，作为学习肯定还是要下载 JDK 的~</p><p>JDK 的安装目录如下：</p><table><thead><tr><th>JDK目录名称</th><th>说明</th></tr></thead><tbody><tr><td>bin</td><td>存放工具命令，如：javac, java, etc.</td></tr><tr><td>conf</td><td>配置文件</td></tr><tr><td>include</td><td>某些平台特定的头文件</td></tr><tr><td>jmods</td><td>模块</td></tr><tr><td>legal</td><td>授权文档</td></tr><tr><td>lib</td><td>补充 JAR 包</td></tr><tr><td>其他</td><td>说明型文档</td></tr></tbody></table><h2 id="在-DOS-窗口下操作命令"><a href="#在-DOS-窗口下操作命令" class="headerlink" title="在 DOS 窗口下操作命令"></a>在 DOS 窗口下操作命令</h2><p>在一开始没有使用 IDEA 等集成开发环境的时候，直接在 DOS ( Disk Operating System ) 窗口运行。Windows 通过 <code>win+R</code> 打开运行窗口，输入 <code>cmd</code> 进入 DOS 窗口。</p><p>常用的DOS窗口命令：</p><table><thead><tr><th>操作</th><th>说明</th></tr></thead><tbody><tr><td><code>盘符名称</code>+<code>:</code>，如<code>D:</code></td><td>切换到该盘</td></tr><tr><td><code>dir</code></td><td>查看当前路径下的内容</td></tr><tr><td><code>cd 目录</code>，如<code>cd java</code></td><td>进入当前路径下的一个单级目录（cd 是 change directory 的意思）</td></tr><tr><td><code>cd ..</code></td><td>回退到上一级目录</td></tr><tr><td><code>cd 目录1\目录2\..</code></td><td>一次性进入多级目录</td></tr><tr><td><code>cd \</code></td><td>回退到盘符目录</td></tr><tr><td><code>cls</code></td><td>清屏</td></tr><tr><td><code>exit</code></td><td>退出 DOS 窗口</td></tr></tbody></table><h2 id="配置-PATH-环境变量"><a href="#配置-PATH-环境变量" class="headerlink" title="配置 PATH 环境变量"></a>配置 PATH 环境变量</h2><p>不得不说虽然之前学习其他语言的时候也做过很多次配置 PATH 环境变量的操作，但是这次才算理解一些意义。</p><p>开发 Java 的时候是肯定会用到 JDK 里的开发工具的，比如编译的 <code>javac</code> ，运行的 <code>java</code>。</p><p>但是没有配置环境变量的时候，cmd 无法直接使用 javac 文件，因为不知道 <code>javac.exe</code> 的路径。</p><p>所以需要输入 <code>&quot;JDK文件的目录\bin\javac.exe&quot; 需要编译的文件的目录\需要编译的文件.java</code> （可以把 javac 和 java 文件直接拖进去，就会自动生成目录）相当麻烦。</p><p>配置环境变量之后，直接在 cmd 窗口里输入 <code>javac 需要编译的文件.java</code> 就能编译。</p><p>配置方法：（ Windows 系统）</p><p>① 此电脑 – 属性 – 高级系统设置 – 环境变量，新建一个用户变量（建议命名和 Java 相关），并放入 JDK 文件夹的路径</p><p>② 在下方系统变量中选中 Path 变量 – 编辑 – 新建 – 命名（建议命名和 Java 相关），并放入 JDK 内 bin 文件夹的路径。</p><p>最后在DOS中输入<code>javac</code>，如果显示使用 javac 的提示信息说明配置成功。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;以黑马程序员网课为主。&lt;/p&gt;
+&lt;h2 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h2&gt;&lt;p&gt;Java是一个可以跨平台的语言，借助Java虚拟机（Java Virtual Machine, JVM</summary>
+      
+    
+    
+    
+    <category term="study" scheme="http://example.com/categories/study/"/>
+    
+    
+    <category term="code" scheme="http://example.com/tags/code/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 学习博客_2 入门——基础语法</title>
+    <link href="http://example.com/2022/04/14/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_2%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/"/>
+    <id>http://example.com/2022/04/14/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_2%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</id>
+    <published>2022-04-13T16:00:00.000Z</published>
+    <updated>2022-04-14T08:13:42.602Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="HelloWorld-案例"><a href="#HelloWorld-案例" class="headerlink" title="HelloWorld 案例"></a>HelloWorld 案例</h2><p>学习的时候除了直接用记事本编辑，推荐使用 Notepad++ 。使用 Notepad++ 前需要设置：<code>设置 -- 首选项 -- 新建 -- 默认语言：Java -- 编码 ANSI</code>。</p><p>新建一个 HelloWorld.java 文件，通过记事本或 Notepad++ 编辑内容：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HelloWorld</span> &#123; <span class="hljs-comment">//这里的 class 类名必须和文件名一致</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123; <span class="hljs-comment">//main 方法</span><br>        System.out.println(<span class="hljs-string">&quot;Hello World!&quot;</span>); <span class="hljs-comment">// 单独输出一行的意思。注意大小写不可以出错</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>然后在DOS窗口中进入当前文件所在目录，输入命令：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">javac HelloWorld.java //编译<br>java HelloWorld //运行<br></code></pre></td></tr></table></figure><p>这里可见，java 和 C、C++ 一样，属于编译型语言（一次性翻译全部源程序，然后执行机器语言程序），而不是解释型语言（源程序逐条翻译并执行）。</p><p>如果顺利运行，就会输出 <code>Hello World!</code>。</p><h2 id="Java-基础语法——主要与C语言比较有哪些不同"><a href="#Java-基础语法——主要与C语言比较有哪些不同" class="headerlink" title="Java 基础语法——主要与C语言比较有哪些不同"></a>Java 基础语法——主要与C语言比较有哪些不同</h2><h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>单行注释 <code>//</code> 、多行注释 <code>/* */</code> 都和C一样。还有一个文件注释 <code>/** */</code>暂时用不到，之后了解。</p><h3 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h3><p>字母全部小写。</p><h6 id="数据类型："><a href="#数据类型：" class="headerlink" title="数据类型："></a>数据类型：</h6><p>整数型：byte, short, int, long</p><p>浮点型：float, double</p><p>字符型：char</p><p>布尔型：boolean</p><p>变量的定义和 c 相似，<code>int a=10;</code> 不能重复定义和未初始化就使用。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">long</span> l=<span class="hljs-number">1000000L</span>;<br><span class="hljs-type">float</span> f=<span class="hljs-number">1.235F</span>; <span class="hljs-comment">//防止 long 类型和 float 类型不兼容</span><br></code></pre></td></tr></table></figure><p>标识符命名：数字、字母（区分大小写）、_、$ 组成，数字不能开头。</p><p><em>命名规范：</em></p><p><em>方法和变量：一个单词时，首字母大写；标识符由多个单词组成时：小驼峰命名法</em></p><p><em>类名：大驼峰命名法</em></p><h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><p>+，-，*，/，%，</p><p>+=，-=，*=，/=，%=（隐含了强制类型转换）</p><p>++，–</p><p>==，&gt;=，&lt;=，&gt;，&lt;，!=</p><p>? : </p><p>&amp;，|，^，!（逻辑运算符）</p><p>&amp;&amp;，||（短路逻辑运算符，如果左边足以判断表达式的结果，右边就不会执行）</p><p>与 C 不同的是，Java 里的 + 号可以进行字符串拼接。字符串变量碰到其他类型变量就会拼接。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-number">1</span>+<span class="hljs-number">99</span>+<span class="hljs-string">&quot;string&quot;</span> <span class="hljs-comment">//&quot;100string&quot;</span><br><span class="hljs-string">&quot;string&quot;</span>+<span class="hljs-number">1</span>+<span class="hljs-number">99</span> <span class="hljs-comment">//&quot;string199&quot;，从左往右计算</span><br></code></pre></td></tr></table></figure><h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p>自动类型转换：把小范围的变量赋值给大范围的变量</p><p>数据范围从小到大：</p><p><img src="https://s1.328888.xyz/2022/04/14/iX6sR.png" alt="DataTypeRange"></p><p>算术表达式中包含多个基本数据类型的值时，整个算术表达式的类型就会自动提升。</p><p>强制类型转换：赋值运算符中隐含。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">short</span> s=<span class="hljs-number">10</span>;<br>s+=<span class="hljs-number">10</span>;<span class="hljs-comment">//正常</span><br>s=s+<span class="hljs-number">10</span>;<span class="hljs-comment">//错，因为右边发生了自动类型转换，变成了int型</span><br>s=(<span class="hljs-type">short</span>)(s+<span class="hljs-number">10</span>);<span class="hljs-comment">//也可以</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;HelloWorld-案例&quot;&gt;&lt;a href=&quot;#HelloWorld-案例&quot; class=&quot;headerlink&quot; title=&quot;HelloWorld 案例&quot;&gt;&lt;/a&gt;HelloWorld 案例&lt;/h2&gt;&lt;p&gt;学习的时候除了直接用记事本编辑，推荐使用 Notep</summary>
+      
+    
+    
+    
+    <category term="study" scheme="http://example.com/categories/study/"/>
+    
+    
+    <category term="code" scheme="http://example.com/tags/code/"/>
+    
+  </entry>
   
   <entry>
     <title>微信开发者工具和gitee实现多人协作</title>
