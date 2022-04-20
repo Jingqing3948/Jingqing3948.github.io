@@ -1,8 +1,8 @@
 ---
 title: Java 学习博客_2 入门——基础语法
 date: 2022-04-14
-tags: code
-category: study
+tags: study
+category: java
 ---
 
 ## HelloWorld 案例

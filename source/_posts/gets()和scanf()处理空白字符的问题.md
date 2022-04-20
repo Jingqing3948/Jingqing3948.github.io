@@ -1,8 +1,8 @@
 ---
 title: 关于gets()和scanf()处理空白字符的问题
 date: 2022-02-26
-tags: code
-category: problems
+tags: problems
+category: clanguage
 ---
 
 ## scanf()

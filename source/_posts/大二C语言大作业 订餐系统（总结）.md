@@ -1,8 +1,8 @@
 ---
 title: 大二C语言大作业：订餐系统（总结）
 date: 2022-02-27
-tags: code
-category: homework
+tags: homework
+category: clanguage
 ---
 
 尽管快半年没有学c了，好在回顾起来还是蛮快的。而且也发现比去年的自己熟练了许多。

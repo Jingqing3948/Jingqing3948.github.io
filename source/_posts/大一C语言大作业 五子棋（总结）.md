@@ -1,8 +1,8 @@
 ---
 title: 大一C语言大作业：五子棋（总结）
 date: 2022-02-26
-tags: code
-category: homework
+tags: homework
+category: course
 ---
 
 # 计算与设计思维大作业

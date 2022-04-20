@@ -1,8 +1,8 @@
 ---
 title: 微信开发者工具和gitee实现多人协作
 date: 2022-03-27
-tags: projects
-category: problems
+tags: problems
+category: projects
 ---
 
 将代码上传到码云实现多人合作开发。

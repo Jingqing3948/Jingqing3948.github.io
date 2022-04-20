@@ -1,8 +1,8 @@
 ---
 title: Java 学习博客_1 介绍与安装
 date: 2022-04-14
-tags: code
-category: study
+tags: study
+category: java
 ---
 
 以黑马程序员网课为主。

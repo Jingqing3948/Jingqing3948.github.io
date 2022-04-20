@@ -1,8 +1,8 @@
 ---
 title: 大一C语言大作业：函数动画
 date: 2022-02-25
-tags: code
-category: homework 
+tags: homework
+category: clanguage
 ---
 
 # 绘制一个函数动画。
