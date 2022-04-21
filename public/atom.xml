@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>Jingqing3948 的博客</title>
   
   
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-04-18T03:37:32.364Z</updated>
+  <updated>2022-04-20T06:24:04.489Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SQL 语句——DDL</title>
+    <link href="http://example.com/2022/04/19/SQL%20%E8%AF%AD%E5%8F%A5%E2%80%94%E2%80%94DDL/"/>
+    <id>http://example.com/2022/04/19/SQL%20%E8%AF%AD%E5%8F%A5%E2%80%94%E2%80%94DDL/</id>
+    <published>2022-04-18T16:00:00.000Z</published>
+    <updated>2022-04-20T06:24:04.489Z</updated>
+    
+    <content type="html"><![CDATA[<table><thead><tr><th>SQL 语句</th><th>作用</th><th>使用示例</th></tr></thead><tbody><tr><td>create</td><td>创建数据库 / 表</td><td>create database `数据库名`; / create table `表名` ( 字段描述 );</td></tr><tr><td>drop</td><td>删除数据库 / 表</td><td>drop database `数据库名`; / drop table `表名`;</td></tr><tr><td>use</td><td>选中数据库</td><td>use `数据库名`;</td></tr><tr><td>alter</td><td>更改数据库 / 表信息</td><td>alter table `表名` add constraint `约束名` unique (`字段名`);</td></tr></tbody></table><p>PS： </p><ol><li><p>修改表的引擎 / 更改自增约束初始值是在 create table `表名` () 后面添加的。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create table `表名`(<br><br>)engine = innodb auto_increment=2 comment &#x27;表示例&#x27;;<br></code></pre></td></tr></table></figure></li></ol><h2 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h2><h3 id="主键约束"><a href="#主键约束" class="headerlink" title="主键约束"></a>主键约束</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">primary key (`列名`),<br></code></pre></td></tr></table></figure><p><em>复合主键语法上没错，但是开发使用时非常不好用，需要至少两条字段才能唯一确定一条记录。一般不会用。</em></p><p><em>如选课表，有课程号和学生学号字段，合在一起作为复合主键可以唯一确定记录。但是一般会在新建一个选课id之类的可以唯一确定所有选课记录的字段作为主键。</em></p><h3 id="自增约束、非空约束"><a href="#自增约束、非空约束" class="headerlink" title="自增约束、非空约束"></a>自增约束、非空约束</h3><p>都在字段描述后面写即可</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">`col_name` int auto_increment not null comment &#x27;列名&#x27;,<br></code></pre></td></tr></table></figure><p>以下三种可以在创建表时写，也可以之后写<code>alter table 表名 add constraint...</code>。</p><h3 id="唯一约束"><a href="#唯一约束" class="headerlink" title="唯一约束"></a>唯一约束</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">constraint `uk_col_name` unique (`col_name`),<br></code></pre></td></tr></table></figure><p>类似主键约束，唯一约束也可以设定多个字段，再括号里多写几个字段就行（如选课记录，一个学生不能重复选课，学生学号和课程编号不能重复）</p><h3 id="检查约束"><a href="#检查约束" class="headerlink" title="检查约束"></a>检查约束</h3><p>检查约束可以帮忙检查数据合法性，但是相对的，肯定对性能有损耗。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">constraint `ck_col_sex` check (`col_sex`=&#x27;M&#x27; or `col_sex`=&#x27;F&#x27;),<br></code></pre></td></tr></table></figure><h3 id="外键约束"><a href="#外键约束" class="headerlink" title="外键约束"></a>外键约束</h3><p>首先在需要加外键的表中添加和另一个表的主键一样格式（名称可以不一样）的字段。</p><p>外键约束也会损耗性能，要检查对应表中对应字段是否对应。很多公司都不用外键约束，会通过其他方法确定两表特定字段是否对应。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">constraint `fk_col_id` foreign key (`在本表中的字段名`) references `另一个表名` (`在该表中的主键名`),<br></code></pre></td></tr></table></figure><p><em>一对多时，多的一方需要加外键约束。</em></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;SQL 语句&lt;/th&gt;
+&lt;th&gt;作用&lt;/th&gt;
+&lt;th&gt;使用示例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;create&lt;/td&gt;
+&lt;td&gt;创建数据库 / 表&lt;/td&gt;
+&lt;td&gt;create data</summary>
+      
+    
+    
+    
+    <category term="database" scheme="http://example.com/categories/database/"/>
+    
+    
+    <category term="study" scheme="http://example.com/tags/study/"/>
+    
+  </entry>
   
   <entry>
     <title>Mysql Command Line Client 的使用，及常用命令</title>
@@ -46,9 +81,9 @@
     <link href="http://example.com/2022/04/18/ER%20%E5%92%8C%20EER%20%E6%A8%A1%E5%9E%8B/"/>
     <id>http://example.com/2022/04/18/ER%20%E5%92%8C%20EER%20%E6%A8%A1%E5%9E%8B/</id>
     <published>2022-04-17T16:00:00.000Z</published>
-    <updated>2022-04-18T03:36:53.447Z</updated>
+    <updated>2022-04-20T05:29:55.838Z</updated>
     
-    <content type="html"><![CDATA[<p>本文思路主要来源于<a href="https://www.bilibili.com/video/BV1rP4y157jW?spm_id_from=333.999.0.0">骆昊jackfrued 老师的网课</a><br>仅供本人学习参考，未做其他用途！</p><p>在此也建议读者通过老师的课程学习。</p><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>为什么要有 ER 图和 EER 图的存在？</p><p><strong>真正做项目、设计数据库时，</strong>实际并没有这么简单，比如还有很多用户看不到、但为了方便 DBA 使用而创建的字段。如 id，一般还会有两条 Date 字段（一表示这条记录被创建的时间，二表示这条记录最后更新的时间），以及预留一个 VARCHAR / json 字段；还有一些其他注意事项（比如 auto-increment 约束其实开发中不常用，更多使用算法比如分布式 ID 生成算法（如 SnowFlake……）当然对课程来说这并不重要）<strong>是不可能一上来就写 SQL 语句的，需要先设计表的结构和表之间的关系。</strong></p><p>ER 图（Entity Relationship, 实体关系）因此出现。下图是一个 ER 图的示例，其中矩形框代表：表（也就是实体），椭圆框代表：表中的字段（实体的属性），菱形框代表：关系，在连接线上表明了关系的重数。</p><p><img src="https://img-blog.csdnimg.cn/img_convert/e154bec557baf860b9da8b406aa2b411.png" alt="百度百科图片"></p><p>相较于大段的 SQL 建表语句，只要能看懂 ER 图，表的结构、关系一目了然。</p><p>Workbench 等工具支持画 ER 图，甚至画好后可以自动生成 SQL 语句建表。不过 Workbench 中的图是 EER 图（扩展的ER 图）</p><p><img src="https://img-blog.csdnimg.cn/img_convert/b7d05f2614049fce76e68e0121c805a0.png" alt="EER 图示例"></p><p>相比普通 ER 图确实感觉清晰了很多，而且每个字段可以添加 PK、NN、UQ、DEFAULT、FOREIGN KEY 等。</p><p>在 EER 图下，点击 DATABASE - FORWARD ENGINEER 正向工程，可以选择要生成的表、字段，生成 SQL 语句建立表。</p><p><em>自动生成的 SQL 语句中，外键下方有两句话<code>ON DELETE NO ACTION</code> <code>ON UPDATE NO ACTION</code>，意为：当外键参考的主键修改/删除时，外键所在的表会受到什么样的影响？——不采取任何行动。建议去掉这两句话。如果去掉，就不能随便修改/删除外键在使用的主键。</em></p><p>同样地，在 SQL 语句页面，点击DATABASE - REVERSE ENGINEER 反向工程，可以根据表的结构生成 EER 图。</p>]]></content>
+    <content type="html"><![CDATA[<p>本文思路主要来源于<a href="https://www.bilibili.com/video/BV1rP4y157jW?spm_id_from=333.999.0.0">骆昊jackfrued 老师的网课</a><br>仅供本人学习参考，未做其他用途！</p><p>在此也建议读者通过老师的课程学习。</p><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>为什么要有 ER 图和 EER 图的存在？</p><p><strong>真正做项目、设计数据库时，</strong>实际并没有这么简单，比如还有很多用户看不到、但为了方便 DBA 使用而创建的字段。如 id，一般还会有两条 Date 字段（一表示这条记录被创建的时间，二表示这条记录最后更新的时间），以及预留一个 VARCHAR / json 字段；还有一些其他注意事项（比如 auto-increment 约束其实开发中不常用，更多使用算法比如分布式 ID 生成算法（如 SnowFlake……）当然对课程来说这并不重要）<strong>是不可能一上来就写 SQL 语句的，需要先设计表的结构和表之间的关系。</strong></p><p>ER 图（Entity Relationship, 实体关系）因此出现。下图是一个 ER 图的示例，其中矩形框代表：表（也就是实体），椭圆框代表：表中的字段（实体的属性），菱形框代表：关系，在连接线上表明了关系的重数。</p><p><img src="https://img-blog.csdnimg.cn/img_convert/e154bec557baf860b9da8b406aa2b411.png" alt="百度百科图片"></p><p>相较于大段的 SQL 建表语句，只要能看懂 ER 图，表的结构、关系一目了然。</p><p>Workbench 等工具支持画 ER 图，甚至画好后可以自动生成 SQL 语句建表。不过 Workbench 中的图是 EER 图（扩展的ER 图）</p><p><img src="https://img-blog.csdnimg.cn/img_convert/b7d05f2614049fce76e68e0121c805a0.png" alt="EER 图示例"></p><p>相比普通 ER 图确实感觉清晰了很多，而且每个字段可以添加 PK、NN、UQ、DEFAULT、FOREIGN KEY 等。</p><p>在 EER 图下，点击 DATABASE - FORWARD ENGINEER 正向工程，可以选择要生成的表、字段，生成 SQL 语句建立表。</p><p><em>自动生成的 SQL 语句中，外键下方有两句话<code>ON DELETE NO ACTION</code> <code>ON UPDATE NO ACTION</code>，意为：当外键参考的主键修改/删除时，外键所在的表会受到什么样的影响？——不采取任何行动。建议去掉这两句话。如果去掉，就不能随便修改/删除外键在使用的主键。</em></p><p>同样地，在 SQL 语句页面，点击DATABASE - REVERSE ENGINEER 反向工程，可以根据表的结构生成 EER 图。</p><p><em>Power Designer 建模工具，也支持正 / 反向工程，可以生成 SQL 方言。完整版付费。</em></p>]]></content>
     
     
       
