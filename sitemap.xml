@@ -2,7 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.com/2022/04/20/SQL%20%E8%AF%AD%E5%8F%A5%E2%80%94%E2%80%94DML/</loc>
+    <loc>http://example.com/2022/04/19/Mysql%20%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</loc>
+    
+    <lastmod>2022-04-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/2022/04/23/SQL%20%E8%AF%AD%E5%8F%A5%E2%80%94%E2%80%94DML/</loc>
     
     <lastmod>2022-04-23</lastmod>
     

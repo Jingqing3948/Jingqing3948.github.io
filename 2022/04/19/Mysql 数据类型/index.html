@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Mysql 数据类型 | Jingqing3948 的博客</title><script>var config = </script><script>window.onload = ()=>{};</script><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.4.0/styles/atom-one-dark-reasonable.min.css"><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="Jingqing3948 的博客" type="application/atom+xml">
+</head><body style="background-image:url(https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg);"><div id="cursor-container"><div id="cursor-outer"></div><div id="cursor-effect"></div></div><header><nav><a href="/">Home</a><a href="/archives/">Archives</a></nav></header><main><article><div id="post-bg"><div id="post-title"><h1>Mysql 数据类型</h1><div id="post-info"><span>First Post:<div style="display:inline-block;width:90px"><time datetime="2022-04-18T16:00:00.000Z" id="date"> 2022-04-19</time></div></span><br><span>Last Update:<div style="display:inline-block;width:90px"><time datetime="2022-04-23T10:23:10.420Z" id="updated"> 2022-04-23</time></div></span></div></div><hr><div id="post-content"><p>数据类型可以通过 <code>? data types</code> 查看说明，每种数据类型也可以通过 <code>? 数据类型</code> 查看。</p>
+<p><em>除了data types 其他可以用?查看的内容可以输入 <code>? contents</code> 查看。</em></p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>整数 (tinyint, smallint, mediumint, int, bigint)</td>
+<td>都是整数型，表示范围为1,2,3,4,8 B（结尾还可以加 unsigned）</td>
+</tr>
+<tr>
+<td>字符串 (char(位数), varchar(位数), text)</td>
+<td>char 长度固定，varchar 长度可变</td>
+</tr>
+<tr>
+<td>小数 (float, double, decimal(总位数, 小数点后位数))</td>
+<td>不要用 float, double！</td>
+</tr>
+<tr>
+<td>时间日期 (year, date, time, datetime, timestamp)</td>
+<td>date：年月日<br />time：时间<br />datetime：年月日时分秒<br />timestamp：时间戳，现在距离 1970-1-1 的毫秒数</td>
+</tr>
+<tr>
+<td>Mysql 中的枚举类型 (enum, boolean)</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>PS: </p>
+<ol>
+<li><p>虽然 text 等类型可以存储很大的数据，不过大数据一般还是不会直接往数据库里存储。如图片，数据库中一般存储其路径、链接。如果非要存储，有 blob (binary large object)。</p>
+</li>
+<li><p>金额等小数一般不会用小数的数据类型存储，而是整数类型/100使用。因为小数形式有误差，比如0.1+0.2=0.30000000004.</p>
+</li>
+<li><p>decimal 这种变长的数据，使用时速度比定长数据慢。而且 decimal 表示范围也有限，不如直接用 bigint。</p>
+</li>
+<li><p>时间戳是有表示范围的，毕竟是个有上限的数，到2038年左右就不好用了。</p>
+<blockquote>
+<p>这里了解到了一个很有趣的[“千年虫”问题](<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/305603895">漫画：什么是“千年虫”问题？ - 知乎 (zhihu.com)</a>)。</p>
+<p>Grace Murray Hopper，最早的现代编译器、商用编程语言发明者，Bug 和 Debug词汇的流行使用也与她有关。</p>
+<p>早期计算机资源十分稀缺，内存空间必须精打细算。Grace Murray Hopper 采用6位数字组合来存储日期信息 （比如2022/04/19，就是22/04/19）</p>
+<p>尽管节约了内存空间，但是40年后1999-&gt;2000年时，问题就出现了……对计算机来说，相当于99-&gt;00年，年份倒退了。小到银行存款利息变成负的，大到飞机、发电厂运作、核弹发射……都可能出现故障，后果不堪设想。</p>
+<p>如果修改所有程序，是改不过来的。于是程序员们主要采取两种方法：</p>
+<ol>
+<li>只修改核心关键的医疗、航空、金融、军事领域的程序；</li>
+<li>对于大多数不那么核心的程序，采用时间窗口的方式。1910年代表2010年，1920年代表2020年，暂缓问题。在这20年期间，大多数程序设备都已更新换代，现如今千年虫问题已经不那么严重了。</li>
+</ol>
+</blockquote>
+<p>回到刚才的话题，因此时间戳也并不推荐使用。</p>
+</li>
+</ol>
+<p>5.7 之后版本的 Mysql 支持 json 属性，以键值对的方式存储，内容相对灵活。因为虽然数据库结构相对严谨，但是很多时候并不是所有属性都能考虑得到（如二手交易平台，不同的售卖品属性差的很多，如自行车和冰箱）加入相对灵活的 json ，一定程度上就能解决这类问题。包括以前 Mysql 没有这个功能的时候，许多公司也会建一个 varchar() 字段来存储 json 字符串。</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div id="footer-link" style="right: calc(50% - 1px);order: 1;border-right: 1px solid #fe2;padding-left: unset;max-width: calc(50% - 4px);"><a href="/2022/04/19/SQL%20%E8%AF%AD%E5%8F%A5%E2%80%94%E2%80%94DDL/">← Next SQL 语句——DDL</a></div><div id="footer-link" style="left: 50%;order: 0;border-left: 1px solid #fe2;padding-right: unset;max-width: calc(50% - 5px);"><a href="/2022/04/18/Mysql%20Command%20Line%20Client%20%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%8C%E5%8F%8A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Mysql Command Line Client 的使用，及常用命令 Prev →</a></div></div></div><details id="reward"><summary>打赏</summary><div id="alipay"><span>支付宝 | Alipay</span><br><img src="/img/Alipay.png"></div><div id="wechat"><span>微信 | WeChat</span><br><img src="/img/WeChat.png"></div></details></div><div id="bottom-btn"><a id="to-top" onClick="index.scrolltop();" title="to top">∧</a></div></article><div class="aside-box"><aside><div id="aside-top"><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Jing Qing</a></h1><div id="description"><p></p></div><!--if page.published === undefined--><section id="total"><a id="total-archives" href="/archives"><span class="total-title">Archives Total:</span><span class="total-number">14</span></a><div id="total-tags"><span class="total-title">Tags:</span><span class="total-number">3</span></div><div id="total-categories"><span class="total-title">Categories:</span><span class="total-number">6</span></div></section></div><div id="aside-block"></div></div><footer><nobr><span class="text-title">©</span><span class="text-content">1970 to 2020</span></nobr><br><nobr><span class="text-title">ICP</span><span class="text-content">——备案号——</span></nobr><br><text>published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></text><text> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknight</a></text><wbr><text>by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></text></footer></aside></div><canvas id="canvas-dust"></canvas><script src="/js/arknights.js"></script><script src="//unpkg.com/@highlightjs/cdn-assets@11.4.0/highlight.min.js"></script></main></body></html>
