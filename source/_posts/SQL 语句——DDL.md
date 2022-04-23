@@ -74,4 +74,19 @@ constraint `ck_col_sex` check (`col_sex`='M' or `col_sex`='F'),
 constraint `fk_col_id` foreign key (`在本表中的字段名`) references `另一个表名` (`在该表中的主键名`),
 ```
 
+结尾其实还有一句默认的话：`on delete restrict on update restrict` ，就是限制不要随便删除或修改的意思，因为会牵连到别的表。
+
+如果改成 `on delete cascade on update cascade` ，修改时就会发生级联，如果删除这个表中的记录中某一字段的数据另一个表中用到了，就会把另一个表中对应记录也删除。
+
+如果改成 `on delete set null` ，就是删除这个记录时，在另一个表中对应字段的记录不会删除，而只是把这格子短的位置变成空（**当然，前提是该字段数据可以为空！**）
+
+最好还是使用默认的 restrict 。
+
 *一对多时，多的一方需要加外键约束。*
+
+删除约束：
+
+```mysql
+alter table `表名` drop constraint `要删除的约束名`;
+```
+
