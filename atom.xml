@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-04-23T03:40:23.284Z</updated>
+  <updated>2022-04-23T05:00:24.898Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="http://example.com/2022/04/20/SQL%20%E8%AF%AD%E5%8F%A5%E2%80%94%E2%80%94DML/"/>
-    <id>http://example.com/2022/04/20/SQL%20%E8%AF%AD%E5%8F%A5%E2%80%94%E2%80%94DML/</id>
-    <published>2022-04-20T07:04:06.406Z</published>
-    <updated>2022-04-23T03:40:23.284Z</updated>
+    <title>SQL 语句——DML</title>
+    <link href="http://example.com/2022/04/23/SQL%20%E8%AF%AD%E5%8F%A5%E2%80%94%E2%80%94DML/"/>
+    <id>http://example.com/2022/04/23/SQL%20%E8%AF%AD%E5%8F%A5%E2%80%94%E2%80%94DML/</id>
+    <published>2022-04-22T16:00:00.000Z</published>
+    <updated>2022-04-23T05:00:24.898Z</updated>
     
     <content type="html"><![CDATA[<h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">insert into `表名` values (对应字段值)(对应字段值)(对应字段值);//写多个括号，可以一次填写多行<br>insert into `表名` (要填写的字段) values (对应字段值); //省略不写的一定是有默认值的或者可以非空的<br></code></pre></td></tr></table></figure><p>注意：对应字段值一定要和字段相匹配。如果有默认值的字段也不要省略不写，要写上 <code>default</code> ，不然系统也难以分辨哪一项使用默认值。</p><p><em>日期可以写字符串 2002-01-01，会自动转换</em></p><p>插入完后显示：1 row(s) affected（如果写了多个括号，一次插入多行，会显示多个 row(s) affected）是影响了几行的意思。</p><p><strong>如果主键、unique 的记录重复会报错。</strong>报错显示： <code>duplicate key for key &#39;定义的约束键名称&#39;</code></p><p><strong>填写了规定的 check 以外的内容会报错。</strong>报错显示：<code>check constraint &#39;定义的约束键名称&#39; is violated.</code> 不过字符串不区分大小写，规定性别只能填 ‘F’ ‘M’ 的话，填 ‘f’ ‘m’ 也行。</p><p><strong>如果对应的外键在原表中没有对应的记录会报错。</strong> 报错显示：<code>cannot add or update a child row: a foreign constraint fails</code> 比如学生表的学院号参照了学院表，但是有学院表中不存在的学院号时。</p><p><strong>如果没有给 NOT NULL且没有默认值的字段赋值时会报错。</strong> 报错显示：<code>Field &#39;字段名&#39; doesn&#39;t have a default value.</code> 尽量不要出现空列，之后处理空值会带来很多麻烦。哪怕用空字符串、0、1代替也更好一些。</p><h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">delete from `表名`;//这可不兴用啊！<br>delete from `表名` where `字段名`=&#x27;要删除的记录的对应字段值&#x27;;//不等于可以用&lt;&gt;，有的 DBMS 支持!=<br>delete from `表名` where `字段名` = &#x27;字段值&#x27; or `字段名` = &#x27;字段值&#x27;;//删除多条语句<br>delete from `表名` where `字段名` in (&#x27;字段值&#x27;,&#x27;字段值&#x27;);//删除多条语句<br></code></pre></td></tr></table></figure><p>但是如果要删除的这条记录在其他表里是外键，就无法删除。报错显示： <code>Cannot delete or update a parent row</code> 。</p><p>删除了外键约束之后就可以随意修改两个表对应的值而不报错了。</p><p>另一种删除表的方式是：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">truncate table `表名`;<br></code></pre></td></tr></table></figure><p>截断表，这个比 delete 还要危险。delete 了表之后，如果有日志，还是可以找回原数据的。截断就算有日志也没法恢复。</p><h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">update `表名` set `列名` = &#x27;值&#x27;;//把这一列的数据全都改成这个值，不常用<br>update `表名` set `列名` = &#x27;值&#x27;,`列名` = &#x27;值&#x27;,`列名` = &#x27;值&#x27; where `字段`=&#x27;值&#x27;;//限制条件，只修改某几个记录<br></code></pre></td></tr></table></figure>]]></content>
     
@@ -33,6 +33,10 @@
     
     
     
+    <category term="database" scheme="http://example.com/categories/database/"/>
+    
+    
+    <category term="study" scheme="http://example.com/tags/study/"/>
     
   </entry>
   
@@ -60,6 +64,31 @@
 &lt;tbody&gt;&lt;tr&gt;
 &lt;td&gt;create&lt;/td&gt;
 &lt;t</summary>
+      
+    
+    
+    
+    <category term="database" scheme="http://example.com/categories/database/"/>
+    
+    
+    <category term="study" scheme="http://example.com/tags/study/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mysql 数据类型</title>
+    <link href="http://example.com/2022/04/19/Mysql%20%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
+    <id>http://example.com/2022/04/19/Mysql%20%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</id>
+    <published>2022-04-18T16:00:00.000Z</published>
+    <updated>2022-04-23T10:23:10.420Z</updated>
+    
+    <content type="html"><![CDATA[<p>数据类型可以通过 <code>? data types</code> 查看说明，每种数据类型也可以通过 <code>? 数据类型</code> 查看。</p><p><em>除了data types 其他可以用?查看的内容可以输入 <code>? contents</code> 查看。</em></p><table><thead><tr><th>数据类型</th><th>作用</th></tr></thead><tbody><tr><td>整数 (tinyint, smallint, mediumint, int, bigint)</td><td>都是整数型，表示范围为1,2,3,4,8 B（结尾还可以加 unsigned）</td></tr><tr><td>字符串 (char(位数), varchar(位数), text)</td><td>char 长度固定，varchar 长度可变</td></tr><tr><td>小数 (float, double, decimal(总位数, 小数点后位数))</td><td>不要用 float, double！</td></tr><tr><td>时间日期 (year, date, time, datetime, timestamp)</td><td>date：年月日<br />time：时间<br />datetime：年月日时分秒<br />timestamp：时间戳，现在距离 1970-1-1 的毫秒数</td></tr><tr><td>Mysql 中的枚举类型 (enum, boolean)</td><td></td></tr></tbody></table><p>PS: </p><ol><li><p>虽然 text 等类型可以存储很大的数据，不过大数据一般还是不会直接往数据库里存储。如图片，数据库中一般存储其路径、链接。如果非要存储，有 blob (binary large object)。</p></li><li><p>金额等小数一般不会用小数的数据类型存储，而是整数类型/100使用。因为小数形式有误差，比如0.1+0.2=0.30000000004.</p></li><li><p>decimal 这种变长的数据，使用时速度比定长数据慢。而且 decimal 表示范围也有限，不如直接用 bigint。</p></li><li><p>时间戳是有表示范围的，毕竟是个有上限的数，到2038年左右就不好用了。</p><blockquote><p>这里了解到了一个很有趣的[“千年虫”问题](<a href="https://zhuanlan.zhihu.com/p/305603895">漫画：什么是“千年虫”问题？ - 知乎 (zhihu.com)</a>)。</p><p>Grace Murray Hopper，最早的现代编译器、商用编程语言发明者，Bug 和 Debug词汇的流行使用也与她有关。</p><p>早期计算机资源十分稀缺，内存空间必须精打细算。Grace Murray Hopper 采用6位数字组合来存储日期信息 （比如2022/04/19，就是22/04/19）</p><p>尽管节约了内存空间，但是40年后1999-&gt;2000年时，问题就出现了……对计算机来说，相当于99-&gt;00年，年份倒退了。小到银行存款利息变成负的，大到飞机、发电厂运作、核弹发射……都可能出现故障，后果不堪设想。</p><p>如果修改所有程序，是改不过来的。于是程序员们主要采取两种方法：</p><ol><li>只修改核心关键的医疗、航空、金融、军事领域的程序；</li><li>对于大多数不那么核心的程序，采用时间窗口的方式。1910年代表2010年，1920年代表2020年，暂缓问题。在这20年期间，大多数程序设备都已更新换代，现如今千年虫问题已经不那么严重了。</li></ol></blockquote><p>回到刚才的话题，因此时间戳也并不推荐使用。</p></li></ol><p>5.7 之后版本的 Mysql 支持 json 属性，以键值对的方式存储，内容相对灵活。因为虽然数据库结构相对严谨，但是很多时候并不是所有属性都能考虑得到（如二手交易平台，不同的售卖品属性差的很多，如自行车和冰箱）加入相对灵活的 json ，一定程度上就能解决这类问题。包括以前 Mysql 没有这个功能的时候，许多公司也会建一个 varchar() 字段来存储 json 字符串。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;数据类型可以通过 &lt;code&gt;? data types&lt;/code&gt; 查看说明，每种数据类型也可以通过 &lt;code&gt;? 数据类型&lt;/code&gt; 查看。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;除了data types 其他可以用?查看的内容可以输入 &lt;code&gt;? contents&lt;/cod</summary>
       
     
     
