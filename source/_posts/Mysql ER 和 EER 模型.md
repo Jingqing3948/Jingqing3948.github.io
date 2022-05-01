@@ -1,5 +1,5 @@
 ---
-title: ER 和 EER 模型
+title: Mysql ER 和 EER 模型
 date: 2022-04-18
 tags: problems
 category: database

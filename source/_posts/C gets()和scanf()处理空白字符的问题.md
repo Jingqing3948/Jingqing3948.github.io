@@ -1,5 +1,5 @@
 ---
-title: 关于gets()和scanf()处理空白字符的问题
+title: C 关于gets()和scanf()处理空白字符的问题
 date: 2022-02-26
 tags: problems
 category: clanguage
