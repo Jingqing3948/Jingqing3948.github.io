@@ -1,0 +1,77 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Java 学习博客_3 入门——基础语法 | Jingqing3948 的博客</title><script>var config = </script><script>window.onload = ()=>{};</script><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.4.0/styles/atom-one-dark-reasonable.min.css"><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="Jingqing3948 的博客" type="application/atom+xml">
+</head><body style="background-image:url(https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg);"><div id="cursor-container"><div id="cursor-outer"></div><div id="cursor-effect"></div></div><header><nav><a href="/">Home</a><a href="/archives/">Archives</a></nav></header><main><article><div id="post-bg"><div id="post-title"><h1>Java 学习博客_3 入门——基础语法</h1><div id="post-info"><span>First Post:<div style="display:inline-block;width:90px"><time datetime="2022-04-28T16:00:00.000Z" id="date"> 2022-04-29</time></div></span><br><span>Last Update:<div style="display:inline-block;width:90px"><time datetime="2022-04-29T09:13:18.957Z" id="updated"> 2022-04-29</time></div></span></div></div><hr><div id="post-content"><p>以<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV18J411W7cE?p=1">黑马程序员全套Java教程</a>网课为主。</p>
+<h1 id="数据输入"><a href="#数据输入" class="headerlink" title="数据输入"></a>数据输入</h1><p>输入通过 Scanner 类实现。Scanner 类在 java.util 包下，要先导包才能使用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Scanner;<span class="hljs-comment">//导包</span><br>Scanner sc=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<span class="hljs-comment">//创建对象。这句话中除了 sc 是变量名可以修改，其他的都不能改。</span><br><span class="hljs-type">int</span> i=sc.nextInt();<span class="hljs-comment">//接收数据</span><br>String s=sc.nextLine();<br></code></pre></td></tr></table></figure>
+
+<h1 id="分支、循环语句"><a href="#分支、循环语句" class="headerlink" title="分支、循环语句"></a>分支、循环语句</h1><p>if - else 语句：和 C 语言一样。</p>
+<p>switch 语句：表达式的取值可以是 byte、short、int、char，JDK5之后可以是枚举，JDK7之后可以是 String。其他 case break default 用法和 C 一样。</p>
+<p>for, while, do - while 语句，及 break continue 和 C 一样。</p>
+<h1 id="随机数"><a href="#随机数" class="headerlink" title="随机数"></a>随机数</h1><p>Random 类，在 java.util 包下，需要导包。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Random;<br>Random r=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Random</span>();<br><span class="hljs-type">int</span> n=r.nextInt(<span class="hljs-number">10</span>);<span class="hljs-comment">//[0,10)的范围内取随机数</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="IDEA"><a href="#IDEA" class="headerlink" title="IDEA"></a>IDEA</h1><p>集成环境：能够把代码编写、编译、执行、调试等功能集合到一起的开发工具。IDEA  就是 java 的集成环境之一。</p>
+<p>创建项目-项目内创建模块-模块 src 下创建包-包下创建类-类中编写代码。</p>
+<p>其中，.class 文件都会放在模块同级的 out 文件夹中。</p>
+<p><img src="https://s1.328888.xyz/2022/04/28/AJdw2.png" alt="AJdw2.png"></p>
+<p>可以在 File - Settings - Editor - Font 中修改字体</p>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>psvm + Tab：public static void main</p>
+<p>sout + Tab：System.out.println()</p>
+<p>Ctrl + Alt + Space：自动补全代码</p>
+<p>Ctrl + /：单行注释</p>
+<p>Ctrl + Shift + /：多行注释</p>
+<p>Ctrl + Alt + L：代码格式化</p>
+<h2 id="模块操作"><a href="#模块操作" class="headerlink" title="模块操作"></a>模块操作</h2><p>新增模块： File - Project Structure - Modules - New Module - Java - 命名，修改路径</p>
+<p>删除模块：右键模块 - Remove Module</p>
+<p>​    不过删除后在文件目录中仍然存在。</p>
+<p>导入模块：File - Project Structure - Modules - (+) - Import Modules - 选择模块。</p>
+<p>​    如果显示 project SDK is not defined：点 set up.</p>
+<h2 id="断点"><a href="#断点" class="headerlink" title="断点"></a>断点</h2><p>DeBug 调试，断点调试，可以查看程序运行细节。</p>
+<p>添加断点：在行号前点一下，出现红点。</p>
+<p>调试：右键，不是 run ,而是 debug。</p>
+<p>Debugger 窗口下的Frames：查看代码运行到了哪里，也可以查看方法调用情况。</p>
+<p>Debugger 窗口下的Variables：查看各变量运行过程中值的变化</p>
+<p>Console 窗口：查看代码运行过程中的输出变化。如果代码中出现需要输入的情况，需要先在 Console 窗口中输入才能继续执行。</p>
+<p>step info 按钮：下一步</p>
+<p>stop：停止</p>
+<p>再次点击红点，取消该断点。</p>
+<p>批量取消断点：点击两个红点的图案，选择 Java line breakpoints，点击 - 号即可全部删除。</p>
+<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><p>一次性声明大量<strong>同类型</strong>变量。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span>[] arr;<span class="hljs-comment">//推荐。定义了一个 int 型的数组，数组名是 arr</span><br><span class="hljs-type">int</span> arr[];<span class="hljs-comment">//定义了一个 int 型变量，变量名是 arr 数组</span><br><br><span class="hljs-type">int</span>[] arr=<span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;;<span class="hljs-comment">//静态初始化</span><br><span class="hljs-type">int</span>[] arr=&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;;<span class="hljs-comment">//静态初始化简化版</span><br><span class="hljs-type">int</span>[] arr=<span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">3</span>];<span class="hljs-comment">//动态初始化，只申请了空间，系统赋予初始值</span><br><span class="hljs-comment">//数字类型：初始值为0.0</span><br><span class="hljs-comment">//布尔类型：初始值为 false</span><br><span class="hljs-comment">//字符串类型：初始值为&quot;&quot;</span><br><span class="hljs-comment">//引用类型：初始值为 null</span><br></code></pre></td></tr></table></figure>
+
+<p>java 程序运行时需要在内存中分配空间，为了提高效率，内存空间也被划分为不同的部分。</p>
+<h2 id="栈内存"><a href="#栈内存" class="headerlink" title="栈内存"></a>栈内存</h2><p>定义的方法中的变量放在栈内存中，使用完直接消失。</p>
+<p>如<code>int a</code>，以及上文中定义的数组名 arr（其值是指向堆内存中数组内容的地址）。</p>
+<h2 id="堆内存"><a href="#堆内存" class="headerlink" title="堆内存"></a>堆内存</h2><p>实体、对象等的定义放在堆内存中，使用完会在垃圾回收器空闲时进行回收。</p>
+<p>如 new 一个对象，以及上文中数组 arr 中的具体数据内容（arr[0]=1, arr[1]=2……）</p>
+<p>访问数组中的内容，首先根据栈内存中数组的地址找到相应的堆内存中的位置（以及移动相应的索引步长）然后访问数据。</p>
+<p>因此，当多个数组指向相同地址时，其中的内容是一样的，修改其中一个，另一个也会改变。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span>[] arr1=&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;;<br><span class="hljs-type">int</span>[] arr2=arr1;<br>arr2[<span class="hljs-number">0</span>]=<span class="hljs-number">11</span>;<br>arr2[<span class="hljs-number">1</span>]=<span class="hljs-number">22</span>;<br>arr2[<span class="hljs-number">2</span>]=<span class="hljs-number">33</span>;<span class="hljs-comment">//这时访问 arr1[]，发现其中的数据也变成了11,22,33</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="数组常见问题"><a href="#数组常见问题" class="headerlink" title="数组常见问题"></a>数组常见问题</h2><ol>
+<li>数组越界问题，ArrayIndexOutOfException。</li>
+<li>空指针异常问题，NullPointerException。（<code>arr=null</code>，表示数组不指向任何有效对象）</li>
+</ol>
+<h2 id="Array-length"><a href="#Array-length" class="headerlink" title="Array.length"></a>Array.length</h2><p>数组自带属性 length，通过<code>arr.length</code>就能获得数组长度。</p>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>java 中的方法类似 C 中的函数。只是涉及类和对象的问题，有一些小不同。</p>
+<p>像函数一样，是有独立功能的代码块组成的集合，可以拿去调用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> 返回值类型 方法名(形参)&#123;<span class="hljs-comment">//和 main 方法同级</span><br>    方法体<br>    <span class="hljs-keyword">return</span> 返回值;<br>&#125;<span class="hljs-comment">//定义</span><br><br>方法名(实参);<span class="hljs-comment">//在 main 方法中调用。有返回值类型的方法建议用变量接收调用</span><br></code></pre></td></tr></table></figure>
+
+<p>方法不能嵌套定义。</p>
+<h2 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h2><p>多个方法在一个类中，有相同的方法名，但参数不完全相同。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">max</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">max</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b, <span class="hljs-type">int</span> c)</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>注意：返回值不能作为判断方法是否重载的标准！</strong>只有方法名和参数可以。</p>
+<p>调用时，JVM 根据传入参数不同，来得知调用的是哪个方法。</p>
+<p><strong>形参值修改不会对实参造成影响。</strong>main() 方法存储在栈内存中，当 main() 方法调用其它方法时，其他方法进入栈内存</p>
+<p><img src="https://s1.328888.xyz/2022/04/29/A8wxg.png" alt="A8wxg.png"></p>
+<p>但是其中的形参的值不对 main() 中的实参造成影响（除非是像数组、指针之类引用类型，根据地址去堆内存中修改数据），当 change() 方法执行完后就直接出栈了。</p>
+<p><img src="https://s1.328888.xyz/2022/04/29/A8Kh1.png" alt="A8Kh1.png"></p>
+<p>如图，如果是数组单元的值被修改了，实际上是堆内存中的内容被修改了， main() 方法中数组对应的地址中的内容也会被修改。</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div id="footer-link" style="left: 50%;order: 0;border-left: 1px solid #fe2;padding-right: unset;max-width: calc(50% - 5px);"><a href="/2022/04/28/Python%E2%80%94%E2%80%94%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%801/">Python——语法基础1 Prev →</a></div></div></div><details id="reward"><summary>打赏</summary><div id="alipay"><span>支付宝 | Alipay</span><br><img src="/img/Alipay.png"></div><div id="wechat"><span>微信 | WeChat</span><br><img src="/img/WeChat.png"></div></details></div><div id="bottom-btn"><a id="to-top" onClick="index.scrolltop();" title="to top">∧</a></div></article><div class="aside-box"><aside><div id="aside-top"><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Jing Qing</a></h1><div id="description"><p></p></div><!--if page.published === undefined--><section id="total"><a id="total-archives" href="/archives"><span class="total-title">Archives Total:</span><span class="total-number">18</span></a><div id="total-tags"><span class="total-title">Tags:</span><span class="total-number">3</span></div><div id="total-categories"><span class="total-title">Categories:</span><span class="total-number">7</span></div></section></div><div id="aside-block"><h1>INDEX</h1><div id="toc-div"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5"><span class="toc-number">1.</span> <span class="toc-text">数据输入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E3%80%81%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5"><span class="toc-number">2.</span> <span class="toc-text">分支、循环语句</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text">随机数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IDEA"><span class="toc-number">4.</span> <span class="toc-text">IDEA</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">4.1.</span> <span class="toc-text">快捷键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E6%93%8D%E4%BD%9C"><span class="toc-number">4.2.</span> <span class="toc-text">模块操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%AD%E7%82%B9"><span class="toc-number">4.3.</span> <span class="toc-text">断点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-number">5.</span> <span class="toc-text">数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E5%86%85%E5%AD%98"><span class="toc-number">5.1.</span> <span class="toc-text">栈内存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86%E5%86%85%E5%AD%98"><span class="toc-number">5.2.</span> <span class="toc-text">堆内存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-number">5.3.</span> <span class="toc-text">数组常见问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Array-length"><span class="toc-number">5.4.</span> <span class="toc-text">Array.length</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-number">6.</span> <span class="toc-text">方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD"><span class="toc-number">6.1.</span> <span class="toc-text">方法重载</span></a></li></ol></li></ol></div></div></div><footer><nobr><span class="text-title">©</span><span class="text-content">1970 to 2020</span></nobr><br><nobr><span class="text-title">ICP</span><span class="text-content">——备案号——</span></nobr><br><text>published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></text><text> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknight</a></text><wbr><text>by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></text></footer></aside></div><canvas id="canvas-dust"></canvas><script src="/js/arknights.js"></script><script src="//unpkg.com/@highlightjs/cdn-assets@11.4.0/highlight.min.js"></script></main></body></html>
