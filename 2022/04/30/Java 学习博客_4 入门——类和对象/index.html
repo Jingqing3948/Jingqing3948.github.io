@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Java 学习博客_4 入门——类和对象 | Jingqing3948 的博客</title><script>var config = </script><script>window.onload = ()=>{};</script><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.4.0/styles/atom-one-dark-reasonable.min.css"><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="Jingqing3948 的博客" type="application/atom+xml">
+</head><body style="background-image:url(https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg);"><div id="cursor-container"><div id="cursor-outer"></div><div id="cursor-effect"></div></div><header><nav><a href="/">Home</a><a href="/archives/">Archives</a></nav></header><main><article><div id="post-bg"><div id="post-title"><h1>Java 学习博客_4 入门——类和对象</h1><div id="post-info"><span>First Post:<div style="display:inline-block;width:90px"><time datetime="2022-04-29T16:00:00.000Z" id="date"> 2022-04-30</time></div></span><br><span>Last Update:<div style="display:inline-block;width:90px"><time datetime="2022-05-01T16:49:22.870Z" id="updated"> 2022-05-02</time></div></span></div></div><hr><div id="post-content"><p>以黑马程序员全套Java教程网课为主。</p>
+<h1 id="类"><a href="#类" class="headerlink" title="类"></a>类</h1><p>类是对生活中一类具有共同属性和行为的事物的抽象。如猫类，都有毛的长短、颜色、名字等属性，也都能猫叫、吃饭等（不接受抬杠</p>
+<p>类是对象的数据类型，是一个抽象的概念。</p>
+<h1 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h1><p>类的实体化。比如罗小黑，是猫类的一个实体化。</p>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><p>对象具有的各种特征，每个对象的每个属性都有特定的值（如猫毛有长毛、短毛、无毛）</p>
+<h2 id="行为"><a href="#行为" class="headerlink" title="行为"></a>行为</h2><p>对象能执行的动作，如猫可以叫，可以跑。</p>
+<h1 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a>类的定义</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> class 类名&#123;<br>    数据类型 变量;<br>    数据类型 变量;<br>    数据类型 变量;<br>    <br>    方法<span class="hljs-number">1</span>;<br>    方法<span class="hljs-number">2</span>;<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Cat</span>&#123;<br>    String name;<span class="hljs-comment">//初始值为null或0或false或&quot;&quot;</span><br>    <span class="hljs-type">int</span> age;<br>    <span class="hljs-type">boolean</span> tail;<br>    String color;<br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">meow</span><span class="hljs-params">()</span>&#123;<br>		System.out.println(<span class="hljs-string">&quot;Meow!&quot;</span>);<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">eat</span><span class="hljs-params">(String food)</span>&#123;<br>		System.out.println(<span class="hljs-string">&quot;Eat &quot;</span>+food);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="对象的使用"><a href="#对象的使用" class="headerlink" title="对象的使用"></a>对象的使用</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//在 main 方法中</span><br>Cat c=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Cat</span>();<br>c.name=<span class="hljs-string">&quot;小黑&quot;</span>;<span class="hljs-comment">//c 的名字</span><br>c.age=<span class="hljs-number">2</span>;<span class="hljs-comment">//2岁了</span><br>c.tail=<span class="hljs-literal">false</span>;<span class="hljs-comment">//有尾巴</span><br>System.out.println(c.age);<br>c.meow();<span class="hljs-comment">//行为：猫叫</span><br>c.eat(<span class="hljs-string">&quot;猫粮&quot;</span>)<span class="hljs-comment">//行为：吃饭</span><br></code></pre></td></tr></table></figure>
+
+<p>在同级目录下，类在一个文件中，main 方法在另一个文件中而且实例化了这个类，也是可以的。</p>
+<p>对象名 c 存储在栈内存中（其值代表对象的属性在堆内存中的地址），而对象的<strong>属性</strong>等具体内容存储在<strong>堆内存</strong>中。对象中的<strong>方法</strong>调用时则加载到<strong>栈内存</strong>中，执行完毕后出栈。</p>
+<h1 id="成员变量和局部变量"><a href="#成员变量和局部变量" class="headerlink" title="成员变量和局部变量"></a>成员变量和局部变量</h1><p>成员变量：类中在方法外的变量（如上例中的属性变量）</p>
+<p>局部变量：在类的方法中或方法声明上的变量。（如上例中 eat 方法声明的 food 局部变量）</p>
+<table>
+<thead>
+<tr>
+<th>成员变量</th>
+<th>局部变量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>类中方法外</td>
+<td>方法中，或方法声明上</td>
+</tr>
+<tr>
+<td>堆内存中</td>
+<td>栈内存中</td>
+</tr>
+<tr>
+<td>对象消失时随之消失</td>
+<td>方法调用完毕而消失</td>
+</tr>
+<tr>
+<td>有默认的初始值</td>
+<td>没有默认的初始值，必须先定义、赋值才能使用</td>
+</tr>
+</tbody></table>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div id="footer-link" style="right: calc(50% - 1px);order: 1;border-right: 1px solid #fe2;padding-left: unset;max-width: calc(50% - 4px);"><a href="/2022/05/01/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_9%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%A4%9A%E6%80%81/">← Next Java 学习博客_9 入门——多态</a></div><div id="footer-link" style="left: 50%;order: 0;border-left: 1px solid #fe2;padding-right: unset;max-width: calc(50% - 5px);"><a href="/2022/04/30/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_5%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%B0%81%E8%A3%85/">Java 学习博客_5 入门——封装 Prev →</a></div></div></div><details id="reward"><summary>打赏</summary><div id="alipay"><span>支付宝 | Alipay</span><br><img src="/img/Alipay.png"></div><div id="wechat"><span>微信 | WeChat</span><br><img src="/img/WeChat.png"></div></details></div><div id="bottom-btn"><a id="to-top" onClick="index.scrolltop();" title="to top">∧</a></div></article><div class="aside-box"><aside><div id="aside-top"><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Jing Qing</a></h1><div id="description"><p></p></div><!--if page.published === undefined--><section id="total"><a id="total-archives" href="/archives"><span class="total-title">Archives Total:</span><span class="total-number">26</span></a><div id="total-tags"><span class="total-title">Tags:</span><span class="total-number">3</span></div><div id="total-categories"><span class="total-title">Categories:</span><span class="total-number">8</span></div></section></div><div id="aside-block"><h1>INDEX</h1><div id="toc-div"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B1%BB"><span class="toc-number">1.</span> <span class="toc-text">类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.</span> <span class="toc-text">对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7"><span class="toc-number">2.1.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%8C%E4%B8%BA"><span class="toc-number">2.2.</span> <span class="toc-text">行为</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">3.</span> <span class="toc-text">类的定义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">对象的使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%92%8C%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="toc-number">5.</span> <span class="toc-text">成员变量和局部变量</span></a></li></ol></div></div></div><footer><nobr><span class="text-title">©</span><span class="text-content">1970 to 2020</span></nobr><br><nobr><span class="text-title">ICP</span><span class="text-content">——备案号——</span></nobr><br><text>published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></text><text> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknight</a></text><wbr><text>by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></text></footer></aside></div><canvas id="canvas-dust"></canvas><script src="/js/arknights.js"></script><script src="//unpkg.com/@highlightjs/cdn-assets@11.4.0/highlight.min.js"></script></main></body></html>
