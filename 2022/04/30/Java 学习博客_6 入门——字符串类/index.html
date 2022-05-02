@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Java 学习博客_6 入门——字符串类 | Jingqing3948 的博客</title><script>var config = </script><script>window.onload = ()=>{};</script><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.4.0/styles/atom-one-dark-reasonable.min.css"><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="Jingqing3948 的博客" type="application/atom+xml">
+</head><body style="background-image:url(https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg);"><div id="cursor-container"><div id="cursor-outer"></div><div id="cursor-effect"></div></div><header><nav><a href="/">Home</a><a href="/archives/">Archives</a></nav></header><main><article><div id="post-bg"><div id="post-title"><h1>Java 学习博客_6 入门——字符串类</h1><div id="post-info"><span>First Post:<div style="display:inline-block;width:90px"><time datetime="2022-04-29T16:00:00.000Z" id="date"> 2022-04-30</time></div></span><br><span>Last Update:<div style="display:inline-block;width:90px"><time datetime="2022-05-01T16:49:37.296Z" id="updated"> 2022-05-02</time></div></span></div></div><hr><div id="post-content"><p>以黑马程序员全套Java教程网课为主。</p>
+<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p>JDK 中提供了实现各种功能的封装类，供我们使用。</p>
+<p>就像灯的开关，我们只用知道按下开关就能开灯关灯，并不需要弄明白底层原理如何实现。</p>
+<p>可以下载一个 java 帮助文档，在其中搜索这些类的具体使用方法。</p>
+<p>（<em>点击索引，打开输入框</em></p>
+<p><em>如果只有左侧目录显示，右侧不显示：</em></p>
+<p><em>右键帮助文档-属性-常规-最下面解除锁定</em></p>
+<p><em>重新打开帮助文档即可。</em>）</p>
+<p><img src="https://s1.328888.xyz/2022/04/30/AWwYX.png" alt="AWwYX.png"></p>
+<p>Pakckage：该类所处的包下（除了 java.lang，其他包都要导包）</p>
+<p>下拉还有构造方法、成员方法的详解。</p>
+<h2 id="字符串输入"><a href="#字符串输入" class="headerlink" title="字符串输入"></a>字符串输入</h2><p>查看 Scanner 的帮助文档可以得知，成员方法 nextLine() 可以获取一整行内容，可用于输入接收字符串。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java">Scanner sc=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>String line=sc.nextLine();<br><span class="hljs-comment">//这里只输入 sc.nextLine() 然后 alt enter 代码自动补全，就会自动生成左边 String line。</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="String"><a href="#String" class="headerlink" title="String"></a>String</h1><p>String 类型代表字符串。其内容都是被双引号引住的。</p>
+<p>在 java.lang 包下，不用导包。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java">String s=<span class="hljs-string">&quot;abc&quot;</span>;<span class="hljs-comment">//直接赋值</span><br>String s1=<span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>();<span class="hljs-comment">//空字符串</span><br><br><span class="hljs-type">char</span>[] c=&#123;<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>&#125;;<br>String s2=<span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(c);<span class="hljs-comment">//根据字符数组创建字符串</span><br><br><span class="hljs-type">byte</span>[] b=&#123;<span class="hljs-number">97</span>,<span class="hljs-number">98</span>,<span class="hljs-number">99</span>&#125;;<span class="hljs-comment">//a, b, c 对应的 ascii 码</span><br>String s3=<span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(b);<br></code></pre></td></tr></table></figure>
+
+<p>字符串一旦创建不能再修改。不过多个字符串的值可以共享<code>s1=s2;</code></p>
+<p>字符串在效果上像字符数组 char[]，但（JDK9）以后底层实现方法其实是字节数组 byte[]。</p>
+<h2 id="字符串比较：-和成员方法-equals"><a href="#字符串比较：-和成员方法-equals" class="headerlink" title="字符串比较：== 和成员方法 equals()"></a>字符串比较：== 和成员方法 equals()</h2><p>用==判断的比较，是比较 s1 和 s2 的值（即：对应字符串的地址值）是否相同。</p>
+<p><strong>基本类型 == 比较的是数据值是否相同，引用类型 == 比较的是地址是否相同。</strong></p>
+<p>用字符串的成员方法 equals() 判断，是比较字符串内容是否相同。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">char</span>[] c=&#123;<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>&#125;;<br>String s1=<span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(c);<br>String s2=<span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(c);<br>System.out.println(s1==s2);<span class="hljs-comment">//输出 false，因为 s1 s2 地址不同，只有内容是一样的</span><br>System.out.println(s1.equals(s2));<span class="hljs-comment">//输出 true</span><br><br>String s3=<span class="hljs-string">&quot;abc&quot;</span>;<br>String s4=<span class="hljs-string">&quot;abc&quot;</span>;<br>System.out.println(s3==s4);<span class="hljs-comment">//输出 true，因为对于相同内容的字符串，JVM 会建立一个字符串对象（在堆内存的字符串池中）供它俩参考。</span><br>System.out.println(s3.equals(s4));<span class="hljs-comment">//输出 true</span><br><br>System.out.println(s1==s3);<span class="hljs-comment">//输出 false</span><br>System.out.println(s1.equals(s3));<span class="hljs-comment">//输出 true</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="遍历字符串：成员方法-length-和-charAt"><a href="#遍历字符串：成员方法-length-和-charAt" class="headerlink" title="遍历字符串：成员方法 length() 和 charAt()"></a>遍历字符串：成员方法 length() 和 charAt()</h2><p><code>s.length()</code>可以获取字符串长度</p>
+<p>s.charAt(i) 可以获取索引为 i 处的字符</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;s.length;i++)&#123;<br>    System.out.println(s.charAt(i));<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h2><p>字符串可以直接用 + 号拼接。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java">String s1=<span class="hljs-string">&quot;Hello &quot;</span>;<br>String s2=<span class="hljs-string">&quot;World&quot;</span>;<br>s1=s1+s2;<span class="hljs-comment">//Hello World</span><br></code></pre></td></tr></table></figure>
+
+<p>在内存中，字符串发生拼接后会在堆内存中新建一个字符串（有”Hello “，”World”，”Hello World”三个字符串，而不是直接在”Hello “的位置上拼接”World”）。这样操作还是比较费时费空间的。之后介绍的另一个类——StringBuilder 可以更有效地解决这个问题。</p>
+<h2 id="endsWith"><a href="#endsWith" class="headerlink" title="endsWith()"></a>endsWith()</h2><p>查看字符串是否以指定子串结尾。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">String s1=<span class="hljs-string">&quot;hello world&quot;</span>;<br>s1.endsWith(<span class="hljs-string">&quot;world&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<h1 id="StringBuilder-类"><a href="#StringBuilder-类" class="headerlink" title="StringBuilder 类"></a>StringBuilder 类</h1><p>与 String 类相比，最主要的特点在于内容可变。</p>
+<p>在 java.lang 包下，不用导包。</p>
+<p>构造方法：</p>
+<table>
+<thead>
+<tr>
+<th>构造方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>StringBuilder()</td>
+<td>无参构造方法</td>
+</tr>
+<tr>
+<td>StringBuilder(String s)</td>
+<td>把给定的 String 字符串转换成 StringBuilder 类型的</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>成员方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>append(String s)</td>
+<td>在结尾拼接上字符串 s</td>
+</tr>
+<tr>
+<td>StringBuilder reverse()</td>
+<td>反转字符串</td>
+</tr>
+<tr>
+<td>String toString()</td>
+<td>把 StringBuilder 类型转换为 String 类型并返回</td>
+</tr>
+</tbody></table>
+<p>用 StringBuilder 完成字符串拼接操作：</p>
+<ol>
+<li>String 类型转换为 StringBuilder 类型</li>
+<li>StringBuilder 类型通过 append() 成员方法拼接字符串</li>
+<li>StringBuilder 类型通过 toString() 成员方法转换为 String 类型</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java">String s=<span class="hljs-string">&quot;Hello &quot;</span>;<br>StringBuilder sb=<span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuilder</span>(s);<span class="hljs-comment">//或者先无参构造，再在结尾拼接 append(s)，但有点多此一举</span><br>sb.append(<span class="hljs-string">&quot;World&quot;</span>);<br>String s1=sb.toString();<br><br><span class="hljs-comment">//骚操作：匿名对象，使用完立刻被垃圾回收器回收，建议少用</span><br>String s1=<span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuilder</span>(s).append(<span class="hljs-string">&quot;World&quot;</span>).toString();<br></code></pre></td></tr></table></figure>
+
+<p>用 StringBuilder 完成字符串反转操作：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">String s=<span class="hljs-string">&quot;Hello World&quot;</span>;<br>String sr=<span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuilder</span>(s).reverse().toString();<br></code></pre></td></tr></table></figure>
+
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div id="footer-link" style="right: calc(50% - 1px);order: 1;border-right: 1px solid #fe2;padding-left: unset;max-width: calc(50% - 4px);"><a href="/2022/04/30/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_5%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%B0%81%E8%A3%85/">← Next Java 学习博客_5 入门——封装</a></div><div id="footer-link" style="left: 50%;order: 0;border-left: 1px solid #fe2;padding-right: unset;max-width: calc(50% - 5px);"><a href="/2022/04/30/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_7%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E9%9B%86%E5%90%88%E7%B1%BB/">Java 学习博客_7 入门——集合类 Prev →</a></div></div></div><details id="reward"><summary>打赏</summary><div id="alipay"><span>支付宝 | Alipay</span><br><img src="/img/Alipay.png"></div><div id="wechat"><span>微信 | WeChat</span><br><img src="/img/WeChat.png"></div></details></div><div id="bottom-btn"><a id="to-top" onClick="index.scrolltop();" title="to top">∧</a></div></article><div class="aside-box"><aside><div id="aside-top"><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Jing Qing</a></h1><div id="description"><p></p></div><!--if page.published === undefined--><section id="total"><a id="total-archives" href="/archives"><span class="total-title">Archives Total:</span><span class="total-number">26</span></a><div id="total-tags"><span class="total-title">Tags:</span><span class="total-number">3</span></div><div id="total-categories"><span class="total-title">Categories:</span><span class="total-number">8</span></div></section></div><div id="aside-block"><h1>INDEX</h1><div id="toc-div"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#API"><span class="toc-number">1.</span> <span class="toc-text">API</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BE%93%E5%85%A5"><span class="toc-number">1.1.</span> <span class="toc-text">字符串输入</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#String"><span class="toc-number">2.</span> <span class="toc-text">String</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83%EF%BC%9A-%E5%92%8C%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95-equals"><span class="toc-number">2.1.</span> <span class="toc-text">字符串比较：&#x3D;&#x3D; 和成员方法 equals()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%8D%E5%8E%86%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%9A%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95-length-%E5%92%8C-charAt"><span class="toc-number">2.2.</span> <span class="toc-text">遍历字符串：成员方法 length() 和 charAt()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5"><span class="toc-number">2.3.</span> <span class="toc-text">字符串拼接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#endsWith"><span class="toc-number">2.4.</span> <span class="toc-text">endsWith()</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#StringBuilder-%E7%B1%BB"><span class="toc-number">3.</span> <span class="toc-text">StringBuilder 类</span></a></li></ol></div></div></div><footer><nobr><span class="text-title">©</span><span class="text-content">1970 to 2020</span></nobr><br><nobr><span class="text-title">ICP</span><span class="text-content">——备案号——</span></nobr><br><text>published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></text><text> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknight</a></text><wbr><text>by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></text></footer></aside></div><canvas id="canvas-dust"></canvas><script src="/js/arknights.js"></script><script src="//unpkg.com/@highlightjs/cdn-assets@11.4.0/highlight.min.js"></script></main></body></html>
