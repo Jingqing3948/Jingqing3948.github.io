@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Java 学习博客_7 入门——集合类 | Jingqing3948 的博客</title><script>var config = </script><script>window.onload = ()=>{};</script><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.4.0/styles/atom-one-dark-reasonable.min.css"><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="Jingqing3948 的博客" type="application/atom+xml">
+</head><body style="background-image:url(https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg);"><div id="cursor-container"><div id="cursor-outer"></div><div id="cursor-effect"></div></div><header><nav><a href="/">Home</a><a href="/archives/">Archives</a></nav></header><main><article><div id="post-bg"><div id="post-title"><h1>Java 学习博客_7 入门——集合类</h1><div id="post-info"><span>First Post:<div style="display:inline-block;width:90px"><time datetime="2022-04-29T16:00:00.000Z" id="date"> 2022-04-30</time></div></span><br><span>Last Update:<div style="display:inline-block;width:90px"><time datetime="2022-05-01T16:49:53.751Z" id="updated"> 2022-05-02</time></div></span></div></div><hr><div id="post-content"><p>以黑马程序员全套Java教程网课为主。</p>
+<p>集合和数组相比，就像 StringBuilder 之于 String，数组长度固定，集合长度可变。</p>
+<p>ArrayList 就是集合的一种。</p>
+<h1 id="ArrayList-lt-E-gt"><a href="#ArrayList-lt-E-gt" class="headerlink" title="ArrayList&lt;E&gt;"></a>ArrayList&lt;E&gt;</h1><p>在 java.util 包下，需要导包。</p>
+<p>&lt;E&gt; 表示泛型，随便加一种数据类型。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">ArrayList&lt;String&gt; array=<span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;String&gt;();<br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ArrayList&lt;E&gt;()</td>
+<td>无参构造方法</td>
+</tr>
+<tr>
+<td>boolean add(E e)</td>
+<td>结尾添加一个元素，成功返回true</td>
+</tr>
+<tr>
+<td>void add(index i, E e)</td>
+<td>在指定索引处添加一个元素（不能越界！）</td>
+</tr>
+<tr>
+<td>boolean remove(Object o)</td>
+<td>删除指定对象，成功返回 true</td>
+</tr>
+<tr>
+<td>E remove(int index)</td>
+<td>删除指定索引处的值，返回该值</td>
+</tr>
+<tr>
+<td>E set(int index, E element)</td>
+<td>修改指定索引处值，返回修改后的值</td>
+</tr>
+<tr>
+<td>E get(int index)</td>
+<td>返回指定索引处元素</td>
+</tr>
+<tr>
+<td>int size()</td>
+<td>返回集合元素个数</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java">array.add(<span class="hljs-number">1</span>);<br>array.add(<span class="hljs-number">3</span>);<br>array.add(<span class="hljs-number">4</span>);<br>array.add(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>);<br>System.out.println(array);<span class="hljs-comment">//输出 array：1，2，3，4</span><br></code></pre></td></tr></table></figure>
+
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div id="footer-link" style="right: calc(50% - 1px);order: 1;border-right: 1px solid #fe2;padding-left: unset;max-width: calc(50% - 4px);"><a href="/2022/04/30/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_6%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB/">← Next Java 学习博客_6 入门——字符串类</a></div><div id="footer-link" style="left: 50%;order: 0;border-left: 1px solid #fe2;padding-right: unset;max-width: calc(50% - 5px);"><a href="/2022/04/29/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_3%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">Java 学习博客_3 入门——基础语法 Prev →</a></div></div></div><details id="reward"><summary>打赏</summary><div id="alipay"><span>支付宝 | Alipay</span><br><img src="/img/Alipay.png"></div><div id="wechat"><span>微信 | WeChat</span><br><img src="/img/WeChat.png"></div></details></div><div id="bottom-btn"><a id="to-top" onClick="index.scrolltop();" title="to top">∧</a></div></article><div class="aside-box"><aside><div id="aside-top"><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Jing Qing</a></h1><div id="description"><p></p></div><!--if page.published === undefined--><section id="total"><a id="total-archives" href="/archives"><span class="total-title">Archives Total:</span><span class="total-number">26</span></a><div id="total-tags"><span class="total-title">Tags:</span><span class="total-number">3</span></div><div id="total-categories"><span class="total-title">Categories:</span><span class="total-number">8</span></div></section></div><div id="aside-block"><h1>INDEX</h1><div id="toc-div"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ArrayList-lt-E-gt"><span class="toc-number">1.</span> <span class="toc-text">ArrayList&lt;E&gt;</span></a></li></ol></div></div></div><footer><nobr><span class="text-title">©</span><span class="text-content">1970 to 2020</span></nobr><br><nobr><span class="text-title">ICP</span><span class="text-content">——备案号——</span></nobr><br><text>published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></text><text> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknight</a></text><wbr><text>by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></text></footer></aside></div><canvas id="canvas-dust"></canvas><script src="/js/arknights.js"></script><script src="//unpkg.com/@highlightjs/cdn-assets@11.4.0/highlight.min.js"></script></main></body></html>

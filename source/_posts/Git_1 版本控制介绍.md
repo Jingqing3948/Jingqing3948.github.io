@@ -1,12 +1,10 @@
 ---
-title: Git_1 版本控制介绍
+title: git_1 版本控制介绍
 date: 2022-05-02
 tags: study
 category: git
 
 ---
-
-以黑马程序员全套Java教程网课为主。
 
 [【尚硅谷】Git与GitHub基础全套完整版教程（快速上手，一套搞定）_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1pW411A7a5?p=3&spm_id_from=pageDriver)
 

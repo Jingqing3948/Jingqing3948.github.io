@@ -2,7 +2,7 @@
 title: Mysql Command Line Client 的使用，及常用命令
 Date: 2022-04-18
 tags: study
-category: tools
+category: mysql
 ---
 
 Mysql Command Line Client 是官方提供的客户端。之前一直直接用 Windows 的命令提示符窗口输入 Mysql 语句，不知道两者具体区别在哪里。不过还是重新安装了一个尝试一下。
