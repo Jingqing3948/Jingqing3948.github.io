@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>SQL 语句——DQL 例题及注意事项 | Jingqing3948 的博客</title><script>var config = </script><script>window.onload = ()=>{};</script><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.4.0/styles/atom-one-dark-reasonable.min.css"><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="Jingqing3948 的博客" type="application/atom+xml">
+</head><body style="background-image:url(https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg);"><div id="cursor-container"><div id="cursor-outer"></div><div id="cursor-effect"></div></div><header><nav><a href="/">Home</a><a href="/archives/">Archives</a></nav></header><main><article><div id="post-bg"><div id="post-title"><h1>SQL 语句——DQL 例题及注意事项</h1><div id="post-info"><span>First Post:<div style="display:inline-block;width:90px"><time datetime="2022-04-24T16:00:00.000Z" id="date"> 2022-04-25</time></div></span><br><span>Last Update:<div style="display:inline-block;width:90px"><time datetime="2022-05-02T05:23:18.879Z" id="updated"> 2022-05-02</time></div></span></div></div><hr><div id="post-content"><p>学习于：b站 骆昊jackfrued 老师的网课</p>
+<h2 id="简单排序——查询最大值、次大只"><a href="#简单排序——查询最大值、次大只" class="headerlink" title="简单排序——查询最大值、次大只"></a>简单排序——查询最大值、次大只</h2><ol>
+<li><p>员工表中含有员工号、姓名、薪水、职位、补贴 、所在部门等信息。查询薪水最高的员工姓名和薪水值。</p>
+<p>做法①：最普通的子查询，先查出最大工资值，再筛选出员工表中工资值等于这个数的员工。</p>
+<p>做法②：limit 做法。先按薪水降序排序所有员工，再只 limit 1 取第一条员工信息。这种做法的局限性在 limit 介绍的时候我也有写，就是当最值不只一位的时候，这种方法只能查出1位员工。</p>
+<p>做法③：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select `ename`,`salary` from `tb_employee` t1 where(<br>    select count(*) from `tb_employee` t2 where `t2`.`salary`&gt;`t1`.`salary`<br>)=0;-- 结尾改成1，就是工资第二高的人<br></code></pre></td></tr></table></figure></li>
+<li><p>查询除了 boss 外工资最高的人。</p>
+<p>在题1的基础上，用 where 排除掉 boss。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select `ename`,`salary` from `tb_employee` <br>where `salary`=(<br>    select max(salary) from `tb_employee` where `position`&lt;&gt;&#x27;boss&#x27;<br>);<br></code></pre></td></tr></table></figure></li>
+<li><p>查询月薪 top 3的人。</p>
+<p>这时出现了和题1一样的情况。用 limit ，可能会漏掉工资并列的第四人；因此，这里用题1的方法③最合适。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select `ename`,`salary` from `tb_employee` t1 where(<br>    select count(*) from `tb_employee` t2 where `t2`.`salary`&gt;`t1`.`salary`<br>)&lt;3 order by `salary` desc;<br></code></pre></td></tr></table></figure></li>
+<li><p>查询所有员工的姓名和年薪。年薪计算公式：月薪*12+补贴。</p>
+<p>题目很简单，但是<strong>遇到计算一定要注意数据是否 Not Null，如果出现 Null 数据结果也会变成 Null。</strong>要用 ifnull() 或 coalesce() 函数限制一下。</p>
+</li>
+<li><p>查询所有部门名称及员工人数。</p>
+<p>部门名称在部门表中，每个部门的人数则需要根据员工表中部门号统计。显然这里要先查出员工表的员工号和统计员工信息，再把结果表和部门表做连接。<strong>重点注意几种连接的不同。</strong>比如此题，即便有的部门没有员工，也要显示出来，因此应该部门表 left join 派生表。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select dname,total from `tb_department` t1<br>left join (<br>    select dname, ifnull(count(*), as total from `tb_department` t2 group by `stu_id`<br>) on t1.`stu_id`=t2.`stu_id`;<br></code></pre></td></tr></table></figure></li>
+<li><p>查询每个部门比本部门平均薪水高的员工名及薪水。记得说清楚列属于哪个表，不然报错 ambigious</p>
+<p>先按部门分组，查询出平均成绩和员工号表；再通过部门号和员工表连接，并筛选出薪水值大于平均值的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select sname,salary from `tb_employee` t1<br>inner join (<br>	select avg(salary),dno from `tb_employee` group by dno;<br>)t2 on t1.dno=t2.dno and t1.salary &gt; t2.avg(salary);-- 两个连表条件<br></code></pre></td></tr></table></figure></li>
+<li><p>查询每个部门中薪水最高的员工的用户姓名、薪水、部门名称。</p>
+<p>派生表通过薪水值、部门号和员工表、部门表相连接。</p>
+</li>
+<li><p>查询薪水排名4-6员工的薪水、姓名、<strong>排名</strong>。</p>
+<p>问题1：怎么查出排名？</p>
+<p>问题2：这题并没有想象中的简单。比如员工薪水前8名是5000,5000,4000,4000,3000,3000,3000,2000，那么其实第三、第四人两个人并列第三，4-6显示的排名值就应该是3，5，5</p>
+<p>解决：mysql 8的窗口函数可以解决排名 / top N 问题。</p>
+<p>①不用窗口函数：</p>
+<p>系统变量一般不写@或写两个@@（可以通过 show variables 查询），自己定义的变量写一个@，赋值的方法：<code>set @a=0;</code>或<code>select@a:=0;</code>而且变量也可以通过 as 起别名。</p>
+<p>我们先定义一个变量，变量从0开始，每次选择＋1，就可以当做序号用了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">set @a=0;<br>select row_num,ename,salary from (<br>	select @a=@a+1 as `row_num`,ename,salary,(select @a:=0) -- @a 重新赋值为0<br>    from `tb_employee` order by salary desc<br>) where `row_num` between 4 and 6;-- 子查询中做了几次查询，@a 就加几次<br></code></pre></td></tr></table></figure>
+
+<p>注意不要在括号里用 limit 3 offset 3，因为这样的话子查询就只会进行3次，@a 的值就只会从1到3.</p>
+<p>另外，每次查询时都要重新给@a 赋值为0，不然其值会累加。</p>
+</li>
+<li><p>查询每个部门薪水排名前两名的员工。</p>
+<p>Top N 问题通过题1的做法③解决。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select eno,ename,salary,dno from `tb_employee` t1<br>where (<br>	select count(*) from `tb_employee` t2 where t1.`dno`=t2.`dno` and t2.salary&gt;t1.salary<br>)&lt;2 order by t1.dno asc, t1.salary desc;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="窗口函数"><a href="#窗口函数" class="headerlink" title="窗口函数"></a>窗口函数</h2><p>内容来自：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/92654574">通俗易懂的学会：SQL 窗口函数 - 知乎</a></p>
+<p>应用于组内排名和 Top N 类问题。 一般是处理 where 和 group by</p>
+<p>窗口函数不光是函数，有一套完整的语法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">&lt;窗口函数&gt; over (partition by &lt;用于分组的列名&gt;<br>                order by &lt;用于排序的列名&gt;)<br></code></pre></td></tr></table></figure>
+
+<p>&lt;窗口函数&gt; 处放聚合函数或专用窗口函数。</p>
+<p>窗口函数是以一个列的形式使用的。</p>
+<h3 id="专用窗口函数"><a href="#专用窗口函数" class="headerlink" title="专用窗口函数"></a>专用窗口函数</h3><p>rank、dese rank、row_number</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/18d3c41260cad2a0ecbae4732018948c.png" alt="img"></p>
+<h3 id="partition-by-和-group-by-的区别"><a href="#partition-by-和-group-by-的区别" class="headerlink" title="partition by 和 group by 的区别"></a>partition by 和 group by 的区别</h3><p><img src="https://img-blog.csdnimg.cn/img_convert/6650ec247ab10db38a52d904bfecbd3c.png" alt="img"></p>
+<p>使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select `ename`,`sal`,<br>rank() over (order by `sal` desc)as `r1`,<br>dense_rank() over (order by `sal` desc)as `r2`,<br>row_number() over (order by `sal` desc)as `r3`<br>from `tb_emp`;<br></code></pre></td></tr></table></figure>
+
+<p>第八题窗口函数做法：加一个 where r between 4 and 6 的条件。</p>
+<p>至于要用哪种专用函数，就要看要求了。</p>
+<p>第九题窗口函数做法：因为产生了分组，因此不能直接用 where r &lt;=2。但是窗口函数的分组后的列做筛选，既不能直接用 where 也不能用 having。应该把窗口函数的查询结果作为一个派生表，再用 where 做选择。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select `ename`,`sal`,`dno`<br>from(<br>    select `ename`,`sal`,`dno`,<br>    rank() over (partition by `dno` order by `sal` desc)as `r`<br>    from `tb_emp`<br>) `temp` where `r`&lt;=2;-- 不能在派生表里直接筛选<br></code></pre></td></tr></table></figure>
+
+<p><em>窗口函数性能还是比较差的，业务中不应使用，数据分析师可能会常用一些。</em></p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div id="footer-link" style="right: calc(50% - 1px);order: 1;border-right: 1px solid #fe2;padding-left: unset;max-width: calc(50% - 4px);"><a href="/2022/04/25/SQL%20%E8%AF%AD%E5%8F%A5%E2%80%94%E2%80%94DQL/">← Next SQL 语句——DQL</a></div><div id="footer-link" style="left: 50%;order: 0;border-left: 1px solid #fe2;padding-right: unset;max-width: calc(50% - 5px);"><a href="/2022/04/23/SQL%20%E8%AF%AD%E5%8F%A5%E2%80%94%E2%80%94DML/">SQL 语句——DML Prev →</a></div></div></div><details id="reward"><summary>打赏</summary><div id="alipay"><span>支付宝 | Alipay</span><br><img src="/img/Alipay.png"></div><div id="wechat"><span>微信 | WeChat</span><br><img src="/img/WeChat.png"></div></details></div><div id="bottom-btn"><a id="to-top" onClick="index.scrolltop();" title="to top">∧</a></div></article><div class="aside-box"><aside><div id="aside-top"><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Jing Qing</a></h1><div id="description"><p></p></div><!--if page.published === undefined--><section id="total"><a id="total-archives" href="/archives"><span class="total-title">Archives Total:</span><span class="total-number">28</span></a><div id="total-tags"><span class="total-title">Tags:</span><span class="total-number">3</span></div><div id="total-categories"><span class="total-title">Categories:</span><span class="total-number">8</span></div></section></div><div id="aside-block"><h1>INDEX</h1><div id="toc-div"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E6%9F%A5%E8%AF%A2%E6%9C%80%E5%A4%A7%E5%80%BC%E3%80%81%E6%AC%A1%E5%A4%A7%E5%8F%AA"><span class="toc-number">1.</span> <span class="toc-text">简单排序——查询最大值、次大只</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">窗口函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%93%E7%94%A8%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0"><span class="toc-number">2.1.</span> <span class="toc-text">专用窗口函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#partition-by-%E5%92%8C-group-by-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.2.</span> <span class="toc-text">partition by 和 group by 的区别</span></a></li></ol></li></ol></div></div></div><footer><nobr><span class="text-title">©</span><span class="text-content">1970 to 2020</span></nobr><br><nobr><span class="text-title">ICP</span><span class="text-content">——备案号——</span></nobr><br><text>published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></text><text> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknight</a></text><wbr><text>by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></text></footer></aside></div><canvas id="canvas-dust"></canvas><script src="/js/arknights.js"></script><script src="//unpkg.com/@highlightjs/cdn-assets@11.4.0/highlight.min.js"></script></main></body></html>
