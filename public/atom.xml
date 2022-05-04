@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-05-01T16:45:51.490Z</updated>
+  <updated>2022-05-01T16:50:35.968Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,31 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Git_1 版本控制介绍</title>
-    <link href="http://example.com/2022/05/02/Git_1%20%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D/"/>
-    <id>http://example.com/2022/05/02/Git_1%20%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D/</id>
-    <published>2022-05-01T16:00:00.000Z</published>
-    <updated>2022-05-01T16:45:51.490Z</updated>
-    
-    <content type="html"><![CDATA[<p>以黑马程序员全套Java教程网课为主。</p><p><a href="https://www.bilibili.com/video/BV1pW411A7a5?p=3&spm_id_from=pageDriver">【尚硅谷】Git与GitHub基础全套完整版教程（快速上手，一套搞定）_哔哩哔哩_bilibili</a></p><h1 id="为什么需要版本控制？"><a href="#为什么需要版本控制？" class="headerlink" title="为什么需要版本控制？"></a>为什么需要版本控制？</h1><p>单人开发有的时候，在开发过程中需要回退到之前的版本。好的版本管理可以大大提高开发效率。</p><p>多人开发的时候，不同人做修改 / 上传时间不统一，如果两个人同时上传，后者就会把前者的内容覆盖。普通文件服务器不能管理文件内容。</p><h1 id="版本控制工具特性"><a href="#版本控制工具特性" class="headerlink" title="版本控制工具特性"></a>版本控制工具特性</h1><p><strong>版本控制是一种思想，版本控制工具（如 SVN、git）是对其实现。</strong></p><p>集中式版本控制工具：如 SVN，开发人员都是客户端，而内容存储在服务器上，所有人和服务器交互。缺点在于服务器一挂，历史数据全部丢失，客户端上只能保存当前状态。（单点故障）</p><p>分布式版本控制工具：如 git ，开发人员在本地就能进行完整的版本控制。就算一个人的数据丢失了，依靠其他人的也能找回来，能有效避免单点故障。不过还是不建议本地库传数据，还是有一个远程库。</p><p>git其他优点：</p><ul><li>大部分操作在本地进行，不需要联网</li><li>完整性保证（哈希算法，之后介绍）</li><li>尽可能添加数据，而不是删除或修改数据</li><li>分支操作快捷流畅</li><li>与 Linux 命令全面兼容</li></ul><h1 id="版本控制工具应该具有的功能？"><a href="#版本控制工具应该具有的功能？" class="headerlink" title="版本控制工具应该具有的功能？"></a>版本控制工具应该具有的功能？</h1><ul><li>协同修改：多个人并行不悖地修改同一份文件。</li><li>数据备份：保存历史版本。</li><li>版本管理：各个版本之间肯定有重叠的部分，这一部分不要重复保存。对此，SVN 采用增量式管理的方法（每次只保存修改的部分），git 采取的是文件系统快照的方法。</li><li>权限控制：不同人的权限不同。git 不仅支持权限控制，还可以对团队外开发者贡献的代码进行审核。</li><li>历史记录：查看修改人、时间、内容、日志等，还可以把本地文件恢复到之前的状态。</li><li>分支管理：允许开发团队在工作过程中多条生产线同时推进任务，进一步提高效率。</li></ul><h1 id="Git-结构"><a href="#Git-结构" class="headerlink" title="Git 结构"></a>Git 结构</h1><p><img src="https://s1.328888.xyz/2022/05/01/AbdOT.png" alt="AbdOT.png"></p><h1 id="Git-和代码托管中心"><a href="#Git-和代码托管中心" class="headerlink" title="Git 和代码托管中心"></a>Git 和代码托管中心</h1><p>代码托管中心可以帮我们维护远程库</p><p>局域网内：Gitlab</p><p>外网：Github，Gitee</p><p>开发者通过 push 把代码推送到远程库。其他开发者要先 clone 把代码克隆下来，然后加入团队，然后才能把自己做的修改 push 推送到远程库。再通过 pull 把其他人的操作拉取下来。</p><p>如果需要项目成员之外的人修改代码：那个人先通过 fork 克隆一个自己的远程库，然后自己对自己的远程库做 clone、push 等操作，修改完成之后向项目开发者发送 pull request 请求，开发者审核同意后 merge 合并代码。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;以黑马程序员全套Java教程网课为主。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.bilibili.com/video/BV1pW411A7a5?p=3&amp;spm_id_from=pageDriver&quot;&gt;【尚硅谷】Git与GitHub基础全套完整版教程（快速上手</summary>
-      
-    
-    
-    
-    <category term="git" scheme="http://example.com/categories/git/"/>
-    
-    
-    <category term="study" scheme="http://example.com/tags/study/"/>
-    
-  </entry>
   
   <entry>
     <title>Java 学习博客_10 入门——抽象类、抽象方法、接口</title>
@@ -61,6 +36,55 @@
     
     
     <category term="java" scheme="http://example.com/categories/java/"/>
+    
+    
+    <category term="study" scheme="http://example.com/tags/study/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git_2 命令行添加、提交操作</title>
+    <link href="http://example.com/2022/05/02/git_2%20%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%B7%BB%E5%8A%A0%E3%80%81%E6%8F%90%E4%BA%A4%E6%93%8D%E4%BD%9C/"/>
+    <id>http://example.com/2022/05/02/git_2%20%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%B7%BB%E5%8A%A0%E3%80%81%E6%8F%90%E4%BA%A4%E6%93%8D%E4%BD%9C/</id>
+    <published>2022-05-01T16:00:00.000Z</published>
+    <updated>2022-05-02T05:16:35.383Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="本地库初始化"><a href="#本地库初始化" class="headerlink" title="本地库初始化"></a>本地库初始化</h1><p>git 的专属命令都是以 git 打头的。</p><p>在文件夹中右键 – git bash here 启动 git 命令行。</p><table><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td>ll</td><td>当前目录下的资源</td></tr><tr><td>ls -lA</td><td>带隐藏资源</td></tr><tr><td>ls -l|less</td><td>分频查看</td></tr><tr><td>pwd</td><td>当前位置路径</td></tr><tr><td>mkdir 目录名</td><td>新建目录</td></tr><tr><td>git init</td><td>初始化当前目录（并创建 .git 文件夹）</td></tr></tbody></table><p><strong>.git 里存放的是本地库相关的子目录和文件，不要删除和随便修改！！</strong></p><h1 id="设置签名"><a href="#设置签名" class="headerlink" title="设置签名"></a>设置签名</h1><p>需要设置用户名和 email 地址，唯一用处就是标识开发者身份。</p><p><strong>登录代码托管中心的账号密码（如 github、gitee）和签名的用户名、email 地址没有任何关系。</strong></p><p>项目/仓库级别：只对当前本地库范围内有效。</p><p>系统用户级别：对当前系统的登录账号（lenovo）有效。</p><p>同时存在的话，项目/仓库级别优先级更高。但是二者必须至少有一个。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">git config user.name Jingqing//项目级别<br>git config user.email Jingqing@163.com//项目级别<br><br>git config --global user.name Jingqing//系统用户级别<br>git config --global user.email Jingqing@163.com//系统用户级别<br></code></pre></td></tr></table></figure><p>项目级别的签名：在项目文件夹下输入 <code>cat .git/config</code>，会发现在签名就保存在 .git 文件夹的 config 目录下。</p><p>项目级别的签名：<code>cat ~/.gitconfig</code>跳转到家目录查看。</p><p><em>开发时如果不是特殊需求，一般一个系统级别签名即可。</em></p><h1 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h1><p>git status 查看工作区、暂存区状态</p><p>no commit yet：指本地库里没有内容，因为 commit 之后是会放到本地库里的。</p><p>nothing to commit：暂存区没有内容可以提交。</p><p>changes to be committed：暂存区有内容等待提交。</p><h1 id="提交文件"><a href="#提交文件" class="headerlink" title="提交文件"></a>提交文件</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">//vim 新建文件<br>vim good.txt<br>//然后输入文本文档内容，按 esc 后按两次大写 Z 保存退出。<br>git add good.txt<br>//这里提示：warning, 行末的 LF 会被替换为 CRLF，这和安装时 git 的配置有关，影响不大<br>git rm --cached good.txt<br>//撤回暂存区的内容<br>git commit good.txt<br>//提交文件，然后会提示：请输入提交的信息备注，并且显示一个 vim 编辑器<br>//输入注释信息后按 esc 输入 冒号+wq 退出<br><br>//但是其实这样才是更常见的用法<br>git commit -m &quot;信息备注&quot; good.txt<br></code></pre></td></tr></table></figure><p>第一次提交会显示 root commit 根提交</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;本地库初始化&quot;&gt;&lt;a href=&quot;#本地库初始化&quot; class=&quot;headerlink&quot; title=&quot;本地库初始化&quot;&gt;&lt;/a&gt;本地库初始化&lt;/h1&gt;&lt;p&gt;git 的专属命令都是以 git 打头的。&lt;/p&gt;
+&lt;p&gt;在文件夹中右键 – git bash here 启</summary>
+      
+    
+    
+    
+    <category term="git" scheme="http://example.com/categories/git/"/>
+    
+    
+    <category term="study" scheme="http://example.com/tags/study/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git_1 版本控制介绍</title>
+    <link href="http://example.com/2022/05/02/git_1%20%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D/"/>
+    <id>http://example.com/2022/05/02/git_1%20%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D/</id>
+    <published>2022-05-01T16:00:00.000Z</published>
+    <updated>2022-05-02T05:17:13.167Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.bilibili.com/video/BV1pW411A7a5?p=3&spm_id_from=pageDriver">【尚硅谷】Git与GitHub基础全套完整版教程（快速上手，一套搞定）_哔哩哔哩_bilibili</a></p><h1 id="为什么需要版本控制？"><a href="#为什么需要版本控制？" class="headerlink" title="为什么需要版本控制？"></a>为什么需要版本控制？</h1><p>单人开发有的时候，在开发过程中需要回退到之前的版本。好的版本管理可以大大提高开发效率。</p><p>多人开发的时候，不同人做修改 / 上传时间不统一，如果两个人同时上传，后者就会把前者的内容覆盖。普通文件服务器不能管理文件内容。</p><h1 id="版本控制工具特性"><a href="#版本控制工具特性" class="headerlink" title="版本控制工具特性"></a>版本控制工具特性</h1><p><strong>版本控制是一种思想，版本控制工具（如 SVN、git）是对其实现。</strong></p><p>集中式版本控制工具：如 SVN，开发人员都是客户端，而内容存储在服务器上，所有人和服务器交互。缺点在于服务器一挂，历史数据全部丢失，客户端上只能保存当前状态。（单点故障）</p><p>分布式版本控制工具：如 git ，开发人员在本地就能进行完整的版本控制。就算一个人的数据丢失了，依靠其他人的也能找回来，能有效避免单点故障。不过还是不建议本地库传数据，还是有一个远程库。</p><p>git其他优点：</p><ul><li>大部分操作在本地进行，不需要联网</li><li>完整性保证（哈希算法，之后介绍）</li><li>尽可能添加数据，而不是删除或修改数据</li><li>分支操作快捷流畅</li><li>与 Linux 命令全面兼容</li></ul><h1 id="版本控制工具应该具有的功能？"><a href="#版本控制工具应该具有的功能？" class="headerlink" title="版本控制工具应该具有的功能？"></a>版本控制工具应该具有的功能？</h1><ul><li>协同修改：多个人并行不悖地修改同一份文件。</li><li>数据备份：保存历史版本。</li><li>版本管理：各个版本之间肯定有重叠的部分，这一部分不要重复保存。对此，SVN 采用增量式管理的方法（每次只保存修改的部分），git 采取的是文件系统快照的方法。</li><li>权限控制：不同人的权限不同。git 不仅支持权限控制，还可以对团队外开发者贡献的代码进行审核。</li><li>历史记录：查看修改人、时间、内容、日志等，还可以把本地文件恢复到之前的状态。</li><li>分支管理：允许开发团队在工作过程中多条生产线同时推进任务，进一步提高效率。</li></ul><h1 id="Git-结构"><a href="#Git-结构" class="headerlink" title="Git 结构"></a>Git 结构</h1><p><img src="https://s1.328888.xyz/2022/05/01/AbdOT.png" alt="AbdOT.png"></p><h1 id="Git-和代码托管中心"><a href="#Git-和代码托管中心" class="headerlink" title="Git 和代码托管中心"></a>Git 和代码托管中心</h1><p>代码托管中心可以帮我们维护远程库</p><p>局域网内：Gitlab</p><p>外网：Github，Gitee</p><p>开发者通过 push 把代码推送到远程库。其他开发者要先 clone 把代码克隆下来，然后加入团队，然后才能把自己做的修改 push 推送到远程库。再通过 pull 把其他人的操作拉取下来。</p><p>如果需要项目成员之外的人修改代码：那个人先通过 fork 克隆一个自己的远程库，然后自己对自己的远程库做 clone、push 等操作，修改完成之后向项目开发者发送 pull request 请求，开发者审核同意后 merge 合并代码。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://www.bilibili.com/video/BV1pW411A7a5?p=3&amp;spm_id_from=pageDriver&quot;&gt;【尚硅谷】Git与GitHub基础全套完整版教程（快速上手，一套搞定）_哔哩哔哩_bilibili&lt;/a&gt;&lt;/p</summary>
+      
+    
+    
+    
+    <category term="git" scheme="http://example.com/categories/git/"/>
     
     
     <category term="study" scheme="http://example.com/tags/study/"/>
@@ -325,6 +349,31 @@
   </entry>
   
   <entry>
+    <title>SQL 语句——DQL 例题及注意事项</title>
+    <link href="http://example.com/2022/04/25/SQL%20%E8%AF%AD%E5%8F%A5%E2%80%94%E2%80%94DQL%20%E4%BE%8B%E9%A2%98%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/"/>
+    <id>http://example.com/2022/04/25/SQL%20%E8%AF%AD%E5%8F%A5%E2%80%94%E2%80%94DQL%20%E4%BE%8B%E9%A2%98%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</id>
+    <published>2022-04-24T16:00:00.000Z</published>
+    <updated>2022-05-02T05:23:18.879Z</updated>
+    
+    <content type="html"><![CDATA[<p>学习于：b站 骆昊jackfrued 老师的网课</p><h2 id="简单排序——查询最大值、次大只"><a href="#简单排序——查询最大值、次大只" class="headerlink" title="简单排序——查询最大值、次大只"></a>简单排序——查询最大值、次大只</h2><ol><li><p>员工表中含有员工号、姓名、薪水、职位、补贴 、所在部门等信息。查询薪水最高的员工姓名和薪水值。</p><p>做法①：最普通的子查询，先查出最大工资值，再筛选出员工表中工资值等于这个数的员工。</p><p>做法②：limit 做法。先按薪水降序排序所有员工，再只 limit 1 取第一条员工信息。这种做法的局限性在 limit 介绍的时候我也有写，就是当最值不只一位的时候，这种方法只能查出1位员工。</p><p>做法③：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select `ename`,`salary` from `tb_employee` t1 where(<br>    select count(*) from `tb_employee` t2 where `t2`.`salary`&gt;`t1`.`salary`<br>)=0;-- 结尾改成1，就是工资第二高的人<br></code></pre></td></tr></table></figure></li><li><p>查询除了 boss 外工资最高的人。</p><p>在题1的基础上，用 where 排除掉 boss。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select `ename`,`salary` from `tb_employee` <br>where `salary`=(<br>    select max(salary) from `tb_employee` where `position`&lt;&gt;&#x27;boss&#x27;<br>);<br></code></pre></td></tr></table></figure></li><li><p>查询月薪 top 3的人。</p><p>这时出现了和题1一样的情况。用 limit ，可能会漏掉工资并列的第四人；因此，这里用题1的方法③最合适。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select `ename`,`salary` from `tb_employee` t1 where(<br>    select count(*) from `tb_employee` t2 where `t2`.`salary`&gt;`t1`.`salary`<br>)&lt;3 order by `salary` desc;<br></code></pre></td></tr></table></figure></li><li><p>查询所有员工的姓名和年薪。年薪计算公式：月薪*12+补贴。</p><p>题目很简单，但是<strong>遇到计算一定要注意数据是否 Not Null，如果出现 Null 数据结果也会变成 Null。</strong>要用 ifnull() 或 coalesce() 函数限制一下。</p></li><li><p>查询所有部门名称及员工人数。</p><p>部门名称在部门表中，每个部门的人数则需要根据员工表中部门号统计。显然这里要先查出员工表的员工号和统计员工信息，再把结果表和部门表做连接。<strong>重点注意几种连接的不同。</strong>比如此题，即便有的部门没有员工，也要显示出来，因此应该部门表 left join 派生表。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select dname,total from `tb_department` t1<br>left join (<br>    select dname, ifnull(count(*), as total from `tb_department` t2 group by `stu_id`<br>) on t1.`stu_id`=t2.`stu_id`;<br></code></pre></td></tr></table></figure></li><li><p>查询每个部门比本部门平均薪水高的员工名及薪水。记得说清楚列属于哪个表，不然报错 ambigious</p><p>先按部门分组，查询出平均成绩和员工号表；再通过部门号和员工表连接，并筛选出薪水值大于平均值的。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select sname,salary from `tb_employee` t1<br>inner join (<br>select avg(salary),dno from `tb_employee` group by dno;<br>)t2 on t1.dno=t2.dno and t1.salary &gt; t2.avg(salary);-- 两个连表条件<br></code></pre></td></tr></table></figure></li><li><p>查询每个部门中薪水最高的员工的用户姓名、薪水、部门名称。</p><p>派生表通过薪水值、部门号和员工表、部门表相连接。</p></li><li><p>查询薪水排名4-6员工的薪水、姓名、<strong>排名</strong>。</p><p>问题1：怎么查出排名？</p><p>问题2：这题并没有想象中的简单。比如员工薪水前8名是5000,5000,4000,4000,3000,3000,3000,2000，那么其实第三、第四人两个人并列第三，4-6显示的排名值就应该是3，5，5</p><p>解决：mysql 8的窗口函数可以解决排名 / top N 问题。</p><p>①不用窗口函数：</p><p>系统变量一般不写@或写两个@@（可以通过 show variables 查询），自己定义的变量写一个@，赋值的方法：<code>set @a=0;</code>或<code>select@a:=0;</code>而且变量也可以通过 as 起别名。</p><p>我们先定义一个变量，变量从0开始，每次选择＋1，就可以当做序号用了。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">set @a=0;<br>select row_num,ename,salary from (<br>select @a=@a+1 as `row_num`,ename,salary,(select @a:=0) -- @a 重新赋值为0<br>    from `tb_employee` order by salary desc<br>) where `row_num` between 4 and 6;-- 子查询中做了几次查询，@a 就加几次<br></code></pre></td></tr></table></figure><p>注意不要在括号里用 limit 3 offset 3，因为这样的话子查询就只会进行3次，@a 的值就只会从1到3.</p><p>另外，每次查询时都要重新给@a 赋值为0，不然其值会累加。</p></li><li><p>查询每个部门薪水排名前两名的员工。</p><p>Top N 问题通过题1的做法③解决。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select eno,ename,salary,dno from `tb_employee` t1<br>where (<br>select count(*) from `tb_employee` t2 where t1.`dno`=t2.`dno` and t2.salary&gt;t1.salary<br>)&lt;2 order by t1.dno asc, t1.salary desc;<br></code></pre></td></tr></table></figure></li></ol><h2 id="窗口函数"><a href="#窗口函数" class="headerlink" title="窗口函数"></a>窗口函数</h2><p>内容来自：<a href="https://zhuanlan.zhihu.com/p/92654574">通俗易懂的学会：SQL 窗口函数 - 知乎</a></p><p>应用于组内排名和 Top N 类问题。 一般是处理 where 和 group by</p><p>窗口函数不光是函数，有一套完整的语法。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">&lt;窗口函数&gt; over (partition by &lt;用于分组的列名&gt;<br>                order by &lt;用于排序的列名&gt;)<br></code></pre></td></tr></table></figure><p>&lt;窗口函数&gt; 处放聚合函数或专用窗口函数。</p><p>窗口函数是以一个列的形式使用的。</p><h3 id="专用窗口函数"><a href="#专用窗口函数" class="headerlink" title="专用窗口函数"></a>专用窗口函数</h3><p>rank、dese rank、row_number</p><p><img src="https://img-blog.csdnimg.cn/img_convert/18d3c41260cad2a0ecbae4732018948c.png" alt="img"></p><h3 id="partition-by-和-group-by-的区别"><a href="#partition-by-和-group-by-的区别" class="headerlink" title="partition by 和 group by 的区别"></a>partition by 和 group by 的区别</h3><p><img src="https://img-blog.csdnimg.cn/img_convert/6650ec247ab10db38a52d904bfecbd3c.png" alt="img"></p><p>使用：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select `ename`,`sal`,<br>rank() over (order by `sal` desc)as `r1`,<br>dense_rank() over (order by `sal` desc)as `r2`,<br>row_number() over (order by `sal` desc)as `r3`<br>from `tb_emp`;<br></code></pre></td></tr></table></figure><p>第八题窗口函数做法：加一个 where r between 4 and 6 的条件。</p><p>至于要用哪种专用函数，就要看要求了。</p><p>第九题窗口函数做法：因为产生了分组，因此不能直接用 where r &lt;=2。但是窗口函数的分组后的列做筛选，既不能直接用 where 也不能用 having。应该把窗口函数的查询结果作为一个派生表，再用 where 做选择。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select `ename`,`sal`,`dno`<br>from(<br>    select `ename`,`sal`,`dno`,<br>    rank() over (partition by `dno` order by `sal` desc)as `r`<br>    from `tb_emp`<br>) `temp` where `r`&lt;=2;-- 不能在派生表里直接筛选<br></code></pre></td></tr></table></figure><p><em>窗口函数性能还是比较差的，业务中不应使用，数据分析师可能会常用一些。</em></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;学习于：b站 骆昊jackfrued 老师的网课&lt;/p&gt;
+&lt;h2 id=&quot;简单排序——查询最大值、次大只&quot;&gt;&lt;a href=&quot;#简单排序——查询最大值、次大只&quot; class=&quot;headerlink&quot; title=&quot;简单排序——查询最大值、次大只&quot;&gt;&lt;/a&gt;简单排序——查询最</summary>
+      
+    
+    
+    
+    <category term="database" scheme="http://example.com/categories/database/"/>
+    
+    
+    <category term="study" scheme="http://example.com/tags/study/"/>
+    
+  </entry>
+  
+  <entry>
     <title>SQL 语句——DML</title>
     <link href="http://example.com/2022/04/23/SQL%20%E8%AF%AD%E5%8F%A5%E2%80%94%E2%80%94DML/"/>
     <id>http://example.com/2022/04/23/SQL%20%E8%AF%AD%E5%8F%A5%E2%80%94%E2%80%94DML/</id>
@@ -413,7 +462,7 @@
     <link href="http://example.com/2022/04/18/Mysql%20Command%20Line%20Client%20%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%8C%E5%8F%8A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
     <id>http://example.com/2022/04/18/Mysql%20Command%20Line%20Client%20%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%8C%E5%8F%8A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
     <published>2022-04-18T03:31:43.820Z</published>
-    <updated>2022-04-18T03:37:32.364Z</updated>
+    <updated>2022-05-02T02:08:19.037Z</updated>
     
     <content type="html"><![CDATA[<p>Mysql Command Line Client 是官方提供的客户端。之前一直直接用 Windows 的命令提示符窗口输入 Mysql 语句，不知道两者具体区别在哪里。不过还是重新安装了一个尝试一下。</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>MYSQL 文件夹里自带有 Installer，在里面选中对应电脑版本的 Mysql Server 下载即可。</p><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>由于安装目录和 Mysql 不一致，缺少配置文件 my.ini 导致 Mysql Command Line Client 一开始无法使用。直接把 Mysql 里的 my.ini 复制到 Mysql Server 目录下就可以了。</p><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>其实在 cmd 窗口中登录 mysql 时也会给出相应的命令提示，只是当时没有仔细研究。正好借使用 Mysql Command Line Client 的机会了解一下常用的命令。</p><p>开始菜单中出现了两种不同的 Mysql Command Line Client 窗口，其中一种支持 Unicode ，一种不支持。打开后即会提示输入登录密码，登录后就和 cmd 窗口中操作基本一致。</p><table><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td>\h, ?, ?</td><td>获取帮助</td></tr><tr><td>\c</td><td>清除前面输入的内容（内容输入有误时使用）</td></tr><tr><td>\R</td><td>修改 每次输入命令前左侧的提示样式（默认：’mysql&gt;’）</td></tr><tr><td>? 需要查看帮助的命令;</td><td>显示该命令的帮助（如：? show）</td></tr><tr><td>show databases;</td><td>查看所有数据库</td></tr><tr><td>use ‘数据库名’;</td><td>选中某个数据库</td></tr><tr><td>（选中某个数据库后）show tables;</td><td>查看当前数据库中所有表</td></tr><tr><td>exit / quit</td><td>退出</td></tr></tbody></table>]]></content>
     
@@ -426,7 +475,7 @@
     
     
     
-    <category term="tools" scheme="http://example.com/categories/tools/"/>
+    <category term="mysql" scheme="http://example.com/categories/mysql/"/>
     
     
     <category term="study" scheme="http://example.com/tags/study/"/>
@@ -480,59 +529,6 @@
     
     
     <category term="study" scheme="http://example.com/tags/study/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 学习博客_2 入门——基础语法</title>
-    <link href="http://example.com/2022/04/14/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_2%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/"/>
-    <id>http://example.com/2022/04/14/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_2%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</id>
-    <published>2022-04-13T16:00:00.000Z</published>
-    <updated>2022-04-18T03:37:18.637Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="HelloWorld-案例"><a href="#HelloWorld-案例" class="headerlink" title="HelloWorld 案例"></a>HelloWorld 案例</h2><p>学习的时候除了直接用记事本编辑，推荐使用 Notepad++ 。使用 Notepad++ 前需要设置：<code>设置 -- 首选项 -- 新建 -- 默认语言：Java -- 编码 ANSI</code>。</p><p>新建一个 HelloWorld.java 文件，通过记事本或 Notepad++ 编辑内容：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HelloWorld</span> &#123; <span class="hljs-comment">//这里的 class 类名必须和文件名一致</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123; <span class="hljs-comment">//main 方法</span><br>        System.out.println(<span class="hljs-string">&quot;Hello World!&quot;</span>); <span class="hljs-comment">// 单独输出一行的意思。注意大小写不可以出错</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>然后在DOS窗口中进入当前文件所在目录，输入命令：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">javac HelloWorld.java //编译<br>java HelloWorld //运行<br></code></pre></td></tr></table></figure><p>这里可见，java 和 C、C++ 一样，属于编译型语言（一次性翻译全部源程序，然后执行机器语言程序），而不是解释型语言（源程序逐条翻译并执行）。</p><p>如果顺利运行，就会输出 <code>Hello World!</code>。</p><h2 id="Java-基础语法——主要与C语言比较有哪些不同"><a href="#Java-基础语法——主要与C语言比较有哪些不同" class="headerlink" title="Java 基础语法——主要与C语言比较有哪些不同"></a>Java 基础语法——主要与C语言比较有哪些不同</h2><h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>单行注释 <code>//</code> 、多行注释 <code>/* */</code> 都和C一样。还有一个文件注释 <code>/** */</code>暂时用不到，之后了解。</p><h3 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h3><p>字母全部小写。</p><h6 id="数据类型："><a href="#数据类型：" class="headerlink" title="数据类型："></a>数据类型：</h6><p>整数型：byte, short, int, long</p><p>浮点型：float, double</p><p>字符型：char</p><p>布尔型：boolean</p><p>变量的定义和 c 相似，<code>int a=10;</code> 不能重复定义和未初始化就使用。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">long</span> l=<span class="hljs-number">1000000L</span>;<br><span class="hljs-type">float</span> f=<span class="hljs-number">1.235F</span>; <span class="hljs-comment">//防止 long 类型和 float 类型不兼容</span><br></code></pre></td></tr></table></figure><p>标识符命名：数字、字母（区分大小写）、_、$ 组成，数字不能开头。</p><p><em>命名规范：</em></p><p><em>方法和变量：一个单词时，首字母大写；标识符由多个单词组成时：小驼峰命名法</em></p><p><em>类名：大驼峰命名法</em></p><h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><p>+，-，*，/，%，</p><p>+=，-=，*=，/=，%=（隐含了强制类型转换）</p><p>++，–</p><p>==，&gt;=，&lt;=，&gt;，&lt;，!=</p><p>? : </p><p>&amp;，|，^，!（逻辑运算符）</p><p>&amp;&amp;，||（短路逻辑运算符，如果左边足以判断表达式的结果，右边就不会执行）</p><p>与 C 不同的是，Java 里的 + 号可以进行字符串拼接。字符串变量碰到其他类型变量就会拼接。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-number">1</span>+<span class="hljs-number">99</span>+<span class="hljs-string">&quot;string&quot;</span> <span class="hljs-comment">//&quot;100string&quot;</span><br><span class="hljs-string">&quot;string&quot;</span>+<span class="hljs-number">1</span>+<span class="hljs-number">99</span> <span class="hljs-comment">//&quot;string199&quot;，从左往右计算</span><br></code></pre></td></tr></table></figure><h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p>自动类型转换：把小范围的变量赋值给大范围的变量</p><p>数据范围从小到大：</p><p><img src="https://s1.328888.xyz/2022/04/14/iX6sR.png" alt="DataTypeRange"></p><p>算术表达式中包含多个基本数据类型的值时，整个算术表达式的类型就会自动提升。</p><p>强制类型转换：赋值运算符中隐含。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">short</span> s=<span class="hljs-number">10</span>;<br>s+=<span class="hljs-number">10</span>;<span class="hljs-comment">//正常</span><br>s=s+<span class="hljs-number">10</span>;<span class="hljs-comment">//错，因为右边发生了自动类型转换，变成了int型</span><br>s=(<span class="hljs-type">short</span>)(s+<span class="hljs-number">10</span>);<span class="hljs-comment">//也可以</span><br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;HelloWorld-案例&quot;&gt;&lt;a href=&quot;#HelloWorld-案例&quot; class=&quot;headerlink&quot; title=&quot;HelloWorld 案例&quot;&gt;&lt;/a&gt;HelloWorld 案例&lt;/h2&gt;&lt;p&gt;学习的时候除了直接用记事本编辑，推荐使用 Notep</summary>
-      
-    
-    
-    
-    <category term="java" scheme="http://example.com/categories/java/"/>
-    
-    
-    <category term="study" scheme="http://example.com/tags/study/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>微信开发者工具和gitee实现多人协作</title>
-    <link href="http://example.com/2022/03/27/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7%E5%92%8Cgitee%E5%AE%9E%E7%8E%B0%E5%A4%9A%E4%BA%BA%E5%8D%8F%E4%BD%9C/"/>
-    <id>http://example.com/2022/03/27/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7%E5%92%8Cgitee%E5%AE%9E%E7%8E%B0%E5%A4%9A%E4%BA%BA%E5%8D%8F%E4%BD%9C/</id>
-    <published>2022-03-26T16:00:00.000Z</published>
-    <updated>2022-04-18T03:36:46.885Z</updated>
-    
-    <content type="html"><![CDATA[<p>将代码上传到码云实现多人合作开发。</p><h1>1. gitee</h1><p>首先进入gitee，注册一个账号。</p><p>新建一个仓库：</p><p><img src="https://img-blog.csdnimg.cn/5abc8daf23a342a3906c4111e0b2d950.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6JCo56eR5aGU6LWE5rex5bmy5ZGY,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="image-20220327012843219"></p><p>输入仓库名称，设置为私有，初始化、模板、分支模型都可以不添加。</p><p>点击创建，就建好了一个新的仓库。</p><p><img src="https://img-blog.csdnimg.cn/0f17a2379dd44d23a084ad3df7373c6d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6JCo56eR5aGU6LWE5rex5bmy5ZGY,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="image-20220327013057263"></p><p>这里可以看到仓库的https地址，一会会用到。</p><p>因为一会直接将小程序代码文件放进来，暂时先不用添加文件。</p><h1>2. git</h1><p>git是一个开源的分布式版本控制系统，可以高效地实现版本控制。</p><h2>下载</h2><p><a href="https://git-scm.com/downloads">从官网上下载git</a>。</p><h2>注册</h2><p>下载完成后在任意目录下右键，都会出现git GUI here和git Bash here.</p><p>点击git Bash here，在当前目录下开启命令行：</p><p><img src="https://img-blog.csdnimg.cn/2896c2473b5c4d428995b6deb13f0e81.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6JCo56eR5aGU6LWE5rex5bmy5ZGY,size_14,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="image-20220327013749178"></p><p>输入：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">git config --global user.name &#x27;要注册的git用户名，不可以是中文&#x27;<br>git config --global user.email &#x27;gitee的邮箱&#x27;<br></code></pre></td></tr></table></figure><p>注册完成。</p><h2>克隆远程仓库</h2><p>首先新建一个想要放克隆下来的仓库内容的文件夹，进入该文件夹下。可以直接双击打开文件夹后右键git Bash here，也可以在命令行中使用cd进入文件夹目录下。</p><p>复制新建仓库的https地址：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">git clong &#x27;仓库的https地址，如https://github.com/username/try.git&#x27;<br></code></pre></td></tr></table></figure><p>如果克隆的是有内容的仓库，这时就应该可以看到文件夹内出现了仓库里的文件。</p><p>仓库是空，可能会出现warning字样，问题不大。</p><p>然后就可以对内容进行一些修改，项目的开发。</p><h2>推送</h2><p>修改完后要将本地的代码推送到远程仓库。首先提交到本地仓库。通过add添加要提交的文件：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">git add .<br></code></pre></td></tr></table></figure><p>add后面加.的意思是把所有做过修改的文件都添加。如果只想添加部分新修改的文件，add后面根具体的文件名即可。</p><p>再将添加的文件提交：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">git commit -m &#x27;备注，如：提交了app.json文件&#x27;<br></code></pre></td></tr></table></figure><p>若出现<code>1 file changed</code>之类的字样，说明成功提交到了本地仓库。</p><p>最后输入以下代码提交：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">git push origin master<br></code></pre></td></tr></table></figure><p>gitee默认分支是master，github默认分支是main，需要先修改分支为main后提交<code>git branch -M main</code></p><p>出现’done’的字样说明成功。</p><p>回到码云仓库，刷新一下，就可以看到新增的文件，以及还会显示commit的内容。</p><p><img src="https://img-blog.csdnimg.cn/97f5848e7a34432fbc24d38f3846595c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6JCo56eR5aGU6LWE5rex5bmy5ZGY,size_16,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="image-20220327015550566"></p><p><em>这里出现了不同的commit，是博主在不同时间做的不同修改。</em></p><h1>3. 微信开发者工具</h1><p>通过微信开发者工具，可以不使用命令行操作，直接拉取、推送代码。</p><p>打开对应小程序文件夹，点击右上角版本管理，左侧栏如下：</p><p><img src="https://img-blog.csdnimg.cn/d0e8f12d8b954f11bdd936a70434fe2a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6JCo56eR5aGU6LWE5rex5bmy5ZGY,size_7,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="image-20220327015735281"></p><p>首先要在设置中进行认证。点击设置–网络和认证</p><p><img src="https://img-blog.csdnimg.cn/ab9f812446f34fab95604669296032c3.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6JCo56eR5aGU6LWE5rex5bmy5ZGY,size_19,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="image-20220327015821950"></p><p>输入码云的gitee账号和密码。</p><p>博主和朋友尝试将代码上传到github上时，一直在这里有问题。明明用户名和密码正确，推送却会卡住或者显示认证失败。而换成码云就非常顺利。因此更建议使用码云新建仓库、上传代码。</p><p>然后在 远程 中新建仓库信息</p><p><img src="https://img-blog.csdnimg.cn/812100ec678b42e1985baf1e9357ab2d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6JCo56eR5aGU6LWE5rex5bmy5ZGY,size_11,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="image-20220327020101940"></p><p>名称就是仓库名称，url是https的仓库地址。</p><p>设置完成后就可以点击左上角抓取远程仓库内容到本地仓库。</p><p>对于修改后的文件以及提交，在工作区进行：</p><p><img src="https://img-blog.csdnimg.cn/d24162c54f604021b31b77586716a8c1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6JCo56eR5aGU6LWE5rex5bmy5ZGY,size_18,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="image-20220327020242959"></p><p>这里右边上面勾选文件，就相当于git里的add添加文件。下面的提交就相当于commit。输入信息后点击提交，就上传到本地仓库了。</p><p>然后点击左上角推送，<strong>不要推送到新的分支，勾选中间项：推送到一下远程分支</strong>。这一部相当于git的push。</p><p><img src="https://img-blog.csdnimg.cn/ec5c7bc3581a457cb4ccf654aa10e995.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6JCo56eR5aGU6LWE5rex5bmy5ZGY,size_15,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="image-20220327020458850"></p><p>点击确定，出现对号就说明成功。接着可以在仓库中刷新看到新的修改。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;将代码上传到码云实现多人合作开发。&lt;/p&gt;
-&lt;h1&gt;1. gitee&lt;/h1&gt;
-
-&lt;p&gt;首先进入gitee，注册一个账号。&lt;/p&gt;
-&lt;p&gt;新建一个仓库：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://img-blog.csdnimg.cn/5abc8daf23a342a</summary>
-      
-    
-    
-    
-    <category term="projects" scheme="http://example.com/categories/projects/"/>
-    
-    
-    <category term="problems" scheme="http://example.com/tags/problems/"/>
     
   </entry>
   
