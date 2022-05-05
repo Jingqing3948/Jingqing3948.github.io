@@ -1,0 +1,239 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Java 学习博客_12 入门——常用 API | Jingqing3948 的博客</title><script>var config = </script><script>window.onload = ()=>{};</script><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.4.0/styles/atom-one-dark-reasonable.min.css"><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="Jingqing3948 的博客" type="application/atom+xml">
+</head><body style="background-image:url(https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg);"><div id="cursor-container"><div id="cursor-outer"></div><div id="cursor-effect"></div></div><header><nav><a href="/">Home</a><a href="/archives/">Archives</a></nav></header><main><article><div id="post-bg"><div id="post-title"><h1>Java 学习博客_12 入门——常用 API</h1><div id="post-info"><span>First Post:<div style="display:inline-block;width:90px"><time datetime="2022-05-04T16:00:00.000Z" id="date"> 2022-05-05</time></div></span><br><span>Last Update:<div style="display:inline-block;width:90px"><time datetime="2022-05-05T02:50:22.594Z" id="updated"> 2022-05-05</time></div></span></div></div><hr><div id="post-content"><p>以黑马程序员全套Java教程网课为主。</p>
+<h1 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h1><p>不用导包，成员变量、方法都带有static修饰，可以直接通过类名访问。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public static int abs(int a)</td>
+<td>绝对值，支持 double  float int long 类型</td>
+</tr>
+<tr>
+<td>public static double ceil(double a)</td>
+<td>向上取整，返回一个 double 值</td>
+</tr>
+<tr>
+<td>public static double floor(double a)</td>
+<td>向下取整，返回一个 double 值</td>
+</tr>
+<tr>
+<td>public static int round(float a)</td>
+<td>四舍五入</td>
+</tr>
+<tr>
+<td>public static int max(int a,int b)</td>
+<td></td>
+</tr>
+<tr>
+<td>public static int min(int a,int b)</td>
+<td></td>
+</tr>
+<tr>
+<td>public static double pow(double a,double b)</td>
+<td>a 的 b 次幂</td>
+</tr>
+<tr>
+<td>public static double random()</td>
+<td>随机数，范围 [0.0,1.0)</td>
+</tr>
+</tbody></table>
+<p>随机数想要其他范围可以做算术运算。如 [0.0, 100.0)就用<code>random()*100</code>。</p>
+<h1 id="System"><a href="#System" class="headerlink" title="System"></a>System</h1><p>不用导包，不能实例化，static</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public static void exit(int status)</td>
+<td>终止运行 JVM，非零表示非正常终止</td>
+</tr>
+<tr>
+<td>public static long currentTimeMillis()</td>
+<td>返回当前时间到1970年1月1日的时间间隔，以毫秒为单位</td>
+</tr>
+</tbody></table>
+<p>currentTimeMillis() 可以整除求得当前年份；可以用两个 currentTimeMillis() 值做差求时间间隔等。</p>
+<h1 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h1><p>Object 类是所有类的根类。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public String toString()</td>
+<td>返回对象的字符串表示形式。建议子类全部重写该方法</td>
+</tr>
+<tr>
+<td>public boolean equals(Object obj)</td>
+<td>比较对象是否相等（默认比较地址）。重写可以比较对象内容</td>
+</tr>
+</tbody></table>
+<h2 id="toString-方法"><a href="#toString-方法" class="headerlink" title="toString() 方法"></a>toString() 方法</h2><p>Object 中包含 toString 方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> String <span class="hljs-title function_">toString</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> getClass().getName() + <span class="hljs-string">&quot;@&quot;</span> + Integer.toHexString(hashCode());<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>输出类名@+一串哈希值。</p>
+<p>一般重写 toString() 方法，用于输出简明扼要的类信息。IDEA 中可以像构造方法和 getter / setter 一样自动生成。类似：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//手动实现</span><br><span class="hljs-keyword">public</span> String <span class="hljs-title function_">toString</span><span class="hljs-params">()</span>&#123;<br><span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&#123; Person:name=&quot;</span> + name +<span class="hljs-string">&quot; age=&quot;</span> + age+<span class="hljs-string">&quot;&#125;&quot;</span>;<span class="hljs-comment">// name 和 age 都是本类中的成员变量</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="equals"><a href="#equals" class="headerlink" title="equals"></a>equals</h2><p><code>s1.equals(s2)</code>本质上是比较两个对象的地址，肯定是 false。</p>
+<p>一般也会重写/自动生成可以比较两个对象内容是否一致的方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">equals</span><span class="hljs-params">(Object o)</span> &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>==o) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>; <span class="hljs-comment">//同一个对象</span><br>    <span class="hljs-keyword">if</span>(o==<span class="hljs-literal">null</span>||getClass()!=o.getClass()) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<span class="hljs-comment">//o是空对象，或这两个对象不属于一个类</span><br>    Student student=(Student) o;<span class="hljs-comment">//因为调用 equals 传参的时候向上转型了，o 变成了 Object 类，要转回来</span><br>    <span class="hljs-keyword">if</span> (age!=student.age)<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; <br>    <span class="hljs-keyword">return</span> name!=<span class="hljs-literal">null</span>?name.equals(student.name):student.name==<span class="hljs-literal">null</span>;<span class="hljs-comment">//要么 name 都是空字符串，要么相同。equals() 方法只有非空字符串才能调用</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="Arrays-类"><a href="#Arrays-类" class="headerlink" title="Arrays 类"></a>Arrays 类</h1><p>需要导包 <code>java.util.Arrays</code>，不能创建对象，成员是 static的。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public static String toString(int[] a)</td>
+<td>返回形如 “[a, b, c]” 的字符串形式</td>
+</tr>
+<tr>
+<td>public static void sort(int[] a)</td>
+<td>按数字顺序排列指定的数组</td>
+</tr>
+</tbody></table>
+<h1 id="补充：工具类"><a href="#补充：工具类" class="headerlink" title="补充：工具类"></a>补充：工具类</h1><p>以上工具类的特点都是：不能创建对象，但是成员方法都是 static 修饰，可以直接用类名访问。</p>
+<p>不能创建对象的方法是：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-title function_">Math</span><span class="hljs-params">()</span>&#123;&#125;;<br><span class="hljs-keyword">public</span> <span class="hljs-title function_">Arrays</span><span class="hljs-params">()</span>&#123;&#125;;<br><span class="hljs-keyword">public</span> <span class="hljs-title function_">System</span><span class="hljs-params">()</span>&#123;&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>自己写了无参构造方法，会把系统默认的无参构造方法覆盖。而该方法又是私有的，因此外界无法访问创建对象。</p>
+<h1 id="基本类型包装类"><a href="#基本类型包装类" class="headerlink" title="基本类型包装类"></a>基本类型包装类</h1><p>其中有一些方法能更好地处理基本数据类型。</p>
+<p>包括：Byte, Short, Integer, Long, Float, Double, Character, Boolean</p>
+<h2 id="方法示例"><a href="#方法示例" class="headerlink" title="方法示例"></a>方法示例</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public static Integer valueOf(int i)</td>
+<td>把 int 转换为 Integer 类型</td>
+</tr>
+<tr>
+<td>public static Integer valueOf(String s)</td>
+<td>把 String 转换为 Integer 类型</td>
+</tr>
+</tbody></table>
+<p>public String[] split(String regex) 把给定字符串用 regex 分隔开。</p>
+<p>如给定字符串 s 是”1 2 3 4”，<code>s.split(&quot; &quot;)</code>就会得到4个字符串：”1””2””3””4”。</p>
+<h2 id="基本类型转换"><a href="#基本类型转换" class="headerlink" title="基本类型转换"></a>基本类型转换</h2><p>int -&gt; String：</p>
+<p>① 空字符串””+int 类型</p>
+<p>② String s=String.valueOf(i)</p>
+<p>String -&gt; int：</p>
+<p>① Integer in=Integer.valueOf(s);</p>
+<p>int i=intValue(in);</p>
+<p>② int i=Integer.parseInt(s);</p>
+<h2 id="自动装箱和拆箱"><a href="#自动装箱和拆箱" class="headerlink" title="自动装箱和拆箱"></a>自动装箱和拆箱</h2><p>装箱：基本类型-&gt;对应的包装类型</p>
+<p>拆箱：包装类型-&gt;基本类型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java">Integer i=Integer.valueOf(<span class="hljs-number">100</span>);<span class="hljs-comment">//装箱</span><br>Integer ii=<span class="hljs-number">100</span>;<span class="hljs-comment">//自动装箱</span><br><br>ii=ii.intValue()+<span class="hljs-number">200</span>;<span class="hljs-comment">//拆箱</span><br>ii+=<span class="hljs-number">200</span>;<span class="hljs-comment">//自动拆箱</span><br><br>Integer i3=<span class="hljs-literal">null</span>;<br>i3+=<span class="hljs-number">300</span>;<span class="hljs-comment">//NullPointerException。因此对象使用之前最好先判断是否为 null</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="日期类"><a href="#日期类" class="headerlink" title="日期类"></a>日期类</h1><h2 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h2><p>Date 类，需要导包。<strong>注意是 java.util 下的，而不是 java.sql 下的！</strong>java.util 下的 Date 类非最终类，所以可以有子类， java.sql 下的 Date 类就是其子类。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public Date()</td>
+<td>初始化一个 Date 对象，值为其被分配时的时间，精确到毫秒</td>
+</tr>
+<tr>
+<td>public Date(long Date)</td>
+<td>分配一个 Date 对象，值为从标准时间起指定的毫秒数</td>
+</tr>
+<tr>
+<td>public long getTime()</td>
+<td>获取日期对象从标准时间到现在的毫秒数</td>
+</tr>
+<tr>
+<td>public void setTime(long time)</td>
+<td>设置时间，单位为毫秒</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//输出 Date 对象，得到：星期 月份 日期 时 分 秒 CST 年份</span><br><br><span class="hljs-type">long</span> d=<span class="hljs-number">1000</span>*<span class="hljs-number">60</span>*<span class="hljs-number">60</span>;<br>Date da=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(d);<span class="hljs-comment">//标准时间往后1h，即1970.1.1 上午9点（不是1点，因为 CST 有时差）</span><br><br><span class="hljs-type">long</span> time=System.currentTimeMillis();<span class="hljs-comment">//可以这样获取当前时间，然后传给 Date() 或 setTime()</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="SimpleDateFormat"><a href="#SimpleDateFormat" class="headerlink" title="SimpleDateFormat"></a>SimpleDateFormat</h2><p>可以自己设置日期格式。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public SimpleDateFormat()</td>
+<td>构造方法，并使用系统默认的 Date 格式</td>
+</tr>
+<tr>
+<td>public SimpleDateFormat(String pattern)</td>
+<td>构造方法，并使用自己规定的格式</td>
+</tr>
+<tr>
+<td>public final String format(Date d)</td>
+<td>将日期对象转换为相应格式的字符串</td>
+</tr>
+<tr>
+<td>public final Date parse(String s)</td>
+<td>将字符串转换为日期</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Parse Exception&#123;<span class="hljs-comment">//结尾要加一些东西，在 IDEA 中可以自动补全</span><br>    Date d=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>;<span class="hljs-comment">//被分配时的时间</span><br>    SimpleDateFormat sdf=<span class="hljs-keyword">new</span> <span class="hljs-title class_">SimpleDateFormat</span>(<span class="hljs-string">&quot;yyyy年-MM月-dd日 HH:mm:ss&quot;</span>);<br>    String s=sdf.format(d);<br>    System.out.println(s);<span class="hljs-comment">//输出格式就形如 2022年-05月-05日 10:24:00</span><br>    <br>    String ss=<span class="hljs-string">&quot;2022-05-05 10:24:00&quot;</span>;<br>    SimpleDateFormat sdf1=<span class="hljs-keyword">new</span> <span class="hljs-title class_">SimpleDateFormat</span>(<span class="hljs-string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);<br>    Date d1=sdf1.parse(ss);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>y 年 M 月 d 日</p>
+<p>H 时 m 分 s 秒</p>
+<p>（实际运用的时候，也可以让用户自己指定格式。比如单独写一个日期工具类，有两个方法，把Date转换为String和把String转换为Date；这两个方法可以设置两个传入参数：</p>
+<p>public static String dateToString(Date d, String format)</p>
+<p>public static String StringTodate(String s, String format)</p>
+<p>在方法内根据传入的字符串格式，利用SimpleDateFormat的方法进行转换。）</p>
+<h2 id="Calendar-类"><a href="#Calendar-类" class="headerlink" title="Calendar 类"></a>Calendar 类</h2><p>需要导包<code>java.util.Calendar</code>，是一个抽象类。</p>
+<p>为某一时刻和某些日历字段的转换，以及操作日历字段提供了一些方法。</p>
+<p>Calendar 类有一个类方法可以获取 Calendar 对象。可是 Calendar 类不是抽象类吗？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">Calendar rightnow=Calendar.getInstance();<br></code></pre></td></tr></table></figure>
+
+<p>其实这个方法和 Calendar 的直接子类有关，所以这个实例化相当于多态。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public int get(int field)</td>
+<td>获取给定日历字段的值</td>
+</tr>
+<tr>
+<td>public abstract void add(int field, int amount)</td>
+<td>添加/减去给定的日历字段</td>
+</tr>
+<tr>
+<td>public final void set(int year, int month, int date)</td>
+<td>设置日历的年月日</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java">y=c.get(Calendar.YEAR);<br>m=c.get(Calendar.MONTH)+<span class="hljs-number">1</span>;<span class="hljs-comment">//month 是从0开始的，所以要+1</span><br>d=c.get(Calendar.DATE);<br><br><span class="hljs-comment">//例：求2020年2月有多少天?</span><br>Calendar c=Calendar.getInstance();<br>c.set(<span class="hljs-number">2020</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>);<span class="hljs-comment">//设置为3月1日</span><br>c.add(Calendar.DATE,-<span class="hljs-number">1</span>);<span class="hljs-comment">//倒退1天，就是2月的最后一天</span><br>System.out.println(<span class="hljs-string">&quot;2020年2月有&quot;</span>+c.get(Calendar.DATE)+<span class="hljs-string">&quot;天&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div id="footer-link" style="right: calc(50% - 1px);order: 1;border-right: 1px solid #fe2;padding-left: unset;max-width: calc(50% - 4px);"><a href="/2022/05/05/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_11%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%86%85%E9%83%A8%E7%B1%BB/">← Next Java 学习博客_11 入门——内部类</a></div><div id="footer-link" style="left: 50%;order: 0;border-left: 1px solid #fe2;padding-right: unset;max-width: calc(50% - 5px);"><a href="/2022/05/04/html%20css_%E6%A1%88%E4%BE%8B_1%20Header/">html_css_案例_1 Prev →</a></div></div></div><details id="reward"><summary>打赏</summary><div id="alipay"><span>支付宝 | Alipay</span><br><img src="/img/Alipay.png"></div><div id="wechat"><span>微信 | WeChat</span><br><img src="/img/WeChat.png"></div></details></div><div id="bottom-btn"><a id="to-top" onClick="index.scrolltop();" title="to top">∧</a></div></article><div class="aside-box"><aside><div id="aside-top"><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Jing Qing</a></h1><div id="description"><p></p></div><!--if page.published === undefined--><section id="total"><a id="total-archives" href="/archives"><span class="total-title">Archives Total:</span><span class="total-number">32</span></a><div id="total-tags"><span class="total-title">Tags:</span><span class="total-number">3</span></div><div id="total-categories"><span class="total-title">Categories:</span><span class="total-number">9</span></div></section></div><div id="aside-block"><h1>INDEX</h1><div id="toc-div"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Math"><span class="toc-number">1.</span> <span class="toc-text">Math</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#System"><span class="toc-number">2.</span> <span class="toc-text">System</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Object"><span class="toc-number">3.</span> <span class="toc-text">Object</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#toString-%E6%96%B9%E6%B3%95"><span class="toc-number">3.1.</span> <span class="toc-text">toString() 方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#equals"><span class="toc-number">3.2.</span> <span class="toc-text">equals</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Arrays-%E7%B1%BB"><span class="toc-number">4.</span> <span class="toc-text">Arrays 类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%EF%BC%9A%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="toc-number">5.</span> <span class="toc-text">补充：工具类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%8C%85%E8%A3%85%E7%B1%BB"><span class="toc-number">6.</span> <span class="toc-text">基本类型包装类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E7%A4%BA%E4%BE%8B"><span class="toc-number">6.1.</span> <span class="toc-text">方法示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-number">6.2.</span> <span class="toc-text">基本类型转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E8%A3%85%E7%AE%B1%E5%92%8C%E6%8B%86%E7%AE%B1"><span class="toc-number">6.3.</span> <span class="toc-text">自动装箱和拆箱</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F%E7%B1%BB"><span class="toc-number">7.</span> <span class="toc-text">日期类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Date"><span class="toc-number">7.1.</span> <span class="toc-text">Date</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SimpleDateFormat"><span class="toc-number">7.2.</span> <span class="toc-text">SimpleDateFormat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Calendar-%E7%B1%BB"><span class="toc-number">7.3.</span> <span class="toc-text">Calendar 类</span></a></li></ol></li></ol></div></div></div><footer><nobr><span class="text-title">©</span><span class="text-content">1970 to 2020</span></nobr><br><nobr><span class="text-title">ICP</span><span class="text-content">——备案号——</span></nobr><br><text>published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></text><text> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknight</a></text><wbr><text>by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></text></footer></aside></div><canvas id="canvas-dust"></canvas><script src="/js/arknights.js"></script><script src="//unpkg.com/@highlightjs/cdn-assets@11.4.0/highlight.min.js"></script></main></body></html>
