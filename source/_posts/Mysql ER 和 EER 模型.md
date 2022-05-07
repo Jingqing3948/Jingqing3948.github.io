@@ -32,7 +32,7 @@ ER 图（Entity Relationship, 实体关系）因此出现。下图是一个 ER �
 
 包括 generalization 和 specialization （泛化和特化）、父类（superclass）和子类（subclass）的概念。
 
-**子类父类**就是类似 Java 的继承，如动物是父类，猫、狗是其子类。
+**子类父类**就是类似 Java 的继承，如动物是父类，猫、狗是其子类。**子类父类是一对一的关系！**
 
 **泛化**又叫归纳，就是将几个类的共同属性提取出来作为父类；
 
