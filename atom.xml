@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-05-08T06:03:20.506Z</updated>
+  <updated>2022-05-08T16:21:32.523Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>正则表达式_1</title>
+    <link href="http://example.com/2022/05/09/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F_1/"/>
+    <id>http://example.com/2022/05/09/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F_1/</id>
+    <published>2022-05-08T16:00:00.000Z</published>
+    <updated>2022-05-08T16:21:32.523Z</updated>
+    
+    <content type="html"><![CDATA[<p>正则表达式可以被视作是增强版的通配符，可以匹配制定规则的字符串。</p><h1 id="练习方法"><a href="#练习方法" class="headerlink" title="练习方法"></a>练习方法</h1><p>可以在编译器中自带的查找功能尝试，也可以在 <a href="https://regex101.com/">regex101.com</a> 在线测试工具中尝试。</p><h1 id="限定符-Quantifiers"><a href="#限定符-Quantifiers" class="headerlink" title="限定符 Quantifiers"></a>限定符 Quantifiers</h1><p>? 表示前面的字符需要出现0次或1次。</p><p>如：<code>used?</code> 可以匹配 use 和 used.</p><p>* 表示前面的字符需要出现0次或多次。</p><p>如：<code>ab*c</code>会匹配ac、abc、abbbc……但不能匹配到 adc。</p><p>+ 表示前面的字符需要出现1次或多次。</p><p>如上例，<code>ab+c</code>不会匹配 ac。</p><p>{数字} 表示前面的字符需要出现多少次。</p><p>如：<code>ab&#123;6&#125;c</code>表示 abbbbbbc，<code>ab&#123;2,6&#125;c</code> 表示b出现2~6次，<code>ab&#123;2,&#125;c</code>表示b出现2次以上。</p><p>() 用于限定多个字符。</p><p>如：<code>(ab)?c</code>表示c或abc。</p><h1 id="或运算-or"><a href="#或运算-or" class="headerlink" title="或运算 or"></a>或运算 or</h1><p><code>a (cat|dog)</code> 表示 a cat 或 a dog.<strong>括号不能少</strong></p><h1 id="字符类-Character-Classes"><a href="#字符类-Character-Classes" class="headerlink" title="字符类 Character Classes"></a>字符类 Character Classes</h1><p>[]+，用于匹配单词，单词的字符只能取自方括号内。</p><p>如：<code>[abc]+</code>表示只由 abc 组成的字符，<code>aabbcc</code>等。</p><p><code>[a-z]+</code>表示所有小写字母</p><p><code>[a-zA-Z]+</code>表示所有字母</p><p><code>[0-9]+</code>表示所有数字</p><p>方括号内加^表示取反，如<code>[^a-z]+</code>表示所有非小写字母的字符（甚至包括换行符）</p><h1 id="元字符-Meta-characters"><a href="#元字符-Meta-characters" class="headerlink" title="元字符 Meta-characters"></a>元字符 Meta-characters</h1><p>\d：数字字符</p><p>\D：非数字字符</p><p>\w：单词字符（英文字符、数字字符、下划线）</p><p>\W：非单词字符</p><p>\s：空白字符（Tab、空格、换行符）</p><p>\S：非空白字符</p><p>\b：单词字符的边界，相当于文本的开头或结束。</p><p>.：任意字符（不包括换行符）</p><p>^：匹配行首，如<code>^a</code>只会匹配出现在行开头的a</p><p>$：匹配行尾，如<code>a$</code>只会匹配出现在行开头的a</p><p>反斜杠用在符号前还可以做转义，如\.表示.字符。</p><h1 id="贪婪与懒惰匹配-Greedy-vs-Lazy-Match"><a href="#贪婪与懒惰匹配-Greedy-vs-Lazy-Match" class="headerlink" title="贪婪与懒惰匹配 Greedy vs Lazy Match"></a>贪婪与懒惰匹配 Greedy vs Lazy Match</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>This is a simple text<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br></code></pre></td></tr></table></figure><p>如果想匹配所有的标签，也就是匹配&lt;&gt;，中间的内容是一个或多个任意字符。</p><p><code>&lt;.+&gt;</code></p><p>但是这样匹配，会把整行都匹配起来，而不是每个标签单独匹配。这就是贪婪匹配，会尽可能多地匹配。因为.也会匹配&gt;号。</p><p><code>&lt;.+?&gt;</code></p><h1 id="例：-IP-地址"><a href="#例：-IP-地址" class="headerlink" title="例： IP 地址"></a>例： IP 地址</h1><p>IP 地址形如 192.168.0.1</p><p>由四部分数字和三个.组成，每部分数字都不能大于255.</p><p>首先表示出四部分数字+3个.的形式：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">(\d+\.)&#123;3&#125;(\d+)<br></code></pre></td></tr></table></figure><p>然后再考虑处理数字大小的问题。</p><p>首先，如果百位是2，十位是5，个位只能取0-5</p><p>如果百位是2，十位是0-4，个位任意数字</p><p>如果百位是0或1，十位和个位可以是任意数字</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">((25[0-5]|2[0-4]\d|[01]\d\d)\.)&#123;3&#125;(25[0-5]|2[0-4]\d|[01]\d\d)<br></code></pre></td></tr></table></figure><p>然后考虑百位和十位可能不存在的问题：用?处理这两位。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">((25[0-5]|2[0-4]\d|[01]?\d?\d)\.)&#123;3&#125;(25[0-5]|2[0-4]\d|[01]?\d?\d)<br></code></pre></td></tr></table></figure><p>最后首尾加一个\b限定字符边界</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">\b((25[0-5]|2[0-4]\d|[01]?\d?\d)\.)&#123;3&#125;(25[0-5]|2[0-4]\d|[01]?\d?\d)\b<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;正则表达式可以被视作是增强版的通配符，可以匹配制定规则的字符串。&lt;/p&gt;
+&lt;h1 id=&quot;练习方法&quot;&gt;&lt;a href=&quot;#练习方法&quot; class=&quot;headerlink&quot; title=&quot;练习方法&quot;&gt;&lt;/a&gt;练习方法&lt;/h1&gt;&lt;p&gt;可以在编译器中自带的查找功能尝试，也可以在 </summary>
+      
+    
+    
+    
+    <category term="regex" scheme="http://example.com/categories/regex/"/>
+    
+    
+    <category term="study" scheme="http://example.com/tags/study/"/>
+    
+  </entry>
   
   <entry>
     <title>Java 学习博客_14 入门——集合进阶1</title>
@@ -487,31 +512,6 @@
     <summary type="html">&lt;p&gt;学习自b站骆昊jackfrued 老师的网课。&lt;/p&gt;
 &lt;p&gt;查询语句。&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;本节中使用到的例子：主要包含 tb_student 学生表（学号 stu_id，姓名 stu_name，地址 stu_address,所属学院号 col_id）&lt;/em&gt;&lt;/p&gt;</summary>
-      
-    
-    
-    
-    <category term="database" scheme="http://example.com/categories/database/"/>
-    
-    
-    <category term="study" scheme="http://example.com/tags/study/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SQL 语句——DQL 例题及注意事项</title>
-    <link href="http://example.com/2022/04/25/SQL%20%E8%AF%AD%E5%8F%A5%E2%80%94%E2%80%94DQL%20%E4%BE%8B%E9%A2%98%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/"/>
-    <id>http://example.com/2022/04/25/SQL%20%E8%AF%AD%E5%8F%A5%E2%80%94%E2%80%94DQL%20%E4%BE%8B%E9%A2%98%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</id>
-    <published>2022-04-24T16:00:00.000Z</published>
-    <updated>2022-05-02T05:23:18.879Z</updated>
-    
-    <content type="html"><![CDATA[<p>学习于：b站 骆昊jackfrued 老师的网课</p><h2 id="简单排序——查询最大值、次大只"><a href="#简单排序——查询最大值、次大只" class="headerlink" title="简单排序——查询最大值、次大只"></a>简单排序——查询最大值、次大只</h2><ol><li><p>员工表中含有员工号、姓名、薪水、职位、补贴 、所在部门等信息。查询薪水最高的员工姓名和薪水值。</p><p>做法①：最普通的子查询，先查出最大工资值，再筛选出员工表中工资值等于这个数的员工。</p><p>做法②：limit 做法。先按薪水降序排序所有员工，再只 limit 1 取第一条员工信息。这种做法的局限性在 limit 介绍的时候我也有写，就是当最值不只一位的时候，这种方法只能查出1位员工。</p><p>做法③：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select `ename`,`salary` from `tb_employee` t1 where(<br>    select count(*) from `tb_employee` t2 where `t2`.`salary`&gt;`t1`.`salary`<br>)=0;-- 结尾改成1，就是工资第二高的人<br></code></pre></td></tr></table></figure></li><li><p>查询除了 boss 外工资最高的人。</p><p>在题1的基础上，用 where 排除掉 boss。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select `ename`,`salary` from `tb_employee` <br>where `salary`=(<br>    select max(salary) from `tb_employee` where `position`&lt;&gt;&#x27;boss&#x27;<br>);<br></code></pre></td></tr></table></figure></li><li><p>查询月薪 top 3的人。</p><p>这时出现了和题1一样的情况。用 limit ，可能会漏掉工资并列的第四人；因此，这里用题1的方法③最合适。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select `ename`,`salary` from `tb_employee` t1 where(<br>    select count(*) from `tb_employee` t2 where `t2`.`salary`&gt;`t1`.`salary`<br>)&lt;3 order by `salary` desc;<br></code></pre></td></tr></table></figure></li><li><p>查询所有员工的姓名和年薪。年薪计算公式：月薪*12+补贴。</p><p>题目很简单，但是<strong>遇到计算一定要注意数据是否 Not Null，如果出现 Null 数据结果也会变成 Null。</strong>要用 ifnull() 或 coalesce() 函数限制一下。</p></li><li><p>查询所有部门名称及员工人数。</p><p>部门名称在部门表中，每个部门的人数则需要根据员工表中部门号统计。显然这里要先查出员工表的员工号和统计员工信息，再把结果表和部门表做连接。<strong>重点注意几种连接的不同。</strong>比如此题，即便有的部门没有员工，也要显示出来，因此应该部门表 left join 派生表。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select dname,total from `tb_department` t1<br>left join (<br>    select dname, ifnull(count(*), as total from `tb_department` t2 group by `stu_id`<br>) on t1.`stu_id`=t2.`stu_id`;<br></code></pre></td></tr></table></figure></li><li><p>查询每个部门比本部门平均薪水高的员工名及薪水。记得说清楚列属于哪个表，不然报错 ambigious</p><p>先按部门分组，查询出平均成绩和员工号表；再通过部门号和员工表连接，并筛选出薪水值大于平均值的。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select sname,salary from `tb_employee` t1<br>inner join (<br>select avg(salary),dno from `tb_employee` group by dno;<br>)t2 on t1.dno=t2.dno and t1.salary &gt; t2.avg(salary);-- 两个连表条件<br></code></pre></td></tr></table></figure></li><li><p>查询每个部门中薪水最高的员工的用户姓名、薪水、部门名称。</p><p>派生表通过薪水值、部门号和员工表、部门表相连接。</p></li><li><p>查询薪水排名4-6员工的薪水、姓名、<strong>排名</strong>。</p><p>问题1：怎么查出排名？</p><p>问题2：这题并没有想象中的简单。比如员工薪水前8名是5000,5000,4000,4000,3000,3000,3000,2000，那么其实第三、第四人两个人并列第三，4-6显示的排名值就应该是3，5，5</p><p>解决：mysql 8的窗口函数可以解决排名 / top N 问题。</p><p>①不用窗口函数：</p><p>系统变量一般不写@或写两个@@（可以通过 show variables 查询），自己定义的变量写一个@，赋值的方法：<code>set @a=0;</code>或<code>select@a:=0;</code>而且变量也可以通过 as 起别名。</p><p>我们先定义一个变量，变量从0开始，每次选择＋1，就可以当做序号用了。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">set @a=0;<br>select row_num,ename,salary from (<br>select @a=@a+1 as `row_num`,ename,salary,(select @a:=0) -- @a 重新赋值为0<br>    from `tb_employee` order by salary desc<br>) where `row_num` between 4 and 6;-- 子查询中做了几次查询，@a 就加几次<br></code></pre></td></tr></table></figure><p>注意不要在括号里用 limit 3 offset 3，因为这样的话子查询就只会进行3次，@a 的值就只会从1到3.</p><p>另外，每次查询时都要重新给@a 赋值为0，不然其值会累加。</p></li><li><p>查询每个部门薪水排名前两名的员工。</p><p>Top N 问题通过题1的做法③解决。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select eno,ename,salary,dno from `tb_employee` t1<br>where (<br>select count(*) from `tb_employee` t2 where t1.`dno`=t2.`dno` and t2.salary&gt;t1.salary<br>)&lt;2 order by t1.dno asc, t1.salary desc;<br></code></pre></td></tr></table></figure></li></ol><h2 id="窗口函数"><a href="#窗口函数" class="headerlink" title="窗口函数"></a>窗口函数</h2><p>内容来自：<a href="https://zhuanlan.zhihu.com/p/92654574">通俗易懂的学会：SQL 窗口函数 - 知乎</a></p><p>应用于组内排名和 Top N 类问题。 一般是处理 where 和 group by</p><p>窗口函数不光是函数，有一套完整的语法。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">&lt;窗口函数&gt; over (partition by &lt;用于分组的列名&gt;<br>                order by &lt;用于排序的列名&gt;)<br></code></pre></td></tr></table></figure><p>&lt;窗口函数&gt; 处放聚合函数或专用窗口函数。</p><p>窗口函数是以一个列的形式使用的。</p><h3 id="专用窗口函数"><a href="#专用窗口函数" class="headerlink" title="专用窗口函数"></a>专用窗口函数</h3><p>rank、dese rank、row_number</p><p><img src="https://img-blog.csdnimg.cn/img_convert/18d3c41260cad2a0ecbae4732018948c.png" alt="img"></p><h3 id="partition-by-和-group-by-的区别"><a href="#partition-by-和-group-by-的区别" class="headerlink" title="partition by 和 group by 的区别"></a>partition by 和 group by 的区别</h3><p><img src="https://img-blog.csdnimg.cn/img_convert/6650ec247ab10db38a52d904bfecbd3c.png" alt="img"></p><p>使用：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select `ename`,`sal`,<br>rank() over (order by `sal` desc)as `r1`,<br>dense_rank() over (order by `sal` desc)as `r2`,<br>row_number() over (order by `sal` desc)as `r3`<br>from `tb_emp`;<br></code></pre></td></tr></table></figure><p>第八题窗口函数做法：加一个 where r between 4 and 6 的条件。</p><p>至于要用哪种专用函数，就要看要求了。</p><p>第九题窗口函数做法：因为产生了分组，因此不能直接用 where r &lt;=2。但是窗口函数的分组后的列做筛选，既不能直接用 where 也不能用 having。应该把窗口函数的查询结果作为一个派生表，再用 where 做选择。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select `ename`,`sal`,`dno`<br>from(<br>    select `ename`,`sal`,`dno`,<br>    rank() over (partition by `dno` order by `sal` desc)as `r`<br>    from `tb_emp`<br>) `temp` where `r`&lt;=2;-- 不能在派生表里直接筛选<br></code></pre></td></tr></table></figure><p><em>窗口函数性能还是比较差的，业务中不应使用，数据分析师可能会常用一些。</em></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;学习于：b站 骆昊jackfrued 老师的网课&lt;/p&gt;
-&lt;h2 id=&quot;简单排序——查询最大值、次大只&quot;&gt;&lt;a href=&quot;#简单排序——查询最大值、次大只&quot; class=&quot;headerlink&quot; title=&quot;简单排序——查询最大值、次大只&quot;&gt;&lt;/a&gt;简单排序——查询最</summary>
       
     
     
