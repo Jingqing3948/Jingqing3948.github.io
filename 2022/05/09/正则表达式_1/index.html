@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>正则表达式_1 | Jingqing3948 的博客</title><script>var config = </script><script>window.onload = ()=>{};</script><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.4.0/styles/atom-one-dark-reasonable.min.css"><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="Jingqing3948 的博客" type="application/atom+xml">
+</head><body style="background-image:url(https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg);"><div id="cursor-container"><div id="cursor-outer"></div><div id="cursor-effect"></div></div><header><nav><a href="/">Home</a><a href="/archives/">Archives</a></nav></header><main><article><div id="post-bg"><div id="post-title"><h1>正则表达式_1</h1><div id="post-info"><span>First Post:<div style="display:inline-block;width:90px"><time datetime="2022-05-08T16:00:00.000Z" id="date"> 2022-05-09</time></div></span><br><span>Last Update:<div style="display:inline-block;width:90px"><time datetime="2022-05-08T16:21:32.523Z" id="updated"> 2022-05-09</time></div></span></div></div><hr><div id="post-content"><p>正则表达式可以被视作是增强版的通配符，可以匹配制定规则的字符串。</p>
+<h1 id="练习方法"><a href="#练习方法" class="headerlink" title="练习方法"></a>练习方法</h1><p>可以在编译器中自带的查找功能尝试，也可以在 <a target="_blank" rel="noopener" href="https://regex101.com/">regex101.com</a> 在线测试工具中尝试。</p>
+<h1 id="限定符-Quantifiers"><a href="#限定符-Quantifiers" class="headerlink" title="限定符 Quantifiers"></a>限定符 Quantifiers</h1><p>? 表示前面的字符需要出现0次或1次。</p>
+<p>如：<code>used?</code> 可以匹配 use 和 used.</p>
+<p>* 表示前面的字符需要出现0次或多次。</p>
+<p>如：<code>ab*c</code>会匹配ac、abc、abbbc……但不能匹配到 adc。</p>
+<p>+ 表示前面的字符需要出现1次或多次。</p>
+<p>如上例，<code>ab+c</code>不会匹配 ac。</p>
+<p>{数字} 表示前面的字符需要出现多少次。</p>
+<p>如：<code>ab&#123;6&#125;c</code>表示 abbbbbbc，<code>ab&#123;2,6&#125;c</code> 表示b出现2~6次，<code>ab&#123;2,&#125;c</code>表示b出现2次以上。</p>
+<p>() 用于限定多个字符。</p>
+<p>如：<code>(ab)?c</code>表示c或abc。</p>
+<h1 id="或运算-or"><a href="#或运算-or" class="headerlink" title="或运算 or"></a>或运算 or</h1><p><code>a (cat|dog)</code> 表示 a cat 或 a dog.<strong>括号不能少</strong></p>
+<h1 id="字符类-Character-Classes"><a href="#字符类-Character-Classes" class="headerlink" title="字符类 Character Classes"></a>字符类 Character Classes</h1><p>[]+，用于匹配单词，单词的字符只能取自方括号内。</p>
+<p>如：<code>[abc]+</code>表示只由 abc 组成的字符，<code>aabbcc</code>等。</p>
+<p><code>[a-z]+</code>表示所有小写字母</p>
+<p><code>[a-zA-Z]+</code>表示所有字母</p>
+<p><code>[0-9]+</code>表示所有数字</p>
+<p>方括号内加^表示取反，如<code>[^a-z]+</code>表示所有非小写字母的字符（甚至包括换行符）</p>
+<h1 id="元字符-Meta-characters"><a href="#元字符-Meta-characters" class="headerlink" title="元字符 Meta-characters"></a>元字符 Meta-characters</h1><p>\d：数字字符</p>
+<p>\D：非数字字符</p>
+<p>\w：单词字符（英文字符、数字字符、下划线）</p>
+<p>\W：非单词字符</p>
+<p>\s：空白字符（Tab、空格、换行符）</p>
+<p>\S：非空白字符</p>
+<p>\b：单词字符的边界，相当于文本的开头或结束。</p>
+<p>.：任意字符（不包括换行符）</p>
+<p>^：匹配行首，如<code>^a</code>只会匹配出现在行开头的a</p>
+<p>$：匹配行尾，如<code>a$</code>只会匹配出现在行开头的a</p>
+<p>反斜杠用在符号前还可以做转义，如\.表示.字符。</p>
+<h1 id="贪婪与懒惰匹配-Greedy-vs-Lazy-Match"><a href="#贪婪与懒惰匹配-Greedy-vs-Lazy-Match" class="headerlink" title="贪婪与懒惰匹配 Greedy vs Lazy Match"></a>贪婪与懒惰匹配 Greedy vs Lazy Match</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>This is a simple text<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>如果想匹配所有的标签，也就是匹配&lt;&gt;，中间的内容是一个或多个任意字符。</p>
+<p><code>&lt;.+&gt;</code></p>
+<p>但是这样匹配，会把整行都匹配起来，而不是每个标签单独匹配。这就是贪婪匹配，会尽可能多地匹配。因为.也会匹配&gt;号。</p>
+<p><code>&lt;.+?&gt;</code></p>
+<h1 id="例：-IP-地址"><a href="#例：-IP-地址" class="headerlink" title="例： IP 地址"></a>例： IP 地址</h1><p>IP 地址形如 192.168.0.1</p>
+<p>由四部分数字和三个.组成，每部分数字都不能大于255.</p>
+<p>首先表示出四部分数字+3个.的形式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">(\d+\.)&#123;3&#125;(\d+)<br></code></pre></td></tr></table></figure>
+
+<p>然后再考虑处理数字大小的问题。</p>
+<p>首先，如果百位是2，十位是5，个位只能取0-5</p>
+<p>如果百位是2，十位是0-4，个位任意数字</p>
+<p>如果百位是0或1，十位和个位可以是任意数字</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">((25[0-5]|2[0-4]\d|[01]\d\d)\.)&#123;3&#125;(25[0-5]|2[0-4]\d|[01]\d\d)<br></code></pre></td></tr></table></figure>
+
+<p>然后考虑百位和十位可能不存在的问题：用?处理这两位。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">((25[0-5]|2[0-4]\d|[01]?\d?\d)\.)&#123;3&#125;(25[0-5]|2[0-4]\d|[01]?\d?\d)<br></code></pre></td></tr></table></figure>
+
+<p>最后首尾加一个\b限定字符边界</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">\b((25[0-5]|2[0-4]\d|[01]?\d?\d)\.)&#123;3&#125;(25[0-5]|2[0-4]\d|[01]?\d?\d)\b<br></code></pre></td></tr></table></figure>
+
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div id="footer-link" style="left: 50%;order: 0;border-left: 1px solid #fe2;padding-right: unset;max-width: calc(50% - 5px);"><a href="/2022/05/08/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_14%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E9%9B%86%E5%90%88%E8%BF%9B%E9%98%B61/">Java 学习博客_14 入门——集合进阶1 Prev →</a></div></div></div><details id="reward"><summary>打赏</summary><div id="alipay"><span>支付宝 | Alipay</span><br><img src="/img/Alipay.png"></div><div id="wechat"><span>微信 | WeChat</span><br><img src="/img/WeChat.png"></div></details></div><div id="bottom-btn"><a id="to-top" onClick="index.scrolltop();" title="to top">∧</a></div></article><div class="aside-box"><aside><div id="aside-top"><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Jing Qing</a></h1><div id="description"><p></p></div><!--if page.published === undefined--><section id="total"><a id="total-archives" href="/archives"><span class="total-title">Archives Total:</span><span class="total-number">35</span></a><div id="total-tags"><span class="total-title">Tags:</span><span class="total-number">3</span></div><div id="total-categories"><span class="total-title">Categories:</span><span class="total-number">10</span></div></section></div><div id="aside-block"><h1>INDEX</h1><div id="toc-div"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E6%96%B9%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">练习方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%90%E5%AE%9A%E7%AC%A6-Quantifiers"><span class="toc-number">2.</span> <span class="toc-text">限定符 Quantifiers</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%96%E8%BF%90%E7%AE%97-or"><span class="toc-number">3.</span> <span class="toc-text">或运算 or</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E7%B1%BB-Character-Classes"><span class="toc-number">4.</span> <span class="toc-text">字符类 Character Classes</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%83%E5%AD%97%E7%AC%A6-Meta-characters"><span class="toc-number">5.</span> <span class="toc-text">元字符 Meta-characters</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B4%AA%E5%A9%AA%E4%B8%8E%E6%87%92%E6%83%B0%E5%8C%B9%E9%85%8D-Greedy-vs-Lazy-Match"><span class="toc-number">6.</span> <span class="toc-text">贪婪与懒惰匹配 Greedy vs Lazy Match</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BE%8B%EF%BC%9A-IP-%E5%9C%B0%E5%9D%80"><span class="toc-number">7.</span> <span class="toc-text">例： IP 地址</span></a></li></ol></div></div></div><footer><nobr><span class="text-title">©</span><span class="text-content">1970 to 2020</span></nobr><br><nobr><span class="text-title">ICP</span><span class="text-content">——备案号——</span></nobr><br><text>published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></text><text> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknight</a></text><wbr><text>by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></text></footer></aside></div><canvas id="canvas-dust"></canvas><script src="/js/arknights.js"></script><script src="//unpkg.com/@highlightjs/cdn-assets@11.4.0/highlight.min.js"></script></main></body></html>
