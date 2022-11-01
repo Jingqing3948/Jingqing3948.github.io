@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title> Jingqing3948 的博客</title>
+      <title>Python——语法基础2 |  灰海宽松的博客</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -41,7 +41,7 @@
           font-size: 1.6rem;
         }
       </style>
-    <link rel="alternate" href="/atom.xml" title="Jingqing3948 的博客" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="灰海宽松的博客" type="application/atom+xml">
 </head>
   </html>
 </html>
@@ -54,24 +54,38 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-Python 爬虫入门_1"
+  id="post-Python——语法基础2"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
   data-scroll-reveal
 >
   <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Python——语法基础2
+</h1>
+ 
+
+      
+    </header>
      
     <div class="article-meta">
-      <a href="/2022/06/29/Python%20%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8_1/" class="article-date">
-  <time datetime="2022-06-29T02:49:50.648Z" itemprop="datePublished">2022-06-29</time>
-</a>   
+      <a href="/2022/05/20/Python%E2%80%94%E2%80%94%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%802/" class="article-date">
+  <time datetime="2022-05-19T16:00:00.000Z" itemprop="datePublished">2022-05-20</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </div>
+  
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">396</span>
+            <span class="post-count">705</span>
         </span>
     </span>
 
@@ -80,7 +94,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">2 min</span>
         </span>
     </span>
 </div>
@@ -95,24 +109,26 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><p>爬取豆瓣 Top250 电影基本信息，包括名称、评分、评价数、电影概况、电影链接等。</p>
-<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p><a target="_blank" rel="noopener" href="https://movie.douban.com/top250">豆瓣电影 Top 250 (douban.com)</a></p>
-<p>爬虫是按照一定<strong>规则</strong>，<strong>自动抓取</strong>互联网信息的程序或脚本。如今主流策略是<strong>根据用户需求定向抓取。</strong></p>
-<p><em>在百度指数中搜索关键词，可以看到该关键词的访问量。</em></p>
-<p>实际上很多网站不自己写内容，爬取其它网站的内容复制到自己这里就方便的多。</p>
-<p>爬虫很早就有，但是最近计算能力上涨，如大数据等应用，使得爬虫的价值继续提升，所以最近火一些~</p>
-<p><img src="C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220520012210874.png" alt="image-20220520012210874"></p>
-<h2 id="url"><a href="#url" class="headerlink" title="url"></a>url</h2><p>当我们浏览豆瓣 top250电影，进行翻页时，会发现 url 变成了：</p>
-<p><a target="_blank" rel="noopener" href="https://movie.douban.com/top250?start=25&filter=">https://movie.douban.com/top250?start=25&amp;filter=</a></p>
-<p>意思是从第26条记录开始显示（默认一页25条）。如果手动改成 start=31，就会从32条开始显示。filter 去掉也可以。</p>
-<p>当我们发送 url 给服务器，服务器返回源代码（html），经过浏览器解析变成看得到的样子。</p>
-<p><img src="C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220520013155589.png" alt="image-20220520013155589"></p>
-<p>元素中可以看到网页 html 元素</p>
-<p><img src="C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220520013933832.png" alt="image-20220520013933832"></p>
-<p>network 中可以看到请求状况。（如果请求状况为空：点击 all 全部按钮)</p>
-<p>network - header 中的general 和 response headers 的内容都是我们发给服务期端的，服务器返回的内容在 network - response 响应中。</p>
-<p>其中，user agent 表明浏览器版本，cookie 中包含登陆后的信息。</p>
-<h2 id="找到要获取的文件所在位置"><a href="#找到要获取的文件所在位置" class="headerlink" title="找到要获取的文件所在位置"></a>找到要获取的文件所在位置</h2> 
+  <h1 id="导包"><a href="#导包" class="headerlink" title="导包"></a>导包</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> random<br>x=random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>)<span class="hljs-comment">#包含0,1,2</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">函数名</span>():<span class="hljs-comment"># 括号内也可以有参数</span><br>    函数体<br>    <span class="hljs-keyword">return</span> x,y<span class="hljs-comment"># 返回值可以是多个</span><br>x,y=函数名()<span class="hljs-comment"># 调用</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="全局、局部变量"><a href="#全局、局部变量" class="headerlink" title="全局、局部变量"></a>全局、局部变量</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">a = <span class="hljs-number">100</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">function</span>():<br>    a = <span class="hljs-number">200</span><span class="hljs-comment"># 局部变量，和原来的a地址不同。不会互相影响</span><br>    b = <span class="hljs-number">200</span><span class="hljs-comment"># 局部变量，作用域只在函数内，在外面使用b会报错</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">function1</span>():<br>    <span class="hljs-keyword">global</span> a<span class="hljs-comment"># 但如果这样声明了，就是使用的全局变量。更改的话全局范围内的a值也会变。</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python">f = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;1.txt&#x27;</span>,<span class="hljs-string">&#x27;w&#x27;</span>)<span class="hljs-comment"># w模式下，如果同级目录中没有找到对应文件，就会新建一个。一执行，同级目录下立刻就会新建1.txt</span><br><span class="hljs-comment"># 若非w模式下没找到对应文件，会报错</span><br>f.write(<span class="hljs-string">&quot;hello world!&quot;</span>)<span class="hljs-comment"># 往该文件中写入内容</span><br>f.close()<span class="hljs-comment"># 关闭文件</span><br><br>f1 = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;1.txt&#x27;</span>,<span class="hljs-string">&#x27;r&#x27;</span>)<span class="hljs-comment"># r模式代表只读文件，不存在该文件则报错。</span><br>content1 = f1.read(<span class="hljs-number">5</span>)<span class="hljs-comment"># 读取前五个字符</span><br>content2 = f1.read(<span class="hljs-number">5</span>)<span class="hljs-comment"># 读取6~10个字符</span><br>contentline=f1.readlines()<span class="hljs-comment"># 读取文件中所有行，每行作为列表 contentline 中的一项（字符串元素），并以\n结尾</span><br></code></pre></td></tr></table></figure>
+
+<p>w：写入，已存在该文件则覆盖，不存在则新建。指针一开始在文件开头，逐渐后移。</p>
+<p>r：读取。指针一开始在文件开头，逐渐后移。</p>
+<p>rb：二进制方式打开文件（只读）</p>
+<p>wb：二进制方式写入文件</p>
+<p>重命名文件、删除文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<span class="hljs-comment"># 重命名和删除文件都要引入 os 模块</span><br>os.rename(<span class="hljs-string">&#x27;1.txt&#x27;</span>,<span class="hljs-string">&#x27;2.txt&#x27;</span>)<span class="hljs-comment"># 重命名</span><br>os.remove(<span class="hljs-string">&#x27;2.txt&#x27;</span>)<span class="hljs-comment"># 删除文件</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h1><p>就像 java 中，异常会中断程序，可以提前处理。</p>
+<p>比如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">try</span>:<br>    f.<span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;123.txt&#x27;</span>,<span class="hljs-string">&#x27;r&#x27;</span>)<span class="hljs-comment"># 不存在该文件</span><br><span class="hljs-keyword">except</span> IOError:<span class="hljs-comment"># 文件没找到属于 IOError 输入输出异常</span><br>    <span class="hljs-keyword">pass</span><span class="hljs-comment"># 不做任何处理</span><br><br><span class="hljs-keyword">try</span>:<br>    <span class="hljs-built_in">print</span>(name)<span class="hljs-comment">#没有定义的变量</span><br><span class="hljs-keyword">except</span> NameError:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;name不存在！&quot;</span>)<br><br><span class="hljs-comment"># 同时捕获多个异常：except (IOError, NameError): 如果发生了其中的一个异常，try 内代码就会停止运行并处理</span><br><span class="hljs-comment"># 其实所有的异常都可以用一个 except Exception 捕获。</span><br><br><span class="hljs-comment"># 获取错误描述：</span><br><span class="hljs-keyword">except</span> Xxx <span class="hljs-keyword">as</span> result:<br>    <span class="hljs-built_in">print</span>(result)<br>    <br><span class="hljs-comment"># try...finally finally 中的内容是必须执行的</span><br><span class="hljs-keyword">import</span> time<br><span class="hljs-keyword">try</span>:<br>    f.<span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;123.txt&#x27;</span>,<span class="hljs-string">&#x27;r&#x27;</span>)<span class="hljs-comment"># f在 try 中定义的，是局部变量。因此如果 finally 要关闭f的话，应该写在 try 内</span><br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>            content = f.readline()<br>            <span class="hljs-keyword">if</span>(<span class="hljs-built_in">len</span>(content)==<span class="hljs-number">0</span>):<br>                <span class="hljs-keyword">break</span><br>            time.sleep(<span class="hljs-number">2</span>)<span class="hljs-comment"># 打印行与行之间间隔2s</span><br>            <span class="hljs-built_in">print</span>(content)<br>    <span class="hljs-keyword">finally</span>:<br>        f.close()<span class="hljs-comment"># 强制关闭，一定执行</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;文件关闭&quot;</span>)<br><span class="hljs-keyword">except</span> Exception:<br>    <span class="hljs-keyword">pass</span><br><span class="hljs-keyword">finally</span>:<br>    <span class="hljs-keyword">pass</span><span class="hljs-comment"># 如果打开文件失败了，就说明没有这个文件，自然也不用关闭这个文件了</span><br></code></pre></td></tr></table></figure>
+
+ 
       <!-- reward -->
       
       <div id="reword-out">
@@ -182,30 +198,32 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2022/06/29/Python%20%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8_1/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2022/05/20/Python%E2%80%94%E2%80%94%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%802/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/study/" rel="tag">study</a></li></ul>
+
     </footer>
   </div>
 
    
   <nav class="article-nav">
     
-      <a href="/2026/02/12/%E5%A4%A7%E4%BA%8C%20Web%20%E8%AF%BE%E7%A8%8B%E5%A4%A7%E4%BD%9C%E4%B8%9A%E2%80%94%E2%80%94%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="article-nav-link">
+      <a href="/2022/05/21/Python%20%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8_1/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            大二 Web 课程大作业——小程序标点地图
+            Python 爬虫入门_1
           
         </div>
       </a>
     
     
-      <a href="/2022/06/29/Python%E2%80%94%E2%80%94%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%802/" class="article-nav-link">
+      <a href="/2022/05/09/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F_1/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title"></div>
+        <div class="article-nav-title">正则表达式_1</div>
       </a>
     
   </nav>
@@ -283,7 +301,7 @@
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/ayer-side.svg" alt="Jingqing3948 的博客"></a>
+    <a href="/"><img src="/images/ayer-side.svg" alt="灰海宽松的博客"></a>
   </div>
   
   <ul class="nav nav-main">
