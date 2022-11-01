@@ -11,7 +11,11 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
+<<<<<<< HEAD
       <title>灰海宽松的博客</title>
+=======
+      <title> 灰海宽松的博客</title>
+>>>>>>> 6b5a4d68da473d2261bc9a383bffc210d4a39fd8
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -41,7 +45,11 @@
           font-size: 1.6rem;
         }
       </style>
+<<<<<<< HEAD
     <link rel="alternate" href="/atom.xml" title="灰海宽松" type="application/atom+xml">
+=======
+    <link rel="alternate" href="/atom.xml" title="灰海宽松的博客" type="application/atom+xml">
+>>>>>>> 6b5a4d68da473d2261bc9a383bffc210d4a39fd8
 </head>
   </html>
 </html>
@@ -252,114 +260,6 @@
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/homework/" rel="tag">homework</a></li></ul>
 
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-Python 爬虫入门_1"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-     
-    <div class="article-meta">
-      <a href="/2022/06/29/Python%20%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8_1/" class="article-date">
-  <time datetime="2022-06-29T02:49:50.648Z" itemprop="datePublished">2022-06-29</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><p>爬取豆瓣 Top250 电影基本信息，包括名称、评分、评价数、电影概况、电影链接等。</p>
-<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p><a target="_blank" rel="noopener" href="https://movie.douban.com/top250">豆瓣电影 Top 250 (douban.com)</a></p>
-<p>爬虫是按照一定<strong>规则</strong>，<strong>自动抓取</strong>互联网信息的程序或脚本。如今主流策略是<strong>根据用户需求定向抓取。</strong></p>
-<p><em>在百度指数中搜索关键词，可以看到该关键词的访问量。</em></p>
-<p>实际上很多网站不自己写内容，爬取其它网站的内容复制到自己这里就方便的多。</p>
-<p>爬虫很早就有，但是最近计算能力上涨，如大数据等应用，使得爬虫的价值继续提升，所以最近火一些~</p>
-<p><img src="C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220520012210874.png" alt="image-20220520012210874"></p>
-<h2 id="url"><a href="#url" class="headerlink" title="url"></a>url</h2><p>当我们浏览豆瓣 top250电影，进行翻页时，会发现 url 变成了：</p>
-<p><a target="_blank" rel="noopener" href="https://movie.douban.com/top250?start=25&filter=">https://movie.douban.com/top250?start=25&amp;filter=</a></p>
-<p>意思是从第26条记录开始显示（默认一页25条）。如果手动改成 start=31，就会从32条开始显示。filter 去掉也可以。</p>
-<p>当我们发送 url 给服务器，服务器返回源代码（html），经过浏览器解析变成看得到的样子。</p>
-<p><img src="C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220520013155589.png" alt="image-20220520013155589"></p>
-<p>元素中可以看到网页 html 元素</p>
-<p><img src="C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220520013933832.png" alt="image-20220520013933832"></p>
-<p>network 中可以看到请求状况。（如果请求状况为空：点击 all 全部按钮)</p>
-<p>network - header 中的general 和 response headers 的内容都是我们发给服务期端的，服务器返回的内容在 network - response 响应中。</p>
-<p>其中，user agent 表明浏览器版本，cookie 中包含登陆后的信息。</p>
-<h2 id="找到要获取的文件所在位置"><a href="#找到要获取的文件所在位置" class="headerlink" title="找到要获取的文件所在位置"></a>找到要获取的文件所在位置</h2> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-Python——语法基础2"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-     
-    <div class="article-meta">
-      <a href="/2022/06/29/Python%E2%80%94%E2%80%94%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%802/" class="article-date">
-  <time datetime="2022-06-29T02:49:50.648Z" itemprop="datePublished">2022-06-29</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="导包"><a href="#导包" class="headerlink" title="导包"></a>导包</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> random<br>x=random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>)<span class="hljs-comment">#包含0,1,2</span><br></code></pre></td></tr></table></figure>
-
-<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">函数名</span>():<span class="hljs-comment"># 括号内也可以有参数</span><br>    函数体<br>    <span class="hljs-keyword">return</span> x,y<span class="hljs-comment"># 返回值可以是多个</span><br>x,y=函数名()<span class="hljs-comment"># 调用</span><br></code></pre></td></tr></table></figure>
-
-<h1 id="全局、局部变量"><a href="#全局、局部变量" class="headerlink" title="全局、局部变量"></a>全局、局部变量</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">a = <span class="hljs-number">100</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">function</span>():<br>    a = <span class="hljs-number">200</span><span class="hljs-comment"># 局部变量，和原来的a地址不同。不会互相影响</span><br>    b = <span class="hljs-number">200</span><span class="hljs-comment"># 局部变量，作用域只在函数内，在外面使用b会报错</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">function1</span>():<br>    <span class="hljs-keyword">global</span> a<span class="hljs-comment"># 但如果这样声明了，就是使用的全局变量。更改的话全局范围内的a值也会变。</span><br></code></pre></td></tr></table></figure>
-
-<h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python">f = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;1.txt&#x27;</span>,<span class="hljs-string">&#x27;w&#x27;</span>)<span class="hljs-comment"># w模式下，如果同级目录中没有找到对应文件，就会新建一个。一执行，同级目录下立刻就会新建1.txt</span><br><span class="hljs-comment"># 若非w模式下没找到对应文件，会报错</span><br>f.write(<span class="hljs-string">&quot;hello world!&quot;</span>)<span class="hljs-comment"># 往该文件中写入内容</span><br>f.close()<span class="hljs-comment"># 关闭文件</span><br><br>f1 = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;1.txt&#x27;</span>,<span class="hljs-string">&#x27;r&#x27;</span>)<span class="hljs-comment"># r模式代表只读文件，不存在该文件则报错。</span><br>content1 = f1.read(<span class="hljs-number">5</span>)<span class="hljs-comment"># 读取前五个字符</span><br>content2 = f1.read(<span class="hljs-number">5</span>)<span class="hljs-comment"># 读取6~10个字符</span><br>contentline=f1.readlines()<span class="hljs-comment"># 读取文件中所有行，每行作为列表 contentline 中的一项（字符串元素），并以\n结尾</span><br></code></pre></td></tr></table></figure>
-
-<p>w：写入，已存在该文件则覆盖，不存在则新建。指针一开始在文件开头，逐渐后移。</p>
-<p>r：读取。指针一开始在文件开头，逐渐后移。</p>
-<p>rb：二进制方式打开文件（只读）</p>
-<p>wb：二进制方式写入文件</p>
-<p>重命名文件、删除文件</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<span class="hljs-comment"># 重命名和删除文件都要引入 os 模块</span><br>os.rename(<span class="hljs-string">&#x27;1.txt&#x27;</span>,<span class="hljs-string">&#x27;2.txt&#x27;</span>)<span class="hljs-comment"># 重命名</span><br>os.remove(<span class="hljs-string">&#x27;2.txt&#x27;</span>)<span class="hljs-comment"># 删除文件</span><br></code></pre></td></tr></table></figure>
-
-<h1 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h1><p>就像 java 中，异常会中断程序，可以提前处理。</p>
-<p>比如：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">try</span>:<br>    f.<span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;123.txt&#x27;</span>,<span class="hljs-string">&#x27;r&#x27;</span>)<span class="hljs-comment"># 不存在该文件</span><br><span class="hljs-keyword">except</span> IOError:<span class="hljs-comment"># 文件没找到属于 IOError 输入输出异常</span><br>    <span class="hljs-keyword">pass</span><span class="hljs-comment"># 不做任何处理</span><br><br><span class="hljs-keyword">try</span>:<br>    <span class="hljs-built_in">print</span>(name)<span class="hljs-comment">#没有定义的变量</span><br><span class="hljs-keyword">except</span> NameError:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;name不存在！&quot;</span>)<br><br><span class="hljs-comment"># 同时捕获多个异常：except (IOError, NameError): 如果发生了其中的一个异常，try 内代码就会停止运行并处理</span><br><span class="hljs-comment"># 其实所有的异常都可以用一个 except Exception 捕获。</span><br><br><span class="hljs-comment"># 获取错误描述：</span><br><span class="hljs-keyword">except</span> Xxx <span class="hljs-keyword">as</span> result:<br>    <span class="hljs-built_in">print</span>(result)<br>    <br><span class="hljs-comment"># try...finally finally 中的内容是必须执行的</span><br><span class="hljs-keyword">import</span> time<br><span class="hljs-keyword">try</span>:<br>    f.<span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;123.txt&#x27;</span>,<span class="hljs-string">&#x27;r&#x27;</span>)<span class="hljs-comment"># f在 try 中定义的，是局部变量。因此如果 finally 要关闭f的话，应该写在 try 内</span><br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>            content = f.readline()<br>            <span class="hljs-keyword">if</span>(<span class="hljs-built_in">len</span>(content)==<span class="hljs-number">0</span>):<br>                <span class="hljs-keyword">break</span><br>            time.sleep(<span class="hljs-number">2</span>)<span class="hljs-comment"># 打印行与行之间间隔2s</span><br>            <span class="hljs-built_in">print</span>(content)<br>    <span class="hljs-keyword">finally</span>:<br>        f.close()<span class="hljs-comment"># 强制关闭，一定执行</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;文件关闭&quot;</span>)<br><span class="hljs-keyword">except</span> Exception:<br>    <span class="hljs-keyword">pass</span><br><span class="hljs-keyword">finally</span>:<br>    <span class="hljs-keyword">pass</span><span class="hljs-comment"># 如果打开文件失败了，就说明没有这个文件，自然也不用关闭这个文件了</span><br></code></pre></td></tr></table></figure>
-
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
     </footer>
   </div>
 
@@ -1454,6 +1354,142 @@
 </article>
 
     
+    <article
+  id="post-Java 学习博客_ 入门——GUI_6 五子棋游戏（不能判断输赢）"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2022/06/29/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94GUI_6%20%E4%BA%94%E5%AD%90%E6%A3%8B%E6%B8%B8%E6%88%8F%EF%BC%88%E4%B8%8D%E8%83%BD%E5%88%A4%E6%96%AD%E8%BE%93%E8%B5%A2%EF%BC%89/" class="article-date">
+  <time datetime="2022-06-29T02:49:50.601Z" itemprop="datePublished">2022-06-29</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p><img src="C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220518101108824.png" alt="image-20220518101108824"></p>
+<p>鼠标在棋盘上移动时，会显示当前位置放置棋子，会落到的位置，即红框部分。</p>
+<p>点击白棋、黑棋切换棋子，点击删除后点击棋子删除。不能判断输赢。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> javax.imageio.ImageIO;<br><span class="hljs-keyword">import</span> java.awt.*;<br><span class="hljs-keyword">import</span> java.awt.event.MouseAdapter;<br><span class="hljs-keyword">import</span> java.awt.event.MouseEvent;<br><span class="hljs-keyword">import</span> java.awt.event.MouseMotionAdapter;<br><span class="hljs-keyword">import</span> java.awt.image.BufferedImage;<br><span class="hljs-keyword">import</span> java.io.File;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Gobang</span> &#123;<br>    <span class="hljs-keyword">private</span> Frame frame=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Frame</span>();<br>    <span class="hljs-comment">//声明四个 BufferedImage 对象，记录四张图片</span><br>    <span class="hljs-keyword">private</span> BufferedImage table;<br>    <span class="hljs-keyword">private</span> BufferedImage blackChess;<br>    <span class="hljs-keyword">private</span> BufferedImage whiteChess;<br>    <span class="hljs-keyword">private</span> BufferedImage selected;<br><br><br>    <span class="hljs-comment">//宽高必须和图片一样</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> TABLE_WIDTH=<span class="hljs-number">535</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> TABLE_HEIGHT=<span class="hljs-number">536</span>;<br>    <span class="hljs-comment">//横向纵向可以下多少子？</span><br>    <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> BOARD_SIZE=<span class="hljs-number">15</span>;<br>    <span class="hljs-comment">//每个棋子占用棋盘的比例</span><br>    <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> RATE=TABLE_WIDTH/BOARD_SIZE;<br>    <span class="hljs-comment">//声明变量，记录棋子对于 x y 方向上的偏移量</span><br>    <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> X_OFFSET=<span class="hljs-number">5</span>;<br>    <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> Y_OFFSET=<span class="hljs-number">6</span>;<br>    <span class="hljs-comment">//二维数组记录棋子，如果值为0：没棋子；1：白棋；2：黑棋；</span><br>    <span class="hljs-type">int</span>[][] board=<span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[BOARD_SIZE][BOARD_SIZE];<br>    <span class="hljs-comment">//声明红色选择框的坐标，就是二维数组中的索引</span><br>    <span class="hljs-type">int</span> selected_X=-<span class="hljs-number">1</span>;<br>    <span class="hljs-type">int</span> selected_Y=-<span class="hljs-number">1</span>;<br>    <span class="hljs-comment">//自定义类继承 Canvas</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ChessBoard</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Canvas</span>&#123;<br>        <span class="hljs-meta">@Override</span><br>        <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">paint</span><span class="hljs-params">(Graphics g)</span> &#123;<br>            <span class="hljs-comment">//绘图</span><br>            <span class="hljs-comment">//绘制棋盘</span><br>            g.drawImage(table,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-literal">null</span>);<br>            <span class="hljs-comment">//绘制选择框</span><br>            <span class="hljs-keyword">if</span>(selected_X&gt;=<span class="hljs-number">0</span>&amp;&amp;selected_Y&gt;=<span class="hljs-number">0</span>&amp;&amp;selected_X&lt;<span class="hljs-number">15</span>&amp;&amp;selected_Y&lt;<span class="hljs-number">15</span>)g.drawImage(selected,selected_X*RATE+X_OFFSET,selected_Y*RATE+Y_OFFSET,<span class="hljs-literal">null</span>);<br>            <span class="hljs-comment">//绘制棋子</span><br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;BOARD_SIZE;i++)<br>            &#123;<br>                <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;BOARD_SIZE;j++)&#123;<br>                    <span class="hljs-keyword">if</span>(board[i][j]==<span class="hljs-number">0</span>)<span class="hljs-keyword">continue</span>;<br>                    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(board[i][j]==<span class="hljs-number">1</span>)g.drawImage(whiteChess,i*RATE+X_OFFSET,j*RATE+Y_OFFSET,<span class="hljs-literal">null</span>);<br>                    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(board[i][j]==<span class="hljs-number">2</span>)g.drawImage(blackChess,i*RATE+X_OFFSET,j*RATE+Y_OFFSET,<span class="hljs-literal">null</span>);<br>                &#125;<br>            &#125;<br><br>        &#125;<br>    &#125;<br>    ChessBoard chessBoard=<span class="hljs-keyword">new</span> <span class="hljs-title class_">ChessBoard</span>();<br>    <span class="hljs-comment">//声明变量记录当前下棋的颜色，初始黑棋</span><br>    <span class="hljs-type">int</span> board_type=<span class="hljs-number">2</span>;<br>    <span class="hljs-comment">//声明底部用到的组件</span><br>    Panel p=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Panel</span>();<br>    Button whiteBtn=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;白棋&quot;</span>);<br>    Button blackBtn=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;黑棋&quot;</span>);<br>    Button deleteBtn=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;删除&quot;</span>);<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">refreshBtnColor</span><span class="hljs-params">(Color whiteBtnColor, Color blackBtnColor, Color deleteBtnColor)</span>&#123;<br>        <span class="hljs-comment">//设置按钮颜色的方法：</span><br>        whiteBtn.setBackground(whiteBtnColor);<br>        blackBtn.setBackground(blackBtnColor);<br>        deleteBtn.setBackground(deleteBtnColor);<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">init</span><span class="hljs-params">()</span>&#123;<br>        chessBoard.setPreferredSize(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Dimension</span>(TABLE_WIDTH,TABLE_HEIGHT));<br>        frame.add(chessBoard);<br>        whiteBtn.addActionListener(e -&gt;&#123;<br>            <span class="hljs-comment">//刷新要下的棋子标志为1</span><br>            board_type=<span class="hljs-number">1</span>;<br>            <span class="hljs-comment">//刷新按钮颜色，点击后按钮颜色会改变</span><br>            refreshBtnColor(Color.GREEN,Color.GRAY,Color.GRAY);<br>        &#125;);<br>        blackBtn.addActionListener(e -&gt;&#123;<br>            <span class="hljs-comment">//刷新要下的棋子标志为1</span><br>            board_type=<span class="hljs-number">2</span>;<br>            <span class="hljs-comment">//刷新按钮颜色，点击后按钮颜色会改变</span><br>            refreshBtnColor(Color.GRAY,Color.GREEN,Color.GRAY);<br>        &#125;);<br>        deleteBtn.addActionListener(e -&gt;&#123;<br>            <span class="hljs-comment">//刷新要下的棋子标志为1</span><br>            board_type=<span class="hljs-number">0</span>;<br>            <span class="hljs-comment">//刷新按钮颜色，点击后按钮颜色会改变</span><br>            refreshBtnColor(Color.GRAY,Color.GRAY,Color.GREEN);<br>        &#125;);<br>        p.add(whiteBtn);<br>        p.add(blackBtn);<br>        p.add(deleteBtn);<br>        frame.add(p,BorderLayout.SOUTH);<br>        chessBoard.addMouseMotionListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">MouseMotionAdapter</span>()&#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">mouseMoved</span><span class="hljs-params">(MouseEvent e)</span> &#123;<br>                <span class="hljs-comment">//鼠标移动时会调用</span><br>                selected_X=(e.getX()-X_OFFSET)/RATE;<br>                selected_Y=(e.getY()-Y_OFFSET)/RATE;<br>                chessBoard.repaint();<br>            &#125;<br>        &#125;);<br>        chessBoard.addMouseListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">MouseAdapter</span>() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">mouseClicked</span><span class="hljs-params">(MouseEvent e)</span> &#123;<br>                <span class="hljs-type">int</span> xPos=(e.getX()-X_OFFSET)/RATE;<br>                <span class="hljs-type">int</span> yPos=(e.getY()-Y_OFFSET)/RATE;<br>                <span class="hljs-keyword">if</span>(xPos&lt;BOARD_SIZE&amp;&amp;yPos&lt;BOARD_SIZE)board[xPos][yPos]=board_type;<br>                chessBoard.repaint();<br>            &#125;<br><br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">mouseExited</span><span class="hljs-params">(MouseEvent e)</span> &#123;<br>                selected_X=-<span class="hljs-number">1</span>;<br>                selected_Y=-<span class="hljs-number">1</span>;<br>            &#125;<br>        &#125;);<br>        <span class="hljs-keyword">try</span> &#123;<br>            table=ImageIO.read(<span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(<span class="hljs-string">&quot;D:\\86138\\Documents\\ithema\\java\\代码\\awt编程代码\\awt\\img\\board.jpg&quot;</span>));<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>        <span class="hljs-keyword">try</span> &#123;<br>            whiteChess=ImageIO.read(<span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(<span class="hljs-string">&quot;D:\\86138\\Documents\\ithema\\java\\代码\\awt编程代码\\awt\\img\\white.gif&quot;</span>));<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>        <span class="hljs-keyword">try</span> &#123;<br>            blackChess=ImageIO.read(<span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(<span class="hljs-string">&quot;D:\\86138\\Documents\\ithema\\java\\代码\\awt编程代码\\awt\\img\\black.gif&quot;</span>));<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>        <span class="hljs-keyword">try</span> &#123;<br>            selected=ImageIO.read(<span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(<span class="hljs-string">&quot;D:\\86138\\Documents\\ithema\\java\\代码\\awt编程代码\\awt\\img\\selected.gif&quot;</span>));<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>        frame.pack();<br>        frame.setVisible(<span class="hljs-literal">true</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Gobang</span>().init();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\86138\Desktop\sa3yy-b9n46.gif" alt="image preview"></p>
+<p>但是运行时因为不停地重绘，画面一直在闪。因为这种绘制方法没有用到缓冲区，每次都是直接绘制在组件上的。</p>
+<p>只要把 Frame 改成 JFrame，Canvas 改成 JPanel 即可。下节课开始详细介绍 swing.</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-Java 学习博客_ 入门——GUI_7"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2022/06/29/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94GUI_7/" class="article-date">
+  <time datetime="2022-06-29T02:49:50.601Z" itemprop="datePublished">2022-06-29</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>实际使用 Java 开发图形界面程序时 ，很少使用 AWT 组件，绝大部分时候都是用 Swing 组件开发的 。 </p>
+<p>Swing是<strong>由100%纯 Java实现的，不再依赖于本地平台的 GUI</strong>， 因此可以在所有平台上都保持相同的界面外观。</p>
+<p>独立于本地平台的Swing组件被称为<strong>轻量级组件</strong>;而依赖于本地平台的 AWT 组件被称为<strong>重量级组件</strong>。</p>
+<p><em>由于 Swing 的所有组件完全采用 Java 实现，不再调用本地平台的 GUI，所以导致 Swing 图形界面的显示速度要比 AWT 图形界面的显示速度慢一些，但相对于快速发展的硬件设施而言，这种微小的速度差别无妨大碍。</em></p>
+<p>Swing 组件不再依赖于本地平台的 GUI，无须采用各种平台的 GUI 交集 ，因此 Swing 提供了大量图形界面组件 ， 远远超出了 AWT 所提供的图形界面组件集。用户也可以选择自己喜欢的样式。</p>
+<p>Swing 组件采用 MVC(Model-View-Controller， 即模型一视图一控制器)设计模式.</p>
+<pre><code>模型(Model): 用于维护组件的各种状态；
+
+视图(View): 是组件的可视化表现；
+
+控制器(Controller):用于控制对于各种事件、组件做出响应 。
+
+当模型发生改变时，它会通知所有依赖它的视图，视图会根据模型数据来更新自己。Swing使用UI代理来包装视图和控制器， 还有一个模型对象来维护该组件的状态。例如，按钮JButton有一个维护其状态信息的模型ButtonModel对象 。 Swing组件的模型是自动设置的，因此一般都使用JButton，而无须关心ButtonModel对象。
+</code></pre>
+<p><img src="C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220518132257874.png" alt="image-20220518132257874"></p>
+<p><strong>Swing组件和AWT组件的对应关系：</strong></p>
+<p>​    大部分情况下，只需要在AWT组件的名称前面加个J，就可以得到其对应的Swing组件名称，但有几个例外：</p>
+<p>​        1. JComboBox: 对应于 AWT 里的 Choice 组件，但比 Choice 组件功能更丰富 。<br>​        2. JFileChooser: 对应于 AWT 里的 FileDialog 组件 。<br>​        3. JScrollBar: 对应于 AWT 里的 Scrollbar 组件，注意两个组件类名中 b 字母的大小写差别。<br>​        4. JCheckBox : 对应于 AWT 里的 Checkbox 组件， 注意两个组件类名中 b 字母的大小 写差别 。<br>​        5. JCheckBoxMenultem: 对应于 AWT 里的 CheckboxMenuItem 组件，注意两个组件类名中 b字母的大小写差别。</p>
+<p><strong>Swing组件按照功能来分类：</strong></p>
+<pre><code>1. 顶层容器: JFrame、JApplet、JDialog 和 JWindow 。
+2. 中间容器: JPanel 、 JScrollPane 、 JSplitPane 、 JToolBar 等 。
+3. 特殊容器:在用户界面上具有特殊作用的中间容器，如 JIntemalFrame 、 JRootPane 、 JLayeredPane和 JDestopPane 等 。
+4. 基本组件 : 实现人机交互的组件，如 JButton、 JComboBox 、 JList、 JMenu、 JSlider 等 。
+5. 不可编辑信息的显示组件:向用户显示不可编辑信息的组件，如JLabel 、 JProgressBar 和 JToolTip等。
+6. 可编辑信息的显示组件:向用户显示能被编辑的格式化信息的组件，如 JTable 、 JTextArea 和JTextField 等 。
+7. 特殊对话框组件:可以直接产生特殊对话框的组件 ， 如 JColorChooser 和 JFileChooser 等。
+</code></pre>
+<h1 id="AWT组件的Swing实现"><a href="#AWT组件的Swing实现" class="headerlink" title="AWT组件的Swing实现"></a>AWT组件的Swing实现</h1><p>​    Swing 为除 Canvas 之外的所有 AWT 组件提供了相应的实现，Swing 组件比 AWT 组件的功能更加强大。相对于 AWT 组件， Swing 组件具有如下 4 个额外的功能 :</p>
+<ol>
+<li>可以为 Swing 组件设置提示信息。使用 setToolTipText()方法，为组件设置对用户有帮助的提示信息 。</li>
+<li>很多 Swing 组件如按钮、标签、菜单项等，除使用文字外，还可以使用图标修饰自己。为了允许在 Swing 组件中使用图标， Swing为Icon 接口提供了 一个实现类: Imagelcon ，该实现类代表一个图像图标。</li>
+<li>支持插拔式的外观风格。每个 JComponent 对象都有一个相应的 ComponentUI 对象，为它完成所有的绘画、事件处理、决定尺寸大小等工作。 ComponentUI 对象依赖当前使用的 PLAF ， 使用 UIManager.setLookAndFeel()方法可以改变图形界面的外观风格 。</li>
+<li>支持设置边框。Swing 组件可以设置一个或多个边框。 Swing 中提供了各式各样的边框供用户边 用，也能建立组合边框或自己设计边框。 一种空白边框可以用于增大组件，同时协助布局管理器对容器中的组件进行合理的布局。</li>
+</ol>
+<p>每个 Swing 组件都有一个对应的UI 类，可以切换其外观。例如 JButton组件就有一个对应的 ButtonUI 类来作为UI代理 。每个 Swing组件的UI代理的类名总是将该 Swing 组件类名的 J 去掉，然后在后面添加 UI 后缀 。 </p>
+<p>对于 awt 中的一些监听事件，swing 会有更简便的解决方法。</p>
+<p>右键菜单：<code>f.setComponentPopupMenu(自己定义的右键菜单)</code></p>
+<p>关闭窗口：</p>
+<p><code>f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)</code></p>
+<p>更改样式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">changeFlavor</span><span class="hljs-params">(String command)</span> <span class="hljs-keyword">throws</span> Exception&#123;<br>       <span class="hljs-keyword">switch</span> (command)&#123;<br>           <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;Metal 风格&quot;</span>:<br>               UIManager.setLookAndFeel(<span class="hljs-string">&quot;javax.swing.plaf.metal.MetalLookAndFeel&quot;</span>);<br>               <span class="hljs-keyword">break</span>;<br>           <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;Nimbus 风格&quot;</span>:<br>               UIManager.setLookAndFeel(<span class="hljs-string">&quot;javax.swing.plaf.nimbus.NimbusLookAndFeel&quot;</span>);<br>               <span class="hljs-keyword">break</span>;<br>           <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;Windows 风格&quot;</span>:<br>               UIManager.setLookAndFeel(<span class="hljs-string">&quot;com.sun.java.swing.plaf.windows.WindowsLookAndFeel&quot;</span>);<br>               <span class="hljs-keyword">break</span>;<br>           <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;Windows 经典风格&quot;</span>:<br>               UIManager.setLookAndFeel(<span class="hljs-string">&quot;com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel&quot;</span>);<br>               <span class="hljs-keyword">break</span>;<br>           <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;Motif 风格&quot;</span>:<br>               UIManager.setLookAndFeel(<span class="hljs-string">&quot;com.sun.java.swing.plaf.motif.MotifLookAndFeel&quot;</span>);<br>               <span class="hljs-keyword">break</span>;<br>       &#125;<br><br>       <span class="hljs-comment">//更新f窗口内顶级容器以及所有组件的UI</span><br>       SwingUtilities.updateComponentTreeUI(f.getContentPane());<br>       <span class="hljs-comment">//更新mb菜单条及每部所有组件UI</span><br>       SwingUtilities.updateComponentTreeUI(mb);<br>       <span class="hljs-comment">//更新右键菜单及内部所有菜单项的UI</span><br>       SwingUtilities.updateComponentTreeUI(pop);<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="图标展示"><a href="#图标展示" class="headerlink" title="图标展示"></a>图标展示</h1><p>构造对象时，可以加一个图像参数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">JButton b=<span class="hljs-keyword">new</span> <span class="hljs-title class_">JButton</span>(<span class="hljs-string">&quot;确定&quot;</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">ImageIcon</span>(<span class="hljs-string">&quot;相对路径&quot;</span>));<br></code></pre></td></tr></table></figure>
+
+<h1 id="组件边框"><a href="#组件边框" class="headerlink" title="组件边框"></a>组件边框</h1><p><img src="C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220520212709348.png" alt="image-20220520212709348"></p>
+<p><strong>特殊的Border：</strong></p>
+<ol>
+<li>TitledBorder:它的作用并不是直接为其他组件添加边框，而是为其他边框设置标题，创建该类的对象时，需要传入一个其他的Border对象；</li>
+<li>ComoundBorder:用来组合其他两个边框，创建该类的对象时，需要传入其他两个Border对象，一个作为内边框，一个座位外边框</li>
+</ol>
+<p><strong>给组件设置边框步骤：</strong></p>
+<ol>
+<li>使用BorderFactory或者XxxBorder创建Border的实例对象；</li>
+<li>调用Swing组件的setBorder（Border b）方法为组件设置边框；</li>
+</ol>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
   </article>
   
 
@@ -1524,7 +1560,7 @@
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/ayer-side.svg" alt="Jingqing3948 的博客"></a>
+    <a href="/"><img src="/images/ayer-side.svg" alt="灰海宽松的博客"></a>
   </div>
   
   <ul class="nav nav-main">
