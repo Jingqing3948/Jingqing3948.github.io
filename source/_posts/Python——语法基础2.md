@@ -1,3 +1,10 @@
+---
+title: Python——语法基础2
+date: 2022-05-20
+tags: study
+category: Python
+---
+
 # 导包
 
 ```python

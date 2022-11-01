@@ -1,3 +1,10 @@
+---
+title: Python 爬虫入门_1
+date: 2022-05-21
+tags: study
+category: Python
+---
+
 # 目标
 
 爬取豆瓣 Top250 电影基本信息，包括名称、评分、评价数、电影概况、电影链接等。
