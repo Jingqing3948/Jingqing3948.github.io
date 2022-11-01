@@ -1,3 +1,12 @@
+---
+title: Java 学习博客_入门—— GUI_4
+date: 2022-05-17
+tags: study
+category: java
+---
+
+
+
 # 小游戏——弹球
 
 每隔几毫秒就重绘一下页面，可以实现动画效果。可以通过定时器 Timer 解决。

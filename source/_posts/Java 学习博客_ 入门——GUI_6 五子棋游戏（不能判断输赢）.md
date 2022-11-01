@@ -1,3 +1,10 @@
+---
+title: Java 学习博客_入门—— GUI_6
+date: 2022-05-18
+tags: study
+category: java
+---
+
 ![image-20220518101108824](C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220518101108824.png)
 
 鼠标在棋盘上移动时，会显示当前位置放置棋子，会落到的位置，即红框部分。

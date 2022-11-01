@@ -1,3 +1,10 @@
+---
+title: Java 学习博客_入门—— GUI_7
+date: 2022-05-19
+tags: study
+category: java
+---
+
 实际使用 Java 开发图形界面程序时 ，很少使用 AWT 组件，绝大部分时候都是用 Swing 组件开发的 。 
 
 Swing是**由100%纯 Java实现的，不再依赖于本地平台的 GUI**， 因此可以在所有平台上都保持相同的界面外观。

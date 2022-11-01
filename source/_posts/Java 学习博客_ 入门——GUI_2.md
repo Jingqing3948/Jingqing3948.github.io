@@ -1,3 +1,10 @@
+---
+title: Java 学习博客_入门—— GUI_2
+date: 2022-05-16
+tags: study
+category: java
+---
+
 # AWT 常用组件
 
 Button

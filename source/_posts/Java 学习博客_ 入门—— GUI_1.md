@@ -1,3 +1,10 @@
+---
+title: Java 学习博客_入门—— GUI_1
+date: 2022-05-16
+tags: study
+category: java
+---
+
 java 也可以在前端进行开发，使用 AWT 和 SWING 完成图形化界面编程。
 
 # AWT

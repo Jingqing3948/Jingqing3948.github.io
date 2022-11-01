@@ -1,3 +1,10 @@
+---
+title: Java 学习博客_入门—— GUI_3
+date: 2022-05-17
+tags: study
+category: java
+---
+
 # 菜单组件
 
 | 菜单组件名称     | 功能                                                         |
