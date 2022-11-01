@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title> | Jingqing3948 的博客</title><script>var config = </script><script>window.onload = ()=>{};</script><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.4.0/styles/atom-one-dark-reasonable.min.css"><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="Jingqing3948 的博客" type="application/atom+xml">
+</head><body style="background-image:url(https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg);"><div id="cursor-container"><div id="cursor-outer"></div><div id="cursor-effect"></div></div><header><nav><a href="/">Home</a><a href="/archives/">Archives</a></nav></header><main><article><div id="post-bg"><div id="post-title"><h1></h1><div id="post-info"><span>First Post:<div style="display:inline-block;width:90px"><time datetime="2022-06-29T02:49:50.632Z" id="date"> 2022-06-29</time></div></span><br><span>Last Update:<div style="display:inline-block;width:90px"><time datetime="2022-05-23T19:32:28.232Z" id="updated"> 2022-05-24</time></div></span></div></div><hr><div id="post-content"><p>如果按照之前读取字节流的方法，我们要得到输出内容时需要用 (char) 强制转换。</p>
+<p>如果内容中包含中文，就会输出乱码。因为汉字存储在 GBK 编码下占用2 byte，UTF-8 编码下占用3 byte。所以每次读写一个字节，就会把字节拆开，就输出不了汉字了。</p>
+<p>字符流就会方便很多。</p>
+<h1 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h1><p>字符流=字节流+编码表。</p>
+<p>汉字存储时，不管采用哪种编码方法，第一个字节都是负数，以此判断。</p>
+<h2 id="编码表"><a href="#编码表" class="headerlink" title="编码表"></a>编码表</h2><p>计算机中的信息都是二进制数表示的。</p>
+<p>按照一定规则把字符存储到计算机中，叫编码。</p>
+<p>按照一定规则把字符从计算机中解析，叫解码。</p>
+<h2 id="字符集"><a href="#字符集" class="headerlink" title="字符集"></a>字符集</h2><p>一个系统支持的所有字符集合。如 ASCII GBKXXX Unicode 等。</p>
+<p><strong>ASCII码</strong> —ASCII编码表由一个字节表示，128个字符，包含字母、数字、常用符号等。其拓展集128~255方便支持欧洲常用字符。</p>
+<p><strong>GBXXX</strong>—一个小于127的字符意义与原来相同（半角字符）但两个大于127的字符相连，表示一个汉字。甚至一些数学符号、罗马希腊字母、日文假名、原来的数字、标点、字母都被重新编了二字节的编码，即全角字符。</p>
+<p>其中 GBK 是最常用的中文码表，还支持繁体、日韩汉字。</p>
+<p><em>GB18030：最新的中文码表，每个字可以由1、2、4个字节组成，支持少数名族文字。</em></p>
+<p><strong>Unicode</strong>—表达任意语言的任意字符。最常见的就是 UTF-8 编码。前128和 ASCII 一样，1个字节；拉丁文字符2个字节；大部分常用字（包括中文）3个字节；其他辅助字符4个字节。</p>
+<h2 id="字符串的编码解码"><a href="#字符串的编码解码" class="headerlink" title="字符串的编码解码"></a>字符串的编码解码</h2><p>编码：byte[] getBytes() 或 byte[] getBytes(String charsetName) 指定字符集。</p>
+<p>解码：String(byte[] bytes) 或 String(byte[] bytes, String charsetName) 构造方法。</p>
+<p>IDEA 平台默认字符集为 UTF-8。</p>
+<p>在字符流中的解码、编码对应 InputStreamReader、OutputStreamWriter，</p>
+<p>构造方法：InputStreamReader(FileInputStream, String charsetName) </p>
+<p>OutputStreamReader(FileOutputStream, String charsetName) 也可以指定字符集。然后就正常使用 read() write() 方法。</p>
+<p>如果使用 UTF-8 编码就可以直接写入中文字符串。否则需要同样编码方法的读取方法才能正确读取。</p>
+<table>
+<thead>
+<tr>
+<th>写数据方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>void write(int c)</td>
+<td>写一个字符</td>
+</tr>
+<tr>
+<td>void write(char cbuf)</td>
+<td>写入一个字符数组</td>
+</tr>
+<tr>
+<td>void write(char cbuf, int off, int len)</td>
+<td>写入一个字符数组的一部分</td>
+</tr>
+<tr>
+<td>void write(String str)</td>
+<td>写入一个字符串</td>
+</tr>
+<tr>
+<td>void write(String str, int off, int len)</td>
+<td>写入一个字符串的一部分</td>
+</tr>
+</tbody></table>
+<p>这样写完，数据还是在缓冲区中。需要通过 void flush() 方法刷新。</p>
+<p>不过 close() 方法关闭前也会自动刷新一下。只是关闭方法后就不能再写入数据了~</p>
+<table>
+<thead>
+<tr>
+<th>读数据方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int read()</td>
+<td>读一个字符</td>
+</tr>
+<tr>
+<td>int read(char[] cbuf)</td>
+<td>一次读一个字符数组</td>
+</tr>
+</tbody></table>
+<p>FileReader 和 FileWriter 是两个字符流解码、编码的便捷类。构造方法参数为路径字符串或 File 对象。</p>
+<h2 id="字符缓冲流"><a href="#字符缓冲流" class="headerlink" title="字符缓冲流"></a>字符缓冲流</h2><p>BufferedReader(Reader in)</p>
+<p>BufferedWriter(Writer out)</p>
+<p>两者自带成员方法：public String readLine() 读一行 和 void newLine() 写一行。</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div id="footer-link" style="right: calc(50% - 1px);order: 1;border-right: 1px solid #fe2;padding-left: unset;max-width: calc(50% - 4px);"><a href="/2022/06/29/Python%E2%80%94%E2%80%94%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%802/">← Next </a></div><div id="footer-link" style="left: 50%;order: 0;border-left: 1px solid #fe2;padding-right: unset;max-width: calc(50% - 5px);"><a href="/2022/06/29/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94IO%20%E5%AD%97%E8%8A%82%E6%B5%81/"> Prev →</a></div></div></div><details id="reward"><summary>打赏</summary><div id="alipay"><span>支付宝 | Alipay</span><br><img src="/img/Alipay.png"></div><div id="wechat"><span>微信 | WeChat</span><br><img src="/img/WeChat.png"></div></details></div><div id="bottom-btn"><a id="to-top" onClick="index.scrolltop();" title="to top">∧</a></div></article><div class="aside-box"><aside><div id="aside-top"><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Jing Qing</a></h1><div id="description"><p></p></div><!--if page.published === undefined--><section id="total"><a id="total-archives" href="/archives"><span class="total-title">Archives Total:</span><span class="total-number">48</span></a><div id="total-tags"><span class="total-title">Tags:</span><span class="total-number">3</span></div><div id="total-categories"><span class="total-title">Categories:</span><span class="total-number">10</span></div></section></div><div id="aside-block"><h1>INDEX</h1><div id="toc-div"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E6%B5%81"><span class="toc-number">1.</span> <span class="toc-text">字符流</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E7%A0%81%E8%A1%A8"><span class="toc-number">1.1.</span> <span class="toc-text">编码表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="toc-number">1.2.</span> <span class="toc-text">字符集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E7%BC%96%E7%A0%81%E8%A7%A3%E7%A0%81"><span class="toc-number">1.3.</span> <span class="toc-text">字符串的编码解码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E7%BC%93%E5%86%B2%E6%B5%81"><span class="toc-number">1.4.</span> <span class="toc-text">字符缓冲流</span></a></li></ol></li></ol></div></div></div><footer><nobr><span class="text-title">©</span><span class="text-content">1970 to 2020</span></nobr><br><nobr><span class="text-title">ICP</span><span class="text-content">——备案号——</span></nobr><br><text>published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></text><text> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknight</a></text><wbr><text>by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></text></footer></aside></div><canvas id="canvas-dust"></canvas><script src="/js/arknights.js"></script><script src="//unpkg.com/@highlightjs/cdn-assets@11.4.0/highlight.min.js"></script></main></body></html>

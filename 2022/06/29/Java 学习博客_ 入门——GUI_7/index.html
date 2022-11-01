@@ -1,0 +1,65 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title> | Jingqing3948 的博客</title><script>var config = </script><script>window.onload = ()=>{};</script><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.4.0/styles/atom-one-dark-reasonable.min.css"><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="Jingqing3948 的博客" type="application/atom+xml">
+</head><body style="background-image:url(https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg);"><div id="cursor-container"><div id="cursor-outer"></div><div id="cursor-effect"></div></div><header><nav><a href="/">Home</a><a href="/archives/">Archives</a></nav></header><main><article><div id="post-bg"><div id="post-title"><h1></h1><div id="post-info"><span>First Post:<div style="display:inline-block;width:90px"><time datetime="2022-06-29T02:49:50.601Z" id="date"> 2022-06-29</time></div></span><br><span>Last Update:<div style="display:inline-block;width:90px"><time datetime="2022-05-20T18:54:22.655Z" id="updated"> 2022-05-21</time></div></span></div></div><hr><div id="post-content"><p>实际使用 Java 开发图形界面程序时 ，很少使用 AWT 组件，绝大部分时候都是用 Swing 组件开发的 。 </p>
+<p>Swing是<strong>由100%纯 Java实现的，不再依赖于本地平台的 GUI</strong>， 因此可以在所有平台上都保持相同的界面外观。</p>
+<p>独立于本地平台的Swing组件被称为<strong>轻量级组件</strong>;而依赖于本地平台的 AWT 组件被称为<strong>重量级组件</strong>。</p>
+<p><em>由于 Swing 的所有组件完全采用 Java 实现，不再调用本地平台的 GUI，所以导致 Swing 图形界面的显示速度要比 AWT 图形界面的显示速度慢一些，但相对于快速发展的硬件设施而言，这种微小的速度差别无妨大碍。</em></p>
+<p>Swing 组件不再依赖于本地平台的 GUI，无须采用各种平台的 GUI 交集 ，因此 Swing 提供了大量图形界面组件 ， 远远超出了 AWT 所提供的图形界面组件集。用户也可以选择自己喜欢的样式。</p>
+<p>Swing 组件采用 MVC(Model-View-Controller， 即模型一视图一控制器)设计模式.</p>
+<pre><code>模型(Model): 用于维护组件的各种状态；
+
+视图(View): 是组件的可视化表现；
+
+控制器(Controller):用于控制对于各种事件、组件做出响应 。
+
+当模型发生改变时，它会通知所有依赖它的视图，视图会根据模型数据来更新自己。Swing使用UI代理来包装视图和控制器， 还有一个模型对象来维护该组件的状态。例如，按钮JButton有一个维护其状态信息的模型ButtonModel对象 。 Swing组件的模型是自动设置的，因此一般都使用JButton，而无须关心ButtonModel对象。
+</code></pre>
+<p><img src="C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220518132257874.png" alt="image-20220518132257874"></p>
+<p><strong>Swing组件和AWT组件的对应关系：</strong></p>
+<p>​    大部分情况下，只需要在AWT组件的名称前面加个J，就可以得到其对应的Swing组件名称，但有几个例外：</p>
+<p>​        1. JComboBox: 对应于 AWT 里的 Choice 组件，但比 Choice 组件功能更丰富 。<br>​        2. JFileChooser: 对应于 AWT 里的 FileDialog 组件 。<br>​        3. JScrollBar: 对应于 AWT 里的 Scrollbar 组件，注意两个组件类名中 b 字母的大小写差别。<br>​        4. JCheckBox : 对应于 AWT 里的 Checkbox 组件， 注意两个组件类名中 b 字母的大小 写差别 。<br>​        5. JCheckBoxMenultem: 对应于 AWT 里的 CheckboxMenuItem 组件，注意两个组件类名中 b字母的大小写差别。</p>
+<p><strong>Swing组件按照功能来分类：</strong></p>
+<pre><code>1. 顶层容器: JFrame、JApplet、JDialog 和 JWindow 。
+2. 中间容器: JPanel 、 JScrollPane 、 JSplitPane 、 JToolBar 等 。
+3. 特殊容器:在用户界面上具有特殊作用的中间容器，如 JIntemalFrame 、 JRootPane 、 JLayeredPane和 JDestopPane 等 。
+4. 基本组件 : 实现人机交互的组件，如 JButton、 JComboBox 、 JList、 JMenu、 JSlider 等 。
+5. 不可编辑信息的显示组件:向用户显示不可编辑信息的组件，如JLabel 、 JProgressBar 和 JToolTip等。
+6. 可编辑信息的显示组件:向用户显示能被编辑的格式化信息的组件，如 JTable 、 JTextArea 和JTextField 等 。
+7. 特殊对话框组件:可以直接产生特殊对话框的组件 ， 如 JColorChooser 和 JFileChooser 等。
+</code></pre>
+<h1 id="AWT组件的Swing实现"><a href="#AWT组件的Swing实现" class="headerlink" title="AWT组件的Swing实现"></a>AWT组件的Swing实现</h1><p>​    Swing 为除 Canvas 之外的所有 AWT 组件提供了相应的实现，Swing 组件比 AWT 组件的功能更加强大。相对于 AWT 组件， Swing 组件具有如下 4 个额外的功能 :</p>
+<ol>
+<li>可以为 Swing 组件设置提示信息。使用 setToolTipText()方法，为组件设置对用户有帮助的提示信息 。</li>
+<li>很多 Swing 组件如按钮、标签、菜单项等，除使用文字外，还可以使用图标修饰自己。为了允许在 Swing 组件中使用图标， Swing为Icon 接口提供了 一个实现类: Imagelcon ，该实现类代表一个图像图标。</li>
+<li>支持插拔式的外观风格。每个 JComponent 对象都有一个相应的 ComponentUI 对象，为它完成所有的绘画、事件处理、决定尺寸大小等工作。 ComponentUI 对象依赖当前使用的 PLAF ， 使用 UIManager.setLookAndFeel()方法可以改变图形界面的外观风格 。</li>
+<li>支持设置边框。Swing 组件可以设置一个或多个边框。 Swing 中提供了各式各样的边框供用户边 用，也能建立组合边框或自己设计边框。 一种空白边框可以用于增大组件，同时协助布局管理器对容器中的组件进行合理的布局。</li>
+</ol>
+<p>每个 Swing 组件都有一个对应的UI 类，可以切换其外观。例如 JButton组件就有一个对应的 ButtonUI 类来作为UI代理 。每个 Swing组件的UI代理的类名总是将该 Swing 组件类名的 J 去掉，然后在后面添加 UI 后缀 。 </p>
+<p>对于 awt 中的一些监听事件，swing 会有更简便的解决方法。</p>
+<p>右键菜单：<code>f.setComponentPopupMenu(自己定义的右键菜单)</code></p>
+<p>关闭窗口：</p>
+<p><code>f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)</code></p>
+<p>更改样式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">changeFlavor</span><span class="hljs-params">(String command)</span> <span class="hljs-keyword">throws</span> Exception&#123;<br>       <span class="hljs-keyword">switch</span> (command)&#123;<br>           <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;Metal 风格&quot;</span>:<br>               UIManager.setLookAndFeel(<span class="hljs-string">&quot;javax.swing.plaf.metal.MetalLookAndFeel&quot;</span>);<br>               <span class="hljs-keyword">break</span>;<br>           <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;Nimbus 风格&quot;</span>:<br>               UIManager.setLookAndFeel(<span class="hljs-string">&quot;javax.swing.plaf.nimbus.NimbusLookAndFeel&quot;</span>);<br>               <span class="hljs-keyword">break</span>;<br>           <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;Windows 风格&quot;</span>:<br>               UIManager.setLookAndFeel(<span class="hljs-string">&quot;com.sun.java.swing.plaf.windows.WindowsLookAndFeel&quot;</span>);<br>               <span class="hljs-keyword">break</span>;<br>           <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;Windows 经典风格&quot;</span>:<br>               UIManager.setLookAndFeel(<span class="hljs-string">&quot;com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel&quot;</span>);<br>               <span class="hljs-keyword">break</span>;<br>           <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;Motif 风格&quot;</span>:<br>               UIManager.setLookAndFeel(<span class="hljs-string">&quot;com.sun.java.swing.plaf.motif.MotifLookAndFeel&quot;</span>);<br>               <span class="hljs-keyword">break</span>;<br>       &#125;<br><br>       <span class="hljs-comment">//更新f窗口内顶级容器以及所有组件的UI</span><br>       SwingUtilities.updateComponentTreeUI(f.getContentPane());<br>       <span class="hljs-comment">//更新mb菜单条及每部所有组件UI</span><br>       SwingUtilities.updateComponentTreeUI(mb);<br>       <span class="hljs-comment">//更新右键菜单及内部所有菜单项的UI</span><br>       SwingUtilities.updateComponentTreeUI(pop);<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="图标展示"><a href="#图标展示" class="headerlink" title="图标展示"></a>图标展示</h1><p>构造对象时，可以加一个图像参数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">JButton b=<span class="hljs-keyword">new</span> <span class="hljs-title class_">JButton</span>(<span class="hljs-string">&quot;确定&quot;</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">ImageIcon</span>(<span class="hljs-string">&quot;相对路径&quot;</span>));<br></code></pre></td></tr></table></figure>
+
+<h1 id="组件边框"><a href="#组件边框" class="headerlink" title="组件边框"></a>组件边框</h1><p><img src="C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220520212709348.png" alt="image-20220520212709348"></p>
+<p><strong>特殊的Border：</strong></p>
+<ol>
+<li>TitledBorder:它的作用并不是直接为其他组件添加边框，而是为其他边框设置标题，创建该类的对象时，需要传入一个其他的Border对象；</li>
+<li>ComoundBorder:用来组合其他两个边框，创建该类的对象时，需要传入其他两个Border对象，一个作为内边框，一个座位外边框</li>
+</ol>
+<p><strong>给组件设置边框步骤：</strong></p>
+<ol>
+<li>使用BorderFactory或者XxxBorder创建Border的实例对象；</li>
+<li>调用Swing组件的setBorder（Border b）方法为组件设置边框；</li>
+</ol>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div id="footer-link" style="right: calc(50% - 1px);order: 1;border-right: 1px solid #fe2;padding-left: unset;max-width: calc(50% - 4px);"><a href="/2022/06/29/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94GUI_6%20%E4%BA%94%E5%AD%90%E6%A3%8B%E6%B8%B8%E6%88%8F%EF%BC%88%E4%B8%8D%E8%83%BD%E5%88%A4%E6%96%AD%E8%BE%93%E8%B5%A2%EF%BC%89/">← Next </a></div><div id="footer-link" style="left: 50%;order: 0;border-left: 1px solid #fe2;padding-right: unset;max-width: calc(50% - 5px);"><a href="/2022/05/09/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F_1/">正则表达式_1 Prev →</a></div></div></div><details id="reward"><summary>打赏</summary><div id="alipay"><span>支付宝 | Alipay</span><br><img src="/img/Alipay.png"></div><div id="wechat"><span>微信 | WeChat</span><br><img src="/img/WeChat.png"></div></details></div><div id="bottom-btn"><a id="to-top" onClick="index.scrolltop();" title="to top">∧</a></div></article><div class="aside-box"><aside><div id="aside-top"><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Jing Qing</a></h1><div id="description"><p></p></div><!--if page.published === undefined--><section id="total"><a id="total-archives" href="/archives"><span class="total-title">Archives Total:</span><span class="total-number">48</span></a><div id="total-tags"><span class="total-title">Tags:</span><span class="total-number">3</span></div><div id="total-categories"><span class="total-title">Categories:</span><span class="total-number">10</span></div></section></div><div id="aside-block"><h1>INDEX</h1><div id="toc-div"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#AWT%E7%BB%84%E4%BB%B6%E7%9A%84Swing%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.</span> <span class="toc-text">AWT组件的Swing实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE%E6%A0%87%E5%B1%95%E7%A4%BA"><span class="toc-number">2.</span> <span class="toc-text">图标展示</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E8%BE%B9%E6%A1%86"><span class="toc-number">3.</span> <span class="toc-text">组件边框</span></a></li></ol></div></div></div><footer><nobr><span class="text-title">©</span><span class="text-content">1970 to 2020</span></nobr><br><nobr><span class="text-title">ICP</span><span class="text-content">——备案号——</span></nobr><br><text>published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></text><text> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknight</a></text><wbr><text>by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></text></footer></aside></div><canvas id="canvas-dust"></canvas><script src="/js/arknights.js"></script><script src="//unpkg.com/@highlightjs/cdn-assets@11.4.0/highlight.min.js"></script></main></body></html>

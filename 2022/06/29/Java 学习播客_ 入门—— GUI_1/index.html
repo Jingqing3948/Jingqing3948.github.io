@@ -1,0 +1,236 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title> | Jingqing3948 的博客</title><script>var config = </script><script>window.onload = ()=>{};</script><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.4.0/styles/atom-one-dark-reasonable.min.css"><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="Jingqing3948 的博客" type="application/atom+xml">
+</head><body style="background-image:url(https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg);"><div id="cursor-container"><div id="cursor-outer"></div><div id="cursor-effect"></div></div><header><nav><a href="/">Home</a><a href="/archives/">Archives</a></nav></header><main><article><div id="post-bg"><div id="post-title"><h1></h1><div id="post-info"><span>First Post:<div style="display:inline-block;width:90px"><time datetime="2022-06-29T02:49:50.632Z" id="date"> 2022-06-29</time></div></span><br><span>Last Update:<div style="display:inline-block;width:90px"><time datetime="2022-05-14T00:48:56.385Z" id="updated"> 2022-05-14</time></div></span></div></div><hr><div id="post-content"><p>java 也可以在前端进行开发，使用 AWT 和 SWING 完成图形化界面编程。</p>
+<h1 id="AWT"><a href="#AWT" class="headerlink" title="AWT"></a>AWT</h1><p>Abstract Window Toolkit 抽象窗口工具集。它是抽象的，程序只指定某个模块的位置和行为，具体实现（样式等）是由操作系统完成。</p>
+<p>主要包括两个基类： Component 和 MenuComponent。其中 Component 中的 Container 组件可以作为容器，包含其他组件。</p>
+<p><img src="C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220513151527543.png" alt="image-20220513151527543"></p>
+<p>此外，AWT 还有一个比较重要的知识点 LayoutManager，负责处理布局。</p>
+<p><img src="C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220513151540412.png" alt="image-20220513151540412"></p>
+<h2 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>setLocation(int x, int y)</td>
+<td>设置组件位置</td>
+</tr>
+<tr>
+<td>setSize(int width, int height)</td>
+<td>设置组件大小</td>
+</tr>
+<tr>
+<td>setBounds(int x, int y, int width, int height)</td>
+<td>同时设置位置和大小</td>
+</tr>
+<tr>
+<td>setVisible(Boolean b)</td>
+<td>设置该组件的可见性</td>
+</tr>
+</tbody></table>
+<h3 id="Window"><a href="#Window" class="headerlink" title="Window"></a>Window</h3><p>Frame 是继承自 Window 的类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java">Frame frame=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Frame</span>(<span class="hljs-string">&quot;标题&quot;</span>);<br>frame.setLocation(<span class="hljs-number">100</span>,<span class="hljs-number">100</span>);<span class="hljs-comment">//位置</span><br>frame.setSize(<span class="hljs-number">500</span>,<span class="hljs-number">300</span>);<span class="hljs-comment">//宽高</span><br>frame.setVisible(<span class="hljs-literal">true</span>);<br></code></pre></td></tr></table></figure>
+
+<p>现在的窗口是没法点击x号关闭的，需要手动停止运行才能结束。</p>
+<h3 id="Container"><a href="#Container" class="headerlink" title="Container"></a>Container</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Component add(Component comp)</td>
+<td>向该组件中添加其他组件</td>
+</tr>
+<tr>
+<td>Component getComponentAt(int x, int y)</td>
+<td>返回指定位置的组件</td>
+</tr>
+<tr>
+<td>int getComponentCount()</td>
+<td>返回该容器中组件的数量</td>
+</tr>
+<tr>
+<td>Component[] getComponents()</td>
+<td>返回该容器中所有的组件</td>
+</tr>
+</tbody></table>
+<p>容器不能单独存在，必须依附于 Window 存在。</p>
+<p>编写时，先添加 window 窗口，然后添加容器，再在容器中添加组件，最后把容器添加到 Window 中，调整 Window 位置。自己也可以写组件。</p>
+<h4 id="Panel"><a href="#Panel" class="headerlink" title="Panel"></a>Panel</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//1. 创建 window 对象</span><br>Frame myFrame=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Frame</span>();<br><span class="hljs-comment">//2. 创建 Panel 对象</span><br>Panel p=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Panel</span>();<br><span class="hljs-comment">//创建文本框和按钮，放入 Panel 对象</span><br>p.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">TextField</span>(<span class="hljs-string">&quot;测试文本&quot;</span>));<br>p.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;测试按钮&quot;</span>));<br><span class="hljs-comment">//出现乱码的话，左上角 PanelTry-添加 VM 选项-输入 -Dfile.encoding=gbk</span><br>myFrame.add(p);<br>myFrame.setBounds(<span class="hljs-number">100</span>,<span class="hljs-number">100</span>,<span class="hljs-number">500</span>,<span class="hljs-number">300</span>);<br>myFrame.setVisible(<span class="hljs-literal">true</span>);<br></code></pre></td></tr></table></figure>
+
+<h4 id="ScrollPane"><a href="#ScrollPane" class="headerlink" title="ScrollPane"></a>ScrollPane</h4><p>元素过多时会添加滚动条。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java">Frame frame=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Frame</span>(<span class="hljs-string">&quot;ScrollPane&quot;</span>);<br>ScrollPane sp=<span class="hljs-keyword">new</span> <span class="hljs-title class_">ScrollPane</span>(ScrollPane.SCROLLBARS_ALWAYS);<span class="hljs-comment">//默认是总是有滚动条</span><br>sp.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">TextField</span>(<span class="hljs-string">&quot;测试文本&quot;</span>));<br>sp.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;测试按钮&quot;</span>));<br>frame.add(sp);<br>frame.setBounds(<span class="hljs-number">100</span>,<span class="hljs-number">100</span>,<span class="hljs-number">500</span>,<span class="hljs-number">300</span>);<br>frame.setVisible(<span class="hljs-literal">true</span>);<br></code></pre></td></tr></table></figure>
+
+<p>但是实际上按钮把整个页面占满了。测试文本并没有出现。这就涉及到布局管理器的知识了。</p>
+<h2 id="LayoutManager"><a href="#LayoutManager" class="headerlink" title="LayoutManager"></a>LayoutManager</h2><p>相比手动在不同平台上设置各个组件的大小，LayoutManager 会根据不同平台自动调整组件大小，使得程序员即便在不同的平台上也可以做到相同的布局使用体验。</p>
+<p><em>最佳大小：组件刚好和内容一样大小。通过 pack() 方法设置。</em></p>
+<h3 id="FlowLayout"><a href="#FlowLayout" class="headerlink" title="FlowLayout"></a>FlowLayout</h3><p>组件像水流一样流动（排列），碰到障碍（边界）就会折回重新开始。</p>
+<table>
+<thead>
+<tr>
+<th>构造方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FlowLayout()</td>
+<td>使用默认的对齐方式、垂直间距、水平间距</td>
+</tr>
+<tr>
+<td>FlowLayout(int align)</td>
+<td>设置对齐方式（常量 LEFT RIGHT CENTER）</td>
+</tr>
+<tr>
+<td>FlowLayout(int align, int hgap, int vgap)</td>
+<td>设置对齐方式、垂直间距、水平间距</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java">Frame f=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Frame</span>(<span class="hljs-string">&quot;Float 测试&quot;</span>);<br>f.setLayout(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FlowLayout</span>(FlowLayout.LEFT,<span class="hljs-number">20</span>,<span class="hljs-number">20</span>));<br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">100</span>;i++)&#123;f.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;按钮&quot;</span>+i));&#125;<br>f.pack();<span class="hljs-comment">//最佳大小设置</span><br>f.setVisible(<span class="hljs-literal">true</span>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="BorderLayout"><a href="#BorderLayout" class="headerlink" title="BorderLayout"></a>BorderLayout</h3><p>分为5各部分，东西南北中。</p>
+<p>往 BorderLayout 中添加组件需要指明放在了哪个区域中。默认在 CENTER 里。</p>
+<p>如果往一个区域中添加了多个组件，后添加的会覆盖新添加的。</p>
+<p><em>因此想如果往一个区域中添加多个组件，不能一个个 add 到这个区域。可以把他们都 add 到容器中，然后把容器 add 到那个区域。</em></p>
+<table>
+<thead>
+<tr>
+<th>构造方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BorderLayout()</td>
+<td></td>
+</tr>
+<tr>
+<td>BorderLayout(int hgap, int vgap)</td>
+<td>指定水平垂直间距创建</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java">Frame f=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Frame</span>(<span class="hljs-string">&quot;BorderLayoutTry&quot;</span>);<br>f.setLayout(<span class="hljs-keyword">new</span> <span class="hljs-title class_">BorderLayout</span>(<span class="hljs-number">30</span>,<span class="hljs-number">10</span>));<br>f.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;北侧按钮&quot;</span>),BorderLayout.NORTH);<br>f.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;南侧按钮&quot;</span>),BorderLayout.SOUTH);<br>f.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;中侧按钮&quot;</span>),BorderLayout.CENTER);<br>f.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;西侧按钮&quot;</span>),BorderLayout.WEST);<br>f.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;东侧按钮&quot;</span>),BorderLayout.EAST);<br>f.pack();<br>f.setVisible(<span class="hljs-literal">true</span>);<br></code></pre></td></tr></table></figure>
+
+<p>没添加内容的区域会被其他区域占用。如西侧没添加，中间的部分就会靠左占掉西侧。</p>
+<p>可以和其他排版结合使用~</p>
+<h3 id="GridLayout"><a href="#GridLayout" class="headerlink" title="GridLayout"></a>GridLayout</h3><p>将容器分割成纵横线分隔的网格，每个网格站的区域大小相同。</p>
+<p>添加组件默认从左往右、从上往下添加。</p>
+<table>
+<thead>
+<tr>
+<th>构造方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GridLayout(int rows, int cols)</td>
+<td>指定行数列数，间距默认</td>
+</tr>
+<tr>
+<td>GridLayout(int rows, int cols, int hgap, int vgap)</td>
+<td>指定行数、列数、间距</td>
+</tr>
+</tbody></table>
+<h3 id="GridBagLayout"><a href="#GridBagLayout" class="headerlink" title="GridBagLayout"></a>GridBagLayout</h3><p>可以让部分组件占用更多的网格（1*2,3*3……）</p>
+<p>通过 API GridBagConstraints 类设置。</p>
+<p>用起来很复杂，就不用了……因为在 swing 中有更强大的解决方法。</p>
+<h3 id="CardLayout"><a href="#CardLayout" class="headerlink" title="CardLayout"></a>CardLayout</h3><p>卡片布局，把加入容器的所有组件看做一叠卡片，类似队列，最先添加的在最上面，后添加的在下面。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CardLayout()</td>
+<td></td>
+</tr>
+<tr>
+<td>CardLayout(int hgap, int vgap)</td>
+<td>指定卡片与容器左右、上下边距</td>
+</tr>
+<tr>
+<td>first(Container targer)</td>
+<td>第一张卡片</td>
+</tr>
+<tr>
+<td>last(Container targer)</td>
+<td>最后一张卡片</td>
+</tr>
+<tr>
+<td>previous(Container target)</td>
+<td>前一张卡片</td>
+</tr>
+<tr>
+<td>next(Container target)</td>
+<td>后一张卡片</td>
+</tr>
+<tr>
+<td>show(Container target, String name)</td>
+<td>显示指定名字的卡片</td>
+</tr>
+</tbody></table>
+<p>制作一个卡片展示器，有五张卡片，然后5个按钮可以快速查看上一张、下一张、中间一张、第一张、最后一张。</p>
+<p>展示卡片部分是 p 容器，5个按钮部分是 p2 容器。</p>
+<p>这里涉及到一点事件监听器的知识了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs java">Frame f=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Frame</span>(<span class="hljs-string">&quot;卡片布局&quot;</span>);<br>f.setLayout(<span class="hljs-keyword">new</span> <span class="hljs-title class_">BorderLayout</span>());<br>Panel p=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Panel</span>();<br>CardLayout c=<span class="hljs-keyword">new</span> <span class="hljs-title class_">CardLayout</span>();<span class="hljs-comment">//需要创建卡片对象</span><br>p.setLayout(c);<br>String[] names=&#123;<span class="hljs-string">&quot;第一张&quot;</span>,<span class="hljs-string">&quot;第二张&quot;</span>,<span class="hljs-string">&quot;第三张&quot;</span>,<span class="hljs-string">&quot;第四张&quot;</span>&#125;;<br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">4</span>;i++)p.add(names[i],<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(names[i]));<br>f.add(p);<br>Panel p2=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Panel</span>();<br><span class="hljs-type">Button</span> <span class="hljs-variable">b1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;上一张&quot;</span>);<br><span class="hljs-type">Button</span> <span class="hljs-variable">b2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;下一张&quot;</span>);<br><span class="hljs-type">Button</span> <span class="hljs-variable">b3</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;第三张&quot;</span>);<br><span class="hljs-type">Button</span> <span class="hljs-variable">b4</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;第一张&quot;</span>);<br><span class="hljs-type">Button</span> <span class="hljs-variable">b5</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;最后一张&quot;</span>);<br>ActionListener l=<span class="hljs-keyword">new</span> <span class="hljs-title class_">ActionListener</span>() &#123;<span class="hljs-comment">//事件监听器</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">actionPerformed</span><span class="hljs-params">(ActionEvent e)</span> &#123;<br>        String actionCommand=e.getActionCommand();<span class="hljs-comment">//获取按钮上的文字</span><br>        <span class="hljs-keyword">switch</span>(actionCommand)&#123;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;上一张&quot;</span>:<br>                c.previous(p);<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;下一张&quot;</span>:<br>                c.next(p);<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;第三张&quot;</span>:<br>                c.show(p,<span class="hljs-string">&quot;第三张&quot;</span>);<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;第一张&quot;</span>:<br>                c.first(p);<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;最后一张&quot;</span>:<br>                c.last(p);<br>                <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>&#125;;<br>b1.addActionListener(l);<br>b2.addActionListener(l);<br>b3.addActionListener(l);<br>b4.addActionListener(l);<br>b5.addActionListener(l);<br>p2.add(b1);<br>p2.add(b2);<br>p2.add(b3);<br>p2.add(b4);<br>p2.add(b5);<br>f.add(p2,BorderLayout.SOUTH);<br>f.pack();<br>f.setVisible(<span class="hljs-literal">true</span>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="BoxLayout"><a href="#BoxLayout" class="headerlink" title="BoxLayout"></a>BoxLayout</h3><p>是 swing 引入的一个布局管理器，可以简化开发。</p>
+<p>BoxLayout(Container target, int axis)，axis有BoxLayout.X_AXIS 横向和BoxLayout.Y_AXIS 纵向。</p>
+<h1 id="Box"><a href="#Box" class="headerlink" title="Box"></a>Box</h1><p>java.swing 中还提供了一个更简单的容器：Box，默认布局管理器就是 BoxLayout。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>static Box createHorizontalBox()</td>
+<td>创建一个水平排列组件的容器</td>
+</tr>
+<tr>
+<td>static Box createVerticalBox()</td>
+<td>创建一个垂直排列组件的容器</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java">Box b1=Box.createHorizontalBox();<br>b1.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;1&quot;</span>));<br>b1.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;2&quot;</span>));<br>f.add(b1);<br>Box b2=Box.createVerticalBox();<br>b2.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;3&quot;</span>));<br>b2.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;4&quot;</span>));<br>f.add(b2,BorderLayout.SOUTH);<br></code></pre></td></tr></table></figure>
+
+<p>还可以生成一些间隔。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>static Component createHorizontalGlue()</td>
+<td>创建一条水平 Glue</td>
+</tr>
+<tr>
+<td>static Component createVerticalGlue()</td>
+<td>创建一条垂直 Glue</td>
+</tr>
+<tr>
+<td>static Component createHorizontalStrut(int width)</td>
+<td>创建一条指定宽度的 Strut</td>
+</tr>
+<tr>
+<td>static Component createVerticalStrut(int height)</td>
+<td>创建一条指定高度的 Strut</td>
+</tr>
+</tbody></table>
+<p>直接 add 到 Box 中就可以。</p>
+<p><strong>注意：NORTH SOUTH 高度是固定的，和 Glue 连用的时候要注意。</strong></p>
+<p>Glue 随着窗口放缩会变换间距。Strut 间距是固定的。</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div id="footer-link" style="right: calc(50% - 1px);order: 1;border-right: 1px solid #fe2;padding-left: unset;max-width: calc(50% - 4px);"><a href="/2022/06/29/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94IO%20%E5%AD%97%E8%8A%82%E6%B5%81/">← Next </a></div><div id="footer-link" style="left: 50%;order: 0;border-left: 1px solid #fe2;padding-right: unset;max-width: calc(50% - 5px);"><a href="/2022/06/29/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94GUI_4%20%E5%BC%B9%E7%90%83%E6%B8%B8%E6%88%8F/"> Prev →</a></div></div></div><details id="reward"><summary>打赏</summary><div id="alipay"><span>支付宝 | Alipay</span><br><img src="/img/Alipay.png"></div><div id="wechat"><span>微信 | WeChat</span><br><img src="/img/WeChat.png"></div></details></div><div id="bottom-btn"><a id="to-top" onClick="index.scrolltop();" title="to top">∧</a></div></article><div class="aside-box"><aside><div id="aside-top"><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Jing Qing</a></h1><div id="description"><p></p></div><!--if page.published === undefined--><section id="total"><a id="total-archives" href="/archives"><span class="total-title">Archives Total:</span><span class="total-number">48</span></a><div id="total-tags"><span class="total-title">Tags:</span><span class="total-number">3</span></div><div id="total-categories"><span class="total-title">Categories:</span><span class="total-number">10</span></div></section></div><div id="aside-block"><h1>INDEX</h1><div id="toc-div"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#AWT"><span class="toc-number">1.</span> <span class="toc-text">AWT</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Component"><span class="toc-number">1.1.</span> <span class="toc-text">Component</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Window"><span class="toc-number">1.1.1.</span> <span class="toc-text">Window</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Container"><span class="toc-number">1.1.2.</span> <span class="toc-text">Container</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Panel"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">Panel</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ScrollPane"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">ScrollPane</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LayoutManager"><span class="toc-number">1.2.</span> <span class="toc-text">LayoutManager</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FlowLayout"><span class="toc-number">1.2.1.</span> <span class="toc-text">FlowLayout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BorderLayout"><span class="toc-number">1.2.2.</span> <span class="toc-text">BorderLayout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GridLayout"><span class="toc-number">1.2.3.</span> <span class="toc-text">GridLayout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GridBagLayout"><span class="toc-number">1.2.4.</span> <span class="toc-text">GridBagLayout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CardLayout"><span class="toc-number">1.2.5.</span> <span class="toc-text">CardLayout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BoxLayout"><span class="toc-number">1.2.6.</span> <span class="toc-text">BoxLayout</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Box"><span class="toc-number">2.</span> <span class="toc-text">Box</span></a></li></ol></div></div></div><footer><nobr><span class="text-title">©</span><span class="text-content">1970 to 2020</span></nobr><br><nobr><span class="text-title">ICP</span><span class="text-content">——备案号——</span></nobr><br><text>published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></text><text> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknight</a></text><wbr><text>by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></text></footer></aside></div><canvas id="canvas-dust"></canvas><script src="/js/arknights.js"></script><script src="//unpkg.com/@highlightjs/cdn-assets@11.4.0/highlight.min.js"></script></main></body></html>
