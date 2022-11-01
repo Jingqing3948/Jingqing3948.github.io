@@ -155,7 +155,7 @@
     
     
     <article
-  id="post-Python 爬虫入门_1"
+  id="post-Java 学习博客_ 入门——GUI_2"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -166,8 +166,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2022/05/21/Python%20%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8_1/"
-    >Python 爬虫入门_1</a> 
+  <a class="article-title" href="/2022/05/16/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94GUI_2/"
+    >Java 学习博客_入门—— GUI_2</a> 
 </h2>
  
 
@@ -175,35 +175,228 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2022/05/21/Python%20%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8_1/" class="article-date">
-  <time datetime="2022-05-20T16:00:00.000Z" itemprop="datePublished">2022-05-21</time>
+      <a href="/2022/05/16/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94GUI_2/" class="article-date">
+  <time datetime="2022-05-15T16:00:00.000Z" itemprop="datePublished">2022-05-16</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Python/">Python</a>
+    <a class="article-category-link" href="/categories/java/">java</a>
   </div>
    
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><p>爬取豆瓣 Top250 电影基本信息，包括名称、评分、评价数、电影概况、电影链接等。</p>
-<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p><a target="_blank" rel="noopener" href="https://movie.douban.com/top250">豆瓣电影 Top 250 (douban.com)</a></p>
-<p>爬虫是按照一定<strong>规则</strong>，<strong>自动抓取</strong>互联网信息的程序或脚本。如今主流策略是<strong>根据用户需求定向抓取。</strong></p>
-<p><em>在百度指数中搜索关键词，可以看到该关键词的访问量。</em></p>
-<p>实际上很多网站不自己写内容，爬取其它网站的内容复制到自己这里就方便的多。</p>
-<p>爬虫很早就有，但是最近计算能力上涨，如大数据等应用，使得爬虫的价值继续提升，所以最近火一些~</p>
-<p><img src="C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220520012210874.png" alt="image-20220520012210874"></p>
-<h2 id="url"><a href="#url" class="headerlink" title="url"></a>url</h2><p>当我们浏览豆瓣 top250电影，进行翻页时，会发现 url 变成了：</p>
-<p><a target="_blank" rel="noopener" href="https://movie.douban.com/top250?start=25&filter=">https://movie.douban.com/top250?start=25&amp;filter=</a></p>
-<p>意思是从第26条记录开始显示（默认一页25条）。如果手动改成 start=31，就会从32条开始显示。filter 去掉也可以。</p>
-<p>当我们发送 url 给服务器，服务器返回源代码（html），经过浏览器解析变成看得到的样子。</p>
-<p><img src="C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220520013155589.png" alt="image-20220520013155589"></p>
-<p>元素中可以看到网页 html 元素</p>
-<p><img src="C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220520013933832.png" alt="image-20220520013933832"></p>
-<p>network 中可以看到请求状况。（如果请求状况为空：点击 all 全部按钮)</p>
-<p>network - header 中的general 和 response headers 的内容都是我们发给服务期端的，服务器返回的内容在 network - response 响应中。</p>
-<p>其中，user agent 表明浏览器版本，cookie 中包含登陆后的信息。</p>
-<h2 id="找到要获取的文件所在位置"><a href="#找到要获取的文件所在位置" class="headerlink" title="找到要获取的文件所在位置"></a>找到要获取的文件所在位置</h2> 
+  <h1 id="AWT-常用组件"><a href="#AWT-常用组件" class="headerlink" title="AWT 常用组件"></a>AWT 常用组件</h1><p>Button</p>
+<p>Canvas：用于绘图的画布</p>
+<p>Checkbox，CheckboxGroup：单选框</p>
+<p>Choice：下拉选择框（选择条目通过 add() 添加）</p>
+<p>Frame：窗口</p>
+<p>Label：标签</p>
+<p>List：列表框组件，可以添加多条项目。（项目通过 add() 添加）</p>
+<p>Panel：容器</p>
+<p>ScrollBar：滚动条</p>
+<p>ScrollPane：带滚动条的容器组件</p>
+<p>TextArea：多行文本域</p>
+<p>TextField：单行文本框</p>
+<h1 id="开发逻辑"><a href="#开发逻辑" class="headerlink" title="开发逻辑"></a>开发逻辑</h1><p>所有组件在成员变量处定义，在方法中组装界面，在 main 方法中调用方法。</p>
+<p>布局：从整体到局部。</p>
+<p>写代码时：由局部到整体。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ComponentTry</span> &#123;<br>    Frame f=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Frame</span>();<br>    TextArea ta=<span class="hljs-keyword">new</span> <span class="hljs-title class_">TextArea</span>(<span class="hljs-number">5</span>,<span class="hljs-number">20</span>);<br>    Choice colorChooser=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Choice</span>();<br>    CheckboxGroup cbg=<span class="hljs-keyword">new</span> <span class="hljs-title class_">CheckboxGroup</span>();<br>    Checkbox male=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Checkbox</span>(<span class="hljs-string">&quot;男&quot;</span>,cbg,<span class="hljs-literal">true</span>);<br>    Checkbox female=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Checkbox</span>(<span class="hljs-string">&quot;女&quot;</span>,cbg,<span class="hljs-literal">false</span>);<br>    Checkbox isMarried=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Checkbox</span>(<span class="hljs-string">&quot;是否已婚？&quot;</span>);<br>    TextField tf=<span class="hljs-keyword">new</span> <span class="hljs-title class_">TextField</span>(<span class="hljs-number">30</span>);<br>    Button ok=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;确认&quot;</span>);<br>    List colorList=<span class="hljs-keyword">new</span> <span class="hljs-title class_">List</span>(<span class="hljs-number">6</span>,<span class="hljs-literal">true</span>);<span class="hljs-comment">//支持多选</span><br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">init</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-type">Box</span> <span class="hljs-variable">bBox</span> <span class="hljs-operator">=</span> Box.createHorizontalBox();<br>        bBox.add(tf);<br>        bBox.add(ok);<br>        f.add(bBox,BorderLayout.SOUTH);<br>        colorChooser.add(<span class="hljs-string">&quot;红色&quot;</span>);<br>        colorChooser.add(<span class="hljs-string">&quot;蓝色&quot;</span>);<br>        colorChooser.add(<span class="hljs-string">&quot;绿色&quot;</span>);<br>        Box cBox=Box.createHorizontalBox();<br>        cBox.add(colorChooser);<br>        cBox.add(male);<br>        cBox.add(female);<br>        cBox.add(isMarried);<br>        Box topLeft=Box.createVerticalBox();<br>        topLeft.add(ta);<br>        topLeft.add(cBox);<br>        colorList.add(<span class="hljs-string">&quot;红色&quot;</span>);<br>        colorList.add(<span class="hljs-string">&quot;绿色&quot;</span>);<br>        colorList.add(<span class="hljs-string">&quot;蓝色&quot;</span>);<br>        Box top=Box.createHorizontalBox();<br>        top.add(topLeft);<br>        top.add(colorList);<br>        f.add(top);<br>        f.pack();<br>        f.setVisible(<span class="hljs-literal">true</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">ComponentTry</span>().init();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="Dialog"><a href="#Dialog" class="headerlink" title="Dialog"></a>Dialog</h1><p>Dialog 是 Window 类的子类，是 一个容器类，属于特殊组件 。 对话框是可以独立存在的顶级窗口， 因此用法与普通窗口的用法几乎完全一样，但是使用对话框需要注意下面两点：</p>
+<ul>
+<li>对话框通常依赖于其他窗口，就是通常需要有一个父窗口；</li>
+<li>对话框有非模式(non-modal)和模式(modal)两种，当某个模式对话框被打开后，该模式对话框总是位于它的父窗口之上，在模式对话框被关闭之前，父窗口无法获得焦点。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>方法功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Dialog(Frame owner, String title, boolean modal)</td>
+<td>创建一个对话框对象：<br/>owner:当前对话框的父窗口<br/>title:当前对话框的标题<br/>modal：当前对话框是否是模式对话框，true/false</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Frame</span> <span class="hljs-variable">frame</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Frame</span>(<span class="hljs-string">&quot;这里测试Dialog&quot;</span>);<br><br><span class="hljs-type">Dialog</span> <span class="hljs-variable">d1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Dialog</span>(frame, <span class="hljs-string">&quot;模式对话框&quot;</span>, <span class="hljs-literal">true</span>);<br><br><span class="hljs-comment">//往对话框中添加内容</span><br><span class="hljs-type">Box</span> <span class="hljs-variable">vBox</span> <span class="hljs-operator">=</span> Box.createVerticalBox();<br><br>vBox.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">TextField</span>(<span class="hljs-number">15</span>));<br>vBox.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">JButton</span>(<span class="hljs-string">&quot;确认&quot;</span>));<br>d1.add(vBox);<br><br><span class="hljs-type">Button</span> <span class="hljs-variable">b1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;打开模式对话框&quot;</span>);<br><br><span class="hljs-comment">//设置对话框的大小和位置</span><br>d1.setBounds(<span class="hljs-number">20</span>,<span class="hljs-number">30</span>,<span class="hljs-number">200</span>,<span class="hljs-number">100</span>);<br><br><br><span class="hljs-comment">//给b1绑定监听事件</span><br>b1.addActionListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ActionListener</span>() &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">actionPerformed</span><span class="hljs-params">(ActionEvent e)</span> &#123;<br>        d1.setVisible(<span class="hljs-literal">true</span>);<br>    &#125;<br>&#125;);<br><br><br><span class="hljs-comment">//把按钮添加到frame中</span><br>frame.add(b1);<br><br><span class="hljs-comment">//设置frame最佳大小并可见</span><br>frame.pack();<br>frame.setVisible(<span class="hljs-literal">true</span>);<br></code></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220514191933447.png" alt="image-20220514191933447"></p>
+<h2 id="FileDialog"><a href="#FileDialog" class="headerlink" title="FileDialog"></a>FileDialog</h2><p>Dialog 的一个子类，可以进行文件操作。</p>
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>方法功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FileDialog(Frame parent, String title, int mode)</td>
+<td>创建一个文件对话框：<br/>parent:指定父窗口<br/>title:对话框标题<br/>mode:文件对话框类型，<strong>如果指定为FileDialog.load，用于打开文件，如果指定为FileDialog.SAVE,用于保存文件</strong></td>
+</tr>
+<tr>
+<td>String getDirectory()</td>
+<td>获取被打开或保存文件的绝对路径</td>
+</tr>
+<tr>
+<td>String getFile()</td>
+<td>获取被打开或保存文件的文件名</td>
+</tr>
+</tbody></table>
+<p>Frame frame = new Frame(“这里测试FileDialog”);</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">FileDialog</span> <span class="hljs-variable">d1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileDialog</span>(frame, <span class="hljs-string">&quot;选择需要加载的文件&quot;</span>, FileDialog.LOAD);<br><span class="hljs-type">FileDialog</span> <span class="hljs-variable">d2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileDialog</span>(frame, <span class="hljs-string">&quot;选择需要保存的文件&quot;</span>, FileDialog.SAVE);<br><br><span class="hljs-type">Button</span> <span class="hljs-variable">b1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;打开文件&quot;</span>);<br><span class="hljs-type">Button</span> <span class="hljs-variable">b2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;保存文件&quot;</span>);<br><br><span class="hljs-comment">//给按钮添加事件</span><br>b1.addActionListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ActionListener</span>() &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">actionPerformed</span><span class="hljs-params">(ActionEvent e)</span> &#123;<br>        d1.setVisible(<span class="hljs-literal">true</span>);<br>        <span class="hljs-comment">//打印用户选择的文件路径和名称</span><br>        System.out.println(<span class="hljs-string">&quot;用户选择的文件路径:&quot;</span>+d1.getDirectory());<br>        System.out.println(<span class="hljs-string">&quot;用户选择的文件名称:&quot;</span>+d1.getFile());<br>    &#125;<br>&#125;);<br><br>System.out.println(<span class="hljs-string">&quot;-------------------------------&quot;</span>);<br>b2.addActionListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ActionListener</span>() &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">actionPerformed</span><span class="hljs-params">(ActionEvent e)</span> &#123;<br>        d2.setVisible(<span class="hljs-literal">true</span>);<br>        <span class="hljs-comment">//打印用户选择的文件路径和名称</span><br>        System.out.println(<span class="hljs-string">&quot;用户选择的文件路径:&quot;</span>+d2.getDirectory());<br>        System.out.println(<span class="hljs-string">&quot;用户选择的文件名称:&quot;</span>+d2.getFile());<br>    &#125;<br>&#125;);<br><br><span class="hljs-comment">//添加按钮到frame中</span><br><br>frame.add(b1);<br>frame.add(b2,BorderLayout.SOUTH);<br><br><span class="hljs-comment">//设置frame最佳大小并可见</span><br>frame.pack();<br>frame.setVisible(<span class="hljs-literal">true</span>);<br></code></pre></td></tr></table></figure>
+
+<h1 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h1><p>为什么之前的窗口点击 x 号不能关闭？</p>
+<p>窗口、组件是不自带事件处理的。</p>
+<p>就像按钮点击触发事件，需要写一个事件监听器；x 号并没有写点击后相应的事件监听器。要添加相应的事件处理才能触发。</p>
+<h2 id="GUI-事件处理机制"><a href="#GUI-事件处理机制" class="headerlink" title="GUI 事件处理机制"></a>GUI 事件处理机制</h2><p>当在某个组件上发生某些操作的时候，会自动的触发一段代码的执行。</p>
+<p>**事件源(Event Source)**：操作发生的场所，通常指某个组件，例如按钮、窗口等；<br><strong>事件（Event）</strong>：在事件源上发生的操作可以叫做事件，GUI会把事件都封装到一个Event对象中，如果需要知道该事件的详细信息，就可以通过Event对象来获取。<br><strong>事件监听器(Event Listener)</strong>:当在某个事件源上发生了某个事件，事件监听器就可以对这个事件进行处理。</p>
+<p><strong>注册监听</strong>：把某个事件监听器(A)通过某个事件(B)绑定到某个事件源(C)上，当在事件源C上发生了事件B之后，那么事件监听器A的代码就会自动执行。</p>
+<p><img src="C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220515062437913.png" alt="image-20220515062437913"></p>
+<p>实现方式：内部类，当这个事件监听器使用次数不只一次时建议。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java">Frame f=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Frame</span>(<span class="hljs-string">&quot;新窗口&quot;</span>);<br>Button b=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;输出&quot;</span>);<br>TextArea ta=<span class="hljs-keyword">new</span> <span class="hljs-title class_">TextArea</span>();<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">init</span><span class="hljs-params">()</span>&#123;<br>    b.addActionListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">MyActionListener</span>());<br>    f.add(ta);<br>    f.add(b,BorderLayout.SOUTH);<br>    f.pack();<br>    f.setVisible(<span class="hljs-literal">true</span>);<br>&#125;<br><span class="hljs-keyword">private</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyActionListener</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">ActionListener</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">actionPerformed</span><span class="hljs-params">(ActionEvent e)</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;输出！&quot;</span>);<br>        ta.setText(<span class="hljs-string">&quot;输出文本&quot;</span>);<br>    &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    <span class="hljs-keyword">new</span> <span class="hljs-title class_">ActionTry</span>().init();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>实现方式：匿名对象，当该事件监听器使用次数较少时建议。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java">Frame f=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Frame</span>(<span class="hljs-string">&quot;新窗口&quot;</span>);<br>Button b=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;输出&quot;</span>);<br>TextArea ta=<span class="hljs-keyword">new</span> <span class="hljs-title class_">TextArea</span>();<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">init</span><span class="hljs-params">()</span>&#123;<br>    b.addActionListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ActionListener</span>()&#123;<br>        <span class="hljs-meta">@Override</span><br>        <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">actionPerformed</span><span class="hljs-params">(ActionEvent e)</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;输出！&quot;</span>);<br>        ta.setText(<span class="hljs-string">&quot;输出文本&quot;</span>);<br>    &#125;<br>    &#125;);<br>    f.add(ta);<br>    f.add(b,BorderLayout.SOUTH);<br>    f.pack();<br>    f.setVisible(<span class="hljs-literal">true</span>);<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    <span class="hljs-keyword">new</span> <span class="hljs-title class_">ActionTry</span>().init();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="低级事件"><a href="#低级事件" class="headerlink" title="低级事件"></a>低级事件</h2><p>基于某个特定动作的事件，如鼠标点击，拖放等。</p>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>触发时机</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ComponentEvent</td>
+<td>组件事件 ， 当 组件尺寸发生变化、位置发生移动、显示/隐藏状态发生改变时触发该事件。</td>
+</tr>
+<tr>
+<td>ContainerEvent</td>
+<td>容器事件 ， 当容器里发生添加组件、删除组件时触发该事件 。</td>
+</tr>
+<tr>
+<td>WindowEvent</td>
+<td>窗口事件， 当窗 口状态发生改变 ( 如打开、关闭、最大化、最 小化)时触发该事件 。</td>
+</tr>
+<tr>
+<td>FocusEvent</td>
+<td>焦点事件 ， 当组件得到焦点或失去焦点 时触发该事件 。</td>
+</tr>
+<tr>
+<td>KeyEvent</td>
+<td>键盘事件 ， 当按键被按下、松开、单击时触发该事件。</td>
+</tr>
+<tr>
+<td>MouseEvent</td>
+<td>鼠标事件，当进行单击、按下、松开、移动鼠标等动作 时触发该事件。</td>
+</tr>
+<tr>
+<td>PaintEvent</td>
+<td>组件绘制事件 ， 该事件是一个特殊的事件类型 ， 当 GUI 组件调 用 update/paint 方法 来呈现自身时触发该事件，该事件并非专用于事件处理模型 。</td>
+</tr>
+</tbody></table>
+<h2 id="高级事件"><a href="#高级事件" class="headerlink" title="高级事件"></a>高级事件</h2><p>不指向某个特定动作，而是由事件代表的含义表示。</p>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>触发时机</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ActionEvent</td>
+<td>动作事件 ，当按钮、菜单项被单击，在 TextField 中按 Enter 键时触发</td>
+</tr>
+<tr>
+<td>AjustmentEvent</td>
+<td>调节事件，在滑动条上移动滑块以调节数值时触发该事件。</td>
+</tr>
+<tr>
+<td>ltemEvent</td>
+<td>选项事件，当用户选中某项， 或取消选中某项时触发该事件 。</td>
+</tr>
+<tr>
+<td>TextEvent</td>
+<td>文本事件， 当文本框、文本域里的文本发生改变时触发该事件。</td>
+</tr>
+</tbody></table>
+<h2 id="事件监听器"><a href="#事件监听器" class="headerlink" title="事件监听器"></a>事件监听器</h2><p>不同的事件需要使用不同的监听器监听，不同的监听器需要实现不同的监听器接口， 当指定事件发生后 ， 事件监听器就会调用所包含的事件处理器(实例方法)来处理事件 。</p>
+<table>
+<thead>
+<tr>
+<th>事件类别</th>
+<th>描述信息</th>
+<th>监听器接口名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ActionEvent</td>
+<td>激活组件</td>
+<td>ActionListener</td>
+</tr>
+<tr>
+<td>ItemEvent</td>
+<td>选择了某些项目</td>
+<td>ItemListener</td>
+</tr>
+<tr>
+<td>MouseEvent</td>
+<td>鼠标移动</td>
+<td>MouseMotionListener</td>
+</tr>
+<tr>
+<td>MouseEvent</td>
+<td>鼠标点击等</td>
+<td>MouseListener</td>
+</tr>
+<tr>
+<td>KeyEvent</td>
+<td>键盘输入</td>
+<td>KeyListener</td>
+</tr>
+<tr>
+<td>FocusEvent</td>
+<td>组件收到或失去焦点</td>
+<td>FocusListener</td>
+</tr>
+<tr>
+<td>AdjustmentEvent</td>
+<td>移动了滚动条等组件</td>
+<td>AdjustmentListener</td>
+</tr>
+<tr>
+<td>ComponentEvent</td>
+<td>对象移动缩放显示隐藏等</td>
+<td>ComponentListener</td>
+</tr>
+<tr>
+<td>WindowEvent</td>
+<td>窗口收到窗口级事件</td>
+<td>WindowListener</td>
+</tr>
+<tr>
+<td>ContainerEvent</td>
+<td>容器中增加删除了组件</td>
+<td>ContainerListener</td>
+</tr>
+<tr>
+<td>TextEvent</td>
+<td>文本字段或文本区发生改变</td>
+<td>TextListener</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs java">Frame f=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Frame</span>();<br>TextField tf=<span class="hljs-keyword">new</span> <span class="hljs-title class_">TextField</span>(<span class="hljs-number">30</span>);<br>Choice c=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Choice</span>();<br>c.add(<span class="hljs-string">&quot;1&quot;</span>);<br>c.add(<span class="hljs-string">&quot;2&quot;</span>);<br>c.add(<span class="hljs-string">&quot;3&quot;</span>);<br>tf.addTextListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">TextListener</span>() &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">textValueChanged</span><span class="hljs-params">(TextEvent e)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;文本内容改变&quot;</span>+tf.getText());<br>    &#125;<br>&#125;);<br>c.addItemListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ItemListener</span>() &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">itemStateChanged</span><span class="hljs-params">(ItemEvent e)</span> &#123;<br>        Object item=c.getSelectedItem();<br>        System.out.println(<span class="hljs-string">&quot;选择框列表改变&quot;</span>+item);<br>    &#125;<br>&#125;);<br>f.addContainerListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ContainerListener</span>() &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">componentAdded</span><span class="hljs-params">(ContainerEvent e)</span> &#123;<br>        Component child=e.getChild();<br>        System.out.println(<span class="hljs-string">&quot;新添加的组件：&quot;</span>+child);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">componentRemoved</span><span class="hljs-params">(ContainerEvent e)</span> &#123;<br><br>    &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h3 id="点击-x-号关闭"><a href="#点击-x-号关闭" class="headerlink" title="点击 x 号关闭"></a>点击 x 号关闭</h3><p>思路：很简单，frame 绑定对应的 WindowListener 即可。</p>
+<p>但是问题是 WindowListener 里面有很多抽象方法需要重写。windowClosing（关闭窗口时执行），windowClosed（关闭完窗口后执行），windowOpened（打开窗口后执行）……</p>
+<p>有一种适配器模式 WindowAdapter，原理是 WindowAdapter 继承了 WindowListener 后，重写了以上所有抽象方法（只是简单的重写补全了，没有做任何操作。如 windowOpened(){} windowClosed(){} ）。然后我们可以只重写自己想要重写的方法，而不用把所有方法都重写。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java">frame.addWindowListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">WindowAdapter</span>()&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">windowClosing</span><span class="hljs-params">(WindowEvent e)</span>&#123;<br>        System.exit(<span class="hljs-number">0</span>);<br>    &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+
+
+ 
       <!-- reward -->
       
     </div>
@@ -225,7 +418,7 @@
 
     
     <article
-  id="post-Python——语法基础2"
+  id="post-Java 学习博客_ 入门—— GUI_1"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -236,8 +429,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2022/05/20/Python%E2%80%94%E2%80%94%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%802/"
-    >Python——语法基础2</a> 
+  <a class="article-title" href="/2022/05/16/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%20GUI_1/"
+    >Java 学习博客_入门—— GUI_1</a> 
 </h2>
  
 
@@ -245,36 +438,244 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2022/05/20/Python%E2%80%94%E2%80%94%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%802/" class="article-date">
-  <time datetime="2022-05-19T16:00:00.000Z" itemprop="datePublished">2022-05-20</time>
+      <a href="/2022/05/16/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%20GUI_1/" class="article-date">
+  <time datetime="2022-05-15T16:00:00.000Z" itemprop="datePublished">2022-05-16</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Python/">Python</a>
+    <a class="article-category-link" href="/categories/java/">java</a>
   </div>
    
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="导包"><a href="#导包" class="headerlink" title="导包"></a>导包</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> random<br>x=random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>)<span class="hljs-comment">#包含0,1,2</span><br></code></pre></td></tr></table></figure>
+  <p>java 也可以在前端进行开发，使用 AWT 和 SWING 完成图形化界面编程。</p>
+<h1 id="AWT"><a href="#AWT" class="headerlink" title="AWT"></a>AWT</h1><p>Abstract Window Toolkit 抽象窗口工具集。它是抽象的，程序只指定某个模块的位置和行为，具体实现（样式等）是由操作系统完成。</p>
+<p>主要包括两个基类： Component 和 MenuComponent。其中 Component 中的 Container 组件可以作为容器，包含其他组件。</p>
+<p><img src="C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220513151527543.png" alt="image-20220513151527543"></p>
+<p>此外，AWT 还有一个比较重要的知识点 LayoutManager，负责处理布局。</p>
+<p><img src="C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220513151540412.png" alt="image-20220513151540412"></p>
+<h2 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>setLocation(int x, int y)</td>
+<td>设置组件位置</td>
+</tr>
+<tr>
+<td>setSize(int width, int height)</td>
+<td>设置组件大小</td>
+</tr>
+<tr>
+<td>setBounds(int x, int y, int width, int height)</td>
+<td>同时设置位置和大小</td>
+</tr>
+<tr>
+<td>setVisible(Boolean b)</td>
+<td>设置该组件的可见性</td>
+</tr>
+</tbody></table>
+<h3 id="Window"><a href="#Window" class="headerlink" title="Window"></a>Window</h3><p>Frame 是继承自 Window 的类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java">Frame frame=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Frame</span>(<span class="hljs-string">&quot;标题&quot;</span>);<br>frame.setLocation(<span class="hljs-number">100</span>,<span class="hljs-number">100</span>);<span class="hljs-comment">//位置</span><br>frame.setSize(<span class="hljs-number">500</span>,<span class="hljs-number">300</span>);<span class="hljs-comment">//宽高</span><br>frame.setVisible(<span class="hljs-literal">true</span>);<br></code></pre></td></tr></table></figure>
 
-<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">函数名</span>():<span class="hljs-comment"># 括号内也可以有参数</span><br>    函数体<br>    <span class="hljs-keyword">return</span> x,y<span class="hljs-comment"># 返回值可以是多个</span><br>x,y=函数名()<span class="hljs-comment"># 调用</span><br></code></pre></td></tr></table></figure>
+<p>现在的窗口是没法点击x号关闭的，需要手动停止运行才能结束。</p>
+<h3 id="Container"><a href="#Container" class="headerlink" title="Container"></a>Container</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Component add(Component comp)</td>
+<td>向该组件中添加其他组件</td>
+</tr>
+<tr>
+<td>Component getComponentAt(int x, int y)</td>
+<td>返回指定位置的组件</td>
+</tr>
+<tr>
+<td>int getComponentCount()</td>
+<td>返回该容器中组件的数量</td>
+</tr>
+<tr>
+<td>Component[] getComponents()</td>
+<td>返回该容器中所有的组件</td>
+</tr>
+</tbody></table>
+<p>容器不能单独存在，必须依附于 Window 存在。</p>
+<p>编写时，先添加 window 窗口，然后添加容器，再在容器中添加组件，最后把容器添加到 Window 中，调整 Window 位置。自己也可以写组件。</p>
+<h4 id="Panel"><a href="#Panel" class="headerlink" title="Panel"></a>Panel</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//1. 创建 window 对象</span><br>Frame myFrame=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Frame</span>();<br><span class="hljs-comment">//2. 创建 Panel 对象</span><br>Panel p=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Panel</span>();<br><span class="hljs-comment">//创建文本框和按钮，放入 Panel 对象</span><br>p.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">TextField</span>(<span class="hljs-string">&quot;测试文本&quot;</span>));<br>p.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;测试按钮&quot;</span>));<br><span class="hljs-comment">//出现乱码的话，左上角 PanelTry-添加 VM 选项-输入 -Dfile.encoding=gbk</span><br>myFrame.add(p);<br>myFrame.setBounds(<span class="hljs-number">100</span>,<span class="hljs-number">100</span>,<span class="hljs-number">500</span>,<span class="hljs-number">300</span>);<br>myFrame.setVisible(<span class="hljs-literal">true</span>);<br></code></pre></td></tr></table></figure>
 
-<h1 id="全局、局部变量"><a href="#全局、局部变量" class="headerlink" title="全局、局部变量"></a>全局、局部变量</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">a = <span class="hljs-number">100</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">function</span>():<br>    a = <span class="hljs-number">200</span><span class="hljs-comment"># 局部变量，和原来的a地址不同。不会互相影响</span><br>    b = <span class="hljs-number">200</span><span class="hljs-comment"># 局部变量，作用域只在函数内，在外面使用b会报错</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">function1</span>():<br>    <span class="hljs-keyword">global</span> a<span class="hljs-comment"># 但如果这样声明了，就是使用的全局变量。更改的话全局范围内的a值也会变。</span><br></code></pre></td></tr></table></figure>
+<h4 id="ScrollPane"><a href="#ScrollPane" class="headerlink" title="ScrollPane"></a>ScrollPane</h4><p>元素过多时会添加滚动条。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java">Frame frame=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Frame</span>(<span class="hljs-string">&quot;ScrollPane&quot;</span>);<br>ScrollPane sp=<span class="hljs-keyword">new</span> <span class="hljs-title class_">ScrollPane</span>(ScrollPane.SCROLLBARS_ALWAYS);<span class="hljs-comment">//默认是总是有滚动条</span><br>sp.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">TextField</span>(<span class="hljs-string">&quot;测试文本&quot;</span>));<br>sp.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;测试按钮&quot;</span>));<br>frame.add(sp);<br>frame.setBounds(<span class="hljs-number">100</span>,<span class="hljs-number">100</span>,<span class="hljs-number">500</span>,<span class="hljs-number">300</span>);<br>frame.setVisible(<span class="hljs-literal">true</span>);<br></code></pre></td></tr></table></figure>
 
-<h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python">f = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;1.txt&#x27;</span>,<span class="hljs-string">&#x27;w&#x27;</span>)<span class="hljs-comment"># w模式下，如果同级目录中没有找到对应文件，就会新建一个。一执行，同级目录下立刻就会新建1.txt</span><br><span class="hljs-comment"># 若非w模式下没找到对应文件，会报错</span><br>f.write(<span class="hljs-string">&quot;hello world!&quot;</span>)<span class="hljs-comment"># 往该文件中写入内容</span><br>f.close()<span class="hljs-comment"># 关闭文件</span><br><br>f1 = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;1.txt&#x27;</span>,<span class="hljs-string">&#x27;r&#x27;</span>)<span class="hljs-comment"># r模式代表只读文件，不存在该文件则报错。</span><br>content1 = f1.read(<span class="hljs-number">5</span>)<span class="hljs-comment"># 读取前五个字符</span><br>content2 = f1.read(<span class="hljs-number">5</span>)<span class="hljs-comment"># 读取6~10个字符</span><br>contentline=f1.readlines()<span class="hljs-comment"># 读取文件中所有行，每行作为列表 contentline 中的一项（字符串元素），并以\n结尾</span><br></code></pre></td></tr></table></figure>
+<p>但是实际上按钮把整个页面占满了。测试文本并没有出现。这就涉及到布局管理器的知识了。</p>
+<h2 id="LayoutManager"><a href="#LayoutManager" class="headerlink" title="LayoutManager"></a>LayoutManager</h2><p>相比手动在不同平台上设置各个组件的大小，LayoutManager 会根据不同平台自动调整组件大小，使得程序员即便在不同的平台上也可以做到相同的布局使用体验。</p>
+<p><em>最佳大小：组件刚好和内容一样大小。通过 pack() 方法设置。</em></p>
+<h3 id="FlowLayout"><a href="#FlowLayout" class="headerlink" title="FlowLayout"></a>FlowLayout</h3><p>组件像水流一样流动（排列），碰到障碍（边界）就会折回重新开始。</p>
+<table>
+<thead>
+<tr>
+<th>构造方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FlowLayout()</td>
+<td>使用默认的对齐方式、垂直间距、水平间距</td>
+</tr>
+<tr>
+<td>FlowLayout(int align)</td>
+<td>设置对齐方式（常量 LEFT RIGHT CENTER）</td>
+</tr>
+<tr>
+<td>FlowLayout(int align, int hgap, int vgap)</td>
+<td>设置对齐方式、垂直间距、水平间距</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java">Frame f=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Frame</span>(<span class="hljs-string">&quot;Float 测试&quot;</span>);<br>f.setLayout(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FlowLayout</span>(FlowLayout.LEFT,<span class="hljs-number">20</span>,<span class="hljs-number">20</span>));<br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">100</span>;i++)&#123;f.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;按钮&quot;</span>+i));&#125;<br>f.pack();<span class="hljs-comment">//最佳大小设置</span><br>f.setVisible(<span class="hljs-literal">true</span>);<br></code></pre></td></tr></table></figure>
 
-<p>w：写入，已存在该文件则覆盖，不存在则新建。指针一开始在文件开头，逐渐后移。</p>
-<p>r：读取。指针一开始在文件开头，逐渐后移。</p>
-<p>rb：二进制方式打开文件（只读）</p>
-<p>wb：二进制方式写入文件</p>
-<p>重命名文件、删除文件</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<span class="hljs-comment"># 重命名和删除文件都要引入 os 模块</span><br>os.rename(<span class="hljs-string">&#x27;1.txt&#x27;</span>,<span class="hljs-string">&#x27;2.txt&#x27;</span>)<span class="hljs-comment"># 重命名</span><br>os.remove(<span class="hljs-string">&#x27;2.txt&#x27;</span>)<span class="hljs-comment"># 删除文件</span><br></code></pre></td></tr></table></figure>
+<h3 id="BorderLayout"><a href="#BorderLayout" class="headerlink" title="BorderLayout"></a>BorderLayout</h3><p>分为5各部分，东西南北中。</p>
+<p>往 BorderLayout 中添加组件需要指明放在了哪个区域中。默认在 CENTER 里。</p>
+<p>如果往一个区域中添加了多个组件，后添加的会覆盖新添加的。</p>
+<p><em>因此想如果往一个区域中添加多个组件，不能一个个 add 到这个区域。可以把他们都 add 到容器中，然后把容器 add 到那个区域。</em></p>
+<table>
+<thead>
+<tr>
+<th>构造方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BorderLayout()</td>
+<td></td>
+</tr>
+<tr>
+<td>BorderLayout(int hgap, int vgap)</td>
+<td>指定水平垂直间距创建</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java">Frame f=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Frame</span>(<span class="hljs-string">&quot;BorderLayoutTry&quot;</span>);<br>f.setLayout(<span class="hljs-keyword">new</span> <span class="hljs-title class_">BorderLayout</span>(<span class="hljs-number">30</span>,<span class="hljs-number">10</span>));<br>f.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;北侧按钮&quot;</span>),BorderLayout.NORTH);<br>f.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;南侧按钮&quot;</span>),BorderLayout.SOUTH);<br>f.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;中侧按钮&quot;</span>),BorderLayout.CENTER);<br>f.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;西侧按钮&quot;</span>),BorderLayout.WEST);<br>f.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;东侧按钮&quot;</span>),BorderLayout.EAST);<br>f.pack();<br>f.setVisible(<span class="hljs-literal">true</span>);<br></code></pre></td></tr></table></figure>
 
-<h1 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h1><p>就像 java 中，异常会中断程序，可以提前处理。</p>
-<p>比如：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">try</span>:<br>    f.<span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;123.txt&#x27;</span>,<span class="hljs-string">&#x27;r&#x27;</span>)<span class="hljs-comment"># 不存在该文件</span><br><span class="hljs-keyword">except</span> IOError:<span class="hljs-comment"># 文件没找到属于 IOError 输入输出异常</span><br>    <span class="hljs-keyword">pass</span><span class="hljs-comment"># 不做任何处理</span><br><br><span class="hljs-keyword">try</span>:<br>    <span class="hljs-built_in">print</span>(name)<span class="hljs-comment">#没有定义的变量</span><br><span class="hljs-keyword">except</span> NameError:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;name不存在！&quot;</span>)<br><br><span class="hljs-comment"># 同时捕获多个异常：except (IOError, NameError): 如果发生了其中的一个异常，try 内代码就会停止运行并处理</span><br><span class="hljs-comment"># 其实所有的异常都可以用一个 except Exception 捕获。</span><br><br><span class="hljs-comment"># 获取错误描述：</span><br><span class="hljs-keyword">except</span> Xxx <span class="hljs-keyword">as</span> result:<br>    <span class="hljs-built_in">print</span>(result)<br>    <br><span class="hljs-comment"># try...finally finally 中的内容是必须执行的</span><br><span class="hljs-keyword">import</span> time<br><span class="hljs-keyword">try</span>:<br>    f.<span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;123.txt&#x27;</span>,<span class="hljs-string">&#x27;r&#x27;</span>)<span class="hljs-comment"># f在 try 中定义的，是局部变量。因此如果 finally 要关闭f的话，应该写在 try 内</span><br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>            content = f.readline()<br>            <span class="hljs-keyword">if</span>(<span class="hljs-built_in">len</span>(content)==<span class="hljs-number">0</span>):<br>                <span class="hljs-keyword">break</span><br>            time.sleep(<span class="hljs-number">2</span>)<span class="hljs-comment"># 打印行与行之间间隔2s</span><br>            <span class="hljs-built_in">print</span>(content)<br>    <span class="hljs-keyword">finally</span>:<br>        f.close()<span class="hljs-comment"># 强制关闭，一定执行</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;文件关闭&quot;</span>)<br><span class="hljs-keyword">except</span> Exception:<br>    <span class="hljs-keyword">pass</span><br><span class="hljs-keyword">finally</span>:<br>    <span class="hljs-keyword">pass</span><span class="hljs-comment"># 如果打开文件失败了，就说明没有这个文件，自然也不用关闭这个文件了</span><br></code></pre></td></tr></table></figure>
+<p>没添加内容的区域会被其他区域占用。如西侧没添加，中间的部分就会靠左占掉西侧。</p>
+<p>可以和其他排版结合使用~</p>
+<h3 id="GridLayout"><a href="#GridLayout" class="headerlink" title="GridLayout"></a>GridLayout</h3><p>将容器分割成纵横线分隔的网格，每个网格站的区域大小相同。</p>
+<p>添加组件默认从左往右、从上往下添加。</p>
+<table>
+<thead>
+<tr>
+<th>构造方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GridLayout(int rows, int cols)</td>
+<td>指定行数列数，间距默认</td>
+</tr>
+<tr>
+<td>GridLayout(int rows, int cols, int hgap, int vgap)</td>
+<td>指定行数、列数、间距</td>
+</tr>
+</tbody></table>
+<h3 id="GridBagLayout"><a href="#GridBagLayout" class="headerlink" title="GridBagLayout"></a>GridBagLayout</h3><p>可以让部分组件占用更多的网格（1*2,3*3……）</p>
+<p>通过 API GridBagConstraints 类设置。</p>
+<p>用起来很复杂，就不用了……因为在 swing 中有更强大的解决方法。</p>
+<h3 id="CardLayout"><a href="#CardLayout" class="headerlink" title="CardLayout"></a>CardLayout</h3><p>卡片布局，把加入容器的所有组件看做一叠卡片，类似队列，最先添加的在最上面，后添加的在下面。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CardLayout()</td>
+<td></td>
+</tr>
+<tr>
+<td>CardLayout(int hgap, int vgap)</td>
+<td>指定卡片与容器左右、上下边距</td>
+</tr>
+<tr>
+<td>first(Container targer)</td>
+<td>第一张卡片</td>
+</tr>
+<tr>
+<td>last(Container targer)</td>
+<td>最后一张卡片</td>
+</tr>
+<tr>
+<td>previous(Container target)</td>
+<td>前一张卡片</td>
+</tr>
+<tr>
+<td>next(Container target)</td>
+<td>后一张卡片</td>
+</tr>
+<tr>
+<td>show(Container target, String name)</td>
+<td>显示指定名字的卡片</td>
+</tr>
+</tbody></table>
+<p>制作一个卡片展示器，有五张卡片，然后5个按钮可以快速查看上一张、下一张、中间一张、第一张、最后一张。</p>
+<p>展示卡片部分是 p 容器，5个按钮部分是 p2 容器。</p>
+<p>这里涉及到一点事件监听器的知识了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs java">Frame f=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Frame</span>(<span class="hljs-string">&quot;卡片布局&quot;</span>);<br>f.setLayout(<span class="hljs-keyword">new</span> <span class="hljs-title class_">BorderLayout</span>());<br>Panel p=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Panel</span>();<br>CardLayout c=<span class="hljs-keyword">new</span> <span class="hljs-title class_">CardLayout</span>();<span class="hljs-comment">//需要创建卡片对象</span><br>p.setLayout(c);<br>String[] names=&#123;<span class="hljs-string">&quot;第一张&quot;</span>,<span class="hljs-string">&quot;第二张&quot;</span>,<span class="hljs-string">&quot;第三张&quot;</span>,<span class="hljs-string">&quot;第四张&quot;</span>&#125;;<br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">4</span>;i++)p.add(names[i],<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(names[i]));<br>f.add(p);<br>Panel p2=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Panel</span>();<br><span class="hljs-type">Button</span> <span class="hljs-variable">b1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;上一张&quot;</span>);<br><span class="hljs-type">Button</span> <span class="hljs-variable">b2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;下一张&quot;</span>);<br><span class="hljs-type">Button</span> <span class="hljs-variable">b3</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;第三张&quot;</span>);<br><span class="hljs-type">Button</span> <span class="hljs-variable">b4</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;第一张&quot;</span>);<br><span class="hljs-type">Button</span> <span class="hljs-variable">b5</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;最后一张&quot;</span>);<br>ActionListener l=<span class="hljs-keyword">new</span> <span class="hljs-title class_">ActionListener</span>() &#123;<span class="hljs-comment">//事件监听器</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">actionPerformed</span><span class="hljs-params">(ActionEvent e)</span> &#123;<br>        String actionCommand=e.getActionCommand();<span class="hljs-comment">//获取按钮上的文字</span><br>        <span class="hljs-keyword">switch</span>(actionCommand)&#123;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;上一张&quot;</span>:<br>                c.previous(p);<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;下一张&quot;</span>:<br>                c.next(p);<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;第三张&quot;</span>:<br>                c.show(p,<span class="hljs-string">&quot;第三张&quot;</span>);<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;第一张&quot;</span>:<br>                c.first(p);<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;最后一张&quot;</span>:<br>                c.last(p);<br>                <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>&#125;;<br>b1.addActionListener(l);<br>b2.addActionListener(l);<br>b3.addActionListener(l);<br>b4.addActionListener(l);<br>b5.addActionListener(l);<br>p2.add(b1);<br>p2.add(b2);<br>p2.add(b3);<br>p2.add(b4);<br>p2.add(b5);<br>f.add(p2,BorderLayout.SOUTH);<br>f.pack();<br>f.setVisible(<span class="hljs-literal">true</span>);<br></code></pre></td></tr></table></figure>
 
+<h3 id="BoxLayout"><a href="#BoxLayout" class="headerlink" title="BoxLayout"></a>BoxLayout</h3><p>是 swing 引入的一个布局管理器，可以简化开发。</p>
+<p>BoxLayout(Container target, int axis)，axis有BoxLayout.X_AXIS 横向和BoxLayout.Y_AXIS 纵向。</p>
+<h1 id="Box"><a href="#Box" class="headerlink" title="Box"></a>Box</h1><p>java.swing 中还提供了一个更简单的容器：Box，默认布局管理器就是 BoxLayout。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>static Box createHorizontalBox()</td>
+<td>创建一个水平排列组件的容器</td>
+</tr>
+<tr>
+<td>static Box createVerticalBox()</td>
+<td>创建一个垂直排列组件的容器</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java">Box b1=Box.createHorizontalBox();<br>b1.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;1&quot;</span>));<br>b1.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;2&quot;</span>));<br>f.add(b1);<br>Box b2=Box.createVerticalBox();<br>b2.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;3&quot;</span>));<br>b2.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;4&quot;</span>));<br>f.add(b2,BorderLayout.SOUTH);<br></code></pre></td></tr></table></figure>
+
+<p>还可以生成一些间隔。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>static Component createHorizontalGlue()</td>
+<td>创建一条水平 Glue</td>
+</tr>
+<tr>
+<td>static Component createVerticalGlue()</td>
+<td>创建一条垂直 Glue</td>
+</tr>
+<tr>
+<td>static Component createHorizontalStrut(int width)</td>
+<td>创建一条指定宽度的 Strut</td>
+</tr>
+<tr>
+<td>static Component createVerticalStrut(int height)</td>
+<td>创建一条指定高度的 Strut</td>
+</tr>
+</tbody></table>
+<p>直接 add 到 Box 中就可以。</p>
+<p><strong>注意：NORTH SOUTH 高度是固定的，和 Glue 连用的时候要注意。</strong></p>
+<p>Glue 随着窗口放缩会变换间距。Strut 间距是固定的。</p>
  
       <!-- reward -->
       

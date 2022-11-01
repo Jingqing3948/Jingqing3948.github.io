@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title> 灰海宽松的博客</title>
+      <title>Java 学习博客_入门—— GUI_7 |  灰海宽松的博客</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -54,24 +54,38 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-Java 学习博客_入门——IO 字节流"
+  id="post-Java 学习博客_ 入门——GUI_7"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
   data-scroll-reveal
 >
   <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Java 学习博客_入门—— GUI_7
+</h1>
+ 
+
+      
+    </header>
      
     <div class="article-meta">
-      <a href="/2022/06/29/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94IO%20%E5%AD%97%E8%8A%82%E6%B5%81/" class="article-date">
-  <time datetime="2022-06-29T02:49:50.632Z" itemprop="datePublished">2022-06-29</time>
-</a>   
+      <a href="/2022/05/19/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94GUI_7/" class="article-date">
+  <time datetime="2022-05-18T16:00:00.000Z" itemprop="datePublished">2022-05-19</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+  
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.5k</span>
+            <span class="post-count">1.6k</span>
         </span>
     </span>
 
@@ -95,159 +109,62 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="File-类"><a href="#File-类" class="headerlink" title="File 类"></a>File 类</h1><p>在 java.io 包下。</p>
-<p>File 是文件和目录（文件夹）的路径名的抽象表示。</p>
-<h2 id="绝对路径和相对路径"><a href="#绝对路径和相对路径" class="headerlink" title="绝对路径和相对路径"></a>绝对路径和相对路径</h2><p>绝对路径是完整的路径名，不需要其他信息就能定位其所表示的文件。如<code>D:\\文件夹\\java.txt</code>。</p>
-<p>相对路径：必须使用取自其他路径名的信息进行解释。如从源文件目录下开始写：<code>myFile\\java.txt</code>。</p>
-<h2 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h2><table>
-<thead>
-<tr>
-<th>构造方法</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>File(String pathname)</td>
-<td>通过将给定的路径名字符串转换为抽象路径名创建对象</td>
-</tr>
-<tr>
-<td>File(String parent, String child)</td>
-<td>父子两个路径名字符串</td>
-</tr>
-<tr>
-<td>File(File parent, String child)</td>
-<td></td>
-</tr>
-</tbody></table>
-<p>路径形如：<code>D:\\文件夹\\java.txt</code>。也可以拆分成父<code>D:\\文件夹</code>和子<code>java.txt</code>。也可以第一个 File 对象的路径是<code>D:\\文件夹</code>，子 File 补充<code>java.txt</code>。</p>
-<p>如果直接输出 File 类型，会得到路径。说明 File 类重写了 toString 方法。</p>
-<h2 id="创建功能"><a href="#创建功能" class="headerlink" title="创建功能"></a>创建功能</h2><table>
-<thead>
-<tr>
-<th>方法</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public boolean createNewFile()</td>
-<td>若此文件名的文件不存在，则创建一个空的</td>
-</tr>
-<tr>
-<td>public boolean mkdir()</td>
-<td>创建目录</td>
-</tr>
-<tr>
-<td>public boolean mkdirs()</td>
-<td>创建目录，包括任何必须的父目录</td>
-</tr>
-</tbody></table>
-<p>创建成功返回 true，创建失败（如已存在）返回 false。</p>
-<p>如果调错方法了，可能会创建一个名为 java.txt 的文件夹！一定要正确使用创建文件的方法。</p>
-<h2 id="创建获取功能"><a href="#创建获取功能" class="headerlink" title="创建获取功能"></a>创建获取功能</h2><table>
-<thead>
-<tr>
-<th>方法</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public boolean isDirectory()</td>
-<td>是否是个目录</td>
-</tr>
-<tr>
-<td>public boolean isFile()</td>
-<td>是否是个文件</td>
-</tr>
-<tr>
-<td>public boolean exists()</td>
-<td>是否存在</td>
-</tr>
-<tr>
-<td>public String getAbsolutePath()</td>
-<td>获取其绝对路径</td>
-</tr>
-<tr>
-<td>public String getPath()</td>
-<td>获取其相对路径</td>
-</tr>
-<tr>
-<td>public String getName()</td>
-<td>获取该文件或目录名</td>
-</tr>
-<tr>
-<td>public String[] list()</td>
-<td>返回此抽象路径名表示的<strong>目录</strong>中的所有文件和目录的名称字符串数组</td>
-</tr>
-<tr>
-<td>public File[] listFiles()</td>
-<td>返回此抽象路径名表示的<strong>目录</strong>中的文件和目录的 File 对象数组</td>
-</tr>
-</tbody></table>
-<h2 id="删除功能"><a href="#删除功能" class="headerlink" title="删除功能"></a>删除功能</h2><p>public boolean delete()</p>
-<p>如果目录中有内容，不能直接删目录。要先删空内容。</p>
-<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">f</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span>&#123;<br>    <span class="hljs-keyword">if</span>(n==<span class="hljs-number">1</span>||n==<span class="hljs-number">2</span>)<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> f(n-<span class="hljs-number">1</span>)+f(n-<span class="hljs-number">2</span>);<span class="hljs-comment">//斐波那契数列</span><br>&#125;<br></code></pre></td></tr></table></figure>
+  <p>实际使用 Java 开发图形界面程序时 ，很少使用 AWT 组件，绝大部分时候都是用 Swing 组件开发的 。 </p>
+<p>Swing是<strong>由100%纯 Java实现的，不再依赖于本地平台的 GUI</strong>， 因此可以在所有平台上都保持相同的界面外观。</p>
+<p>独立于本地平台的Swing组件被称为<strong>轻量级组件</strong>;而依赖于本地平台的 AWT 组件被称为<strong>重量级组件</strong>。</p>
+<p><em>由于 Swing 的所有组件完全采用 Java 实现，不再调用本地平台的 GUI，所以导致 Swing 图形界面的显示速度要比 AWT 图形界面的显示速度慢一些，但相对于快速发展的硬件设施而言，这种微小的速度差别无妨大碍。</em></p>
+<p>Swing 组件不再依赖于本地平台的 GUI，无须采用各种平台的 GUI 交集 ，因此 Swing 提供了大量图形界面组件 ， 远远超出了 AWT 所提供的图形界面组件集。用户也可以选择自己喜欢的样式。</p>
+<p>Swing 组件采用 MVC(Model-View-Controller， 即模型一视图一控制器)设计模式.</p>
+<pre><code>模型(Model): 用于维护组件的各种状态；
 
-<p>如果未能跳出递归，方法不断压入堆栈空间，导致内存溢出。</p>
-<h1 id="IO-流"><a href="#IO-流" class="headerlink" title="IO 流"></a>IO 流</h1><p>IO 表示输入输出，流是对数据传输的统称。</p>
-<p>常见应用：文件复制、上传、下载。</p>
-<p>分为字节、字符两种数据类型的输入、输出流。（如果通过记事本打开，你看的懂内容，就是字符流；如果一串乱码，就是字节流）</p>
-<h2 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h2><p>java.io.InputStream，抽象类，是所有输入字节流的类的超类。</p>
-<p>java.io.OutputStream，抽象类，是所有输出字节流的类的超类。</p>
-<p>子类名称都是以父类作为后缀。</p>
-<h3 id="FileOutputStream"><a href="#FileOutputStream" class="headerlink" title="FileOutputStream"></a>FileOutputStream</h3><p>数据写入 Stream。</p>
-<p><strong>使用时需要抛出异常，main() throws FileNotFoundException。</strong></p>
+视图(View): 是组件的可视化表现；
+
+控制器(Controller):用于控制对于各种事件、组件做出响应 。
+
+当模型发生改变时，它会通知所有依赖它的视图，视图会根据模型数据来更新自己。Swing使用UI代理来包装视图和控制器， 还有一个模型对象来维护该组件的状态。例如，按钮JButton有一个维护其状态信息的模型ButtonModel对象 。 Swing组件的模型是自动设置的，因此一般都使用JButton，而无须关心ButtonModel对象。
+</code></pre>
+<p><img src="C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220518132257874.png" alt="image-20220518132257874"></p>
+<p><strong>Swing组件和AWT组件的对应关系：</strong></p>
+<p>​    大部分情况下，只需要在AWT组件的名称前面加个J，就可以得到其对应的Swing组件名称，但有几个例外：</p>
+<p>​        1. JComboBox: 对应于 AWT 里的 Choice 组件，但比 Choice 组件功能更丰富 。<br>​        2. JFileChooser: 对应于 AWT 里的 FileDialog 组件 。<br>​        3. JScrollBar: 对应于 AWT 里的 Scrollbar 组件，注意两个组件类名中 b 字母的大小写差别。<br>​        4. JCheckBox : 对应于 AWT 里的 Checkbox 组件， 注意两个组件类名中 b 字母的大小 写差别 。<br>​        5. JCheckBoxMenultem: 对应于 AWT 里的 CheckboxMenuItem 组件，注意两个组件类名中 b字母的大小写差别。</p>
+<p><strong>Swing组件按照功能来分类：</strong></p>
+<pre><code>1. 顶层容器: JFrame、JApplet、JDialog 和 JWindow 。
+2. 中间容器: JPanel 、 JScrollPane 、 JSplitPane 、 JToolBar 等 。
+3. 特殊容器:在用户界面上具有特殊作用的中间容器，如 JIntemalFrame 、 JRootPane 、 JLayeredPane和 JDestopPane 等 。
+4. 基本组件 : 实现人机交互的组件，如 JButton、 JComboBox 、 JList、 JMenu、 JSlider 等 。
+5. 不可编辑信息的显示组件:向用户显示不可编辑信息的组件，如JLabel 、 JProgressBar 和 JToolTip等。
+6. 可编辑信息的显示组件:向用户显示能被编辑的格式化信息的组件，如 JTable 、 JTextArea 和JTextField 等 。
+7. 特殊对话框组件:可以直接产生特殊对话框的组件 ， 如 JColorChooser 和 JFileChooser 等。
+</code></pre>
+<h1 id="AWT组件的Swing实现"><a href="#AWT组件的Swing实现" class="headerlink" title="AWT组件的Swing实现"></a>AWT组件的Swing实现</h1><p>​    Swing 为除 Canvas 之外的所有 AWT 组件提供了相应的实现，Swing 组件比 AWT 组件的功能更加强大。相对于 AWT 组件， Swing 组件具有如下 4 个额外的功能 :</p>
 <ol>
-<li><p>创建字节输出流对象</p>
-<p>FileOutputStream(String name) 创建文件输出流，以指定的名称写入文件。name 是路径。如果没有该文件，会创建一个。</p>
+<li>可以为 Swing 组件设置提示信息。使用 setToolTipText()方法，为组件设置对用户有帮助的提示信息 。</li>
+<li>很多 Swing 组件如按钮、标签、菜单项等，除使用文字外，还可以使用图标修饰自己。为了允许在 Swing 组件中使用图标， Swing为Icon 接口提供了 一个实现类: Imagelcon ，该实现类代表一个图像图标。</li>
+<li>支持插拔式的外观风格。每个 JComponent 对象都有一个相应的 ComponentUI 对象，为它完成所有的绘画、事件处理、决定尺寸大小等工作。 ComponentUI 对象依赖当前使用的 PLAF ， 使用 UIManager.setLookAndFeel()方法可以改变图形界面的外观风格 。</li>
+<li>支持设置边框。Swing 组件可以设置一个或多个边框。 Swing 中提供了各式各样的边框供用户边 用，也能建立组合边框或自己设计边框。 一种空白边框可以用于增大组件，同时协助布局管理器对容器中的组件进行合理的布局。</li>
+</ol>
+<p>每个 Swing 组件都有一个对应的UI 类，可以切换其外观。例如 JButton组件就有一个对应的 ButtonUI 类来作为UI代理 。每个 Swing组件的UI代理的类名总是将该 Swing 组件类名的 J 去掉，然后在后面添加 UI 后缀 。 </p>
+<p>对于 awt 中的一些监听事件，swing 会有更简便的解决方法。</p>
+<p>右键菜单：<code>f.setComponentPopupMenu(自己定义的右键菜单)</code></p>
+<p>关闭窗口：</p>
+<p><code>f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)</code></p>
+<p>更改样式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">changeFlavor</span><span class="hljs-params">(String command)</span> <span class="hljs-keyword">throws</span> Exception&#123;<br>       <span class="hljs-keyword">switch</span> (command)&#123;<br>           <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;Metal 风格&quot;</span>:<br>               UIManager.setLookAndFeel(<span class="hljs-string">&quot;javax.swing.plaf.metal.MetalLookAndFeel&quot;</span>);<br>               <span class="hljs-keyword">break</span>;<br>           <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;Nimbus 风格&quot;</span>:<br>               UIManager.setLookAndFeel(<span class="hljs-string">&quot;javax.swing.plaf.nimbus.NimbusLookAndFeel&quot;</span>);<br>               <span class="hljs-keyword">break</span>;<br>           <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;Windows 风格&quot;</span>:<br>               UIManager.setLookAndFeel(<span class="hljs-string">&quot;com.sun.java.swing.plaf.windows.WindowsLookAndFeel&quot;</span>);<br>               <span class="hljs-keyword">break</span>;<br>           <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;Windows 经典风格&quot;</span>:<br>               UIManager.setLookAndFeel(<span class="hljs-string">&quot;com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel&quot;</span>);<br>               <span class="hljs-keyword">break</span>;<br>           <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;Motif 风格&quot;</span>:<br>               UIManager.setLookAndFeel(<span class="hljs-string">&quot;com.sun.java.swing.plaf.motif.MotifLookAndFeel&quot;</span>);<br>               <span class="hljs-keyword">break</span>;<br>       &#125;<br><br>       <span class="hljs-comment">//更新f窗口内顶级容器以及所有组件的UI</span><br>       SwingUtilities.updateComponentTreeUI(f.getContentPane());<br>       <span class="hljs-comment">//更新mb菜单条及每部所有组件UI</span><br>       SwingUtilities.updateComponentTreeUI(mb);<br>       <span class="hljs-comment">//更新右键菜单及内部所有菜单项的UI</span><br>       SwingUtilities.updateComponentTreeUI(pop);<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="图标展示"><a href="#图标展示" class="headerlink" title="图标展示"></a>图标展示</h1><p>构造对象时，可以加一个图像参数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">JButton b=<span class="hljs-keyword">new</span> <span class="hljs-title class_">JButton</span>(<span class="hljs-string">&quot;确定&quot;</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">ImageIcon</span>(<span class="hljs-string">&quot;相对路径&quot;</span>));<br></code></pre></td></tr></table></figure>
+
+<h1 id="组件边框"><a href="#组件边框" class="headerlink" title="组件边框"></a>组件边框</h1><p><img src="C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220520212709348.png" alt="image-20220520212709348"></p>
+<p><strong>特殊的Border：</strong></p>
 <ol>
-<li>检查有无该文件，若没有自动创建；</li>
-<li>创建 FileOutputStream 对象；</li>
-<li>FileOutputStream 对象指向该文件。</li>
+<li>TitledBorder:它的作用并不是直接为其他组件添加边框，而是为其他边框设置标题，创建该类的对象时，需要传入一个其他的Border对象；</li>
+<li>ComoundBorder:用来组合其他两个边框，创建该类的对象时，需要传入其他两个Border对象，一个作为内边框，一个座位外边框</li>
 </ol>
-</li>
-<li><p>调用写数据方法</p>
-<p>写入： void write(int b)。如b=97，就会写入一个字母a。</p>
-<p>void write(byte[] b) 将 b.length 字节从指定的字节数组中写入此文件输入流。（可以通过 String.getBytes() 方法获取字符串对应的字节数组）</p>
-<p>void write(byte[] b, int off, int len) 将从指定偏移量开始处指定长度的字节写入。</p>
-</li>
-<li><p>释放资源</p>
-<p><strong>使用完后要 close()！</strong>关闭该文件输出流并释放相关系统资源。</p>
-</li>
-</ol>
-<p><em>1. 想添加换行内容就在字符串里加 \n 即可。但是 windows 中的换行是 \r\n，Linux 中的是 \n，Mac 中的是 \r.而 idea 直接打开文本文档，则这几种类型的换行都能识别。</em></p>
-<p><em>2. 这种写法每次运行，不是在文档尾追加写入，而是覆盖。想要追加写入，就在创建 FileOutputStream 对象时加一个 boolean 类型的 append 的 true 值：FileOutputStream(String s, boolean append)，就表示追加写入。</em></p>
-<h4 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h4><p>异常类： IOException</p>
-<p>finally: 在异常处理时提供 finally 执行所有清除操作。其中的内容一定会执行，除非虚拟机退出。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java">FileOutputStream f=<span class="hljs-literal">null</span>;<br><span class="hljs-keyword">try</span>&#123;<br>    <br>&#125;<br><span class="hljs-keyword">catch</span>()&#123;<br>    <br>&#125;<br><span class="hljs-keyword">finally</span>&#123;<br>    <span class="hljs-comment">//执行清除操作</span><br>    <span class="hljs-keyword">if</span>(f!=<span class="hljs-literal">null</span>)f.close();<span class="hljs-comment">//这里可能还会生成一个 try catch</span><br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h2 id="FileInputStream"><a href="#FileInputStream" class="headerlink" title="FileInputStream"></a>FileInputStream</h2><ol>
-<li><p>创建字节输入流对象</p>
-<p>构造方法： FileInputStream(File 或 String)</p>
+<p><strong>给组件设置边框步骤：</strong></p>
 <ol>
-<li>检查有无该文件，若没有自动创建；</li>
-<li>创建 FileOutputStream 对象；</li>
-<li>FileOutputStream 对象指向该文件。</li>
+<li>使用BorderFactory或者XxxBorder创建Border的实例对象；</li>
+<li>调用Swing组件的setBorder（Border b）方法为组件设置边框；</li>
 </ol>
-</li>
-<li><p>调用读数据方法</p>
-<p>int read() 读取第一个数据。如果到达文档末尾，返回-1.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">while</span>((by=f.read())!=-<span class="hljs-number">1</span>)&#123;<br>    System.out.println((<span class="hljs-type">char</span>)by);<br>&#125;<span class="hljs-comment">//读取文件中所有内容，包括换行符</span><br></code></pre></td></tr></table></figure>
-
-<p>int read(byte[] b)返回读入缓冲区的字节总数。如果到达文档末尾，返回-1.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">byte</span>[] bys=<span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[<span class="hljs-number">1024</span>];<span class="hljs-comment">//一次读取一个字节数组</span><br><span class="hljs-type">int</span> len;<br><span class="hljs-keyword">while</span>((len=fis.read(bys))!=-<span class="hljs-number">1</span>)&#123;<br>    System.out.print(<span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(bys,<span class="hljs-number">0</span>,len));<br>&#125;<br></code></pre></td></tr></table></figure></li>
-<li><p>释放资源</p>
-</li>
-</ol>
-<h4 id="复制文本文档"><a href="#复制文本文档" class="headerlink" title="复制文本文档"></a>复制文本文档</h4><p>写一个循环，读取复制文件中每个字节的同时，将每个字节写入粘贴文件中。</p>
-<h3 id="复制图像"><a href="#复制图像" class="headerlink" title="复制图像"></a>复制图像</h3><p>复制图像：建议一次读取/写入一个字节数组。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java">FileInputStream fis=<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(<span class="hljs-string">&quot;要复制的图片路径\\文件名&quot;</span>);<br>FileOutputStream fos=<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(<span class="hljs-string">&quot;要粘贴的文件路径\\文件名&quot;</span>);<br><span class="hljs-type">byte</span>[] bys=<span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[<span class="hljs-number">1024</span>];<br><span class="hljs-type">int</span> len;<br><span class="hljs-keyword">while</span>((len=fis.read(bys))!=-<span class="hljs-number">1</span>)<br>&#123;<br>    fos.write(bys);<br>&#125;<br>fis.close();<br>fos.close();<br></code></pre></td></tr></table></figure>
-
-<h2 id="字节缓冲流"><a href="#字节缓冲流" class="headerlink" title="字节缓冲流"></a>字节缓冲流</h2><p>java.io.BufferedOutputStream</p>
-<p>之前 FileOutputStream 每次写入都会导致底层系统的调用，而字节缓冲流可以直接向底层输出流写入字节。实现时间更短。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java">BufferedOutputStream bos=<span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedOutputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(<span class="hljs-string">&quot;路径&quot;</span>));<br><span class="hljs-comment">//读写数据方法和之前一样。但是还得靠 File</span><br>bos.write(<span class="hljs-string">&quot;String&quot;</span>.getBytes());<br><span class="hljs-comment">//记得释放资源</span><br>bos.close();<br><br>BufferedInputStream bis=<span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedInputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(<span class="hljs-string">&quot;路径&quot;</span>));<br><span class="hljs-type">int</span> len;<br><span class="hljs-keyword">while</span>((len=bis.read(bys)!=-<span class="hljs-number">1</span>))&#123;<br>    System.out.print(<span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(bys,<span class="hljs-number">0</span>,len));<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
-
  
       <!-- reward -->
       
@@ -318,30 +235,32 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2022/06/29/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94IO%20%E5%AD%97%E8%8A%82%E6%B5%81/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2022/05/19/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94GUI_7/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/study/" rel="tag">study</a></li></ul>
+
     </footer>
   </div>
 
    
   <nav class="article-nav">
     
-      <a href="/2022/06/29/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94IO%20%E5%AD%97%E7%AC%A6%E6%B5%81/" class="article-nav-link">
+      <a href="/2022/05/20/Python%E2%80%94%E2%80%94%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%802/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            (no title)
+            Python——语法基础2
           
         </div>
       </a>
     
     
-      <a href="/2022/06/29/Java%20%E5%AD%A6%E4%B9%A0%E6%92%AD%E5%AE%A2_%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%20GUI_1/" class="article-nav-link">
+      <a href="/2022/05/18/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94GUI_5/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title"></div>
+        <div class="article-nav-title">Java 学习博客_入门—— GUI_5</div>
       </a>
     
   </nav>
