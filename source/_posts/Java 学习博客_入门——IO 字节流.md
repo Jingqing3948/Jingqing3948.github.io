@@ -1,3 +1,10 @@
+---
+title: Java 学习博客_入门 IO 字节流
+date: 2022-05-23
+tags: study
+category: java
+---
+
 # File 类
 
 在 java.io 包下。
