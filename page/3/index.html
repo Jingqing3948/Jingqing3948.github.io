@@ -393,7 +393,8 @@
 <li>历史记录：查看修改人、时间、内容、日志等，还可以把本地文件恢复到之前的状态。</li>
 <li>分支管理：允许开发团队在工作过程中多条生产线同时推进任务，进一步提高效率。</li>
 </ul>
-<h1 id="Git-结构"><a href="#Git-结构" class="headerlink" title="Git 结构"></a>Git 结构</h1><p><img src="https://s1.328888.xyz/2022/05/01/AbdOT.png" alt="AbdOT.png"></p>
+<h1 id="Git-结构"><a href="#Git-结构" class="headerlink" title="Git 结构"></a>Git 结构</h1><img src="https://img-blog.csdnimg.cn/img_convert/797f952638570b6501198689895a61f6.png" alt="AbdOT.png" style="zoom:80%;" />
+
 <h1 id="Git-和代码托管中心"><a href="#Git-和代码托管中心" class="headerlink" title="Git 和代码托管中心"></a>Git 和代码托管中心</h1><p>代码托管中心可以帮我们维护远程库</p>
 <p>局域网内：Gitlab</p>
 <p>外网：Github，Gitee</p>
@@ -723,7 +724,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-title function_">Cat</span><span class="hljs-params">()</span>&#123;&#125;<span class="hljs-comment">//我们自己加的无参构造方法，会覆盖系统默认的</span><br><span class="hljs-keyword">public</span> <span class="hljs-title function_">Cat</span><span class="hljs-params">(String name)</span>&#123;<span class="hljs-comment">//写一部分参数的构造方法也可以</span><br>    <span class="hljs-built_in">this</span>.name=name;<span class="hljs-comment">//通过 this 赋给成员变量</span><br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-title function_">Cat</span><span class="hljs-params">(String name, <span class="hljs-type">int</span> age)</span>&#123;<span class="hljs-comment">//写全参数的构造方法也可以</span><br>    <span class="hljs-built_in">this</span>.name=name;<br>    <span class="hljs-built_in">this</span>.age=age;<br>&#125;<br><span class="hljs-comment">//main 中构造对象：</span><br>Cat c1=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Cat</span>();<br>Cat c2=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Cat</span>(<span class="hljs-string">&quot;小黑&quot;</span>);<br>Cat c3=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Cat</span>(<span class="hljs-string">&quot;小白&quot;</span>,<span class="hljs-number">2</span>);<span class="hljs-comment">//这些都可以，与自己写的构造方法的参数相对应。</span><br></code></pre></td></tr></table></figure>
 
 <p>this被哪个对象调用，就代表哪个对象。</p>
-<p><img src="https://s1.328888.xyz/2022/04/30/AlrRQ.png" alt="AlrRQ.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/e84298f42ee41e72ca8573855a60fb93.png" alt="AlrRQ.png"></p>
 <p>然后把”林青霞” 字符串类型传入堆内存中。</p>
 <h2 id="get-set"><a href="#get-set" class="headerlink" title="get / set"></a>get / set</h2><p>无参构造方法后用 setXxx() 方法创建对象。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setName</span><span class="hljs-params">(String name)</span>&#123;<span class="hljs-comment">//赋值</span><br>	<span class="hljs-built_in">this</span>.name=name;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setAge</span><span class="hljs-params">(<span class="hljs-type">int</span> age)</span>&#123;<br>    <span class="hljs-keyword">if</span>(age&gt;=<span class="hljs-number">0</span>&amp;&amp;age&lt;=<span class="hljs-number">20</span>)<span class="hljs-comment">//在 set 中可以添加一些限制，处理</span><br>	<span class="hljs-built_in">this</span>.age=age;<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">getName</span><span class="hljs-params">()</span>&#123;<span class="hljs-comment">//获取值</span><br>	<span class="hljs-keyword">return</span> name;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">getAge</span><span class="hljs-params">()</span>&#123;<br>	<span class="hljs-keyword">return</span> age;<br>&#125;<br><br><span class="hljs-comment">//在 main 方法中赋值并获取值示例：</span><br>Cat c=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Cat</span>();<br>c.setName(<span class="hljs-string">&quot;小黑&quot;</span>);<br>System.out.print(c.getName);<br></code></pre></td></tr></table></figure>
@@ -790,7 +791,7 @@
 <p><em>如果只有左侧目录显示，右侧不显示：</em></p>
 <p><em>右键帮助文档-属性-常规-最下面解除锁定</em></p>
 <p><em>重新打开帮助文档即可。</em>）</p>
-<p><img src="https://s1.328888.xyz/2022/04/30/AWwYX.png" alt="AWwYX.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/2b40a4138e25dffda5c7c8aecdd2f205.png" alt="AWwYX.png"></p>
 <p>Pakckage：该类所处的包下（除了 java.lang，其他包都要导包）</p>
 <p>下拉还有构造方法、成员方法的详解。</p>
 <h2 id="字符串输入"><a href="#字符串输入" class="headerlink" title="字符串输入"></a>字符串输入</h2><p>查看 Scanner 的帮助文档可以得知，成员方法 nextLine() 可以获取一整行内容，可用于输入接收字符串。</p>
@@ -1036,7 +1037,8 @@
 <h1 id="IDEA"><a href="#IDEA" class="headerlink" title="IDEA"></a>IDEA</h1><p>集成环境：能够把代码编写、编译、执行、调试等功能集合到一起的开发工具。IDEA  就是 java 的集成环境之一。</p>
 <p>创建项目-项目内创建模块-模块 src 下创建包-包下创建类-类中编写代码。</p>
 <p>其中，.class 文件都会放在模块同级的 out 文件夹中。</p>
-<p><img src="https://s1.328888.xyz/2022/04/28/AJdw2.png" alt="AJdw2.png"></p>
+<img src="https://img-blog.csdnimg.cn/img_convert/a43b3155d7887b00874a916b9d6f7a47.png" alt="AJdw2.png" style="zoom: 50%;" />
+
 <p>可以在 File - Settings - Editor - Font 中修改字体</p>
 <h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>psvm + Tab：public static void main</p>
 <p>sout + Tab：System.out.println()</p>
@@ -1087,9 +1089,9 @@
 <p><strong>注意：返回值不能作为判断方法是否重载的标准！</strong>只有方法名和参数可以。</p>
 <p>调用时，JVM 根据传入参数不同，来得知调用的是哪个方法。</p>
 <p><strong>形参值修改不会对实参造成影响。</strong>main() 方法存储在栈内存中，当 main() 方法调用其它方法时，其他方法进入栈内存</p>
-<p><img src="https://s1.328888.xyz/2022/04/29/A8wxg.png" alt="A8wxg.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/7c3113349748d453f61377bc4c5caa29.png" alt="A8wxg.png"></p>
 <p>但是其中的形参的值不对 main() 中的实参造成影响（除非是像数组、指针之类引用类型，根据地址去堆内存中修改数据），当 change() 方法执行完后就直接出栈了。</p>
-<p><img src="https://s1.328888.xyz/2022/04/29/A8Kh1.png" alt="A8Kh1.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/0c3e37209c8e3ab328096a6e480a614e.png" alt="A8Kh1.png"></p>
 <p>如图，如果是数组单元的值被修改了，实际上是堆内存中的内容被修改了， main() 方法中数组对应的地址中的内容也会被修改。</p>
  
       <!-- reward -->

@@ -122,7 +122,8 @@
 <h1 id="IDEA"><a href="#IDEA" class="headerlink" title="IDEA"></a>IDEA</h1><p>集成环境：能够把代码编写、编译、执行、调试等功能集合到一起的开发工具。IDEA  就是 java 的集成环境之一。</p>
 <p>创建项目-项目内创建模块-模块 src 下创建包-包下创建类-类中编写代码。</p>
 <p>其中，.class 文件都会放在模块同级的 out 文件夹中。</p>
-<p><img src="https://s1.328888.xyz/2022/04/28/AJdw2.png" alt="AJdw2.png"></p>
+<img src="https://img-blog.csdnimg.cn/img_convert/a43b3155d7887b00874a916b9d6f7a47.png" alt="AJdw2.png" style="zoom: 50%;" />
+
 <p>可以在 File - Settings - Editor - Font 中修改字体</p>
 <h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>psvm + Tab：public static void main</p>
 <p>sout + Tab：System.out.println()</p>
@@ -173,9 +174,9 @@
 <p><strong>注意：返回值不能作为判断方法是否重载的标准！</strong>只有方法名和参数可以。</p>
 <p>调用时，JVM 根据传入参数不同，来得知调用的是哪个方法。</p>
 <p><strong>形参值修改不会对实参造成影响。</strong>main() 方法存储在栈内存中，当 main() 方法调用其它方法时，其他方法进入栈内存</p>
-<p><img src="https://s1.328888.xyz/2022/04/29/A8wxg.png" alt="A8wxg.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/7c3113349748d453f61377bc4c5caa29.png" alt="A8wxg.png"></p>
 <p>但是其中的形参的值不对 main() 中的实参造成影响（除非是像数组、指针之类引用类型，根据地址去堆内存中修改数据），当 change() 方法执行完后就直接出栈了。</p>
-<p><img src="https://s1.328888.xyz/2022/04/29/A8Kh1.png" alt="A8Kh1.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/0c3e37209c8e3ab328096a6e480a614e.png" alt="A8Kh1.png"></p>
 <p>如图，如果是数组单元的值被修改了，实际上是堆内存中的内容被修改了， main() 方法中数组对应的地址中的内容也会被修改。</p>
  
       <!-- reward -->
