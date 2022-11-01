@@ -5,7 +5,7 @@ tags: study
 category: java
 ---
 
-![image-20220518101108824](C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220518101108824.png)
+<img src="https://img-blog.csdnimg.cn/ca88cada6c9f46a480d4199b71b8099c.png" alt="image-20220518101108824" style="zoom: 67%;" />
 
 鼠标在棋盘上移动时，会显示当前位置放置棋子，会落到的位置，即红框部分。
 
@@ -161,7 +161,7 @@ public class Gobang {
 }
 ```
 
-![image preview](C:\Users\86138\Desktop\sa3yy-b9n46.gif)
+<img src="https://img-blog.csdnimg.cn/05e63373bb2e44cfa0f52b72bc38e4f1.gif#pic_center" alt="image preview" style="zoom:67%;" />
 
 但是运行时因为不停地重绘，画面一直在闪。因为这种绘制方法没有用到缓冲区，每次都是直接绘制在组件上的。
 

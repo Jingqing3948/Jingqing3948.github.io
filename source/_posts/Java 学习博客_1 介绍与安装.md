@@ -17,7 +17,14 @@ JRE: Java Runtime Environment，运行只需要 JRE 就够了。
 
 JDK: Java Development Kit，Java 程序开发工具包。
 
-![123](https://s1.328888.xyz/2022/04/14/iUcNe.png)
+```mermaid
+ graph LR
+ A[JDK] -->B[开发人员使用的工具, JDK 的 bin 目录下]
+   A --> C[JRE]
+   C -->D[JVM, JRE 的 bin 目录下]
+   C -->E[运行所需要的核心类库, JRE 的 lib 目录下]
+
+```
 
 尽管 JRE 对于运行 java 文件已经足够，作为学习肯定还是要下载 JDK 的~
 

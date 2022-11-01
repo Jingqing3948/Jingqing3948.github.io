@@ -109,7 +109,7 @@ JButton b=new JButton("确定", new ImageIcon("相对路径"));
 
 # 组件边框
 
-![image-20220520212709348](C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220520212709348.png)
+![image-20220520212709348](C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20220520212709348.png)
 
 **特殊的Border：**
 

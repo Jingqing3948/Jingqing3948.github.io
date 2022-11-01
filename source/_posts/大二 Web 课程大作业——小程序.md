@@ -11,23 +11,23 @@ category: miniprogram
 
 [github 代码地址](https://github.com/Jingqing3948/DianJi_Demo)，希望对你有所帮助~
 
-![HN6nM.png](https://s1.328888.xyz/2022/05/12/HN6nM.png)
+<img src="https://img-blog.csdnimg.cn/img_convert/34ffd9596cbecd6cf2c5083c61472e18.png" alt="样例" style="zoom:50%;" />
 
 小程序的主要功能就是记录地图上的标点信息，并上传到云数据库中；
 
-![5月12日(2)_](C:\Users\86138\Desktop\5月12日(2)_.gif)
+<img src="https://img-blog.csdnimg.cn/035976c6063c4d019ea3a2e62d35bca0.gif#pic_center" alt="5月12日(2)_" style="zoom:50%;" />
 
 以及编辑文章，把文章信息上传到云数据库中；
 
-![5月12日_](C:\Users\86138\Desktop\5月12日_.gif)
+<img src="https://img-blog.csdnimg.cn/00c96f64cec54457a23359ff540dcc67.gif#pic_center" alt="5月12日_" style="zoom: 50%;" />
 
 获取云数据库中的文章（最新发布的3篇）。
 
-![5月12日(1)_](C:\Users\86138\Desktop\5月12日(1)_.gif)
+<img src="https://img-blog.csdnimg.cn/00c20a6939354cf4bb9e9f9ff3a125a7.gif#pic_center" alt="5月12日(1)_" style="zoom:50%;" />
 
 # 数据库设计
 
-![image-20220512182409012](C:\Users\86138\Desktop\image-20220512182409012.png)
+<img src="https://img-blog.csdnimg.cn/77e31ce1557342dd8a883fe55c21c05d.png#pic_center" alt="image-20220512182409012" style="zoom: 80%;" />
 
 目前有两个数据库表。databasemarkers 存储本次记录中所有标点信息；databasearticles 存储该文章发布时间、文章标题、备注、内容以及对应的标点记录id（外键）。
 
@@ -37,7 +37,7 @@ category: miniprogram
 
 
 
-![image-20220512180341165](C:\Users\86138\Desktop\image-20220512180341165.png)
+<img src="https://img-blog.csdnimg.cn/4e581029e11d4f26ae9ba03e9effae44.png#pic_center" alt="image-20220512180341165" style="zoom: 67%;" />
 
 
 
@@ -161,7 +161,7 @@ Page({
 
 # 2. 发布文章
 
-![image-20220512180751872](C:\Users\86138\Desktop\image-20220512180751872.png)
+<img src="https://img-blog.csdnimg.cn/28e718d09b274fb89bbed42d385fab02.png#pic_center" alt="image-20220512180751872" style="zoom:67%;" />
 
 添加完标点信息后，提示输入文章标题、备注、正文信息，点击提交，文章就会发布到 databasearticles 数据库中。
 
@@ -187,7 +187,7 @@ wxml：
 
 js：
 
-```css
+```javascript
 const db=wx.cloud.database()
 Page({
 
@@ -321,7 +321,7 @@ wxss：
 
 # 3. 获取最新发布的三篇文章
 
-![image-20220512183340511](C:\Users\86138\Desktop\image-20220512183340511.png)
+<img src="https://img-blog.csdnimg.cn/f2b099a392ac4f8aae5218d74c035409.png#pic_center" alt="image-20220512183340511" style="zoom:80%;" />
 
 最新发布模块可以获取云数据库中最新发布的三篇文章，原理是根据时间戳倒叙排序后取前三条记录。
 

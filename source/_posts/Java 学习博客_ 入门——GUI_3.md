@@ -25,7 +25,7 @@ C-->I[接口: MenuContainer]
 E-->F(PopupMenu)
 ```
 
-![image-20220516100245252](C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220516100245252.png)
+![image-20220516100245252](https://img-blog.csdnimg.cn/29786aa6dac24e80a6647d719b29ab14.png)
 
 Menu 存放 MenuItem，但因为菜单也可以作为菜单项，如上文中的格式是一个菜单，也是编辑菜单中的菜单项。所以 Menu 是 MenuItem 的子类。
 
@@ -91,7 +91,7 @@ Graphics 对象进行绘图，在Component类中，又提供了下列三个方�
 
 ​	repaint():调用update方法，刷新组件外观；
 
-![image-20220516164730275](C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220516164730275.png)
+![image-20220516164730275](https://img-blog.csdnimg.cn/16622de2995c48399e9bbe5af99b35e3.png)
 
 paint() 方法系统自动调用，程序员只需要调用 repaint() 完成。
 

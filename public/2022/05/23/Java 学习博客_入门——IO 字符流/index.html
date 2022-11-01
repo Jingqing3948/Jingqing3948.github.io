@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>Archives: 2022/6 |  灰海宽松的博客</title>
+      <title>Java 学习博客_入门 IO 字符流 |  灰海宽松的博客</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -53,63 +53,247 @@
       
     <main class="content on">
       <section class="outer">
-  
-  
-  <article class="articles">
+  <article
+  id="post-Java 学习博客_入门——IO 字符流"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
     
-    
-    <h1 class="page-type-title">2022/6</h1>
-    
-    
-  
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2022" class="archive-year">2022</a>
-    </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/06/29/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94IO%20%E5%AD%97%E7%AC%A6%E6%B5%81/" class="archive-article-date">
-  <time datetime="2022-06-29T02:49:50.632Z" itemprop="datePublished">06/29</time>
-</a>
-      
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Java 学习博客_入门 IO 字符流
+</h1>
+ 
 
+      
     </header>
-    
-    
+     
+    <div class="article-meta">
+      <a href="/2022/05/23/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94IO%20%E5%AD%97%E7%AC%A6%E6%B5%81/" class="article-date">
+  <time datetime="2022-05-22T16:00:00.000Z" itemprop="datePublished">2022-05-23</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
   </div>
-</article>
-      
   
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/06/29/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94IO%20%E5%AD%97%E8%8A%82%E6%B5%81/" class="archive-article-date">
-  <time datetime="2022-06-29T02:49:50.632Z" itemprop="datePublished">06/29</time>
-</a>
-      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">822</span>
+        </span>
+    </span>
 
-    </header>
-    
-    
-  </div>
-</article>
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">3 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
       
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>如果按照之前读取字节流的方法，我们要得到输出内容时需要用 (char) 强制转换。</p>
+<p>如果内容中包含中文，就会输出乱码。因为汉字存储在 GBK 编码下占用2 byte，UTF-8 编码下占用3 byte。所以每次读写一个字节，就会把字节拆开，就输出不了汉字了。</p>
+<p>字符流就会方便很多。</p>
+<h1 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h1><p>字符流=字节流+编码表。</p>
+<p>汉字存储时，不管采用哪种编码方法，第一个字节都是负数，以此判断。</p>
+<h2 id="编码表"><a href="#编码表" class="headerlink" title="编码表"></a>编码表</h2><p>计算机中的信息都是二进制数表示的。</p>
+<p>按照一定规则把字符存储到计算机中，叫编码。</p>
+<p>按照一定规则把字符从计算机中解析，叫解码。</p>
+<h2 id="字符集"><a href="#字符集" class="headerlink" title="字符集"></a>字符集</h2><p>一个系统支持的所有字符集合。如 ASCII GBKXXX Unicode 等。</p>
+<p><strong>ASCII码</strong> —ASCII编码表由一个字节表示，128个字符，包含字母、数字、常用符号等。其拓展集128~255方便支持欧洲常用字符。</p>
+<p><strong>GBXXX</strong>—一个小于127的字符意义与原来相同（半角字符）但两个大于127的字符相连，表示一个汉字。甚至一些数学符号、罗马希腊字母、日文假名、原来的数字、标点、字母都被重新编了二字节的编码，即全角字符。</p>
+<p>其中 GBK 是最常用的中文码表，还支持繁体、日韩汉字。</p>
+<p><em>GB18030：最新的中文码表，每个字可以由1、2、4个字节组成，支持少数名族文字。</em></p>
+<p><strong>Unicode</strong>—表达任意语言的任意字符。最常见的就是 UTF-8 编码。前128和 ASCII 一样，1个字节；拉丁文字符2个字节；大部分常用字（包括中文）3个字节；其他辅助字符4个字节。</p>
+<h2 id="字符串的编码解码"><a href="#字符串的编码解码" class="headerlink" title="字符串的编码解码"></a>字符串的编码解码</h2><p>编码：byte[] getBytes() 或 byte[] getBytes(String charsetName) 指定字符集。</p>
+<p>解码：String(byte[] bytes) 或 String(byte[] bytes, String charsetName) 构造方法。</p>
+<p>IDEA 平台默认字符集为 UTF-8。</p>
+<p>在字符流中的解码、编码对应 InputStreamReader、OutputStreamWriter，</p>
+<p>构造方法：InputStreamReader(FileInputStream, String charsetName) </p>
+<p>OutputStreamReader(FileOutputStream, String charsetName) 也可以指定字符集。然后就正常使用 read() write() 方法。</p>
+<p>如果使用 UTF-8 编码就可以直接写入中文字符串。否则需要同样编码方法的读取方法才能正确读取。</p>
+<table>
+<thead>
+<tr>
+<th>写数据方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>void write(int c)</td>
+<td>写一个字符</td>
+</tr>
+<tr>
+<td>void write(char cbuf)</td>
+<td>写入一个字符数组</td>
+</tr>
+<tr>
+<td>void write(char cbuf, int off, int len)</td>
+<td>写入一个字符数组的一部分</td>
+</tr>
+<tr>
+<td>void write(String str)</td>
+<td>写入一个字符串</td>
+</tr>
+<tr>
+<td>void write(String str, int off, int len)</td>
+<td>写入一个字符串的一部分</td>
+</tr>
+</tbody></table>
+<p>这样写完，数据还是在缓冲区中。需要通过 void flush() 方法刷新。</p>
+<p>不过 close() 方法关闭前也会自动刷新一下。只是关闭方法后就不能再写入数据了~</p>
+<table>
+<thead>
+<tr>
+<th>读数据方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int read()</td>
+<td>读一个字符</td>
+</tr>
+<tr>
+<td>int read(char[] cbuf)</td>
+<td>一次读一个字符数组</td>
+</tr>
+</tbody></table>
+<p>FileReader 和 FileWriter 是两个字符流解码、编码的便捷类。构造方法参数为路径字符串或 File 对象。</p>
+<h2 id="字符缓冲流"><a href="#字符缓冲流" class="headerlink" title="字符缓冲流"></a>字符缓冲流</h2><p>BufferedReader(Reader in)</p>
+<p>BufferedWriter(Writer out)</p>
+<p>两者自带成员方法：public String readLine() 读一行 和 void newLine() 写一行。</p>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          Donate
+        </div>
+      </div>
       
     </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2022/05/23/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94IO%20%E5%AD%97%E7%AC%A6%E6%B5%81/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/study/" rel="tag">study</a></li></ul>
+
+    </footer>
   </div>
-  
-  
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2026/02/12/%E5%A4%A7%E4%BA%8C%20Web%20%E8%AF%BE%E7%A8%8B%E5%A4%A7%E4%BD%9C%E4%B8%9A%E2%80%94%E2%80%94%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            大二 Web 课程大作业——小程序标点地图
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2022/05/23/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94IO%20%E5%AD%97%E8%8A%82%E6%B5%81/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Java 学习博客_入门 IO 字节流</div>
+      </a>
+    
+  </nav>
 
   
+   
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
 </section>
       <footer class="footer">
   <div class="outer">
@@ -258,6 +442,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link

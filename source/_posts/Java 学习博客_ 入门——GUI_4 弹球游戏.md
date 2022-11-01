@@ -5,8 +5,6 @@ tags: study
 category: java
 ---
 
-
-
 # 小游戏——弹球
 
 每隔几毫秒就重绘一下页面，可以实现动画效果。可以通过定时器 Timer 解决。

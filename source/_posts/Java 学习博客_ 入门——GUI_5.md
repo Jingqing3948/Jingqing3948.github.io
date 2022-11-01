@@ -5,8 +5,6 @@ tags: study
 category: java
 ---
 
-
-
 # 位图
 
 之前只能绘制一些简单的几何图形。Graphics 的 drawImage() 方法可以绘制位图。Image 对象代表位图。

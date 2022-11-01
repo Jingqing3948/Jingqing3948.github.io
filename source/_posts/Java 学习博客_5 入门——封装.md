@@ -7,8 +7,6 @@ category: java
 
 以黑马程序员全套Java教程网课为主。
 
-
-
 Java 的三大特性：封装、继承、多态
 
 # 封装 packaging
@@ -51,7 +49,7 @@ Cat c3=new Cat("小白",2);//这些都可以，与自己写的构造方法的参
 
 this被哪个对象调用，就代表哪个对象。
 
-![AlrRQ.png](https://s1.328888.xyz/2022/04/30/AlrRQ.png)
+![AlrRQ.png](https://img-blog.csdnimg.cn/img_convert/e84298f42ee41e72ca8573855a60fb93.png)
 
 然后把"林青霞" 字符串类型传入堆内存中。
 

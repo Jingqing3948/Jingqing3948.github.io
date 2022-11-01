@@ -41,7 +41,7 @@ git其他优点：
 
 # Git 结构
 
-![AbdOT.png](https://s1.328888.xyz/2022/05/01/AbdOT.png)
+<img src="https://img-blog.csdnimg.cn/img_convert/797f952638570b6501198689895a61f6.png" alt="AbdOT.png" style="zoom:80%;" />
 
 # Git 和代码托管中心
 
@@ -54,3 +54,4 @@ git其他优点：
 开发者通过 push 把代码推送到远程库。其他开发者要先 clone 把代码克隆下来，然后加入团队，然后才能把自己做的修改 push 推送到远程库。再通过 pull 把其他人的操作拉取下来。
 
 如果需要项目成员之外的人修改代码：那个人先通过 fork 克隆一个自己的远程库，然后自己对自己的远程库做 clone、push 等操作，修改完成之后向项目开发者发送 pull request 请求，开发者审核同意后 merge 合并代码。
+

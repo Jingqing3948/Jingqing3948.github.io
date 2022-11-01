@@ -96,7 +96,15 @@ float f=1.235F; //防止 long 类型和 float 类型不兼容
 
 数据范围从小到大：
 
-![DataTypeRange](https://s1.328888.xyz/2022/04/14/iX6sR.png)
+```mermaid
+graph LR
+A[byte]-->B[short]
+B-->C[int]
+D[char]-->C
+C-->E[long]
+E-->F[float]
+F-->G[double]
+```
 
 算术表达式中包含多个基本数据类型的值时，整个算术表达式的类型就会自动提升。
 

@@ -44,7 +44,7 @@ int n=r.nextInt(10);//[0,10)的范围内取随机数
 
 其中，.class 文件都会放在模块同级的 out 文件夹中。
 
-![AJdw2.png](https://s1.328888.xyz/2022/04/28/AJdw2.png)
+<img src="https://img-blog.csdnimg.cn/img_convert/a43b3155d7887b00874a916b9d6f7a47.png" alt="AJdw2.png" style="zoom: 50%;" />
 
 可以在 File - Settings - Editor - Font 中修改字体
 
@@ -180,10 +180,10 @@ public static int max(int a, int b, int c)
 
 **形参值修改不会对实参造成影响。**main() 方法存储在栈内存中，当 main() 方法调用其它方法时，其他方法进入栈内存
 
-![A8wxg.png](https://s1.328888.xyz/2022/04/29/A8wxg.png)
+![A8wxg.png](https://img-blog.csdnimg.cn/img_convert/7c3113349748d453f61377bc4c5caa29.png)
 
 但是其中的形参的值不对 main() 中的实参造成影响（除非是像数组、指针之类引用类型，根据地址去堆内存中修改数据），当 change() 方法执行完后就直接出栈了。
 
-![A8Kh1.png](https://s1.328888.xyz/2022/04/29/A8Kh1.png)
+![A8Kh1.png](https://img-blog.csdnimg.cn/img_convert/0c3e37209c8e3ab328096a6e480a614e.png)
 
 如图，如果是数组单元的值被修改了，实际上是堆内存中的内容被修改了， main() 方法中数组对应的地址中的内容也会被修改。

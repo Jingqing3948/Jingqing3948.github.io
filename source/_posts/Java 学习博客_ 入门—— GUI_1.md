@@ -13,11 +13,11 @@ Abstract Window Toolkit 抽象窗口工具集。它是抽象的，程序只指�
 
 主要包括两个基类： Component 和 MenuComponent。其中 Component 中的 Container 组件可以作为容器，包含其他组件。
 
-![image-20220513151527543](C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220513151527543.png)
+![image-20220513151527543](https://img-blog.csdnimg.cn/b2bd1578f5034fb49fcfaf0e546315f0.png)
 
 此外，AWT 还有一个比较重要的知识点 LayoutManager，负责处理布局。
 
-![image-20220513151540412](C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220513151540412.png)
+<img src="https://img-blog.csdnimg.cn/a9babebb1620430b9d9050f404f9cda3.png" alt="image-20220513151540412" style="zoom:80%;" />
 
 ## Component
 

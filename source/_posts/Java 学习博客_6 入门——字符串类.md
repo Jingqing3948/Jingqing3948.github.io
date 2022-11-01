@@ -23,7 +23,7 @@ JDK 中提供了实现各种功能的封装类，供我们使用。
 
 *重新打开帮助文档即可。*）
 
-![AWwYX.png](https://s1.328888.xyz/2022/04/30/AWwYX.png)
+![AWwYX.png](https://img-blog.csdnimg.cn/img_convert/2b40a4138e25dffda5c7c8aecdd2f205.png)
 
 Pakckage：该类所处的包下（除了 java.lang，其他包都要导包）
 

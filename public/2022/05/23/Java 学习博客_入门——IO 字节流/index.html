@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title> 灰海宽松的博客</title>
+      <title>Java 学习博客_入门 IO 字节流 |  灰海宽松的博客</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -54,24 +54,38 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-Java 学习博客_入门——IO 字符流"
+  id="post-Java 学习博客_入门——IO 字节流"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
   data-scroll-reveal
 >
   <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Java 学习博客_入门 IO 字节流
+</h1>
+ 
+
+      
+    </header>
      
     <div class="article-meta">
-      <a href="/2022/06/29/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94IO%20%E5%AD%97%E7%AC%A6%E6%B5%81/" class="article-date">
-  <time datetime="2022-06-29T02:49:50.632Z" itemprop="datePublished">2022-06-29</time>
-</a>   
+      <a href="/2022/05/23/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94IO%20%E5%AD%97%E8%8A%82%E6%B5%81/" class="article-date">
+  <time datetime="2022-05-22T16:00:00.000Z" itemprop="datePublished">2022-05-23</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+  
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">822</span>
+            <span class="post-count">1.5k</span>
         </span>
     </span>
 
@@ -80,7 +94,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">3 min</span>
+            <span class="post-count">5 min</span>
         </span>
     </span>
 </div>
@@ -95,77 +109,159 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>如果按照之前读取字节流的方法，我们要得到输出内容时需要用 (char) 强制转换。</p>
-<p>如果内容中包含中文，就会输出乱码。因为汉字存储在 GBK 编码下占用2 byte，UTF-8 编码下占用3 byte。所以每次读写一个字节，就会把字节拆开，就输出不了汉字了。</p>
-<p>字符流就会方便很多。</p>
-<h1 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h1><p>字符流=字节流+编码表。</p>
-<p>汉字存储时，不管采用哪种编码方法，第一个字节都是负数，以此判断。</p>
-<h2 id="编码表"><a href="#编码表" class="headerlink" title="编码表"></a>编码表</h2><p>计算机中的信息都是二进制数表示的。</p>
-<p>按照一定规则把字符存储到计算机中，叫编码。</p>
-<p>按照一定规则把字符从计算机中解析，叫解码。</p>
-<h2 id="字符集"><a href="#字符集" class="headerlink" title="字符集"></a>字符集</h2><p>一个系统支持的所有字符集合。如 ASCII GBKXXX Unicode 等。</p>
-<p><strong>ASCII码</strong> —ASCII编码表由一个字节表示，128个字符，包含字母、数字、常用符号等。其拓展集128~255方便支持欧洲常用字符。</p>
-<p><strong>GBXXX</strong>—一个小于127的字符意义与原来相同（半角字符）但两个大于127的字符相连，表示一个汉字。甚至一些数学符号、罗马希腊字母、日文假名、原来的数字、标点、字母都被重新编了二字节的编码，即全角字符。</p>
-<p>其中 GBK 是最常用的中文码表，还支持繁体、日韩汉字。</p>
-<p><em>GB18030：最新的中文码表，每个字可以由1、2、4个字节组成，支持少数名族文字。</em></p>
-<p><strong>Unicode</strong>—表达任意语言的任意字符。最常见的就是 UTF-8 编码。前128和 ASCII 一样，1个字节；拉丁文字符2个字节；大部分常用字（包括中文）3个字节；其他辅助字符4个字节。</p>
-<h2 id="字符串的编码解码"><a href="#字符串的编码解码" class="headerlink" title="字符串的编码解码"></a>字符串的编码解码</h2><p>编码：byte[] getBytes() 或 byte[] getBytes(String charsetName) 指定字符集。</p>
-<p>解码：String(byte[] bytes) 或 String(byte[] bytes, String charsetName) 构造方法。</p>
-<p>IDEA 平台默认字符集为 UTF-8。</p>
-<p>在字符流中的解码、编码对应 InputStreamReader、OutputStreamWriter，</p>
-<p>构造方法：InputStreamReader(FileInputStream, String charsetName) </p>
-<p>OutputStreamReader(FileOutputStream, String charsetName) 也可以指定字符集。然后就正常使用 read() write() 方法。</p>
-<p>如果使用 UTF-8 编码就可以直接写入中文字符串。否则需要同样编码方法的读取方法才能正确读取。</p>
-<table>
+  <h1 id="File-类"><a href="#File-类" class="headerlink" title="File 类"></a>File 类</h1><p>在 java.io 包下。</p>
+<p>File 是文件和目录（文件夹）的路径名的抽象表示。</p>
+<h2 id="绝对路径和相对路径"><a href="#绝对路径和相对路径" class="headerlink" title="绝对路径和相对路径"></a>绝对路径和相对路径</h2><p>绝对路径是完整的路径名，不需要其他信息就能定位其所表示的文件。如<code>D:\\文件夹\\java.txt</code>。</p>
+<p>相对路径：必须使用取自其他路径名的信息进行解释。如从源文件目录下开始写：<code>myFile\\java.txt</code>。</p>
+<h2 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h2><table>
 <thead>
 <tr>
-<th>写数据方法</th>
+<th>构造方法</th>
 <th>说明</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>void write(int c)</td>
-<td>写一个字符</td>
+<td>File(String pathname)</td>
+<td>通过将给定的路径名字符串转换为抽象路径名创建对象</td>
 </tr>
 <tr>
-<td>void write(char cbuf)</td>
-<td>写入一个字符数组</td>
+<td>File(String parent, String child)</td>
+<td>父子两个路径名字符串</td>
 </tr>
 <tr>
-<td>void write(char cbuf, int off, int len)</td>
-<td>写入一个字符数组的一部分</td>
-</tr>
-<tr>
-<td>void write(String str)</td>
-<td>写入一个字符串</td>
-</tr>
-<tr>
-<td>void write(String str, int off, int len)</td>
-<td>写入一个字符串的一部分</td>
+<td>File(File parent, String child)</td>
+<td></td>
 </tr>
 </tbody></table>
-<p>这样写完，数据还是在缓冲区中。需要通过 void flush() 方法刷新。</p>
-<p>不过 close() 方法关闭前也会自动刷新一下。只是关闭方法后就不能再写入数据了~</p>
-<table>
+<p>路径形如：<code>D:\\文件夹\\java.txt</code>。也可以拆分成父<code>D:\\文件夹</code>和子<code>java.txt</code>。也可以第一个 File 对象的路径是<code>D:\\文件夹</code>，子 File 补充<code>java.txt</code>。</p>
+<p>如果直接输出 File 类型，会得到路径。说明 File 类重写了 toString 方法。</p>
+<h2 id="创建功能"><a href="#创建功能" class="headerlink" title="创建功能"></a>创建功能</h2><table>
 <thead>
 <tr>
-<th>读数据方法</th>
+<th>方法</th>
 <th>说明</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>int read()</td>
-<td>读一个字符</td>
+<td>public boolean createNewFile()</td>
+<td>若此文件名的文件不存在，则创建一个空的</td>
 </tr>
 <tr>
-<td>int read(char[] cbuf)</td>
-<td>一次读一个字符数组</td>
+<td>public boolean mkdir()</td>
+<td>创建目录</td>
+</tr>
+<tr>
+<td>public boolean mkdirs()</td>
+<td>创建目录，包括任何必须的父目录</td>
 </tr>
 </tbody></table>
-<p>FileReader 和 FileWriter 是两个字符流解码、编码的便捷类。构造方法参数为路径字符串或 File 对象。</p>
-<h2 id="字符缓冲流"><a href="#字符缓冲流" class="headerlink" title="字符缓冲流"></a>字符缓冲流</h2><p>BufferedReader(Reader in)</p>
-<p>BufferedWriter(Writer out)</p>
-<p>两者自带成员方法：public String readLine() 读一行 和 void newLine() 写一行。</p>
+<p>创建成功返回 true，创建失败（如已存在）返回 false。</p>
+<p>如果调错方法了，可能会创建一个名为 java.txt 的文件夹！一定要正确使用创建文件的方法。</p>
+<h2 id="创建获取功能"><a href="#创建获取功能" class="headerlink" title="创建获取功能"></a>创建获取功能</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public boolean isDirectory()</td>
+<td>是否是个目录</td>
+</tr>
+<tr>
+<td>public boolean isFile()</td>
+<td>是否是个文件</td>
+</tr>
+<tr>
+<td>public boolean exists()</td>
+<td>是否存在</td>
+</tr>
+<tr>
+<td>public String getAbsolutePath()</td>
+<td>获取其绝对路径</td>
+</tr>
+<tr>
+<td>public String getPath()</td>
+<td>获取其相对路径</td>
+</tr>
+<tr>
+<td>public String getName()</td>
+<td>获取该文件或目录名</td>
+</tr>
+<tr>
+<td>public String[] list()</td>
+<td>返回此抽象路径名表示的<strong>目录</strong>中的所有文件和目录的名称字符串数组</td>
+</tr>
+<tr>
+<td>public File[] listFiles()</td>
+<td>返回此抽象路径名表示的<strong>目录</strong>中的文件和目录的 File 对象数组</td>
+</tr>
+</tbody></table>
+<h2 id="删除功能"><a href="#删除功能" class="headerlink" title="删除功能"></a>删除功能</h2><p>public boolean delete()</p>
+<p>如果目录中有内容，不能直接删目录。要先删空内容。</p>
+<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">f</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span>&#123;<br>    <span class="hljs-keyword">if</span>(n==<span class="hljs-number">1</span>||n==<span class="hljs-number">2</span>)<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> f(n-<span class="hljs-number">1</span>)+f(n-<span class="hljs-number">2</span>);<span class="hljs-comment">//斐波那契数列</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>如果未能跳出递归，方法不断压入堆栈空间，导致内存溢出。</p>
+<h1 id="IO-流"><a href="#IO-流" class="headerlink" title="IO 流"></a>IO 流</h1><p>IO 表示输入输出，流是对数据传输的统称。</p>
+<p>常见应用：文件复制、上传、下载。</p>
+<p>分为字节、字符两种数据类型的输入、输出流。（如果通过记事本打开，你看的懂内容，就是字符流；如果一串乱码，就是字节流）</p>
+<h2 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h2><p>java.io.InputStream，抽象类，是所有输入字节流的类的超类。</p>
+<p>java.io.OutputStream，抽象类，是所有输出字节流的类的超类。</p>
+<p>子类名称都是以父类作为后缀。</p>
+<h3 id="FileOutputStream"><a href="#FileOutputStream" class="headerlink" title="FileOutputStream"></a>FileOutputStream</h3><p>数据写入 Stream。</p>
+<p><strong>使用时需要抛出异常，main() throws FileNotFoundException。</strong></p>
+<ol>
+<li><p>创建字节输出流对象</p>
+<p>FileOutputStream(String name) 创建文件输出流，以指定的名称写入文件。name 是路径。如果没有该文件，会创建一个。</p>
+<ol>
+<li>检查有无该文件，若没有自动创建；</li>
+<li>创建 FileOutputStream 对象；</li>
+<li>FileOutputStream 对象指向该文件。</li>
+</ol>
+</li>
+<li><p>调用写数据方法</p>
+<p>写入： void write(int b)。如b=97，就会写入一个字母a。</p>
+<p>void write(byte[] b) 将 b.length 字节从指定的字节数组中写入此文件输入流。（可以通过 String.getBytes() 方法获取字符串对应的字节数组）</p>
+<p>void write(byte[] b, int off, int len) 将从指定偏移量开始处指定长度的字节写入。</p>
+</li>
+<li><p>释放资源</p>
+<p><strong>使用完后要 close()！</strong>关闭该文件输出流并释放相关系统资源。</p>
+</li>
+</ol>
+<p><em>1. 想添加换行内容就在字符串里加 \n 即可。但是 windows 中的换行是 \r\n，Linux 中的是 \n，Mac 中的是 \r.而 idea 直接打开文本文档，则这几种类型的换行都能识别。</em></p>
+<p><em>2. 这种写法每次运行，不是在文档尾追加写入，而是覆盖。想要追加写入，就在创建 FileOutputStream 对象时加一个 boolean 类型的 append 的 true 值：FileOutputStream(String s, boolean append)，就表示追加写入。</em></p>
+<h4 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h4><p>异常类： IOException</p>
+<p>finally: 在异常处理时提供 finally 执行所有清除操作。其中的内容一定会执行，除非虚拟机退出。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java">FileOutputStream f=<span class="hljs-literal">null</span>;<br><span class="hljs-keyword">try</span>&#123;<br>    <br>&#125;<br><span class="hljs-keyword">catch</span>()&#123;<br>    <br>&#125;<br><span class="hljs-keyword">finally</span>&#123;<br>    <span class="hljs-comment">//执行清除操作</span><br>    <span class="hljs-keyword">if</span>(f!=<span class="hljs-literal">null</span>)f.close();<span class="hljs-comment">//这里可能还会生成一个 try catch</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="FileInputStream"><a href="#FileInputStream" class="headerlink" title="FileInputStream"></a>FileInputStream</h2><ol>
+<li><p>创建字节输入流对象</p>
+<p>构造方法： FileInputStream(File 或 String)</p>
+<ol>
+<li>检查有无该文件，若没有自动创建；</li>
+<li>创建 FileOutputStream 对象；</li>
+<li>FileOutputStream 对象指向该文件。</li>
+</ol>
+</li>
+<li><p>调用读数据方法</p>
+<p>int read() 读取第一个数据。如果到达文档末尾，返回-1.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">while</span>((by=f.read())!=-<span class="hljs-number">1</span>)&#123;<br>    System.out.println((<span class="hljs-type">char</span>)by);<br>&#125;<span class="hljs-comment">//读取文件中所有内容，包括换行符</span><br></code></pre></td></tr></table></figure>
+
+<p>int read(byte[] b)返回读入缓冲区的字节总数。如果到达文档末尾，返回-1.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">byte</span>[] bys=<span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[<span class="hljs-number">1024</span>];<span class="hljs-comment">//一次读取一个字节数组</span><br><span class="hljs-type">int</span> len;<br><span class="hljs-keyword">while</span>((len=fis.read(bys))!=-<span class="hljs-number">1</span>)&#123;<br>    System.out.print(<span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(bys,<span class="hljs-number">0</span>,len));<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>释放资源</p>
+</li>
+</ol>
+<h4 id="复制文本文档"><a href="#复制文本文档" class="headerlink" title="复制文本文档"></a>复制文本文档</h4><p>写一个循环，读取复制文件中每个字节的同时，将每个字节写入粘贴文件中。</p>
+<h3 id="复制图像"><a href="#复制图像" class="headerlink" title="复制图像"></a>复制图像</h3><p>复制图像：建议一次读取/写入一个字节数组。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java">FileInputStream fis=<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(<span class="hljs-string">&quot;要复制的图片路径\\文件名&quot;</span>);<br>FileOutputStream fos=<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(<span class="hljs-string">&quot;要粘贴的文件路径\\文件名&quot;</span>);<br><span class="hljs-type">byte</span>[] bys=<span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[<span class="hljs-number">1024</span>];<br><span class="hljs-type">int</span> len;<br><span class="hljs-keyword">while</span>((len=fis.read(bys))!=-<span class="hljs-number">1</span>)<br>&#123;<br>    fos.write(bys);<br>&#125;<br>fis.close();<br>fos.close();<br></code></pre></td></tr></table></figure>
+
+<h2 id="字节缓冲流"><a href="#字节缓冲流" class="headerlink" title="字节缓冲流"></a>字节缓冲流</h2><p>java.io.BufferedOutputStream</p>
+<p>之前 FileOutputStream 每次写入都会导致底层系统的调用，而字节缓冲流可以直接向底层输出流写入字节。实现时间更短。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java">BufferedOutputStream bos=<span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedOutputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(<span class="hljs-string">&quot;路径&quot;</span>));<br><span class="hljs-comment">//读写数据方法和之前一样。但是还得靠 File</span><br>bos.write(<span class="hljs-string">&quot;String&quot;</span>.getBytes());<br><span class="hljs-comment">//记得释放资源</span><br>bos.close();<br><br>BufferedInputStream bis=<span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedInputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(<span class="hljs-string">&quot;路径&quot;</span>));<br><span class="hljs-type">int</span> len;<br><span class="hljs-keyword">while</span>((len=bis.read(bys)!=-<span class="hljs-number">1</span>))&#123;<br>    System.out.print(<span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(bys,<span class="hljs-number">0</span>,len));<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
  
       <!-- reward -->
       
@@ -236,30 +332,32 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2022/06/29/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94IO%20%E5%AD%97%E7%AC%A6%E6%B5%81/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2022/05/23/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94IO%20%E5%AD%97%E8%8A%82%E6%B5%81/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/study/" rel="tag">study</a></li></ul>
+
     </footer>
   </div>
 
    
   <nav class="article-nav">
     
-      <a href="/2026/02/12/%E5%A4%A7%E4%BA%8C%20Web%20%E8%AF%BE%E7%A8%8B%E5%A4%A7%E4%BD%9C%E4%B8%9A%E2%80%94%E2%80%94%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="article-nav-link">
+      <a href="/2022/05/23/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94IO%20%E5%AD%97%E7%AC%A6%E6%B5%81/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            大二 Web 课程大作业——小程序标点地图
+            Java 学习博客_入门 IO 字符流
           
         </div>
       </a>
     
     
-      <a href="/2022/06/29/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94IO%20%E5%AD%97%E8%8A%82%E6%B5%81/" class="article-nav-link">
+      <a href="/2022/05/21/Python%20%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8_1/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title"></div>
+        <div class="article-nav-title">Python 爬虫入门_1</div>
       </a>
     
   </nav>

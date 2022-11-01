@@ -131,7 +131,7 @@ frame.pack();
 frame.setVisible(true);
 ```
 
-![image-20220514191933447](C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220514191933447.png)
+![image-20220514191933447](https://img-blog.csdnimg.cn/6d337c92ae284dd8bc3083caabee6580.png)
 
 ## FileDialog
 
@@ -202,7 +202,7 @@ frame.setVisible(true);
 
 **注册监听**：把某个事件监听器(A)通过某个事件(B)绑定到某个事件源(C)上，当在事件源C上发生了事件B之后，那么事件监听器A的代码就会自动执行。
 
-![image-20220515062437913](C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220515062437913.png)
+![image-20220515062437913](https://img-blog.csdnimg.cn/f2f4df51131141d69ca0ae880dae8e74.png)
 
 实现方式：内部类，当这个事件监听器使用次数不只一次时建议。
 

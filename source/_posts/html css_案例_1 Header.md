@@ -9,7 +9,7 @@ category: html+css
 
 
 
-![Av2CA.png](https://s1.328888.xyz/2022/05/02/Av2CA.png)
+![Av2CA.png](https://img-blog.csdnimg.cn/img_convert/f6f9c40f79c277c8a2322b46240a3829.png)
 
 以上为学成在线网页案例。本文主要涉及老师讲解的 Header 部分。
 
@@ -59,7 +59,7 @@ category: html+css
 
 ## Header
 
-![AEZUX.png](https://s1.328888.xyz/2022/05/02/AEZUX.png)
+![AEZUX.png](https://img-blog.csdnimg.cn/img_convert/a939ef2780a542951f88ee067ea3823f.png)
 
 从左到右依次为：logo，导航栏 nav，搜索 search，头像 user 四列。
 
@@ -168,7 +168,7 @@ li 标签不用设置宽度，一方面是浮动的块级元素的特性：其�
 
 #### 搜索框 
 
-![hdRMC.png](https://s1.328888.xyz/2022/05/03/hdRMC.png)
+![hdRMC.png](https://img-blog.csdnimg.cn/img_convert/28fc0c0147c504a2d7e84a6d863a9a40.png)
 
 一个大盒子包住，左侧：输入文本框；右侧：按钮。
 
@@ -209,7 +209,7 @@ li 标签不用设置宽度，一方面是浮动的块级元素的特性：其�
 
 #### 登录状态
 
-![hlga2.png](https://s1.328888.xyz/2022/05/04/hlga2.png)
+![hlga2.png](https://img-blog.csdnimg.cn/img_convert/7b90bc4f40c70dde27f5b5d35664bb41.png)
 
 ```html
 <div class="user">
