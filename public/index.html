@@ -256,6 +256,115 @@
 
     
     <article
+  id="post-通信原理_1 介绍，信号与系统基础"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/11/02/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86_1%20%E4%BB%8B%E7%BB%8D%EF%BC%8C%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/"
+    >通信原理_1 介绍，信号与系统基础</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/11/02/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86_1%20%E4%BB%8B%E7%BB%8D%EF%BC%8C%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time datetime="2022-11-01T16:00:00.000Z" itemprop="datePublished">2022-11-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Communication-Theory/">Communication Theory</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h1><p>现代通信原理一般是传输电信号。</p>
+<p>香农模型：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/2022_11_02_13_43_16.png?token=AWO3PXPMKTK4YC5CLRYYVE3DMIB3C" alt="image-20220823192925164"></p>
+<p>信源信息形式多种多样，编码时转换为处理更高效电信号。</p>
+<p>信道一般有两种，第一种是在自由空间内传输的电磁波信号，第二种是沿导线传播的电磁波信号。</p>
+<p>信道容量通常远大于用户传输的信息率。因此一般采用两种技术。</p>
+<p>复用：多个信源的信号以正交的形式相互叠加，传输到目的地后再根据正交的原理拆分。</p>
+<p>多址：多个信源的信号编码后直接传入信道，不叠加。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/2022_11_02_13_44_42.png?token=AWO3PXKTKKBP5SBHOQFBH7TDMICAU" alt="image-20220823192953710"></p>
+<p>虚线代表通信网，中间的白点代表交换局，用于中转。</p>
+<h1 id="二、确定信号分析"><a href="#二、确定信号分析" class="headerlink" title="二、确定信号分析"></a>二、确定信号分析</h1><h2 id="能量-功率"><a href="#能量-功率" class="headerlink" title="能量 功率"></a>能量 功率</h2><p>能量：$\int_{-\infty}^{+\infty}s^2(t)dt$</p>
+<p>瞬时功率：$s^2(t)$</p>
+<p>时移不改变能量和功率；信号*常数K，能量和功率都 *K^2.</p>
+<p>一个信号的能量和功率不可能同时&gt;0&amp;&amp;&lt;无穷。能量有限的信号是能量信号，功率有限的信号是功率信号。</p>
+<h2 id="欧拉公式"><a href="#欧拉公式" class="headerlink" title="欧拉公式"></a>欧拉公式</h2><p>$e^{j\theta}=cos\theta+jsin\theta$</p>
+<p>复单频信号的频率：$e^{j2\pi ft}$，f就是频率。</p>
+<p>复信号的能量和功率是两个实信号的能量和功率之和。</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/2022_11_02_13_50_16.png" alt="image-20221010154041668" style="zoom:67%;" />
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/2022_11_02_13_50_21.png" alt="image-20221010154051412" style="zoom:67%;" />
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/2022_11_02_13_50_24.png" alt="image-20221010154104964" style="zoom:67%;" />
+
+<h2 id="傅里叶级数和傅里叶变换"><a href="#傅里叶级数和傅里叶变换" class="headerlink" title="傅里叶级数和傅里叶变换"></a>傅里叶级数和傅里叶变换</h2><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/2022_11_02_13_50_30.png" alt="image-20220824095227455" style="zoom: 67%;" />
+
+<p>$ x(t)↔\int_{-\infty}^{+\infty}X(f)e^{j2\pi ft}df $</p>
+<p>$ X(f)↔\int_{-\infty}^{+\infty}x(t)e^{-j2\pi ft}dt $</p>
+<h2 id="常用傅氏变换及性质"><a href="#常用傅氏变换及性质" class="headerlink" title="常用傅氏变换及性质"></a>常用傅氏变换及性质</h2><p>一个域中的面积是另一个域中原点处的值。</p>
+<p>$ X(0)=\int_{-\infty}^{+\infty}x(t)dt $</p>
+<p>$ x(0)=\int_{-\infty}^{+\infty}X(f)df $</p>
+<p>时域越宽，频域越窄；时域越窄，频域越宽。</p>
+<h3 id="矩形傅氏变换"><a href="#矩形傅氏变换" class="headerlink" title="矩形傅氏变换"></a>矩形傅氏变换</h3><p>$$ rect(fT)↔\frac{1}{T}sinc(\frac{t}{T}) $$      </p>
+<h3 id="冲激与直流"><a href="#冲激与直流" class="headerlink" title="冲激与直流"></a>冲激与直流</h3><p>$$ \delta(t)↔1 $$</p>
+<p>$$ 1↔\delta(f) $$</p>
+<h3 id="时移与频移"><a href="#时移与频移" class="headerlink" title="时移与频移"></a>时移与频移</h3><p>$$ x(t-t_0)↔X(f)e^{-j2\pi ft_0} $$</p>
+<p>$$ x(t)e^{j2\pi f_0t}↔X(f-f_0) $$</p>
+<h3 id="镜像和共轭对称性"><a href="#镜像和共轭对称性" class="headerlink" title="镜像和共轭对称性"></a>镜像和共轭对称性</h3><p>x(t)↔X(-f)</p>
+<p>$ x^*(t)↔X^*(-f) $</p>
+<p>因此如果x(t)是实信号，X(f)=X*(-f)，满足共轭对称。</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/2022_11_02_13_50_35.png" alt="image-20220825164505247" style="zoom: 50%;" />
+
+<img src="D:/Documents/(5)Junior_year/md%25E7%25AC%2594%25E8%25AE%25B0/%25E9%2580%259A%25E4%25BF%25A1%25E5%258E%259F%25E7%2590%2586/image-20220825102008393.png" alt="image-20220825102008393" style="zoom:50%;" />
+
+<h3 id="卷积与乘积"><a href="#卷积与乘积" class="headerlink" title="卷积与乘积"></a>卷积与乘积</h3><p>一个域的乘积，是另一个域的卷积。</p>
+<p>冲激函数的乘积和卷积：</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/2022_11_02_13_55_04.png" alt="image-20220825102303526" style="zoom: 67%;" />
+
+<h3 id="符号函数"><a href="#符号函数" class="headerlink" title="符号函数"></a>符号函数</h3><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/2022_11_02_13_55_07.png" alt="image-20220825102518943" style="zoom:67%;" />
+
+<h3 id="积分和微分"><a href="#积分和微分" class="headerlink" title="积分和微分"></a>积分和微分</h3><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/2022_11_02_13_55_11.png" alt="image-20220825203752979" style="zoom:50%;" />
+
+<h3 id="复单频信号和周期信号"><a href="#复单频信号和周期信号" class="headerlink" title="复单频信号和周期信号"></a>复单频信号和周期信号</h3><p>$ e^{-j2\pi vt} $是复单频信号。</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/2022_11_02_13_55_13.png" alt="image-20220825102844881" style="zoom:67%;" />
+
+<h3 id="周期冲激序列"><a href="#周期冲激序列" class="headerlink" title="周期冲激序列"></a>周期冲激序列</h3><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/2022_11_02_13_55_17.png" alt="image-20220825103336810" style="zoom:67%;" />
+
+<h3 id="理想采样"><a href="#理想采样" class="headerlink" title="理想采样"></a>理想采样</h3><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/2022_11_02_13_55_20.png" alt="image-20220825103844211" style="zoom:67%;" /> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/study/" rel="tag">study</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
   id="post-Java 学习博客_入门——IO 字符流"
   class="article article-type-post"
   itemscope
@@ -1025,190 +1134,6 @@
 <li>创建自己的 MyCanvas 类继承 Canvas 类，在其中重写 paint()</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> javax.swing.*;<br><span class="hljs-keyword">import</span> java.awt.*;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MarblesTry</span> &#123;<br>    <span class="hljs-keyword">private</span> Frame frame=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Frame</span>(<span class="hljs-string">&quot;弹球游戏&quot;</span>);<br>    <span class="hljs-comment">//桌面的大小</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> TABLE_WIDTH=<span class="hljs-number">300</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> TABLE_HEIGHT=<span class="hljs-number">400</span>;<br>    <span class="hljs-comment">//球拍的大小</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> RACKET_WIDTH=<span class="hljs-number">60</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> RACKET_HEIGHT=<span class="hljs-number">20</span>;<br>    <span class="hljs-comment">//小球的大小</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> BALL_SIZE=<span class="hljs-number">16</span>;<br>    <span class="hljs-comment">//定义变量记录小球的坐标</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> ballX=<span class="hljs-number">150</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> ballY=<span class="hljs-number">20</span>;<br>    <span class="hljs-comment">//定义变量记录小球在 x y 方向上移动的速度</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> speedX=<span class="hljs-number">5</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> speedY=<span class="hljs-number">10</span>;<br>    <span class="hljs-comment">//定义变量记录球拍的坐标</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> racketX=<span class="hljs-number">150</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> racketY=<span class="hljs-number">340</span>;<span class="hljs-comment">//球拍只能左右移动</span><br>    <span class="hljs-comment">//定义变量标识当前游戏是否已结束</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> isOver=<span class="hljs-literal">false</span>;<br>    <span class="hljs-comment">//定时器</span><br>    <span class="hljs-keyword">private</span> Timer timer;<br><br>    <span class="hljs-comment">//定义一个类绘制内容</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyCanvas</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Canvas</span>&#123;<br>        <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">paint</span><span class="hljs-params">(Graphics g)</span>&#123;<br>            <span class="hljs-comment">//TODO 在这里绘制内容</span><br>            <span class="hljs-keyword">if</span>(isOver)&#123;<br>                g.setColor(Color.RED);<br>                g.setFont(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Font</span>(<span class="hljs-string">&quot;Times&quot;</span>,Font.BOLD,<span class="hljs-number">30</span>));<br>                g.drawString(<span class="hljs-string">&quot;游戏结束！&quot;</span>,<span class="hljs-number">80</span>,<span class="hljs-number">150</span>);<br>            &#125;<br>            <span class="hljs-keyword">else</span>&#123;<br>                <span class="hljs-comment">//绘制小球和球拍</span><br>                g.setColor(Color.RED);<br>                g.fillOval(ballX,ballY,BALL_SIZE,BALL_SIZE);<br>                g.setColor(Color.PINK);<br>                g.fillRect(racketX,racketY,RACKET_WIDTH,RACKET_HEIGHT);<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">//创建绘画区域</span><br>    <span class="hljs-keyword">private</span> MyCanvas drawArea=<span class="hljs-keyword">new</span> <span class="hljs-title class_">MyCanvas</span>();<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">init</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-comment">//组装组件，以及游戏逻辑的控制</span><br>        <span class="hljs-comment">//球拍的事件监听</span><br>        KeyListener listener=<span class="hljs-keyword">new</span> <span class="hljs-title class_">KeyAdapter</span>() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">keyPressed</span><span class="hljs-params">(KeyEvent e)</span> &#123;<br>                <span class="hljs-comment">//获取电脑的按键</span><br>                <span class="hljs-type">int</span> keycode=e.getKeyCode();<br>                <span class="hljs-keyword">if</span>(keycode==KeyEvent.VK_LEFT)&#123;<br>                    <span class="hljs-comment">//不可以直接-=10，因为有边界问题</span><br>                    <span class="hljs-keyword">if</span>(racketX&gt;=<span class="hljs-number">10</span>)racketX-=<span class="hljs-number">10</span>;<br>                    drawArea.repaint();<br>                &#125;<br>                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(keycode==KeyEvent.VK_RIGHT)&#123;<br>                    <span class="hljs-keyword">if</span>(racketX&lt;TABLE_WIDTH-RACKET_WIDTH)racketX+=<span class="hljs-number">10</span>;<br>                    drawArea.repaint();<br>                &#125;<br>            &#125;<br>        &#125;;<br>        ActionListener task=<span class="hljs-keyword">new</span> <span class="hljs-title class_">ActionListener</span>() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">actionPerformed</span><span class="hljs-params">(ActionEvent e)</span> &#123;<br>                <span class="hljs-comment">//触顶，或者球拍碰到球：Y轴方向上调转</span><br>                <span class="hljs-keyword">if</span>(ballY&lt;=<span class="hljs-number">0</span>||(ballY&gt;=racketY-BALL_SIZE&amp;&amp;ballX&gt;=racketX&amp;&amp;ballX&lt;=racketX+RACKET_WIDTH))speedY=-speedY;<br>                <span class="hljs-comment">//左右触及边界：X轴方向上调转</span><br>                <span class="hljs-keyword">if</span>(ballX&lt;=<span class="hljs-number">0</span>||ballX&gt;TABLE_WIDTH-BALL_SIZE)speedX=-speedX;<br>                <span class="hljs-comment">//如果球的下边界低于球拍的上边界，且此时球水平方向上不在球拍的范围内：直接判断游戏失败</span><br>                <span class="hljs-keyword">if</span>(ballY&gt;racketY-BALL_SIZE&amp;&amp;(ballX&lt;racketX||ballX&gt;racketX+RACKET_WIDTH)) &#123;<br>                    timer.stop();<br>                    isOver = <span class="hljs-literal">true</span>;<br>                    drawArea.repaint();<br>                &#125;<br>                ballX+=speedX;<br>                ballY+=speedY;<br>                drawArea.repaint();<br>            &#125;<br>        &#125;;<br>        timer=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Timer</span>(<span class="hljs-number">100</span>,task);<span class="hljs-comment">//第一个参数是间隔时间，第二个参数是监听事件</span><br>        timer.start();<br>        <span class="hljs-comment">//点击 x 号，窗口关闭</span><br>        frame.addWindowListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">WindowAdapter</span>() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">windowClosing</span><span class="hljs-params">(WindowEvent e)</span> &#123;<br>                System.exit(<span class="hljs-number">0</span>);<br>            &#125;<br>        &#125;);<br>        drawArea.setPreferredSize(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Dimension</span>(TABLE_WIDTH,TABLE_HEIGHT));<br>        <span class="hljs-comment">//监听器绑定事件源</span><br>        frame.addKeyListener(listener);<br>        drawArea.addKeyListener(listener);<br>        frame.add(drawArea,BorderLayout.NORTH);<br><br>        frame.pack();<br>        frame.setVisible(<span class="hljs-literal">true</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">MarblesTry</span>().init();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/study/" rel="tag">study</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-Java 学习博客_ 入门——GUI_3"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2022/05/17/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94GUI_3/"
-    >Java 学习博客_入门—— GUI_3</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2022/05/17/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94GUI_3/" class="article-date">
-  <time datetime="2022-05-16T16:00:00.000Z" itemprop="datePublished">2022-05-17</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="菜单组件"><a href="#菜单组件" class="headerlink" title="菜单组件"></a>菜单组件</h1><table>
-<thead>
-<tr>
-<th>菜单组件名称</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>MenuBar</td>
-<td>菜单条 ， 菜单的容器。</td>
-</tr>
-<tr>
-<td>Menu</td>
-<td>菜单组件 ， 菜单项的容器。 它也是Menultem的子类 ，所以可作为菜单项使用</td>
-</tr>
-<tr>
-<td>PopupMenu</td>
-<td>上下文菜单组件(右键菜单组件)</td>
-</tr>
-<tr>
-<td>Menultem</td>
-<td>菜单项组件</td>
-</tr>
-<tr>
-<td>CheckboxMenuItem</td>
-<td>复选框菜单项组件</td>
-</tr>
-</tbody></table>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mermaid">graph TB<br>A(MenuComponent)--&gt;B(MenuItem)<br>A--&gt;C(MenuBar)<br>B--&gt;D(CheckBoxMenuItem)<br>B--&gt;E(Menu)<br>C--&gt;I[接口: MenuContainer]<br>E--&gt;F(PopupMenu)<br></code></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/29786aa6dac24e80a6647d719b29ab14.png" alt="image-20220516100245252"></p>
-<p>Menu 存放 MenuItem，但因为菜单也可以作为菜单项，如上文中的格式是一个菜单，也是编辑菜单中的菜单项。所以 Menu 是 MenuItem 的子类。</p>
-<h2 id="开发逻辑"><a href="#开发逻辑" class="headerlink" title="开发逻辑"></a>开发逻辑</h2><ol>
-<li>准备好菜单项组件</li>
-<li>准备菜单组件 Menu 或 PopupMenu（右键弹出子菜单），添加菜单项组件</li>
-<li>准备菜单条组件，把菜单组件添加进来（frame.addMenuBar(mb);）</li>
-<li>把菜单条组件添加到窗口中</li>
-</ol>
-<h2 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h2><p>菜单项之间的分割线：<code>Menu.add(new MenuItem(&quot;-&quot;))</code>。</p>
-<p>给某个菜单项关联快捷键功能：<code>new MenuItem(&quot;菜单项名字&quot;,new MenuShortcut(KeyEvent.VK_Q,true))</code>KeyEvent.VK_Q表示 Ctrl + Q，后面加 true 就是 Ctrl+Shift+Q。</p>
-<h2 id="PopupMenu"><a href="#PopupMenu" class="headerlink" title="PopupMenu"></a>PopupMenu</h2><p>右键出现菜单。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PopupMenuTry</span> &#123;<br>    TextArea ta=<span class="hljs-keyword">new</span> <span class="hljs-title class_">TextArea</span>(<span class="hljs-number">6</span>,<span class="hljs-number">40</span>);<br>    Frame f=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Frame</span>();<br>    PopupMenu pm=<span class="hljs-keyword">new</span> <span class="hljs-title class_">PopupMenu</span>();<br>    MenuItem mi1=<span class="hljs-keyword">new</span> <span class="hljs-title class_">MenuItem</span>(<span class="hljs-string">&quot;注释&quot;</span>);<br>    MenuItem mi2=<span class="hljs-keyword">new</span> <span class="hljs-title class_">MenuItem</span>(<span class="hljs-string">&quot;取消注释&quot;</span>);<br>    MenuItem mi3=<span class="hljs-keyword">new</span> <span class="hljs-title class_">MenuItem</span>(<span class="hljs-string">&quot;复制&quot;</span>);<br>    MenuItem mi4=<span class="hljs-keyword">new</span> <span class="hljs-title class_">MenuItem</span>(<span class="hljs-string">&quot;保存&quot;</span>);<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">init</span><span class="hljs-params">()</span>&#123;<br>        pm.add(mi1);<br>        pm.add(mi2);<br>        pm.add(mi3);<br>        pm.add(mi4);<br>        ta.add(pm);<span class="hljs-comment">//PopupMenu 添加到要右键的组件中</span><br>        f.add(ta);<br>        f.pack();<br>        f.setVisible(<span class="hljs-literal">true</span>);<br>        ta.addMouseListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">MouseAdapter</span>() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">mouseReleased</span><span class="hljs-params">(MouseEvent e)</span> &#123;<br>                <span class="hljs-keyword">if</span>(e.isPopupTrigger())&#123;<span class="hljs-comment">//如果为 true，证明是右键；否则是左键</span><br>                    pm.show(ta,e.getX(),e.getY());<span class="hljs-comment">//三个参数分别是父组件、菜单出现的横纵坐标，用 getXY() 获取当前位置</span><br>                &#125;<br>            &#125;<br>        &#125;);<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">PopupMenuTry</span>().init();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h1 id="绘图"><a href="#绘图" class="headerlink" title="绘图"></a>绘图</h1><p>其实之前学习的各种组件，展现效果不同，都是用 awt 的绘图功能绘制的。</p>
-<p>Graphics 对象进行绘图，在Component类中，又提供了下列三个方法来完成组件图形的绘制与刷新：</p>
-<p>​    paint(Graphics g):绘制组件的外观；</p>
-<p>​    update(Graphics g):内部调用paint方法，刷新组件外观；</p>
-<p>​    repaint():调用update方法，刷新组件外观；</p>
-<p><img src="https://img-blog.csdnimg.cn/16622de2995c48399e9bbe5af99b35e3.png" alt="image-20220516164730275"></p>
-<p>paint() 方法系统自动调用，程序员只需要调用 repaint() 完成。</p>
-<p>如果想重写按钮的默认样式，绘制属于自己的图像，需要重写 paint() 中的方法。</p>
-<h2 id="Graphics"><a href="#Graphics" class="headerlink" title="Graphics"></a>Graphics</h2><p>画画需要画布、画笔、以及不同颜色的颜料。</p>
-<p>Canvas 类是画布，Graphics 是画笔，其中的 setColor() 方法设置颜色。</p>
-<h3 id="画图步骤"><a href="#画图步骤" class="headerlink" title="画图步骤"></a>画图步骤</h3><ol>
-<li><p>自定义类继承 Graphics 类，重写 paint() 方法；</p>
-</li>
-<li><p>在 paint() 方法内部，开始绘制之前先设置好颜色、字体等属性，setColor() setFont()。</p>
-</li>
-<li><p>调用 drawXxx() 方法开始绘画。</p>
-<table>
-<thead>
-<tr>
-<th>方法名称</th>
-<th>方法功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>setColor(Color c)</td>
-<td>设置颜色</td>
-</tr>
-<tr>
-<td>setFont(Font font)</td>
-<td>设置字体</td>
-</tr>
-<tr>
-<td>drawLine()</td>
-<td>绘制直线</td>
-</tr>
-<tr>
-<td>drawRect()</td>
-<td>绘制矩形</td>
-</tr>
-<tr>
-<td>drawRoundRect()</td>
-<td>绘制圆角矩形</td>
-</tr>
-<tr>
-<td>drawOval()</td>
-<td>绘制椭圆形</td>
-</tr>
-<tr>
-<td>drawPolygon()</td>
-<td>绘制多边形</td>
-</tr>
-<tr>
-<td>drawArc()</td>
-<td>绘制圆弧</td>
-</tr>
-<tr>
-<td>drawPolyline()</td>
-<td>绘制折线</td>
-</tr>
-<tr>
-<td>fillRect()</td>
-<td>填充矩形区域</td>
-</tr>
-<tr>
-<td>fillRoundRect()</td>
-<td>填充圆角矩形区域</td>
-</tr>
-<tr>
-<td>fillOval()</td>
-<td>填充椭圆区域</td>
-</tr>
-<tr>
-<td>fillPolygon()</td>
-<td>填充多边形区域</td>
-</tr>
-<tr>
-<td>fillArc()</td>
-<td>填充圆弧对应的扇形区域</td>
-</tr>
-<tr>
-<td>drawImage()</td>
-<td>绘制位图</td>
-</tr>
-</tbody></table>
-</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">GraphicsTry</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> String OVAL_SHAPE=<span class="hljs-string">&quot;oval&quot;</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> String RECT_SHAPE=<span class="hljs-string">&quot;rect&quot;</span>;<br>    <span class="hljs-keyword">private</span> String SHAPE=<span class="hljs-string">&quot;&quot;</span>;<br>    <span class="hljs-keyword">private</span> Frame f=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Frame</span>();<br>    <span class="hljs-keyword">private</span> Button btOval=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;绘制椭圆&quot;</span>);<br>    <span class="hljs-keyword">private</span> Button btRect=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Button</span>(<span class="hljs-string">&quot;绘制矩形&quot;</span>);<br>    <span class="hljs-keyword">private</span> Panel p=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Panel</span>();<br>    <span class="hljs-keyword">private</span> MyCanvas mc=<span class="hljs-keyword">new</span> <span class="hljs-title class_">MyCanvas</span>();<span class="hljs-comment">//列出组件，全部是 private 的。 MyCanvas 是继承 Canvas 的类，可以重写 paint() 方法。</span><br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">init</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-comment">//按钮点击绑定事件</span><br>        btOval.addMouseListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">MouseAdapter</span>() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">mouseReleased</span><span class="hljs-params">(MouseEvent e)</span> &#123;<br>                SHAPE=OVAL_SHAPE;<span class="hljs-comment">//以此判断要绘制的图形是椭圆还是矩形</span><br>                mc.repaint();<br>            &#125;<br>        &#125;);<br>        btRect.addMouseListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">MouseAdapter</span>() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">mouseReleased</span><span class="hljs-params">(MouseEvent e)</span> &#123;<br>                SHAPE=RECT_SHAPE;<br>                mc.repaint();<br>            &#125;<br>        &#125;);<br>        mc.setPreferredSize(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Dimension</span>(<span class="hljs-number">300</span>,<span class="hljs-number">200</span>));<span class="hljs-comment">//设置画布大小</span><br>        <span class="hljs-comment">//组装组件</span><br>        p.add(btOval);<br>        p.add(btRect,BorderLayout.EAST);<br>        f.add(mc,BorderLayout.NORTH);<br>        f.add(p);<br>        f.pack();<br>        f.setVisible(<span class="hljs-literal">true</span>);<br>    &#125;<br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">GraphicsTry</span>().init();<span class="hljs-comment">//调用 init() 方法</span><br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyCanvas</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Canvas</span>&#123;<span class="hljs-comment">//重写绘制椭圆和矩形的 paint() 方法</span><br>        <span class="hljs-meta">@Override</span><br>        <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">paint</span><span class="hljs-params">(Graphics g)</span>&#123;<br>            <span class="hljs-keyword">if</span>(SHAPE.equals(<span class="hljs-string">&quot;oval&quot;</span>))&#123;<br>                g.setColor(Color.RED);<br>                g.drawOval(<span class="hljs-number">100</span>,<span class="hljs-number">100</span>,<span class="hljs-number">20</span>,<span class="hljs-number">10</span>);<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(SHAPE.equals(<span class="hljs-string">&quot;rect&quot;</span>))&#123;<br>                g.setColor(Color.RED);<br>                g.drawRect(<span class="hljs-number">100</span>,<span class="hljs-number">100</span>,<span class="hljs-number">20</span>,<span class="hljs-number">10</span>);<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
  
       <!-- reward -->
       

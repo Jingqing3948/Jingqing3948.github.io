@@ -155,6 +155,128 @@
     
     
     <article
+  id="post-Java 学习博客_3 入门——基础语法"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/04/29/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_3%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/"
+    >Java 学习博客_3 入门——基础语法</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/04/29/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_3%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" class="article-date">
+  <time datetime="2022-04-28T16:00:00.000Z" itemprop="datePublished">2022-04-29</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>以<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV18J411W7cE?p=1">黑马程序员全套Java教程</a>网课为主。</p>
+<h1 id="数据输入"><a href="#数据输入" class="headerlink" title="数据输入"></a>数据输入</h1><p>输入通过 Scanner 类实现。Scanner 类在 java.util 包下，要先导包才能使用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Scanner;<span class="hljs-comment">//导包</span><br>Scanner sc=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<span class="hljs-comment">//创建对象。这句话中除了 sc 是变量名可以修改，其他的都不能改。</span><br><span class="hljs-type">int</span> i=sc.nextInt();<span class="hljs-comment">//接收数据</span><br>String s=sc.nextLine();<br></code></pre></td></tr></table></figure>
+
+<h1 id="分支、循环语句"><a href="#分支、循环语句" class="headerlink" title="分支、循环语句"></a>分支、循环语句</h1><p>if - else 语句：和 C 语言一样。</p>
+<p>switch 语句：表达式的取值可以是 byte、short、int、char，JDK5之后可以是枚举，JDK7之后可以是 String。其他 case break default 用法和 C 一样。</p>
+<p>for, while, do - while 语句，及 break continue 和 C 一样。</p>
+<h1 id="随机数"><a href="#随机数" class="headerlink" title="随机数"></a>随机数</h1><p>Random 类，在 java.util 包下，需要导包。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Random;<br>Random r=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Random</span>();<br><span class="hljs-type">int</span> n=r.nextInt(<span class="hljs-number">10</span>);<span class="hljs-comment">//[0,10)的范围内取随机数</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="IDEA"><a href="#IDEA" class="headerlink" title="IDEA"></a>IDEA</h1><p>集成环境：能够把代码编写、编译、执行、调试等功能集合到一起的开发工具。IDEA  就是 java 的集成环境之一。</p>
+<p>创建项目-项目内创建模块-模块 src 下创建包-包下创建类-类中编写代码。</p>
+<p>其中，.class 文件都会放在模块同级的 out 文件夹中。</p>
+<img src="https://img-blog.csdnimg.cn/img_convert/a43b3155d7887b00874a916b9d6f7a47.png" alt="AJdw2.png" style="zoom: 50%;" />
+
+<p>可以在 File - Settings - Editor - Font 中修改字体</p>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>psvm + Tab：public static void main</p>
+<p>sout + Tab：System.out.println()</p>
+<p>Ctrl + Alt + Space：自动补全代码</p>
+<p>Ctrl + /：单行注释</p>
+<p>Ctrl + Shift + /：多行注释</p>
+<p>Ctrl + Alt + L：代码格式化</p>
+<h2 id="模块操作"><a href="#模块操作" class="headerlink" title="模块操作"></a>模块操作</h2><p>新增模块： File - Project Structure - Modules - New Module - Java - 命名，修改路径</p>
+<p>删除模块：右键模块 - Remove Module</p>
+<p>​    不过删除后在文件目录中仍然存在。</p>
+<p>导入模块：File - Project Structure - Modules - (+) - Import Modules - 选择模块。</p>
+<p>​    如果显示 project SDK is not defined：点 set up.</p>
+<h2 id="断点"><a href="#断点" class="headerlink" title="断点"></a>断点</h2><p>DeBug 调试，断点调试，可以查看程序运行细节。</p>
+<p>添加断点：在行号前点一下，出现红点。</p>
+<p>调试：右键，不是 run ,而是 debug。</p>
+<p>Debugger 窗口下的Frames：查看代码运行到了哪里，也可以查看方法调用情况。</p>
+<p>Debugger 窗口下的Variables：查看各变量运行过程中值的变化</p>
+<p>Console 窗口：查看代码运行过程中的输出变化。如果代码中出现需要输入的情况，需要先在 Console 窗口中输入才能继续执行。</p>
+<p>step info 按钮：下一步</p>
+<p>stop：停止</p>
+<p>再次点击红点，取消该断点。</p>
+<p>批量取消断点：点击两个红点的图案，选择 Java line breakpoints，点击 - 号即可全部删除。</p>
+<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><p>一次性声明大量<strong>同类型</strong>变量。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span>[] arr;<span class="hljs-comment">//推荐。定义了一个 int 型的数组，数组名是 arr</span><br><span class="hljs-type">int</span> arr[];<span class="hljs-comment">//定义了一个 int 型变量，变量名是 arr 数组</span><br><br><span class="hljs-type">int</span>[] arr=<span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;;<span class="hljs-comment">//静态初始化</span><br><span class="hljs-type">int</span>[] arr=&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;;<span class="hljs-comment">//静态初始化简化版</span><br><span class="hljs-type">int</span>[] arr=<span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">3</span>];<span class="hljs-comment">//动态初始化，只申请了空间，系统赋予初始值</span><br><span class="hljs-comment">//数字类型：初始值为0.0</span><br><span class="hljs-comment">//布尔类型：初始值为 false</span><br><span class="hljs-comment">//字符串类型：初始值为&quot;&quot;</span><br><span class="hljs-comment">//引用类型：初始值为 null</span><br></code></pre></td></tr></table></figure>
+
+<p>java 程序运行时需要在内存中分配空间，为了提高效率，内存空间也被划分为不同的部分。</p>
+<h2 id="栈内存"><a href="#栈内存" class="headerlink" title="栈内存"></a>栈内存</h2><p>定义的方法中的变量放在栈内存中，使用完直接消失。</p>
+<p>如<code>int a</code>，以及上文中定义的数组名 arr（其值是指向堆内存中数组内容的地址）。</p>
+<h2 id="堆内存"><a href="#堆内存" class="headerlink" title="堆内存"></a>堆内存</h2><p>实体、对象等的定义放在堆内存中，使用完会在垃圾回收器空闲时进行回收。</p>
+<p>如 new 一个对象，以及上文中数组 arr 中的具体数据内容（arr[0]=1, arr[1]=2……）</p>
+<p>访问数组中的内容，首先根据栈内存中数组的地址找到相应的堆内存中的位置（以及移动相应的索引步长）然后访问数据。</p>
+<p>因此，当多个数组指向相同地址时，其中的内容是一样的，修改其中一个，另一个也会改变。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span>[] arr1=&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;;<br><span class="hljs-type">int</span>[] arr2=arr1;<br>arr2[<span class="hljs-number">0</span>]=<span class="hljs-number">11</span>;<br>arr2[<span class="hljs-number">1</span>]=<span class="hljs-number">22</span>;<br>arr2[<span class="hljs-number">2</span>]=<span class="hljs-number">33</span>;<span class="hljs-comment">//这时访问 arr1[]，发现其中的数据也变成了11,22,33</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="数组常见问题"><a href="#数组常见问题" class="headerlink" title="数组常见问题"></a>数组常见问题</h2><ol>
+<li>数组越界问题，ArrayIndexOutOfException。</li>
+<li>空指针异常问题，NullPointerException。（<code>arr=null</code>，表示数组不指向任何有效对象）</li>
+</ol>
+<h2 id="Array-length"><a href="#Array-length" class="headerlink" title="Array.length"></a>Array.length</h2><p>数组自带属性 length，通过<code>arr.length</code>就能获得数组长度。</p>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>java 中的方法类似 C 中的函数。只是涉及类和对象的问题，有一些小不同。</p>
+<p>像函数一样，是有独立功能的代码块组成的集合，可以拿去调用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> 返回值类型 方法名(形参)&#123;<span class="hljs-comment">//和 main 方法同级</span><br>    方法体<br>    <span class="hljs-keyword">return</span> 返回值;<br>&#125;<span class="hljs-comment">//定义</span><br><br>方法名(实参);<span class="hljs-comment">//在 main 方法中调用。有返回值类型的方法建议用变量接收调用</span><br></code></pre></td></tr></table></figure>
+
+<p>方法不能嵌套定义。</p>
+<h2 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h2><p>多个方法在一个类中，有相同的方法名，但参数不完全相同。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">max</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">max</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b, <span class="hljs-type">int</span> c)</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>注意：返回值不能作为判断方法是否重载的标准！</strong>只有方法名和参数可以。</p>
+<p>调用时，JVM 根据传入参数不同，来得知调用的是哪个方法。</p>
+<p><strong>形参值修改不会对实参造成影响。</strong>main() 方法存储在栈内存中，当 main() 方法调用其它方法时，其他方法进入栈内存</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/7c3113349748d453f61377bc4c5caa29.png" alt="A8wxg.png"></p>
+<p>但是其中的形参的值不对 main() 中的实参造成影响（除非是像数组、指针之类引用类型，根据地址去堆内存中修改数据），当 change() 方法执行完后就直接出栈了。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/0c3e37209c8e3ab328096a6e480a614e.png" alt="A8Kh1.png"></p>
+<p>如图，如果是数组单元的值被修改了，实际上是堆内存中的内容被修改了， main() 方法中数组对应的地址中的内容也会被修改。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/study/" rel="tag">study</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
   id="post-Python——语法基础1"
   class="article article-type-post"
   itemscope
@@ -1232,155 +1354,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/problems/" rel="tag">problems</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-Java 学习博客_1 介绍与安装"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2022/04/14/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_1%20%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%AE%89%E8%A3%85/"
-    >Java 学习博客_1 介绍与安装</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2022/04/14/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_1%20%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%AE%89%E8%A3%85/" class="article-date">
-  <time datetime="2022-04-13T16:00:00.000Z" itemprop="datePublished">2022-04-14</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>以黑马程序员网课为主。</p>
-<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Java是一个可以跨平台的语言，借助Java虚拟机（Java Virtual Machine, JVM）能够在任意操作系统（operating system, OS）上运行。</p>
-<p>JVM: Java Virtual Machine，在 JRE 的 bin 目录下。JVM 本质上是一个程序，使得 Java 在不同平台上运行时不需要重新编译，只需要执行保存在某字节码文件（.class）中的指令，不管什么平台，只要装有相应平台的 JVM ，字节码文件就可以在该平台上运行。</p>
-<p>JRE: Java Runtime Environment，运行只需要 JRE 就够了。</p>
-<p>JDK: Java Development Kit，Java 程序开发工具包。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mermaid">graph LR<br>A[JDK] --&gt;B[开发人员使用的工具, JDK 的 bin 目录下]<br>  A --&gt; C[JRE]<br>  C --&gt;D[JVM, JRE 的 bin 目录下]<br>  C --&gt;E[运行所需要的核心类库, JRE 的 lib 目录下]<br><br></code></pre></td></tr></table></figure>
-
-<p>尽管 JRE 对于运行 java 文件已经足够，作为学习肯定还是要下载 JDK 的~</p>
-<p>JDK 的安装目录如下：</p>
-<table>
-<thead>
-<tr>
-<th>JDK目录名称</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>bin</td>
-<td>存放工具命令，如：javac, java, etc.</td>
-</tr>
-<tr>
-<td>conf</td>
-<td>配置文件</td>
-</tr>
-<tr>
-<td>include</td>
-<td>某些平台特定的头文件</td>
-</tr>
-<tr>
-<td>jmods</td>
-<td>模块</td>
-</tr>
-<tr>
-<td>legal</td>
-<td>授权文档</td>
-</tr>
-<tr>
-<td>lib</td>
-<td>补充 JAR 包</td>
-</tr>
-<tr>
-<td>其他</td>
-<td>说明型文档</td>
-</tr>
-</tbody></table>
-<h2 id="在-DOS-窗口下操作命令"><a href="#在-DOS-窗口下操作命令" class="headerlink" title="在 DOS 窗口下操作命令"></a>在 DOS 窗口下操作命令</h2><p>在一开始没有使用 IDEA 等集成开发环境的时候，直接在 DOS ( Disk Operating System ) 窗口运行。Windows 通过 <code>win+R</code> 打开运行窗口，输入 <code>cmd</code> 进入 DOS 窗口。</p>
-<p>常用的DOS窗口命令：</p>
-<table>
-<thead>
-<tr>
-<th>操作</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>盘符名称</code>+<code>:</code>，如<code>D:</code></td>
-<td>切换到该盘</td>
-</tr>
-<tr>
-<td><code>dir</code></td>
-<td>查看当前路径下的内容</td>
-</tr>
-<tr>
-<td><code>cd 目录</code>，如<code>cd java</code></td>
-<td>进入当前路径下的一个单级目录（cd 是 change directory 的意思）</td>
-</tr>
-<tr>
-<td><code>cd ..</code></td>
-<td>回退到上一级目录</td>
-</tr>
-<tr>
-<td><code>cd 目录1\目录2\..</code></td>
-<td>一次性进入多级目录</td>
-</tr>
-<tr>
-<td><code>cd \</code></td>
-<td>回退到盘符目录</td>
-</tr>
-<tr>
-<td><code>cls</code></td>
-<td>清屏</td>
-</tr>
-<tr>
-<td><code>exit</code></td>
-<td>退出 DOS 窗口</td>
-</tr>
-</tbody></table>
-<h2 id="配置-PATH-环境变量"><a href="#配置-PATH-环境变量" class="headerlink" title="配置 PATH 环境变量"></a>配置 PATH 环境变量</h2><p>不得不说虽然之前学习其他语言的时候也做过很多次配置 PATH 环境变量的操作，但是这次才算理解一些意义。</p>
-<p>开发 Java 的时候是肯定会用到 JDK 里的开发工具的，比如编译的 <code>javac</code> ，运行的 <code>java</code>。</p>
-<p>但是没有配置环境变量的时候，cmd 无法直接使用 javac 文件，因为不知道 <code>javac.exe</code> 的路径。</p>
-<p>所以需要输入 <code>&quot;JDK文件的目录\bin\javac.exe&quot; 需要编译的文件的目录\需要编译的文件.java</code> （可以把 javac 和 java 文件直接拖进去，就会自动生成目录）相当麻烦。</p>
-<p>配置环境变量之后，直接在 cmd 窗口里输入 <code>javac 需要编译的文件.java</code> 就能编译。</p>
-<p>配置方法：（ Windows 系统）</p>
-<p>① 此电脑 – 属性 – 高级系统设置 – 环境变量，新建一个用户变量（建议命名和 Java 相关），并放入 JDK 文件夹的路径</p>
-<p>② 在下方系统变量中选中 Path 变量 – 编辑 – 新建 – 命名（建议命名和 Java 相关），并放入 JDK 内 bin 文件夹的路径。</p>
-<p>最后在DOS中输入<code>javac</code>，如果显示使用 javac 的提示信息说明配置成功。</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/study/" rel="tag">study</a></li></ul>
 
     </footer>
   </div>

@@ -43,6 +43,32 @@
   </entry>
   
   <entry>
+    <title>通信原理_1 介绍，信号与系统基础</title>
+    <link href="http://example.com/2022/11/02/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86_1%20%E4%BB%8B%E7%BB%8D%EF%BC%8C%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/"/>
+    <id>http://example.com/2022/11/02/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86_1%20%E4%BB%8B%E7%BB%8D%EF%BC%8C%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/</id>
+    <published>2022-11-01T16:00:00.000Z</published>
+    <updated>2022-11-02T13:49:18.589Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h1><p>现代通信原理一般是传输电信号。</p><p>香农模型：</p><p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/2022_11_02_13_43_16.png?token=AWO3PXPMKTK4YC5CLRYYVE3DMIB3C" alt="image-20220823192925164"></p><p>信源信息形式多种多样，编码时转换为处理更高效电信号。</p><p>信道一般有两种，第一种是在自由空间内传输的电磁波信号，第二种是沿导线传播的电磁波信号。</p><p>信道容量通常远大于用户传输的信息率。因此一般采用两种技术。</p><p>复用：多个信源的信号以正交的形式相互叠加，传输到目的地后再根据正交的原理拆分。</p><p>多址：多个信源的信号编码后直接传入信道，不叠加。</p><p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/2022_11_02_13_44_42.png?token=AWO3PXKTKKBP5SBHOQFBH7TDMICAU" alt="image-20220823192953710"></p><p>虚线代表通信网，中间的白点代表交换局，用于中转。</p><h1 id="二、确定信号分析"><a href="#二、确定信号分析" class="headerlink" title="二、确定信号分析"></a>二、确定信号分析</h1><h2 id="能量-功率"><a href="#能量-功率" class="headerlink" title="能量 功率"></a>能量 功率</h2><p>能量：$\int_{-\infty}^{+\infty}s^2(t)dt$</p><p>瞬时功率：$s^2(t)$</p><p>时移不改变能量和功率；信号*常数K，能量和功率都 *K^2.</p><p>一个信号的能量和功率不可能同时&gt;0&amp;&amp;&lt;无穷。能量有限的信号是能量信号，功率有限的信号是功率信号。</p><h2 id="欧拉公式"><a href="#欧拉公式" class="headerlink" title="欧拉公式"></a>欧拉公式</h2><p>$e^{j\theta}=cos\theta+jsin\theta$</p><p>复单频信号的频率：$e^{j2\pi ft}$，f就是频率。</p><p>复信号的能量和功率是两个实信号的能量和功率之和。</p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/2022_11_02_13_50_16.png" alt="image-20221010154041668" style="zoom:67%;" /><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/2022_11_02_13_50_21.png" alt="image-20221010154051412" style="zoom:67%;" /><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/2022_11_02_13_50_24.png" alt="image-20221010154104964" style="zoom:67%;" /><h2 id="傅里叶级数和傅里叶变换"><a href="#傅里叶级数和傅里叶变换" class="headerlink" title="傅里叶级数和傅里叶变换"></a>傅里叶级数和傅里叶变换</h2><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/2022_11_02_13_50_30.png" alt="image-20220824095227455" style="zoom: 67%;" /><p>$ x(t)↔\int_{-\infty}^{+\infty}X(f)e^{j2\pi ft}df $</p><p>$ X(f)↔\int_{-\infty}^{+\infty}x(t)e^{-j2\pi ft}dt $</p><h2 id="常用傅氏变换及性质"><a href="#常用傅氏变换及性质" class="headerlink" title="常用傅氏变换及性质"></a>常用傅氏变换及性质</h2><p>一个域中的面积是另一个域中原点处的值。</p><p>$ X(0)=\int_{-\infty}^{+\infty}x(t)dt $</p><p>$ x(0)=\int_{-\infty}^{+\infty}X(f)df $</p><p>时域越宽，频域越窄；时域越窄，频域越宽。</p><h3 id="矩形傅氏变换"><a href="#矩形傅氏变换" class="headerlink" title="矩形傅氏变换"></a>矩形傅氏变换</h3><p>$$ rect(fT)↔\frac{1}{T}sinc(\frac{t}{T}) $$      </p><h3 id="冲激与直流"><a href="#冲激与直流" class="headerlink" title="冲激与直流"></a>冲激与直流</h3><p>$$ \delta(t)↔1 $$</p><p>$$ 1↔\delta(f) $$</p><h3 id="时移与频移"><a href="#时移与频移" class="headerlink" title="时移与频移"></a>时移与频移</h3><p>$$ x(t-t_0)↔X(f)e^{-j2\pi ft_0} $$</p><p>$$ x(t)e^{j2\pi f_0t}↔X(f-f_0) $$</p><h3 id="镜像和共轭对称性"><a href="#镜像和共轭对称性" class="headerlink" title="镜像和共轭对称性"></a>镜像和共轭对称性</h3><p>x(t)↔X(-f)</p><p>$ x^*(t)↔X^*(-f) $</p><p>因此如果x(t)是实信号，X(f)=X*(-f)，满足共轭对称。</p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/2022_11_02_13_50_35.png" alt="image-20220825164505247" style="zoom: 50%;" /><img src="D:/Documents/(5)Junior_year/md%25E7%25AC%2594%25E8%25AE%25B0/%25E9%2580%259A%25E4%25BF%25A1%25E5%258E%259F%25E7%2590%2586/image-20220825102008393.png" alt="image-20220825102008393" style="zoom:50%;" /><h3 id="卷积与乘积"><a href="#卷积与乘积" class="headerlink" title="卷积与乘积"></a>卷积与乘积</h3><p>一个域的乘积，是另一个域的卷积。</p><p>冲激函数的乘积和卷积：</p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/2022_11_02_13_55_04.png" alt="image-20220825102303526" style="zoom: 67%;" /><h3 id="符号函数"><a href="#符号函数" class="headerlink" title="符号函数"></a>符号函数</h3><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/2022_11_02_13_55_07.png" alt="image-20220825102518943" style="zoom:67%;" /><h3 id="积分和微分"><a href="#积分和微分" class="headerlink" title="积分和微分"></a>积分和微分</h3><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/2022_11_02_13_55_11.png" alt="image-20220825203752979" style="zoom:50%;" /><h3 id="复单频信号和周期信号"><a href="#复单频信号和周期信号" class="headerlink" title="复单频信号和周期信号"></a>复单频信号和周期信号</h3><p>$ e^{-j2\pi vt} $是复单频信号。</p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/2022_11_02_13_55_13.png" alt="image-20220825102844881" style="zoom:67%;" /><h3 id="周期冲激序列"><a href="#周期冲激序列" class="headerlink" title="周期冲激序列"></a>周期冲激序列</h3><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/2022_11_02_13_55_17.png" alt="image-20220825103336810" style="zoom:67%;" /><h3 id="理想采样"><a href="#理想采样" class="headerlink" title="理想采样"></a>理想采样</h3><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/2022_11_02_13_55_20.png" alt="image-20220825103844211" style="zoom:67%;" />]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;一、介绍&quot;&gt;&lt;a href=&quot;#一、介绍&quot; class=&quot;headerlink&quot; title=&quot;一、介绍&quot;&gt;&lt;/a&gt;一、介绍&lt;/h1&gt;&lt;p&gt;现代通信原理一般是传输电信号。&lt;/p&gt;
+&lt;p&gt;香农模型：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.gith</summary>
+      
+    
+    
+    
+    <category term="Communication Theory" scheme="http://example.com/categories/Communication-Theory/"/>
+    
+    
+    <category term="study" scheme="http://example.com/tags/study/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java 学习博客_入门 IO 字符流</title>
     <link href="http://example.com/2022/05/23/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94IO%20%E5%AD%97%E7%AC%A6%E6%B5%81/"/>
     <id>http://example.com/2022/05/23/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94IO%20%E5%AD%97%E7%AC%A6%E6%B5%81/</id>
@@ -493,31 +519,6 @@
     
     
     <category term="html+css" scheme="http://example.com/categories/html-css/"/>
-    
-    
-    <category term="study" scheme="http://example.com/tags/study/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>git_3 版本控制</title>
-    <link href="http://example.com/2022/05/03/git_3%20%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"/>
-    <id>http://example.com/2022/05/03/git_3%20%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/</id>
-    <published>2022-05-02T16:00:00.000Z</published>
-    <updated>2022-05-04T04:23:41.174Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="查看历史版本信息"><a href="#查看历史版本信息" class="headerlink" title="查看历史版本信息"></a>查看历史版本信息</h1><p><code>git log</code>查看之前的版本信息。</p><p>其中可以看到 HEAD-&gt;master（或 main），HEAD 是指向当前版本的指针，之后修改版本其实就是移动这个指针。</p><p>如果最下面一行是冒号，说明记录多到一页装不下了。</p><p>多屏显示控制方式：空格向下翻页，b 向上翻页，q退出。</p><p><code>git log --pretty=oneline</code>以每次版本占一行的，漂亮的方式 显示版本信息。</p><p><code>git log --oneline</code>连哈希值也会缩短（被称为局部索引值）。<strong>只能查看之前的版本信息，版本回退后不能看到将来的版本。</strong></p><p><code>git reflog</code>显示 commit 信息，以及从当前版本移动到这个版本需要多少步（如：HEAD@{1}表示差了一个版本，0表示这个版本就是当前版本）<strong>可以查看历史/未来版本。</strong></p><h1 id="版本前进-回退"><a href="#版本前进-回退" class="headerlink" title="版本前进 / 回退"></a>版本前进 / 回退</h1><p>本质就是移动 HEAD 指针。</p><p>方法1：首先通过 <code>git log --oneline</code>找到要跳转的版本的哈希值</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">git reset --hard Fd83ed9 // 结尾是刚才获取的哈希值，即局部索引值<br></code></pre></td></tr></table></figure><p>不管前进后退都是这种方法。</p><p>方法2：只能后退</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">git reset --hard^//回退一个版本。有几个异或符号，回退几个版本。<br></code></pre></td></tr></table></figure><p>方法3：只能后退</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">git reset hard~3//回退3个版本<br></code></pre></td></tr></table></figure><p>soft：修改本地库的指针。修改后输入<code>cat good.txt</code> 查看本地库的文件，会发现文件已经变成修改版本后的文件了。</p><p><em>如果输入 <code>git status</code> ，会发现暂存区也被 modified 了。并不是因为暂存区变了，而是本地库指针移动了，和暂存区无法对应了。</em></p><p>mixed：修改本地库的指针，并重置暂存区。</p><p>hard：修改本地库的指针，并重置暂存区和工作区。</p><h1 id="删除及找回删除文件"><a href="#删除及找回删除文件" class="headerlink" title="删除及找回删除文件"></a>删除及找回删除文件</h1><p>如果是删除并提交了删除操作之后：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs git">rm aaa.txt//删除文件<br>git add aaa.txt//添加删除操作<br>git commit -m &quot;&quot; aaa.txt//提交删除操作<br><br>git reflog//查看历代版本及其哈希值<br>git reset --hard abcdef//回退到有这个文件的版本<br>git checkout -- aaa.txt//另一种方法<br></code></pre></td></tr></table></figure><p>如果是删除后把删除操作添加到暂存区后：<code>git reset --hard HEAD</code>。</p><h1 id="比较文件差异"><a href="#比较文件差异" class="headerlink" title="比较文件差异"></a>比较文件差异</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">//工作区未提交到暂存区：<br>git diff a.txt//比较该文件做的改动。红色行删除，绿色行新增/修改。<br>//工作区提交到暂存区后：上一种方法查不出差别。<br>git diff HEAD a.txt//比较本地库的版本<br>git diff HEAD^3 a.txt//比较本地库的当前版本和倒退三个版本的区别<br></code></pre></td></tr></table></figure><p>不带文件名就是比较多个文件。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;查看历史版本信息&quot;&gt;&lt;a href=&quot;#查看历史版本信息&quot; class=&quot;headerlink&quot; title=&quot;查看历史版本信息&quot;&gt;&lt;/a&gt;查看历史版本信息&lt;/h1&gt;&lt;p&gt;&lt;code&gt;git log&lt;/code&gt;查看之前的版本信息。&lt;/p&gt;
-&lt;p&gt;其中可以看到 H</summary>
-      
-    
-    
-    
-    <category term="git" scheme="http://example.com/categories/git/"/>
     
     
     <category term="study" scheme="http://example.com/tags/study/"/>

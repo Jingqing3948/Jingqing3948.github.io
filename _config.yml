@@ -105,3 +105,11 @@ deploy:
   type: git
   repo: git@github.com:Jingqing3948/Jingqing3948.github.io.git
   branch: main
+
+math:
+  per_page: true
+  mathjax: 
+    enable: true
+    mhchem: true
+
+

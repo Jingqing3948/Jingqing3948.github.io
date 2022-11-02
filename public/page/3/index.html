@@ -155,6 +155,88 @@
     
     
     <article
+  id="post-git_3 版本控制"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/05/03/git_3%20%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"
+    >git_3 版本控制</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/05/03/git_3%20%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" class="article-date">
+  <time datetime="2022-05-02T16:00:00.000Z" itemprop="datePublished">2022-05-03</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="查看历史版本信息"><a href="#查看历史版本信息" class="headerlink" title="查看历史版本信息"></a>查看历史版本信息</h1><p><code>git log</code>查看之前的版本信息。</p>
+<p>其中可以看到 HEAD-&gt;master（或 main），HEAD 是指向当前版本的指针，之后修改版本其实就是移动这个指针。</p>
+<p>如果最下面一行是冒号，说明记录多到一页装不下了。</p>
+<p>多屏显示控制方式：空格向下翻页，b 向上翻页，q退出。</p>
+<p><code>git log --pretty=oneline</code>以每次版本占一行的，漂亮的方式 显示版本信息。</p>
+<p><code>git log --oneline</code>连哈希值也会缩短（被称为局部索引值）。<strong>只能查看之前的版本信息，版本回退后不能看到将来的版本。</strong></p>
+<p><code>git reflog</code>显示 commit 信息，以及从当前版本移动到这个版本需要多少步（如：HEAD@{1}表示差了一个版本，0表示这个版本就是当前版本）<strong>可以查看历史/未来版本。</strong></p>
+<h1 id="版本前进-回退"><a href="#版本前进-回退" class="headerlink" title="版本前进 / 回退"></a>版本前进 / 回退</h1><p>本质就是移动 HEAD 指针。</p>
+<p>方法1：首先通过 <code>git log --oneline</code>找到要跳转的版本的哈希值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">git reset --hard Fd83ed9 // 结尾是刚才获取的哈希值，即局部索引值<br></code></pre></td></tr></table></figure>
+
+<p>不管前进后退都是这种方法。</p>
+<p>方法2：只能后退</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">git reset --hard^//回退一个版本。有几个异或符号，回退几个版本。<br></code></pre></td></tr></table></figure>
+
+<p>方法3：只能后退</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">git reset hard~3//回退3个版本<br></code></pre></td></tr></table></figure>
+
+<p>soft：修改本地库的指针。修改后输入<code>cat good.txt</code> 查看本地库的文件，会发现文件已经变成修改版本后的文件了。</p>
+<p><em>如果输入 <code>git status</code> ，会发现暂存区也被 modified 了。并不是因为暂存区变了，而是本地库指针移动了，和暂存区无法对应了。</em></p>
+<p>mixed：修改本地库的指针，并重置暂存区。</p>
+<p>hard：修改本地库的指针，并重置暂存区和工作区。</p>
+<h1 id="删除及找回删除文件"><a href="#删除及找回删除文件" class="headerlink" title="删除及找回删除文件"></a>删除及找回删除文件</h1><p>如果是删除并提交了删除操作之后：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs git">rm aaa.txt//删除文件<br>git add aaa.txt//添加删除操作<br>git commit -m &quot;&quot; aaa.txt//提交删除操作<br><br>git reflog//查看历代版本及其哈希值<br>git reset --hard abcdef//回退到有这个文件的版本<br>git checkout -- aaa.txt//另一种方法<br></code></pre></td></tr></table></figure>
+
+<p>如果是删除后把删除操作添加到暂存区后：<code>git reset --hard HEAD</code>。</p>
+<h1 id="比较文件差异"><a href="#比较文件差异" class="headerlink" title="比较文件差异"></a>比较文件差异</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">//工作区未提交到暂存区：<br>git diff a.txt//比较该文件做的改动。红色行删除，绿色行新增/修改。<br>//工作区提交到暂存区后：上一种方法查不出差别。<br>git diff HEAD a.txt//比较本地库的版本<br>git diff HEAD^3 a.txt//比较本地库的当前版本和倒退三个版本的区别<br></code></pre></td></tr></table></figure>
+
+<p>不带文件名就是比较多个文件。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/study/" rel="tag">study</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
   id="post-Java 学习博客_10 入门——抽象类、抽象方法、接口"
   class="article article-type-post"
   itemscope
@@ -971,128 +1053,6 @@
 </tbody></table>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java">array.add(<span class="hljs-number">1</span>);<br>array.add(<span class="hljs-number">3</span>);<br>array.add(<span class="hljs-number">4</span>);<br>array.add(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>);<br>System.out.println(array);<span class="hljs-comment">//输出 array：1，2，3，4</span><br></code></pre></td></tr></table></figure>
 
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/study/" rel="tag">study</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-Java 学习博客_3 入门——基础语法"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2022/04/29/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_3%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/"
-    >Java 学习博客_3 入门——基础语法</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2022/04/29/Java%20%E5%AD%A6%E4%B9%A0%E5%8D%9A%E5%AE%A2_3%20%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" class="article-date">
-  <time datetime="2022-04-28T16:00:00.000Z" itemprop="datePublished">2022-04-29</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>以<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV18J411W7cE?p=1">黑马程序员全套Java教程</a>网课为主。</p>
-<h1 id="数据输入"><a href="#数据输入" class="headerlink" title="数据输入"></a>数据输入</h1><p>输入通过 Scanner 类实现。Scanner 类在 java.util 包下，要先导包才能使用。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Scanner;<span class="hljs-comment">//导包</span><br>Scanner sc=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<span class="hljs-comment">//创建对象。这句话中除了 sc 是变量名可以修改，其他的都不能改。</span><br><span class="hljs-type">int</span> i=sc.nextInt();<span class="hljs-comment">//接收数据</span><br>String s=sc.nextLine();<br></code></pre></td></tr></table></figure>
-
-<h1 id="分支、循环语句"><a href="#分支、循环语句" class="headerlink" title="分支、循环语句"></a>分支、循环语句</h1><p>if - else 语句：和 C 语言一样。</p>
-<p>switch 语句：表达式的取值可以是 byte、short、int、char，JDK5之后可以是枚举，JDK7之后可以是 String。其他 case break default 用法和 C 一样。</p>
-<p>for, while, do - while 语句，及 break continue 和 C 一样。</p>
-<h1 id="随机数"><a href="#随机数" class="headerlink" title="随机数"></a>随机数</h1><p>Random 类，在 java.util 包下，需要导包。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Random;<br>Random r=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Random</span>();<br><span class="hljs-type">int</span> n=r.nextInt(<span class="hljs-number">10</span>);<span class="hljs-comment">//[0,10)的范围内取随机数</span><br></code></pre></td></tr></table></figure>
-
-<h1 id="IDEA"><a href="#IDEA" class="headerlink" title="IDEA"></a>IDEA</h1><p>集成环境：能够把代码编写、编译、执行、调试等功能集合到一起的开发工具。IDEA  就是 java 的集成环境之一。</p>
-<p>创建项目-项目内创建模块-模块 src 下创建包-包下创建类-类中编写代码。</p>
-<p>其中，.class 文件都会放在模块同级的 out 文件夹中。</p>
-<img src="https://img-blog.csdnimg.cn/img_convert/a43b3155d7887b00874a916b9d6f7a47.png" alt="AJdw2.png" style="zoom: 50%;" />
-
-<p>可以在 File - Settings - Editor - Font 中修改字体</p>
-<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>psvm + Tab：public static void main</p>
-<p>sout + Tab：System.out.println()</p>
-<p>Ctrl + Alt + Space：自动补全代码</p>
-<p>Ctrl + /：单行注释</p>
-<p>Ctrl + Shift + /：多行注释</p>
-<p>Ctrl + Alt + L：代码格式化</p>
-<h2 id="模块操作"><a href="#模块操作" class="headerlink" title="模块操作"></a>模块操作</h2><p>新增模块： File - Project Structure - Modules - New Module - Java - 命名，修改路径</p>
-<p>删除模块：右键模块 - Remove Module</p>
-<p>​    不过删除后在文件目录中仍然存在。</p>
-<p>导入模块：File - Project Structure - Modules - (+) - Import Modules - 选择模块。</p>
-<p>​    如果显示 project SDK is not defined：点 set up.</p>
-<h2 id="断点"><a href="#断点" class="headerlink" title="断点"></a>断点</h2><p>DeBug 调试，断点调试，可以查看程序运行细节。</p>
-<p>添加断点：在行号前点一下，出现红点。</p>
-<p>调试：右键，不是 run ,而是 debug。</p>
-<p>Debugger 窗口下的Frames：查看代码运行到了哪里，也可以查看方法调用情况。</p>
-<p>Debugger 窗口下的Variables：查看各变量运行过程中值的变化</p>
-<p>Console 窗口：查看代码运行过程中的输出变化。如果代码中出现需要输入的情况，需要先在 Console 窗口中输入才能继续执行。</p>
-<p>step info 按钮：下一步</p>
-<p>stop：停止</p>
-<p>再次点击红点，取消该断点。</p>
-<p>批量取消断点：点击两个红点的图案，选择 Java line breakpoints，点击 - 号即可全部删除。</p>
-<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><p>一次性声明大量<strong>同类型</strong>变量。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span>[] arr;<span class="hljs-comment">//推荐。定义了一个 int 型的数组，数组名是 arr</span><br><span class="hljs-type">int</span> arr[];<span class="hljs-comment">//定义了一个 int 型变量，变量名是 arr 数组</span><br><br><span class="hljs-type">int</span>[] arr=<span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;;<span class="hljs-comment">//静态初始化</span><br><span class="hljs-type">int</span>[] arr=&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;;<span class="hljs-comment">//静态初始化简化版</span><br><span class="hljs-type">int</span>[] arr=<span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">3</span>];<span class="hljs-comment">//动态初始化，只申请了空间，系统赋予初始值</span><br><span class="hljs-comment">//数字类型：初始值为0.0</span><br><span class="hljs-comment">//布尔类型：初始值为 false</span><br><span class="hljs-comment">//字符串类型：初始值为&quot;&quot;</span><br><span class="hljs-comment">//引用类型：初始值为 null</span><br></code></pre></td></tr></table></figure>
-
-<p>java 程序运行时需要在内存中分配空间，为了提高效率，内存空间也被划分为不同的部分。</p>
-<h2 id="栈内存"><a href="#栈内存" class="headerlink" title="栈内存"></a>栈内存</h2><p>定义的方法中的变量放在栈内存中，使用完直接消失。</p>
-<p>如<code>int a</code>，以及上文中定义的数组名 arr（其值是指向堆内存中数组内容的地址）。</p>
-<h2 id="堆内存"><a href="#堆内存" class="headerlink" title="堆内存"></a>堆内存</h2><p>实体、对象等的定义放在堆内存中，使用完会在垃圾回收器空闲时进行回收。</p>
-<p>如 new 一个对象，以及上文中数组 arr 中的具体数据内容（arr[0]=1, arr[1]=2……）</p>
-<p>访问数组中的内容，首先根据栈内存中数组的地址找到相应的堆内存中的位置（以及移动相应的索引步长）然后访问数据。</p>
-<p>因此，当多个数组指向相同地址时，其中的内容是一样的，修改其中一个，另一个也会改变。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span>[] arr1=&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;;<br><span class="hljs-type">int</span>[] arr2=arr1;<br>arr2[<span class="hljs-number">0</span>]=<span class="hljs-number">11</span>;<br>arr2[<span class="hljs-number">1</span>]=<span class="hljs-number">22</span>;<br>arr2[<span class="hljs-number">2</span>]=<span class="hljs-number">33</span>;<span class="hljs-comment">//这时访问 arr1[]，发现其中的数据也变成了11,22,33</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="数组常见问题"><a href="#数组常见问题" class="headerlink" title="数组常见问题"></a>数组常见问题</h2><ol>
-<li>数组越界问题，ArrayIndexOutOfException。</li>
-<li>空指针异常问题，NullPointerException。（<code>arr=null</code>，表示数组不指向任何有效对象）</li>
-</ol>
-<h2 id="Array-length"><a href="#Array-length" class="headerlink" title="Array.length"></a>Array.length</h2><p>数组自带属性 length，通过<code>arr.length</code>就能获得数组长度。</p>
-<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>java 中的方法类似 C 中的函数。只是涉及类和对象的问题，有一些小不同。</p>
-<p>像函数一样，是有独立功能的代码块组成的集合，可以拿去调用。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> 返回值类型 方法名(形参)&#123;<span class="hljs-comment">//和 main 方法同级</span><br>    方法体<br>    <span class="hljs-keyword">return</span> 返回值;<br>&#125;<span class="hljs-comment">//定义</span><br><br>方法名(实参);<span class="hljs-comment">//在 main 方法中调用。有返回值类型的方法建议用变量接收调用</span><br></code></pre></td></tr></table></figure>
-
-<p>方法不能嵌套定义。</p>
-<h2 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h2><p>多个方法在一个类中，有相同的方法名，但参数不完全相同。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">max</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">max</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b, <span class="hljs-type">int</span> c)</span><br></code></pre></td></tr></table></figure>
-
-<p><strong>注意：返回值不能作为判断方法是否重载的标准！</strong>只有方法名和参数可以。</p>
-<p>调用时，JVM 根据传入参数不同，来得知调用的是哪个方法。</p>
-<p><strong>形参值修改不会对实参造成影响。</strong>main() 方法存储在栈内存中，当 main() 方法调用其它方法时，其他方法进入栈内存</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/7c3113349748d453f61377bc4c5caa29.png" alt="A8wxg.png"></p>
-<p>但是其中的形参的值不对 main() 中的实参造成影响（除非是像数组、指针之类引用类型，根据地址去堆内存中修改数据），当 change() 方法执行完后就直接出栈了。</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/0c3e37209c8e3ab328096a6e480a614e.png" alt="A8Kh1.png"></p>
-<p>如图，如果是数组单元的值被修改了，实际上是堆内存中的内容被修改了， main() 方法中数组对应的地址中的内容也会被修改。</p>
  
       <!-- reward -->
       
