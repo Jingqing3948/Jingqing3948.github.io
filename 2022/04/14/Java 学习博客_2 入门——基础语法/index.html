@@ -85,7 +85,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">660</span>
+            <span class="post-count">685</span>
         </span>
     </span>
 
@@ -145,7 +145,8 @@
 
 <h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p>自动类型转换：把小范围的变量赋值给大范围的变量</p>
 <p>数据范围从小到大：</p>
-<p><img src="https://s1.328888.xyz/2022/04/14/iX6sR.png" alt="DataTypeRange"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mermaid">graph LR<br>A[byte]--&gt;B[short]<br>B--&gt;C[int]<br>D[char]--&gt;C<br>C--&gt;E[long]<br>E--&gt;F[float]<br>F--&gt;G[double]<br></code></pre></td></tr></table></figure>
+
 <p>算术表达式中包含多个基本数据类型的值时，整个算术表达式的类型就会自动提升。</p>
 <p>强制类型转换：赋值运算符中隐含。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">short</span> s=<span class="hljs-number">10</span>;		<br>s+=<span class="hljs-number">10</span>;			<span class="hljs-comment">//正常</span><br>s=s+<span class="hljs-number">10</span>;			<span class="hljs-comment">//错，因为右边发生了自动类型转换，变成了int型</span><br>s=(<span class="hljs-type">short</span>)(s+<span class="hljs-number">10</span>);<span class="hljs-comment">//也可以</span><br></code></pre></td></tr></table></figure>
