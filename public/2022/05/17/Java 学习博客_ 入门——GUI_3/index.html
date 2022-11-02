@@ -139,7 +139,7 @@
 </tbody></table>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mermaid">graph TB<br>A(MenuComponent)--&gt;B(MenuItem)<br>A--&gt;C(MenuBar)<br>B--&gt;D(CheckBoxMenuItem)<br>B--&gt;E(Menu)<br>C--&gt;I[接口: MenuContainer]<br>E--&gt;F(PopupMenu)<br></code></pre></td></tr></table></figure>
 
-<p><img src="C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220516100245252.png" alt="image-20220516100245252"></p>
+<p><img src="https://img-blog.csdnimg.cn/29786aa6dac24e80a6647d719b29ab14.png" alt="image-20220516100245252"></p>
 <p>Menu 存放 MenuItem，但因为菜单也可以作为菜单项，如上文中的格式是一个菜单，也是编辑菜单中的菜单项。所以 Menu 是 MenuItem 的子类。</p>
 <h2 id="开发逻辑"><a href="#开发逻辑" class="headerlink" title="开发逻辑"></a>开发逻辑</h2><ol>
 <li>准备好菜单项组件</li>
@@ -157,7 +157,7 @@
 <p>​    paint(Graphics g):绘制组件的外观；</p>
 <p>​    update(Graphics g):内部调用paint方法，刷新组件外观；</p>
 <p>​    repaint():调用update方法，刷新组件外观；</p>
-<p><img src="C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20220516164730275.png" alt="image-20220516164730275"></p>
+<p><img src="https://img-blog.csdnimg.cn/16622de2995c48399e9bbe5af99b35e3.png" alt="image-20220516164730275"></p>
 <p>paint() 方法系统自动调用，程序员只需要调用 repaint() 完成。</p>
 <p>如果想重写按钮的默认样式，绘制属于自己的图像，需要重写 paint() 中的方法。</p>
 <h2 id="Graphics"><a href="#Graphics" class="headerlink" title="Graphics"></a>Graphics</h2><p>画画需要画布、画笔、以及不同颜色的颜料。</p>
