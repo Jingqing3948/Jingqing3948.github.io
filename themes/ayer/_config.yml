@@ -217,12 +217,14 @@ valine:
 
 # 2、Gitalk(https://github.com/gitalk/gitalk)
 gitalk:
-  enable: false # true
-  clientID: # GitHub Application Client ID
-  clientSecret: # Client Secret
-  repo: # Repository name
-  owner: # GitHub ID
-  admin: # GitHub ID
+  enable: true 
+  owner: Jingqing3948
+  admin: Jingqing3948
+  repo: Jingqing3948.github.io
+  ClientID: Ov23li1TkQEYXFu51qLu
+  ClientSecret: 0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5
+  labels: 'gitalk' 
+  distractionFreeMode: true  
 
 # 3、Twikoo(https://github.com/imaegoo/twikoo)
 twikoo:
