@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>技术学习：瑞萨开发板 |  灰海宽松的博客</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-技术学习：瑞萨开发板"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  技术学习：瑞萨开发板
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/06/24/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%EF%BC%9A%E7%91%9E%E8%90%A8%E5%BC%80%E5%8F%91%E6%9D%BF/" class="article-date">
+  <time datetime="2023-06-23T23:00:00.000Z" itemprop="datePublished">2023-06-24</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%98%9F%E8%BE%B0%E7%A0%81%E6%A2%A6%EF%BC%9A%E7%AE%97%E9%81%93%E6%B1%82%E7%B4%A2%EF%BC%88%E8%AF%BE%E5%A4%96IT%E6%8A%80%E8%83%BD%E5%AD%A6%E4%B9%A0%EF%BC%89/">星辰码梦：算道求索（课外IT技能学习）</a> / <a class="article-category-link" href="/categories/%E6%98%9F%E8%BE%B0%E7%A0%81%E6%A2%A6%EF%BC%9A%E7%AE%97%E9%81%93%E6%B1%82%E7%B4%A2%EF%BC%88%E8%AF%BE%E5%A4%96IT%E6%8A%80%E8%83%BD%E5%AD%A6%E4%B9%A0%EF%BC%89/Lecture/">Lecture</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.5k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">9 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这回参加的是csdn李肯老师的攻城狮计划，简单说就是我白嫖板子，输出学习笔记。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/a3cc9258486e875c183b4fbbb1ce5fbe.jpeg" alt="552ca9fa46d8c1c7f192cdad4d207d4"></p>
+<p>板子是瑞萨的CPK_RA2E1，还有触摸元件，看起来很有意思hh。</p>
+<h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><p>一开始决定采取vscode搭建的方式。后期进行到最后一步——cmake build的时候一直显示语法错误，肯哥表示是环境配置不全，但是我反反复复根据官网和其他博主的文章检查了不下10遍都不知道问题何在。最终决定还是老老实实用keil。</p>
+<ol>
+<li><p>keil导入瑞萨包。官网下载地址：<a target="_blank" rel="noopener" href="https://www.keil.arm.com/vendors/renesas/packs/">Arm Keil | Renesas</a></p>
+</li>
+<li><p>下载rasc软件。对于这个东西我的理解是类似stm32cubemx，可以快速初始化项目的软件。该软件可以在瑞萨官网下载：<a target="_blank" rel="noopener" href="https://www2.renesas.cn/kr/en/software-tool/ra-smart-configurator">https://www2.renesas.cn/kr/en/software-tool/ra-smart-configurator</a></p>
+</li>
+<li><p>接下来我们尝试新建编译一个项目。这是我第一次没有跟着一块有完整开发流程的板子的视频课，而几乎完全是自己检索资料探索尝试的项目构建，因此碰到了很多弯路。首先rasc软件我们新建一个项目。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1d1872b93bd272401e7d2a90a943d622.png" alt="项目起名"></p>
+<p>板子型号这里是根据我的学习板设置的。IDE一定记得改为keil。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/091c255e2177162e613b3635d9e8128b.png" alt="image-20230601022545320"></p>
+</li>
+</ol>
+<p>后两页选择 no rtos 和 minimal 即可，因为我们现在的目的只是尝试编译通过一个项目。</p>
+<ol start="4">
+<li><p>添加完成后，点击generate code 生成相关的项目代码。然后用keil打开，尝试编译。</p>
+</li>
+<li><p>我第一次遇到的问题是报了19个错。我还以为是pack导入的不对，但是后来搜了一下发现不是那么回事，是编译方式选错了。参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_20017379/article/details/119523286">keil出现大量未知语法错误（系统移植）_portforce_inline_IT小生lkc的博客-CSDN博客</a></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/73a1e19aee6d2d2b7837c180d17939dc.png" alt="image-20230601022913830"></p>
+</li>
+<li><p>于是我把编译器改为version5，编译到一半，再次报错：error: A3903U: Argument ‘Cortex-M7.fp.sp’ not permitted for option  cpu’.。这个问题原因是因为编译器版本太低，于是我又去下载了新的keil5.</p>
+</li>
+<li><p>再次编译的时候提示我，不能用version5，新版本已经不支持了。于是我又改为version6进行编译。这次非常顺利！</p>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/d34a7cfbf5f7e0bdbb55a0063df5887f.png" alt="image-20230601023151749"></p>
+<h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p>终于考完试了，然而攻城狮的截止期限也快到了QAQ，得尽快水（划掉）写几篇文章了！</p>
+<p>先争取可以成功下载一个空的程序。</p>
+<p>先对上一篇文章下载 DFP 也就是 keil MDK Software Packs 做一个补充。我们要下载的是 RA_DFP，下载地址为：<a target="_blank" rel="noopener" href="https://www.keil.arm.com/packs/ra_dfp-renesas/versions/">Arm Keil | Renesas RA_DFP</a></p>
+<p>至于版本我看到有前辈使用 3.5.0 的版本可以成功运行，而我下载的是4+的版本也可以。只不过在选择 device 的时候会有一点不同：<br><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622160103209.png" alt="image-20230622160103209"></p>
+<p>可以看到 4.1.0 的版本无法细化选择到 R7FA2E1A92DFM，只能选择大类 A9. 不过经过下面的烧录尝试，是没有问题的。</p>
+<p>流程：基于上次的空项目，用keil打开，编译，下载成功。</p>
+<p>一直到编译的步骤前面都做完了。下载主要需要以下几个步骤：</p>
+<ol>
+<li>引入项目的 src 文件夹。在 options for target - c&#x2F;c++ 里引入即可很简单。<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622154546545.png" alt="image-20230622154546545"></li>
+<li>debug 模式设置为 jlink 模式。设置完之后插上板子设置配置，这里因为我的jlink版本太低出现了一个报错：unkown to this version of the jlink software。解决办法就是在官网上下载了一个新版本的jlink（官网链接：<a target="_blank" rel="noopener" href="https://www.segger.com/downloads/jlink%EF%BC%8C%E6%88%91%E9%80%89%E6%8B%A9%E7%9A%84%E6%98%AF">https://www.segger.com/downloads/jlink，我选择的是</a> windows 版本），下载好后直接会提示“检测到你电脑里的 keil 环境，请问是否更新其 jlink 调试器”，更新后重新启动就没有问题了。</li>
+<li>上一步参考文章: <a target="_blank" rel="noopener" href="https://blog.csdn.net/wsq_666/article/details/124367141">keil识别不到芯片，提示unkown to this version of the jlink software_keil识别不到单片机_王小琪0712的博客-CSDN博客</a> 里面也有如果没有提示自动更新 jlink 调试器的选项如何手动进行更新的步骤，建议多多支持原作者。</li>
+<li>只是选择了 jlink 调试器也并不算设置完成。如果这个时候点击下载，会提示“找不到 flash”，也就是还没有配置完成，需要设置闪存。首先确保插上了板子，然后打开 jlink 的setting：<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622155204869.png" alt="image-20230622155204869"></li>
+<li>如果显示下图说明板子被正常识别。如果没有显示这些数据，可能是 jlink 的版本还是过低，或者线坏了，或者还未下载对应 rcsa 包。<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622155322848.png" alt="image-20230622155322848"></li>
+<li>接下来我们配置 flash download. 打开这个页面后点击 add，添加图中所示的这款型号芯片，然后 start 和 size 应该就会自动配置成和图中一样的情形，这样就算成功了。<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622155451715.png" alt="image-20230622155451715"></li>
+<li>点击 load，如果显示如下信息说明成功下载程序。<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622155546525.png" alt="image-20230622155546525"></li>
+</ol>
+<p>刚插上板子的时候板子上是有白色的 power 指示灯和一个红蓝交替闪烁灯。下载空程序之后，应该只有电源指示灯还在亮。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/de933bcec619535b3e8b7fe60f61238.jpg" alt="de933bcec619535b3e8b7fe60f61238"></p>
+<h1 id="点亮LED"><a href="#点亮LED" class="headerlink" title="点亮LED"></a>点亮LED</h1><p>本文主要参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/oxygen23333/article/details/130306105">【致敬未来的攻城狮计划】— 连续打卡第十一天：FSP固件库开发点亮第一个灯。_嵌入式up的博客-CSDN博客</a></p>
+<p>在32阶段我们已经接触过类似做法了。初始化引脚模式（可以手动库函数，或者在工具包图形化界面里配置），设置引脚输出值。</p>
+<h2 id="设置-FSP-Smart-Configurator"><a href="#设置-FSP-Smart-Configurator" class="headerlink" title="设置 FSP Smart Configurator"></a>设置 FSP Smart Configurator</h2><p>像上次一样创建一个项目。</p>
+<p>首先我们翻一下RA2E1的数据手册看看led在哪。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624005444720.png" alt="image-20230624005444720"></p>
+<p>如图所示，一红一蓝，502 501，输出高电平亮。</p>
+<p>因此 configurator 里的pin如图所示设置501 502为output initial high</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624005611958.png" alt="image-20230624005611958"></p>
+<p>配置完成后点击右上角 generate project content，输出更新配置到该项目中。</p>
+<h2 id="Keil代码编写"><a href="#Keil代码编写" class="headerlink" title="Keil代码编写"></a>Keil代码编写</h2><p>接下来就是编写keil里，驱动两个led灯输出高电平的部分了。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624011259206.png" alt="image-20230624011259206"></p>
+<p>hal_entry.c 是相当于 main.c 的入口函数。其他都是 configurator 提供的配置函数。</p>
+<p>引脚设置已经设置好了。我们打开 pin_data.c 可以看到：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624011748710.png" alt="image-20230624011748710"></p>
+<p>这就代表确实初始化配置加进代码里了。</p>
+<p>然后在 hal_entry.c 里是通过这个 open 函数在 warm_start 里初始化了。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624012345948.png" alt="image-20230624012345948"></p>
+<p>接下来我们需要一个写入位函数。在 r_ioport.c 里。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624012543274.png" alt="image-20230624012543274"></p>
+<p>参数1：固定参数，传入 &amp;p_ctrl。</p>
+<p>参数2：引脚，老方法 goto the definition</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624013133790.png" alt="image-20230624013133790"></p>
+<p>参数3：电平。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624013206720.png" alt="image-20230624013206720"></p>
+<p>然后就简单了，只需要在主函数里调用write函数写亮led。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">hal_entry</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* <span class="doctag">TODO:</span> add your own code here */</span></span><br><span class="line">		<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">				 R_IOPORT_PinWrite(&amp;g_ioport_ctrl, BSP_IO_PORT_05_PIN_01, BSP_IO_LEVEL_HIGH);</span><br><span class="line">				 R_IOPORT_PinWrite(&amp;g_ioport_ctrl, BSP_IO_PORT_05_PIN_02, BSP_IO_LEVEL_HIGH);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> BSP_TZ_SECURE_BUILD</span></span><br><span class="line">    <span class="comment">/* Enter non-secure code */</span></span><br><span class="line">    R_BSP_NonSecureEnter();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624013456059.png" alt="image-20230624013456059"></p>
+<h1 id="按键模块"><a href="#按键模块" class="headerlink" title="按键模块"></a>按键模块</h1><h2 id="后台轮询"><a href="#后台轮询" class="headerlink" title="后台轮询"></a>后台轮询</h2><p>按键也是一个比较简单的模块，主要是为了学习IO输入模式。</p>
+<p>查看RA2E1电路图可见：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624133704709.png" alt="image-20230624133704709"></p>
+<p>按键相关引脚是004引脚，默认上拉高电平，按下接地为低电平。</p>
+<p>首先第一步还是设置对应引脚。类似上一期设置LED的方式，只不过Mode改为Input mode。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624133750237.png" alt="image-20230624133750237"></p>
+<p>设置好之后仍然是记得generate。</p>
+<p>然后就是程序编写。首先还是明确一下开发流程。首先我们尝试后台轮询的按键检测。在while里不断检测按键电平，如果为高点亮蓝灯，如果为低点亮红灯。</p>
+<p>点亮好写，上一次已经尝试过write函数。那么我们接下来再去看类似的read函数。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624135423601.png" alt="image-20230624135423601"></p>
+<p>第一个参数还是传入固定的&amp;g_ioport_ctrl。第二个是引脚。第三个是存放我们要存储的读取按键的值。比如传入变量state的地址 &amp;state，函数执行结束后state的值就是读取的按键电平。</p>
+<p>主函数编写：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">hal_entry</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">bsp_io_level_t</span> state;</span><br><span class="line">    <span class="comment">/* <span class="doctag">TODO:</span> add your own code here */</span></span><br><span class="line">		<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">			R_IOPORT_PinRead(&amp;g_ioport_ctrl, BSP_IO_PORT_00_PIN_04,&amp;state);</span><br><span class="line">			<span class="keyword">if</span>(state==BSP_IO_LEVEL_HIGH)&#123;</span><br><span class="line">				R_IOPORT_PinWrite(&amp;g_ioport_ctrl, BSP_IO_PORT_05_PIN_01, BSP_IO_LEVEL_HIGH);</span><br><span class="line">				R_IOPORT_PinWrite(&amp;g_ioport_ctrl, BSP_IO_PORT_05_PIN_02, BSP_IO_LEVEL_LOW);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				R_IOPORT_PinWrite(&amp;g_ioport_ctrl, BSP_IO_PORT_05_PIN_01, BSP_IO_LEVEL_LOW);</span><br><span class="line">				R_IOPORT_PinWrite(&amp;g_ioport_ctrl, BSP_IO_PORT_05_PIN_02, BSP_IO_LEVEL_HIGH);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> BSP_TZ_SECURE_BUILD</span></span><br><span class="line">    <span class="comment">/* Enter non-secure code */</span></span><br><span class="line">    R_BSP_NonSecureEnter();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实现效果：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/8d99e5ae0be2c97e2e2bb44a1ed92f6.jpg" alt="8d99e5ae0be2c97e2e2bb44a1ed92f6"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/59b0f842762bb1349190932bdcb4e74.jpg" alt="59b0f842762bb1349190932bdcb4e74"></p>
+<h1 id="活动总结"><a href="#活动总结" class="headerlink" title="活动总结"></a>活动总结</h1><p>一转眼攻城狮计划就已经到了最后一天了。<br>5月我还处在一个迷茫期，那时候刚刚入坑嵌入式，只学了几款电子积木，对整个体系也不是很清楚，也不知道应该学些什么。因为刚刚转到硬件领域，也缺少相关经历和能力证明，科研实习面试都失败了。</p>
+<p>一开始得到的少许鼓励来源于C站推荐的一系列交流会活动。我去参加了RTThread的学习营，第一次尝试在单片机开发中加入RTOS系统，也算是跳脱出自己当时缓慢的按部就班学习路线，如井底之蛙般弹出脑袋窥探了一眼外面的风景。</p>
+<p>后来偶然收到李肯老师的攻城狮活动邀请。虽然因为选在了期末周，自己又比较懒，基本没更几篇文章hh。但是借助李肯老师的交流活动认识了很多嵌入式领域的前辈，同伴，从每天的交流话题中也能学到很多。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624180328147.png" alt="image-20230624180328147"></p>
+<p>现如今，虽然学到的知识相比之前可能没有太多，但是整个系统的框架，从硬件到ISA，操作系统解释器等系统软件，汇编语言和机器语言的转化等……确实见识到了很多。</p>
+<p>再聊到本次活动。虽然自己没有做过多的尝试，但是因为之前我也只尝试过51和32的库函数开发，rcsa的configurator配置本身对我来说就是一种新奇的开发模式。与32的hal库对比更能让我体会到这些driver的便捷之处，也开始适应这种开发方式。</p>
+<p>非常感谢给予这次机会的李肯老大！也期望自己能保持这股热情继续学下去~</p>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          Donate
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2023/06/24/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%EF%BC%9A%E7%91%9E%E8%90%A8%E5%BC%80%E5%8F%91%E6%9D%BF/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/07/14/%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E7%AC%94%E8%AE%B0%EF%BC%9AMicroprocessor%20%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            北邮国院笔记：Microprocessor 微处理器
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/03/31/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%EF%BC%9A51%E5%8D%95%E7%89%87%E6%9C%BA/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">技术学习：51单片机</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'Ov23li1TkQEYXFu51qLu',
+    clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
+    repo: 'Jingqing3948.github.io',
+    owner: 'Jingqing3948',
+    admin: 'Jingqing3948',
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: true,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2015-2025
+        <i class="ri-heart-fill heart_icon"></i> Jingqing3948
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="灰海宽松的博客"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://jingqing3948.lofter.com/">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://blog.csdn.net/jtwqwq?spm=1000.2115.3001.5343">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://jingqing3948.github.io/Tianweijiang.github.io/">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="86"
+        src="//music.163.com/outchain/player?type=2&id=863046037&auto=0&height=66"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+</body>
+
+</html>
