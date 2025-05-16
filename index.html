@@ -1229,6 +1229,128 @@ void RCC_AHB1PeriphClockCmd(uint32_t RCC_AHB1Periph, FunctionalState NewState)
 </article>
     
     <article
+  id="post-效率提升：Win11磁贴配置"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/10/09/%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%87%EF%BC%9AWin11%E7%A3%81%E8%B4%B4%E9%85%8D%E7%BD%AE/"
+    >效率提升：Win11磁贴配置</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/10/09/%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%87%EF%BC%9AWin11%E7%A3%81%E8%B4%B4%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time datetime="2023-10-08T23:00:00.000Z" itemprop="datePublished">2023-10-09</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%B8%8F%E6%98%9F%E9%80%90%E8%B7%AF%EF%BC%88%E5%88%9B%E6%96%B0%E6%8E%A2%E7%B4%A2%EF%BC%89/">踏星逐路（创新探索）</a> / <a class="article-category-link" href="/categories/%E8%B8%8F%E6%98%9F%E9%80%90%E8%B7%AF%EF%BC%88%E5%88%9B%E6%96%B0%E6%8E%A2%E7%B4%A2%EF%BC%89/Efficiency/">Efficiency</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近电脑还是升级到 win11 了。我之前采用的美化方案是桌面上的图标全部移到 win10 开始菜单里的全屏菜单上，用磁贴贴一排。每次要访问文件的时候都去开始菜单里找，而不是放在桌面上，这样桌面也可以空出来欣赏壁纸。参考配置链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/45120814/answer/1007955630">如何让Windows 10系统桌面变得更好看？ - 知乎 (zhihu.com)</a></p>
+<p>但是升级到 win11 对我而言影响最大的就是压根没有全屏桌面和磁贴功能了。因此我搜了很多解决方案，加上一些自己的改进，最终把桌面磁贴恢复成如上图所示。一个自己喜欢看的桌面还是会对生产力的提高有很大帮助的。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712234132339.png" alt="image-20230712234132339"></p>
+<h2 id="软件安装：start11"><a href="#软件安装：start11" class="headerlink" title="软件安装：start11"></a>软件安装：start11</h2><p>首先，恢复开始菜单这一操作最离不开的就是 start11 这款软件。他让 win11 的开始菜单又有了全屏菜单选项，也支持了自定义磁贴在上面。虽然调整磁贴位置的时候偶尔会花几秒重启，但大多数时候还是没问题的。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712235022366.png" alt="image-20230712235022366"></p>
+<p>正版软件是免费试用的，欢迎付费支持原作者。或采用博主的同款方案：</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1HY0WuV7ynlXdBI7qfuWZzg?pwd=1fru">https://pan.baidu.com/s/1HY0WuV7ynlXdBI7qfuWZzg?pwd=1fru</a><br>提取码：1fru<br>–来自百度网盘超级会员V2的分享</p>
+<h2 id="xxxxxxxxxx-int-zong-int-i-纵坐标y1-double-x-i-51-double-y-12-0-sin-x-7-int-y1-int-15-y-return-y1-​int-heng-int-i-横坐标j-int-j-i-if-i-101-i202-i303-i"><a href="#xxxxxxxxxx-int-zong-int-i-纵坐标y1-double-x-i-51-double-y-12-0-sin-x-7-int-y1-int-15-y-return-y1-​int-heng-int-i-横坐标j-int-j-i-if-i-101-i202-i303-i" class="headerlink" title="xxxxxxxxxx int zong(int i)&#x2F;&#x2F;纵坐标y1{    double x&#x3D;(i-51);    double y&#x3D;12.0*sin(x&#x2F;7);    int y1&#x3D;(int)(15-y);    return y1;}​int heng(int i)&#x2F;&#x2F;横坐标j{    int j&#x3D;i;    if(i&gt;101&amp;&amp;i&lt;&#x3D;202)j&#x3D;203-i;    else if(i&gt;202&amp;&amp;i&lt;&#x3D;303)j&#x3D;i-202;    else if(i&gt;303&amp;&amp;i&lt;&#x3D;404)j&#x3D;405-i;    return j;}​void dayin(char ch,int j,int y1)&#x2F;&#x2F;在(y1,j)处输出给定字符{        gotoxy(y1,j);        if(ch&#x3D;&#x3D;’ ‘)        {            if(y1&#x3D;&#x3D;15)printf(“-“);            else if(j&#x3D;&#x3D;51)printf(“|”);            else printf(“ “);        }        else printf(“#”);        gotoxy(29-y1,102-j);        if(ch&#x3D;&#x3D;’ ‘)&#x2F;&#x2F;防止坐标点和坐标轴被空格覆盖        {            if(29-y1&#x3D;&#x3D;15)printf(“-“);            else if(102-j&#x3D;&#x3D;51)printf(“|”);            else if(29-y1&#x3D;&#x3D;26&amp;&amp;102-j&#x3D;&#x3D;49)printf(“-“);            else if((29-y1&#x3D;&#x3D;26&amp;&amp;102-j&#x3D;&#x3D;50)||(29-y1&#x3D;&#x3D;3&amp;&amp;102-j&#x3D;&#x3D;50))printf(“1”);            else if(29-y1&#x3D;&#x3D;16&amp;&amp;102-j&#x3D;&#x3D;100)printf(“X”);            else printf(“ “);        }        else printf(“#”);        gotoxy(1,1);}​​​​int main(){    float x,y;    int tim&#x3D;20;    system(“color F0”);    system(“mode con cols&#x3D;101 lines&#x3D;30”);    clear();        for(int i&#x3D;0;i&lt;&#x3D;100;i++)&#x2F;&#x2F;打印x轴     {        gotoxy(15,i+1);        if(i!&#x3D;50)printf(“-“);        else printf(“+”);        gotoxy(1,1);        rest(1);    }        for(int i&#x3D;29;i&gt;&#x3D;0;i–)&#x2F;&#x2F;打印y轴     {        gotoxy(i+1,51);        if(i!&#x3D;14)printf(“|”);        gotoxy(1,1);         rest(1);    }    &#x2F;&#x2F;打印轴上的点    gotoxy(16,52); printf(“O”);        gotoxy(16,100);printf(“X”);        gotoxy(1,49);printf(“Y”);        gotoxy(3,50);printf(“1”);        gotoxy(26,49);printf(“-1”);                    int i&#x3D;0,j,y1;​    for(i&#x3D;52;i&lt;&#x3D;404;i++)&#x2F;&#x2F;打印函数     {        j&#x3D;heng(i),y1&#x3D;zong(i);        dayin(‘#’,j,y1);        rest(4);                if(i-51-tim&gt;0)        {            y1&#x3D;zong(i-tim);            j&#x3D;heng(i-tim);            dayin(‘ ‘,j,y1);        }    }       for(int r&#x3D;i-tim;r&lt;&#x3D;i;r++)    {        j&#x3D;heng(r);        y1&#x3D;zong(r);        dayin(‘ ‘,j,y1);        rest(4);    }     gotoxy(1,1);    rest(1000);    return 0;}c"></a>xxxxxxxxxx int zong(int i)&#x2F;&#x2F;纵坐标y1{    double x&#x3D;(i-51);    double y&#x3D;12.0*sin(x&#x2F;7);    int y1&#x3D;(int)(15-y);    return y1;}​int heng(int i)&#x2F;&#x2F;横坐标j{    int j&#x3D;i;    if(i&gt;101&amp;&amp;i&lt;&#x3D;202)j&#x3D;203-i;    else if(i&gt;202&amp;&amp;i&lt;&#x3D;303)j&#x3D;i-202;    else if(i&gt;303&amp;&amp;i&lt;&#x3D;404)j&#x3D;405-i;    return j;}​void dayin(char ch,int j,int y1)&#x2F;&#x2F;在(y1,j)处输出给定字符{        gotoxy(y1,j);        if(ch&#x3D;&#x3D;’ ‘)        {            if(y1&#x3D;&#x3D;15)printf(“-“);            else if(j&#x3D;&#x3D;51)printf(“|”);            else printf(“ “);        }        else printf(“#”);        gotoxy(29-y1,102-j);        if(ch&#x3D;&#x3D;’ ‘)&#x2F;&#x2F;防止坐标点和坐标轴被空格覆盖        {            if(29-y1&#x3D;&#x3D;15)printf(“-“);            else if(102-j&#x3D;&#x3D;51)printf(“|”);            else if(29-y1&#x3D;&#x3D;26&amp;&amp;102-j&#x3D;&#x3D;49)printf(“-“);            else if((29-y1&#x3D;&#x3D;26&amp;&amp;102-j&#x3D;&#x3D;50)||(29-y1&#x3D;&#x3D;3&amp;&amp;102-j&#x3D;&#x3D;50))printf(“1”);            else if(29-y1&#x3D;&#x3D;16&amp;&amp;102-j&#x3D;&#x3D;100)printf(“X”);            else printf(“ “);        }        else printf(“#”);        gotoxy(1,1);}​​​​int main(){    float x,y;    int tim&#x3D;20;    system(“color F0”);    system(“mode con cols&#x3D;101 lines&#x3D;30”);    clear();        for(int i&#x3D;0;i&lt;&#x3D;100;i++)&#x2F;&#x2F;打印x轴     {        gotoxy(15,i+1);        if(i!&#x3D;50)printf(“-“);        else printf(“+”);        gotoxy(1,1);        rest(1);    }        for(int i&#x3D;29;i&gt;&#x3D;0;i–)&#x2F;&#x2F;打印y轴     {        gotoxy(i+1,51);        if(i!&#x3D;14)printf(“|”);        gotoxy(1,1);         rest(1);    }    &#x2F;&#x2F;打印轴上的点    gotoxy(16,52); printf(“O”);        gotoxy(16,100);printf(“X”);        gotoxy(1,49);printf(“Y”);        gotoxy(3,50);printf(“1”);        gotoxy(26,49);printf(“-1”);                    int i&#x3D;0,j,y1;​    for(i&#x3D;52;i&lt;&#x3D;404;i++)&#x2F;&#x2F;打印函数     {        j&#x3D;heng(i),y1&#x3D;zong(i);        dayin(‘#’,j,y1);        rest(4);                if(i-51-tim&gt;0)        {            y1&#x3D;zong(i-tim);            j&#x3D;heng(i-tim);            dayin(‘ ‘,j,y1);        }    }       for(int r&#x3D;i-tim;r&lt;&#x3D;i;r++)    {        j&#x3D;heng(r);        y1&#x3D;zong(r);        dayin(‘ ‘,j,y1);        rest(4);    }     gotoxy(1,1);    rest(1000);    return 0;}c</h2><p>首先如果是按博主的磁贴方法配置，就要选“win10配置”。或者你觉得其他风格也还不错都可以选。并且 ENABLE start11.</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712235704628.png" alt="image-20230712235704628"></p>
+<p>点击“配置菜单”，进行如下配置：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712235738298.png" alt="image-20230712235738298"></p>
+<p>在“自定义菜单视觉外观”里，可以设置全屏菜单的颜色、透明度等，比如我使用的是有一定透明度的毛玻璃的样式。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713000601091.png" alt="image-20230713000601091"></p>
+<p>然后在“控制”栏里设定如何打开 start11，确保可以打开：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712235840844.png"></p>
+<p>接着，点击 win 图标就可以打开全屏菜单了。</p>
+<h2 id="磁贴配置"><a href="#磁贴配置" class="headerlink" title="磁贴配置"></a>磁贴配置</h2><p>对于大部分软件，只要右键-固定到开始屏幕&#x2F;固定到 start11，就可以在全屏菜单里看到刚刚贴上的磁贴了。</p>
+<p>如果贴失败，可以尝试以下的方法：</p>
+<ul>
+<li>右键快捷方式，点击“打开文件所在位置”，再尝试把该文件的 .exe 文件固定到开始屏幕。</li>
+<li>反复尝试，因为可能有一定的延迟。可以取消固定再次固定，等待一会看开始菜单是否出现。</li>
+</ul>
+<p>然后可以手动分组磁贴（把他们移到临近的位置），调整磁贴背景色，调整磁贴大小（有小正方形，中正方形，长方形，大正方形四种可以选择），调整磁贴布局位置。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713000428410.png" alt="image-20230713000428410"></p>
+<h2 id="图片磁贴配置"><a href="#图片磁贴配置" class="headerlink" title="图片磁贴配置"></a>图片磁贴配置</h2><p>这里是最自由发挥的部分。高情商：自由发挥。低情商：都要自己做很麻烦。</p>
+<p>之前 win10 是有一款快捷工具可以输入自定义图片，按自己想要的格式裁剪并自动在全屏菜单中输出的，叫 Tile Genie.</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713000854968.png" alt="image-20230713000854968"></p>
+<p>但是它好像并不能在 start11 中使用。我尝试了一下导出的都是不能显示的图片块，所以只能放弃这种方法。如果读者的 Tile Genie 是没有问题可以正常显示图片那再好不过了，后面的内容都可以不用看了。</p>
+<p>如果导出失败……我采用的方法是手动裁剪固定图片。很笨，但是有结果。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001102790.png" alt="image-20230713001102790"></p>
+<p>首先，自行裁剪图片，计算公式为：中正方形 150*150，长方形 306*150，大正方形 306*306，边界线是6（像素）.</p>
+<p>我采用的图像裁剪方法是：<a target="_blank" rel="noopener" href="https://www.iloveimg.com/zh-cn/crop-image">免费在线裁剪图像文件 (iloveimg.com)</a></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1689178422454.png" alt="1689178422454"></p>
+<p>然后把导出图片找一个合适的地方存储起来，注意贴上磁贴之后就不能再移动修改这些图片了。</p>
+<p>在全屏菜单中右键-固定文件，选定文件路径添加。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001454756.png" alt="image-20230713001454756"></p>
+<p>刚固定上是这种形式：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1689178534062.png" alt="1689178534062"></p>
+<p>然后右键-调整大小，调整为想要的大小。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001613170.png" alt="image-20230713001613170"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001632462.png" alt="image-20230713001632462"></p>
+<p>最后一步，右键-图标-选择自定义磁贴图像，再次选择此文件，然后他就被当做图标全屏显示了。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001653804.png" alt="image-20230713001653804"></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'Ov23li1TkQEYXFu51qLu',
+    clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
+    repo: 'Jingqing3948.github.io',
+    owner: 'Jingqing3948',
+    admin: 'Jingqing3948',
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: true,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+  
+</article>
+    
+    <article
   id="post-问题解决：ubuntu 安装 emscripten 时 install latest 安装报错"
   class="article article-type-post"
   itemscope
@@ -1322,128 +1444,6 @@ void RCC_AHB1PeriphClockCmd(uint32_t RCC_AHB1Periph, FunctionalState NewState)
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-<div class="gitalk" id="gitalk-container"></div>
-
-<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
-
-
-<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
-
-
-<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
-
-<script type="text/javascript">
-  var gitalk = new Gitalk({
-    clientID: 'Ov23li1TkQEYXFu51qLu',
-    clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
-    repo: 'Jingqing3948.github.io',
-    owner: 'Jingqing3948',
-    admin: 'Jingqing3948',
-    // id: location.pathname,      // Ensure uniqueness and length less than 50
-    id: md5(location.pathname),
-    distractionFreeMode: true,  // Facebook-like distraction free mode
-    pagerDirection: 'last'
-  })
-
-  gitalk.render('gitalk-container')
-</script>
-
-  
-  
-</article>
-    
-    <article
-  id="post-效率提升：Win11磁贴配置"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/10/09/%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%87%EF%BC%9AWin11%E7%A3%81%E8%B4%B4%E9%85%8D%E7%BD%AE/"
-    >效率提升：Win11磁贴配置</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/10/09/%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%87%EF%BC%9AWin11%E7%A3%81%E8%B4%B4%E9%85%8D%E7%BD%AE/" class="article-date">
-  <time datetime="2023-10-08T23:00:00.000Z" itemprop="datePublished">2023-10-09</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%B8%8F%E6%98%9F%E9%80%90%E8%B7%AF%EF%BC%88%E5%88%9B%E6%96%B0%E6%8E%A2%E7%B4%A2%EF%BC%89/">踏星逐路（创新探索）</a> / <a class="article-category-link" href="/categories/%E8%B8%8F%E6%98%9F%E9%80%90%E8%B7%AF%EF%BC%88%E5%88%9B%E6%96%B0%E6%8E%A2%E7%B4%A2%EF%BC%89/Efficiency/">Efficiency</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近电脑还是升级到 win11 了。我之前采用的美化方案是桌面上的图标全部移到 win10 开始菜单里的全屏菜单上，用磁贴贴一排。每次要访问文件的时候都去开始菜单里找，而不是放在桌面上，这样桌面也可以空出来欣赏壁纸。参考配置链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/45120814/answer/1007955630">如何让Windows 10系统桌面变得更好看？ - 知乎 (zhihu.com)</a></p>
-<p>但是升级到 win11 对我而言影响最大的就是压根没有全屏桌面和磁贴功能了。因此我搜了很多解决方案，加上一些自己的改进，最终把桌面磁贴恢复成如上图所示。一个自己喜欢看的桌面还是会对生产力的提高有很大帮助的。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712234132339.png" alt="image-20230712234132339"></p>
-<h2 id="软件安装：start11"><a href="#软件安装：start11" class="headerlink" title="软件安装：start11"></a>软件安装：start11</h2><p>首先，恢复开始菜单这一操作最离不开的就是 start11 这款软件。他让 win11 的开始菜单又有了全屏菜单选项，也支持了自定义磁贴在上面。虽然调整磁贴位置的时候偶尔会花几秒重启，但大多数时候还是没问题的。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712235022366.png" alt="image-20230712235022366"></p>
-<p>正版软件是免费试用的，欢迎付费支持原作者。或采用博主的同款方案：</p>
-<p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1HY0WuV7ynlXdBI7qfuWZzg?pwd=1fru">https://pan.baidu.com/s/1HY0WuV7ynlXdBI7qfuWZzg?pwd=1fru</a><br>提取码：1fru<br>–来自百度网盘超级会员V2的分享</p>
-<h2 id="xxxxxxxxxx-int-zong-int-i-纵坐标y1-double-x-i-51-double-y-12-0-sin-x-7-int-y1-int-15-y-return-y1-​int-heng-int-i-横坐标j-int-j-i-if-i-101-i202-i303-i"><a href="#xxxxxxxxxx-int-zong-int-i-纵坐标y1-double-x-i-51-double-y-12-0-sin-x-7-int-y1-int-15-y-return-y1-​int-heng-int-i-横坐标j-int-j-i-if-i-101-i202-i303-i" class="headerlink" title="xxxxxxxxxx int zong(int i)&#x2F;&#x2F;纵坐标y1{    double x&#x3D;(i-51);    double y&#x3D;12.0*sin(x&#x2F;7);    int y1&#x3D;(int)(15-y);    return y1;}​int heng(int i)&#x2F;&#x2F;横坐标j{    int j&#x3D;i;    if(i&gt;101&amp;&amp;i&lt;&#x3D;202)j&#x3D;203-i;    else if(i&gt;202&amp;&amp;i&lt;&#x3D;303)j&#x3D;i-202;    else if(i&gt;303&amp;&amp;i&lt;&#x3D;404)j&#x3D;405-i;    return j;}​void dayin(char ch,int j,int y1)&#x2F;&#x2F;在(y1,j)处输出给定字符{        gotoxy(y1,j);        if(ch&#x3D;&#x3D;’ ‘)        {            if(y1&#x3D;&#x3D;15)printf(“-“);            else if(j&#x3D;&#x3D;51)printf(“|”);            else printf(“ “);        }        else printf(“#”);        gotoxy(29-y1,102-j);        if(ch&#x3D;&#x3D;’ ‘)&#x2F;&#x2F;防止坐标点和坐标轴被空格覆盖        {            if(29-y1&#x3D;&#x3D;15)printf(“-“);            else if(102-j&#x3D;&#x3D;51)printf(“|”);            else if(29-y1&#x3D;&#x3D;26&amp;&amp;102-j&#x3D;&#x3D;49)printf(“-“);            else if((29-y1&#x3D;&#x3D;26&amp;&amp;102-j&#x3D;&#x3D;50)||(29-y1&#x3D;&#x3D;3&amp;&amp;102-j&#x3D;&#x3D;50))printf(“1”);            else if(29-y1&#x3D;&#x3D;16&amp;&amp;102-j&#x3D;&#x3D;100)printf(“X”);            else printf(“ “);        }        else printf(“#”);        gotoxy(1,1);}​​​​int main(){    float x,y;    int tim&#x3D;20;    system(“color F0”);    system(“mode con cols&#x3D;101 lines&#x3D;30”);    clear();        for(int i&#x3D;0;i&lt;&#x3D;100;i++)&#x2F;&#x2F;打印x轴     {        gotoxy(15,i+1);        if(i!&#x3D;50)printf(“-“);        else printf(“+”);        gotoxy(1,1);        rest(1);    }        for(int i&#x3D;29;i&gt;&#x3D;0;i–)&#x2F;&#x2F;打印y轴     {        gotoxy(i+1,51);        if(i!&#x3D;14)printf(“|”);        gotoxy(1,1);         rest(1);    }    &#x2F;&#x2F;打印轴上的点    gotoxy(16,52); printf(“O”);        gotoxy(16,100);printf(“X”);        gotoxy(1,49);printf(“Y”);        gotoxy(3,50);printf(“1”);        gotoxy(26,49);printf(“-1”);                    int i&#x3D;0,j,y1;​    for(i&#x3D;52;i&lt;&#x3D;404;i++)&#x2F;&#x2F;打印函数     {        j&#x3D;heng(i),y1&#x3D;zong(i);        dayin(‘#’,j,y1);        rest(4);                if(i-51-tim&gt;0)        {            y1&#x3D;zong(i-tim);            j&#x3D;heng(i-tim);            dayin(‘ ‘,j,y1);        }    }       for(int r&#x3D;i-tim;r&lt;&#x3D;i;r++)    {        j&#x3D;heng(r);        y1&#x3D;zong(r);        dayin(‘ ‘,j,y1);        rest(4);    }     gotoxy(1,1);    rest(1000);    return 0;}c"></a>xxxxxxxxxx int zong(int i)&#x2F;&#x2F;纵坐标y1{    double x&#x3D;(i-51);    double y&#x3D;12.0*sin(x&#x2F;7);    int y1&#x3D;(int)(15-y);    return y1;}​int heng(int i)&#x2F;&#x2F;横坐标j{    int j&#x3D;i;    if(i&gt;101&amp;&amp;i&lt;&#x3D;202)j&#x3D;203-i;    else if(i&gt;202&amp;&amp;i&lt;&#x3D;303)j&#x3D;i-202;    else if(i&gt;303&amp;&amp;i&lt;&#x3D;404)j&#x3D;405-i;    return j;}​void dayin(char ch,int j,int y1)&#x2F;&#x2F;在(y1,j)处输出给定字符{        gotoxy(y1,j);        if(ch&#x3D;&#x3D;’ ‘)        {            if(y1&#x3D;&#x3D;15)printf(“-“);            else if(j&#x3D;&#x3D;51)printf(“|”);            else printf(“ “);        }        else printf(“#”);        gotoxy(29-y1,102-j);        if(ch&#x3D;&#x3D;’ ‘)&#x2F;&#x2F;防止坐标点和坐标轴被空格覆盖        {            if(29-y1&#x3D;&#x3D;15)printf(“-“);            else if(102-j&#x3D;&#x3D;51)printf(“|”);            else if(29-y1&#x3D;&#x3D;26&amp;&amp;102-j&#x3D;&#x3D;49)printf(“-“);            else if((29-y1&#x3D;&#x3D;26&amp;&amp;102-j&#x3D;&#x3D;50)||(29-y1&#x3D;&#x3D;3&amp;&amp;102-j&#x3D;&#x3D;50))printf(“1”);            else if(29-y1&#x3D;&#x3D;16&amp;&amp;102-j&#x3D;&#x3D;100)printf(“X”);            else printf(“ “);        }        else printf(“#”);        gotoxy(1,1);}​​​​int main(){    float x,y;    int tim&#x3D;20;    system(“color F0”);    system(“mode con cols&#x3D;101 lines&#x3D;30”);    clear();        for(int i&#x3D;0;i&lt;&#x3D;100;i++)&#x2F;&#x2F;打印x轴     {        gotoxy(15,i+1);        if(i!&#x3D;50)printf(“-“);        else printf(“+”);        gotoxy(1,1);        rest(1);    }        for(int i&#x3D;29;i&gt;&#x3D;0;i–)&#x2F;&#x2F;打印y轴     {        gotoxy(i+1,51);        if(i!&#x3D;14)printf(“|”);        gotoxy(1,1);         rest(1);    }    &#x2F;&#x2F;打印轴上的点    gotoxy(16,52); printf(“O”);        gotoxy(16,100);printf(“X”);        gotoxy(1,49);printf(“Y”);        gotoxy(3,50);printf(“1”);        gotoxy(26,49);printf(“-1”);                    int i&#x3D;0,j,y1;​    for(i&#x3D;52;i&lt;&#x3D;404;i++)&#x2F;&#x2F;打印函数     {        j&#x3D;heng(i),y1&#x3D;zong(i);        dayin(‘#’,j,y1);        rest(4);                if(i-51-tim&gt;0)        {            y1&#x3D;zong(i-tim);            j&#x3D;heng(i-tim);            dayin(‘ ‘,j,y1);        }    }       for(int r&#x3D;i-tim;r&lt;&#x3D;i;r++)    {        j&#x3D;heng(r);        y1&#x3D;zong(r);        dayin(‘ ‘,j,y1);        rest(4);    }     gotoxy(1,1);    rest(1000);    return 0;}c</h2><p>首先如果是按博主的磁贴方法配置，就要选“win10配置”。或者你觉得其他风格也还不错都可以选。并且 ENABLE start11.</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712235704628.png" alt="image-20230712235704628"></p>
-<p>点击“配置菜单”，进行如下配置：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712235738298.png" alt="image-20230712235738298"></p>
-<p>在“自定义菜单视觉外观”里，可以设置全屏菜单的颜色、透明度等，比如我使用的是有一定透明度的毛玻璃的样式。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713000601091.png" alt="image-20230713000601091"></p>
-<p>然后在“控制”栏里设定如何打开 start11，确保可以打开：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712235840844.png"></p>
-<p>接着，点击 win 图标就可以打开全屏菜单了。</p>
-<h2 id="磁贴配置"><a href="#磁贴配置" class="headerlink" title="磁贴配置"></a>磁贴配置</h2><p>对于大部分软件，只要右键-固定到开始屏幕&#x2F;固定到 start11，就可以在全屏菜单里看到刚刚贴上的磁贴了。</p>
-<p>如果贴失败，可以尝试以下的方法：</p>
-<ul>
-<li>右键快捷方式，点击“打开文件所在位置”，再尝试把该文件的 .exe 文件固定到开始屏幕。</li>
-<li>反复尝试，因为可能有一定的延迟。可以取消固定再次固定，等待一会看开始菜单是否出现。</li>
-</ul>
-<p>然后可以手动分组磁贴（把他们移到临近的位置），调整磁贴背景色，调整磁贴大小（有小正方形，中正方形，长方形，大正方形四种可以选择），调整磁贴布局位置。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713000428410.png" alt="image-20230713000428410"></p>
-<h2 id="图片磁贴配置"><a href="#图片磁贴配置" class="headerlink" title="图片磁贴配置"></a>图片磁贴配置</h2><p>这里是最自由发挥的部分。高情商：自由发挥。低情商：都要自己做很麻烦。</p>
-<p>之前 win10 是有一款快捷工具可以输入自定义图片，按自己想要的格式裁剪并自动在全屏菜单中输出的，叫 Tile Genie.</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713000854968.png" alt="image-20230713000854968"></p>
-<p>但是它好像并不能在 start11 中使用。我尝试了一下导出的都是不能显示的图片块，所以只能放弃这种方法。如果读者的 Tile Genie 是没有问题可以正常显示图片那再好不过了，后面的内容都可以不用看了。</p>
-<p>如果导出失败……我采用的方法是手动裁剪固定图片。很笨，但是有结果。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001102790.png" alt="image-20230713001102790"></p>
-<p>首先，自行裁剪图片，计算公式为：中正方形 150*150，长方形 306*150，大正方形 306*306，边界线是6（像素）.</p>
-<p>我采用的图像裁剪方法是：<a target="_blank" rel="noopener" href="https://www.iloveimg.com/zh-cn/crop-image">免费在线裁剪图像文件 (iloveimg.com)</a></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1689178422454.png" alt="1689178422454"></p>
-<p>然后把导出图片找一个合适的地方存储起来，注意贴上磁贴之后就不能再移动修改这些图片了。</p>
-<p>在全屏菜单中右键-固定文件，选定文件路径添加。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001454756.png" alt="image-20230713001454756"></p>
-<p>刚固定上是这种形式：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1689178534062.png" alt="1689178534062"></p>
-<p>然后右键-调整大小，调整为想要的大小。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001613170.png" alt="image-20230713001613170"></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001632462.png" alt="image-20230713001632462"></p>
-<p>最后一步，右键-图标-选择自定义磁贴图像，再次选择此文件，然后他就被当做图标全屏显示了。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001653804.png" alt="image-20230713001653804"></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li></ul>
 
     </footer>
   </div>
@@ -4623,7 +4623,7 @@ void RCC_AHB1PeriphClockCmd(uint32_t RCC_AHB1Periph, FunctionalState NewState)
     <ul>
       <li>
         Copyrights &copy;
-        2015-2025
+        2022-2025
         <i class="ri-heart-fill heart_icon"></i> Jingqing3948
       </li>
     </ul>
@@ -4965,7 +4965,7 @@ void RCC_AHB1PeriphClockCmd(uint32_t RCC_AHB1Periph, FunctionalState NewState)
     
     
     <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="86"
-        src="//music.163.com/outchain/player?type=2&id=863046037&auto=0&height=66"></iframe>
+        src="//music.163.com/outchain/player?type=2&id=1357960253&auto=0&height=66"></iframe>
 </div>
 
 <style>
