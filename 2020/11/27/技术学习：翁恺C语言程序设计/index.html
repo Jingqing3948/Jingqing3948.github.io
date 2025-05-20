@@ -39,6 +39,8 @@
 
       <!-- mermaid -->
       
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
       <style>
         .swal2-styled.swal2-confirm {
           font-size: 1.6rem;
@@ -87,7 +89,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">36k</span>
+            <span class="post-count">35.9k</span>
         </span>
     </span>
 
@@ -96,7 +98,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">142 min</span>
+            <span class="post-count">141 min</span>
         </span>
     </span>
 </div>
@@ -371,7 +373,21 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(a&gt;b)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(a&gt;c)max=a;</span><br><span class="line">	<span class="keyword">else</span> max=c;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(b&gt;c)max=b;</span><br><span class="line">	<span class="keyword">else</span> max=c;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h2 id="级联的if-else-if"><a href="#级联的if-else-if" class="headerlink" title="级联的if-else if"></a>级联的if-else if</h2><p>如分段函数。这时可以用级联的else if 表达多种情况<br>每个else是前一个if的else，但是前面两个都不满足的话就只剩下第三个了</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">flowchat</span><br><span class="line">st=&gt;start: 开始</span><br><span class="line">i=&gt;inputoutput: 输入</span><br><span class="line">o=&gt;inputoutput: 输出</span><br><span class="line">c1=&gt;condition: 是否满足条件1</span><br><span class="line">c2=&gt;condition: 是否满足条件2</span><br><span class="line">o1=&gt;inputoutput: 输出条件1</span><br><span class="line">o2=&gt;inputoutput: 输出条件2</span><br><span class="line">o3=&gt;inputoutput: 输出条件3</span><br><span class="line">en=&gt;end: 结束</span><br><span class="line">st-&gt;i-&gt;c1</span><br><span class="line">c1(yes)-&gt;o1-&gt;en</span><br><span class="line">c1(no)-&gt;c2</span><br><span class="line">c2(yes)-&gt;o2-&gt;en</span><br><span class="line">c2(no)-&gt;o3-&gt;en</span><br></pre></td></tr></table></figure>
+<pre class="mermaid">flowchat
+st=>start: 开始
+i=>inputoutput: 输入
+o=>inputoutput: 输出
+c1=>condition: 是否满足条件1
+c2=>condition: 是否满足条件2
+o1=>inputoutput: 输出条件1
+o2=>inputoutput: 输出条件2
+o3=>inputoutput: 输出条件3
+en=>end: 结束
+st->i->c1
+c1(yes)->o1->en
+c1(no)->c2
+c2(yes)->o2->en
+c2(no)->o3->en</pre>
 <p>其实相当于：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>()</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>比较该分段函数的两种写法</p>
@@ -426,7 +442,16 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//先加入两个头文件#include&lt;stdlib.h&gt;和#include&lt;time.h&gt;</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	srand(time(<span class="number">0</span>));<span class="comment">//Main里加上srand(time(0));  先不用管什么意思</span></span><br><span class="line">	<span class="type">int</span> a=rand();<span class="comment">//如果想要a是100以内的整数：用取余即可（a%=100）</span></span><br><span class="line">	<span class="type">int</span> number=rand()%<span class="number">100</span>+<span class="number">1</span>;<span class="comment">//这样召唤出来的数范围是1~100</span></span><br><span class="line">	<span class="comment">//不管怎样用户都要进入这个循环，输入至少一个数；所以应该用do-while循环。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="算平均数"><a href="#算平均数" class="headerlink" title="算平均数"></a>算平均数</h2><p>读入一系列正整数，输入-1时终止。然后输出他们的平均数<br>变量-&gt;算法-&gt;流程图-&gt;程序<br>num:我们需要读到的那一个数。<br>sum(总和)：每读到一个数把他加到sum里就完事了<br>另一个变量count记录累加的次数，最后算平均数÷count</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">flowchat</span><br><span class="line">st=&gt;start: sum=0,cnt=0</span><br><span class="line">i1=&gt;inputoutput: 读num</span><br><span class="line">c=&gt;condition: num!=-1?</span><br><span class="line">o=&gt;operation: sum+=num, cnt++</span><br><span class="line">op=&gt;inputoutput: 计算和打印结果</span><br><span class="line">e=&gt;end: end</span><br><span class="line">st-&gt;i1-&gt;c</span><br><span class="line">c(yes)-&gt;o-&gt;i1</span><br><span class="line">c(no,left)-&gt;op-&gt;e</span><br></pre></td></tr></table></figure>
+<pre class="mermaid">flowchat
+st=>start: sum=0,cnt=0
+i1=>inputoutput: 读num
+c=>condition: num!=-1?
+o=>operation: sum+=num, cnt++
+op=>inputoutput: 计算和打印结果
+e=>end: end
+st->i1->c
+c(yes)->o->i1
+c(no,left)->op->e</pre>
 
 
 

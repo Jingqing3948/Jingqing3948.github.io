@@ -39,6 +39,8 @@
 
       <!-- mermaid -->
       
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
       <style>
         .swal2-styled.swal2-confirm {
           font-size: 1.6rem;
@@ -161,7 +163,18 @@
 </tr>
 </tbody></table>
 <h1 id="关系型数据库"><a href="#关系型数据库" class="headerlink" title="关系型数据库"></a>关系型数据库</h1><p>数据库有很多种结构，mysql 学习的是关系型数据库，说白了就是二维表的结构。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">R[关系型数据库]--&gt;T[理论基础]</span><br><span class="line">R--&gt;S[具体表象]</span><br><span class="line">R--&gt;L[编程语言 SQL]</span><br><span class="line">T--&gt;A[关系代数]</span><br><span class="line">T--&gt;C[关系运算]</span><br><span class="line">T--&gt;P[一阶谓词逻辑]</span><br><span class="line">S--&gt;Ta[二维表]</span><br><span class="line">L--&gt;D[DDL]</span><br><span class="line">L--&gt;M[DML]</span><br><span class="line">L--&gt;Q[DQL]</span><br><span class="line">L--&gt;DCL[DCL]</span><br></pre></td></tr></table></figure>
+<pre class="mermaid">graph LR
+R[关系型数据库]-->T[理论基础]
+R-->S[具体表象]
+R-->L[编程语言 SQL]
+T-->A[关系代数]
+T-->C[关系运算]
+T-->P[一阶谓词逻辑]
+S-->Ta[二维表]
+L-->D[DDL]
+L-->M[DML]
+L-->Q[DQL]
+L-->DCL[DCL]</pre>
 
 <p>DDL: create &#x2F; drop &#x2F; alter （database 或 schema 数据库名 &#x2F; table 表名）</p>
 <p>DML: insert &#x2F; update &#x2F; delete</p>
