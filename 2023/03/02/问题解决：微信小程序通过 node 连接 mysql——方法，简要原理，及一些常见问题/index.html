@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+
+      <meta name="google-site-verification" content="YwYbA1LbL6DK2afClSAZcmUaT2QiD4rluljLHHU4120" />
+      
+      <title>问题解决：微信小程序通过 node 连接 mysql——方法，简要原理，及一些常见问题 |  灰海宽松的博客</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-问题解决：微信小程序通过 node 连接 mysql——方法，简要原理，及一些常见问题"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  问题解决：微信小程序通过 node 连接 mysql——方法，简要原理，及一些常见问题
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/03/02/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%EF%BC%9A%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E8%BF%87%20node%20%E8%BF%9E%E6%8E%A5%20mysql%E2%80%94%E2%80%94%E6%96%B9%E6%B3%95%EF%BC%8C%E7%AE%80%E8%A6%81%E5%8E%9F%E7%90%86%EF%BC%8C%E5%8F%8A%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="article-date">
+  <time datetime="2023-03-02T00:00:00.000Z" itemprop="datePublished">2023-03-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A0%B4%E6%B5%AA%EF%BC%88%E9%81%87%E5%88%B0%E7%9A%84bug%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%89/">破浪（遇到的bug及解决方案）</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.8k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">6 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>博主自己在22年夏天根据课程要求做了一个小程序连接阿里云服务器的案例，在最近又碰到了相应的需求。</p>
+<p>原参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_56598099/article/details/119105587?app_version=5.14.2&code=app_1562916241&csdn_share_tail=%7B%22type%22:%22blog%22,%22rType%22:%22article%22,%22rId%22:%22119105587%22,%22source%22:%22jtwqwq%22%7D&uLinkId=usr1mkqgl919blen&utm_source=app">微信小程序 Node连接本地MYSQL_微信小程序nodejs连接数据库_JJJenny0607的博客-CSDN博客</a> ,还请多多支持原作者！</p>
+<p>第二次尝试的时候已经熟练许多了，但是还是遇到了很多挺烦人的问题，也浪费了很多时间排查 bug。因此博主打算趁着刚做过记忆还深刻的时候，把全过程、博主自己的理解和遇到的一些问题的解决方法整理出来。当然我也不可能能解决所有问题，遇到的部分问题也只是针对我自己的情况可以解决。因此如果 solutions 不起效或遇到其他问题，可以在评论区留言，我会与大家沟通（不保证能否解决~）。</p>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343956.png" alt="55ff06e4153087c9216fd7b56763ea7"></p>
+<p>nodejs 作为中介服务器，可以让小程序连接 mysql 数据库。</p>
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><p>如果不出错误的话， 基本流程就是跟着上面的文章来的。</p>
+<ol>
+<li><p>下载 node。可以在 cmd 中输入 <code>node -v</code> 查看有无成功下载。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212344379.png" alt="image-20230302134251274"></p>
+</li>
+<li><p>新建一个数据库，这一部分很简单，有 mysql 相关基础的读者应该没问题，也可以看博主的 mysql 专栏学习。</p>
+</li>
+<li><p>新建一个小程序，在结构中新建 server 文件夹用于存储 node 本地服务器相关代码。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212344368.png" alt="image-20230302135701456"></p>
+</li>
+<li><p>右键 server 文件夹，点击“在内建终端中打开”，安装一些所需的包。</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br><span class="line">npm i mysql --save-dev</span><br><span class="line">npm install body-parser --save-dev</span><br><span class="line">npm install express --save-dev</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>在文件夹下新建 server.js 文件，编写代码。</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express=<span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> bodyParser =<span class="built_in">require</span>(<span class="string">&#x27;body-parser&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> app=<span class="title function_">express</span>()</span><br><span class="line"><span class="keyword">const</span> mysql = <span class="built_in">require</span>(<span class="string">&#x27;mysql&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">IPAddress</span>=<span class="string">&#x27;[你的数据库地址]&#x27;</span><span class="comment">//因为这里是要链接远程数据库，ip 地址是 mysql 的地址！！本地就是 127.0.0.1，服务器上就自己找找看</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">UserName</span>=<span class="string">&#x27;[mysql 用户名]&#x27;</span></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">PWD</span>=<span class="string">&#x27;[mysql 密码]&#x27;</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">DBName</span>=<span class="string">&#x27;[要操作的数据库名]&#x27;</span></span><br><span class="line">app.<span class="title function_">use</span>(express.<span class="title function_">json</span>())</span><br><span class="line">app.<span class="title function_">use</span>(bodyParser.<span class="title function_">json</span>())</span><br><span class="line">app.<span class="title function_">use</span>(bodyParser.<span class="title function_">urlencoded</span>(&#123; <span class="attr">extended</span>: <span class="literal">false</span> &#125;))</span><br><span class="line"><span class="comment">//这上面一段固定的，[] 的部分需要根据自己数据库的信息修改</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//处理get请求。这里是一个 get 请求的方法演示，作用是查询 table1 表中的所有数据并返回。</span></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/getUser&#x27;</span>,<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123; <span class="comment">//这里的是 get 方法 getUser，对应了刚才的页面发来的请求。就会执行这个方法。</span></span><br><span class="line">  <span class="comment">//参数传入是在 req.body 对象里面。比如上面的语句是获取传入的 openid 变量，并且我们新定义一个叫 openid 的变量存储传入的 openid 变量</span></span><br><span class="line">  <span class="keyword">var</span> connection=mysql.<span class="title function_">createConnection</span>(&#123;</span><br><span class="line">    <span class="attr">host</span>:<span class="title class_">IPAddress</span>,</span><br><span class="line">    <span class="attr">port</span>: <span class="number">3306</span>,		<span class="comment">//端口号，mysql 固定3306</span></span><br><span class="line">    <span class="attr">user</span>:<span class="title class_">UserName</span>,</span><br><span class="line">    <span class="attr">password</span>:<span class="variable constant_">PWD</span>,</span><br><span class="line">    <span class="attr">database</span>:<span class="title class_">DBName</span></span><br><span class="line">  &#125;)<span class="comment">//配置连接的属性</span></span><br><span class="line">  connection.<span class="title function_">connect</span>();<span class="comment">//尝试连接</span></span><br><span class="line">  connection.<span class="title function_">query</span>(<span class="string">&quot;select * from table1&quot;</span>,<span class="keyword">function</span>(<span class="params">error,results,fields</span>)&#123;<span class="comment">//执行查找语句</span></span><br><span class="line">    <span class="keyword">if</span>(error) <span class="variable language_">console</span>.<span class="title function_">log</span>(error);<span class="comment">//执行失败的话</span></span><br><span class="line">    res.<span class="title function_">json</span>(results)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(results)</span><br><span class="line">    </span><br><span class="line">  &#125;)</span><br><span class="line">  connection.<span class="title function_">end</span>();<span class="comment">//断开连接</span></span><br><span class="line">  </span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3000</span>,<span class="function">()=&gt;</span>&#123;<span class="comment">//这是一个监听端口，会输出监听到的信息。上面的 console.log 就会在这里输出</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;server running at http://&#x27;</span>+<span class="title class_">IPAddress</span>+<span class="string">&#x27;:3000&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>我们的 nodejs 是部署在本地的，就在 server 文件夹里。node_modules 是下载的 nodejs 包，server.js 是我们的操作 nodejs 的代码。</p>
+<p>我们在需要调用数据库的页面里先调用本地服务器，比如在 mysqlTest.js 中，onLoad 里：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">onLoad</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">//我们写一个调用数据库函数，使得本页面加载时调用此函数，查找 youqi.data 里的所有条目。</span></span><br><span class="line">        wx.<span class="title function_">request</span>(&#123;</span><br><span class="line">            <span class="attr">method</span>: <span class="string">&#x27;GET&#x27;</span>,<span class="comment">//这里要和 server.js 定义的 post or get 一致！！！</span></span><br><span class="line">            <span class="attr">url</span>: <span class="string">&#x27;http://[本地 IPV4 地址]:3000/getUser&#x27;</span>,<span class="comment">//这里的 ip 地址不是数据库的地址，而是你的电脑本地的地址，因为这一步的操作是要找到本地 nodejs 服务器。getUser 要和 server.js 中定义的方法名一致。</span></span><br><span class="line">            <span class="attr">data</span>: &#123;</span><br><span class="line">              <span class="comment">//这里面是传入参数。比如我们要 select * from data where openid= 给定的 openid，就可以从这里传入</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">success</span>: <span class="keyword">function</span> (<span class="params">res</span>) &#123;<span class="comment">//成功获取到值，返回一个 res 对象。如果不知道 res 对象里面包含什么，可以先输出 res 对象看一下其中都包含什么</span></span><br><span class="line">              <span class="variable language_">console</span>.<span class="title function_">log</span>(res);</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">fail</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;<span class="comment">//没有获取到值，说明这中间出问题了。</span></span><br><span class="line">              <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;获取失败&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;)</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>本地 IPV4 地址是怎么查出来的？打开 cmd，输入 ipconfig。无线局域网适配器 WLAN 里的 IPV4 即是。</p>
+<p>nodejs 接收到了请求，就会执行 server.js 里对应的方法。</p>
+<h1 id="如何运行"><a href="#如何运行" class="headerlink" title="如何运行"></a>如何运行</h1><p>首先 <strong>nodejs 服务器需要手动开启</strong>，我还不会自动开启。</p>
+<p>右键 server 文件夹，在内建终端中打开，然后在终端中输入：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212344060.png" alt="image-20230227001627448"></p>
+<p>下面那句话说明正常启动服务器并且开始监听。</p>
+<p>我们输出一下 res，看看成功会返回什么信息。调试器里的 console 输出：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343123.png" alt="image-20230227000549916"></p>
+<p>data 里是我们数据库的查询结果。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343704.png" alt="image-20230227000639178"></p>
+<p>res.data 获取这个15长度的 Array。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343282.png" alt="image-20230227000715899"></p>
+<p>然后比如我们要获取其中的 time 值，就是 res.data[0].time, res.data[1].time… res.dat[14].time。</p>
+<p>{} 表示其中是一个对象变量，通过句号+索引名称获取特定的值。</p>
+<p>而刚才的一直在监听的内建终端里输出：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212344070.png" alt="image-20230302140540514"></p>
+<p>这个的输出对应 function(error,results,fields) 里的 console.log(results)。如果查询失败，error 也是在这个内建终端里输出。</p>
+<h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1><h2 id="数据库无法连接？"><a href="#数据库无法连接？" class="headerlink" title="数据库无法连接？"></a>数据库无法连接？</h2><p>建好数据库后，最好就先用 cmd 或 workbench 连接一下试试。如果能成功连接并查询，之后出问题也可以排除 mysql 的一部分问题。</p>
+<p>如果采用云服务器（如阿里云）连接不上，可能的问题有：</p>
+<ul>
+<li><p>服务器端口 80 和 3306 没开。（不建议一键全部放行，有被hacker get 的风险）</p>
+</li>
+<li><p>mysql 需要有一个用户能在所有 ip 地址里对该数据库进行读写操作，这里可以参考 DCL 的内容来新建符合要求的 user。<a target="_blank" rel="noopener" href="https://jingqing3948.blog.csdn.net/article/details/124430926">Mysql_9 SQL 语句——DCL_sql语言dcl_灰海宽松的博客-CSDN博客</a></p>
+</li>
+<li><p>服务器防火墙的问题，要开启3306端口。</p>
+<p>  <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343761.png" alt="image-20230302141204512"></p>
+</li>
+</ul>
+<h2 id="小程序报错-ERR-TIMEOUT"><a href="#小程序报错-ERR-TIMEOUT" class="headerlink" title="小程序报错 ERR TIMEOUT"></a>小程序报错 ERR TIMEOUT</h2><p>打开网站可以看到 404 显示。</p>
+<ul>
+<li><p>首先先确保前面那个问题确实解决了，该数据库确实可以从本地连接，，不是数据库的问题。</p>
+</li>
+<li><p>再确认 get post 方法是否对应，方法名是否写错。很多时候输入了错误的链接也会显示 404.</p>
+</li>
+<li><p>小程序不校验合法域名是否打开。</p>
+</li>
+<li><p>启用或关闭 windows 功能——Internet Information Services，及其可承载 web 核心，<strong>子项</strong>全部打开。点击确定。如果成功启动，在浏览器中输入 127.0.0.1，应该可以看到：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343506.png" alt="image-20230302141638928"></p>
+</li>
+<li><p>检查方法名，get post 类别是否写错。</p>
+</li>
+</ul>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          Contact Me
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2023/03/02/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%EF%BC%9A%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E8%BF%87%20node%20%E8%BF%9E%E6%8E%A5%20mysql%E2%80%94%E2%80%94%E6%96%B9%E6%B3%95%EF%BC%8C%E7%AE%80%E8%A6%81%E5%8E%9F%E7%90%86%EF%BC%8C%E5%8F%8A%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WXMiniProgram/" rel="tag">WXMiniProgram</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/03/31/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%EF%BC%9A51%E5%8D%95%E7%89%87%E6%9C%BA/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            技术学习：51单片机
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2022/11/27/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%EF%BC%9A%E7%8E%8B%E9%81%93%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">技术学习：王道操作系统</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'Ov23li1TkQEYXFu51qLu',
+    clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
+    repo: 'Jingqing3948.github.io',
+    owner: 'Jingqing3948',
+    admin: 'Jingqing3948',
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: true,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022-2025
+        <i class="ri-heart-fill heart_icon"></i> Jingqing3948
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="灰海宽松的博客"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://jingqing3948.lofter.com/">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://blog.csdn.net/jtwqwq?spm=1000.2115.3001.5343">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://jingqing3948.github.io/Tianweijiang.github.io/">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>星光不问，梦终有回</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/LinkedIn.jpg">
+      <span class="reward-type">LinkedIn</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/WXOfficalAccount.jpg">
+      <span class="reward-type">公众号</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="86"
+        src="//music.163.com/outchain/player?type=2&id=1357960253&auto=0&height=66"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+</body>
+
+</html>
