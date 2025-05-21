@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+
+      <meta name="google-site-verification" content="YwYbA1LbL6DK2afClSAZcmUaT2QiD4rluljLHHU4120" />
+      
+      <title>技术学习：骆昊 + 黑马程序员 MySQL 基础 |  灰海宽松的博客</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-技术学习：骆昊 + 黑马程序员 MySQL"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  技术学习：骆昊 + 黑马程序员 MySQL 基础
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/08/03/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%EF%BC%9A%E9%AA%86%E6%98%8A%20+%20%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98%20MySQL/" class="article-date">
+  <time datetime="2022-08-02T23:00:00.000Z" itemprop="datePublished">2022-08-03</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E9%81%93%E6%B1%82%E7%B4%A2%EF%BC%88%E8%AF%BE%E5%A4%96IT%E6%8A%80%E8%83%BD%E5%AD%A6%E4%B9%A0%EF%BC%89/">算道求索（课外IT技能学习）</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E9%81%93%E6%B1%82%E7%B4%A2%EF%BC%88%E8%AF%BE%E5%A4%96IT%E6%8A%80%E8%83%BD%E5%AD%A6%E4%B9%A0%EF%BC%89/Lecture/">Lecture</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">4.2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">15 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>学习于：b站 骆昊 jackfrued 老师的网课+黑马网课.</p>
+<p>涵盖内容包括基本增删改查，约束，事务。</p>
+<p>MYSQL 的安装配置网上一搜一大把，博主就不在此发表拙见了，安装太久了自己也记不是很清具体方法了。这里指跟随课程学习了 Command Line Client 的安装（说实话，这玩意我自认为没啥用）。</p>
+<p>Mysql Command Line Client 是官方提供的客户端。之前一直直接用 Windows 的命令提示符窗口输入 Mysql 语句，不知道两者具体区别在哪里。不过还是重新安装了一个尝试一下。</p>
+<p>如果选择的是 zip 下载，应该只会安装一个 mysql 文件包，在程序终端可以使用。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>如果是选择 msi 文件安装，MYSQL 文件夹里自带有 Installer，在里面选中对应电脑版本的 Mysql Server 下载即可。</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>由于安装目录和 Mysql 不一致，缺少配置文件 my.ini 导致 Mysql Command Line Client 一开始无法使用。直接把 Mysql 里的 my.ini 复制到 Mysql Server 目录下就可以了。</p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>其实在 cmd 窗口中登录 mysql 时也会给出相应的命令提示，只是当时没有仔细研究。正好借使用 Mysql Command Line Client 的机会了解一下常用的命令。</p>
+<p>开始菜单中出现了两种不同的 Mysql Command Line Client 窗口，其中一种支持 Unicode ，一种不支持。打开后即会提示输入登录密码，登录后就和 cmd 窗口中操作基本一致。</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\h, ?, ?</td>
+<td>获取帮助</td>
+</tr>
+<tr>
+<td>\c</td>
+<td>清除前面输入的内容（内容输入有误时使用）</td>
+</tr>
+<tr>
+<td>\R</td>
+<td>修改 每次输入命令前左侧的提示样式（默认：’mysql&gt;’）</td>
+</tr>
+<tr>
+<td>? 需要查看帮助的命令;</td>
+<td>显示该命令的帮助（如：? show）</td>
+</tr>
+<tr>
+<td>show databases; show databases();</td>
+<td>查看所有数据库，查看当前所在数据库</td>
+</tr>
+<tr>
+<td>use ‘数据库名’;</td>
+<td>选中某个数据库</td>
+</tr>
+<tr>
+<td>（选中某个数据库后）show tables;</td>
+<td>查看当前数据库中所有表</td>
+</tr>
+<tr>
+<td>exit &#x2F; quit</td>
+<td>退出</td>
+</tr>
+</tbody></table>
+<h1 id="关系型数据库-SQL"><a href="#关系型数据库-SQL" class="headerlink" title="关系型数据库 SQL"></a>关系型数据库 SQL</h1><p>数据库有很多种结构，mysql 学习的是关系型数据库，说白了就是二维表的结构。</p>
+<pre class="mermaid">graph LR
+R[关系型数据库]-->T[理论基础]
+R-->S[具体表象]
+R-->L[编程语言 SQL]
+T-->A[关系代数]
+T-->C[关系运算]
+T-->P[一阶谓词逻辑]
+S-->Ta[二维表]
+L-->D[DDL]
+L-->M[DML]
+L-->Q[DQL]
+L-->DCL[DCL]</pre>
+
+<p>DDL: create &#x2F; drop &#x2F; alter （database 或 schema 数据库名 &#x2F; table 表名）</p>
+<p>DML: insert &#x2F; update &#x2F; delete</p>
+<p>DQL: select …… from</p>
+<p>DCL: grant（授权） &#x2F; revoke（召回权限）</p>
+<table>
+<thead>
+<tr>
+<th>正式的关系模型术语</th>
+<th>非正式的日常用语</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>关系（relation）</td>
+<td>表（table）</td>
+</tr>
+<tr>
+<td>元组（tuple）记录</td>
+<td>行（row）或记录（record）</td>
+</tr>
+<tr>
+<td>势（cardinality）</td>
+<td>行数（number of rows）</td>
+</tr>
+<tr>
+<td>属性（attribute）</td>
+<td>列（column）或字段（field）</td>
+</tr>
+<tr>
+<td>度（degree）</td>
+<td>列数（number of columns）</td>
+</tr>
+<tr>
+<td>定义域（domain）</td>
+<td>列的取值集合（pool of legal values）</td>
+</tr>
+</tbody></table>
+<h1 id="ER-和-EER-模型"><a href="#ER-和-EER-模型" class="headerlink" title="ER 和 EER 模型"></a>ER 和 EER 模型</h1><p>为什么要有 ER 图和 EER 图的存在？</p>
+<p><strong>真正做项目、设计数据库时，</strong>实际并没有这么简单，比如还有很多用户看不到、但为了方便 DBA 使用而创建的字段。如 id，一般还会有两条 Date 字段（一表示这条记录被创建的时间，二表示这条记录最后更新的时间），以及预留一个 VARCHAR &#x2F; json 字段；还有一些其他注意事项（比如 auto-increment 约束其实开发中不常用，更多使用算法比如分布式 ID 生成算法（如 SnowFlake……）当然对课程来说这并不重要）<strong>是不可能一上来就写 SQL 语句的，需要先设计表的结构和表之间的关系。</strong></p>
+<h2 id="ER-模型"><a href="#ER-模型" class="headerlink" title="ER 模型"></a>ER 模型</h2><p>ER 图（Entity Relationship, 实体关系）因此出现。下图是一个 ER 图的示例，其中矩形框代表：表（也就是实体），椭圆框代表：表中的字段（实体的属性），菱形框代表：关系，在连接线上表明了关系的重数。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212337130.png" alt="百度百科图片"></p>
+<p>相较于大段的 SQL 建表语句，只要能看懂 ER 图，表的结构、关系一目了然。</p>
+<h2 id="EER-模型"><a href="#EER-模型" class="headerlink" title="EER 模型"></a>EER 模型</h2><p>以下部分内容有参考自文章：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/356216273">为了彻底搞清楚数据库 E-R 模型设计，我肝了这篇万字长文 - 知乎 (zhihu.com)</a></p>
+<p>关于两者的具体区分我还有去问b站up主 骆昊jackfrued 老师，老师表示：不用太纠结这个问题，ER图更抽象，可以理解为概念模型图（PowerDesigner）。</p>
+<p>相较 ER 模型多了泛化层次、汇集层次、弱实体等概念。</p>
+<h3 id="泛化层次"><a href="#泛化层次" class="headerlink" title="泛化层次"></a>泛化层次</h3><p>包括 generalization 和 specialization （泛化和特化）、父类（superclass）和子类（subclass）的概念。</p>
+<p><strong>子类父类</strong>就是类似 Java 的继承，如动物是父类，猫、狗是其子类。<strong>子类父类是一对一的关系！</strong></p>
+<p><strong>泛化</strong>又叫归纳，就是将几个类的共同属性提取出来作为父类；</p>
+<p><strong>特化</strong>又叫演绎，就是在父类的基础上添加各自特殊的属性作为子类。</p>
+<p>其中，子类和超类又有两个关系属性：mandatory 和 optional、disjoint 和 overlapping。</p>
+<p><strong>mandatory &#x2F; optional</strong>：父类中的所有属性都必须包含在每一个子类中 &#x2F; 不用全部继承，选择部分继承即可（完全性限制）</p>
+<p><strong>disjoint &#x2F; overlapping</strong>：继承同一个父类的几个子类之间是否可以有相交的属性（相交性限制）</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212336682.png" alt="img"></p>
+<p>图中 运输工具是父类，飞机、火车、汽车是子类。圆圈中写 D &#x2F; O，表示 disjoint &#x2F; overlapping。父类和圆圈之间是双实线，表示是 mandatory 完全性继承。</p>
+<h3 id="汇集层次"><a href="#汇集层次" class="headerlink" title="汇集层次"></a>汇集层次</h3><p>Aggregation, 汇集层次不再有父类子类的区别，而是由……组成的区别。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212337609.png" alt="img"></p>
+<p>如图，房间、门窗、电脑、投影仪等是教室的组成部分，不是继承关系。</p>
+<h3 id="弱实体"><a href="#弱实体" class="headerlink" title="弱实体"></a>弱实体</h3><p>一种实体只有另一种实体存在的时候才有意义。如父母和子女，少了一方另一方就没有意义了。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212337534.png" alt="img"></p>
+<p>Workbench 等工具支持画 ER 图，甚至画好后可以自动生成 SQL 语句建表。 Workbench 中的图是 EER 图（扩展的ER 图）</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212337092.png" alt="EER 图示例"></p>
+<p>在 EER 图下，点击 DATABASE - FORWARD ENGINEER 正向工程，可以选择要生成的表、字段，生成 SQL 语句建立表。</p>
+<p><em>自动生成的 SQL 语句中，外键下方有两句话<code>ON DELETE NO ACTION</code> <code>ON UPDATE NO ACTION</code>，意为：当外键参考的主键修改&#x2F;删除时，外键所在的表会受到什么样的影响？——不采取任何行动。建议去掉这两句话。如果去掉，就不能随便修改&#x2F;删除外键在使用的主键。</em></p>
+<p>同样地，在 SQL 语句页面，点击DATABASE - REVERSE ENGINEER 反向工程，可以根据表的结构生成 EER 图。</p>
+<p><em>Power Designer 建模工具，也支持正 &#x2F; 反向工程，可以生成 SQL 方言。完整版付费。</em></p>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><p>数据类型可以通过 <code>? data types</code> 查看说明，每种数据类型也可以通过 <code>? 数据类型</code> 查看。</p>
+<p><em>除了data types 其他可以用?查看的内容可以输入 <code>? contents</code> 查看。</em></p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>整数 (tinyint, smallint, mediumint, int, bigint)</td>
+<td>都是整数型，表示范围为1,2,3,4,8 B（结尾还可以加 unsigned）</td>
+</tr>
+<tr>
+<td>字符串 (char(位数), varchar(位数), text)</td>
+<td>char 长度固定，varchar 长度可变</td>
+</tr>
+<tr>
+<td>小数 (float, double, decimal(总位数, 小数点后位数))</td>
+<td>不要用 float, double！</td>
+</tr>
+<tr>
+<td>时间日期 (year, date, time, datetime, timestamp)</td>
+<td>date：年月日<br />time：时间<br />datetime：年月日时分秒<br />timestamp：时间戳，现在距离 1970-1-1 的毫秒数</td>
+</tr>
+<tr>
+<td>Mysql 中的枚举类型 (enum, boolean)</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>PS: </p>
+<ol>
+<li><p>虽然 text 等类型可以存储很大的数据，不过大数据一般还是不会直接往数据库里存储。如图片，数据库中一般存储其路径、链接。如果非要存储，有 blob (binary large object)。</p>
+</li>
+<li><p>金额等小数一般不会用小数的数据类型存储，而是整数类型&#x2F;100使用。因为小数形式有误差，比如0.1+0.2&#x3D;0.30000000004.</p>
+</li>
+<li><p>decimal 这种变长的数据，使用时速度比定长数据慢。而且 decimal 表示范围也有限，不如直接用 bigint。</p>
+</li>
+<li><p>时间戳是有表示范围的，毕竟是个有上限的数，到2038年左右就不好用了。</p>
+</li>
+</ol>
+<p>这里了解到了一个很有趣的“千年虫”问题 (<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/305603895">漫画：什么是“千年虫”问题？ - 知乎 (zhihu.com)</a>)。</p>
+<blockquote>
+<p>Grace Murray Hopper，最早的现代编译器、商用编程语言发明者，Bug 和 Debug词汇的流行使用也与她有关。</p>
+<p>早期计算机资源十分稀缺，内存空间必须精打细算。Grace Murray Hopper 采用6位数字组合来存储日期信息 （比如2022&#x2F;04&#x2F;19，就是22&#x2F;04&#x2F;19）</p>
+<p>尽管节约了内存空间，但是40年后1999-&gt;2000年时，问题就出现了……对计算机来说，相当于99-&gt;00年，年份倒退了。小到银行存款利息变成负的，大到飞机、发电厂运作、核弹发射……都可能出现故障，后果不堪设想。</p>
+<p>如果修改所有程序，是改不过来的。于是程序员们主要采取两种方法：</p>
+<p>1.只修改核心关键的医疗、航空、金融、军事领域的程序；<br>2.对于大多数不那么核心的程序，采用时间窗口的方式。1910年代表2010年，1920年代表2020年，暂缓问题。在这20年期间，大多数程序设备都已更新换代，现如今千年虫问题已经不那么严重了。</p>
+</blockquote>
+<p>回到刚才的话题，因此时间戳也并不推荐使用。</p>
+<p>5.7 之后版本的 Mysql 支持 json 属性，以键值对的方式存储，内容相对灵活。因为虽然数据库结构相对严谨，但是很多时候并不是所有属性都能考虑得到（如二手交易平台，不同的售卖品属性差的很多，如自行车和冰箱）加入相对灵活的 json ，一定程度上就能解决这类问题。包括以前 Mysql 没有这个功能的时候，许多公司也会建一个 varchar() 字段来存储 json 字符。</p>
+<h1 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h1><table>
+<thead>
+<tr>
+<th>SQL 语句</th>
+<th>作用</th>
+<th>使用示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>create</td>
+<td>创建数据库 &#x2F; 表</td>
+<td>create database `数据库名`; &#x2F; create table `表名` ( 字段描述 );</td>
+</tr>
+<tr>
+<td>drop</td>
+<td>删除数据库 &#x2F; 表</td>
+<td>drop database `数据库名`; &#x2F; drop table `表名`;</td>
+</tr>
+<tr>
+<td>use</td>
+<td>选中数据库</td>
+<td>use `数据库名`;</td>
+</tr>
+<tr>
+<td>alter</td>
+<td>更改数据库 &#x2F; 表信息</td>
+<td>alter table `表名` add constraint `约束名` unique (`字段名`);</td>
+</tr>
+</tbody></table>
+<p>PS： </p>
+<p>修改表的引擎 &#x2F; 更改自增约束初始值是在 create table `表名` () 后面添加的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create table `表名`(</span><br><span class="line"></span><br><span class="line">)engine = innodb auto_increment=2 comment &#x27;表示例&#x27;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h2><h3 id="主键约束"><a href="#主键约束" class="headerlink" title="主键约束"></a>主键约束</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">primary key (`列名`),</span><br></pre></td></tr></table></figure>
+
+<p><em>复合主键语法上没错，但是开发使用时非常不好用，因为需要至少两条字段才能唯一确定一条记录。一般不会用。</em></p>
+<p><em>如选课表，有课程号和学生学号字段，合在一起作为复合主键可以唯一确定记录。但是一般会在新建一个选课id之类的可以唯一确定所有选课记录的字段作为主键。</em></p>
+<h3 id="默认约束"><a href="#默认约束" class="headerlink" title="默认约束"></a>默认约束</h3><p><code>default val;</code> 设置默认值。</p>
+<h3 id="自增约束、非空约束"><a href="#自增约束、非空约束" class="headerlink" title="自增约束、非空约束"></a>自增约束、非空约束</h3><p>都在字段描述后面写即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`col_name` int auto_increment not null comment &#x27;列名&#x27;,</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 创建表时：</span><br><span class="line">create table(</span><br><span class="line">    id int primary key comment &#x27;id&#x27;;</span><br><span class="line">	age int check (age&gt;=0 &amp;&amp; age&lt;=100) comment &#x27;年龄&#x27;,</span><br><span class="line">	gender char(1) default &#x27;m&#x27; comment &#x27;性别&#x27;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"># 修改表时，主键，unique，check，外键用 add，其他用 modify</span><br><span class="line">alter table add primary key(列名);</span><br><span class="line">alter  table table_name modify 列名 数据类型  not null;# 如果是 null，就是取消非空约束</span><br></pre></td></tr></table></figure>
+
+<h3 id="唯一约束"><a href="#唯一约束" class="headerlink" title="唯一约束"></a>唯一约束</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">constraint `uk_col_name` unique (`col_name`),</span><br></pre></td></tr></table></figure>
+
+<p>类似主键约束，唯一约束也可以设定多个字段，再括号里多写几个字段就行（如选课记录，一个学生不能重复选课，学生学号和课程编号不能重复）</p>
+<h3 id="检查约束"><a href="#检查约束" class="headerlink" title="检查约束"></a>检查约束</h3><p>检查约束可以帮忙检查数据合法性，但是相对的，肯定对性能有损耗。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">constraint `ck_col_sex` check (`col_sex`=&#x27;M&#x27; or `col_sex`=&#x27;F&#x27;),</span><br></pre></td></tr></table></figure>
+
+<h3 id="外键约束"><a href="#外键约束" class="headerlink" title="外键约束"></a>外键约束</h3><p>首先在需要加外键的表中添加和另一个表的主键一样格式（名称可以不一样）的字段。</p>
+<p>外键约束也会损耗性能，要检查对应表中对应字段是否对应。很多公司都不用外键约束，会通过其他方法确定两表特定字段是否对应。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 外键需要先创建一个字段，然后给这个字段添加外键。原外键的字段和新的要添加外键的字段数据类型要一样。</span><br><span class="line">alter table 子表名 add constraint 外键名 foreign key (要添加外键的字段) references 父表名(父表字段);</span><br><span class="line"></span><br><span class="line">alter table 表名 drop foreign key 外键名;</span><br></pre></td></tr></table></figure>
+
+<p><em>一对多时，多的一方需要加外键约束。</em></p>
+<p>之后子表引用了父表，父表被引用的记录就不能随便删除了。子表也不能随便写外键的值，必须要在父表中存在才可以引用。</p>
+<table>
+<thead>
+<tr>
+<th>外键删除更新行为</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>no action&#x2F;restrict</td>
+<td>父表要删除&#x2F;更新的记录如果在子表中存在关联记录，则不删除&#x2F;更新</td>
+</tr>
+<tr>
+<td>cascade</td>
+<td>父表要删除&#x2F;更新的记录如果在子表中存在关联记录，则子表中的记录也删除&#x2F;更新</td>
+</tr>
+<tr>
+<td>set null</td>
+<td>父表要删除&#x2F;更新的记录如果在子表中存在关联记录，则子表中的记录对应字段设为空值（前提：该字段可以为 null）</td>
+</tr>
+<tr>
+<td>set default</td>
+<td>父表要删除&#x2F;更新的记录如果在子表中存在关联记录，则子表中的记录也删除&#x2F;更新对应字段设为默认值</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 子表名 add constraint 外键名 foreign key (要添加外键的字段) references 父表名(父表字段) on update cascade on delete cascade;</span><br></pre></td></tr></table></figure>
+
+<h1 id="DML"><a href="#DML" class="headerlink" title="DML"></a>DML</h1><h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">insert into `表名` values (对应字段值)(对应字段值)(对应字段值);//写多个括号，可以一次填写多行</span><br><span class="line">insert into `表名` (要填写的字段) values (对应字段值); //省略不写的一定是有默认值的或者可以非空的</span><br></pre></td></tr></table></figure>
+
+<p>注意：对应字段值一定要和字段相匹配。如果有默认值的字段也不要省略不写，要写上 <code>default</code> ，不然系统也难以分辨哪一项使用默认值。</p>
+<p><em>日期可以写字符串 2002-01-01，会自动转换</em></p>
+<p>插入完后显示：1 row(s) affected（如果写了多个括号，一次插入多行，会显示多个 row(s) affected）是影响了几行的意思。</p>
+<p><strong>如果主键、unique 的记录重复会报错。</strong>报错显示： <code>duplicate key for key &#39;定义的约束键名称&#39;</code></p>
+<p><strong>填写了规定的 check 以外的内容会报错。</strong>报错显示：<code>check constraint &#39;定义的约束键名称&#39; is violated.</code> 不过字符串不区分大小写，规定性别只能填 ‘F’ ‘M’ 的话，填 ‘f’ ‘m’ 也行。</p>
+<p><strong>如果对应的外键在原表中没有对应的记录会报错。</strong> 报错显示：<code>cannot add or update a child row: a foreign constraint fails</code> 比如学生表的学院号参照了学院表，但是有学院表中不存在的学院号时。</p>
+<p><strong>如果没有给 NOT NULL且没有默认值的字段赋值时会报错。</strong> 报错显示：<code>Field &#39;字段名&#39; doesn&#39;t have a default value.</code> 尽量不要出现空列，之后处理空值会带来很多麻烦。哪怕用空字符串、0、1代替也更好一些。</p>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">delete from `表名`;//这可不兴用啊！</span><br><span class="line">delete from `表名` where `字段名`=&#x27;要删除的记录的对应字段值&#x27;;//不等于可以用&lt;&gt;，有的 DBMS 支持!=</span><br><span class="line">delete from `表名` where `字段名` = &#x27;字段值&#x27; or `字段名` = &#x27;字段值&#x27;;//删除多条语句</span><br><span class="line">delete from `表名` where `字段名` in (&#x27;字段值&#x27;,&#x27;字段值&#x27;);//删除多条语句</span><br></pre></td></tr></table></figure>
+
+<p>但是如果要删除的这条记录在其他表里是外键，就无法删除。报错显示： <code>Cannot delete or update a parent row</code> 。</p>
+<p>删除了外键约束之后就可以随意修改两个表对应的值而不报错了。</p>
+<p>另一种删除表的方式是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">truncate table `表名`;</span><br></pre></td></tr></table></figure>
+
+<p>截断表，这个比 delete 还要危险。delete 了表之后，如果有日志，还是可以找回原数据的。截断就算有日志也没法恢复。</p>
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">update `表名` set `列名` = &#x27;值&#x27;;//把这一列的数据全都改成这个值，不常用</span><br><span class="line">update `表名` set `列名` = &#x27;值&#x27;,`列名` = &#x27;值&#x27;,`列名` = &#x27;值&#x27; where `字段`=&#x27;值&#x27;;//限制条件，只修改某几个记录</span><br></pre></td></tr></table></figure>
+
+<h1 id="DQL"><a href="#DQL" class="headerlink" title="DQL"></a>DQL</h1> 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          Contact Me
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2022/08/03/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%EF%BC%9A%E9%AA%86%E6%98%8A%20+%20%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98%20MySQL/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2022/11/27/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%EF%BC%9A%E7%8E%8B%E9%81%93%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            技术学习：王道操作系统
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2022/07/20/%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E9%A1%B9%E7%9B%AE%EF%BC%9AJava%20Wordle/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">北邮国院项目：Java Wordle</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'Ov23li1TkQEYXFu51qLu',
+    clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
+    repo: 'Jingqing3948.github.io',
+    owner: 'Jingqing3948',
+    admin: 'Jingqing3948',
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: true,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022-2025
+        <i class="ri-heart-fill heart_icon"></i> Jingqing3948
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="灰海宽松的博客"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://jingqing3948.lofter.com/">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://blog.csdn.net/jtwqwq?spm=1000.2115.3001.5343">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://jingqing3948.github.io/Tianweijiang.github.io/">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>星光不问，梦终有回</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/LinkedIn.jpg">
+      <span class="reward-type">LinkedIn</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/WXOfficalAccount.jpg">
+      <span class="reward-type">公众号</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="86"
+        src="//music.163.com/outchain/player?type=2&id=1357960253&auto=0&height=66"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+</body>
+
+</html>
