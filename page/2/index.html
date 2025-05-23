@@ -1987,102 +1987,6 @@ L-->DCL[DCL]</pre>
 </article>
     
     <article
-  id="post-北邮国院项目：Java Wordle"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2022/07/20/%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E9%A1%B9%E7%9B%AE%EF%BC%9AJava%20Wordle/"
-    >北邮国院项目：Java Wordle</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2022/07/20/%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E9%A1%B9%E7%9B%AE%EF%BC%9AJava%20Wordle/" class="article-date">
-  <time datetime="2022-07-19T23:00:00.000Z" itemprop="datePublished">2022-07-20</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%82%AE%E9%80%94%EF%BC%88%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0%EF%BC%89/">邮途（北邮国院课内学习）</a> / <a class="article-category-link" href="/categories/%E9%82%AE%E9%80%94%EF%BC%88%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0%EF%BC%89/Project/">Project</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="Wordle-游戏介绍"><a href="#Wordle-游戏介绍" class="headerlink" title="Wordle 游戏介绍"></a>Wordle 游戏介绍</h1><blockquote>
-<p>Wordle的游戏规则很简单，玩家需要猜出程序每天指定的一个5位英语单词谜底。</p>
-<p>玩家可以随意提交一个英语单词，但必须是字典里有的，不能胡乱拼写。</p>
-<p>如果字母在谜底中出现且位置对了就显示绿色，字母出现了但位置不对就显示黄色，字母在答案的单词中没出现就显示灰色。</p>
-<p>根据反馈信息再进行下一轮猜测，在6次尝试之内猜出就算赢。<br>来源：<a target="_blank" rel="noopener" href="https://news.mydrivers.com/1/813/813695.htm#:~:text=Wordle%E7%9A%84%E6%B8%B8,%E4%BD%8D%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D%E8%B0%9C%E5%BA%95%E3%80%82">https://news.mydrivers.com/1/813/813695.htm#:~:text=Wordle%E7%9A%84%E6%B8%B8,%E4%BD%8D%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D%E8%B0%9C%E5%BA%95%E3%80%82</a></p>
-</blockquote>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/494e131e4b2641d48becd4aef3f90c7d.png" alt="在这里插入图片描述"></p>
-<h1 id="成果图示"><a href="#成果图示" class="headerlink" title="成果图示"></a>成果图示</h1><p>博主大二期间学习的java课程大作业，就是写一款 wordle 游戏，主要考察 GUI 界面的开发。<br>最终成果图示：<br><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/008abdff020b4e05bc56265450bc7442.png" alt="在这里插入图片描述"><br><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1840388526344189a27121987da22d47.png" alt="在这里插入图片描述"><br><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/74f2dd38063349298b84d23cafb28db2.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/e9aacefcb2984adf913ea8c80fee24ff.png" alt="在这里插入图片描述"><br><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/07e7dd5c4a4348afb35cfc7cc009ca88.png" alt="在这里插入图片描述"><br><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/f163f8a63ff14878b74691ba432fd882.png" alt="在这里插入图片描述"><br><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/de75c6c50c9b45a3bbd2c58f95104217.png" alt="在这里插入图片描述"></p>
-<h1 id="玩法介绍"><a href="#玩法介绍" class="headerlink" title="玩法介绍"></a>玩法介绍</h1><p>点击HELP 查看帮助，点击 START 开始游戏。<br>本游戏中没有虚拟键盘，输入框也不能获取鼠标焦点，只能通过键盘键入字母，回车检查答案。<br>敲下回车后，字母就会呈现灰色、黄色、绿色三种状态，并换到下一行开始下一次猜单词机会。当猜中答案或六轮游戏结束时，弹出小窗，提示用户游戏胜利&#x2F;失败。<br>注意：</p>
-<ol>
-<li>检查用户输入。本游戏中用户只能输入字母，当用户试图键入数字或符号时会提示只能输入字母。当用户输入不足5位就尝试检查，或尝试输入超出5位时会提示输入必须为5位字母。当用户输入非单词尝试检查会提示输入必须为词库中存在的单词（词库：words.txt，可以自己更新）</li>
-<li>一些小的注意点。当用户输入中有两个e，都不在正确的位置上，那这两个e只有一个会显示黄色就够了，另一个显示灰色，否则会影响用户的判断。</li>
-</ol>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><a target="_blank" rel="noopener" href="https://github.com/Jingqing3948/Java_Wordle_Game">Java_Wordle_Game github下载地址</a><br>README：帮助信息<br>javadoc：生成的 javadoc<br>Test：测试图片及说明<br>words.txt：词库</p>
-<p>运行方法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">javac Main.java</span><br><span class="line">java Main</span><br></pre></td></tr></table></figure>
-<p>在此感谢老师同学对此项目的帮助指导！<br>欢迎大家star支持[Doge]有问题也可以与博主交流~</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-<div class="gitalk" id="gitalk-container"></div>
-
-<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
-
-
-<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
-
-
-<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
-
-<script type="text/javascript">
-  var gitalk = new Gitalk({
-    clientID: 'Ov23li1TkQEYXFu51qLu',
-    clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
-    repo: 'Jingqing3948.github.io',
-    owner: 'Jingqing3948',
-    admin: 'Jingqing3948',
-    // id: location.pathname,      // Ensure uniqueness and length less than 50
-    id: md5(location.pathname),
-    distractionFreeMode: true,  // Facebook-like distraction free mode
-    pagerDirection: 'last'
-  })
-
-  gitalk.render('gitalk-container')
-</script>
-
-  
-  
-</article>
-    
-    <article
   id="post-北邮国院笔记：MySQL 数据库"
   class="article article-type-post"
   itemscope
@@ -3072,6 +2976,102 @@ L-->DCL[DCL]</pre>
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'Ov23li1TkQEYXFu51qLu',
+    clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
+    repo: 'Jingqing3948.github.io',
+    owner: 'Jingqing3948',
+    admin: 'Jingqing3948',
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: true,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+  
+</article>
+    
+    <article
+  id="post-北邮国院项目：Java Wordle"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/07/20/%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E9%A1%B9%E7%9B%AE%EF%BC%9AJava%20Wordle/"
+    >北邮国院项目：Java Wordle</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/07/20/%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E9%A1%B9%E7%9B%AE%EF%BC%9AJava%20Wordle/" class="article-date">
+  <time datetime="2022-07-19T23:00:00.000Z" itemprop="datePublished">2022-07-20</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%82%AE%E9%80%94%EF%BC%88%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0%EF%BC%89/">邮途（北邮国院课内学习）</a> / <a class="article-category-link" href="/categories/%E9%82%AE%E9%80%94%EF%BC%88%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0%EF%BC%89/Project/">Project</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="Wordle-游戏介绍"><a href="#Wordle-游戏介绍" class="headerlink" title="Wordle 游戏介绍"></a>Wordle 游戏介绍</h1><blockquote>
+<p>Wordle的游戏规则很简单，玩家需要猜出程序每天指定的一个5位英语单词谜底。</p>
+<p>玩家可以随意提交一个英语单词，但必须是字典里有的，不能胡乱拼写。</p>
+<p>如果字母在谜底中出现且位置对了就显示绿色，字母出现了但位置不对就显示黄色，字母在答案的单词中没出现就显示灰色。</p>
+<p>根据反馈信息再进行下一轮猜测，在6次尝试之内猜出就算赢。<br>来源：<a target="_blank" rel="noopener" href="https://news.mydrivers.com/1/813/813695.htm#:~:text=Wordle%E7%9A%84%E6%B8%B8,%E4%BD%8D%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D%E8%B0%9C%E5%BA%95%E3%80%82">https://news.mydrivers.com/1/813/813695.htm#:~:text=Wordle%E7%9A%84%E6%B8%B8,%E4%BD%8D%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D%E8%B0%9C%E5%BA%95%E3%80%82</a></p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/494e131e4b2641d48becd4aef3f90c7d.png" alt="在这里插入图片描述"></p>
+<h1 id="成果图示"><a href="#成果图示" class="headerlink" title="成果图示"></a>成果图示</h1><p>博主大二期间学习的java课程大作业，就是写一款 wordle 游戏，主要考察 GUI 界面的开发。<br>最终成果图示：<br><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/008abdff020b4e05bc56265450bc7442.png" alt="在这里插入图片描述"><br><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1840388526344189a27121987da22d47.png" alt="在这里插入图片描述"><br><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/74f2dd38063349298b84d23cafb28db2.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/e9aacefcb2984adf913ea8c80fee24ff.png" alt="在这里插入图片描述"><br><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/07e7dd5c4a4348afb35cfc7cc009ca88.png" alt="在这里插入图片描述"><br><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/f163f8a63ff14878b74691ba432fd882.png" alt="在这里插入图片描述"><br><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/de75c6c50c9b45a3bbd2c58f95104217.png" alt="在这里插入图片描述"></p>
+<h1 id="玩法介绍"><a href="#玩法介绍" class="headerlink" title="玩法介绍"></a>玩法介绍</h1><p>点击HELP 查看帮助，点击 START 开始游戏。<br>本游戏中没有虚拟键盘，输入框也不能获取鼠标焦点，只能通过键盘键入字母，回车检查答案。<br>敲下回车后，字母就会呈现灰色、黄色、绿色三种状态，并换到下一行开始下一次猜单词机会。当猜中答案或六轮游戏结束时，弹出小窗，提示用户游戏胜利&#x2F;失败。<br>注意：</p>
+<ol>
+<li>检查用户输入。本游戏中用户只能输入字母，当用户试图键入数字或符号时会提示只能输入字母。当用户输入不足5位就尝试检查，或尝试输入超出5位时会提示输入必须为5位字母。当用户输入非单词尝试检查会提示输入必须为词库中存在的单词（词库：words.txt，可以自己更新）</li>
+<li>一些小的注意点。当用户输入中有两个e，都不在正确的位置上，那这两个e只有一个会显示黄色就够了，另一个显示灰色，否则会影响用户的判断。</li>
+</ol>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><a target="_blank" rel="noopener" href="https://github.com/Jingqing3948/Java_Wordle_Game">Java_Wordle_Game github下载地址</a><br>README：帮助信息<br>javadoc：生成的 javadoc<br>Test：测试图片及说明<br>words.txt：词库</p>
+<p>运行方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">javac Main.java</span><br><span class="line">java Main</span><br></pre></td></tr></table></figure>
+<p>在此感谢老师同学对此项目的帮助指导！<br>欢迎大家star支持[Doge]有问题也可以与博主交流~</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
 
     </footer>
   </div>
@@ -4710,7 +4710,7 @@ C-->O[其他 <br> 编译型异常]</pre>
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" target="_blank" rel="noopener" href="https://jingqing3948.github.io/Tianweijiang.github.io/">关于我</a>
+      <a class="nav-item-link" href="https://jingqing3948.github.io/Tianweijiang.github.io/">关于我</a>
     </li>
     
   </ul>
