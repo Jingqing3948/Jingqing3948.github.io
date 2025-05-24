@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+
+      <meta name="google-site-verification" content="YwYbA1LbL6DK2afClSAZcmUaT2QiD4rluljLHHU4120" />
+      
+      <title>项目学习：黑马点评 |  灰海宽松的博客</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-项目学习：黑马点评"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  项目学习：黑马点评
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2025/05/21/%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0%EF%BC%9A%E9%BB%91%E9%A9%AC%E7%82%B9%E8%AF%84/" class="article-date">
+  <time datetime="2025-05-20T23:00:00.000Z" itemprop="datePublished">2025-05-21</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E9%81%93%E6%B1%82%E7%B4%A2%EF%BC%88%E8%AF%BE%E5%A4%96IT%E6%8A%80%E8%83%BD%E5%AD%A6%E4%B9%A0%EF%BC%89/">算道求索（课外IT技能学习）</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E9%81%93%E6%B1%82%E7%B4%A2%EF%BC%88%E8%AF%BE%E5%A4%96IT%E6%8A%80%E8%83%BD%E5%AD%A6%E4%B9%A0%EF%BC%89/Project/">Project</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">3.2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">12 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="黑马点评项目介绍"><a href="#黑马点评项目介绍" class="headerlink" title="黑马点评项目介绍"></a>黑马点评项目介绍</h1><p>类似大众点评。</p>
+<p>要实现的功能：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505232128675.png" alt="image-20250523124316562"></p>
+<h1 id="项目导入"><a href="#项目导入" class="headerlink" title="项目导入"></a>项目导入</h1><p>基础代码，数据库等，不过多赘述。</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505232128575.png" alt="image-20250523124618786" style="zoom:50%;" />
+
+<h1 id="项目架构"><a href="#项目架构" class="headerlink" title="项目架构"></a>项目架构</h1><p>不是微服务是单体架构模式，因为重点还是在 Redis 学习上。Springboot 那个课涉及微服务实战，我后面应该也会学习一下。</p>
+<p>架构图如下，前后端分离，开发完成后前后端分别部署在 Nginx 和 Tomcat 上。</p>
+<pre class="mermaid">graph LR
+    K1[客户端]
+    K2[客户端]
+    K3[客户端]
+    K1-->N[前端<br>Nginx]
+    K2-->N
+    K3-->N
+    N-->T[后端<br>Tomcat]
+    subgraph Redis 集群
+        R1[Redis]
+        R2[Redis]
+        R3[Redis]
+        end
+    T-->R1
+    T-->R2
+    T-->R3
+    subgraph MySQL 集群
+        M1[MySQL]
+        M2[MySQL]
+        M3[MySQL]
+    end
+    T-->M1
+    T-->M2
+    T-->M3</pre>
+
+<p>后期这个项目可能还会做一些水平横向扩展，比如多 Tomcat 集群数据共享等，后面再扩展。</p>
+<p>导入 nginx 前端，mysql 数据库及 java 后端服务器运行后就可以看到如下所示：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505232128062.png" alt="image-20250523212804999"></p>
+<h1 id="短信登录"><a href="#短信登录" class="headerlink" title="短信登录"></a>短信登录</h1><h2 id="Session-实现"><a href="#Session-实现" class="headerlink" title="Session 实现"></a>Session 实现</h2><p>首先用 Session 尝试实现一下。</p>
+<pre class="mermaid">graph TD
+
+%% 校验登录状态
+subgraph 校验登录状态
+    C1[开始] --> C2[请求并携带 cookie]
+    C2 --> C3[从 session 获取用户]
+    C3 --> C4{判断用户是否存在}
+    C4 -- 有 --> C5[保存用户到 ThreadLocal]
+    C5 --> C6[放行]
+    C6 --> C7[结束]
+    C4 -- 没有 --> C8[拦截]
+    C8 --> C7
+end
+
+%% 短信验证码登录/注册
+subgraph 短信验证码登录/注册
+    B1[开始] --> B2[提交手机号和验证码]
+    B2 --> B3{校验验证码}
+    B3 -- 不一致 --> B2
+    B3 -- 一致 --> B4[根据手机号查询用户]
+    B4 --> B5{用户是否存在}
+    B5 -- 不存在 --> B6[创建新用户]
+    B6 --> B7[保存用户到数据库]
+    B7 --> B8[保存用户到 session]
+    B5 -- 存在 --> B8
+    B8 --> B9[结束]
+end
+
+%% 发送短信验证码
+subgraph 发送短信验证码
+    A1[开始] --> A2[提交手机号]
+    A2 --> A3{校验手机号}
+    A3 -- 不符合 --> A2
+    A3 -- 符合 --> A4[生成验证码]
+    A4 --> A5[保存验证码到 session]
+    A5 --> A6[发送验证码]
+    A6 --> A7[结束]
+end</pre>
+
+<p>其他地方都比较好理解。保存用户到 ThreadLocal 是因为每次访问用户信息都要访问 session。</p>
+<h2 id="发送短信验证码"><a href="#发送短信验证码" class="headerlink" title="发送短信验证码"></a>发送短信验证码</h2><p>点击用户登录界面，输入手机号尝试发送短信，根据发送链接 <code>xxx/user/code?phone=xxx</code> 可以看出请求路径是 <code>/user/code</code>，请求参数是电话号码，无返回值。</p>
+<p>在 <code>UserController</code> 类文件中可以看到这个待完成的函数 <code>public Result SendCode</code>，具体的发送短信请求还是交给 <code>userService</code> 去实现的，所以我们这里补全这个函数将任务交给 <code>userService</code>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// controller/UserController.java</span></span><br><span class="line"><span class="meta">@Resource</span></span><br><span class="line"><span class="keyword">private</span> IUserService userService;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Resource</span></span><br><span class="line"><span class="keyword">private</span> IUserInfoService userInfoService;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 发送手机验证码</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@PostMapping(&quot;code&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Result <span class="title function_">sendCode</span><span class="params">(<span class="meta">@RequestParam(&quot;phone&quot;)</span> String phone, HttpSession session)</span> &#123;</span><br><span class="line">    <span class="comment">// TODO 发送短信验证码并保存验证码</span></span><br><span class="line">    <span class="keyword">return</span> userService.sendCode(phone, session);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>源代码中，有一个 <code>IUserService</code> 接口里面声明了所有需要实现的 <code>UserService</code> 方法（目前是空的），然后 <code>UserServiceImpl</code> 类继承自 <code>ServiceImpl</code> 类实现了 <code>IUserService</code>。所以通过 IDEA 快速补全，我们先在 <code>IUserService</code> 里面添加一个待实现的 <code>sendCode </code>方法，然后再在 <code>UserServiceImpl</code> 里面实现。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// service/IUserService.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">IUserService</span> <span class="keyword">extends</span> <span class="title class_">IService</span>&lt;User&gt; &#123;</span><br><span class="line"></span><br><span class="line">    Result <span class="title function_">sendCode</span><span class="params">(String phone, HttpSession session)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// service/impl/UserServiceImpl.java</span></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="meta">@Slf4j</span> <span class="comment">// 用于 log.debug 传递多个参数</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserServiceImpl</span> <span class="keyword">extends</span> <span class="title class_">ServiceImpl</span>&lt;UserMapper, User&gt; <span class="keyword">implements</span> <span class="title class_">IUserService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Result <span class="title function_">sendCode</span><span class="params">(String phone, HttpSession session)</span> &#123;</span><br><span class="line">        <span class="comment">// 根据流程图分析步骤</span></span><br><span class="line">        <span class="comment">// 1. 校验手机号</span></span><br><span class="line">        <span class="comment">// 2. 如果不符合，返回错误信息</span></span><br><span class="line">        <span class="comment">// 在老师提供的 utils 工具类里面有校验手机号的正则表达式</span></span><br><span class="line">        <span class="keyword">if</span>(RegexUtils.isPhoneInvalid(phone))&#123;</span><br><span class="line">            <span class="keyword">return</span> Result.fail(<span class="string">&quot;手机号格式错误&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3， 如果符合，生成验证码</span></span><br><span class="line">        <span class="comment">// 随机生成6位数字</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">code</span> <span class="operator">=</span> RandomUtil.randomNumbers(<span class="number">6</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4. 保存验证码到 session</span></span><br><span class="line">        session.setAttribute(<span class="string">&quot;code&quot;</span>, code);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 5. 发送验证码</span></span><br><span class="line">        <span class="comment">// 这里就和具体的运营商服务平台等等有关了，其实不算什么重点，就随便写一下代替一下</span></span><br><span class="line">        log.debug(<span class="string">&quot;发送验证码成功，验证码：&#123;&#125;&quot;</span>, code);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 6. 返回 ok</span></span><br><span class="line">        <span class="keyword">return</span> Result.ok();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505232245964.png" alt="image-20250523224519872" style="zoom:67%;" />
+
+<h2 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h2><p>现在可以发送验证码了，用户收到验证码之后怎么校验登录呢？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// controller/UserController.java</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 登录功能</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> loginForm 登录参数，包含手机号、验证码；或者手机号、密码</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@PostMapping(&quot;/login&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Result <span class="title function_">login</span><span class="params">(<span class="meta">@RequestBody</span> LoginFormDTO loginForm, HttpSession session)</span>&#123;</span><br><span class="line">    <span class="comment">// TODO 实现登录功能</span></span><br><span class="line">    <span class="keyword">return</span> userService.login(loginForm, session);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// service/IUserService.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">IUserService</span> <span class="keyword">extends</span> <span class="title class_">IService</span>&lt;User&gt; &#123;</span><br><span class="line"></span><br><span class="line">    Result <span class="title function_">sendCode</span><span class="params">(String phone, HttpSession session)</span>;</span><br><span class="line"></span><br><span class="line">    Result <span class="title function_">login</span><span class="params">(LoginFormDTO loginForm, HttpSession session)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// service/impl/UserServiceImpl.java</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> Result <span class="title function_">login</span><span class="params">(LoginFormDTO loginForm, HttpSession session)</span> &#123;</span><br><span class="line">    <span class="comment">// 1. 校验手机号。虽然之前发送验证码的时候已经校验过了，</span></span><br><span class="line">    <span class="comment">// 但是现在用户填写完成验证码又改了一个错误的手机号再提交也是有可能的。所以有必要二次验证</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">phone</span> <span class="operator">=</span> loginForm.getPhone();</span><br><span class="line">    <span class="keyword">if</span>(RegexUtils.isPhoneInvalid(phone))&#123;</span><br><span class="line">        <span class="keyword">return</span> Result.fail(<span class="string">&quot;手机号格式错误&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. 校验验证码</span></span><br><span class="line">    <span class="type">Object</span> <span class="variable">cacheCode</span> <span class="operator">=</span> session.getAttribute(<span class="string">&quot;code&quot;</span>);</span><br><span class="line">    <span class="type">String</span> <span class="variable">code</span> <span class="operator">=</span> loginForm.getCode();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(cacheCode == <span class="literal">null</span> || !code.equals(cacheCode.toString()))&#123;</span><br><span class="line">        <span class="comment">// 3. 不一致，报错</span></span><br><span class="line">        <span class="comment">// 反向嵌套，避免越嵌套越深</span></span><br><span class="line">        <span class="keyword">return</span> Result.fail(<span class="string">&quot;验证码错误&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 4. 一致，根据手机号查询用户 select * from user where phone = xxx</span></span><br><span class="line">    <span class="comment">// 这个类继承自 ServiceImpl，由 mybatisplus 提供，可以实现方便的单表增删改查。</span></span><br><span class="line">    <span class="comment">// 我们已经在 User 里面注解了对应的 MySQL 表是 tb_user，传给 ServiceImpl 就可以实现方便的 MySQL 操作</span></span><br><span class="line">    <span class="type">Object</span> <span class="variable">user</span> <span class="operator">=</span> query().eq(<span class="string">&quot;phone&quot;</span>, phone).one();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 5. 判断用户是否存在</span></span><br><span class="line">    <span class="keyword">if</span>(user == <span class="literal">null</span>)&#123;</span><br><span class="line">        <span class="comment">// 6. 不存在，创建新用户，保存用户到数据库</span></span><br><span class="line">        <span class="comment">// 其实创建用户大多数字段都不需要知道，先手机号，然后随机生成一个昵称就行了</span></span><br><span class="line">        user = createUserwithPhone(phone);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 7. 保存用户到 session</span></span><br><span class="line">    session.setAttribute(<span class="string">&quot;user&quot;</span>, user);</span><br><span class="line">    <span class="comment">// return 就不需要给用户 token 了，因为 session id 已经自动存在 cookie 里面了，用户带着 cookie 就能校验</span></span><br><span class="line">    <span class="keyword">return</span>  Result.ok();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> Object <span class="title function_">createUserwithPhone</span><span class="params">(String phone)</span> &#123;</span><br><span class="line">    <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>();</span><br><span class="line">    user.setPhone(phone);</span><br><span class="line">    user.setNickName(USER_NICK_NAME_PREFIX + RandomUtil.randomString(<span class="number">10</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// mybatis 修改数据库命令：</span></span><br><span class="line">    save(user);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样就可以实现登录校验功能了，不过我们会发现用户登录信息没有被成功保存，登陆之后再点击用户，还是需要输入手机号发验证码登录验证。</p>
+<h2 id="登录校验拦截器"><a href="#登录校验拦截器" class="headerlink" title="登录校验拦截器"></a>登录校验拦截器</h2><p><code>xxx/user/me</code> 是登录校验的请求，查询是否已经登录。</p>
+<p>按理来说我们应该在每个 Controller 里面补全代码，根据获取到的 cookie 里携带的 session id 去找到对应的 session，进而获取到对应的用户数据。但是有很多 Controller 可能都需要这样获取用户信息，所以这种写法就不太好。</p>
+<p>我们可以用拦截器处理：</p>
+<pre class="mermaid">graph LR
+    A[拦截器<br>（统一入口）] --> B[OrderController]
+    A --> C[UserController]
+    A --> D[XxxController]</pre>
+
+<p>然后拦截器校验完，按我们之前说的，把用户信息缓存到 ThreadLocal 里面供这些控制类取用。</p>
+<p>拦截器可以写在 utils 里面：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// utils/LoginInterceptor.java</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LoginInterceptor</span> <span class="keyword">implements</span> <span class="title class_">HandlerInterceptor</span> &#123;</span><br><span class="line">    <span class="comment">// preHandle 实现：到达 Controller 之前执行，进行登录校验</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="comment">// 1. 获取 session</span></span><br><span class="line">        <span class="type">HttpSession</span> <span class="variable">session</span> <span class="operator">=</span> request.getSession();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2. 获取 session 中的用户信息</span></span><br><span class="line">        <span class="type">Object</span> <span class="variable">user</span> <span class="operator">=</span> session.getAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3. 判断用户是否存在</span></span><br><span class="line">        <span class="keyword">if</span>(user == <span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="comment">// 4. 不存在，拦截。最好加一些标识.401 状态码表示未授权</span></span><br><span class="line">            response.setStatus(<span class="number">401</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 5. 存在，保存用户信息到 ThreadLocal。老师已经写好了：</span></span><br><span class="line">        UserHolder.saveUser((User) user);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 6. 放行</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// postHandle 实现：Controller 执行完成之后执行，销毁用户数据避免内存泄露</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">postHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        UserHolder.removeUser();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>拦截器做好了，接下来需要配置一个 MVC 使其生效。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// config/MvcConfig.java</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MvcConfig</span> <span class="keyword">implements</span> <span class="title class_">WebMvcConfigurer</span> &#123;</span><br><span class="line">    <span class="comment">// 添加拦截器，并且除外一些不需要拦截的路径</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addInterceptors</span><span class="params">(InterceptorRegistry registry)</span> &#123;</span><br><span class="line">        registry.addInterceptor(<span class="keyword">new</span> <span class="title class_">LoginInterceptor</span>())</span><br><span class="line">                .excludePathPatterns(</span><br><span class="line">                        <span class="comment">// 其实有挺多用不到用户信息的，随便写一些做个示范。</span></span><br><span class="line">                        <span class="comment">// 比如店铺信息，热门博客，用户发送验证码，用户登录这些其实都用不到用户的信息</span></span><br><span class="line">                        <span class="string">&quot;shop/xx&quot;</span>,</span><br><span class="line">                        <span class="string">&quot;shop-type/xx&quot;</span>,</span><br><span class="line">                        <span class="string">&quot;blog/hot&quot;</span>,</span><br><span class="line">                        <span class="string">&quot;/user/code&quot;</span>,</span><br><span class="line">                        <span class="string">&quot;/user/login&quot;</span></span><br><span class="line">                        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后，再回到对应的控制类里面完善代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// controller/UserController.java</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/me&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result <span class="title function_">me</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="comment">// 获取当前登录的用户并返回</span></span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> UserHolder.getUser();</span><br><span class="line">        <span class="keyword">return</span> Result.ok(user);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行，现在登录完就可以看到用户信息了：</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505241406383.png" alt="image-20250524140619277" style="zoom:67%;" />
+
+<p>但是目前这样实现有一个非常严重的问题：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505241413447.png" alt="image-20250524141312310"></p>
+<p>是的密码也会返回。</p>
+<h2 id="隐藏用户敏感信息"><a href="#隐藏用户敏感信息" class="headerlink" title="隐藏用户敏感信息"></a>隐藏用户敏感信息</h2><p>我们再捋一下用户信息泄露的整个过程：</p>
+<ol>
+<li>用户信息在数据库里。</li>
+<li>登录校验后，从数据库中取得用户信息，存到 session 也就是 Tomcat 的内存空间里面，方便后续使用。</li>
+<li>校验登录状态：根据 cookie 传来的 session id，在 session 中找到对应存在的用户后，存到 ThreadLocal 里面方便后续使用。</li>
+</ol>
+<p>要不直接就不把密码什么的无用或者敏感信息存到 session 里面，也能节约内存空间，也安全？</p>
+<p>这里老师直接定义了一个类：UserDTO，里面只有用户 id 昵称 头像三个属性。所以我们存数据到 session 里面之前需要将 User 转成 UserDTO 类型。这里也可以直接用工具类实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// service/impl/UserServiceImpl.java</span></span><br><span class="line"><span class="comment">// public Result login(LoginFormDTO loginForm, HttpSession session)</span></span><br><span class="line">session.setAttribute(<span class="string">&quot;user&quot;</span>, BeanUtil.copyProperties(user, UserDTO.class));</span><br></pre></td></tr></table></figure>
+
+<p>相应的，取用户信息的时候也应该用 UserDTO 类型接着。包括 ThreadLocal 里面也应该改成存入 UserDTO 信息。</p>
+<p>这部分我就不一一阐述了，记不太清都有哪些要改了，反正就顺着改类型就行，UserDTO 也有 getId() 等方法。</p>
+<p>现在在开发者模式看获取到的 UserDTO 信息格式如下：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505241445854.png" alt="image-20250524144557746"></p>
+<h2 id="Session-共享问题"><a href="#Session-共享问题" class="headerlink" title="Session 共享问题"></a>Session 共享问题</h2><p>Session 是存在服务器自身的内存空间的，所以多台 Tomcat 不共享 Session。</p>
+<p>所以可能上一秒用户请求被负载均衡到服务器1，成功登陆，下一秒被负载均衡到服务器2又要重新登陆，非常影响使用体验。</p>
+<p>解决方法：其实也不难嘛，多服务器 session 拷贝就行吗？并不是，会有很多内存和时间上的损失，拷贝过程中如果用户发送请求可能也会出错。</p>
+<p>那么就需要找到 session 的替代方案，这个替代品需要满足：</p>
+<ol>
+<li>数据共享，因为我们就想解决这个问题。</li>
+<li>内存存储，因为要和 session 有差不多的性能。</li>
+<li>键值对形式，因为这种实现方法比较简单。</li>
+</ol>
+<p>答案就是 Redis 了。</p>
+<h2 id="Redis-实现"><a href="#Redis-实现" class="headerlink" title="Redis 实现"></a>Redis 实现</h2><p>我们先盘点一下 Redis 实现相较 Session 实现的，不一样的问题：</p>
+<ol>
+<li>键值对设计。比如验证码，session 里面是让键&#x3D;code 值&#x3D;对应验证码数字，redis 我们可以让 String 表示验证码数字字符串，但是 key 不可以&#x3D;”code”，因为 session 对于每个不同的客户端都不一样，所以不同客户端的 session 验证码属性都叫 code 也不冲突，但是 redis 是一个键唯一的数据库，所以不能不同客户端的 key 都叫 “code”。可以用手机号代替，手机号也是唯一标识：”phone:xxx” 这样。</li>
+<li>之前将用户数据保存到 session，我们的实现非常简单，直接存到 session，浏览器自动就把 session id 写到 cookie 里面，下次发过来的时候我们用 session id 去查找对应的 session 非常方便，但是换成 redis 这些部分就没有自动实现了，需要我们再根据用户提交的手机号作为 key 去 redis 数据库里查询。这个过程其实也顺带校验了手机号是否存在，因为把手机号作为 key，直接去 redis 里面查询 value，如果找不到对应的键值对，也说明了手机号错误。</li>
+<li>存储用户数据用什么数据类型？存储对象常见两种方式，一种是 String JSON 形式，另一种是 Hash 存储每个字段。推荐 Hash 方法，因为可以对每个字段进行 CRUD，并且内存占用更少。</li>
+<li>存储用户数据，键用什么？也可以用手机号，不过更推荐用 token （生成一个随机字符串）。当然，相比 session （浏览器自动将 session id 存入 cookie）的实现，我们还需要加一步，手动将 token 传回给前端保存，这样用户下次校验登录状态时该客户端才能拿着一样的 token 来取数据。而且相较于手机号更安全，前端可见。</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505241519713.png" alt="image-20250524151949549"></p>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          Contact Me
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://jingqing3948.github.io/2025/05/21/%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0%EF%BC%9A%E9%BB%91%E9%A9%AC%E7%82%B9%E8%AF%84/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2025/05/21/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%EF%BC%9A%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98%20Redis/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">技术学习：黑马程序员 Redis</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'Ov23li1TkQEYXFu51qLu',
+    clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
+    repo: 'Jingqing3948.github.io',
+    owner: 'Jingqing3948',
+    admin: 'Jingqing3948',
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: true,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022-2025
+        <i class="ri-heart-fill heart_icon"></i> Jingqing3948
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="灰海宽松的博客"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://jingqing3948.lofter.com/">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://blog.csdn.net/jtwqwq?spm=1000.2115.3001.5343">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://jingqing3948.github.io/Tianweijiang.github.io/">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>星光不问，梦终有回</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/LinkedIn.jpg">
+      <span class="reward-type">LinkedIn</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/WXOfficalAccount.jpg">
+      <span class="reward-type">公众号</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="86"
+        src="//music.163.com/outchain/player?type=2&id=1357960253&auto=0&height=66"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+</body>
+
+</html>
