@@ -7,6 +7,8 @@
     <head>
       <meta charset="utf-8" />
         
+      <meta name="description" content="Win11 磁贴配置办公效率提升工具" />
+      
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
@@ -89,7 +91,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.5k</span>
+            <span class="post-count">1.1k</span>
         </span>
     </span>
 
@@ -98,7 +100,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">6 min</span>
+            <span class="post-count">3 min</span>
         </span>
     </span>
 </div>
@@ -120,7 +122,7 @@
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712235022366.png" alt="image-20230712235022366"></p>
 <p>正版软件是免费试用的，欢迎付费支持原作者。或采用博主的同款方案：</p>
 <p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1HY0WuV7ynlXdBI7qfuWZzg?pwd=1fru">https://pan.baidu.com/s/1HY0WuV7ynlXdBI7qfuWZzg?pwd=1fru</a><br>提取码：1fru<br>–来自百度网盘超级会员V2的分享</p>
-<h2 id="xxxxxxxxxx-int-zong-int-i-纵坐标y1-double-x-i-51-double-y-12-0-sin-x-7-int-y1-int-15-y-return-y1-​int-heng-int-i-横坐标j-int-j-i-if-i-101-i202-i303-i"><a href="#xxxxxxxxxx-int-zong-int-i-纵坐标y1-double-x-i-51-double-y-12-0-sin-x-7-int-y1-int-15-y-return-y1-​int-heng-int-i-横坐标j-int-j-i-if-i-101-i202-i303-i" class="headerlink" title="xxxxxxxxxx int zong(int i)&#x2F;&#x2F;纵坐标y1{    double x&#x3D;(i-51);    double y&#x3D;12.0*sin(x&#x2F;7);    int y1&#x3D;(int)(15-y);    return y1;}​int heng(int i)&#x2F;&#x2F;横坐标j{    int j&#x3D;i;    if(i&gt;101&amp;&amp;i&lt;&#x3D;202)j&#x3D;203-i;    else if(i&gt;202&amp;&amp;i&lt;&#x3D;303)j&#x3D;i-202;    else if(i&gt;303&amp;&amp;i&lt;&#x3D;404)j&#x3D;405-i;    return j;}​void dayin(char ch,int j,int y1)&#x2F;&#x2F;在(y1,j)处输出给定字符{        gotoxy(y1,j);        if(ch&#x3D;&#x3D;’ ‘)        {            if(y1&#x3D;&#x3D;15)printf(“-“);            else if(j&#x3D;&#x3D;51)printf(“|”);            else printf(“ “);        }        else printf(“#”);        gotoxy(29-y1,102-j);        if(ch&#x3D;&#x3D;’ ‘)&#x2F;&#x2F;防止坐标点和坐标轴被空格覆盖        {            if(29-y1&#x3D;&#x3D;15)printf(“-“);            else if(102-j&#x3D;&#x3D;51)printf(“|”);            else if(29-y1&#x3D;&#x3D;26&amp;&amp;102-j&#x3D;&#x3D;49)printf(“-“);            else if((29-y1&#x3D;&#x3D;26&amp;&amp;102-j&#x3D;&#x3D;50)||(29-y1&#x3D;&#x3D;3&amp;&amp;102-j&#x3D;&#x3D;50))printf(“1”);            else if(29-y1&#x3D;&#x3D;16&amp;&amp;102-j&#x3D;&#x3D;100)printf(“X”);            else printf(“ “);        }        else printf(“#”);        gotoxy(1,1);}​​​​int main(){    float x,y;    int tim&#x3D;20;    system(“color F0”);    system(“mode con cols&#x3D;101 lines&#x3D;30”);    clear();        for(int i&#x3D;0;i&lt;&#x3D;100;i++)&#x2F;&#x2F;打印x轴     {        gotoxy(15,i+1);        if(i!&#x3D;50)printf(“-“);        else printf(“+”);        gotoxy(1,1);        rest(1);    }        for(int i&#x3D;29;i&gt;&#x3D;0;i–)&#x2F;&#x2F;打印y轴     {        gotoxy(i+1,51);        if(i!&#x3D;14)printf(“|”);        gotoxy(1,1);         rest(1);    }    &#x2F;&#x2F;打印轴上的点    gotoxy(16,52); printf(“O”);        gotoxy(16,100);printf(“X”);        gotoxy(1,49);printf(“Y”);        gotoxy(3,50);printf(“1”);        gotoxy(26,49);printf(“-1”);                    int i&#x3D;0,j,y1;​    for(i&#x3D;52;i&lt;&#x3D;404;i++)&#x2F;&#x2F;打印函数     {        j&#x3D;heng(i),y1&#x3D;zong(i);        dayin(‘#’,j,y1);        rest(4);                if(i-51-tim&gt;0)        {            y1&#x3D;zong(i-tim);            j&#x3D;heng(i-tim);            dayin(‘ ‘,j,y1);        }    }       for(int r&#x3D;i-tim;r&lt;&#x3D;i;r++)    {        j&#x3D;heng(r);        y1&#x3D;zong(r);        dayin(‘ ‘,j,y1);        rest(4);    }     gotoxy(1,1);    rest(1000);    return 0;}c"></a>xxxxxxxxxx int zong(int i)&#x2F;&#x2F;纵坐标y1{    double x&#x3D;(i-51);    double y&#x3D;12.0*sin(x&#x2F;7);    int y1&#x3D;(int)(15-y);    return y1;}​int heng(int i)&#x2F;&#x2F;横坐标j{    int j&#x3D;i;    if(i&gt;101&amp;&amp;i&lt;&#x3D;202)j&#x3D;203-i;    else if(i&gt;202&amp;&amp;i&lt;&#x3D;303)j&#x3D;i-202;    else if(i&gt;303&amp;&amp;i&lt;&#x3D;404)j&#x3D;405-i;    return j;}​void dayin(char ch,int j,int y1)&#x2F;&#x2F;在(y1,j)处输出给定字符{        gotoxy(y1,j);        if(ch&#x3D;&#x3D;’ ‘)        {            if(y1&#x3D;&#x3D;15)printf(“-“);            else if(j&#x3D;&#x3D;51)printf(“|”);            else printf(“ “);        }        else printf(“#”);        gotoxy(29-y1,102-j);        if(ch&#x3D;&#x3D;’ ‘)&#x2F;&#x2F;防止坐标点和坐标轴被空格覆盖        {            if(29-y1&#x3D;&#x3D;15)printf(“-“);            else if(102-j&#x3D;&#x3D;51)printf(“|”);            else if(29-y1&#x3D;&#x3D;26&amp;&amp;102-j&#x3D;&#x3D;49)printf(“-“);            else if((29-y1&#x3D;&#x3D;26&amp;&amp;102-j&#x3D;&#x3D;50)||(29-y1&#x3D;&#x3D;3&amp;&amp;102-j&#x3D;&#x3D;50))printf(“1”);            else if(29-y1&#x3D;&#x3D;16&amp;&amp;102-j&#x3D;&#x3D;100)printf(“X”);            else printf(“ “);        }        else printf(“#”);        gotoxy(1,1);}​​​​int main(){    float x,y;    int tim&#x3D;20;    system(“color F0”);    system(“mode con cols&#x3D;101 lines&#x3D;30”);    clear();        for(int i&#x3D;0;i&lt;&#x3D;100;i++)&#x2F;&#x2F;打印x轴     {        gotoxy(15,i+1);        if(i!&#x3D;50)printf(“-“);        else printf(“+”);        gotoxy(1,1);        rest(1);    }        for(int i&#x3D;29;i&gt;&#x3D;0;i–)&#x2F;&#x2F;打印y轴     {        gotoxy(i+1,51);        if(i!&#x3D;14)printf(“|”);        gotoxy(1,1);         rest(1);    }    &#x2F;&#x2F;打印轴上的点    gotoxy(16,52); printf(“O”);        gotoxy(16,100);printf(“X”);        gotoxy(1,49);printf(“Y”);        gotoxy(3,50);printf(“1”);        gotoxy(26,49);printf(“-1”);                    int i&#x3D;0,j,y1;​    for(i&#x3D;52;i&lt;&#x3D;404;i++)&#x2F;&#x2F;打印函数     {        j&#x3D;heng(i),y1&#x3D;zong(i);        dayin(‘#’,j,y1);        rest(4);                if(i-51-tim&gt;0)        {            y1&#x3D;zong(i-tim);            j&#x3D;heng(i-tim);            dayin(‘ ‘,j,y1);        }    }       for(int r&#x3D;i-tim;r&lt;&#x3D;i;r++)    {        j&#x3D;heng(r);        y1&#x3D;zong(r);        dayin(‘ ‘,j,y1);        rest(4);    }     gotoxy(1,1);    rest(1000);    return 0;}c</h2><p>首先如果是按博主的磁贴方法配置，就要选“win10配置”。或者你觉得其他风格也还不错都可以选。并且 ENABLE start11.</p>
+<p>首先如果是按博主的磁贴方法配置，就要选“win10配置”。或者你觉得其他风格也还不错都可以选。并且 ENABLE start11.</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712235704628.png" alt="image-20230712235704628"></p>
 <p>点击“配置菜单”，进行如下配置：</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712235738298.png" alt="image-20230712235738298"></p>
@@ -239,19 +241,19 @@
    
   <nav class="article-nav">
     
-      <a href="/2023/11/26/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%EF%BC%9ASTM32%20F407%20%E9%9C%B8%E5%A4%A9%E8%99%8E%E5%BC%80%E5%8F%91%E6%9D%BF/" class="article-nav-link">
+      <a href="/2023/10/09/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%EF%BC%9Aubuntu%20%E5%AE%89%E8%A3%85%20emscripten%20%E6%97%B6%20install%20latest%20%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            技术学习：STM32 F407 霸天虎开发板
+            问题解决：ubuntu 安装 emscripten 时 install latest 安装报错
           
         </div>
       </a>
     
     
-      <a href="/2023/10/09/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%EF%BC%9Aubuntu%20%E5%AE%89%E8%A3%85%20emscripten%20%E6%97%B6%20install%20latest%20%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99/" class="article-nav-link">
+      <a href="/2023/07/25/%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E7%AC%94%E8%AE%B0%EF%BC%9ARFID/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">问题解决：ubuntu 安装 emscripten 时 install latest 安装报错</div>
+        <div class="article-nav-title">北邮国院笔记：RFID</div>
       </a>
     
   </nav>

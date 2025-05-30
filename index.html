@@ -154,6 +154,156 @@
     
     
     <article
+  id="post-题目练习：代码随想录解题思路分析"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2025/05/29/%E9%A2%98%E7%9B%AE%E7%BB%83%E4%B9%A0%EF%BC%9A%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%E5%88%86%E6%9E%90/"
+    >题目练习：代码随想录解题思路分析</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2025/05/29/%E9%A2%98%E7%9B%AE%E7%BB%83%E4%B9%A0%EF%BC%9A%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%E5%88%86%E6%9E%90/" class="article-date">
+  <time datetime="2025-05-28T23:00:00.000Z" itemprop="datePublished">2025-05-29</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E9%81%93%E6%B1%82%E7%B4%A2%EF%BC%88%E8%AF%BE%E5%A4%96IT%E6%8A%80%E8%83%BD%E5%AD%A6%E4%B9%A0%EF%BC%89/">算道求索（课外IT技能学习）</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E9%81%93%E6%B1%82%E7%B4%A2%EF%BC%88%E8%AF%BE%E5%A4%96IT%E6%8A%80%E8%83%BD%E5%AD%A6%E4%B9%A0%EF%BC%89/Lecture/">Lecture</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>其实博主从大二开始闲着没事陆续刷 leetcode 也刷了不少了，但是感觉都是没什么思想地刷，可能大多数题能记住解法，但是很多题再看到第一眼还是想不到什么双指针，滑窗之类的优解，没有这个意识，要扫一眼题解的方法才会恍然大悟“哦对哦可以这么做的”然后才能写出来。</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505300004032.png" alt="博主的 Leetcode 数据" style="zoom: 67%;" />
+
+<p>所以这回（第 N 次为了面试做准备而重刷，从代码随想录开始，我还没试过这个）我决定重点在于“看到题目如何构思解法”的分析上。比如双指针一般应用于什么题型？为什么这道题看到后第一眼知道用双指针？</p>
+<p>希望对你也有所帮助。</p>
+<p><em>注：博主使用语言为 java。</em></p>
+<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="二分查找（Leetcode-704-）"><a href="#二分查找（Leetcode-704-）" class="headerlink" title="二分查找（Leetcode 704.）"></a>二分查找（Leetcode 704.）</h2><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505300005472.png" alt="Leetcode 二分查找" style="zoom: 67%;" />
+
+<p>二分查找法，最重要的大前提就是数组有序。没有顺序的话用不了二分法的。</p>
+<p>时间复杂度是 log2(n)，空间复杂度 O(1)。</p>
+<p>二分法使用的时候注意自己规定好左右边界，不要漏掉一些边界情况等。我的常用玩法是循环跳出条件为 <code>left&gt;right</code>，每次校验完 mid 之后让 <code>left=mid+1</code> 或 <code>right=mid-1</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">search</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(nums == <span class="literal">null</span> || nums.length&lt;=<span class="number">0</span>)<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> left=<span class="number">0</span>, right = nums.length-<span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> mid=(left+right)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">while</span>(left&lt;=right &amp;&amp; nums[mid]!=target )&#123;</span><br><span class="line">            <span class="comment">// nums[mid]&gt;target?right=mid-1:left=mid+1;</span></span><br><span class="line">            <span class="keyword">if</span>(nums[mid]&gt;target)right=mid-<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> left=mid+<span class="number">1</span>;</span><br><span class="line">            mid=(left+right)/<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(left&gt;right)<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> mid;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="移除数组指定值元素（Leetcode-27-）"><a href="#移除数组指定值元素（Leetcode-27-）" class="headerlink" title="移除数组指定值元素（Leetcode 27.）"></a>移除数组指定值元素（Leetcode 27.）</h2><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505300011662.png" alt="Leetcode 移除元素" style="zoom:80%;" />
+
+<p>如果没有<strong>原地</strong>的要求，我们新开辟一个数组空间，有选择性地把原数组值复制过去就行，记得记一下数看有多少个非 <code>val</code> 值。</p>
+<p>GPT 总结双指针使用场景总览：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+<th>常见题型举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1. 对撞指针</td>
+<td>从两端向中间逼近</td>
+<td>排序数组的和、回文串判断、三数之和等</td>
+</tr>
+<tr>
+<td>2. 快慢指针</td>
+<td>一快一慢遍历链表或数组</td>
+<td>环形链表、删除重复元素、寻找中点等</td>
+</tr>
+<tr>
+<td>3. 滑动窗口</td>
+<td>左右指针控制一个动态区间</td>
+<td>最小覆盖子串、最长无重复子串等</td>
+</tr>
+<tr>
+<td>4. 区间遍历&#x2F;合并区间</td>
+<td>对多个数组或区间双向扫描</td>
+<td>区间交集、归并两个有序数组等</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeElement</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">slowIndex</span> <span class="operator">=</span> <span class="number">0</span>, fastIndex = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (; fastIndex &lt; nums.length; fastIndex++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[fastIndex]!=val)nums[slowIndex++]=nums[fastIndex];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slowIndex;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="有序数组的平方（Leetcode-977-）"><a href="#有序数组的平方（Leetcode-977-）" class="headerlink" title="有序数组的平方（Leetcode 977.）"></a>有序数组的平方（Leetcode 977.）</h2><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505300855824.png" alt="Leetcode 有序手势的平方" style="zoom:67%;" />
+
+<p>这个题的关键点在于负数，也就是原数组按原顺序平方后得到的数组可能是先减后增的。</p>
+<p>那么问题就变成怎么把负数那一部分按从小到大顺序插入到正数那一部分（我的理解），这和“合并两个数组”差不多。所以就是两个指针分别指向数组左右两端（负数绝对值的最大值和正数绝对值的最大值），每次拿出相对更大的一个放入到新数组中并移动该指针。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] sortedSquares(<span class="type">int</span>[] nums) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">leftIndex</span> <span class="operator">=</span> <span class="number">0</span>, rightIndex = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">resIndex</span> <span class="operator">=</span> rightIndex;</span><br><span class="line">        <span class="type">int</span>[] resultNums = <span class="keyword">new</span> <span class="title class_">int</span>[nums.length];</span><br><span class="line">        <span class="keyword">while</span> (leftIndex &lt;= rightIndex &amp;&amp; resIndex &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> nums[leftIndex] * nums[leftIndex], right = nums[rightIndex] * nums[rightIndex];</span><br><span class="line">            <span class="keyword">if</span> (left &gt; right) &#123;</span><br><span class="line">                resultNums[resIndex--] = left;</span><br><span class="line">                leftIndex++;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                resultNums[resIndex--] = right;</span><br><span class="line">                rightIndex--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> resultNums;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="长度最小的子数组（Leetcode-209-）"><a href="#长度最小的子数组（Leetcode-209-）" class="headerlink" title="长度最小的子数组（Leetcode 209.）"></a>长度最小的子数组（Leetcode 209.）</h2><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505300900649.png" alt="Leetcode 长度最小的子数组" style="zoom:67%;" />
+
+<p>从一个序列中找到符合标准的一个连续子序列，很明显的滑动窗口问题。</p>
+<p>依然是双指针，确定左右边界。</p>
+<p>每次循环先移动右指针，窗口 sum 值加上右指针指向的新值，如果超过 target 先试一试移动左指针后是否仍然满足（sum-当前左指针值，尽可能让满足条件的序列更短一些），如果不满足就不移动左指针了，然后比较记录当前子序列长度。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">minSubArrayLen</span><span class="params">(<span class="type">int</span> target, <span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums == <span class="literal">null</span> || nums.length == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">minLength</span> <span class="operator">=</span> nums.length + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (; right &lt; nums.length; right++) &#123;</span><br><span class="line">            sum += nums[right];</span><br><span class="line">            <span class="keyword">if</span> (sum &gt;= target) &#123;</span><br><span class="line">                <span class="keyword">while</span> (sum - nums[left] &gt;= target) &#123;</span><br><span class="line">                    sum -= nums[left++];</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (right - left + <span class="number">1</span> &lt; minLength)</span><br><span class="line">                    minLength = right - left + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (minLength == nums.length + <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> minLength;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="螺旋矩阵II（Leetcode-59-）"><a href="#螺旋矩阵II（Leetcode-59-）" class="headerlink" title="螺旋矩阵II（Leetcode 59.）"></a>螺旋矩阵II（Leetcode 59.）</h2><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505300904926.png" alt="Leetcode 螺旋矩阵 II" style="zoom:67%;" />
+
+<p>这个其实没啥难度，主要就是自己遍历的时候边界判定条件要统一，别自己写乱了。</p>
+<p>做这种题我一般习惯于设置成下面这种 direction 矩阵，这样比较方便一些（学嵌入式时候的习惯）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[][] generateMatrix(<span class="type">int</span> n) &#123;</span><br><span class="line">        <span class="type">int</span>[][] resMatrix = <span class="keyword">new</span> <span class="title class_">int</span>[n][n];</span><br><span class="line">        <span class="type">int</span>[] direction = &#123; <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">0</span> &#125;;</span><br><span class="line">        <span class="type">int</span> <span class="variable">currentDirection</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">currentX</span> <span class="operator">=</span> <span class="number">0</span>, currentY = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n * n; i++) &#123;</span><br><span class="line">            resMatrix[currentX][currentY] = i;</span><br><span class="line">            <span class="keyword">if</span> (currentX + direction[currentDirection] &lt; <span class="number">0</span> ||</span><br><span class="line">                    currentX + direction[currentDirection] &gt;= n ||</span><br><span class="line">                    currentY + direction[currentDirection + <span class="number">1</span>] &lt; <span class="number">0</span> ||</span><br><span class="line">                    currentY + direction[currentDirection + <span class="number">1</span>] &gt;=n ||</span><br><span class="line">                    resMatrix[currentX + direction[currentDirection]][currentY</span><br><span class="line">                            + direction[currentDirection + <span class="number">1</span>]] != <span class="number">0</span>) &#123;</span><br><span class="line">                currentDirection = (currentDirection + <span class="number">2</span>) % <span class="number">8</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            currentX = currentX + direction[currentDirection];</span><br><span class="line">            currentY = currentY + direction[currentDirection + <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> resMatrix;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="区间和（代码随想录-58-）"><a href="#区间和（代码随想录-58-）" class="headerlink" title="区间和（代码随想录 58.）"></a>区间和（代码随想录 58.）</h2><p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505300908469.png" alt="代码随想录 区间和"></p>
+<p>也没啥算法难度，就是练习一下 ACM 算法模式，整个程序都要自己写：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        Scanner sc=<span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">int</span> n=sc.nextInt();</span><br><span class="line">        <span class="type">int</span>[] vector = <span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            vector[i]=sc.nextInt();</span><br><span class="line">            <span class="keyword">if</span>(i&gt;<span class="number">0</span>)vector[i]+=vector[i-<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(sc.hasNextInt())&#123;</span><br><span class="line">            <span class="type">int</span> left=sc.nextInt();</span><br><span class="line">            <span class="type">int</span> right=sc.nextInt();</span><br><span class="line">            <span class="keyword">if</span>(left ==<span class="number">0</span>)System.out.println(vector[right]);</span><br><span class="line">            <span class="keyword">else</span> System.out.println(vector[right]-vector[left-<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'Ov23li1TkQEYXFu51qLu',
+    clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
+    repo: 'Jingqing3948.github.io',
+    owner: 'Jingqing3948',
+    admin: 'Jingqing3948',
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: true,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+  
+</article>
+    
+    <article
   id="post-技术学习：黑马程序员 Redis"
   class="article article-type-post"
   itemscope
@@ -2299,128 +2449,6 @@ void RCC_AHB1PeriphClockCmd(uint32_t RCC_AHB1Periph, FunctionalState NewState)
 </article>
     
     <article
-  id="post-效率提升：Win11磁贴配置"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/10/09/%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%87%EF%BC%9AWin11%E7%A3%81%E8%B4%B4%E9%85%8D%E7%BD%AE/"
-    >效率提升：Win11磁贴配置</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/10/09/%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%87%EF%BC%9AWin11%E7%A3%81%E8%B4%B4%E9%85%8D%E7%BD%AE/" class="article-date">
-  <time datetime="2023-10-08T23:00:00.000Z" itemprop="datePublished">2023-10-09</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%B8%8F%E6%98%9F%E9%80%90%E8%B7%AF%EF%BC%88%E5%88%9B%E6%96%B0%E6%8E%A2%E7%B4%A2%EF%BC%89/">踏星逐路（创新探索）</a> / <a class="article-category-link" href="/categories/%E8%B8%8F%E6%98%9F%E9%80%90%E8%B7%AF%EF%BC%88%E5%88%9B%E6%96%B0%E6%8E%A2%E7%B4%A2%EF%BC%89/Efficiency/">Efficiency</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近电脑还是升级到 win11 了。我之前采用的美化方案是桌面上的图标全部移到 win10 开始菜单里的全屏菜单上，用磁贴贴一排。每次要访问文件的时候都去开始菜单里找，而不是放在桌面上，这样桌面也可以空出来欣赏壁纸。参考配置链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/45120814/answer/1007955630">如何让Windows 10系统桌面变得更好看？ - 知乎 (zhihu.com)</a></p>
-<p>但是升级到 win11 对我而言影响最大的就是压根没有全屏桌面和磁贴功能了。因此我搜了很多解决方案，加上一些自己的改进，最终把桌面磁贴恢复成如上图所示。一个自己喜欢看的桌面还是会对生产力的提高有很大帮助的。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712234132339.png" alt="image-20230712234132339"></p>
-<h2 id="软件安装：start11"><a href="#软件安装：start11" class="headerlink" title="软件安装：start11"></a>软件安装：start11</h2><p>首先，恢复开始菜单这一操作最离不开的就是 start11 这款软件。他让 win11 的开始菜单又有了全屏菜单选项，也支持了自定义磁贴在上面。虽然调整磁贴位置的时候偶尔会花几秒重启，但大多数时候还是没问题的。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712235022366.png" alt="image-20230712235022366"></p>
-<p>正版软件是免费试用的，欢迎付费支持原作者。或采用博主的同款方案：</p>
-<p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1HY0WuV7ynlXdBI7qfuWZzg?pwd=1fru">https://pan.baidu.com/s/1HY0WuV7ynlXdBI7qfuWZzg?pwd=1fru</a><br>提取码：1fru<br>–来自百度网盘超级会员V2的分享</p>
-<h2 id="xxxxxxxxxx-int-zong-int-i-纵坐标y1-double-x-i-51-double-y-12-0-sin-x-7-int-y1-int-15-y-return-y1-​int-heng-int-i-横坐标j-int-j-i-if-i-101-i202-i303-i"><a href="#xxxxxxxxxx-int-zong-int-i-纵坐标y1-double-x-i-51-double-y-12-0-sin-x-7-int-y1-int-15-y-return-y1-​int-heng-int-i-横坐标j-int-j-i-if-i-101-i202-i303-i" class="headerlink" title="xxxxxxxxxx int zong(int i)&#x2F;&#x2F;纵坐标y1{    double x&#x3D;(i-51);    double y&#x3D;12.0*sin(x&#x2F;7);    int y1&#x3D;(int)(15-y);    return y1;}​int heng(int i)&#x2F;&#x2F;横坐标j{    int j&#x3D;i;    if(i&gt;101&amp;&amp;i&lt;&#x3D;202)j&#x3D;203-i;    else if(i&gt;202&amp;&amp;i&lt;&#x3D;303)j&#x3D;i-202;    else if(i&gt;303&amp;&amp;i&lt;&#x3D;404)j&#x3D;405-i;    return j;}​void dayin(char ch,int j,int y1)&#x2F;&#x2F;在(y1,j)处输出给定字符{        gotoxy(y1,j);        if(ch&#x3D;&#x3D;’ ‘)        {            if(y1&#x3D;&#x3D;15)printf(“-“);            else if(j&#x3D;&#x3D;51)printf(“|”);            else printf(“ “);        }        else printf(“#”);        gotoxy(29-y1,102-j);        if(ch&#x3D;&#x3D;’ ‘)&#x2F;&#x2F;防止坐标点和坐标轴被空格覆盖        {            if(29-y1&#x3D;&#x3D;15)printf(“-“);            else if(102-j&#x3D;&#x3D;51)printf(“|”);            else if(29-y1&#x3D;&#x3D;26&amp;&amp;102-j&#x3D;&#x3D;49)printf(“-“);            else if((29-y1&#x3D;&#x3D;26&amp;&amp;102-j&#x3D;&#x3D;50)||(29-y1&#x3D;&#x3D;3&amp;&amp;102-j&#x3D;&#x3D;50))printf(“1”);            else if(29-y1&#x3D;&#x3D;16&amp;&amp;102-j&#x3D;&#x3D;100)printf(“X”);            else printf(“ “);        }        else printf(“#”);        gotoxy(1,1);}​​​​int main(){    float x,y;    int tim&#x3D;20;    system(“color F0”);    system(“mode con cols&#x3D;101 lines&#x3D;30”);    clear();        for(int i&#x3D;0;i&lt;&#x3D;100;i++)&#x2F;&#x2F;打印x轴     {        gotoxy(15,i+1);        if(i!&#x3D;50)printf(“-“);        else printf(“+”);        gotoxy(1,1);        rest(1);    }        for(int i&#x3D;29;i&gt;&#x3D;0;i–)&#x2F;&#x2F;打印y轴     {        gotoxy(i+1,51);        if(i!&#x3D;14)printf(“|”);        gotoxy(1,1);         rest(1);    }    &#x2F;&#x2F;打印轴上的点    gotoxy(16,52); printf(“O”);        gotoxy(16,100);printf(“X”);        gotoxy(1,49);printf(“Y”);        gotoxy(3,50);printf(“1”);        gotoxy(26,49);printf(“-1”);                    int i&#x3D;0,j,y1;​    for(i&#x3D;52;i&lt;&#x3D;404;i++)&#x2F;&#x2F;打印函数     {        j&#x3D;heng(i),y1&#x3D;zong(i);        dayin(‘#’,j,y1);        rest(4);                if(i-51-tim&gt;0)        {            y1&#x3D;zong(i-tim);            j&#x3D;heng(i-tim);            dayin(‘ ‘,j,y1);        }    }       for(int r&#x3D;i-tim;r&lt;&#x3D;i;r++)    {        j&#x3D;heng(r);        y1&#x3D;zong(r);        dayin(‘ ‘,j,y1);        rest(4);    }     gotoxy(1,1);    rest(1000);    return 0;}c"></a>xxxxxxxxxx int zong(int i)&#x2F;&#x2F;纵坐标y1{    double x&#x3D;(i-51);    double y&#x3D;12.0*sin(x&#x2F;7);    int y1&#x3D;(int)(15-y);    return y1;}​int heng(int i)&#x2F;&#x2F;横坐标j{    int j&#x3D;i;    if(i&gt;101&amp;&amp;i&lt;&#x3D;202)j&#x3D;203-i;    else if(i&gt;202&amp;&amp;i&lt;&#x3D;303)j&#x3D;i-202;    else if(i&gt;303&amp;&amp;i&lt;&#x3D;404)j&#x3D;405-i;    return j;}​void dayin(char ch,int j,int y1)&#x2F;&#x2F;在(y1,j)处输出给定字符{        gotoxy(y1,j);        if(ch&#x3D;&#x3D;’ ‘)        {            if(y1&#x3D;&#x3D;15)printf(“-“);            else if(j&#x3D;&#x3D;51)printf(“|”);            else printf(“ “);        }        else printf(“#”);        gotoxy(29-y1,102-j);        if(ch&#x3D;&#x3D;’ ‘)&#x2F;&#x2F;防止坐标点和坐标轴被空格覆盖        {            if(29-y1&#x3D;&#x3D;15)printf(“-“);            else if(102-j&#x3D;&#x3D;51)printf(“|”);            else if(29-y1&#x3D;&#x3D;26&amp;&amp;102-j&#x3D;&#x3D;49)printf(“-“);            else if((29-y1&#x3D;&#x3D;26&amp;&amp;102-j&#x3D;&#x3D;50)||(29-y1&#x3D;&#x3D;3&amp;&amp;102-j&#x3D;&#x3D;50))printf(“1”);            else if(29-y1&#x3D;&#x3D;16&amp;&amp;102-j&#x3D;&#x3D;100)printf(“X”);            else printf(“ “);        }        else printf(“#”);        gotoxy(1,1);}​​​​int main(){    float x,y;    int tim&#x3D;20;    system(“color F0”);    system(“mode con cols&#x3D;101 lines&#x3D;30”);    clear();        for(int i&#x3D;0;i&lt;&#x3D;100;i++)&#x2F;&#x2F;打印x轴     {        gotoxy(15,i+1);        if(i!&#x3D;50)printf(“-“);        else printf(“+”);        gotoxy(1,1);        rest(1);    }        for(int i&#x3D;29;i&gt;&#x3D;0;i–)&#x2F;&#x2F;打印y轴     {        gotoxy(i+1,51);        if(i!&#x3D;14)printf(“|”);        gotoxy(1,1);         rest(1);    }    &#x2F;&#x2F;打印轴上的点    gotoxy(16,52); printf(“O”);        gotoxy(16,100);printf(“X”);        gotoxy(1,49);printf(“Y”);        gotoxy(3,50);printf(“1”);        gotoxy(26,49);printf(“-1”);                    int i&#x3D;0,j,y1;​    for(i&#x3D;52;i&lt;&#x3D;404;i++)&#x2F;&#x2F;打印函数     {        j&#x3D;heng(i),y1&#x3D;zong(i);        dayin(‘#’,j,y1);        rest(4);                if(i-51-tim&gt;0)        {            y1&#x3D;zong(i-tim);            j&#x3D;heng(i-tim);            dayin(‘ ‘,j,y1);        }    }       for(int r&#x3D;i-tim;r&lt;&#x3D;i;r++)    {        j&#x3D;heng(r);        y1&#x3D;zong(r);        dayin(‘ ‘,j,y1);        rest(4);    }     gotoxy(1,1);    rest(1000);    return 0;}c</h2><p>首先如果是按博主的磁贴方法配置，就要选“win10配置”。或者你觉得其他风格也还不错都可以选。并且 ENABLE start11.</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712235704628.png" alt="image-20230712235704628"></p>
-<p>点击“配置菜单”，进行如下配置：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712235738298.png" alt="image-20230712235738298"></p>
-<p>在“自定义菜单视觉外观”里，可以设置全屏菜单的颜色、透明度等，比如我使用的是有一定透明度的毛玻璃的样式。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713000601091.png" alt="image-20230713000601091"></p>
-<p>然后在“控制”栏里设定如何打开 start11，确保可以打开：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712235840844.png"></p>
-<p>接着，点击 win 图标就可以打开全屏菜单了。</p>
-<h2 id="磁贴配置"><a href="#磁贴配置" class="headerlink" title="磁贴配置"></a>磁贴配置</h2><p>对于大部分软件，只要右键-固定到开始屏幕&#x2F;固定到 start11，就可以在全屏菜单里看到刚刚贴上的磁贴了。</p>
-<p>如果贴失败，可以尝试以下的方法：</p>
-<ul>
-<li>右键快捷方式，点击“打开文件所在位置”，再尝试把该文件的 .exe 文件固定到开始屏幕。</li>
-<li>反复尝试，因为可能有一定的延迟。可以取消固定再次固定，等待一会看开始菜单是否出现。</li>
-</ul>
-<p>然后可以手动分组磁贴（把他们移到临近的位置），调整磁贴背景色，调整磁贴大小（有小正方形，中正方形，长方形，大正方形四种可以选择），调整磁贴布局位置。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713000428410.png" alt="image-20230713000428410"></p>
-<h2 id="图片磁贴配置"><a href="#图片磁贴配置" class="headerlink" title="图片磁贴配置"></a>图片磁贴配置</h2><p>这里是最自由发挥的部分。高情商：自由发挥。低情商：都要自己做很麻烦。</p>
-<p>之前 win10 是有一款快捷工具可以输入自定义图片，按自己想要的格式裁剪并自动在全屏菜单中输出的，叫 Tile Genie.</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713000854968.png" alt="image-20230713000854968"></p>
-<p>但是它好像并不能在 start11 中使用。我尝试了一下导出的都是不能显示的图片块，所以只能放弃这种方法。如果读者的 Tile Genie 是没有问题可以正常显示图片那再好不过了，后面的内容都可以不用看了。</p>
-<p>如果导出失败……我采用的方法是手动裁剪固定图片。很笨，但是有结果。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001102790.png" alt="image-20230713001102790"></p>
-<p>首先，自行裁剪图片，计算公式为：中正方形 150*150，长方形 306*150，大正方形 306*306，边界线是6（像素）.</p>
-<p>我采用的图像裁剪方法是：<a target="_blank" rel="noopener" href="https://www.iloveimg.com/zh-cn/crop-image">免费在线裁剪图像文件 (iloveimg.com)</a></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1689178422454.png" alt="1689178422454"></p>
-<p>然后把导出图片找一个合适的地方存储起来，注意贴上磁贴之后就不能再移动修改这些图片了。</p>
-<p>在全屏菜单中右键-固定文件，选定文件路径添加。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001454756.png" alt="image-20230713001454756"></p>
-<p>刚固定上是这种形式：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1689178534062.png" alt="1689178534062"></p>
-<p>然后右键-调整大小，调整为想要的大小。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001613170.png" alt="image-20230713001613170"></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001632462.png" alt="image-20230713001632462"></p>
-<p>最后一步，右键-图标-选择自定义磁贴图像，再次选择此文件，然后他就被当做图标全屏显示了。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001653804.png" alt="image-20230713001653804"></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-<div class="gitalk" id="gitalk-container"></div>
-
-<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
-
-
-<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
-
-
-<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
-
-<script type="text/javascript">
-  var gitalk = new Gitalk({
-    clientID: 'Ov23li1TkQEYXFu51qLu',
-    clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
-    repo: 'Jingqing3948.github.io',
-    owner: 'Jingqing3948',
-    admin: 'Jingqing3948',
-    // id: location.pathname,      // Ensure uniqueness and length less than 50
-    id: md5(location.pathname),
-    distractionFreeMode: true,  // Facebook-like distraction free mode
-    pagerDirection: 'last'
-  })
-
-  gitalk.render('gitalk-container')
-</script>
-
-  
-  
-</article>
-    
-    <article
   id="post-问题解决：ubuntu 安装 emscripten 时 install latest 安装报错"
   class="article article-type-post"
   itemscope
@@ -2514,6 +2542,128 @@ void RCC_AHB1PeriphClockCmd(uint32_t RCC_AHB1Periph, FunctionalState NewState)
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'Ov23li1TkQEYXFu51qLu',
+    clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
+    repo: 'Jingqing3948.github.io',
+    owner: 'Jingqing3948',
+    admin: 'Jingqing3948',
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: true,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+  
+</article>
+    
+    <article
+  id="post-效率提升：Win11磁贴配置"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/10/09/%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%87%EF%BC%9AWin11%E7%A3%81%E8%B4%B4%E9%85%8D%E7%BD%AE/"
+    >效率提升：Win11磁贴配置</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/10/09/%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%87%EF%BC%9AWin11%E7%A3%81%E8%B4%B4%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time datetime="2023-10-08T23:00:00.000Z" itemprop="datePublished">2023-10-09</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%B8%8F%E6%98%9F%E9%80%90%E8%B7%AF%EF%BC%88%E5%88%9B%E6%96%B0%E6%8E%A2%E7%B4%A2%EF%BC%89/">踏星逐路（创新探索）</a> / <a class="article-category-link" href="/categories/%E8%B8%8F%E6%98%9F%E9%80%90%E8%B7%AF%EF%BC%88%E5%88%9B%E6%96%B0%E6%8E%A2%E7%B4%A2%EF%BC%89/Efficiency/">Efficiency</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近电脑还是升级到 win11 了。我之前采用的美化方案是桌面上的图标全部移到 win10 开始菜单里的全屏菜单上，用磁贴贴一排。每次要访问文件的时候都去开始菜单里找，而不是放在桌面上，这样桌面也可以空出来欣赏壁纸。参考配置链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/45120814/answer/1007955630">如何让Windows 10系统桌面变得更好看？ - 知乎 (zhihu.com)</a></p>
+<p>但是升级到 win11 对我而言影响最大的就是压根没有全屏桌面和磁贴功能了。因此我搜了很多解决方案，加上一些自己的改进，最终把桌面磁贴恢复成如上图所示。一个自己喜欢看的桌面还是会对生产力的提高有很大帮助的。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712234132339.png" alt="image-20230712234132339"></p>
+<h2 id="软件安装：start11"><a href="#软件安装：start11" class="headerlink" title="软件安装：start11"></a>软件安装：start11</h2><p>首先，恢复开始菜单这一操作最离不开的就是 start11 这款软件。他让 win11 的开始菜单又有了全屏菜单选项，也支持了自定义磁贴在上面。虽然调整磁贴位置的时候偶尔会花几秒重启，但大多数时候还是没问题的。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712235022366.png" alt="image-20230712235022366"></p>
+<p>正版软件是免费试用的，欢迎付费支持原作者。或采用博主的同款方案：</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1HY0WuV7ynlXdBI7qfuWZzg?pwd=1fru">https://pan.baidu.com/s/1HY0WuV7ynlXdBI7qfuWZzg?pwd=1fru</a><br>提取码：1fru<br>–来自百度网盘超级会员V2的分享</p>
+<p>首先如果是按博主的磁贴方法配置，就要选“win10配置”。或者你觉得其他风格也还不错都可以选。并且 ENABLE start11.</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712235704628.png" alt="image-20230712235704628"></p>
+<p>点击“配置菜单”，进行如下配置：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712235738298.png" alt="image-20230712235738298"></p>
+<p>在“自定义菜单视觉外观”里，可以设置全屏菜单的颜色、透明度等，比如我使用的是有一定透明度的毛玻璃的样式。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713000601091.png" alt="image-20230713000601091"></p>
+<p>然后在“控制”栏里设定如何打开 start11，确保可以打开：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712235840844.png"></p>
+<p>接着，点击 win 图标就可以打开全屏菜单了。</p>
+<h2 id="磁贴配置"><a href="#磁贴配置" class="headerlink" title="磁贴配置"></a>磁贴配置</h2><p>对于大部分软件，只要右键-固定到开始屏幕&#x2F;固定到 start11，就可以在全屏菜单里看到刚刚贴上的磁贴了。</p>
+<p>如果贴失败，可以尝试以下的方法：</p>
+<ul>
+<li>右键快捷方式，点击“打开文件所在位置”，再尝试把该文件的 .exe 文件固定到开始屏幕。</li>
+<li>反复尝试，因为可能有一定的延迟。可以取消固定再次固定，等待一会看开始菜单是否出现。</li>
+</ul>
+<p>然后可以手动分组磁贴（把他们移到临近的位置），调整磁贴背景色，调整磁贴大小（有小正方形，中正方形，长方形，大正方形四种可以选择），调整磁贴布局位置。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713000428410.png" alt="image-20230713000428410"></p>
+<h2 id="图片磁贴配置"><a href="#图片磁贴配置" class="headerlink" title="图片磁贴配置"></a>图片磁贴配置</h2><p>这里是最自由发挥的部分。高情商：自由发挥。低情商：都要自己做很麻烦。</p>
+<p>之前 win10 是有一款快捷工具可以输入自定义图片，按自己想要的格式裁剪并自动在全屏菜单中输出的，叫 Tile Genie.</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713000854968.png" alt="image-20230713000854968"></p>
+<p>但是它好像并不能在 start11 中使用。我尝试了一下导出的都是不能显示的图片块，所以只能放弃这种方法。如果读者的 Tile Genie 是没有问题可以正常显示图片那再好不过了，后面的内容都可以不用看了。</p>
+<p>如果导出失败……我采用的方法是手动裁剪固定图片。很笨，但是有结果。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001102790.png" alt="image-20230713001102790"></p>
+<p>首先，自行裁剪图片，计算公式为：中正方形 150*150，长方形 306*150，大正方形 306*306，边界线是6（像素）.</p>
+<p>我采用的图像裁剪方法是：<a target="_blank" rel="noopener" href="https://www.iloveimg.com/zh-cn/crop-image">免费在线裁剪图像文件 (iloveimg.com)</a></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1689178422454.png" alt="1689178422454"></p>
+<p>然后把导出图片找一个合适的地方存储起来，注意贴上磁贴之后就不能再移动修改这些图片了。</p>
+<p>在全屏菜单中右键-固定文件，选定文件路径添加。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001454756.png" alt="image-20230713001454756"></p>
+<p>刚固定上是这种形式：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1689178534062.png" alt="1689178534062"></p>
+<p>然后右键-调整大小，调整为想要的大小。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001613170.png" alt="image-20230713001613170"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001632462.png" alt="image-20230713001632462"></p>
+<p>最后一步，右键-图标-选择自定义磁贴图像，再次选择此文件，然后他就被当做图标全屏显示了。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001653804.png" alt="image-20230713001653804"></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li></ul>
 
     </footer>
   </div>
@@ -3394,183 +3544,6 @@ void RCC_AHB1PeriphClockCmd(uint32_t RCC_AHB1Periph, FunctionalState NewState)
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Miprocessor/" rel="tag">Miprocessor</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-<div class="gitalk" id="gitalk-container"></div>
-
-<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
-
-
-<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
-
-
-<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
-
-<script type="text/javascript">
-  var gitalk = new Gitalk({
-    clientID: 'Ov23li1TkQEYXFu51qLu',
-    clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
-    repo: 'Jingqing3948.github.io',
-    owner: 'Jingqing3948',
-    admin: 'Jingqing3948',
-    // id: location.pathname,      // Ensure uniqueness and length less than 50
-    id: md5(location.pathname),
-    distractionFreeMode: true,  // Facebook-like distraction free mode
-    pagerDirection: 'last'
-  })
-
-  gitalk.render('gitalk-container')
-</script>
-
-  
-  
-</article>
-    
-    <article
-  id="post-技术学习：瑞萨开发板"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/06/24/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%EF%BC%9A%E7%91%9E%E8%90%A8%E5%BC%80%E5%8F%91%E6%9D%BF/"
-    >技术学习：瑞萨开发板</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/06/24/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%EF%BC%9A%E7%91%9E%E8%90%A8%E5%BC%80%E5%8F%91%E6%9D%BF/" class="article-date">
-  <time datetime="2023-06-23T23:00:00.000Z" itemprop="datePublished">2023-06-24</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E9%81%93%E6%B1%82%E7%B4%A2%EF%BC%88%E8%AF%BE%E5%A4%96IT%E6%8A%80%E8%83%BD%E5%AD%A6%E4%B9%A0%EF%BC%89/">算道求索（课外IT技能学习）</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E9%81%93%E6%B1%82%E7%B4%A2%EF%BC%88%E8%AF%BE%E5%A4%96IT%E6%8A%80%E8%83%BD%E5%AD%A6%E4%B9%A0%EF%BC%89/Lecture/">Lecture</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这回参加的是csdn李肯老师的攻城狮计划，简单说就是我白嫖板子，输出学习笔记。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/a3cc9258486e875c183b4fbbb1ce5fbe.jpeg" alt="552ca9fa46d8c1c7f192cdad4d207d4"></p>
-<p>板子是瑞萨的CPK_RA2E1，还有触摸元件，看起来很有意思hh。</p>
-<h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><p>一开始决定采取vscode搭建的方式。后期进行到最后一步——cmake build的时候一直显示语法错误，肯哥表示是环境配置不全，但是我反反复复根据官网和其他博主的文章检查了不下10遍都不知道问题何在。最终决定还是老老实实用keil。</p>
-<ol>
-<li><p>keil导入瑞萨包。官网下载地址：<a target="_blank" rel="noopener" href="https://www.keil.arm.com/vendors/renesas/packs/">Arm Keil | Renesas</a></p>
-</li>
-<li><p>下载rasc软件。对于这个东西我的理解是类似stm32cubemx，可以快速初始化项目的软件。该软件可以在瑞萨官网下载：<a target="_blank" rel="noopener" href="https://www2.renesas.cn/kr/en/software-tool/ra-smart-configurator">https://www2.renesas.cn/kr/en/software-tool/ra-smart-configurator</a></p>
-</li>
-<li><p>接下来我们尝试新建编译一个项目。这是我第一次没有跟着一块有完整开发流程的板子的视频课，而几乎完全是自己检索资料探索尝试的项目构建，因此碰到了很多弯路。首先rasc软件我们新建一个项目。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1d1872b93bd272401e7d2a90a943d622.png" alt="项目起名"></p>
-<p>板子型号这里是根据我的学习板设置的。IDE一定记得改为keil。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/091c255e2177162e613b3635d9e8128b.png" alt="image-20230601022545320"></p>
-</li>
-</ol>
-<p>后两页选择 no rtos 和 minimal 即可，因为我们现在的目的只是尝试编译通过一个项目。</p>
-<ol start="4">
-<li><p>添加完成后，点击generate code 生成相关的项目代码。然后用keil打开，尝试编译。</p>
-</li>
-<li><p>我第一次遇到的问题是报了19个错。我还以为是pack导入的不对，但是后来搜了一下发现不是那么回事，是编译方式选错了。参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_20017379/article/details/119523286">keil出现大量未知语法错误（系统移植）_portforce_inline_IT小生lkc的博客-CSDN博客</a></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/73a1e19aee6d2d2b7837c180d17939dc.png" alt="image-20230601022913830"></p>
-</li>
-<li><p>于是我把编译器改为version5，编译到一半，再次报错：error: A3903U: Argument ‘Cortex-M7.fp.sp’ not permitted for option  cpu’.。这个问题原因是因为编译器版本太低，于是我又去下载了新的keil5.</p>
-</li>
-<li><p>再次编译的时候提示我，不能用version5，新版本已经不支持了。于是我又改为version6进行编译。这次非常顺利！</p>
-</li>
-</ol>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/d34a7cfbf5f7e0bdbb55a0063df5887f.png" alt="image-20230601023151749"></p>
-<h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p>终于考完试了，然而攻城狮的截止期限也快到了QAQ，得尽快水（划掉）写几篇文章了！</p>
-<p>先争取可以成功下载一个空的程序。</p>
-<p>先对上一篇文章下载 DFP 也就是 keil MDK Software Packs 做一个补充。我们要下载的是 RA_DFP，下载地址为：<a target="_blank" rel="noopener" href="https://www.keil.arm.com/packs/ra_dfp-renesas/versions/">Arm Keil | Renesas RA_DFP</a></p>
-<p>至于版本我看到有前辈使用 3.5.0 的版本可以成功运行，而我下载的是4+的版本也可以。只不过在选择 device 的时候会有一点不同：<br><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622160103209.png" alt="image-20230622160103209"></p>
-<p>可以看到 4.1.0 的版本无法细化选择到 R7FA2E1A92DFM，只能选择大类 A9. 不过经过下面的烧录尝试，是没有问题的。</p>
-<p>流程：基于上次的空项目，用keil打开，编译，下载成功。</p>
-<p>一直到编译的步骤前面都做完了。下载主要需要以下几个步骤：</p>
-<ol>
-<li>引入项目的 src 文件夹。在 options for target - c&#x2F;c++ 里引入即可很简单。<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622154546545.png" alt="image-20230622154546545"></li>
-<li>debug 模式设置为 jlink 模式。设置完之后插上板子设置配置，这里因为我的jlink版本太低出现了一个报错：unkown to this version of the jlink software。解决办法就是在官网上下载了一个新版本的jlink（官网链接：<a target="_blank" rel="noopener" href="https://www.segger.com/downloads/jlink%EF%BC%8C%E6%88%91%E9%80%89%E6%8B%A9%E7%9A%84%E6%98%AF">https://www.segger.com/downloads/jlink，我选择的是</a> windows 版本），下载好后直接会提示“检测到你电脑里的 keil 环境，请问是否更新其 jlink 调试器”，更新后重新启动就没有问题了。</li>
-<li>上一步参考文章: <a target="_blank" rel="noopener" href="https://blog.csdn.net/wsq_666/article/details/124367141">keil识别不到芯片，提示unkown to this version of the jlink software_keil识别不到单片机_王小琪0712的博客-CSDN博客</a> 里面也有如果没有提示自动更新 jlink 调试器的选项如何手动进行更新的步骤，建议多多支持原作者。</li>
-<li>只是选择了 jlink 调试器也并不算设置完成。如果这个时候点击下载，会提示“找不到 flash”，也就是还没有配置完成，需要设置闪存。首先确保插上了板子，然后打开 jlink 的setting：<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622155204869.png" alt="image-20230622155204869"></li>
-<li>如果显示下图说明板子被正常识别。如果没有显示这些数据，可能是 jlink 的版本还是过低，或者线坏了，或者还未下载对应 rcsa 包。<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622155322848.png" alt="image-20230622155322848"></li>
-<li>接下来我们配置 flash download. 打开这个页面后点击 add，添加图中所示的这款型号芯片，然后 start 和 size 应该就会自动配置成和图中一样的情形，这样就算成功了。<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622155451715.png" alt="image-20230622155451715"></li>
-<li>点击 load，如果显示如下信息说明成功下载程序。<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622155546525.png" alt="image-20230622155546525"></li>
-</ol>
-<p>刚插上板子的时候板子上是有白色的 power 指示灯和一个红蓝交替闪烁灯。下载空程序之后，应该只有电源指示灯还在亮。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/de933bcec619535b3e8b7fe60f61238.jpg" alt="de933bcec619535b3e8b7fe60f61238"></p>
-<h1 id="点亮LED"><a href="#点亮LED" class="headerlink" title="点亮LED"></a>点亮LED</h1><p>本文主要参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/oxygen23333/article/details/130306105">【致敬未来的攻城狮计划】— 连续打卡第十一天：FSP固件库开发点亮第一个灯。_嵌入式up的博客-CSDN博客</a></p>
-<p>在32阶段我们已经接触过类似做法了。初始化引脚模式（可以手动库函数，或者在工具包图形化界面里配置），设置引脚输出值。</p>
-<h2 id="设置-FSP-Smart-Configurator"><a href="#设置-FSP-Smart-Configurator" class="headerlink" title="设置 FSP Smart Configurator"></a>设置 FSP Smart Configurator</h2><p>像上次一样创建一个项目。</p>
-<p>首先我们翻一下RA2E1的数据手册看看led在哪。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624005444720.png" alt="image-20230624005444720"></p>
-<p>如图所示，一红一蓝，502 501，输出高电平亮。</p>
-<p>因此 configurator 里的pin如图所示设置501 502为output initial high</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624005611958.png" alt="image-20230624005611958"></p>
-<p>配置完成后点击右上角 generate project content，输出更新配置到该项目中。</p>
-<h2 id="Keil代码编写"><a href="#Keil代码编写" class="headerlink" title="Keil代码编写"></a>Keil代码编写</h2><p>接下来就是编写keil里，驱动两个led灯输出高电平的部分了。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624011259206.png" alt="image-20230624011259206"></p>
-<p>hal_entry.c 是相当于 main.c 的入口函数。其他都是 configurator 提供的配置函数。</p>
-<p>引脚设置已经设置好了。我们打开 pin_data.c 可以看到：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624011748710.png" alt="image-20230624011748710"></p>
-<p>这就代表确实初始化配置加进代码里了。</p>
-<p>然后在 hal_entry.c 里是通过这个 open 函数在 warm_start 里初始化了。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624012345948.png" alt="image-20230624012345948"></p>
-<p>接下来我们需要一个写入位函数。在 r_ioport.c 里。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624012543274.png" alt="image-20230624012543274"></p>
-<p>参数1：固定参数，传入 &amp;p_ctrl。</p>
-<p>参数2：引脚，老方法 goto the definition</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624013133790.png" alt="image-20230624013133790"></p>
-<p>参数3：电平。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624013206720.png" alt="image-20230624013206720"></p>
-<p>然后就简单了，只需要在主函数里调用write函数写亮led。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">hal_entry</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* <span class="doctag">TODO:</span> add your own code here */</span></span><br><span class="line">		<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">				 R_IOPORT_PinWrite(&amp;g_ioport_ctrl, BSP_IO_PORT_05_PIN_01, BSP_IO_LEVEL_HIGH);</span><br><span class="line">				 R_IOPORT_PinWrite(&amp;g_ioport_ctrl, BSP_IO_PORT_05_PIN_02, BSP_IO_LEVEL_HIGH);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> BSP_TZ_SECURE_BUILD</span></span><br><span class="line">    <span class="comment">/* Enter non-secure code */</span></span><br><span class="line">    R_BSP_NonSecureEnter();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624013456059.png" alt="image-20230624013456059"></p>
-<h1 id="按键模块"><a href="#按键模块" class="headerlink" title="按键模块"></a>按键模块</h1><h2 id="后台轮询"><a href="#后台轮询" class="headerlink" title="后台轮询"></a>后台轮询</h2><p>按键也是一个比较简单的模块，主要是为了学习IO输入模式。</p>
-<p>查看RA2E1电路图可见：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624133704709.png" alt="image-20230624133704709"></p>
-<p>按键相关引脚是004引脚，默认上拉高电平，按下接地为低电平。</p>
-<p>首先第一步还是设置对应引脚。类似上一期设置LED的方式，只不过Mode改为Input mode。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624133750237.png" alt="image-20230624133750237"></p>
-<p>设置好之后仍然是记得generate。</p>
-<p>然后就是程序编写。首先还是明确一下开发流程。首先我们尝试后台轮询的按键检测。在while里不断检测按键电平，如果为高点亮蓝灯，如果为低点亮红灯。</p>
-<p>点亮好写，上一次已经尝试过write函数。那么我们接下来再去看类似的read函数。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624135423601.png" alt="image-20230624135423601"></p>
-<p>第一个参数还是传入固定的&amp;g_ioport_ctrl。第二个是引脚。第三个是存放我们要存储的读取按键的值。比如传入变量state的地址 &amp;state，函数执行结束后state的值就是读取的按键电平。</p>
-<p>主函数编写：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">hal_entry</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">bsp_io_level_t</span> state;</span><br><span class="line">    <span class="comment">/* <span class="doctag">TODO:</span> add your own code here */</span></span><br><span class="line">		<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">			R_IOPORT_PinRead(&amp;g_ioport_ctrl, BSP_IO_PORT_00_PIN_04,&amp;state);</span><br><span class="line">			<span class="keyword">if</span>(state==BSP_IO_LEVEL_HIGH)&#123;</span><br><span class="line">				R_IOPORT_PinWrite(&amp;g_ioport_ctrl, BSP_IO_PORT_05_PIN_01, BSP_IO_LEVEL_HIGH);</span><br><span class="line">				R_IOPORT_PinWrite(&amp;g_ioport_ctrl, BSP_IO_PORT_05_PIN_02, BSP_IO_LEVEL_LOW);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				R_IOPORT_PinWrite(&amp;g_ioport_ctrl, BSP_IO_PORT_05_PIN_01, BSP_IO_LEVEL_LOW);</span><br><span class="line">				R_IOPORT_PinWrite(&amp;g_ioport_ctrl, BSP_IO_PORT_05_PIN_02, BSP_IO_LEVEL_HIGH);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> BSP_TZ_SECURE_BUILD</span></span><br><span class="line">    <span class="comment">/* Enter non-secure code */</span></span><br><span class="line">    R_BSP_NonSecureEnter();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>实现效果：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/8d99e5ae0be2c97e2e2bb44a1ed92f6.jpg" alt="8d99e5ae0be2c97e2e2bb44a1ed92f6"></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/59b0f842762bb1349190932bdcb4e74.jpg" alt="59b0f842762bb1349190932bdcb4e74"></p>
-<h1 id="活动总结"><a href="#活动总结" class="headerlink" title="活动总结"></a>活动总结</h1><p>一转眼攻城狮计划就已经到了最后一天了。<br>5月我还处在一个迷茫期，那时候刚刚入坑嵌入式，只学了几款电子积木，对整个体系也不是很清楚，也不知道应该学些什么。因为刚刚转到硬件领域，也缺少相关经历和能力证明，科研实习面试都失败了。</p>
-<p>一开始得到的少许鼓励来源于C站推荐的一系列交流会活动。我去参加了RTThread的学习营，第一次尝试在单片机开发中加入RTOS系统，也算是跳脱出自己当时缓慢的按部就班学习路线，如井底之蛙般弹出脑袋窥探了一眼外面的风景。</p>
-<p>后来偶然收到李肯老师的攻城狮活动邀请。虽然因为选在了期末周，自己又比较懒，基本没更几篇文章hh。但是借助李肯老师的交流活动认识了很多嵌入式领域的前辈，同伴，从每天的交流话题中也能学到很多。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624180328147.png" alt="image-20230624180328147"></p>
-<p>现如今，虽然学到的知识相比之前可能没有太多，但是整个系统的框架，从硬件到ISA，操作系统解释器等系统软件，汇编语言和机器语言的转化等……确实见识到了很多。</p>
-<p>再聊到本次活动。虽然自己没有做过多的尝试，但是因为之前我也只尝试过51和32的库函数开发，rcsa的configurator配置本身对我来说就是一种新奇的开发模式。与32的hal库对比更能让我体会到这些driver的便捷之处，也开始适应这种开发方式。</p>
-<p>非常感谢给予这次机会的李肯老大！也期望自己能保持这股热情继续学下去~</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C</a></li></ul>
 
     </footer>
   </div>
