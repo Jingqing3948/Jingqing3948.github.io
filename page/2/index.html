@@ -59,9 +59,10 @@
       
 <section class="cover">
     
+      
   <div class="cover-frame">
     <div class="bg-box">
-      <img src="/images/cover1.jpg" alt="image frame" />
+      <img id="random-cover" src="/images/cover1.jpg" alt="image frame" />
     </div>
     <div class="cover-inner text-center text-white">
       <h1><a href="/">灰海宽松的博客</a></h1>
@@ -101,6 +102,18 @@
       console.log(err)
     }
   </script>
+
+  <script>
+  (function () {
+    const coverCount = 5; // 修改为你有几张封面图
+    const index = Math.floor(Math.random() * coverCount) + 1;
+    const imgPath = `/images/cover${index}.jpg`;
+    const imgEl = document.getElementById('random-cover');
+    if (imgEl) {
+      imgEl.src = imgPath;
+    }
+  })();
+</script>
   
 <div id="main">
   <section class="outer">
