@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="黑马程序员Redis入门课程学习笔记" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+
+      <meta name="google-site-verification" content="YwYbA1LbL6DK2afClSAZcmUaT2QiD4rluljLHHU4120" />
+      
+      <title>技术学习：黑马程序员 Redis |  灰海宽松的博客</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-技术学习：黑马程序员 Redis"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  技术学习：黑马程序员 Redis
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2025/05/21/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%EF%BC%9A%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98%20Redis/" class="article-date">
+  <time datetime="2025-05-20T23:00:00.000Z" itemprop="datePublished">2025-05-21</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E9%81%93%E6%B1%82%E7%B4%A2%EF%BC%88%E8%AF%BE%E5%A4%96IT%E6%8A%80%E8%83%BD%E5%AD%A6%E4%B9%A0%EF%BC%89/">算道求索（课外IT技能学习）</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E9%81%93%E6%B1%82%E7%B4%A2%EF%BC%88%E8%AF%BE%E5%A4%96IT%E6%8A%80%E8%83%BD%E5%AD%A6%E4%B9%A0%EF%BC%89/Lecture/">Lecture</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">4.9k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">20 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>学习自：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1cr4y1671t/?p=2&share_source=copy_web&vd_source=dcdc734e318da0cd82bcccb180b12b40">【黑马程序员Redis入门到实战教程，深度透析redis底层原理+redis分布式锁+企业解决方案+黑马点评实战项目】 </a></p>
+<h2 id="SQL-vs-NoSQL"><a href="#SQL-vs-NoSQL" class="headerlink" title="SQL vs. NoSQL"></a>SQL vs. NoSQL</h2><ul>
+<li>S：结构化，比如在 MySQL 我们需要定义一个表，第一个属性是 id 第二个是 name 第三个是 age…… 定义好表之后所有新插入的数据都必须遵循这个结构，各个表还可能有外键等关联，所以总的来说不能随意修改表的属性。而 NoSQL 结构要求没那么严格，比如下面这种 Redis 定义方式也可以，就是没啥章法：</li>
+</ul>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505211052874.png" alt="image-20250521105232832" style="zoom:67%;" />
+
+<p>​	除了键值类型，还有文档类型，列类型，图类型等 NoSQL。</p>
+<ul>
+<li><p>R：关联的，SQL 数据库的各个属性之间有关联而 NoSQL 未必。</p>
+</li>
+<li><p>SQL 语句查询：关系型数据库都支持，而非关系型不支持。</p>
+</li>
+<li><p>ACID 事务：NoSQL 不支持。</p>
+</li>
+<li><p>存储位置：SQL 在硬盘，NoSQL 在内存。</p>
+</li>
+<li><p>SQL 对安全一致性要求较高，NoSQL 对性能要求较高。</p>
+</li>
+</ul>
+<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><p>Redis Remote Dictionary Server 是一种基于内存的<strong>键值对</strong>数据库，被创造的原因就是 MySQL 性能太差。里面没有表什么的结构，就是存储一对一对的键值，所以是 NoSQL 数据库。值可以是复杂的数据形式，比如键是 1001，值是 {name: “xxx”, age:”19”}…… 这样的 json 格式。</p>
+<p>Redis 是<strong>单线程</strong>的，但是效率仍然比 MySQL 高很多，因为内存存取速度远大于硬盘，C 语言编写，IO 多路复用等特点。</p>
+<p>支持<strong>数据持久化</strong>，定期将数据从内存持久化到磁盘存储。</p>
+<p>支持主从集群，分片集群。</p>
+<p>支持多语言客户端。</p>
+<h1 id="Redis-基础"><a href="#Redis-基础" class="headerlink" title="Redis 基础"></a>Redis 基础</h1><p>安装部分就跳过不做过多赘述了。</p>
+<p>Redis 默认启动方式是前台启动，会阻塞整个会话窗口。可以通过修改配置文件的方式改为后台启动。或者在 system 文件夹内新建一个系统服务 .service 文件，实现开机自启动。</p>
+<p>配置完成后，终端客户端连接：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ systemctl <span class="built_in">start</span> redis # 启动 redis 后台服务</span><br><span class="line">$ redis-cli -h <span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span> [-p port] [-a password] # 客户端终端方式连接 redis-cli</span><br><span class="line">&gt; AUTH password # 输入用户名和密码进行登录，也可以在上面 -a 那一步登录 不过这样不安全</span><br><span class="line">&gt; <span class="built_in">ping</span> # 如果成功登录了就会收到：PONG 否则会受到权限不够的提示</span><br><span class="line"></span><br><span class="line">&gt; SELECT <span class="number">1</span> # 选择一个库，<span class="number">0</span>-<span class="number">15</span></span><br><span class="line">&gt; get key # 获取某个键对应的值</span><br><span class="line">&gt; <span class="built_in">set</span> key value # 添加一个键值对</span><br></pre></td></tr></table></figure>
+
+<p>图形化客户端连接：其实不是官方开发的是 Github 上有人发布的开源图形化客户端。</p>
+<h2 id="Redis-通用命令"><a href="#Redis-通用命令" class="headerlink" title="Redis 通用命令"></a>Redis 通用命令</h2><h3 id="Keys"><a href="#Keys" class="headerlink" title="Keys"></a>Keys</h3><p><code>Keys pattern</code> 查询符合某种模式的键，比如 <code>keys a*</code> 是查询 a 打头的所有键值。</p>
+<p>这个查询并不高效，而且会阻塞其他请求，所以在生产环境中尽量不要使用，特别是不要在主节点上使用。</p>
+<h3 id="Del"><a href="#Del" class="headerlink" title="Del"></a>Del</h3><p><code>Del key1 key2 ...</code> 删除键值对。返回值是成功删除的键数量。</p>
+<h3 id="MSet"><a href="#MSet" class="headerlink" title="MSet"></a>MSet</h3><p><code>msel k1 v1 k2 v2 ...</code> 批量添加键值对。</p>
+<h3 id="Exists"><a href="#Exists" class="headerlink" title="Exists"></a>Exists</h3><p><code>exists key</code> 查询指定键是否存在。</p>
+<h3 id="Expire"><a href="#Expire" class="headerlink" title="Expire"></a>Expire</h3><p>给键值对设定一个有效期，到期自动删除。</p>
+<p><code>expire key seconds</code></p>
+<h3 id="TTL"><a href="#TTL" class="headerlink" title="TTL"></a>TTL</h3><p><code>ttl key</code> 查询这个键还有多久过期。-1表示永久有效，-2表示已过期。</p>
+<h2 id="Redis-数据结构"><a href="#Redis-数据结构" class="headerlink" title="Redis 数据结构"></a>Redis 数据结构</h2><p>key 一般是 string 类型，而 value 类型多种多样。</p>
+<ul>
+<li>String：字符串。</li>
+<li>hash</li>
+<li>list</li>
+<li>set</li>
+<li>sortedset</li>
+</ul>
+<p>以上为基本数据类型。</p>
+<ul>
+<li>geo</li>
+<li>bitmap</li>
+<li>hyperlog</li>
+</ul>
+<p>以上为特殊数据类型。</p>
+<p>在 redis 里面输入 <code>help @想要查询的 command 名称</code> 就可以进行查询。</p>
+<h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><p>最简单的存储方式，字符串类型。具体可以分为三类：String，int，float。</p>
+<p>是的 int 和 float 在 redis 里被视作属于 string。</p>
+<p>这些底层存储方式都是字节数组，只不过数字会被直接转化为对应的二进制，这样能存储的范围更大。</p>
+<table>
+<thead>
+<tr>
+<th>字符串常用命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Set key value</code></td>
+<td>添加键值对，如果存在则覆盖</td>
+</tr>
+<tr>
+<td><code>Get key</code></td>
+<td>获取这个键的值</td>
+</tr>
+<tr>
+<td><code>MSet k1 v1 k2 v2</code></td>
+<td>批量添加</td>
+</tr>
+<tr>
+<td><code>MGet k1 k2 k3</code></td>
+<td>批量获取</td>
+</tr>
+<tr>
+<td><code>INCR key</code></td>
+<td>让一个整形 Key 对应的值自增1</td>
+</tr>
+<tr>
+<td><code>INCRBY key step</code></td>
+<td>指定步长的自增，如步长是2。可以指定为负数来取代 DECR 的功能。</td>
+</tr>
+<tr>
+<td><code>INCRBYFLOAT key step</code></td>
+<td>浮点数据的指定长度的自增</td>
+</tr>
+<tr>
+<td><code>SETNX k v</code></td>
+<td>添加一个 String 类型的键值对，如果存在则不执行返回0. 其实 <code>set key value nx</code> 也能实现同样的效果</td>
+</tr>
+<tr>
+<td><code>SETEX k v seconds</code></td>
+<td>添加一个 String 类型的键值对并指定有效期。<code>set key value ex</code> 也能实现同样的效果</td>
+</tr>
+</tbody></table>
+<h4 id="Key-的层级格式"><a href="#Key-的层级格式" class="headerlink" title="Key 的层级格式"></a>Key 的层级格式</h4><p>Redis 没有 MySQL 的 Table，如何区分不同的 key 意义呢，比如一个商品 id 是1，一个顾客 id 也是1.</p>
+<p>Redis 允许键值进行拼接，如：<code>项目名:业务名:类型:id</code> 这样。</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">6379</span>&gt; <span class="built_in">set</span> project:user:<span class="number">1</span> &#x27;&#123;&quot;id&quot;:<span class="number">1</span>, &quot;name&quot;:&quot;Jack&quot;, &quot;age&quot;: <span class="number">21</span>&#125;&#x27;</span><br><span class="line">OK</span><br><span class="line"><span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">6379</span>&gt; <span class="built_in">set</span> project:user:<span class="number">2</span> &#x27;&#123;&quot;id&quot;:<span class="number">2</span>, &quot;name&quot;:&quot;Rose&quot;, &quot;age&quot;: <span class="number">18</span>&#125;&#x27;</span><br><span class="line">OK</span><br><span class="line"><span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">6379</span>&gt; <span class="built_in">set</span> project:product:<span class="number">1</span> &#x27;&#123;&quot;id&quot;:<span class="number">1</span>, &quot;name&quot;:&quot;小米<span class="number">11</span>&quot;, &quot;price&quot;: <span class="number">4999</span>&#125;&#x27;</span><br><span class="line"><span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">6379</span>&gt; <span class="built_in">set</span> project:product:<span class="number">2</span> &#x27;&#123;&quot;id&quot;:<span class="number">2</span>, &quot;name&quot;:&quot;荣耀<span class="number">6</span>&quot;, &quot;price&quot;: <span class="number">2999</span>&#125;&#x27;</span><br><span class="line">OK</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>查看图形化客户端可以发现：Key 已经形成层级结构。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212230806.png" alt="image-20250521223051719"></p>
+<h3 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h3><p>无序字典，类似 java HashMap.</p>
+<p>之前我们学过，String 处理对象的方式是变成 json 字符串，但是这样缺点是修改比较难操作。而 Hash 数据结构是可以真正将所有字段都分开存储方便操作。</p>
+<table>
+<thead>
+<tr>
+<th>Hash 常用命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>HSET key field value</code></td>
+<td>添加或者修改 hash 类型 key 的 field 的值</td>
+</tr>
+<tr>
+<td><code>HGET key field</code></td>
+<td>获取一个 hash 类型 key 的 field 的值</td>
+</tr>
+<tr>
+<td><code>HMSET key f1 v1 ...</code></td>
+<td>批量添加多个 hash 类型 key 的 field 的值（Redis 4.0+ 推荐用 HSET）</td>
+</tr>
+<tr>
+<td><code>HMGET key f1 f2 ...</code></td>
+<td>批量获取多个 hash 类型 key 的 field 的值</td>
+</tr>
+<tr>
+<td><code>HGETALL key</code></td>
+<td>获取一个 hash 类型的 key 中的所有的 field 和 value</td>
+</tr>
+<tr>
+<td><code>HKEYS key</code></td>
+<td>获取一个 hash 类型的 key 中的所有 field</td>
+</tr>
+<tr>
+<td><code>HVALS key</code></td>
+<td>获取一个 hash 类型的 key 中的所有 value</td>
+</tr>
+<tr>
+<td><code>HINCRBY key field step</code></td>
+<td>让一个 hash 类型 key 的字段值自增，并指定步长</td>
+</tr>
+<tr>
+<td><code>HSETNX key field value</code></td>
+<td>添加一个 hash 类型的 key 的 field 值，前提是这个 field 不存在，否则不执行</td>
+</tr>
+</tbody></table>
+<p>添加完字段之后，图形化界面中可视化结构：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212241594.png" alt="image-20250521224155538"></p>
+<h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><p>大致可以看做 java 的双向链表结构。有序，插入删除速度快，查询速度一般。</p>
+<p>常常用于存储有顺序的数据，比如排队，朋友圈点赞列表等。</p>
+<table>
+<thead>
+<tr>
+<th>List 常用命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>LPUSH key element ...</code></td>
+<td>向列表左侧插入一个或多个元素</td>
+</tr>
+<tr>
+<td><code>LPOP key</code></td>
+<td>移除并返回列表左侧的第一个元素，没有则返回 nil</td>
+</tr>
+<tr>
+<td><code>RPUSH key element ...</code></td>
+<td>向列表右侧插入一个或多个元素</td>
+</tr>
+<tr>
+<td><code>RPOP key</code></td>
+<td>移除并返回列表右侧的第一个元素</td>
+</tr>
+<tr>
+<td><code>LRANGE key start end</code></td>
+<td>返回一段脚标范围内的所有元素（脚标从左0开始向右逐渐增加）</td>
+</tr>
+<tr>
+<td><code>BLPOP key [key ...] timeout</code></td>
+<td>与 LPOP 类似，但在没有元素时会等待指定时间（阻塞），不是直接返回 nil</td>
+</tr>
+<tr>
+<td><code>BRPOP key [key ...] timeout</code></td>
+<td>与 RPOP 类似，但在没有元素时会等待指定时间（阻塞），不是直接返回 nil</td>
+</tr>
+</tbody></table>
+<p>用 List 模拟栈：只用 LPUSH 和 LPOP 或者 RPUSH RPOP 同向。</p>
+<p>用 List 模拟队列：LPUSH+RPOP 或 RPUSH+LPOP 不同向。</p>
+<p>用 List 模拟阻塞队列：首先需要入口和出口在不同边；其次出队使用 BLPOP 或者 BRPOP。</p>
+<p><em>阻塞队列：当队列为空的时候，取元素的线程会等待一段时间直到队列非空。应用：线程池，待处理的任务先到等待队列，等待有空闲的线程时再开始被执行。这样不用一直创建新的线程，只利用现有的最大线程数，节约资源和响应速度。</em></p>
+<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><p>类似 Java 中的 HashSet，无序，不重复，查找快，支持并集差集交集等运算。</p>
+<table>
+<thead>
+<tr>
+<th>Set 常用命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>SADD key member ...</code></td>
+<td>向 set 中添加一个或多个元素</td>
+</tr>
+<tr>
+<td><code>SREM key member ...</code></td>
+<td>移除 set 中的指定元素</td>
+</tr>
+<tr>
+<td><code>SCARD key</code></td>
+<td>返回 set 中元素的个数</td>
+</tr>
+<tr>
+<td><code>SISMEMBER key member</code></td>
+<td>判断一个元素是否存在于 set 中</td>
+</tr>
+<tr>
+<td><code>SMEMBERS key</code></td>
+<td>获取 set 中的所有元素</td>
+</tr>
+<tr>
+<td><code>SINTER key1 key2 ...</code></td>
+<td>求 key1 与 key2 的交集</td>
+</tr>
+<tr>
+<td><code>SDIFF key1 key2 ...</code></td>
+<td>求 key1 与 key2 的差集</td>
+</tr>
+<tr>
+<td><code>SUNION key1 key2 ...</code></td>
+<td>求 key1 和 key2 的并集</td>
+</tr>
+</tbody></table>
+<h3 id="SortedSet"><a href="#SortedSet" class="headerlink" title="SortedSet"></a>SortedSet</h3><p>有点类似 java 的 treeset 但是底层逻辑差得很远。</p>
+<p><em>java 的 treeset：一种有序集合，底层逻辑是红黑树。红黑树类似 AVL 树，这两种树在排序的同时也会保证树的左右子节点深度，数量差别不大以免树结构的复杂度变得和线性结构差不多，AVL 是规定左右子节点深度差不能超过1，而红黑树要求松一些，规定从根到叶子的最长路径不可能达到最短路径的2倍长，所以旋转操作相对 AVL 少一些，AVL 更适用于查找操作远多于插入删除操作数量的情况。</em></p>
+<p>SortedSet 每个元素都带有一个 score 属性可以排序，通过跳表+hash表排序。</p>
+<p><em>跳表结构大概如下，来加速单链表的查找效率。可以再多建几级索引。图源：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Appleeatingboy/article/details/119948340">跳表的原理与实现 [图解]_跳表实现-CSDN博客</a></em></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212313909.png" alt="img"></p>
+<p>SortedSet 由于其排序效率高，常常被用于实现如排行榜这样的功能。</p>
+<table>
+<thead>
+<tr>
+<th>Sorted Set 常用命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ZADD key score member</code></td>
+<td>添加一个或多个元素到 sorted set，如果已经存在则更新其 score 值</td>
+</tr>
+<tr>
+<td><code>ZREM key member</code></td>
+<td>删除 sorted set 中的一个指定元素</td>
+</tr>
+<tr>
+<td><code>ZSCORE key member</code></td>
+<td>获取 sorted set 中指定元素的 score 值</td>
+</tr>
+<tr>
+<td><code>ZRANK key member</code></td>
+<td>获取 sorted set 中指定元素的排名（从 0 开始）</td>
+</tr>
+<tr>
+<td><code>ZCARD key</code></td>
+<td>获取 sorted set 中的元素个数</td>
+</tr>
+<tr>
+<td><code>ZCOUNT key min max</code></td>
+<td>统计 score 值在指定范围内的元素个数</td>
+</tr>
+<tr>
+<td><code>ZINCRBY key increment member</code></td>
+<td>让 sorted set 中指定元素自增，步长为指定的 increment 值</td>
+</tr>
+<tr>
+<td><code>ZRANGE key start stop</code></td>
+<td>按 score 排序，获取指定排名范围内的元素 <em>如前十名</em></td>
+</tr>
+<tr>
+<td><code>ZRANGEBYSCORE key min max</code></td>
+<td>按 score 排序，获取指定 score 范围内的元素 <em>如60分~70分</em></td>
+</tr>
+<tr>
+<td><code>ZDIFF / ZINTER / ZUNION</code></td>
+<td>分别用于求差集、交集、并集</td>
+</tr>
+</tbody></table>
+<p>以上都是升序，降序就在 Z 后面加 REV。</p>
+<h2 id="Redis-的-Java-客户端"><a href="#Redis-的-Java-客户端" class="headerlink" title="Redis 的 Java 客户端"></a>Redis 的 Java 客户端</h2><p>主要有一下三种：</p>
+<table>
+<thead>
+<tr>
+<th>客户端</th>
+<th>简介</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Jedis</td>
+<td>以 Redis 命令作为方法名称，学习成本低，简单实用。</td>
+<td>实例非线程安全，多线程环境下需基于连接池使用。</td>
+</tr>
+<tr>
+<td>Lettuce</td>
+<td>基于 Netty 实现，支持同步、异步和响应式编程方式，线程安全。</td>
+<td>支持 Redis 的哨兵模式、集群模式和管道模式。</td>
+</tr>
+<tr>
+<td>Redisson</td>
+<td>基于 Redis 实现的分布式、可伸缩 Java 数据结构集合。</td>
+<td>提供如 <code>Map</code>、<code>Queue</code>、<code>Lock</code>、<code>Semaphore</code>、<code>AtomicLong</code> 等强大功能，适合分布式场景。</td>
+</tr>
+</tbody></table>
+<p>spring data redis 整合了前两种。</p>
+<h3 id="Jedis"><a href="#Jedis" class="headerlink" title="Jedis"></a>Jedis</h3><p>使用方式很简单：引入依赖，建立连接，使用，释放资源。</p>
+<h4 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h4><p>在 pom.xml 文件中粘贴：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505221740557.png" alt="image-20250522173946616"></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--jedis--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>redis.clients<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jedis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.7.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--单元测试--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.jupiter<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-jupiter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.7.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>第一部分依赖是必须引入的，第二部分是测试用的。</p>
+<p>执行代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.AfterEach;</span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.BeforeEach;</span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.Test;</span><br><span class="line"><span class="keyword">import</span> redis.clients.jedis.Jedis;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JedisTest</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Jedis jedis;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@BeforeEach</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">SetUp</span><span class="params">()</span>&#123;</span><br><span class="line">        jedis = <span class="keyword">new</span> <span class="title class_">Jedis</span>(<span class="string">&quot;192.168.73.129&quot;</span>,<span class="number">6379</span>);</span><br><span class="line">        jedis.auth(<span class="string">&quot;369789&quot;</span>);</span><br><span class="line">        jedis.select(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">testString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 存入数据</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> jedis.set(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;虎哥&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;result = &quot;</span> + result);</span><br><span class="line">        <span class="comment">// 获取数据</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> jedis.get(<span class="string">&quot;name&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;name = &quot;</span> + name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">testHash</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 插入hash数据</span></span><br><span class="line">        jedis.hset(<span class="string">&quot;user:1&quot;</span>, <span class="string">&quot;name&quot;</span>, <span class="string">&quot;Jack&quot;</span>);</span><br><span class="line">        jedis.hset(<span class="string">&quot;user:1&quot;</span>, <span class="string">&quot;age&quot;</span>, <span class="string">&quot;21&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取</span></span><br><span class="line">        Map&lt;String, String&gt; map = jedis.hgetAll(<span class="string">&quot;user:1&quot;</span>);</span><br><span class="line">        System.out.println(map);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterEach</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">tearDown</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (jedis != <span class="literal">null</span>) &#123;</span><br><span class="line">            jedis.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="连接池"><a href="#连接池" class="headerlink" title="连接池"></a>连接池</h4><p>Jedis 线程不安全，而且频繁创建销毁 Jedis 线程性能损耗比较大。</p>
+<p><em>线程不安全的大概原因：每次 set 的时候都要调用 connect 方法。在 connect 方法里，一个实例的多个线程都共用一个 socket, inputstream, outputstream。所以如果线程1正在读写，线程2把 socket重新初始化了，那么1的连接就断了。或者两个线程同时读写，inputstream outputstream 共用可能就会导致输入或读取数据错误。<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1678172">使用jedis面临的非线程安全问题-腾讯云开发者社区-腾讯云</a></em></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505222302284.png" alt="img"></p>
+<blockquote>
+<p>图源：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/84481313">java客户端：Jedis和Jedis连接池的基本使用和配置 - 知乎</a></p>
+</blockquote>
+<p>创建连接池代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JedisConnectionFacotry</span> &#123;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> JedisPool jedisPool;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">static</span> &#123;</span><br><span class="line">         <span class="comment">//配置连接池</span></span><br><span class="line">         <span class="type">JedisPoolConfig</span> <span class="variable">poolConfig</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JedisPoolConfig</span>();</span><br><span class="line">         poolConfig.setMaxTotal(<span class="number">8</span>);<span class="comment">// 最大连接数</span></span><br><span class="line">         poolConfig.setMaxIdle(<span class="number">8</span>);<span class="comment">// 最大空闲连接数</span></span><br><span class="line">         poolConfig.setMinIdle(<span class="number">0</span>);<span class="comment">// 最小空闲连接数，防止空闲连接被释放</span></span><br><span class="line">         poolConfig.setMaxWaitMillis(<span class="number">1000</span>);</span><br><span class="line">         <span class="comment">//创建连接池对象</span></span><br><span class="line">         jedisPool = <span class="keyword">new</span> <span class="title class_">JedisPool</span>(poolConfig,</span><br><span class="line">                 <span class="string">&quot;192.168.150.101&quot;</span>,<span class="number">6379</span>,<span class="number">1000</span>,<span class="string">&quot;123321&quot;</span>);</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">static</span> Jedis <span class="title function_">getJedis</span><span class="params">()</span>&#123;</span><br><span class="line">          <span class="keyword">return</span> jedisPool.getResource();</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后创建 Jedis 的时候改成使用连接池的获取代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jedis = JedisConnectionFactory.getJedis();</span><br></pre></td></tr></table></figure>
+
+<p><code>jedis.close()</code> 函数底层如果判断有连接池的时候，就不会 close 关闭 Jedis 资源了，而是归还资源，所以不需要改。</p>
+<h3 id="SpringDataRedis"><a href="#SpringDataRedis" class="headerlink" title="SpringDataRedis"></a>SpringDataRedis</h3><p>SpringData 是 Spring 的数据操作模块，其中的 Redis 集成模块叫做 SpringDataRedis。整合了多个 Redis 客户端，并提供了统一的访问 API。</p>
+<p>支持 JDK json 字符串 对象等的序列化和反序列化，因为现在我们直接操作 Jedis 传入的都是 byte[] 数组，如果想传入 json 或者对象需要自己手动调整序列化。</p>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>返回值类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>redisTemplate.opsForValue()</code></td>
+<td><code>ValueOperations</code></td>
+<td>操作 <code>String</code> 类型数据</td>
+</tr>
+<tr>
+<td><code>redisTemplate.opsForHash()</code></td>
+<td><code>HashOperations</code></td>
+<td>操作 <code>Hash</code> 类型数据</td>
+</tr>
+<tr>
+<td><code>redisTemplate.opsForList()</code></td>
+<td><code>ListOperations</code></td>
+<td>操作 <code>List</code> 类型数据</td>
+</tr>
+<tr>
+<td><code>redisTemplate.opsForSet()</code></td>
+<td><code>SetOperations</code></td>
+<td>操作 <code>Set</code> 类型数据</td>
+</tr>
+<tr>
+<td><code>redisTemplate.opsForZSet()</code></td>
+<td><code>ZSetOperations</code></td>
+<td>操作 <code>SortedSet</code> 类型数据</td>
+</tr>
+<tr>
+<td><code>redisTemplate</code></td>
+<td>-</td>
+<td>通用的命令接口</td>
+</tr>
+</tbody></table>
+<p>使用起来也非常简单。首先在 IDEA 里面创建项目的时候就可以创建 spring initilize 的项目，然后导入相关依赖（redis，连接池等），配置连接，直接使用。</p>
+<p>依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- pom.xml --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--common-pool--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.commons<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-pool2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--Jackson依赖--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-databind<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>配置：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># application.yaml</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">data:</span></span><br><span class="line">    <span class="attr">redis:</span></span><br><span class="line">      <span class="attr">host:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">      <span class="attr">port:</span> <span class="number">6379</span></span><br><span class="line">      <span class="attr">password:</span> <span class="number">123456</span></span><br><span class="line">      <span class="attr">database:</span> <span class="number">0</span></span><br><span class="line">      <span class="attr">lettuce:</span></span><br><span class="line">        <span class="attr">pool:</span></span><br><span class="line">          <span class="attr">max-active:</span> <span class="number">8</span></span><br><span class="line">          <span class="attr">max-idle:</span> <span class="number">8</span></span><br><span class="line">          <span class="attr">min-idle:</span> <span class="number">0</span></span><br><span class="line">          <span class="attr">max-wait:</span> <span class="string">100ms</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>SpringDataRedis 默认引入了 Lettuce 的依赖，如果想在上面的配置文件中使用 jedis 也可以只不过就是需要在 pom.xml 里面也引入 jedis 的依赖。</p>
+<p>代码测试：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">RedisDemoApplicationTests</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    RedisTemplate redisTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">testString</span><span class="params">()</span> &#123;</span><br><span class="line">        redisTemplate.opsForValue().set(<span class="string">&quot;springtest&quot;</span>,<span class="string">&quot;springtest&quot;</span>);</span><br><span class="line">        <span class="type">Object</span> <span class="variable">value</span> <span class="operator">=</span> redisTemplate.opsForValue().get(<span class="string">&quot;springtest&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;value &quot;</span>+value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在 Redis 数据库中可见真正存入的数据形式其实是：\xAC\xED\x00\x05t\x00\x0Aspringtest，前面这一串可能就是 Spring Redis 的自动序列化用于记录对象格式的，反正 System.out.print 输出的是没有乱码的。</p>
+<p><em>老师的案例里面，老师是写入的 name xxx 键值对，然后再去终端执行 redis 命令 <code>get name</code> 发现获取到的值并没有更新，也是一样的道理，因为老师实际存入的键也是类似 <code>\乱码 \乱码 name</code> 这样的形式，和 <code>get name</code> 访问的键不一样.</em></p>
+<p>这种方式的主要两个问题：可读性差；内存占用大。Java 的 String 也会被视作是一种对象，而非单纯的 String。</p>
+<h4 id="RedisTemplate-自定义和序列化"><a href="#RedisTemplate-自定义和序列化" class="headerlink" title="RedisTemplate 自定义和序列化"></a>RedisTemplate 自定义和序列化</h4><p>想要“写入什么值就存入什么值”，就必须去改写 RedisTemplate 的序列化方法（其实底层调用的是 <code>JDKSerializationRedisSerializer</code> 的序列化方法）。</p>
+<p>对于字符串，或者键，可以将底层序列化方法改成：<code>StringRedisSerializer</code>，这个是专门处理字符串的序列化方法。</p>
+<p>对于对象，可以用 <code>GenericJackson2JsonRedisSerializer</code> 转 JSON 字符串的序列化方法。</p>
+<p>具体修改：新建一个 <code>RedisConfig</code> 文件：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RedisConfig</span> &#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> RedisTemplate&lt;String, Object&gt; <span class="title function_">redisTemplate</span><span class="params">(RedisConnectionFactory connectionFactory)</span>&#123; <span class="comment">// 这里可见我们直接让 key 默认就是 String 类型了</span></span><br><span class="line">        <span class="comment">// 创建RedisTemplate对象</span></span><br><span class="line">        RedisTemplate&lt;String, Object&gt; template = <span class="keyword">new</span> <span class="title class_">RedisTemplate</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 设置连接工厂</span></span><br><span class="line">        template.setConnectionFactory(connectionFactory);</span><br><span class="line">        <span class="comment">// 创建JSON序列化工具，用于对象处理</span></span><br><span class="line">        <span class="type">GenericJackson2JsonRedisSerializer</span> <span class="variable">jsonRedisSerializer</span> <span class="operator">=</span></span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">GenericJackson2JsonRedisSerializer</span>();</span><br><span class="line">        <span class="comment">// 设置Key的序列化</span></span><br><span class="line">        template.setKeySerializer(RedisSerializer.string());</span><br><span class="line">        template.setHashKeySerializer(RedisSerializer.string());</span><br><span class="line">        <span class="comment">// 设置Value的序列化</span></span><br><span class="line">        template.setValueSerializer(jsonRedisSerializer);</span><br><span class="line">        template.setHashValueSerializer(jsonRedisSerializer);</span><br><span class="line">        <span class="comment">// 返回</span></span><br><span class="line">        <span class="keyword">return</span> template;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个代码是所有 key 都用字符串序列化方法，而所有的 value 都用 json 对象处理方法。</p>
+<p>使用的时候，唯一区别就是声明要使用的 RedisTemplate 类是 &lt;String, Object&gt; 的，也就是我们刚刚生成的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> RedisTemplate&lt;String, Object&gt; redisTemplate;</span><br></pre></td></tr></table></figure>
+
+<p>重新运行后发现数据库里面的键值都没有乱码了（值的话，可能 String Object 转换成 JSON 也是 String 的形式）。</p>
+<p>尝试传入对象也非常顺利，假设新建了一个 User 对象，数据库中成功传入后的 json value 如下（第一句话就是帮助反序列化还原用的）：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505231149205.png" alt="image-20250523114928080"></p>
+<p>并且 java 输出里面自动反序列化成对象的输出形式：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">value User(name=jingqing, age=22)</span><br></pre></td></tr></table></figure>
+
+<p>但是可以看出，上面 class 那一行占用存储空间还是挺大的，比这个对象的其余部分内容都长。</p>
+<p>不要这部分，就不能实现自动的反序列化了。要吧，又要占用内存空间。</p>
+<h4 id="StringRedisTemplate-手动序列化"><a href="#StringRedisTemplate-手动序列化" class="headerlink" title="StringRedisTemplate 手动序列化"></a>StringRedisTemplate 手动序列化</h4><p>另一种实现方式是 <code>StringRedisTemplate</code> ，就是统一使用 String 序列化器。对于对象的存储，需要手动序列化或者反序列化。</p>
+<p>实现起来也不是特别难，就是通过一个 <code>ObjectMapper</code> 将 String 映射成一个 json String 后传入数据库，传出的时候再通过映射类映射回来。也不需要自定义 RedisTemplate 的序列化方案了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> StringRedisTemplate stringRedisTemplate;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">testString</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// 写入一条String数据</span></span><br><span class="line">    stringRedisTemplate.opsForValue().set(<span class="string">&quot;verify:phone:13600527634&quot;</span>, <span class="string">&quot;124143&quot;</span>);</span><br><span class="line">    <span class="comment">// 获取string数据</span></span><br><span class="line">    <span class="type">Object</span> <span class="variable">name</span> <span class="operator">=</span> stringRedisTemplate.opsForValue().get(<span class="string">&quot;name&quot;</span>);</span><br><span class="line">    System.out.println(<span class="string">&quot;name = &quot;</span> + name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">ObjectMapper</span> <span class="variable">mapper</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectMapper</span>();</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">testSaveUser</span><span class="params">()</span> <span class="keyword">throws</span> JsonProcessingException &#123;</span><br><span class="line">    <span class="comment">// 创建对象</span></span><br><span class="line">    <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>(<span class="string">&quot;虎哥&quot;</span>, <span class="number">21</span>);</span><br><span class="line">    <span class="comment">// 手动序列化</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">json</span> <span class="operator">=</span> mapper.writeValueAsString(user);</span><br><span class="line">    <span class="comment">// 写入数据</span></span><br><span class="line">    stringRedisTemplate.opsForValue().set(<span class="string">&quot;user:200&quot;</span>, json);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取数据</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">jsonUser</span> <span class="operator">=</span> stringRedisTemplate.opsForValue().get(<span class="string">&quot;user:200&quot;</span>);</span><br><span class="line">    <span class="comment">// 手动反序列化</span></span><br><span class="line">    <span class="type">User</span> <span class="variable">user1</span> <span class="operator">=</span> mapper.readValue(jsonUser, User.class);</span><br><span class="line">    System.out.println(<span class="string">&quot;user1 = &quot;</span> + user1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们还可以进一步将序列化后写入和读出后反序列化封装成工具类，用工具类直接写入和读出，这样代码复杂度上也降低了。</p>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          Contact Me
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://jingqing3948.github.io/2025/05/21/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%EF%BC%9A%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98%20Redis/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2025/05/29/%E9%A2%98%E7%9B%AE%E7%BB%83%E4%B9%A0%EF%BC%9A%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%E5%88%86%E6%9E%90/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            题目练习：代码随想录解题思路分析
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2025/05/21/%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0%EF%BC%9A%E9%BB%91%E9%A9%AC%E7%82%B9%E8%AF%84/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">项目学习：黑马点评</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'Ov23li1TkQEYXFu51qLu',
+    clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
+    repo: 'Jingqing3948.github.io',
+    owner: 'Jingqing3948',
+    admin: 'Jingqing3948',
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: true,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022-2025
+        <i class="ri-heart-fill heart_icon"></i> Jingqing3948
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="灰海宽松的博客"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://jingqing3948.lofter.com/">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://blog.csdn.net/jtwqwq?spm=1000.2115.3001.5343">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://jingqing3948.github.io/Tianweijiang.github.io/">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>星光不问，梦终有回</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/LinkedIn.jpg">
+      <span class="reward-type">LinkedIn</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/WXOfficalAccount.jpg">
+      <span class="reward-type">公众号</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="86"
+        src="//music.163.com/outchain/player?type=2&id=1357960253&auto=0&height=66"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+</body>
+
+</html>
