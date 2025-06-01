@@ -1391,6 +1391,660 @@ G --> Z1</pre>
 </article>
     
     <article
+  id="post-伦敦国王学院EEM笔记：Machine Learning 机器学习"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2025/01/01/%E4%BC%A6%E6%95%A6%E5%9B%BD%E7%8E%8B%E5%AD%A6%E9%99%A2EEM%E7%AC%94%E8%AE%B0%EF%BC%9AMachine%20Learning%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"
+    >伦敦国王学院EEM笔记：Machine Learning 机器学习</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2025/01/01/%E4%BC%A6%E6%95%A6%E5%9B%BD%E7%8E%8B%E5%AD%A6%E9%99%A2EEM%E7%AC%94%E8%AE%B0%EF%BC%9AMachine%20Learning%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="article-date">
+  <time datetime="2025-01-01T00:00:00.000Z" itemprop="datePublished">2025-01-01</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%8E%8B%E9%81%93%EF%BC%88KCL%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B%E4%B8%93%E4%B8%9A%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0%EF%BC%89/">王道（KCL电子工程专业课内学习）</a> / <a class="article-category-link" href="/categories/%E7%8E%8B%E9%81%93%EF%BC%88KCL%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B%E4%B8%93%E4%B8%9A%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0%EF%BC%89/Lecture/">Lecture</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="概率论基础"><a href="#概率论基础" class="headerlink" title="概率论基础"></a>概率论基础</h1><p>在正式开始机器学习方法之前，我们先学习一些概率论（Probability）的知识以便后面进入算法正题。</p>
+<h2 id="随机变量"><a href="#随机变量" class="headerlink" title="随机变量"></a>随机变量</h2><h3 id="离散随机变量"><a href="#离散随机变量" class="headerlink" title="离散随机变量"></a>离散随机变量</h3><p>离散随机变量（Discrete Random Variables）x 可能在集合 X 的范围内取值，比如投掷硬币的概率随机变量 x，取值集合 X &#x3D;{正面，反面}。随机变量实质是函数。</p>
+<p>投硬币是一个离散的例子，X 还可能是连续的集合。</p>
+<p>注意区分随机变量 x 和它的取值 realization <em>x</em> 的区别，x &#x3D; <em>x</em> 意思是随机向量 x 取值为 <em>x</em>（类似于投硬币事件 x 投出了 “正面” 结果吧。第二个 x 是斜体）</p>
+<blockquote>
+<p>[!TIP]</p>
+<p>英文教材表达：random varible x takes value <em>x</em>.</p>
+</blockquote>
+<p>对于每个不同的 <em>x</em> 值，都有它在这个随机变量 x 里的概率，用函数表示就是：</p>
+<p><strong>x~p(<em>x</em>)&#x3D; Pr [x &#x3D; <em>x</em>]</strong></p>
+<p>p(x)的范围肯定是 0 到 1 的，概率不可能大于 1.rv x 中的所有概率求和 &#x3D; 1.</p>
+<ul>
+<li><p>伯努利二元随机变量（Binary&#x2F;Bernoulli variable）：x 中只有两个值，类似投硬币的正反。这两个值概率互补，比如投硬币正反概率各 50%。</p>
+</li>
+<li><p>分类随机变量（Categorical&#x2F;Multinoulli variable）：有多个结果。</p>
+</li>
+</ul>
+<p>$$<br>\begin{aligned}<br>X&amp;&#x3D;{0, 1, … , C-1}\<br>p(k)&amp;&#x3D; q_k\<br>Random; Variable; q&amp;&#x3D; [q_0, q_1, … , q_{C-1}]<br>\end{aligned}<br>$$</p>
+<p>且随机向量内所有元素求和 &#x3D; 1.</p>
+<p>机器学习中常用一种叫做独热编码（one-hot vector）的方式表示随机变量，就是对于多分类问题的结果预测里面只有一个值 &#x3D; 1，其他的都是 0（<em>也就是预测结果一定是某一个结果，比如：这张图片有100%的概率是猫，0%的概率是狗或者老鼠。也类似嵌入式的位掩码，只有一个元素生效</em>）。 比如：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202409301229711.png"></p>
+<h3 id="连续随机变量"><a href="#连续随机变量" class="headerlink" title="连续随机变量"></a>连续随机变量</h3><p>连续随机变量（Continuous）通常用概率密度函数表示，$$x\sim p(\textit x)$$，同样 p(x)在域上求积分 &#x3D; 1.</p>
+<p>比如经典的高斯变量，$$x \sim N(\mu, \sigma ^2)$$，表示公式：<br>$$<br>p(x)&#x3D; N(x|\mu,\sigma ^2) &#x3D; \frac{1}{\sqrt{2\pi \sigma ^2}}exp(-\frac{(x-\mu)^2}{2\sigma ^2})<br>$$<br><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202409301232062.png" alt=" "  /></p>
+<h2 id="期望"><a href="#期望" class="headerlink" title="期望"></a>期望</h2><p>期望（Expection）也叫平均值，最有可能的结果。离散随机变量的期望：<br>$$<br>E_{\mathbb{x}\sim p(x)}[\mathbb{x}] &#x3D;\sum_{x\in\mathcal{X}}p(x)\cdot x<br>$$<br>离散变量的 <strong>函数</strong> 的期望：给定 x 和其概率分布，求 f(x) 的期望值是多少。可以理解为首先 x 有多大的概率等于这个值，然后再用 x 的这个值代入 f(x)得到的结果，我们要计算这个结果的期望值。<br>$$<br>xE_{\mathbb{x}\sim p(x)}[f(\mathbb{x})] &#x3D;\sum_{x\in \mathcal{X}}p(x)\cdot f(x)<br>$$<br>比如下题，cat 是分类分布，表示 x 有 0.1 的概率 &#x3D; 0,0.2 的概率 &#x3D; 1,0.7 的概率 &#x3D; 2，求 f(x)的期望值：<br>$$<br>\begin{aligned}<br>x\sim Cat([0.1,0.2,0.7]), and, f(x)&#x3D; x^2\\<br>E_{x\sim Cat(q)}[x^2] &#x3D; 0.1 \cdot 0^2+0.2\cdot 1^2+0.7\cdot 2^2 &#x3D; 3<br>\end{aligned}<br>$$<br>连续函数求期望的方式类似，求积分而已。<br>$$<br>xE_{\mathbb{x}\sim p(x)}[f(\mathbb{x})] &#x3D;\int_{-\infty }^{+\infty }p(x)f(x)dx<br>$$<br>高斯随机变量 $$N(µ, σ^2)$$ 的期望，对于 f(x)&#x3D; x 函数来说 $&#x3D; µ$，对于 $f(x)&#x3D; x^2$ 函数来说 $&#x3D; µ^2+σ^2$.</p>
+<ul>
+<li>高斯随机变量的期望是线性的. 也就是说满足 $$E(af(x)+bg(x))&#x3D;aE(f(x))+bE(g(x))$$ 。</li>
+</ul>
+<h2 id="向量"><a href="#向量" class="headerlink" title="向量"></a>向量</h2><p>基础向量（Vector）操作矩阵乘法等不再赘述。这里指的向量的表示形式是列向量（L×1 长度）。</p>
+<p><strong>inner product 内积</strong>：两个长度相同的列向量每个元素相乘，$$x^Ty$$。内积一般用来衡量两个向量的相似度（similarity）.</p>
+<p>比如下面这两对 xy，内积都 &#x3D; 6，说明其相似度差不多。</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202409301313822.png" alt=" "  />
+
+<p><strong>范数（norm）</strong>：就是向量的标量长度，可以通过 $$x^Tx$$ 计算。</p>
+<p>L1 范数：$$x^Tx$$</p>
+<p>L2 范数：L1 范数再开根，代表向量长度。</p>
+<p>比如上面的笑脸图，除了右上角的 y 的 L2 范数 &#x3D; 6，其他向量 L2 范数 &#x3D; 8.</p>
+<p>$\widetilde{x}$：x 的归一化，相当于一个和 x 方向相同但是长度 &#x3D; 1 的向量，用 x&#x2F;L2 范数（‖x‖）就可以得到。</p>
+<h2 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h2><p><strong>对角矩阵（Diagonal matrix）</strong>：只有对角线上的值（$$a_{ii}$$）非零<br>$$<br>Diag(a)&#x3D;<br>\begin{bmatrix}<br>   a_1 &amp; 0 &amp; {…} &amp; 0 \<br>   0 &amp; a_2 &amp; \  &amp; 0\<br>   {…} &amp; \  &amp; {…} &amp; {…}\<br>   0 &amp; 0 &amp; {…} &amp; a_L<br>\end{bmatrix}<br>$$<br>L×1 列向量的对角矩阵相当于把列向量中的元素均匀分到 L×L 矩阵的对角线上。两个列向量的乘积 &#x3D; 一方的对角矩阵与另一方列向量的乘积。</p>
+<p><strong>Symmetric matrix 对称矩阵</strong>：矩阵转置仍然等于其本身。对角矩阵很明显就是对称的。</p>
+<h2 id="随机向量"><a href="#随机向量" class="headerlink" title="随机向量"></a>随机向量</h2><p>随机向量（Random Vector）是随机变量中所有元素按列向量排列。其中某个元素的概率：$$Pr[x&#x3D;x_i]$$</p>
+<p><strong>联合随机向量（Joint pmf p(x)）</strong>：多个维度的事件同时发生的概率。类似于：第一次硬币投出正面，第二次投出反面的概率。 $$p(x)&#x3D;Pr[x_1 &#x3D; x_1\ and\ x_2&#x3D;x_2\ …\ and\ x_L &#x3D; x_L]$$</p>
+<p>伯努利随机向量（Bernoulli random vector）：只有两种情况，类似投硬币，一正一反。</p>
+<p>联合伯努利随机向量（Jointly Bernoulli random vector）：2 个维度的伯努利向量。</p>
+<table>
+<thead>
+<tr>
+<th>x1\x2</th>
+<th>0</th>
+<th align="center">1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>p(0,0)&#x3D; 0.45</td>
+<td align="center">p(0,1)&#x3D; 0.05</td>
+</tr>
+<tr>
+<td>1</td>
+<td>p(1,0)&#x3D; 0.1</td>
+<td align="center">p(1,1)&#x3D; 0.4</td>
+</tr>
+</tbody></table>
+<p>连续随机变量的联合表示从二维的平面变为三维的空间了，两个自变量 x 是两个维度，得到的最终概率值是一个维度。比如下图是高斯随机变量的联合表示图，x y 坐标决定 z 坐标值：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202409301345912.png" alt=" "></p>
+<p><strong>边际分布（Marginal Distributions）</strong>：只考虑多个变量中的部分变量的概率。比如上面的表格，x1~Bern(0.5)，x2~Bern(0.45)（伯努利的写法是 Bern(&#x3D; 1 部分的概率)）</p>
+<p><strong>条件概率（Conditional Distributions）</strong>：给定其他变量为 xx 的条件下，这个变量为 xxx 的概率是多少。比如上表格，x2 &#x3D; 0 的话 x1 的概率分布：P(x1 &#x3D; 0 | x2 &#x3D; 0)&#x3D; 0.45&#x2F;0.55, P(x1 &#x3D; 1 | x2 &#x3D; 0)&#x3D; 0.1&#x2F;0.55, (x1|x2 &#x3D; 0)~Bern(0.18)</p>
+<p>应用：比如生成式语言模型，已经生成了之前 1k 个词后下一个词为“xxx”的概率为多少。</p>
+<p><strong>独立性（Independence）</strong>：两个变量没有什么关系。两者同时发生的概率就是两者分别发生的概率的乘积，p(x1, x2)&#x3D; p(x1)p(x2).</p>
+<p>p(x1, x2) &#x3D; p(x1)p(x2|x1).</p>
+<h2 id="贝叶斯定理"><a href="#贝叶斯定理" class="headerlink" title="贝叶斯定理"></a>贝叶斯定理</h2><p>贝叶斯定理（Bayes）被称为：改变信念 brief 的定理，大概是从概率角度上让人更改自己的偏好。所以也常用在机器学习中。<br>$$<br>p(x_2|x_1) &#x3D; p(x_2) \frac{p(x_1|x_2)}{p(x_1)}<br>$$</p>
+<blockquote>
+<p>[!NOTE]</p>
+<p>以吴军老师在中文分词领域举的一个例子来说，对于一个句子：南京市长江大桥，可以有两种划分：</p>
+<ul>
+<li>南京市 &#x2F; 长江大桥</li>
+<li>南京市长 &#x2F; 江大桥</li>
+</ul>
+<p>到底哪一种更合理？我们可以计算条件概率：</p>
+<ul>
+<li>P(长江大桥|南京市) &#x3D; 出现“南京市”时，出现“长江大桥”的概率；</li>
+<li>P(江大桥|南京市长) &#x3D; 出现“南京市长”时，出现“江大桥”的概率。</li>
+</ul>
+<p>提前准备好大量的中文语料，计算出两种分词的条件概率，我们就可以得出哪种分词更合理。</p>
+<p><a target="_blank" rel="noopener" href="https://liaoxuefeng.com/blogs/all/2023-08-29-bayes-use/index.html">一文搞懂贝叶斯定理（应用篇） - Blogs - 廖雪峰的官方网站 (liaoxuefeng.com)</a></p>
+</blockquote>
+<p>生成式大模型，搜索引擎等常见其应用。</p>
+<h1 id="推理"><a href="#推理" class="headerlink" title="推理"></a>推理</h1><p>现在我们已经有一定概率论基础了。我们开始学习“推理（Inference）”，即：已知概率的情况下，根据输入 x 猜测输出 t。</p>
+<p>推理的中间过程是一个概率模型 probabilistic model （x 和 t 的联合分布 p(x, t) ）来预测最可能的 t。</p>
+<p>模型的具体实现被称作预测器 predictor。</p>
+<p>推理问题主要分为两类，离散的 <strong>detection</strong> （比如晴天或者雨天）和连续的 <strong>estimation</strong>（比如温度）。</p>
+<p>而推理结果又分为两种：<strong>hard predictor</strong> 和 <strong>soft predictor</strong>，hard 就是只挑选某一个具体结果（比如预测 x &#x3D; 0 时 t &#x3D; 1，只确定一个固定结果）；soft 就是不确定的（当 x &#x3D; 某个值时，t 为 0 的概率有 10%，为 1 的概率有 90%）。</p>
+<p>下面的公式示例中，第一行是 hard 的写法，代表：x &#x3D; 0 时 t 的预测结果 &#x3D; 1。</p>
+<p>第二行是条件概率的 soft 的写法，代表：x &#x3D; 0 时 t &#x3D; 1 的概率是 0.2。<br>$$<br>\begin{aligned}<br>\hat t(0)&#x3D; 1\<br>q(1|0)&#x3D; 0.2<br>\end{aligned}<br>$$</p>
+<h2 id="贝叶斯推理"><a href="#贝叶斯推理" class="headerlink" title="贝叶斯推理"></a>贝叶斯推理</h2><p>贝叶斯定理（Optimal Soft Prediction &#x2F; Bayesian Inference）比如我们求出，q(t|1)&#x3D; Bern(t|0.8)，那么可以说：$$\hat t(1) &#x3D; 1$$ with associated probability of error of 0.2（误差 &#x3D; 0.2 的硬推理）。当 x &#x3D; 1 时 t &#x3D; 1 的硬预测器是最优的。</p>
+<h2 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h2><p>代价函数（Loss Function）用于计算预测器和正确值之间的偏差，进而后续决定如何修改预测器让代价更小。</p>
+<p>对于硬推理，我们用代价函数记录预测的硬推理值与真实值之间的偏差来评估硬推理。<br>$$<br>\mathcal{l} (t,\hat t)&#x3D;|t-\hat t|^k<br>$$<br>k 一般 &#x3D; 2，也就是平方损失（quadratic error loss）。</p>
+<p>一种损失函数：detection-error loss，也叫 0-1 loss。指实际值和预测值要么相等，要么差 1. 比如只有 0 和 1 两种结果的伯努利随机向量情况（猜猜明天是晴天还是雨天。猜对了损失 &#x3D; 0，猜错了 &#x3D; 1）。</p>
+<p>$\mathbb{1}$ 是指示符函数，预测结果正确时 &#x3D; 1，否则 &#x3D; 0.<br>$$<br>\begin{aligned}<br> \mathcal{l} (t, \hat t) &#x3D; \mathbb{1}(t &#x3D; \hat t)\<br> \mathbb{1}(a) &#x3D;<br> \begin{cases}<br>      1 &amp; \text{if a &#x3D; true}\</p>
+<pre><code>  0 &amp; \text&#123;if a = false&#125;
+\end&#123;cases&#125;     
+</code></pre>
+<p>\end{aligned}<br>$$</p>
+<p>用什么损失评估硬推理的整体性能？一般用损失函数的平均值（population loss）计算。<br>$$<br>L_p(\hat t(\cdot))&#x3D; E_{(x, t)\sim p(x, t)}[l(t,\hat t(x))]<br>$$<br>比如下题，预测器是令 t 永远 &#x3D; 1，求 population loss。只需要计算算错部分的概率即可。</p>
+<div align="center">
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410070004028.png" alt=" " style="zoom: 33%;" />
+
+<div>
+
+<h2 id="最优硬预测"><a href="#最优硬预测" class="headerlink" title="最优硬预测"></a>最优硬预测</h2><p>最优硬预测（Optimal Hard Prediction）器的预测思路就是让 population loss 最小的预测函数。比如上图，很明显^t(1)&#x3D; 0, ^t(0)&#x3D; 1 的代价最小，&#x3D; 0.15。</p>
+<p>对于硬预测，我们只需要挑出概率最大的条件概率点作为预测值即可。</p>
+<h2 id="最优软预测"><a href="#最优软预测" class="headerlink" title="最优软预测"></a>最优软预测</h2><p>最优软预测（Cross-Entropy Loss and Optimal Soft Prediction）的损失函数突然就上强度了，要算 log。cross-entropy loss：−log q(t|x)</p>
+<p>这是因为，对数损失的惩罚更高，迫使预测器做出更高概率更准确额预测：</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410070142271.png" alt=" " style="zoom:67%;" />
+
+<p>伯努利分布的 population 对数损失的计算公式如下（按 x 求期望)：<br>$$<br>Log\  Loss &#x3D;-\frac{1}{N}\sum^N_{i &#x3D; 1}[y_i log(q(y_i|x))+(1-y_i)log(1-q(y_i|x))]<br>$$</p>
+<p>即：每个预测结果 log 后与标准概率相乘，求平均值。</p>
+<p>最优软预测就是让 log loss 最小化的预测取值。</p>
+<h1 id="监督学习"><a href="#监督学习" class="headerlink" title="监督学习"></a>监督学习</h1><h2 id="监督学习简介"><a href="#监督学习简介" class="headerlink" title="监督学习简介"></a>监督学习简介</h2><p>推理和学习的主要区别在于 p(x, t) 是否已知。比如天气预测问题，没有人知道根据当前条件明天到底会是什么天气，只能通过以往样本学习统计出估计值作为训练参考。</p>
+<p>模型不可靠或者太复杂的时候，如果知道输入数据和期望输出我们可以用监督学习。</p>
+<p>监督学习（Supervised Learning）的步骤简单来说分为五步：</p>
+<ol>
+<li>Inductive bias selection 归纳偏置。首先我们假设一下 <strong>目标模型</strong> 是什么样的，比如：一次函数？二次函数？做了这个假设之后再代入训练（比如 t &#x3D; ax，代入训练数据后求出 a）。当然，我们的假设可能会有偏差，毕竟不一定所有问题都能找到完全合适的问题解决，这个偏差就叫 bias。以及还要定义 <strong>损失函数</strong>，损失函数用于计算预测值与训练数据之间的偏差以此调整模型；<strong>正交函数</strong>；<strong>训练方法</strong>（比如：让 loss 最小化）。</li>
+<li>Training 训练。下面会讲到，我们把已知的数据分为训练集和测试集，训练集用于训练我们的模型，测试集用于检验模型效果不用于训练。</li>
+<li>Validation 验证，利用训练集数据计算 loss 损失判断模型的合理性，比如二次函数用一次函数的模型，偏差就会很大。</li>
+<li>Revise inductive bias 可能考虑是否修改归纳偏置模型。</li>
+<li>test 测试集测试。</li>
+</ol>
+<p>监督学习解决的问题主要分为：</p>
+<ul>
+<li>回归问题（regression problem），连续</li>
+<li>分类问题（classification problem），离散</li>
+</ul>
+<p><em>memoralizing 是记忆，记住训练数据中的 x, t 的键值对。learning 是学习，找规律。</em></p>
+<p>没有免费的午餐定理（no free lunch theorem）: <strong>没有一种通用的学习算法可以在各种任务中都有很好的表现</strong>。我们需要对数据进行先验假设 inductive bias ，在归纳过程中再做修改。最终得到一个预测器 predictor，连续问题是软预测器 soft，离散问题是硬预测器 hard。</p>
+<p>比如下面这张图，我们觉得两条横线不同长度，就是因为我们大脑根据经验觉得在参考线的辅助下两条线不一样长。这个过程有点类似于计算机的归纳偏置。</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410111628240.png" style="zoom: 25%;" />
+
+
+
+<h3 id="常见符号解释"><a href="#常见符号解释" class="headerlink" title="常见符号解释"></a>常见符号解释</h3><p>训练集：D，内含 N 个数据。training set D with N training data points<br>$$<br>D &#x3D;{(x_n, t_n)^N_{n &#x3D; 1}}<br>$$<br>硬预测器：^t<br>$$<br>\hat t_D(x)<br>$$<br>软预测器：q<br>$$<br>q_D(t|x)<br>$$<br>硬预测模型类 model class：意为我们对预测器做一个大概的假设，这个预测器属于某一个模型类（比如一次函数的预测器类，二次函数的预测器类等）。θ 是模型的参数，属于一个特定范围，在训练过程中调整 θ 值。注意 θ 是一个向量代表一系列系数。<br>$$<br>H &#x3D;{\hat t(\cdot|\theta):\theta\in\Theta}<br>$$<br>如果选择的模型类是多项式函数，一般用 degree M 表示其项数。<br>$$<br>\hat t(x|\theta)&#x3D;\theta_0+\theta_1x+\theta_2x^2+…+\theta_Mx^M &#x3D;\theta^Tu(x)<br>$$<br>其中的 u(x) 可不是阶跃函数，而是 feature vector 表示 $$[1, x, x^2, x^3…x^M]^T$$ 这个列向量。</p>
+<p>这个模型类被称为线性预测器（不是因为 t 和 x 呈线性关系，很明显不是。而是因为 t 和 θ 呈线性关系）。</p>
+<p>总体损失 population loss：特指推理中的损失，因为我们知道概率 p(x, t) 的具体值：<br>$$<br>L_p(\theta)&#x3D; E_{(x, t)\sim p(x, t)}[l(t,\hat t(x|\theta))]<br>$$<br>但是学习和推理不同，我们不知道具体概率值因此这个损失无法得到。我们可以评估训练损失：<br>$$<br>L_D(\theta)&#x3D;\frac{1}{N}\sum^{N}<em>{n &#x3D; 1}l(t_n,\hat t(x_n|\theta))&#x3D;\sum</em>{x, t}p_D(x, t)l(t,\hat t(x|\theta))<br>$$</p>
+<h2 id="归纳偏差选择"><a href="#归纳偏差选择" class="headerlink" title="归纳偏差选择"></a>归纳偏差选择</h2><p>选择模型类 &#x2F; 预测器的过程也是确定归纳偏差（Inductive Bias Selection）的过程。</p>
+<h3 id="三种预测器"><a href="#三种预测器" class="headerlink" title="三种预测器"></a>三种预测器</h3><p>总体最优无约束预测器（Population-optimal unconstrainded predictor）：最小化总体损失且无视模型，所以叫做无约束预测器，因为不受模型类的限制。但是我们不知道标准概率分布所以很难实现。<br>$$<br>t^*(\cdot)&#x3D; arg,\mathop{min}\limits_{t(\cdot)}L_p(t(\cdot))<br>$$<br>总体最优类内预测器（Population-optimal within-class predictor）：首先确定模型类，在这种模型类的前提下选择 θ 最小化损失。<br>$$<br>\theta ^*<em>M &#x3D; arg \mathop{min}\limits</em>{\theta \in R^{M+1}}L_p(\theta)<br>$$<br>经验风险最小化训练预测器（Trained ERM predictor）：确定模型类，且使用有限的训练数据集来计算损失。<br>$$<br>\theta_M^{ERM}&#x3D;&#x3D; arg \mathop{min}\limits_{\theta \in R^{M+1}}L_D(\theta)<br>$$</p>
+<h3 id="ERM-经验风险最小化预测"><a href="#ERM-经验风险最小化预测" class="headerlink" title="ERM 经验风险最小化预测"></a>ERM 经验风险最小化预测</h3><p>针对这个损失函数，一种训练原则是 Empirical Risk Minimization 经验风险最小化（ERM），即找到使得 LD(θ) 最小的 θ 作为预测器参数。<br>$$<br>\theta_D^{ERM}&#x3D; arg,\mathop{min}\limits_{\theta \in \Theta}L_D(\theta)<br>$$</p>
+<p>$$<br>L_D(\theta)&#x3D;\frac{1}{N}||t_D-X_D\theta||^2<br>$$</p>
+<p><em>和之前提到的一样，连续问题（如 Regression）的损失函数是求次方偏差，离散问题（如 Classification）的损失函数是求 0-1 偏差。</em></p>
+<p>t_D：一个列向量，依次存储了所有目标值.</p>
+<p>X_D：一个矩阵，每行存储了一个 u(x)，和 θ 向量相乘后就组成了每行一个预测器（第一行：输入 x1 得到的 t1 值；第二行：输入 x2 得到的 t2 值……）。</p>
+<p>意思就是所有预测值和训练值之间的代价损失的平均值。</p>
+<p>让这个代价函数最小的 θ 的解是：<br>$$<br>\theta^{ERM}_D &#x3D;(X_D^TX_D)^{-1}X_D^Tt_D<br>$$<br>如果第一部分的矩阵乘积是不可逆的，舍去这一部分即可。</p>
+<h3 id="ERM-相关的两个定理"><a href="#ERM-相关的两个定理" class="headerlink" title="ERM 相关的两个定理"></a>ERM 相关的两个定理</h3><p>对于学习，有两个定理：</p>
+<ul>
+<li>魏尔斯特拉斯近似定理（Weierstrass approximation theorem）：任何连续函数，随着 M 的增加（M 是多项式模型的最高项数），精准度都会逐渐增大。（当然预测器复杂度也增加了，所以并不能只一味增加了事，计算难度也会大幅增加的）</li>
+<li>由于学习不知道准确概率只是根据训练数据估算的概率，所以这只能算是一种 <strong>估计</strong> 的损失。根据大数定理  law of large numbers，测试案例越多，估计损失越接近真正的 population loss.</li>
+</ul>
+<p>例题：</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410121816117.png" alt=" " style="zoom: 50%;" />
+
+<p>给出的预测器形式很简单，就是 x &#x3D; 0 时预测结果为 θ_0，x &#x3D; 1 时预测结果为 θ_1。我们计算 2 个维度四种情况分别的 loss 选取损失最小的预测器。</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410121817373.png" alt=" " style="zoom:50%;" />
+
+<h3 id="最优预测器和经验风险最小化预测器的对比"><a href="#最优预测器和经验风险最小化预测器的对比" class="headerlink" title="最优预测器和经验风险最小化预测器的对比"></a>最优预测器和经验风险最小化预测器的对比</h3><p>例：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141312358.png" alt=" "></p>
+<p>当采用多项式函数模型，M &#x3D; 1 时，两种预测器拟合出的预测结果分别如图：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141314110.png" alt=" "></p>
+<p>这种情况下，ERM <strong>underfits</strong> the data 欠拟合数据：</p>
+<ul>
+<li>模型不够复杂，the model is not rich enough</li>
+<li>estimation error 很小，ERM 和 population-optimal 的预测结果很像</li>
+<li>但是 bias 很大，因为用错公式了，一次方的函数怎么样也不可能和原函数很接近。</li>
+<li>training loss 和 population loss 都很大。</li>
+</ul>
+<p>如果 M &#x3D; 9：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141318744.png" alt=" "></p>
+<p>这种情况下，ERM <strong>overfits</strong> the data 过拟合数据：</p>
+<ul>
+<li>模型太复杂了，为了匹配所有训练数据，训练数据外的数据不够精确。</li>
+<li>这是因为训练模型重点在于记住训练的数据集，而不是总结出没见过的数据的规律。</li>
+<li>estimation error 很大，ERM 和 population -optimal 差距很大；</li>
+<li>bias 很小，population -optimal 预测器和真正的数据规律很像。如果 bias 很大那两个模型的损失应该都很大，但是既然人家行你不行说明问题出在  ERM 本身上而不是归纳偏置上。</li>
+<li>当训练数据够多时，training 和 population -optimal 之间的差距会越来越小，training 会越来越准确。</li>
+</ul>
+<p>M &#x3D; 3 时，模型预测如图，可以看出 ERM 在欠拟合和过拟合中间的 M 值会比较贴近正确预测结果：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141325430.png" alt=" "></p>
+<p>但是我们如何判断模型是否过拟合？我们不一定知道正确的模型公式。因为我们到目前为止只是用训练数据在测试，就算训练出了完全拟合训练数据的预测器（如上面第二个图，M &#x3D; 9 的例子）我怎么知道这是适用于所有数据的预测器呢？</p>
+<h3 id="软预测器的概率模型"><a href="#软预测器的概率模型" class="headerlink" title="软预测器的概率模型"></a>软预测器的概率模型</h3><p>软预测器的概率模型（Probabilistic Models）用已知 t 和 θ 的条件概率表示。第三章的时候用 q 符号表示，这章用 p 符号，反正意思到位了。<br>$$<br>\mathcal H &#x3D;\left{p(t|x,\theta):\theta \in \Theta \right}<br>$$</p>
+<p>概率模型的训练采用软预测，因为其中的概率不确定性。</p>
+<p>事实上很多确定性模型也可以用概率模型的特例来看待，也同样可以应用其公式。</p>
+<p>总体损失：<br>$$<br>L_p(\theta)&#x3D; E_{(x, t)~p(x, t)}[-log, p(t|x,\theta)]<br>$$<br>训练损失（ERM）：<br>$$<br>L_D(\theta)&#x3D;\frac{1}{N}\sum^{N}_{n &#x3D; 1}(-log, p(t_n|x_n,\theta))<br>$$<br>也叫 Maximum Likehood Learning (ML Learning) 最大似然学习。最小化 log 损失，最大化概率。</p>
+<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><p>可以先拿出一部分已知数据作为验证集（validation set）不参与训练。预测器用训练集训练，验证集再计算损失。计算损失的方法仍然是整体损失：<br>$$<br>\hat L_p(\theta)&#x3D; L_{D^v}(\theta)&#x3D;\frac{1}{N^v}\sum^{N^v}_{n &#x3D; 1}l(t^v_n,\hat t(x^v_n|\theta))<br>$$</p>
+<ul>
+<li><p>损失函数应该会小于真实值，因为 ERM 是基于整个训练集训练的。</p>
+</li>
+<li><p>偏差问题：大数定理不再有效，因为大数定理是“训练集数量越多，整个训练集的损失越小”，而验证集的损失和训练集是分开的。所以验证集的损失是整体损失的有偏估计 biased estimate。</p>
+</li>
+</ul>
+<p>比如我们可以利用验证选择更合适的模型：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141350628.png" alt=" "></p>
+<p>如何选择验证集？</p>
+<h3 id="K-Fold-Cross-Validation"><a href="#K-Fold-Cross-Validation" class="headerlink" title="K-Fold Cross-Validation"></a>K-Fold Cross-Validation</h3><p>首先将模型划分为 K 个类。每次迭代从每个类中选取一个值作为验证集，比如第 3 次就把 3 类作为验证集，把剩下的类作为训练集。</p>
+<div align="center">
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141707768.png" alt=" " style="zoom: 67%;" />
+
+</div>
+
+<p>最后求所有迭代的损失平均值：<br>$$<br>\hat L_p &#x3D; \frac{1}{K}\sum^{K}<em>{k &#x3D; 1}L</em>{D_k}(\theta^{ERM}<em>{\mathop{D}\limits^{\sim}</em>{-k}})<br>$$</p>
+<p>例题：如下，尝试计算只选取两个元素作为验证集（不用 K-Fold 验证方式）的损失。</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141713672.png" alt=" " style="zoom: 67%;" />
+
+<p>如果是总体最优预测模型：很简单，把所有数据都作为训练数据，并且如果只涉及到这四个数据，损失 &#x3D; 0.</p>
+<div align="center">
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141717057.png" alt="" style="zoom: 67%;" />
+
+<div>
+
+<p>学习（ERM）：现在假设我们先选择两个数据作为训练数据。假设我们选择了 x &#x3D; 2 x &#x3D; 3. 那就完蛋了，用这两个数据我们训练得到的预测器是 t(x)&#x3D; 2，t 的值不受 x 的影响。<br>$$<br>\hat t(x|\theta) &#x3D; \theta _0 + \theta _1x. \theta _0 &#x3D; 2, \theta _1 &#x3D; 0.<br>$$<br>总体损失就是(2^2^+1^2^+0+0)&#x2F;4 &#x3D; 5&#x2F;4，过拟合。</p>
+<h3 id="Bias-vs-Estimation-Error"><a href="#Bias-vs-Estimation-Error" class="headerlink" title="Bias vs Estimation Error"></a>Bias vs Estimation Error</h3><p>如何权衡偏差和估计错误？<br>$$<br>L_p(\theta _D) &#x3D; L_p(\hat t^*(\cdot))^{\text{minimum unconstrained population loss}} + \left(L_p(\theta^*_H) - L_p(\hat t^*(\cdot))\right)^{\text{bias}} + \left(L_p(\theta_D) - L_p(\theta^*_H)\right)^{\text{estimation error}}<br>$$<br>第一部分：最优预测的损失。当然最优预测很难找到因为不知道概率。</p>
+<p>第二部分：bias。跟模型选择有关。</p>
+<p>第三部分：估计错误。跟训练数据集大小有关。</p>
+<p>在之前的例子中，我们知道：</p>
+<p>M 增加，也就是模型 class 复杂度增加，bias 会下降，但 estimation error 可能会增加，过度拟合。</p>
+<p>N 增加，也就是训练数据集增加，bias 不变，estimation error 会减少。</p>
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410142027925.png" alt="" style="zoom:67%;" />
+
+<p>再细化一点，对于每个输入 x，损失函数的表达方式是：<br>$$<br>L_p(\theta _D |x)&#x3D;\underbrace{L_p(\hat t^*(x) |x)}_\text{aleatoric, uncertainty}+\underbrace{(L_p(\theta^*_H|x)-L_p(\hat t^*(x)|x))}_\text{bias}+\underbrace{(L_p(\theta_D|x)-L_p(\theta^*_H|x))}_\text{epistemic, uncertainty}\<br>$$</p>
+<p><em>其实这里对模型容量，数据量的介绍有些过于简化其作用了，训练效果和要解决的问题，模型选择，训练算法等等都有影响。比如深度神经网络一般是大容量模型，并不一定适用“模型容量越大，越容易过拟合”的定理。当模型容量增加的时候，测试误差会首先增加（过拟合）然后下降，直到一个插值点 interpolation point。这个特性被称为“双降 double descent”，意思是 training loss 随着模型容量增加而下降的同时，population loss 也没有如过拟合预期的那样增加。</em></p>
+<h3 id="正交化"><a href="#正交化" class="headerlink" title="正交化"></a>正交化</h3><p>正交化（Regularization）一种让 ERM 模型变得更加泛化的方法。</p>
+<p>θ 的参数过多会导致 overfitting，而正交化期望：降低 θ 的权重使得过拟合问题不那么明显。<br>$$<br>\theta^{R-ERM}<em>D &#x3D; arg,\mathop{min}\limits</em>{\theta \in \Theta}\left{L_D(\theta)+\frac{\lambda}{N}R(\theta) \right}<br>$$</p>
+<p>括号内的部分是正交训练损失，Regularized training loss.</p>
+<p>λ：一个可以设定的参数，尽可能的在减小训练损失和准确度之间权衡。</p>
+<p>R：正交化 θ。比如一维范式就是所有 θ 的值求和 ||θ||，二维范式是其平方求和 $$||θ||^2$$。<em>一维范式被称作 LASSO Least Absolute Shrinkage and Selection Operator 最小绝对收缩和选择算子回归。</em></p>
+<p>θ 数量越多，第二项也会使得整体的值增加，作用相当于 loss 增加。</p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>验证集多次迭代的过程是有偏估计，所以损失一般小于总体损失。</p>
+<p>建议提前拿出一组数据作为测试集（Test Set），不参与训练和验证，用测试集评估总体损失且训练者不应该知道测试集的内容。</p>
+<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><p>我们之前已经得出损失公式，以及训练的目标就是让损失最小化：<br>$$<br>min_{\theta}{g(\theta)&#x3D;\frac{1}{N}\sum^N_{n &#x3D; 1}f(x_n, t_n|\theta)+\frac{\lambda}{N}R(\theta)}<br>$$<br>但是并不能一定取到最小值，比如类似 e^n 的函数，最小值无限接近 0 永远取不到。</p>
+<p>最小值点（global optimal point g(θ*)），对于所有 g(θ) 都有 g(θ)&gt;&#x3D; g(θ*)，但大多数时候找不到。</p>
+<p>极小值点（local optimal point），对于 θ* 附近的 θ 值有 g(θ)&gt;&#x3D; g(θ*)</p>
+<p>找极小值点的方法当然是求导，如果 d(g(θ)&#x2F;θ)&#x3D; 0 那就说明 0 处是一个极值点（stationary point）（但可能是极大值点或者暂时停止上升）。</p>
+<p>二阶导 &#x3D; 0：在该点处局部线性。&gt; 0：说明是“U”形状。&lt; 0：说明是“倒 U”形状。</p>
+<p>如果二阶导一直 &gt;&#x3D; 0，那么 g(θ) 的增长率（一阶导）就是一直增加或不变的（比如二次函数），那么我们可以称原函数 g 为凸函数 convex，并且 stationary point 一定是最小值点。</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410230631921.png" alt=" " style="zoom: 80%;" />
+
+<p>θ 向量是从 1 到 D 维的所有 θ 系数，而 ∇g(θ) 是所有 θ 的导数的向量。</p>
+<p>首先如果一个点是极值点 ，这个点的一阶导一定 &#x3D; 0，这是充分条件：一阶优化条件（first-order optimality condition）。</p>
+<p>多元函数的曲率由下公式定义 Hessian：</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410231828240.png" alt=" " style="zoom:67%;" />
+
+<p>这个矩阵是对称的，比如：</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410231831727.png" alt=" " style="zoom: 50%;" />
+
+<p>其中的值全部 &#x3D; 0 说明是凸函数。</p>
+<h3 id="梯度下降优化"><a href="#梯度下降优化" class="headerlink" title="梯度下降优化"></a>梯度下降优化</h3><p>梯度下降优化（Gradient Descent）是一种局部优化方法 Local optimization。</p>
+<p>简单来说，每次迭代的时候沿损失梯度下降最快的方向走一定的步长，让下次迭代的 θ 序列损失更小。</p>
+<div align="center">
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410270009617.png" alt="[神经网络基础理论与简单实践 | korilin's blog](https://korilin.com/posts/basic-theory-and-simple-practice-of-neural-network/image_21.png)" style="zoom: 80%;" />
+
+</div>
+
+<p>公式如下，注意这里的 θ 不是指多项式中的每一个参数 θ，而是每次迭代产生的一组 θ。初始化第一组 θ 后，后面的每组 θ 都迭代计算。γ 是学习率，步长，决定每次迭代要迈多大的步子。<br>$$<br>\theta^{(i+1)}&#x3D;\theta^{(i)}-\gamma\nabla g(\theta^{(i)})<br>$$</p>
+<p>如果 γ 设置的太大了，就容易迈过，再回头往反方向走。</p>
+<div align="center">
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410270016642.webp" alt=" " style="zoom:80%;" />
+</div>
+
+<blockquote>
+<p>[!NOTE]</p>
+<p>图源：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/45365719">深度学习优化算法入门：一、梯度下降 - 知乎</a></p>
+</blockquote>
+<h3 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h3><ul>
+<li>如果 g(θ) 的二阶导全部 &lt;&#x3D; L，可以说 g(θ) 是 L-smooth 的函数。</li>
+</ul>
+<p>$$<br>\frac{d^2g(\theta)}{d\theta^2}\le L<br>$$</p>
+<p>就是 g(θ) 一阶导的增长率不会过快，一定在 L 的范围内。</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410270022541.png" alt=" " style="zoom: 67%;" />
+
+<ul>
+<li>当学习率 γ &lt;&#x3D; 1&#x2F;L 时，有如下性质：<ul>
+<li>guaranteed reduction of the loss function:</li>
+</ul>
+</li>
+</ul>
+<p>$$<br>g(\theta^{(i+1)})\le g(\theta^{(i)})-\frac{\gamma}{2}|\nabla g(\theta^{(i)})|^2<br>$$</p>
+<p>​		也就是说下一次迭代的 θ 一定能让损失下降这么多。</p>
+<ul>
+<li><ul>
+<li>convergence to a stationary point：g(θ) 收敛，$$\nabla g(\theta^{(i)})\rightarrow0$$</li>
+</ul>
+</li>
+</ul>
+<p>不过问题在于 L 不一定知道。我们可以通过验证，以及其他方法获取（后续章节介绍）。</p>
+<h3 id="随机梯度下降"><a href="#随机梯度下降" class="headerlink" title="随机梯度下降"></a>随机梯度下降</h3><p>计算整个数据集的梯度，对于大模型来说计算成本还是太高了。</p>
+<p>每次迭代我们不挑出所有的训练集样本点计算 g(θ) ，只随机选取部分：随机梯度下降（Stochastic Gradient Descent）。<br>$$<br>\theta^{(i+1)}\leftarrow \theta^{(i)}-\frac{\gamma^{(i)}}{S^{(i)}}\sum_{n \in S^{(i)}}\nabla g_n(\theta^{(i)})<br>$$<br>SGD 相比 GD 可能需要多走几步因为一开始的每一步不一定精准朝着 g(θ) 下降方向。但是计算成本还是下降了，因为 GD 每一步迈之前都要先考虑清楚所有可能的方向，再决定出让损失最小化的下一次迈步；如果数据量太大，这个功夫都够 SGD 走好多步了。</p>
+<p>所以选择合适的学习率也可以适当减少迭代次数。根据 Munro-Robbins conditions，SGD 的学习率设置：<br>$$<br>\sum^{\infty}<em>{i &#x3D; 1}\gamma^{(i)}&#x3D;\infty; and;\sum^{\infty}</em>{i &#x3D; 1}(\gamma^{(i)})^2\lt\infty<br>$$<br>第一部分保证了学习率不会太小以至于原地踏步，永远无法到达 stationary point；第二部分确保学习率不会太大，SGD 的方差是逐渐减小直到消失的，保证逐渐逼近 stationary point 而不会在极点附近来回徘徊。</p>
+<p>比如 $$\gamma^{(i)}&#x3D;1&#x2F;i^{\alpha},\alpha \in (0.5, 1]$$ 这个学习率满足这一条件。</p>
+<p>多项式学习率常常用 $$ \gamma ^{(i)} &#x3D; \gamma ^{(0)}&#x2F;(1 + \beta i)^\alpha, \beta&gt;0,\gamma^{(0)}&gt;0,\alpha \in (0.5,1]$$</p>
+<p>除了对学习率范围设限，另一种避免到达不了极点的方法是 S 样本量每次迭代都会增加。这两种方式可以结合使用。</p>
+<h3 id="计算梯度的方式"><a href="#计算梯度的方式" class="headerlink" title="计算梯度的方式"></a>计算梯度的方式</h3><p>Symbolic Differentiation：直接求导。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271538688.png" alt=" "></p>
+<p>Numerical Differentiation：利用导数定义近似求解。把 g(θ) 看作一个黑盒，不关心其内部结构，只考虑输入输出。</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271540283.png" alt="" style="zoom: 67%;" />
+
+
+
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271542004.png" alt=" " style="zoom:50%;" />
+
+<p>Automatic Differentiation：使用求导方法，但是只求出某个点的梯度值而不是先求出整体公式。</p>
+<p>三种方式的对比：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271611213.png" alt=" "></p>
+<h3 id="计算图"><a href="#计算图" class="headerlink" title="计算图"></a>计算图</h3><p>计算图（Computational Graph）便于计算梯度的图。</p>
+<p>比如：<br>$$<br>g(\theta)&#x3D;\theta^2_1+\theta^2_2+\theta^2_3<br>$$<br>计算图表示为：</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271626631.png" alt=" " style="zoom: 50%;" />
+
+<p>当然也可能出现 θ1θ2 这样的形式：</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271626706.png" alt=" " style="zoom:50%;" />
+
+<p>已知 θ 序列求 g(θ) 非常简单，把参数带进去就可以。forward pass</p>
+<p>反向传播（backward pass），假设 g(θ)&#x3D; 1，反推回来。所有 f() 的部分要对相应的 θ 求导。</p>
+<blockquote>
+<p>例题： $$g(\theta)&#x3D;\theta^2_1+2\theta^2_2-\theta^2_3$$ ，求 [1,-1,1] 点处的梯度。</p>
+<p>首先进行 forward pass，代入三点数值到计算图中求 g(θ) 在 [1,-1,1] 处的数值，这一步的主要作用是确定计算图：</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271649432.png" alt=" " style="zoom: 50%;" />
+
+<p>接着假设 g(θ)&#x3D; 1，倒推回来：</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271652421.png" alt=" " style="zoom:50%;" />
+
+<p>[2, -2, 2] 部分是对 forward pass 中三个函数求导再代入 [1,-1,1] 的值得到的。</p>
+<p>最终得到的 $$\nabla g(\theta)&#x3D;[2,-4,-2]^T$$</p>
+<p>例题 2：如下图，f1-f3 都是 $$(x_1+2x_2)^2$$，f4 &#x3D; logx。</p>
+<p>求 [1, -2, 1] 点处的梯度下降值。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271835911.png" alt=" "></p>
+<p>首先 forward pass 求出 g(θ)，并且在此过程中把每个函数对于 x1 x2 的求导也算出来（并带入输入 x1 x2 值）：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271838872.png" alt=" "></p>
+<p>然后假设 g(θ)&#x3D; 1，反推回去得到 θ 的值。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271842537.png" alt=" "></p>
+<p>$$\nabla \theta&#x3D;[-4&#x2F;3, -8&#x2F;3,0]^T$$</p>
+</blockquote>
+<h1 id="上述方法在二元分类中的应用"><a href="#上述方法在二元分类中的应用" class="headerlink" title="上述方法在二元分类中的应用"></a>上述方法在二元分类中的应用</h1><p>如下图，给了一个新点判断这个点可能是圈还是叉。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411120216352.png" alt=" "></p>
+<p>目标 t 值：0 或者 1.<br>$$<br>t^{\pm}&#x3D; 2t-1 &#x3D;\left{<br>\begin{aligned}<br>1,, if; t &#x3D; 1\<br>-1,, if; t &#x3D; 0<br>\end{aligned}<br>\right.<br>$$</p>
+<p>整体流程还是和之前讲的差不多：</p>
+<ul>
+<li>inductive bias selection</li>
+<li>training</li>
+<li>validation</li>
+<li>revise inductive bias</li>
+<li>test</li>
+</ul>
+<p>模型主要分为线性模型和神经网络模型。</p>
+<h2 id="线性模型"><a href="#线性模型" class="headerlink" title="线性模型"></a>线性模型</h2><h3 id="预测器"><a href="#预测器" class="headerlink" title="预测器"></a>预测器</h3><p>还是经典公式：<br>$$<br>\theta^T u(x)&#x3D; \sum^{D’}_{d &#x3D; 1}\theta_du_d(x)<br>$$<br>特征向量 u(x) 也不一定只是 x 的多次幂列向量，比如可能是“一个句子中不同词的出现次数”。</p>
+<p>硬预测器的计算结果：如果公式值 &gt; 0 则 t 预测 &#x3D; 1，如果 &lt; 0 则预测 &#x3D; 0. 公式值 &#x3D; 0 的情况不考虑也很难发生。<br>$$<br>\hat t(x|\theta)&#x3D; step(\theta^Tu(x))<br>$$</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411120228255.png" style="zoom:67%;" />
+
+
+<p>软预测用指数函数处理：<br>$$<br>\begin{aligned}<br>p(t &#x3D; 1|x,\theta)&amp;&#x3D;\sigma (\theta^T u(x))\<br>p(t &#x3D; 0|x,\theta)&#x3D; 1&amp;-p(t &#x3D; 1|x,\theta)\<br>\sigma (x)&#x3D;(&amp;1+e^{(-x)})^{-1}<br>\end{aligned}<br>$$<br>$$\sigma&#x3D;\frac{1}{1+e^{-x}}$$ 或者 $$&#x3D;\frac{e^2}{1+e^2}$$ ，<strong>注意两种形式！</strong></p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411120232281.png" style="zoom: 67%;" />
+
+
+<p>多项式计算结果区间位于 0 到 5 时，概率 &gt; 0.5，说明更有可能发生。所以软预测器选择 &gt; 0.5 的那一项结果作为预测值。</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411120233740.png" style="zoom:67%;" />
+
+
+<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>考虑下面这个式子，就是 classification margin：<br>$$<br>y &#x3D; t^\pm \cdot \theta^T u(x)<br>$$<br>这个式子为正值时预测结果为正确，为负值时预测结果为错误。</p>
+<p>所以硬预测的 Detection-Error Loss Function 损失函数（还是指示符函数，预测正确 &#x3D; 0，预测错误 &#x3D; 1）可以写作：<br>$$<br>\begin{aligned}<br>l(t,\hat t(x|\theta))&amp;&#x3D;\mathbb{1} (t\neq \hat t(x|\theta))\<br>&amp;&#x3D; step(-y)<br>\end{aligned}<br>$$<br>但是这个函数没法应用 GD 降维（损失函数图像类似矩阵函数，只有 0 和 1，没法降维）。所以我们可以应用其他的损失函数：</p>
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411120632479.png" style="zoom:67%;" />
+
+</div>
+
+<ul>
+<li><p>Exponential loss 指数损失：$$l(y)&#x3D;e^{-y}$$</p>
+</li>
+<li><p>Hinge loss 铰链损失：$$l(y)&#x3D;max(0,1-y)$$</p>
+</li>
+<li><p>Hinge-at-zero loss 零损失铰链函数：$$l(y)&#x3D;max(0,-y)$$</p>
+</li>
+<li><p>Logistic loss 对数损失：$$l(y)&#x3D;log(1+e^{-y})$$</p>
+</li>
+</ul>
+<p>这些函数都可以用，相比 detection-error loss 都可以应用 GD 降维。</p>
+<ul>
+<li>软预测损失：$$l(t,\hat t(x|\theta))&#x3D;log(1+e^{-y})$$</li>
+</ul>
+<h3 id="感知器算法"><a href="#感知器算法" class="headerlink" title="感知器算法"></a>感知器算法</h3><p>应用了 ERM，hinge-at-zero loss，SGD 的算法（Perceptron Algorithm）。</p>
+<p>损失函数：$$l(y)&#x3D;max(0,-y)$$</p>
+<p>梯度函数：<br>$$<br>\nabla l(t^\pm \cdot (\theta^T u(x)))&#x3D;\left{<br>\begin{aligned}<br>0;;; if; prediction; is; correct\<br>-t^\pm \cdot u(x);; if; prediction; is; wrong<br>\end{aligned}<br>\right .<br>$$</p>
+<p>每次梯度下降迭代后的新 θ 参数计算公式：<br>$$<br>\theta^{(i+1)}&#x3D;\theta^{(i)}+\gamma^{(i)}\cdot\left{<br>\begin{aligned}<br>0;;; if; prediction; is; correct\<br>t^\pm \cdot u(x);; if; prediction; is; wrong<br>\end{aligned}<br>\right .<br>$$</p>
+<p>例题：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411120744954.png" alt=" "></p>
+<p>首先假设选取 (2.1, 1) 点计算梯度下降。<br>$$<br>\begin{aligned}<br>prediction; is; wrong,\ &amp;\theta_1\cdot 2.1 &#x3D;-2.1, hard\ prediction &#x3D; 0\neq 1\\<br>\theta_2&amp;&#x3D;\theta_1-\gamma x_1\\</p>
+<p>\theta_2&amp;&#x3D;-1+0.1\cdot 2.1 &#x3D;-0.79<br>\end{aligned}<br>$$<br>然后选取 (-1.5, 0) 点计算梯度下降。<br>$$<br>\begin{aligned}<br>prediction; is; wrong,\ &amp;\theta_2\cdot -1.5 &#x3D; 1.185,\ hard\ prediction &#x3D; 1\neq 0\\<br>\theta_3&amp;&#x3D;\theta_2-\gamma x_2\\<br>\theta_3&amp;&#x3D;-0.79-0.1\cdot (-1.5)&#x3D;-0.64<br>\end{aligned}<br>$$<br>计算每个步骤中的 classification margin 会发现值是逐渐接近于 0 的。</p>
+<p>对于 log loss 软预测器的梯度下降函数：<br>$$<br>\nabla l(t^\pm \cdot (\theta^T(u(x)))&#x3D;(\sigma(\theta^T u(x))-t)\cdot u(x)<br>$$<br>$$\sigma(\theta^T u(x))-t$$ 部分又用 $$\delta(x,t) $$ 表示，表示 mean error，&#x3D; 0 的时候说明预测完全准确。</p>
+<p>当 mean error &#x3D; 0 时，如果 t &#x3D; 1，则 $$\theta^T(u(x))\rightarrow \infty$$ ；如果 t &#x3D; 0，则 $$\theta^T(u(x))\rightarrow -\infty$$ </p>
+<p>软预测器梯度下降公式：<br>$$<br>\theta^{i+1}\leftarrow \theta^{(i)}-\gamma^{(i)}\frac{1}{S^{(i)}}\sum_{n\in S^{(i)}}(\sigma((\theta^{(i)})^Tu(x_n))-t^n)\cdot u(x_n)<br>$$<br>例题：还是上一道题的数据，初始预测器 $$\theta_1&#x3D;-1, \lambda&#x3D;0, \gamma&#x3D;0.1$$, minimum batch size S &#x3D; 1</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411122221190.png" alt=" "></p>
+<h2 id="神经网络模型"><a href="#神经网络模型" class="headerlink" title="神经网络模型"></a>神经网络模型</h2><p>神经网络模型（Neural Network Model）主要用于处理非线性情况。</p>
+<p>u(x) 并不像线性模型一样一开始是确定的，可能在模型训练过程中还有改动。对于难以建立先验的情况来说比较适用。</p>
+<p>之前线性模型中我们常用 u(x) 来描述特征向量(feature vector)，而神经网络模型中用 x 表示输入的特征向量，u(x) 是其一种表示形式。</p>
+<p>另外，神经网络模型专注于概率计算问题。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411122230604.png"></p>
+<p>中间的每一层都叫做特征提取层（feature extraction layers）。</p>
+<p>第一层输入 x 输出 D^1^ 维度的 h^1^ 向量。后面的每一层都用前一层的向量输入，输出一个 D^l-1^ 维度的 h^l-1^ 向量。最后一层叫做 classification layer 分类层，把 h 作为 u(x) 输入到预测器里计算概率。</p>
+<p>每一层的处理公式如下：<br>$$<br>\begin{aligned}<br>a^l &#x3D; W^lh^{l-1}\</p>
+<p>\end{aligned}<br>$$<br>W：权重向量，分配不同项之间的权重。</p>
+<p>a：本层的 pre-activations 预激活向量。</p>
+<p>h：列向量，用本层的 a 向量通过一个激活函数激活后得到。</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411122312272.png" style="zoom:67%;" />
+
+<p>典型的几种激活函数：</p>
+<ul>
+<li>sigmoid：$$\sigma (a)$$</li>
+<li>hyperbolic tangent: $$tanh(a)$$</li>
+<li>Rectified Linear Unit: $$max(0,a)$$</li>
+<li>Leaky ReLU: $$max(\alpha a,a),,\alpha\in[0,1]$$</li>
+</ul>
+<p>下面是这四者的图像：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411131823276.png"></p>
+<p>梯度消失问题：见 Sigmoid 函数，其的导数特征在于：在 ±5 范围之外，导数全部 &#x3D; 0；在中间导数先增长为 1 再下降。这就导致 a 必须落在 [-5,5] 的区间内，梯度值才会有效；在某些层传播中，梯度值很容易消失变为 0.</p>
+<p>梯度爆炸：tanh 中间的梯度值都快到 ∞ 了，梯度范围浮动非常大，不稳定。</p>
+<p>所以 ReLU 在这两点上优于 tanh 和 Sigmoid 函数，有效避免梯度下降和梯度消失问题。</p>
+<p>最后一层获取 u(x|θ) 的公式：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260337845.png"></p>
+<p>每一层的作用都是提取一些信息化表示的特征，为最终通过 x 分类 t 做准备。</p>
+<p>其中，W 是权重矩阵向量。W^l^ 是一个 D^l^ * D^l-1^ 形状的向量，作用是和前一层传入的 D^l-1^ 长度的行向量相乘后输出 D^l^ * 1 长度的符合下一层形状的向量。<strong>注意矩阵乘法的时候，W 在前，h 在后。</strong></p>
+<p>一个比较通俗易懂的图解如下：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260348069.png" alt="img"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260348830.png" alt="img"></p>
+<blockquote>
+<p>来源：<a target="_blank" rel="noopener" href="https://blog.csdn.net/illikang/article/details/82019945">神经网络——最易懂最清晰的一篇文章-CSDN 博客</a></p>
+</blockquote>
+<p>而 θ 也就是每一层的参数（权重）则这样表示：<br>$$<br>\theta &#x3D;{W^1, W^2, …, W^{L-1}, w^L}.<br>$$<br><em>如果 h 是线性函数，那么整个预测器就是一个线性预测器。</em></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260351906.png"></p>
+<p>例题：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260354580.png"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260357979.png"></p>
+<p>给定题目后，我们大概可知神经网络图像如下，两层（注意神经网络算出来的默认结果是预测值 &#x3D; 1 的概率）：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260358132.png"></p>
+<p>用输入向量逐层与权重相乘后激活计算得到：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260405256.png"></p>
+<p>p(0|x, θ) 就 1-0.12 &#x3D; 0.88 即可。</p>
+<h3 id="SGD"><a href="#SGD" class="headerlink" title="SGD"></a>SGD</h3><p>又到了最喜欢的梯度下降优化环节。</p>
+<p>首先还是要找一个计算损失的方法：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260408835.png"></p>
+<p>最后一层：<br>$$<br>l(\theta)&#x3D;-log,\sigma (t^{\pm}a^L)<br>$$<br>后向传播最后一层（第 L 层）所需梯度：只说结论的话：<br>$$<br>\delta^l &#x3D;\sigma(a^L)-t<br>$$</p>
+<p>最后一层后向传播的梯度 &#x3D; 该层梯度的输入值代入 σ 函数再-目标值 t。比如最后一层输入-2，最终要计算 t &#x3D; 0 时的梯度，计算结果就是 $$\frac{e^{-2}}{1+e^{-2}}-0\approx0.12$$</p>
+<p>推导也很简单，其实就是最后一层的损失函数求导罢了，$$t^\pm$$ 视作一个常数。大家可以对 l(θ) 求导试试，对于 t &#x3D; 1 和 0 的情况得到的分别是 $$\frac{1}{e^x+1}$$ 和 $$\frac{e^x}{e^x+1}$$ ，和下面的结论项是相等的。</p>
+<p>对于前面的 1 到 L-1 层，其导数还是对对应自变量求导代入求值，和之前的 GD 算法类似。</p>
+<p>比如：还是之前那道题，计算 t &#x3D; 0 时的梯度。首先是前向传播：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260431343.png" alt=" "></p>
+<p>t &#x3D; 0 时，t^±^&#x3D;-1（$$t^\pm&#x3D;2t-1$$），a^2^ 是该层（第二层所以有个 2 的上标，不是平方）的输出 &#x3D;-2，两者相乘 &#x3D; 2，代入公式计算得到 0.13 为损失值。</p>
+<p>然后假设结尾 &#x3D; 1，开始后向传播：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260439190.png" alt=" "></p>
+<p>首先根据 t 和 a^2^ 计算出 δ &#x3D; 0.12，用 1*0.12 再*第二层权重回推。</p>
+<p>第一层的梯度公式是 h 对 a^1^求导，h 是一个 ReLU 函数，所以当 a &gt; 0 时求导结果 &#x3D; 1，a &lt; 0 时求导结果 &#x3D; 0. （参考 ReLU 公式）所以得到这一层的向量是 [1,0]，回推出反向传播误差。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260446136.png" alt=" "></p>
+<p>最终，我们给输入值*反向传播误差计算权重梯度，用原权重-权重梯度*学习率更新权重。这里貌似学习率视作 1 了吧？</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260449094.png" alt=" "></p>
+<p>下图是不同层数，随着迭代次数增加训练损失下降情况图。可以看出 3 层反而是最有效进行二元分类的训练方法。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260451091.png" alt=" "></p>
+<h1 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h1><p>一种常常用于自然语言处理的深度学习架构。</p>
+<p>输入可以被划分为 subset 子集或者 token：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260459045.png" alt=" "></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260459330.png" alt=" "></p>
+<p>对于输入数据，创建 N 个 Tokens，每一个都有 D*1 的维度：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260501909.png" alt=" "></p>
+<h2 id="自注意力"><a href="#自注意力" class="headerlink" title="自注意力"></a>自注意力</h2><p>transformer 的一个重要机制在于自注意力（self-attention）。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260515316.png" alt=" "></p>
+<p>softmax 是形如下图的公式，这只是一种计算方法：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260524551.png" alt=" "></p>
+<p>在自注意力公式中，我们发现初始词嵌入出现了 3 次。前两次是作为句中词向量与其他词（包括它自己）点积得到权重；第三次再与权重相乘得到最终带上下文的词嵌入。这三个地方出现的词嵌入我们给他们三个术语：查询(Query), 键(Key), 值(Value)。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260529285.png" alt=" "></p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/jarodyv/article/details/130867562">【万字长文】深度解析 Transformer 和注意力机制（含完整代码实现）_transformer 架构注意力机制-CSDN 博客</a></p>
+</blockquote>
+<p>Query 和 Key 不是对称的，一方对另一方的词注意力可能与反过来不同。比如“伦敦国王学院”和“大学”关联度很高，但”大学“和”伦敦国王学院“关联度不高，大学有那么多所呢。</p>
+<h2 id="多头注意力"><a href="#多头注意力" class="headerlink" title="多头注意力"></a>多头注意力</h2><p>多头注意力（MultiHead Attention）除了一个句子中不同词之间的关联，可能还有其他因素（如一词多义，语序问题等）。</p>
+<h1 id="无监督学习"><a href="#无监督学习" class="headerlink" title="无监督学习"></a>无监督学习</h1><p>无监督学习（Unsupervised Learning）相比监督学习没有一个“标准答案”，比如对于输入 x 我们没有期望 t 输出值。有很多问题是没有期望答案的，比如分类问题，或者异常检测（某个 x 的 p 值过小，很可能是异常）。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292224162.png" alt=" "></p>
+<p>一种常用的方法是自监督学习，把问题转化为监督学习。比如将预测所有 token 的问题转换为条件概率。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292239366.png" alt=" "></p>
+<h2 id="密度估计"><a href="#密度估计" class="headerlink" title="密度估计"></a>密度估计</h2><p>压缩（Compression）：对于 x 向量中所有可能元素的表示，概率大的用简洁形式表示，概率小的用复杂形式表示更节省存储空间。比如摩斯电码。</p>
+<div align="center">
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292244100.png" style="zoom:67%;" />
+
+</div>
+
+<h3 id="直方图"><a href="#直方图" class="headerlink" title="直方图"></a>直方图</h3><p>很简单的无参密度估计方法，就是统计 x 出现次数除以总数据数。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292321324.png" alt=" "></p>
+<p>首先我们定义区间 quantizer，一定区间范围内 x 一起统计。</p>
+<p>公式：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292324839.png" alt=" "></p>
+<p>也就是说概率高度是 x 在这个区间内出现次数除以(区间长度*总区间数)。</p>
+<p>例题：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292325573.png"></p>
+<p>区间范围是 -2.5 到-2 有一个，-1.5 到-1 有一个，1 到 1.5 有一个，1.5 到 2 有一个，2 到 2.5 有一个。</p>
+<p>区间密度单位 &#x3D; 1&#x2F;(5*0.5)&#x3D; 0.4.</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292326794.png" style="zoom:67%;" />
+
+<p>可以看出区间的选取对直方图无监督学习影响很大。选太大了，bias 就很大，因为比较贴近正常值的异常值也可能被划进正常区间范围内；选太小了，估计误差可能又大了，因为每个区间的点数少了，就像上图，每个有样本的区间内都是一个样本数，怎么判断哪个是异常。</p>
+<h3 id="核密度估计"><a href="#核密度估计" class="headerlink" title="核密度估计"></a>核密度估计</h3><p>核密度估计（Kernel Density Estimation）：如果分布假设是平滑的而不是类似直方图的离散状，误差应该会小一些。比如假设每个样本点（相当于一个阶跃函数的图像）都变成一个高斯函数 k_h(x)&#x3D; N(x|0, h)，概率密度函数如下：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292332293.png"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292332272.png"></p>
+<p>h 越小，高斯函数越窄，但是就像直方图中暴露出来的问题一样，bias 下降，estimation error 上升。</p>
+<p>例题：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292335529.png"></p>
+<p>首先先用阶跃函数的形式画出样本点，然后延伸宽度为 0.1：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292336576.png"></p>
+<p>如果设置 kernel width &#x3D; 0.5，也就是每个点都变成 0.5 宽度的矩形函数:</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292336721.png"></p>
+<h3 id="维度诅咒"><a href="#维度诅咒" class="headerlink" title="维度诅咒"></a>维度诅咒</h3><p>前两种方法缺陷在于 h 和 △ 选择必须合适，而且对于多维度数据误差可能很大（除非数据量够大）。这就是维度诅咒。</p>
+<p>由此引入了参数密度估计方法，相较于非参数密度方法不会受到维度诅咒（Curse of Dimensionality）。但是对概率模型有限制，必须是可以通过参数模型得到的概率模型。</p>
+<h3 id="对比监督学习"><a href="#对比监督学习" class="headerlink" title="对比监督学习"></a>对比监督学习</h3><p>对比监督学习（Contrastive Density Learning）：目标是将相似样本拉近，不相似样本离远。</p>
+<p>生成噪声点：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411300016154.png"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411300051547.png"></p>
+<h3 id="潜在变量模型"><a href="#潜在变量模型" class="headerlink" title="潜在变量模型"></a>潜在变量模型</h3><p>潜在变量模型（Latent Variable Models）找到一些隐变量进行分类。</p>
+<p>主要有四种应用方式：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411300120934.png"></p>
+<p>a：z 产生 x。</p>
+<p>b：x 产生 z。比如 x 是不同书籍，z 是其分类（历史，科幻……）</p>
+<p>c：从 x 中提取 z，比如混频信号分离。</p>
+<p>d：x 转换为 z 后再重建，比如图片 AI 高清化。</p>
+<p>z 需要通过无监督学习找寻。</p>
+<h3 id="自动编码器"><a href="#自动编码器" class="headerlink" title="自动编码器"></a>自动编码器</h3><p>自动编码器（Autoencoders）：一种 x-&gt; z-&gt; x 潜在变量模型。依赖于模型参数 θ：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411302253564.png"></p>
+<p>比如 z 是图片 x 的压缩形式，解压得到 x（可能会有损失）。</p>
+<h4 id="自动编码器训练"><a href="#自动编码器训练" class="headerlink" title="自动编码器训练"></a>自动编码器训练</h4><p>将无监督问题转化为监督问题的一种案例。选定期望输出 x 值或者原始 x 值作为预期结果，这样就可以计算损失了。</p>
+<p>比如：期望加密解密后的输出 x 值和原值相等：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010132334.png"></p>
+<p>下面介绍一些自动编码器的案例：</p>
+<p><strong>主成分分析（Principal Component Analysis (PCA)）</strong>：</p>
+<p>在 AI 课里学过：</p>
+<p><a target="_blank" rel="noopener" href="https://stellaris.graysea.cn/kcl/artificial-intelligence-and-decision-making-6ccs3ain-lv6/note#principle-component-analysis-zhu-cheng-fen-fen-xi">https://stellaris.graysea.cn/kcl/artificial-intelligence-and-decision-making-6ccs3ain-lv6/note#principle-component-analysis-zhu-cheng-fen-fen-xi</a></p>
+<p>对于 D 维度数据可以很好地提取出 M 个特征向量，M &lt; D.</p>
+<p>解码器：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010158780.png"></p>
+<p>这里的 W 就是 θ。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010210022.png"></p>
+<p>编码器：<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010211177.png"></p>
+<p>要去除 inductive bias，就需要从原数据中去掉平均值。</p>
+<p>计算损失的方法：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010213093.png"></p>
+<p>例：USPS Data Set 手写识别数据集，一张图片的维度是 256 维（每个像素点的颜色可能性）。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010233576.png"></p>
+<p>现在我们考虑这样两个 w 作为主成分，具体是什么主成分我不太理解，下图的灰度值只是便于理解的呈现（在 16*16 的矩阵方向上对应每个点的灰度值）：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010234994.png"></p>
+<p>我们用这两个主成分和原 16*16 像素的图片相乘，得到对应两个主成分维度上的所有点的灰度值求和，作图后得到：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010238271.png"></p>
+<p>可以比较明显的看出这两个主成分的选择还是蛮正确的，可以有效将数字 01 分开。</p>
+<p>这样这个例子就有效的把原来的 256 维度转换为 2 维度（当然这个例子 pick 的太简单了，手写识别里的只考虑 01 情况所以才会降维得这么厉害）。</p>
+<p><strong>Neural Autoencoders 神经自动编码器</strong>：</p>
+<p>加密解密都是神经网络模型，使用前后向传播方法。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010241248.png"></p>
+<h3 id="直接生成模型"><a href="#直接生成模型" class="headerlink" title="直接生成模型"></a>直接生成模型</h3><p>Directed Generative Models 一种 z-&gt; x 模型。</p>
+<h4 id="K-聚类算法"><a href="#K-聚类算法" class="headerlink" title="K 聚类算法"></a>K 聚类算法</h4><p>把 n 个 x 数据分配给 k 个聚类（K-means）。z 是分配结果，$$z_{k,n}&#x3D;1$$ 代表第 n 个数据分配给了第 k 簇，$$z_{k,n}&#x3D;0$$  代表不在这个簇里。所有的 z_{k, n} 组成列向量 z。 </p>
+<p>分法本质上是每个簇的中心点离该簇内所有 x 数据点的欧几里得距离和最小。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010252586.png" alt=" "></p>
+<p>但是我们并不知道怎么选质心点。</p>
+<p>所以最开始可以先选择几个 x 点作为质心点，先进行簇分类，然后计算每个簇中所有点的质心。</p>
+<p>再根据新质心，重新分类，直到质心不变为止。</p>
+<p>损失：</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010335392.png" alt=" " style="zoom:50%;" />
+
+<p>例题：注意给定了初始 k 质心了。</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010403368.png" style="zoom:50%;" />
+
+<p>首先给这几个点就近分类：</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010403073.png" alt=" " style="zoom:50%;" />
+
+<p>然后求平均找质心：</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010404051.png" alt=" " style="zoom:50%;" />
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'Ov23li1TkQEYXFu51qLu',
+    clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
+    repo: 'Jingqing3948.github.io',
+    owner: 'Jingqing3948',
+    admin: 'Jingqing3948',
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: true,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+  
+</article>
+    
+    <article
   id="post-北邮国院笔记：Software Engineering 软件工程"
   class="article article-type-post"
   itemscope
@@ -3101,471 +3755,6 @@ void RCC_AHB1PeriphClockCmd(uint32_t RCC_AHB1Periph, FunctionalState NewState)
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RFID/" rel="tag">RFID</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-<div class="gitalk" id="gitalk-container"></div>
-
-<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
-
-
-<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
-
-
-<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
-
-<script type="text/javascript">
-  var gitalk = new Gitalk({
-    clientID: 'Ov23li1TkQEYXFu51qLu',
-    clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
-    repo: 'Jingqing3948.github.io',
-    owner: 'Jingqing3948',
-    admin: 'Jingqing3948',
-    // id: location.pathname,      // Ensure uniqueness and length less than 50
-    id: md5(location.pathname),
-    distractionFreeMode: true,  // Facebook-like distraction free mode
-    pagerDirection: 'last'
-  })
-
-  gitalk.render('gitalk-container')
-</script>
-
-  
-  
-</article>
-    
-    <article
-  id="post-北邮国院笔记：Microprocessor 微处理器"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/07/14/%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E7%AC%94%E8%AE%B0%EF%BC%9AMicroprocessor%20%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8/"
-    >北邮国院笔记：Microprocessor 微处理器</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/07/14/%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E7%AC%94%E8%AE%B0%EF%BC%9AMicroprocessor%20%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8/" class="article-date">
-  <time datetime="2023-07-13T23:00:00.000Z" itemprop="datePublished">2023-07-14</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%82%AE%E9%80%94%EF%BC%88%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0%EF%BC%89/">邮途（北邮国院课内学习）</a> / <a class="article-category-link" href="/categories/%E9%82%AE%E9%80%94%EF%BC%88%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0%EF%BC%89/Lecture/">Lecture</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>主要围绕考试提纲里的所有问题展开，没有拓展内容，Exam oriented Study。</p>
-<p>关注微信公众号：灰海宽松，回复 “微处理器” 可获取本文pdf格式。</p>
-<h1 id="Introduction-随便聊"><a href="#Introduction-随便聊" class="headerlink" title="Introduction-随便聊"></a>Introduction-随便聊</h1><p>嵌入式系统是什么？专用的计算机系统。为专门功能可能对计算机架构，外设等做出一些取舍。</p>
-<p>通常的限制：Cost（比如大量部署传感器节点），Size and weight limits（特定应用场景，比如下水道流量检测系统，需要体积小的节点），Power and energy limits（比如部署在极端环境下，喜马拉雅山顶采集节点，不方便去充电），Environment（防水，防高温等）</p>
-<p>MCU MPU两种嵌入式系统区别：focus on 控制 还是 处理。控制比如点灯，机械臂，电机这些都是。处理比如摄像头采集到的数据进行图像处理。</p>
-<p>编程语言：靠近计算机底层，主要使用汇编和c。</p>
-<p>OS：嵌入式系统里不一定有操作系统结构。操作系统这个东西说白了就是更好地帮助管理计算机资源调度用的。现在我们来分析一下我们lab2的代码主函数：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="comment">//background</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">IRQ_Handler</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="comment">//interrupt handler function, frontground</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>后台部分：一个循环，重复去执行要做的任务。</p>
-<p>这种方法乍一看也没啥问题。但是想想这样的计算机能做什么，只能按顺序执行一遍又一遍所有任务，甚至没法变顺序。</p>
-<p>前台部分：中断处理，我们lab2里的uart_rx_isr函数，一般也用IRQ_Handler（实际上如果对lab2里的uart_rx_isr溯源一下，就会发现其实他也是被IRQ_Handler调用的，这个方法在启动对应中断时，触发中断就会自动调用）。</p>
-<p>前后台合起来的系统还是一个裸机无os系统，只不过加了中断之后允许我们用中断的任务去打断后台轮询，改变一下执行顺序。比如串口中断发个数过来，CPU把手头后台的事情放下，去处理一下前台中断，处理完了再回来。</p>
-<p>我们课程仅限于裸机开发的内容。</p>
-<h1 id="计算机系统简要介绍"><a href="#计算机系统简要介绍" class="headerlink" title="计算机系统简要介绍"></a>计算机系统简要介绍</h1><h2 id="Von-Neumann-Architecture"><a href="#Von-Neumann-Architecture" class="headerlink" title="Von Neumann Architecture"></a>Von Neumann Architecture</h2><p>运算器控制器 (合在CPU中) 存储器 main memory 输入设备输出设备 IO，以及三条传输总线：数据，控制，地址 data bus &#x2F; control bus &#x2F; address bus.</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686650488954.png" alt="1686650488954"></p>
-<p>前面介绍过MPU重点在于数据计算处理，MCU则是控制，因此MPU不需要一些外设去控制外接的组件。</p>
-<h2 id="Harvard-Architecture"><a href="#Harvard-Architecture" class="headerlink" title="Harvard Architecture"></a>Harvard Architecture</h2><p>和冯诺依曼区别就是在于指令和数据分开存储。这样寻指取指取数效率高。</p>
-<h2 id="Stored-Program-Concept"><a href="#Stored-Program-Concept" class="headerlink" title="Stored Program Concept"></a>Stored Program Concept</h2><p>主要两个部分：RAM存储程序和数据，ROM存储不变只读的程序和数据。</p>
-<p>cpu执行指令就是三个步骤的重复执行：fetch decode execute 取指解码执行</p>
-<h2 id="assembly"><a href="#assembly" class="headerlink" title="assembly"></a>assembly</h2><p>如果高级语言相当于人话翻译给计算机，汇编语言相当于计算机语言翻译给我们。更贴近底层，因此运行效率也更高，而且可以直接操作硬件。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ADD r3, r1, r2 	;r3 = r1 + r2</span><br><span class="line">SUB r3, r0, r3 </span><br><span class="line">MOV r2, r1 		;r2 = r1</span><br></pre></td></tr></table></figure>
-
-<p>; 是注释。变量r123是寄存器register，是可以操纵硬件的部分，我们可以通过对其赋值来操作硬件。</p>
-<p>高级语言通过 compiler 翻译为汇编语言，汇编语言通过 assembler翻译为二进制机器语言。</p>
-<h1 id="ARM架构"><a href="#ARM架构" class="headerlink" title="ARM架构"></a>ARM架构</h1><p>ARM是一个指令集，前面讲的几个汇编指令这些都算做指令。</p>
-<p>ARM公司有意思的地方是，他们不做ARM设备，他们只设计指令集架构，然后授权（知识产权核，IP核）给其他半导体厂商做。</p>
-<p>A：application，主打高性能，手机电脑有许多就是ARM架构的。</p>
-<p>R：realtime，主打实时，比如车联网对实时性要求很高。</p>
-<p>M：microcontroller，应用于小型嵌入式系统，我们使用的板子。</p>
-<p>m系列有m0到m7（简单说就是性能逐渐增加？），而且向下兼容即m7兼容m0~m6.</p>
-<h2 id="SoC"><a href="#SoC" class="headerlink" title="SoC"></a>SoC</h2><p>我们的板子上有一个黑色的小芯片，上面写着stm32blabla一串字符。这个就是整个板子的核心，相当于囊括了上文提到的计算机架构的芯片结构，system on chips。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686658267695.png" alt="1686658267695"></p>
-<p>设计soc规则：首先选用IP核，设计ARM处理器，外加一系列存储、IO外设结构，全部集成在黑芯片上。</p>
-<p>ARM处理器 processor 是 architecture 的具体涵盖，多了很多新内容比如定时器。</p>
-<p>我们主要学习m4架构。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686658682835.png" alt="1686658682835"></p>
-<p>只看非optional大概了解即可，处理器核访问代码，数据接口。</p>
-<h2 id="register"><a href="#register" class="headerlink" title="register"></a>register</h2><p>前面我们已经简单介绍了register。事实上如果想对内存中数据做处理，也要先拿到处理器核中的寄存器里做运算，然后返回回去。</p>
-<p>arm register 如下：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686659016141.png" alt="1686659016141"></p>
-<p>通用寄存器：临时变量，可以存储计算数据之类的。</p>
-<p>SP：栈顶指针寄存器，指向栈顶。</p>
-<p>LR：函数返回用，保存返回地址。比如要调用函数了，把PC的值存入LR，然后PC跳转到函数起始位置；函数返回的时候LR的值还给PC。</p>
-<p>PC：指向程序当前执行到的位置（下一个要执行的指令的地址）程序计数器。每条指令取了之后PC自动加一条指令，比如32位指令集PC+&#x3D;4B。</p>
-<p>PSR系列是状态寄存器，指明当前程序状态。比如当前是用户模式还是内核模式？IPSR指明当前是否允许中断？等。</p>
-<p>xPSR包括：</p>
-<ul>
-<li>APSR：计算用，如标志是否进位，结果是否为0，是否为负，是否溢出等。</li>
-<li>IPSR：中断处理相关。</li>
-<li>EPSR：执行相关，指明指令集，中断是否继续等信息。</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686659814546.png" alt="1686659814546"></p>
-<h2 id="Memory-Map"><a href="#Memory-Map" class="headerlink" title="Memory Map"></a>Memory Map</h2><p>m4有4g的内存空间默认映射到一片空间中，用户也可以根据自己喜好修改。有存储代码的code region，存储数据的sram region，存储外设的peripheral region，external ram region，external device region，Internal Private Peripheral Bus (PPB)。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686669411390.png" alt="1686669411390"></p>
-<h2 id="Bit-band-Operations"><a href="#Bit-band-Operations" class="headerlink" title="Bit-band Operations"></a>Bit-band Operations</h2><p>位带操作。</p>
-<p>如果我们要读写32位数据中的某一位，比如第三位（从左往右是31:0，第三位是右边第4个），有的寄存器允许我们直接获取r[3]，但是大多数是不允许直接获取的。</p>
-<p>如何处理？如果写入1，那么r|0000 0000 0000 0000 0000 0000 0000 1000.</p>
-<p>如果写入0，那么 r &amp; 1111 1111 1111 1111 1111 1111 1111 0111.</p>
-<p>读取：看 r &amp; 0000 0000 0000 0000 0000 0000 0000 1000 结果是否为0.</p>
-<p>这样很麻烦，比如我们要给0x2000 0000处的数据第3位写1，详细汇编代码：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230613232342659.png" alt="image-20230613232342659"></p>
-<p>LDR是把后面的数据加载到前面的寄存器中，[R1]是把R1的值当做一个地址，取得其中存储的数据。</p>
-<p>这样挺麻烦的，但是因为有内存映射我们可以直接写入和获取“位带别名地址”中的数据。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230613232721037.png" alt="image-20230613232721037"></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230613232713587.png" alt="image-20230613232713587"></p>
-<p>0x2000 0000处的第0位到第31位分别是：</p>
-<p>0x2200 0000</p>
-<p>0x2200 0004</p>
-<p>0x2200 0008</p>
-<p>0x2200 000c……</p>
-<p>0x2200 007c</p>
-<p>所以直接获取，修改0x2200 000c的数据即可。</p>
-<p>0x2000 0000映射到0x2200 0000是 sram 区域映射，0x4000 0000映射到0x4200 0000是外设 peripheral 区域映射。</p>
-<p>操作更快，指令更少，而且只访问一位更安全，比如刚取出0x2000 0000的32位数据，这时候中断修改了0x2000 0000的数据，这时我们取得的数据就是旧的错误数据了，修改完第3位再写回去，相当于中断白改了。</p>
-<h2 id="Program-Image"><a href="#Program-Image" class="headerlink" title="Program Image"></a>Program Image</h2><p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686670722574.png" alt="1686670722574"></p>
-<p>vector：向量表，存储比如main堆栈的地址（MSP），异常的地址等信息。</p>
-<p>start-up：板子上电或rst时的启动代码。</p>
-<p>program code：我们烧进去的程序代码。</p>
-<p>c lib code：库函数代码。</p>
-<p>复位时，先读取 msp 地址找到 main 在哪。然后读取 reset vector 执行 BIOS 初始化代码，再开始读取第一条，第二条指令……</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686670972039.png" alt="1686670972039"></p>
-<h2 id="Endianness"><a href="#Endianness" class="headerlink" title="Endianness"></a>Endianness</h2><p>两种存储规范。</p>
-<p>比如十进制数字，1234，一千二百三十四。然后我们记录到数据库中，地址从低到高存储为4321，权值大的位1存在地址最高处，这就是大端存储 Big endian。否则，权值大的位存在地址低处，1234地址从低到高，就是小端存储 Little endian。m4两种方法都支持。</p>
-<blockquote>
-<p>术语“little endian(小端)”和“big endian(大端)”出自Jonathan Swift的《格列佛游记》（Gulliver’s Trabels）一书，其中交战的两个派别无法就应该从哪一端（小端还是大端）打开一个半熟的鸡蛋达成一致。</p>
-<p>一下是Jonathan Swift在1726年关于大小端之争历史的描述：</p>
-<p><em>“……下面要告诉你的是，Lilliput和Blefuscu这两大强国在过去36个月里一直在苦战。战争开始是由于以下的原因：我们大家都认为，吃鸡蛋前，原始的方法是打破鸡蛋较大的一端，可是当今皇帝的祖父小时候吃鸡蛋，一次按古法打鸡蛋是碰巧将一个手指弄破了，因此他的父亲，当时的皇帝，就下了一道敕令，命令全体臣民吃鸡蛋时打破鸡蛋较小的一端，违令者重罚。老百姓们对这项命令极为反感。历史告诉我们，由此曾发生过六次叛乱，其中一个皇帝送了命，另一个丢了王位。这些叛乱大多都是由Blefuscu的国王大臣们煽动起来的。叛乱平息后，流亡的人总是逃到那个帝国去寻救避难。据估计，先后几次有11000人情愿受死也不肯去打破鸡蛋较小的一端。关于这一争端，曾出版过几百本大部著作，不过大端派的书一直是受禁的，法律也规定该派的任何人不得做官。”（此段译文摘自网上蒋剑锋译的 《格列佛游记》第一卷第4章。）</em></p>
-<p>在他那个时代，Swift是在讽刺英国（Lilliput）和法国（Blefuscu）之间的持续的冲突。Danny Cohen，一位网络协议的早期开创者，第一次使用这两个术语来指代字节顺序，后来这个术语被广泛接纳了.</p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/316347205">大端、小端基础知识 - 知乎 (zhihu.com)</a></p>
-</blockquote>
-<h2 id="Instruction-Set"><a href="#Instruction-Set" class="headerlink" title="Instruction Set"></a>Instruction Set</h2><p>指令集。早期arm指令集32位，性能好能实现的功能强大。但是太长了处理效率低。</p>
-<p>thumb-1 指令集16位，处理效率高了，性能也降了。早期arm架构如果是支持两种指令集的，就要频繁切换模式，效率低。</p>
-<p>后来thumb-2指令集包含早期16位和新的32位，和arm指令集的混合指令集性能没减太多，代码量和处理效率还高了。</p>
-<h1 id="Assembly"><a href="#Assembly" class="headerlink" title="Assembly"></a>Assembly</h1><p>汇编语法。</p>
-<h2 id="顺序结构"><a href="#顺序结构" class="headerlink" title="顺序结构"></a>顺序结构</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">label							; 可省略，用于跳转到此位置</span><br><span class="line">	助记符 operand1, operand2, … ; Comments</span><br><span class="line">	</span><br><span class="line">MOV r1, #0x01					; 数据0x01放入r1</span><br><span class="line">MOV r1, #&#x27;A&#x27;					; 数据A的ascii码放入r1</span><br><span class="line">MOV R0, R1 						; move R1 into R0</span><br><span class="line">MOVS R0, R1 					; move R1 into R0, 并且更新APSR的状态</span><br><span class="line"></span><br><span class="line">LDR R1, [R0]					; R0存的是一个地址值如0x2000 0000, 这个指令是取出R0代表的地址中的数据存入R1</span><br><span class="line">STR R1, [R0]					; 写回去</span><br><span class="line">LDR R0, =0x12345678 			; Set R0 to 0x12345678</span><br><span class="line">; 等效于：</span><br><span class="line">; LDR R0, [PC, #offset] </span><br><span class="line">; ...</span><br><span class="line">; DCD 0x12345678</span><br><span class="line">; 也就是先在文档末尾的一条指令里写入数据0x12345678，然后编译器自动计算PC+多少offset到达DCD的位置，把其值返给R0</span><br><span class="line">; DCD是声明一个字 32bit，DCB是声明一个Byte</span><br><span class="line">; 如果多个数值的声明可以用标签声明</span><br><span class="line">LDR R3, =MY_NUMBER</span><br><span class="line"></span><br><span class="line">ALIGN 4 ; 字要先用这个声明，代表停止长度</span><br><span class="line">MY_NUMBER DCD 0x2000ABCC</span><br><span class="line">HELLO_TEXT DCB “Hello\n”, 0 ; Null terminated string</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">LDRB R1, [R0]					; B: 只写8位，就是说R0地址处的数据写入R1后，R1高24位清零</span><br><span class="line">SDRH R1, [R0]					; H: 只写16位</span><br><span class="line"></span><br><span class="line">LDRSH R1, [R0]					; 视作signed有符号数，写16位</span><br><span class="line"></span><br><span class="line">LDRB R0, [R1, #0x3]				; 从R1+3读取一个字节给R0</span><br><span class="line">LDR R3, [R0, R2, LSL #2]		; 从R0+（R2&lt;&lt;2)读取一个字节给R3</span><br><span class="line">LDR R0, [R1], #4				; 赋完值后，令R1=R1+4</span><br><span class="line"></span><br><span class="line">ADD R0, R0, R1</span><br><span class="line">ADDS R0, R0, R1					; 加完更新APSR状态，比如有溢出或者进位则更新</span><br><span class="line">ADC R0, R1, R2					; R1+R2还要+APSR的carry位</span><br><span class="line"></span><br><span class="line">; SUB SBC类似</span><br><span class="line"></span><br><span class="line">MUL R0, R1, R2</span><br><span class="line">UDIV R0, R1, R2</span><br><span class="line">SDIV R0, R1, R2					; signed</span><br></pre></td></tr></table></figure>
-
-<p>例题：应该是因为有可能减成负的所以signed</p>
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686672985123.png" alt="1686672985123" style="zoom:50%;" />
-
-<p>指令有1字长，半字长的。hw1是指明功能用的，hw2是一些拓展比如立即数。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686713591015.png" alt="1686713591015"></p>
-<p>地址从低到高分别是：4F F0 0A 00 0A 68 10 44……</p>
-<p>PC每次取到半个字 hw，就+2B跳转到下一个hw。</p>
-<h2 id="选择结构"><a href="#选择结构" class="headerlink" title="选择结构"></a>选择结构</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">	CMP R0, R1						; 相当于if，比较后更新APSR。EQ= LT&lt; GT&gt; LE&lt;= GE &gt;=</span><br><span class="line">	BEQ BRANCH_1					; B是跳转，BL是跳转到函数执行完后返回，BX是根据地址最低位判断目标地址是arm还是thumb在决定跳转到整字还是半字。bx操作数不能是立即数，必须是寄存器</span><br><span class="line">	B BRANCH_2</span><br><span class="line">	</span><br><span class="line">BRANCH_1</span><br><span class="line">	...</span><br><span class="line">	B IFEND							; 不写这个就继续执行BRANCH_2了，像switch的break</span><br><span class="line">BRANCH_2</span><br><span class="line">	...</span><br><span class="line">B IFEND</span><br></pre></td></tr></table></figure>
-
-<h2 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">WHILE_BEGIN </span><br><span class="line">	UDIV R2, R0, R1 ; R2 = n / x</span><br><span class="line">	MUL R3, R2, R1 ; R3 = R2 * x</span><br><span class="line">	CMP R0, R3 ; n == (n / x) * x</span><br><span class="line">	BEQ WHILE_END</span><br><span class="line">	SUBS R1, R1, #1 ; x--</span><br><span class="line">	B WHILE_BEGIN ; loop back</span><br><span class="line">WHILE_END</span><br></pre></td></tr></table></figure>
-
-<h2 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h2><p>内存中有一片内存空间类似栈的数据结构。SP指针指向栈顶。</p>
-<p>这个栈地址是从高到低的，也就是存入数据 SP–，取出数据 SP++，类似一个翻转过来的，倒着的书堆。</p>
-<p>满堆栈：sp指针指向最后一个栈顶数据。</p>
-<p>空堆栈：指向最后一个数据的下一个要放入数据的空位置。</p>
-<p>我们的课程中使用空堆栈，指向下一个空位置，存数据就先存入再SP-4，取数据就先SP+4再出栈。不过这两条指令都不需要我们手动执行，有专门的指令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PUSH &#123;R0, R4-R7&#125; 	; Push r0, r4, r5, r6, r7</span><br><span class="line">POP &#123;R2-R3, R5&#125; 	; Pop to r2, r3, r5。入栈出栈顺序不是按照书写顺序而是自动根据寄存器地址，高地址值给高地址寄存器</span><br></pre></td></tr></table></figure>
-
-<p>存入5个数据和取出3个数据。</p>
-<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><p>BL先保存当前PC值到LR，然后PC跳转到函数地址，</p>
-<p>BX LR跳转到LR中的地址用于函数返回。</p>
-<p>Architecture Procedure Call Standard (AAPCS) ：规范定义哪些寄存器主函数和函数通用，哪些是独有的。</p>
-<p>arm AAPCS规定：r0-r3是通用寄存器（类似全局变量），但main和函数的R4 – R8, R10-R11不通用（类似临时变量，到了函数里这些值就变了，不是原函数的），要压入栈保存。函数调用和返回的时候要保存和恢复通用寄存器值。这些由调用原函数的子函数 callee-procedure 执行。</p>
-<p>简单的参数的函数调用：传参给R0-R3作为函数参数，R4-R11压入栈，然后跳转到函数处。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686733381292.png" alt="1686733381292"></p>
-<h2 id="Program-Memory-Use"><a href="#Program-Memory-Use" class="headerlink" title="Program Memory Use"></a>Program Memory Use</h2><p>ROM里都是只读数据，比如常量常数。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686733480351.png" alt="1686733480351"></p>
-<h2 id="const-static-volatile"><a href="#const-static-volatile" class="headerlink" title="const, static, volatile"></a>const, static, volatile</h2><p>貌似是不会过多涉及具体代码实现的部分，就先简单介绍一下了。</p>
-<p>const 就是定义常量变量，定义后无法再次修改。</p>
-<p>static 通常定义静态函数，静态函数里的值是通用的，也就是每次调用该函数其值都是接着上次调用该函数的值继续。</p>
-<p>volatile：一个在嵌入式里挺重要的东西，软考题里出现过几次。大概就是禁止编译器优化该变量来防止不必要的错误。</p>
-<p>比如编译器优化num变量，这样每次修改num变量的值的时候都不会立刻写入内存中，可能会先把修改时的值写入寄存器，函数返回时写回内存。</p>
-<p>现在比如我们在main中num+&#x3D;5, 修改值后的num暂时存在寄存器里。然后我们调用中断，从内存中读取当前num的值并+1.但是内存中值还没改，还是原值。返回后，main再把自己手中的num值写回内存，最后内存中num值只+5，而不是我们期望的+6.</p>
-<p>volatile 声明后的变量不会做这样的优化，值改变了就立刻写回内存，虽然可能效率低但是安全。</p>
-<h1 id="Interrupts"><a href="#Interrupts" class="headerlink" title="Interrupts"></a>Interrupts</h1><p>比如我们程序的逻辑是按键按下的时候点亮小灯。第一种做法是 Polling 轮询，一直看：按键按下了吗？没有。按下了吗？没。按下了吗？……</p>
-<p>这样主要是效率低浪费CPU资源，如果为了节约资源轮询间隔大了，又不能及时响应。</p>
-<p>中断允许CPU专心处理background的事情，触发中断的时候先放下后台处理前台。对于无os的裸机也能实现简单的多线程切换。</p>
-<h2 id="异常处理流程"><a href="#异常处理流程" class="headerlink" title="异常处理流程"></a>异常处理流程</h2><ol>
-<li><p>结束当前正在执行的指令。</p>
-</li>
-<li><p>当前模式寄存器值压栈保存。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230614171134845.png" alt="image-20230614171134845"></p>
-</li>
-<li><p>切换模式。</p>
-</li>
-<li><p>PC LR更新（根据异常处理器提供的值）。PC去查中断向量表，看要跳到哪里，EXC_RETURN Code赋值给LR。</p>
-</li>
-<li><p>更新IPSR状态。</p>
-</li>
-<li><p>开始执行异常代码。</p>
-</li>
-<li><p>退出，BX LR把 EXC_RETURN Code 值返回给PC。</p>
-</li>
-<li><p>出栈。</p>
-</li>
-</ol>
-<h2 id="Timing"><a href="#Timing" class="headerlink" title="Timing"></a>Timing</h2><p>中断执行也是耗时的，需要一定的时间保存源程序状态，执行中断，恢复。</p>
-<p>FMax_Int：最大中断执行频率，即：单位时间内最多执行几次中断。</p>
-<p>F_CPU：CPU频率，即：单位时间内CPU有多少次指令周期。</p>
-<p>C_ISR：执行中断内容需要多少周期。</p>
-<p>C_Overhd：中断保存、恢复数据等准备工作用多少周期。</p>
-<p>中断一次执行所需周期：C_Overhd+C_ISR</p>
-<p>因此， $F_{Max_Int&#x3D;}F_{CPU}&#x2F;(C_{ISR}+C_{Overhd})$</p>
-<p>U_int：中断处理实际消耗的利用率，上面那个毕竟是最大值。</p>
-<p>$U_{int}&#x3D;F_{Int}&#x2F;F_{Max_Int}$</p>
-<p>中断执行速度（和频率一样）：F_Int</p>
-<p>非中断执行速度：(1-U_Int)*F_Int</p>
-<h1 id="GPIO"><a href="#GPIO" class="headerlink" title="GPIO"></a>GPIO</h1><p>General Purpose Input Output, </p>
-<h2 id="Memory-Mapped-IO"><a href="#Memory-Mapped-IO" class="headerlink" title="Memory-Mapped IO"></a>Memory-Mapped IO</h2><p>把设备，控制等寄存器映射到内存里。好处就是访问设备方式和内存一样，也不用设计复杂的IO电路，便捷；缺点在于占用了内存空间。</p>
-<h2 id="Peripheral-Mapped-IO"><a href="#Peripheral-Mapped-IO" class="headerlink" title="Peripheral-Mapped IO"></a>Peripheral-Mapped IO</h2><p>IO有一块专门的存储区域，和内存不一样，也有专门的不同的电路指令去访问IO。好处就是节省内存空间，也能清晰的知道什么时候发生IO了；缺点在于开发、设计上的造价增加。</p>
-<h2 id="GPIO-1"><a href="#GPIO-1" class="headerlink" title="GPIO"></a>GPIO</h2><p>通用IO可以判断引脚高低电平，可以给引脚赋值高低电平进行控制。</p>
-<p>stm32有几组GPIO，每个有16个Pin，可以配置为input output pullin pullup等模式，以及定时器、串口、中断等功能。</p>
-<p>什么是上下拉模式？如果不设置为上下拉，引脚浮空的时候（没有设置输入为高或低电平的时候）浮空引脚可能收到电磁波干扰等等问题导致输入状态不确定，有0有1的，容易造成错误。</p>
-<p>下拉：三极管控制默认接地，无输入的时候默认低电平。</p>
-<p>上拉：三极管控制默认接Vdd 芯片工作电压。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686742220470.png" alt="1686742220470"></p>
-<p>大多数引脚是这两个功能都有的，我们初始化GPIO的时候选用一个，寄存器根据值控制接通相应电路。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230614193552367.png" alt="image-20230614193552367"></p>
-<p>输入输出信号真的可以被称为“信号”。输入规定为0-0.5视作低电平，0.5-Vdd视作高电平，范围以外的值无效。输出电流也只有5mA左右是没有能力直接驱动一些设备的，我们可以通过一些电路比如三极管，放大器等，电路接收到信号得知”需要输出驱动电流了“然后输出大电流。</p>
-<h2 id="Control"><a href="#Control" class="headerlink" title="Control"></a>Control</h2><p>每个GPIO口有：</p>
-<p>4 * 32bit configuration registers: 配置相关信息，比如in&#x2F;out，上啦下拉，开漏输出或推挽输出，输出频率等。</p>
-<ul>
-<li>推挽输出 push-pull：能输出高低电平。</li>
-<li>开漏输出 open-drain：没有能力输出高电平，想输出高电平需要设置上拉电路来输出。</li>
-</ul>
-<p>2 * 32bit data registers: 输入输出数据寄存器。</p>
-<p>1 * 32bit set&#x2F;reset registers: 设置或复位寄存器。</p>
-<p>1 * 32bit locking registers: 锁定寄存器。</p>
-<p>2 * 32bit alternate function selection register.</p>
-<h3 id="Mode"><a href="#Mode" class="headerlink" title="Mode"></a>Mode</h3><p>如图，32个Pin，每个两位来设置4种模式（in out 可选 模拟）。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686743308300.png" alt="1686743308300"></p>
-<h3 id="Pull"><a href="#Pull" class="headerlink" title="Pull"></a>Pull</h3><p>只有3种模式（无pull，上拉，下拉）。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686743360055.png" alt="1686743360055"></p>
-<h3 id="data"><a href="#data" class="headerlink" title="data"></a>data</h3><p>输入输出数据寄存器分开的。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686743538223.png" alt="1686743538223"></p>
-<h2 id="CMSIS"><a href="#CMSIS" class="headerlink" title="CMSIS"></a>CMSIS</h2><p>先说一下考试定义：</p>
-<p>CMSIS transforms memory mapped registers  into C structs </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> PORT0 ((struct PORT*)0x2000030)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686747214412.png" alt="1686747214412"></p>
-<p>再说一下和一些嵌入式前辈讨论的理解，以下内容不许考试写：</p>
-<blockquote>
-<p>李肯老师：arm-M推出的一系列API和软件组件，包括核心功能、DSP库、RTOS支持和调试接口等。</p>
-<p>李肯老师：如果芯片厂不想再多一层，CMSIS就够用；但有的厂商会再在上面封一层，可能叫driver层。</p>
-<p>李肯老师：另外CMSIS有个限定，就是ARM的ARM Cortex-M处理器；虽然它很常见，但并不是所有的处理器都是这个内核；这个需要注意。</p>
-<p>榊：这种与内核相关的文件，比如启动文件，内核文件是CMSIS规定。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/a6953d9ebb72f2ecd6cc4dbf569d406.png" alt="a6953d9ebb72f2ecd6cc4dbf569d406"></p>
-<p>榊：对比STM32F103和GD32E23的启动文件，我们会发现是一样的：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/711dd8daa73cb3dd198e50f32f6f86a.png" alt="711dd8daa73cb3dd198e50f32f6f86a"></p>
-<p>榊：而芯片厂商要做的是根据这个arm规定的接口二次开发库函数。</p>
-</blockquote>
-<p>李肯老师c站账号：<a target="_blank" rel="noopener" href="https://blog.csdn.net/szullc">架构师李肯的博客_CSDN博客-程序人生,粉丝福利领域博主</a></p>
-<p>榊老师c站账号：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_63922192">风正豪的博客_CSDN博客-C语言,MSP430F5529,Linux领域博主</a></p>
-<p>平时李肯老师的交流群会讨论很多嵌入式相关问题，欢迎有兴趣的同学来学习[Doge]</p>
-<p>以上内容感兴趣的看个乐呵。</p>
-<p>例：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">enum</span> &#123;</span></span><br><span class="line">Reset, <span class="comment">//!&lt; Resets the pin-mode to the default value.</span></span><br><span class="line">Input, <span class="comment">//!&lt; Sets the pin as an input with no pull-up or pull-down.</span></span><br><span class="line">Output, <span class="comment">//!&lt; Sets the pin as a low impedance output.</span></span><br><span class="line">PullUp, <span class="comment">//!&lt; Enables the internal pull-up resistor and sets as input.</span></span><br><span class="line">PullDown <span class="comment">//!&lt; Enables the internal pull-down resistor and sets as input.</span></span><br><span class="line">&#125; PinMode;</span><br><span class="line"></span><br><span class="line">gpio_set_mode(P1_10, Input);</span><br><span class="line">gpio_set_mode(P2_8, Output);</span><br><span class="line"><span class="type">int</span> PBstatus=gpio_get(P1_10); </span><br><span class="line">gpio_set(P2_8, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-
-<p>以上代码是老师提供的driver，大意就是选定pin，传入特定参数，即可设置模式，设置输出。</p>
-<p>感兴趣可以看看我的这篇文章，如果使用arm定义的cmsis直接去开发也是可以的：</p>
-<p><a target="_blank" rel="noopener" href="https://jingqing3948.blog.csdn.net/article/details/130299783">STM32 学习笔记_4 GPIO：LED，蜂鸣器，按键，传感器的使用_灰海宽松的博客-CSDN博客</a></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">    <span class="comment">/* 控制gpio需要三个步骤：开启rcc时钟，初始化，输入输出函数控制 */</span></span><br><span class="line">    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);</span><br><span class="line">    </span><br><span class="line">    GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">    GPIO_InitStructure.GPIO_Mode=GPIO_Mode_Out_PP;</span><br><span class="line">    GPIO_InitStructure.GPIO_Pin=GPIO_Pin_0;</span><br><span class="line">    GPIO_InitStructure.GPIO_Speed=GPIO_Speed_50MHz;</span><br><span class="line">    GPIO_Init(GPIOA, &amp;GPIO_InitStructure);</span><br><span class="line">    </span><br><span class="line">    GPIO_SetBits(GPIOA,GPIO_Pin_0);</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>drivers二次开发，可以帮助简化。</p>
-<p>当然这一段都是题外话了。考试就理解为“cmsis是变量宏定义直接映射到寄存器上；drivers是对其添加进一步行为”即可。</p>
-<h1 id="Serial-Communication"><a href="#Serial-Communication" class="headerlink" title="Serial Communication"></a>Serial Communication</h1><p>串口通信，一种发送消息的通信方式。</p>
-<p>串，指的是发数据的方式：一位一位串行发，并行是可能有多路通道，每路同时发一个数据，多路同时到达。</p>
-<p>串口通信有单工 Simplex，半双工 Half Duplex，全双工 Full Duplex。</p>
-<p>两种传输方式：同步 Synchronous，共用一个时钟；异步 Asynchronous，有各自的时钟。</p>
-<p>同步很简单，发送方接收方比如都规定时钟信号下降沿收发。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686749582568.png" alt="1686749582568"></p>
-<p>异步：需要通过异步通讯协议 Asynchronous Comm. Protocol 来协调。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686749956698.png" alt="1686749956698"></p>
-<p>1位起始位标志开始传输，7&#x2F;8&#x2F;9位数据位，1位可选奇偶校验位，1位停止位。</p>
-<p>RT两方需要有相同的波特率。</p>
-<p>当然这只是最简单的串口通信因为只有双方。如果更多方通信我们需要校验地址来判断是哪个发给哪个；数据需要更复杂的校验方式。</p>
-<p>异步通信不需要同步时钟之类电路，开销小，但是开发起来难度大一些因为需要起始结束位啥的。</p>
-<h2 id="RS232"><a href="#RS232" class="headerlink" title="RS232"></a>RS232</h2><p>异步通信，Reversed Polarity 标准电压（-3<del>-15是1,3</del>15是0.还有一些其他标准比如TTL是+5为1，-5为0.）</p>
-<p>发送数据有两种类型，ascii码和二进制，都得转化为二进制传输。</p>
-<h2 id="uart"><a href="#uart" class="headerlink" title="uart"></a>uart</h2><p>针对stm32f401.</p>
-<p>全双工异步串口。</p>
-<p>为了处理RT缓冲数据（因为发收数据需要时间）我们可以通过缓冲区数组，头指针表示已经发到的位置，尾指针表示要发的数据的结尾。增加新数据，尾指针++；发一个数据，头指针++直到碰到尾。</p>
-<p>原来发送方一直是发高电平，start frame 起始帧是1帧低电平来表示开始发数据了。</p>
-<p>如何判断是1帧低电平？通过在这一帧里多次采样判断是不是真的是一帧低电平。</p>
-<p>为什么多次采样？因为异步两个信号有一定的偏移，多次采样准，能确定是不是真的一整帧都低电平。</p>
-<p>采样是有一定采样率的，不是说真的能像模拟信号一样一直采。</p>
-<p>采样率 oversampling&#x3D;16: 这个是最大可以达到的采样频率而不是真的一帧采了16次。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686756691253.png" alt="1686756691253"></p>
-<p>接收方首先第一次检测到0位，开始怀疑：有可能是串口有消息。这是start frame的第一次采样。</p>
-<p>然后每隔一帧检测一次，3 5 7检测3次，如果2个都是0，说明确实有可能。</p>
-<p>然后连着检测8910，如果还是2个0，说明确实是start frame。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686756881390.png" alt="1686756881390"></p>
-<p>8采样率因为采样间隔长了，更容易碰到左右边界的高电平，所以容错率低。但是速度更快。</p>
-<h2 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h2><p>波特率计算：</p>
-<p>$T_x&#x2F;R_x(baud)&#x3D;\frac{f_{PCLK}}{8*(2-OVER8)*USARTDIV}$</p>
-<p>OVER8是过采样率，fPCLK是时钟频率。</p>
-<p>USARTDIV是一个浮点数</p>
-<p>USARTDIV浮点数怎么存储？通过算法转化为十六进制。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686759124660.png" alt="1686759124660"></p>
-<p>小数部分用一个16进制位表示，比如例1是C也就是12，转换后即为12&#x2F;16也就是0.75.</p>
-<p>例2转换为一位16进制，就是0.62*16约等于10也就是A。</p>
-<p>整数部分直接转换十六进制即可，例2的25转为19，例1的27转为1B。</p>
-<p>然后整数小数部分拼接起来（最多3个整数位，1个小数位，32位寄存器）。</p>
-<h1 id="Timer"><a href="#Timer" class="headerlink" title="Timer"></a>Timer</h1><p>想让程序定时运行，比如led 1s闪烁一次。如何做到？</p>
-<p>第一种方法是愚蠢的delay延时，我自己估算一下：嗯，delay(2000)差不多1s。然后在程序中delay，点亮，delay，熄灭……</p>
-<p>太浪费资源了。</p>
-<p>第二种方法，32是有定时器中断的。</p>
-<p>定时器中断大概原理是，32上有时钟晶振按固定频率周期输出0101010……定时器里有一个cnt，收到一个时钟晶振就++。</p>
-<p>我们可以设置定时器溢出值，比如溢出值是1000，cnt加到1000会自动触发定时器中断。然后归0，继续++。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230615014136641.png" alt="image-20230615014136641"></p>
-<p>执行周期数量：1+1+1+1+(0xFFFFFFFF一直-1-1-1直到变为0x00FFFFFF的循环次数)+(r0+1的执行次数，1次)</p>
-<p>定时器也有一些扩展方法，比如我们可以设定++还是–；可以设定信号源是时钟或者外部输入的方波信号；可以读取计数值……</p>
-<p><strong>我们课件常用方法好像是–到0触发中断，然后恢复初值。</strong></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686764952191.png" alt="1686764952191"></p>
-<h2 id="PWM"><a href="#PWM" class="headerlink" title="PWM"></a>PWM</h2><p>PWM这个东西是什么？</p>
-<p>PWM（Pulse Width Modulation）脉冲宽度调制，在具有惯性的系统中，可以通过对一系列脉冲的宽度进行调制，来等效地获得所需要的模拟参量，常应用于电机控速等领域。</p>
-<p>就好比说，你骑自行车速度只能是100和0，模拟电信号只能输出高低。</p>
-<p>但是呢，你骑自行车是有惯性的，以100速度蹬一脚，以0速度蹬1脚，100速度蹬一脚……</p>
-<p>整体来看你的自行车平均速度是50（我们假设加速度不需要时间哈）</p>
-<p>这个应用场景有很多，比如设定led闪烁频率：高低高低高低……，因为频率极高，我们肉眼看不出来在闪，给我们呈现的视觉效果就是以一半的亮度在亮。高低低高低低就是1&#x2F;3亮度。</p>
-<p>比如电机通过这个方式调速度。</p>
-<p>那么他有什么应用场景。第一，输入捕获 Input capture。</p>
-<p>对于一个这种有惯性的系统，我们也可以反过来读取其波形来判断其速度。比如电机放一个转速检测传感器，把输入波形作为定时器的时钟源信号，定时器一直++：检测上升下降沿时记录cnt值，通过差值比较计算时间间隔。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230615020829378.png" alt="image-20230615020829378"></p>
-<p>第二，输出比较 output compare。</p>
-<p>定时器一直++，与预先设定好的阈值比较，如果相等触发中断输出。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686767856060.png" alt="1686767856060"></p>
-<p>这就是PWM。占空比相当好算。</p>
-<h2 id="Low-Power-Timer"><a href="#Low-Power-Timer" class="headerlink" title="Low Power Timer"></a>Low Power Timer</h2><p>我们目前假设的是CPU一直运作的，只是在后台和前台之间切换。有一种低功耗定时器使得没有发生定时器中断的时候CPU被置为低功耗状态，只有发生定时器中断的时候才启动。（使用 __WFI() wait for instruction 指令）</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230621235021294.png" alt="image-20230621235021294"></p>
-<h2 id="SysTick"><a href="#SysTick" class="headerlink" title="SysTick"></a>SysTick</h2><p>M系列自带的一个系统时钟，使用处理器时钟或者参考时钟作为时钟源。</p>
-<p>有四位寄存器：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230621235527699.png" alt="image-20230621235527699"></p>
-<p>每次赋值是load，一直–到0时重新load赋值。ctrl是控制启用系统时钟。这个是CMSIS有提供的数据结构和相关操作函数的时钟处理部分。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230621235805628.png" alt="image-20230621235805628"></p>
-<p>init 参数是中断间隔的毫秒数。timer_set_callback() 里跟一个可以是自己定义的函数，使得触发定时器中断时该函数被执行。以上代码意思是每隔100ms LED灯翻转一次，且 CPU 常态下处于低功耗状态。</p>
-<h1 id="I2C"><a href="#I2C" class="headerlink" title="I2C"></a>I2C</h1><p>连接多个模块的传输方案：I2C，使用两根总线。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622000302459.png" alt="image-20230622000302459"></p>
-<p>两根总线分别是时钟总线 SCL 和数据总线 SDA。</p>
-<h2 id="通信过程"><a href="#通信过程" class="headerlink" title="通信过程"></a>通信过程</h2><p>现在我们串一遍I2C上一个模块（master）要给另一个模块（slave）发消息的过程。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1687363434463.png" alt="1687363434463"></p>
-<ol>
-<li>MCU 使用一定的方法标识自己开始传输了。</li>
-<li>MCU 发送 LCD slave 的地址+一位读写位，其他模块接收到发现地址不是自己的，就不做处理。</li>
-<li>LCD 接收到后知道目标是自己，于是返回 ack。</li>
-<li>MCU 收到 ACK 后发送一帧数据。</li>
-<li>发送完 MCU 等着 ACK，收到 ACK 后继续发送下一帧数据。</li>
-<li>一直发送到发送停止位 stop 结束。</li>
-</ol>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622000920336.png" alt="image-20230622000920336"></p>
-<p>数据长度可以设置，比如789.</p>
-<p>总线上的器件是开漏输出的半双工通信。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713135505107.png" alt="image-20230713135505107"></p>
-<p>默认总线是上拉电阻拉成高电平。</p>
-<p>当器件输出 out 为低电平时，总线导通到接地，总线被拉低（整条总线都被拉低）。江协科技老师举的例子很好，就像公交车上的一根横杆，有人拉住横杆拽下来，整条横杆都被拉低了，其他人都知道“横杆被一个人拉低了，说明有人正在使用总线”。</p>
-<p>然后是总线传输数据的方式，SCL SDA 两根总线在何种情况下表示 start stop 0 1 bit? </p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713140225426.png" alt="image-20230713140225426"></p>
-<p>首先都是 SCL 为高电平时 SDA 的数值才有意义。</p>
-<p>SDA 从高到低，表示 start 位。从低到高，表示 stop 位。</p>
-<p>start 位后，SDA 高电平表示1，低电平表示0.</p>
-<p>发送完 1byte 数据后，总线保持拉高状态。如果接收方把总线拉低了，发送方发现总线1→0了（不是发送方自己拉的，是接收方给他拉下来的，但是发送方能察觉到），说明接收方成功接收了并且拉了拉总线以示“收到”。如果 SDA 还是保持在高电平，说明接收方没有成功收到或者成功发送 ACK。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713140822834.png" alt="image-20230713140822834"></p>
-<h2 id="问题处理"><a href="#问题处理" class="headerlink" title="问题处理"></a>问题处理</h2><p>I2C 是一种很简单的主从通信协议了，但是局限性也很多，比如7 bit 的地址线只允许 2^7 个设备；一次顶多两个设备主从通信；一个设备的快慢会影响到整条总线的通信等。</p>
-<p>问题1：从设备处理速度太慢了，赶不及在下一个时钟周期接收新数据帧怎么办？</p>
-<p>方法：clock stretching, 拉低一段时间 SCL 假装下一个时钟周期还没到。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713141906054.png" alt="image-20230713141906054"></p>
-<p>问题2：多个设备同时发数据冲突了怎么办？</p>
-<p>方法：Bus Aribitation，前面我们知道总线被一个设备拉低了，所有设备都能接收到总线拉低的信号。因此如果两个设备同时开始发信息，前面数据一致都无所谓，等到第一次数据不一致的时候，一个设备发送数据0，一个发送数据1，这时 SDA 总线被 DATA2 的0拉低了。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713142029471.png" alt="image-20230713142029471"></p>
-<p>发送 DATA1 数据的设备就明白了：有人同时在和我一起发数据，因此总线不是我预期的1而是被他拉低为0了。那我 quit，你发吧。然后就只有 DATA2 发送的数据了。</p>
-<p>问题3：以上发送的数据每次都是 1byte 8bits 很正好。那如果要发送的地址不是 8bits 呢？</p>
-<p>方法：少于 8bits 用一些固定的额外的 start 位填充，多于 8bits 的地址用两个 bytes，不够的也是用额外的 start 位填充。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713143052018.png" alt="image-20230713143052018"></p>
-<p>问题3：如果我 master 发完数据，想紧接着再收数据，变成 slave，可行吗？</p>
-<p>方法：通过一个 sr 信号，也就是 repeat start 重发 start 位，来标识自己是 read 而不再是 write 了重新开始通信。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713143601570.png" alt="image-20230713143601570"></p>
-<h2 id="编址格式"><a href="#编址格式" class="headerlink" title="编址格式"></a>编址格式</h2><p>slave 地址编址有一些固定格式。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713143744619.png" alt="image-20230713143744619"></p>
-<p>0000 000 0：广播，对所有 slave 结点讲话。如果 slave 无视（NACK），就不会参与广播。如果返回 ACK 就参与进来了。不过多个 slave 都返回 ACK 的话 master 是不知道都有谁回应了的。</p>
-<p>第二个 byte 发送一些行为相关，比如：start，clear，reset software</p>
-<h2 id="编程应用"><a href="#编程应用" class="headerlink" title="编程应用"></a>编程应用</h2><p>slave mode: </p>
-<ul>
-<li>I2C 设备默认工作在 slave mode。</li>
-<li>外设时钟在 I2C_CR2 寄存器中编程。频率介于 2kHz~100kHz。</li>
-<li>硬件自动等待发过来的 start 和 addr 信息。</li>
-<li>如果 addr 信息和  OAR1 中存储的地址相同，说明目标是自己。如果 ACK 位为1，则发送 ack pulse。</li>
-<li>设置 ADDR 位，1表示匹配。</li>
-<li>如果 ITEVFEN 就是中断事件 flag 为1，则生成中断。</li>
-<li>TRA 位标明 slave 是 R 还是 T 模式（收 or 发）。</li>
-<li>BTF 位标识收没收完。</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1689255491311.png" alt="1689255491311"></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713214410998.png" alt="image-20230713214410998"></p>
-<p>这么说起来还是有点混乱 I2C 到底经历了哪些才顺利发送了数据？</p>
-<p>首先，从主模式的概念。master 主模式驱动时钟信号，发起传输；slave 从模式响应传输。</p>
-<h2 id="主模式"><a href="#主模式" class="headerlink" title="主模式"></a>主模式</h2><p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/Figure-1-4.png" alt="用于主发送数据的 I2C 传输序列图"></p>
-<p>发送：</p>
-<p>所有 EV 事件都会拉低 SCL，直到相应软件序列执行完成。</p>
-<p>S：start 事件。比如CR2 寄存器中设置外设时钟，配置时钟寄存器，上升时钟寄存器，使能 CR1 来启用时钟，CR1 中设置 start 位，等待总线被拉低表示就绪，发送启动信号，并切换为主模式。</p>
-<p>EV5：启动事件成功进行，设置 SB 寄存器&#x3D;1. SB 寄存器&#x3D;1后才可以进行地址阶段，执行完地址阶段会自动清除 SB 和 EV5 事件。</p>
-<p>Address：地址阶段。传输7位地址+1位读写位，然后等待从机的 ack。收到 ack 进入 EV6.</p>
-<p>EV6：设置 addr 位&#x3D;1代表地址阶段顺利执行， master 收到 ack了。清除 EV6 后自动进入 EV8.</p>
-<p>EV8：设置 TxE ，准备写入主机要传入的数据。TxE 表示数据寄存器为空可以写入。每次数据写入 DR 都会清空 TxE 和 EV8 事件。写完数据数据传过去了，主机收到 ack 后继续传输。以 BTF&#x3D;1 表示数据传输的结尾。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">i2c_write</span><span class="params">(<span class="type">uint8_t</span> address, <span class="type">uint8_t</span> *buffer, <span class="type">int</span> buff_len)</span> &#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// Send in sequence: Start bit, Contents of buffer 0..buff_len, Stop</span></span><br><span class="line">    <span class="keyword">while</span> (((I2C1-&gt;SR2&gt;&gt;<span class="number">1</span>)&amp;<span class="number">1</span>)); <span class="comment">// wait until I2C1 is not busy anymore</span></span><br><span class="line">    I2C_GenerateSTART(I2C1, ENABLE); <span class="comment">// Send I2C1 START condition</span></span><br><span class="line">    <span class="comment">// wait for I2C1 EV5 --&gt; Slave has acknowledged start condition</span></span><br><span class="line">    <span class="keyword">while</span> (!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_MODE_SELECT));</span><br><span class="line">    <span class="comment">// Send slave Address for write then wait for EV6</span></span><br><span class="line">    I2C_Send7bitAddress(I2C1, address, I2C_Direction_Transmitter);</span><br><span class="line">    <span class="keyword">while</span> (!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));</span><br><span class="line">    <span class="keyword">while</span> (i &lt; buff_len)&#123;</span><br><span class="line">        I2C_SendData(I2C1, buffer[i]); <span class="comment">// send data then wait for EV8_2</span></span><br><span class="line">        <span class="keyword">while</span> (!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_BYTE_TRANSMITTED));</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    I2C_GenerateSTOP(I2C1, ENABLE); <span class="comment">// send stop bit</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230714110003657.png" alt="image-20230714110003657"></p>
-<p>接收：</p>
-<p>前面和 master transmit 都一样。</p>
-<p>TxE 改为 RxE 了，&#x3D;1标识接收到了数据。</p>
-<p>master 自己设置 stop 事件后（发送 NACK）停止接收。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">i2c_read</span><span class="params">(<span class="type">uint8_t</span> address, <span class="type">uint8_t</span> *buffer, <span class="type">int</span> buff_len)</span> &#123;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// Start bit, Contents of buffer from 0..buff_len, sending a NACK</span></span><br><span class="line">    <span class="comment">// for the last item and an ACK otherwise, Stop bit</span></span><br><span class="line">    I2C_GenerateSTART(I2C1, ENABLE);</span><br><span class="line">    <span class="keyword">while</span>(!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_MODE_SELECT)); <span class="comment">//EV5</span></span><br><span class="line">    <span class="comment">// Send slave Address for write then wait for EV6</span></span><br><span class="line">    I2C_Send7bitAddress(I2C1, address, I2C_Direction_Receiver);</span><br><span class="line">    <span class="keyword">while</span> (!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED));</span><br><span class="line">    I2C_AcknowledgeConfig(I2C1, ENABLE); <span class="comment">// going to send ACK</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt; buff_len - <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">while</span> (!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_BYTE_RECEIVED)); <span class="comment">//EV7</span></span><br><span class="line">        buffer[i] = I2C_ReceiveData(I2C1); <span class="comment">// get data byte</span></span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    I2C_AcknowledgeConfig(I2C1, DISABLE); <span class="comment">// going to send NACK</span></span><br><span class="line">    <span class="keyword">while</span> (!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_BYTE_RECEIVED)); <span class="comment">//EV7</span></span><br><span class="line">    buffer[i] = I2C_ReceiveData(I2C1); <span class="comment">// get the last byte</span></span><br><span class="line">    I2C_GenerateSTOP(I2C1, ENABLE); <span class="comment">// send stop</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="从模式"><a href="#从模式" class="headerlink" title="从模式"></a>从模式</h3><p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1689259086166.png" alt="1689259086166"></p>
-<p>发送：</p>
-<p>start 启动事件由 master 发起。从机校验地址并决定是否发送 ack 位。</p>
-<p>EV1：设置 addr 位表示地址匹配。</p>
-<p>EV3-1：设置 TxE 位，开始传入数据。一直到主机返回 NACK 表示不想再要数据了，或者 AF&#x3D;1 说明 ack 失败了为止。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1689259113895.png" alt="1689259113895"></p>
-<p>接收：</p>
-<p>前面到 EV1 和 slave transmit 都一样。</p>
-<ol>
-<li>数据从 DR 寄存器中读。</li>
-<li>读入一个 byte 后，如果 ack 位已经设置，则返回 ack 信息。</li>
-<li>RxE 位是接收数据的状态寄存器。</li>
-<li>主机生成停止条件时停止。</li>
-</ol>
-<p>异常情况：</p>
-<p>总线错误，NACK，仲裁失败，时钟异常超时。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230714110916968.png" alt="image-20230714110916968"></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Miprocessor/" rel="tag">Miprocessor</a></li></ul>
 
     </footer>
   </div>
