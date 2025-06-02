@@ -102,7 +102,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">2.5k</span>
+            <span class="post-count">5.7k</span>
         </span>
     </span>
 
@@ -111,7 +111,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">9 min</span>
+            <span class="post-count">22 min</span>
         </span>
     </span>
 </div>
@@ -188,17 +188,19 @@ $$<br>
 <p>α 太大有可能总是“迈步迈过头”到达不了极小值点。</p>
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506021419405.png" alt=" " style="zoom:50%;" />
 <p>另外，一个学习问题可能会有多个局部极小值点。选择不恰当大小的学习率也会导致无法到达最小值。</p>
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506021424024.png" alt=" " style="zoom: 33%;" />
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506021424024.png" alt=" " style="zoom: 25%;" />
 <p>下图是一个梯度下降参数可视化：</p>
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506021425684.png" alt=" " style="zoom:33%;" />
 <blockquote>
 <p>[!NOTE]</p>
 <p>另外，每轮学习的时候我们可能会只选取部分训练数据进行迭代更新或者全部数据。如果每次都用全部数据计算代价函数，叫做批梯度下降（Batch Gradient Descent BGD）.</p>
+<p>卷积神经网络（CNN）训练不会每次都看整个图像数据，每次只会取出一部分。这样可以加快计算速度而且更不容易出现过拟合。</p>
 </blockquote>
 <blockquote>
 <p>[!TIP]</p>
 <p>老师提出的一种寻找学习率的方式：</p>
 <p>如 0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1, 3, …</p>
+<p>此外，还可以使用 Adam 算法寻找合适的学习率。原理上和自己试应该差不多，从小到大试，loss 快速下降时停止增加学习率。</p>
 </blockquote>
 <h2 id="多维度特征">多维度特征</h2>
 <p>特征（features）指的就是输入数据多维度的参数，比如：如果只根据房屋面积计算房屋价格，特征就只有一个就是面积。如果根据房屋面积，几室几厅，楼层数，房屋年龄等作为输入数据，就是多特征学习。</p>
@@ -247,6 +249,169 @@ $$</p>
 <p>为什么用这个函数？因为其范围 0-1，符合我们的分类需求，而且在 0.5 附近斜率比较大，所以更难预测到 0.5 的不确定概率情况。</p>
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506021532641.png" alt=" " style="zoom: 67%;" />
 <h2 id="逻辑回归的损失函数">逻辑回归的损失函数</h2>
+<p>不能再使用之前的平方代价函数了，因为转换得到的代价函数并不是一个凸函数（convex，比如 y = x^2 这样的），而可能是一个波浪线状的有多个极小值点的丑陋函数。</p>
+<p>所以要使用下面这个损失函数。<br>
+$$<br>
+L\left( f_{\vec{w}, b}(\vec{x}^{(i)}),\ y^{(i)} \right) =<br>
+\begin{cases}<br>
+-\log\left( f_{\vec{w}, b}(\vec{x}^{(i)}) \right), &amp; \text{if } y^{(i)} = 1 \\<br>
+-\log\left( 1 - f_{\vec{w}, b}(\vec{x}^{(i)}) \right), &amp; \text{if } y^{(i)} = 0<br>
+\end{cases}\\<br>
+L\left( f_{\vec{w}, b}(\vec{x}^{(i)}),\ y^{(i)} \right) =</p>
+<ul>
+<li>y^{(i)} \log\left( f_{\vec{w}, b}(\vec{x}^{(i)}) \right)</li>
+<li>(1 - y^{(i)}) \log\left( 1 - f_{\vec{w}, b}(\vec{x}^{(i)}) \right)<br>
+$$<br>
+逻辑回归损失函数图像如下：</li>
+</ul>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506022137019.png" alt=" " style="zoom: 50%;" />
+<p>y = 1 预测值 = 0 的时候导数非常大，y = 0 预测值 = 1 的时候导数非常大，促使预测值向另一端靠近。</p>
+<p>相应的代价函数公式：<br>
+$$<br>
+\begin{aligned}<br>
+J(\vec{w}, b) &amp;= \frac{1}{m} \sum_{i = 1}^{m}<br>
+L\left( f_{\vec{w}, b}(\vec{x}^{(i)}),\ y^{(i)} \right)\\<br>
+&amp;= -\frac{1}{m} \sum_{i = 1}^{m} \left[<br>
+y^{(i)} \log\left( f_{\vec{w}, b}(\vec{x}^{(i)}) \right)</p>
+<ul>
+<li>(1 - y^{(i)}) \log\left( 1 - f_{\vec{w}, b}(\vec{x}^{(i)}) \right)<br>
+\right]<br>
+\end{aligned}<br>
+$$<br>
+至于梯度下降，公式和之前一样。不过别忘记现在 f 函数的定义不一样了。<br>
+$$<br>
+w = w-\alpha \frac{d}{dw}J(w, b)=\frac{1}{m}\sum^{m}_{i = 1}(f_{w, b}(x^{(i)})-y^{(i)})x^{(i)}\\<br>
+b = b-\alpha \frac{d}{db}J(w, b)=\frac{1}{m}\sum^{m}_{i = 1}(f_{w, b}(x^{(i)})-y^{(i)})<br>
+$$</li>
+</ul>
+<h2 id="过拟合及解决方法">过拟合及解决方法</h2>
+<p>如下图，左边的模型欠拟合（underfit）因为模型复杂度不够；而右边的模型过拟合（overfit）因为参数太多模型过于复杂了，导致模型能非常好地拟合训练数据，但是对于训练数据之外的数据预测效果不好。</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506022142124.png" alt=" " style="zoom:67%;" />
+<p>过拟合的解决方式：</p>
+<ol>
+<li>增加训练数据量；</li>
+<li>只选择部分对输出数据影响更大的特征作为训练模型的特征，减小模型复杂度；</li>
+<li>模型正交化（Regularization），将模型复杂度也列入代价函数公式中，这样模型过于复杂的时候虽然可以很好地拟合训练数据，代价函数仍然很大。比如加上 $\frac{\lambda}{2m}\sum^{n}_{j=1}w_j^2$ ，λ 是正交化参数。</li>
+</ol>
+<p>$$<br>
+J(w, b)=\frac{1}{2m}\sum^{m}_{i = 1}(f_{w, b}(x^{(i)})-y^{(i)})^2+\frac{\lambda}{2m}\sum^{n}_{j = 1}w_j^2\\<br>
+w_j = w_j - \alpha<br>
+\frac{\lambda}{m} w_j - \alpha<br>
+\frac{1}{m} \sum_{i = 1}^{m}<br>
+\left( f_{w, b}(\vec{x}^{(i)}) - y^{(i)} \right) x_j^{(i)}\\<br>
+b =\frac{1}{m}\sum^{m}_{i = 1}(f_{w, b}(x^{(i)})-y^{(i)})<br>
+$$</p>
+<p>对梯度下降的影响其实就是 w 更新的时候前面一项由 wj 变成 (1-αλ/m)wj 了。这个东西 &lt; 1 ，作用是每次迭代都让 wj 尽可能小一些。</p>
+<h1>神经网络</h1>
+<p>模拟人脑，分为多层对输入数据进行处理，每层有多个神经元，处理完输出给下一层，最后汇总输出。</p>
+<p>在更大数据量或者更复杂的问题上表现更好。</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506022157643.png" alt=" " style="zoom: 33%;" />
+<p>比如人脸识别学习案例：如下图，第一层神经网络可能着重识别边缘部分，第二层神经网络可能着重识别人脸的某一部分比如眼睛鼻子嘴巴，第三层则是匹配对应的整张人脸。</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506022158185.png" alt=" " style="zoom: 33%;" />
+<p>输入数据被称为输入层（input layer），一般不计入总层数。中间的层都叫隐藏层（hidden layer），最后一层叫输出层（output layer）计入总层数，比如上面这个例子是一个 4 层神经网络。</p>
+<p>每个神经元的输入 -&gt; 输出处理函数叫做激活函数（activation function），比如我们可能第一层选用线性回归函数，第二层选用 sigmoid 函数……</p>
+<p>比如假设第三层是 sigmoid 激活函数，第三层有三个神经元，那么第三层就会输出三个特征，第三层输出向量计算公式为：<br>
+$$<br>
+a_1^{[3]}= g(\vec(w)_1^{[3]}\cdot \vec{a}^{[2]}+b_1^{[3]})\\<br>
+a_2^{[3]}= g(\vec(w)_2^{[3]}\cdot \vec{a}^{[2]}+b_2^{[3]})\\<br>
+a_3^{[3]}= g(\vec(w)_3^{[3]}\cdot \vec{a}^{[2]}+b_3^{[3]})\\<br>
+$$<br>
+这里会涉及到一些矩阵乘法的知识。</p>
+<p>例学习问题：输入数据是烘焙咖啡豆温度和时间，输出数据是咖啡豆烘焙结果（刚好或糊了）。</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506022213779.png" alt=" " style="zoom:67%;" />
+<p>比如在 TensorFlow 中配置模型的步骤如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义模型</span></span><br><span class="line">model = Sequential(</span><br><span class="line">    [</span><br><span class="line">        tf.keras.Input(shape=(<span class="number">2</span>,)),</span><br><span class="line">        Dense(<span class="number">3</span>, activation=<span class="string">&#x27;sigmoid&#x27;</span>, name = <span class="string">&#x27;layer1&#x27;</span>),</span><br><span class="line">        Dense(<span class="number">1</span>, activation=<span class="string">&#x27;sigmoid&#x27;</span>, name = <span class="string">&#x27;layer2&#x27;</span>)</span><br><span class="line">     ]</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看每层参数</span></span><br><span class="line">W1, b1 = model.get_layer(<span class="string">&quot;layer1&quot;</span>).get_weights()</span><br><span class="line">W2, b2 = model.get_layer(<span class="string">&quot;layer2&quot;</span>).get_weights()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置损失函数</span></span><br><span class="line">model.<span class="built_in">compile</span>(</span><br><span class="line">    loss = tf.keras.losses.BinaryCrossentropy(),</span><br><span class="line">    optimizer = tf.keras.optimizers.Adam(learning_rate=<span class="number">0.01</span>),</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 自动训练</span></span><br><span class="line">model.fit(</span><br><span class="line">    Xt,Yt,            </span><br><span class="line">    epochs=<span class="number">10</span>, <span class="comment"># 用输入数据重复训练10次</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 预测</span></span><br><span class="line">predictions = model.predict(X_testn)</span><br></pre></td></tr></table></figure>
+<p>使用起来非常简单，调库有啥难的？不过重点还是在于原理理解。</p>
+<p>这个例子中，输入数据是 2 维特征的，第一层隐藏层是 3 维的，第二层输出层是 1 维的，我们最终会得到一个预测结果值。</p>
+<p>对于第一层的模型参数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">W = np.array([</span><br><span class="line">    [<span class="number">1</span>, -<span class="number">3</span>,  <span class="number">5</span>],</span><br><span class="line">    [<span class="number">2</span>,  <span class="number">4</span>, -<span class="number">6</span>]</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">b = np.array([-<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>])     <span class="comment"># 偏置项，形状为 (3,)</span></span><br><span class="line">a_in = np.array([-<span class="number">2</span>, <span class="number">4</span>])     <span class="comment"># 输入向量（也记作 a^[0] 或 x），形状为 (2,)</span></span><br></pre></td></tr></table></figure>
+<p>这样计算完得到的是一个 1*3 形状的矩阵，供第二层输入。</p>
+<p>在 python 中利用 numpy 做向量矩阵快速乘法的实现公式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">g</span>(<span class="params">z</span>):</span><br><span class="line">    <span class="comment"># 示例激活函数</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-z))  <span class="comment"># Sigmoid</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dense</span>(<span class="params">A_in, W, B</span>):</span><br><span class="line">    Z = np.matmul(A_in, W) + B</span><br><span class="line">    A_out = g(Z)</span><br><span class="line">    <span class="keyword">return</span> A_out</span><br></pre></td></tr></table></figure>
+<h2 id="ReLU-激活函数">ReLU 激活函数</h2>
+<p>如下图，ReLU 函数公式很简单，输入 &lt;0 时输出=0，输入 &gt; 0 时输出和输入成正比。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506022219074.png" alt=" "></p>
+<p>sigmoid 函数只有在 0 附近的输入值才能取得比较好的梯度结果，如果输入数据太大了，那么梯度下降特征不明显，可能会造成梯度消失的情况，而且计算复杂；</p>
+<p>以及，ReLU 会使一部分神经元的输出为 0，这样就造成了网络的稀疏性，并且减少了参数的相互依存关系，缓解了过拟合问题的发生。</p>
+<p>最常见的四种激活函数就是：线性激活函数，sigmoid，ReLU，softmax 后面介绍。</p>
+<h2 id="激活函数的选择">激活函数的选择</h2>
+<p>二元分类问题推荐使用 sigmoid，因为最终推导结果介于 0~1 之间。</p>
+<p>回归问题建议使用线性回归激活函数。</p>
+<p>回归问题且输出 &gt; 0 推荐使用 ReLU。</p>
+<p>比如一个二元神经网络问题，采用的激活函数可能是：前两层是 ReLU，最后一层是 Sigmoid。</p>
+<p>此外，隐藏层尽量不要使用线性函数（ReLU 可以用），因为根据公式推导，隐藏层放多个线性回归最后得到的输出也是一个线性回归函数，使得这个神经网络解决不了更加复杂的问题。</p>
+<h2 id="多分类问题">多分类问题</h2>
+<p>比如手写数字识别，我们预测的结果介于 0~9 之间。</p>
+<p>softmax 常用于解决多分类问题，可以得到多个特征的输出结果。比如对于手写数字识别问题，可能得到的结果是：预测是数字 0 的概率为 0.09,1 的概率是 0.11,2 的概率是……最后选择一个最有可能的结果。</p>
+<p>算法公式：<br>
+$$<br>
+z_j = \vec{w}_j \cdot \vec{x} + b_j, \quad j = 1, \dots, N\\<br>
+a_j = \frac{e^{z_j}}{\sum\limits_{k = 1}^{N} e^{z_k}} = \mathbb{P}(y = j \mid \vec{x})<br>
+$$<br>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506022229410.png" alt=" " style="zoom: 33%;" /></p>
+<p>所有预测概率加起来 = 1.</p>
+<p>损失函数：<br>
+$$<br>
+\text{loss}(a_1, \dots, a_N, y) =<br>
+\begin{cases}<br>
+-\log a_1 &amp; \text{if } y = 1 \\<br>
+-\log a_2 &amp; \text{if } y = 2 \\<br>
+\quad \vdots &amp; \\<br>
+-\log a_N &amp; \text{if } y = N \\<br>
+\end{cases}<br>
+$$</p>
+<p>损失函数只有对应真实值的预测概率 = 1 时 = 0，否则预测正确结果的概率越小，损失值越大。</p>
+<p>在多分类预测问题中，通常使用 softmax 来作为输出层的激活函数。</p>
+<h2 id="改进-softmax-函数">改进 softmax 函数</h2>
+<p>根据 python 的一些精度特性，如果不是先计算出概率 a 再带入损失函数，而是直接把 z 带入损失函数计算公式，精度更高。</p>
+<p>不要：<br>
+$$<br>
+\text{Loss} = L(\vec{a}, y) =<br>
+\begin{cases}<br>
+-\log a_1 &amp; \text{if } y = 1 \\<br>
+\vdots \\<br>
+-\log a_{10} &amp; \text{if } y = 10 \\<br>
+\end{cases}<br>
+$$<br>
+而是：<br>
+$$<br>
+L(\vec{z}, y) =<br>
+\begin{cases}<br>
+-\log \left( \frac{e^{z_1}}{e^{z_1} + \cdots + e^{z_{10}}} \right) &amp; \text{if } y = 1 \\<br>
+\vdots \\<br>
+-\log \left( \frac{e^{z_{10}}}{e^{z_1} + \cdots + e^{z_{10}}} \right) &amp; \text{if } y = 10 \\<br>
+\end{cases}<br>
+$$</p>
+<p>在 TensorFlow 中的实现方法应该是：最后一层不再声明为 softmax 层，而是 linear 层，取而代之的是在模型参数设置的时候声明计算逻辑损失。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">preferred_model = Sequential(</span><br><span class="line">    [ </span><br><span class="line">        tf.keras.Input(shape=(<span class="number">2</span>,)),</span><br><span class="line">        Dense(<span class="number">25</span>, activation = <span class="string">&#x27;relu&#x27;</span>),</span><br><span class="line">        Dense(<span class="number">15</span>, activation = <span class="string">&#x27;relu&#x27;</span>),</span><br><span class="line">        Dense(<span class="number">4</span>, activation = <span class="string">&#x27;linear&#x27;</span>)   <span class="comment">#&lt;-- Note</span></span><br><span class="line">    ]</span><br><span class="line">)</span><br><span class="line">preferred_model.<span class="built_in">compile</span>(</span><br><span class="line">    loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=<span class="literal">True</span>),  <span class="comment">#&lt;-- Note</span></span><br><span class="line">    optimizer=tf.keras.optimizers.Adam(<span class="number">0.001</span>),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h2 id="多标签分类问题">多标签分类问题</h2>
+<p>比如：判断下面这张图片里面有没有汽车？有没有行人？有没有树？</p>
+<p>和多分类问题的区别在于，多分类的结果是互斥的，比如预测出数字应该是 5 就不会是 7 了。</p>
+<p>而多标签分类问题的多个结果可以共存，比如既有树，也有人。</p>
+<p>多标签分类也会得到多个维度的特征，不过类似 sigmoid 单维度处理方式，每个维度的预测值在 0-1 之间，如果 &gt; 0.5 视作 true。比如对有汽车的概率预测为 0.6，有人的概率预测为 0.7，那么就判断这张图片里有人有车。</p>
+<h2 id="反向传播">反向传播</h2>
+<p>说实话有点太难描述，但是这部分十分重要。读者如果感兴趣一定要去学习一下，其实不难，就是求导反推。</p>
+<p>可以快速推导出 w 的变化对最终代价函数 j 的影响。</p>
+<h1>机器学习应用问题</h1>
+<h2 id="Debug">Debug</h2>
+<p>如果模型误差很大，下一步怎么做？</p>
+<ol>
+<li>获取更多数据。</li>
+<li>减少或者增加特征。</li>
+<li>增加多项式参数。</li>
+<li>调整正则化参数 λ。</li>
+</ol>
+<h2 id="评估模型">评估模型</h2>
+<p>如何评估模型性能？通常我们会将输入数据拿出30%作为测试集，其余70%作为训练集。先用训练集训练，然后用测试集和训练集评估误差。</p>
+<p><strong>注意：测试集和训练集评估误差的时候不要加上正交参数，这个时候最小化参数不是我们想要的结果，我们是在评估模型性能。</strong></p>
+<p>如果模型对训练数据表现良好，对测试数据表现差，说明过拟合。</p>
+<p>但其实，<strong>测试集仅仅是我们对模型误差的一种“乐观估计”</strong>。因为测试集通常来自与训练集相似的分布，而且在整个建模过程中，它是提前准备好的。如果我们在调参过程中频繁查看测试集的表现，实际上已经“间接使用”了测试集的信息。这会导致模型过拟合到测试集本身，最终得出的泛化能力评估并不可靠。</p>
+<p>取而代之的方案是60%数据作为训练集，20%数据作为交叉验证集（Cross Validation），20%数据作为测试集。对于不同模型（如一次线性，二次线性，三次线性……）我们统一用训练集训练，然后用<strong>交叉验证集</strong>计算代价，注意这里也不要考虑参数正交化项。然后选出交叉验证误差最小的模型。最终我们用测试集评估模型泛化性能。以多项式拟合为例：我们可以用训练集分别训练一次线性、二次多项式、三次多项式等模型，然后在验证集上评估它们的预测误差（此时评估用的 cost 函数不需要包含正则化项），选出在验证集上表现最好的模型。最后，再用测试集来评估这个最终模型在未见数据上的表现。</p>
+<p>比如下面这个学习案例：</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506022345189.png" alt=" " style="zoom:67%;" />
+<p>degree = 4 的时候训练集和交叉验证集误差都最小，5变化不大，6开始回升了。所以最佳选择4.</p>
+<p>分类问题和神经网络学习问题同样。</p>
+<h2 id="Bias-and-Variance">Bias and Variance</h2>
  
       <!-- reward -->
       
