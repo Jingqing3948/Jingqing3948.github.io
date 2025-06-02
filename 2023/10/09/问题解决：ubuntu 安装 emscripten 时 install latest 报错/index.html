@@ -115,54 +115,59 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>学习官网参考：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/WebAssembly/C_to_wasm">Compiling a New C&#x2F;C++ Module to WebAssembly - WebAssembly | MDN (mozilla.org)</a></p>
-<h2 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h2><p>形如：</p>
+  <p>学习官网参考：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/WebAssembly/C_to_wasm">Compiling a New C/C++ Module to WebAssembly - WebAssembly | MDN (mozilla.org)</a></p>
+<h2 id="报错信息">报错信息</h2>
+<p>形如：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Error: Downloading URL &#x27;https://storage.googleapis.com/webassembly/emscripten-releases-builds/linux/b90507fcf011da61bacfca613569d882f7749552/wasm-binaries.tbz2&#x27;: &lt;urlopen error [Errno 104] Connection reset by peer&gt;</span><br><span class="line">error: installation failed!</span><br></pre></td></tr></table></figure>
-
 <p>OS：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">uname</span> -a</span></span><br><span class="line">Linux jingqing 5.19.0-35-generic #36~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Feb 17 15:17:25 UTC 2 x86_64 x86_64 x86_64 GNU/Linux</span><br></pre></td></tr></table></figure>
-
-<h2 id="产生错误原因分析"><a href="#产生错误原因分析" class="headerlink" title="产生错误原因分析"></a>产生错误原因分析</h2><blockquote>
-<p>emsdk install latest报错（因为从谷歌中下载，cmd中命令形式访问不到google）<br>版权声明：本文为CSDN博主「小白啥时候能进阶成功」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34754747/article/details/103815349">https://blog.csdn.net/qq_34754747/article/details/103815349</a></p>
+<h2 id="产生错误原因分析">产生错误原因分析</h2>
+<blockquote>
+<p>emsdk install latest报错（因为从谷歌中下载，cmd中命令形式访问不到google）<br>
+版权声明：本文为CSDN博主「小白啥时候能进阶成功」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>
+原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34754747/article/details/103815349">https://blog.csdn.net/qq_34754747/article/details/103815349</a></p>
 </blockquote>
 <p>非常感谢博主的答疑解惑，不过我没有看得太懂原文中的解决方案，网上搜到的大多数方案也是 windows 环境下的解决方案，因此我决定自己写一个 ubuntu 系统下的补安装。</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>说白了就是我自己复制链接到浏览器里，下载安装这几个包，放到 emsdk 的指定位置。</p>
+<h2 id="解决方案">解决方案</h2>
+<p>说白了就是我自己复制链接到浏览器里，下载安装这几个包，放到 emsdk 的指定位置。</p>
 <p>这里有两个要注意的点，这一部分主要是分析，不想看的同学可以直接跳到<a href="#solution">具体步骤</a>处：</p>
 <ol>
-<li><p>emsdk install 的默认安装规则是：不管你有没有安装过这些包，我 install latest 都是重新安装，保证最新版本。但是现在问题是 install latest 有问题，我要手动安装包放进去。<br>我们打开 emsdk.py 通过搜索关键词可以找到报错信息的位置：</p>
+<li>
+<p>emsdk install 的默认安装规则是：不管你有没有安装过这些包，我 install latest 都是重新安装，保证最新版本。但是现在问题是 install latest 有问题，我要手动安装包放进去。<br>
+我们打开 <a target="_blank" rel="noopener" href="http://emsdk.py">emsdk.py</a> 通过搜索关键词可以找到报错信息的位置：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ./emsdk.py:675</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># On success, returns the filename on the disk pointing to the destination file that was produced</span></span><br><span class="line"><span class="comment"># On failure, returns None.</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">download_file</span>(<span class="params">url, dstpath, download_even_if_exists=<span class="literal">False</span>, filename_prefix=<span class="string">&#x27;&#x27;</span></span>):</span><br><span class="line">  debug_print(<span class="string">&#x27;download_file(url=&#x27;</span> + url + <span class="string">&#x27;, dstpath=&#x27;</span> + dstpath + <span class="string">&#x27;)&#x27;</span>)</span><br><span class="line">  file_name = get_download_target(url, dstpath, filename_prefix)</span><br><span class="line">  <span class="keyword">if</span> os.path.exists(file_name) <span class="keyword">and</span> <span class="keyword">not</span> download_even_if_exists:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;File &#x27;&quot;</span> + file_name + <span class="string">&quot;&#x27; already downloaded, skipping.&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> file_name</span><br><span class="line">  <span class="keyword">try</span>:</span><br><span class="line">    u = urlopen(url)</span><br><span class="line">    mkdir_p(os.path.dirname(file_name))</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(file_name, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">      file_size = get_content_length(u)</span><br><span class="line">      <span class="keyword">if</span> file_size &gt; <span class="number">0</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Downloading: %s from %s, %s Bytes&quot;</span> % (file_name, url, file_size))</span><br><span class="line">      <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Downloading: %s from %s&quot;</span> % (file_name, url))</span><br><span class="line"></span><br><span class="line">      file_size_dl = <span class="number">0</span></span><br><span class="line">      <span class="comment"># Draw a progress bar 80 chars wide (in non-TTY mode)</span></span><br><span class="line">      progress_max = <span class="number">80</span> - <span class="number">4</span></span><br><span class="line">      progress_shown = <span class="number">0</span></span><br><span class="line">      block_sz = <span class="number">256</span> * <span class="number">1024</span></span><br><span class="line">      <span class="keyword">if</span> <span class="keyword">not</span> TTY_OUTPUT:</span><br><span class="line">          <span class="built_in">print</span>(<span class="string">&#x27; [&#x27;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">      <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">          buffer = u.read(block_sz)</span><br><span class="line">          <span class="keyword">if</span> <span class="keyword">not</span> buffer:</span><br><span class="line">              <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">          file_size_dl += <span class="built_in">len</span>(buffer)</span><br><span class="line">          f.write(buffer)</span><br><span class="line">          <span class="keyword">if</span> file_size:</span><br><span class="line">              percent = file_size_dl * <span class="number">100.0</span> / file_size</span><br><span class="line">              <span class="keyword">if</span> TTY_OUTPUT:</span><br><span class="line">                  status = <span class="string">r&quot; %10d  [%3.02f%%]&quot;</span> % (file_size_dl, percent)</span><br><span class="line">                  <span class="built_in">print</span>(status, end=<span class="string">&#x27;\r&#x27;</span>)</span><br><span class="line">              <span class="keyword">else</span>:</span><br><span class="line">                  <span class="keyword">while</span> progress_shown &lt; progress_max * percent / <span class="number">100</span>:</span><br><span class="line">                      <span class="built_in">print</span>(<span class="string">&#x27;-&#x27;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">                      sys.stdout.flush()</span><br><span class="line">                      progress_shown += <span class="number">1</span></span><br><span class="line">      <span class="keyword">if</span> <span class="keyword">not</span> TTY_OUTPUT:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;]&#x27;</span>)</span><br><span class="line">        sys.stdout.flush()</span><br><span class="line">  <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    errlog(<span class="string">&quot;Error: Downloading URL &#x27;&quot;</span> + url + <span class="string">&quot;&#x27;: &quot;</span> + <span class="built_in">str</span>(e))</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&quot;SSL: CERTIFICATE_VERIFY_FAILED&quot;</span> <span class="keyword">in</span> <span class="built_in">str</span>(e) <span class="keyword">or</span> <span class="string">&quot;urlopen error unknown url type: https&quot;</span> <span class="keyword">in</span> <span class="built_in">str</span>(e):</span><br><span class="line">      errlog(<span class="string">&quot;Warning: Possibly SSL/TLS issue. Update or install Python SSL root certificates (2048-bit or greater) supplied in Python folder or https://pypi.org/project/certifi/ and try again.&quot;</span>)</span><br><span class="line">    rmfile(file_name)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">  <span class="keyword">except</span> KeyboardInterrupt:</span><br><span class="line">    rmfile(file_name)</span><br><span class="line">    exit_with_error(<span class="string">&quot;aborted by user, exiting&quot;</span>)</span><br><span class="line">  <span class="keyword">return</span> file_name</span><br></pre></td></tr></table></figure>
-
-<p>大致一看能看明白逻辑，如果 download_even_if_exists &#x3D; True 那么无论包是否已经存在都要安装，否则为 False 就只安装不存在的包，我们需要为 False。</p>
+<p>大致一看能看明白逻辑，如果 download_even_if_exists = True 那么无论包是否已经存在都要安装，否则为 False 就只安装不存在的包，我们需要为 False。</p>
 <p>搜索函数名查看在哪里使用了这个函数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ./emsdk.py:1411</span></span><br><span class="line"></span><br><span class="line">received_download_target = download_file(url, download_dir, <span class="keyword">not</span> KEEP_DOWNLOADS, filename_prefix)</span><br></pre></td></tr></table></figure>
-
 <p>这个 KEEP_DOWNLOADS 是一个环境变量，默认为0，我们需要他为1，传入函数的参数则为0（False），即已存在文件不再重复下载。</p>
 <p>在终端输入 <code>./emsdk --help</code> 可以看到提示信息如下：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Environment:</span><br><span class="line">      EMSDK_KEEP_DOWNLOADS=1     - if you want to keep the downloaded archives.</span><br><span class="line">      EMSDK_NOTTY=1              - override isatty() result (mainly to log progress).</span><br><span class="line">      EMSDK_NUM_CORES=n          - limit parallelism to n cores.</span><br><span class="line">      EMSDK_VERBOSE=1            - very verbose output, useful for debugging.</span><br></pre></td></tr></table></figure>
-
 <p>也就是说只要安装时单独指定此变量值为1即可。</p>
 </li>
-<li><p>第二步就是如何下载文件了。下载什么文件？放到哪个目录下？</p>
-<p>这里大家可以通过 download_file 的 print debug 调试来查看他校验文件是否存在是去哪里校验的，我就不再具体展开讲调试步骤了，结论就是：他在 emsdk&#x2F;downloads&#x2F; 目录下先查找一下待下载的压缩包是否存在，那么我们复制报错信息中的 url 下载文件到这个 downloads 文件夹下即可（没有就新建）。</p>
+<li>
+<p>第二步就是如何下载文件了。下载什么文件？放到哪个目录下？</p>
+<p>这里大家可以通过 download_file 的 print debug 调试来查看他校验文件是否存在是去哪里校验的，我就不再具体展开讲调试步骤了，结论就是：他在 emsdk/downloads/ 目录下先查找一下待下载的压缩包是否存在，那么我们复制报错信息中的 url 下载文件到这个 downloads 文件夹下即可（没有就新建）。</p>
 </li>
 </ol>
 <h2 id="solution">具体步骤</h2>
-
 <ol>
-<li><p>首先要安装所缺的所有包，一个个安装，报错信息里提示什么安装什么。比如文章开头的报错信息中下载链接是：<a target="_blank" rel="noopener" href="https://storage.googleapis.com/webassembly/emscripten-releases-builds/linux/b90507fcf011da61bacfca613569d882f7749552/wasm-binaries.tbz2%EF%BC%8C%E5%B0%B1%E5%85%88%E5%AE%89%E8%A3%85%E8%BF%99%E4%B8%AA%E3%80%82">https://storage.googleapis.com/webassembly/emscripten-releases-builds/linux/b90507fcf011da61bacfca613569d882f7749552/wasm-binaries.tbz2，就先安装这个。</a></p>
+<li>
+<p>首先要安装所缺的所有包，一个个安装，报错信息里提示什么安装什么。比如文章开头的报错信息中下载链接是：<a target="_blank" rel="noopener" href="https://storage.googleapis.com/webassembly/emscripten-releases-builds/linux/b90507fcf011da61bacfca613569d882f7749552/wasm-binaries.tbz2%EF%BC%8C%E5%B0%B1%E5%85%88%E5%AE%89%E8%A3%85%E8%BF%99%E4%B8%AA%E3%80%82">https://storage.googleapis.com/webassembly/emscripten-releases-builds/linux/b90507fcf011da61bacfca613569d882f7749552/wasm-binaries.tbz2，就先安装这个。</a></p>
 <p>node: <a target="_blank" rel="noopener" href="https://storage.googleapis.com/webassembly/emscripten-releases-builds/linux/b90507fcf011da61bacfca613569d882f7749552/wasm-binaries.tbz2">https://storage.googleapis.com/webassembly/emscripten-releases-builds/linux/b90507fcf011da61bacfca613569d882f7749552/wasm-binaries.tbz2</a></p>
 <p>wasm-binaries: <a target="_blank" rel="noopener" href="https://storage.googleapis.com/webassembly/emscripten-releases-builds/linux/b90507fcf011da61bacfca613569d882f7749552/wasm-binaries.tbz2">https://storage.googleapis.com/webassembly/emscripten-releases-builds/linux/b90507fcf011da61bacfca613569d882f7749552/wasm-binaries.tbz2</a></p>
 <p>安装完成后要重命名 b90507fcf011da61bacfca613569d882f7749552-wasm-binaries.tbz2。</p>
 </li>
-<li><p>移入 emsdk&#x2F;downloads 文件夹下，不用解压。</p>
+<li>
+<p>移入 emsdk/downloads 文件夹下，不用解压。</p>
 </li>
-<li><p>执行 <code>EMSDK_KEEP_DOWNLOADS=1</code> 变量赋值。</p>
+<li>
+<p>执行 <code>EMSDK_KEEP_DOWNLOADS=1</code> 变量赋值。</p>
 </li>
-<li><p>执行 <code>./emsdk install latest</code>  。</p>
+<li>
+<p>执行 <code>./emsdk install latest</code>  。</p>
 </li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">jingqing3948@jingqing:~/Webassembly/emsdk$ ./emsdk install latest</span><br><span class="line">Resolving SDK alias &#x27;latest&#x27; to &#x27;3.1.44&#x27;</span><br><span class="line">Resolving SDK version &#x27;3.1.44&#x27; to &#x27;sdk-releases-b90507fcf011da61bacfca613569d882f7749552-64bit&#x27;</span><br><span class="line">Installing SDK &#x27;sdk-releases-b90507fcf011da61bacfca613569d882f7749552-64bit&#x27;..</span><br><span class="line">Skipped installing node-16.20.0-64bit, already installed.</span><br><span class="line">Skipped installing releases-b90507fcf011da61bacfca613569d882f7749552-64bit, already installed.</span><br><span class="line">All SDK components already installed: &#x27;sdk-releases-b90507fcf011da61bacfca613569d882f7749552-64bit&#x27;.</span><br></pre></td></tr></table></figure>
-
 <p>好哎，看来是自己单独安装的文件包都可以用，他会自己解压文件包后提示 All SDK components already installed。</p>
 <p>接下来就是下一步：<code>./emsdk activate latest</code>.</p>
 <p>最后是 <code>source ./emsdk_env.sh</code> 配置好环境变量。</p>
@@ -249,19 +254,19 @@
    
   <nav class="article-nav">
     
-      <a href="/2023/11/26/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%EF%BC%9ASTM32%20F407%20%E9%9C%B8%E5%A4%A9%E8%99%8E%E5%BC%80%E5%8F%91%E6%9D%BF/" class="article-nav-link">
+      <a href="/2023/10/09/%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%87%EF%BC%9AWin11%E7%A3%81%E8%B4%B4%E9%85%8D%E7%BD%AE/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            技术学习：STM32 F407 霸天虎开发板
+            效率提升：Win11磁贴配置
           
         </div>
       </a>
     
     
-      <a href="/2023/10/09/%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%87%EF%BC%9AWin11%E7%A3%81%E8%B4%B4%E9%85%8D%E7%BD%AE/" class="article-nav-link">
+      <a href="/2023/07/25/%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E7%AC%94%E8%AE%B0%EF%BC%9ARFID/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">效率提升：Win11磁贴配置</div>
+        <div class="article-nav-title">北邮国院笔记：RFID</div>
       </a>
     
   </nav>
@@ -583,6 +588,30 @@
     viewer_init()
 </script> 
 <!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
 
 <!-- Katex -->
 

@@ -91,7 +91,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">15k</span>
+            <span class="post-count">14.9k</span>
         </span>
     </span>
 
@@ -115,14 +115,17 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本博客学习自：黑马程序员 mysql 入门网课，b站 骆昊jackfrued 老师 mysql 网课，以及博主自己课内学习的数据库课程，侵删！</p>
+  <h1>前言</h1>
+<p>本博客学习自：黑马程序员 mysql 入门网课，b站 骆昊jackfrued 老师 mysql 网课，以及博主自己课内学习的数据库课程，侵删！</p>
 <p>课内学习的课程内容因为是英方课，包括一些不常用的概念和英文，更注重整体框架的理解，大致了解即可。</p>
-<h1 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h1><p>MYSQL 的安装配置网上一搜一大把，博主就不在此发表拙见了，安装太久了自己也记不是很清具体方法了。这里指跟随课程学习了 Command Line Client 的安装（说实话，这玩意我自认为没啥用）。</p>
+<h1>安装配置</h1>
+<p>MYSQL 的安装配置网上一搜一大把，博主就不在此发表拙见了，安装太久了自己也记不是很清具体方法了。这里指跟随课程学习了 Command Line Client 的安装（说实话，这玩意我自认为没啥用）。</p>
 <p>Mysql Command Line Client 是官方提供的客户端。之前一直直接用 Windows 的命令提示符窗口输入 Mysql 语句，不知道两者具体区别在哪里。不过还是重新安装了一个尝试一下。</p>
 <p>如果选择的是 zip 下载，应该只会安装一个 mysql 文件包，在程序终端可以使用。</p>
 <p>如果是选择 msi 文件安装，MYSQL 文件夹里自带有 Installer，在里面选中对应电脑版本的 Mysql Server 下载即可。</p>
 <p>由于安装目录和 Mysql 不一致，缺少配置文件 my.ini 导致 Mysql Command Line Client 一开始无法使用。直接把 Mysql 里的 my.ini 复制到 Mysql Server 目录下就可以了。</p>
-<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><p>其实在 cmd 窗口中登录 mysql 时也会给出相应的命令提示，只是当时没有仔细研究。正好借使用 Mysql Command Line Client 的机会了解一下常用的命令。</p>
+<h1>常用命令</h1>
+<p>其实在 cmd 窗口中登录 mysql 时也会给出相应的命令提示，只是当时没有仔细研究。正好借使用 Mysql Command Line Client 的机会了解一下常用的命令。</p>
 <p>开始菜单中出现了两种不同的 Mysql Command Line Client 窗口，区别只是其中一种支持 Unicode ，一种不支持。打开后即会提示输入登录密码，登录后就和 cmd 窗口中操作基本一致。</p>
 <table>
 <thead>
@@ -131,7 +134,8 @@
 <th>作用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>\h, ?, ?</td>
 <td>获取帮助</td>
 </tr>
@@ -141,7 +145,7 @@
 </tr>
 <tr>
 <td>\R</td>
-<td>修改 每次输入命令前左侧的提示样式（默认：’mysql&gt;’）</td>
+<td>修改 每次输入命令前左侧的提示样式（默认：‘mysql&gt;’）</td>
 </tr>
 <tr>
 <td>? 需要查看帮助的命令;</td>
@@ -160,11 +164,13 @@
 <td>查看当前数据库中所有表</td>
 </tr>
 <tr>
-<td>exit &#x2F; quit</td>
+<td>exit / quit</td>
 <td>退出</td>
 </tr>
-</tbody></table>
-<h1 id="关系型数据库"><a href="#关系型数据库" class="headerlink" title="关系型数据库"></a>关系型数据库</h1><p>数据库有很多种结构，mysql 学习的是关系型数据库，说白了就是二维表的结构。</p>
+</tbody>
+</table>
+<h1>关系型数据库</h1>
+<p>数据库有很多种结构，mysql 学习的是关系型数据库，说白了就是二维表的结构。</p>
 <pre class="mermaid">graph LR
 R[关系型数据库]-->T[理论基础]
 R-->S[具体表象]
@@ -177,11 +183,10 @@ L-->D[DDL]
 L-->M[DML]
 L-->Q[DQL]
 L-->DCL[DCL]</pre>
-
-<p>DDL: create &#x2F; drop &#x2F; alter （database 或 schema 数据库名 &#x2F; table 表名）</p>
-<p>DML: insert &#x2F; update &#x2F; delete</p>
+<p>DDL: create / drop / alter （database 或 schema 数据库名 / table 表名）</p>
+<p>DML: insert / update / delete</p>
 <p>DQL: select …… from</p>
-<p>DCL: grant（授权） &#x2F; revoke（召回权限）</p>
+<p>DCL: grant（授权） / revoke（召回权限）</p>
 <table>
 <thead>
 <tr>
@@ -189,7 +194,8 @@ L-->DCL[DCL]</pre>
 <th>非正式的日常用语</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>关系（relation）</td>
 <td>表（table）</td>
 </tr>
@@ -213,36 +219,45 @@ L-->DCL[DCL]</pre>
 <td>定义域（domain）</td>
 <td>列的取值集合（pool of legal values）</td>
 </tr>
-</tbody></table>
-<h1 id="ER-和-EER-模型"><a href="#ER-和-EER-模型" class="headerlink" title="ER 和 EER 模型"></a>ER 和 EER 模型</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>为什么要有 ER 图和 EER 图的存在？</p>
-<p><strong>真正做项目、设计数据库时，</strong>实际并没有这么简单，比如还有很多用户看不到、但为了方便 DBA 使用而创建的字段。如 id，一般还会有两条 Date 字段（一表示这条记录被创建的时间，二表示这条记录最后更新的时间），以及预留一个 VARCHAR &#x2F; json 字段；还有一些其他注意事项（比如 auto-increment 约束其实开发中不常用，更多使用算法比如分布式 ID 生成算法（如 SnowFlake……）当然对课程来说这并不重要）<strong>是不可能一上来就写 SQL 语句的，需要先设计表的结构和表之间的关系。</strong></p>
-<h3 id="ER-模型"><a href="#ER-模型" class="headerlink" title="ER 模型"></a>ER 模型</h3><p>ER 图（Entity Relationship, 实体关系）因此出现。下图是一个 ER 图的示例，其中矩形框代表：表（也就是实体），椭圆框代表：表中的字段（实体的属性），菱形框代表：关系，在连接线上表明了关系的重数。</p>
+</tbody>
+</table>
+<h1>ER 和 EER 模型</h1>
+<h2 id="介绍">介绍</h2>
+<p>为什么要有 ER 图和 EER 图的存在？</p>
+<p>**真正做项目、设计数据库时，**实际并没有这么简单，比如还有很多用户看不到、但为了方便 DBA 使用而创建的字段。如 id，一般还会有两条 Date 字段（一表示这条记录被创建的时间，二表示这条记录最后更新的时间），以及预留一个 VARCHAR / json 字段；还有一些其他注意事项（比如 auto-increment 约束其实开发中不常用，更多使用算法比如分布式 ID 生成算法（如 SnowFlake……）当然对课程来说这并不重要）<strong>是不可能一上来就写 SQL 语句的，需要先设计表的结构和表之间的关系。</strong></p>
+<h3 id="ER-模型">ER 模型</h3>
+<p>ER 图（Entity Relationship, 实体关系）因此出现。下图是一个 ER 图的示例，其中矩形框代表：表（也就是实体），椭圆框代表：表中的字段（实体的属性），菱形框代表：关系，在连接线上表明了关系的重数。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336311.png" alt="百度百科图片"></p>
 <p>相较于大段的 SQL 建表语句，只要能看懂 ER 图，表的结构、关系一目了然。</p>
-<h3 id="EER-模型"><a href="#EER-模型" class="headerlink" title="EER 模型"></a>EER 模型</h3><p>以下部分内容有参考自文章：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/356216273">为了彻底搞清楚数据库 E-R 模型设计，我肝了这篇万字长文 - 知乎 (zhihu.com)</a></p>
+<h3 id="EER-模型">EER 模型</h3>
+<p>以下部分内容有参考自文章：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/356216273">为了彻底搞清楚数据库 E-R 模型设计，我肝了这篇万字长文 - 知乎 (zhihu.com)</a></p>
 <p>关于两者的具体区分我还有去问b站up主 骆昊jackfrued 老师，老师表示：不用太纠结这个问题，ER图更抽象，可以理解为概念模型图（PowerDesigner）。</p>
 <p>相较 ER 模型多了泛化层次、汇集层次、弱实体等概念。</p>
-<h4 id="泛化层次"><a href="#泛化层次" class="headerlink" title="泛化层次"></a>泛化层次</h4><p>包括 generalization 和 specialization （泛化和特化）、父类（superclass）和子类（subclass）的概念。</p>
+<h4 id="泛化层次">泛化层次</h4>
+<p>包括 generalization 和 specialization （泛化和特化）、父类（superclass）和子类（subclass）的概念。</p>
 <p><strong>子类父类</strong>就是类似 Java 的继承，如动物是父类，猫、狗是其子类。<strong>子类父类是一对一的关系！</strong></p>
 <p><strong>泛化</strong>又叫归纳，就是将几个类的共同属性提取出来作为父类；</p>
 <p><strong>特化</strong>又叫演绎，就是在父类的基础上添加各自特殊的属性作为子类。</p>
 <p>其中，子类和超类又有两个关系属性：mandatory 和 optional、disjoint 和 overlapping。</p>
-<p><strong>mandatory &#x2F; optional</strong>：父类中的所有属性都必须包含在每一个子类中 &#x2F; 不用全部继承，选择部分继承即可（完全性限制）</p>
-<p><strong>disjoint &#x2F; overlapping</strong>：继承同一个父类的几个子类之间是否可以有相交的属性（相交性限制）</p>
+<p><strong>mandatory / optional</strong>：父类中的所有属性都必须包含在每一个子类中 / 不用全部继承，选择部分继承即可（完全性限制）</p>
+<p><strong>disjoint / overlapping</strong>：继承同一个父类的几个子类之间是否可以有相交的属性（相交性限制）</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336748.png" alt="img"></p>
-<p>图中 运输工具是父类，飞机、火车、汽车是子类。圆圈中写 D &#x2F; O，表示 disjoint &#x2F; overlapping。父类和圆圈之间是双实线，表示是 mandatory 完全性继承。</p>
-<h4 id="汇集层次"><a href="#汇集层次" class="headerlink" title="汇集层次"></a>汇集层次</h4><p>Aggregation, 汇集层次不再有父类子类的区别，而是由……组成的区别。</p>
+<p>图中 运输工具是父类，飞机、火车、汽车是子类。圆圈中写 D / O，表示 disjoint / overlapping。父类和圆圈之间是双实线，表示是 mandatory 完全性继承。</p>
+<h4 id="汇集层次">汇集层次</h4>
+<p>Aggregation, 汇集层次不再有父类子类的区别，而是由……组成的区别。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336896.png" alt="img"></p>
 <p>如图，房间、门窗、电脑、投影仪等是教室的组成部分，不是继承关系。</p>
-<h4 id="弱实体"><a href="#弱实体" class="headerlink" title="弱实体"></a>弱实体</h4><p>一种实体只有另一种实体存在的时候才有意义。如父母和子女，少了一方另一方就没有意义了。</p>
+<h4 id="弱实体">弱实体</h4>
+<p>一种实体只有另一种实体存在的时候才有意义。如父母和子女，少了一方另一方就没有意义了。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336013.png" alt="img"></p>
 <p>Workbench 等工具支持画 ER 图，甚至画好后可以自动生成 SQL 语句建表。 Workbench 中的图是 EER 图（扩展的ER 图）</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336256.png" alt="EER 图示例"></p>
 <p>在 EER 图下，点击 DATABASE - FORWARD ENGINEER 正向工程，可以选择要生成的表、字段，生成 SQL 语句建立表。</p>
-<p><em>自动生成的 SQL 语句中，外键下方有两句话<code>ON DELETE NO ACTION</code> <code>ON UPDATE NO ACTION</code>，意为：当外键参考的主键修改&#x2F;删除时，外键所在的表会受到什么样的影响？——不采取任何行动。建议去掉这两句话。如果去掉，就不能随便修改&#x2F;删除外键在使用的主键。</em></p>
+<p><em>自动生成的 SQL 语句中，外键下方有两句话<code>ON DELETE NO ACTION</code> <code>ON UPDATE NO ACTION</code>，意为：当外键参考的主键修改/删除时，外键所在的表会受到什么样的影响？——不采取任何行动。建议去掉这两句话。如果去掉，就不能随便修改/删除外键在使用的主键。</em></p>
 <p>同样地，在 SQL 语句页面，点击DATABASE - REVERSE ENGINEER 反向工程，可以根据表的结构生成 EER 图。</p>
-<p><em>Power Designer 建模工具，也支持正 &#x2F; 反向工程，可以生成 SQL 方言。完整版付费。</em></p>
-<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><p>数据类型可以通过 <code>? data types</code> 查看说明，每种数据类型也可以通过 <code>? 数据类型</code> 查看。</p>
+<p><em>Power Designer 建模工具，也支持正 / 反向工程，可以生成 SQL 方言。完整版付费。</em></p>
+<h1>数据类型</h1>
+<p>数据类型可以通过 <code>? data types</code> 查看说明，每种数据类型也可以通过 <code>? 数据类型</code> 查看。</p>
 <p><em>除了data types 其他可以用?查看的内容可以输入 <code>? contents</code> 查看。</em></p>
 <table>
 <thead>
@@ -251,7 +266,8 @@ L-->DCL[DCL]</pre>
 <th>作用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>整数 (tinyint, smallint, mediumint, int, bigint)</td>
 <td>都是整数型，表示范围为1,2,3,4,8 B（结尾还可以加 unsigned）</td>
 </tr>
@@ -271,29 +287,36 @@ L-->DCL[DCL]</pre>
 <td>Mysql 中的枚举类型 (enum, boolean)</td>
 <td></td>
 </tr>
-</tbody></table>
-<p>PS: </p>
+</tbody>
+</table>
+<p>PS:</p>
 <ol>
-<li><p>虽然 text 等类型可以存储很大的数据，不过大数据一般还是不会直接往数据库里存储。如图片，数据库中一般存储其路径、链接。如果非要存储，有 blob (binary large object)。</p>
+<li>
+<p>虽然 text 等类型可以存储很大的数据，不过大数据一般还是不会直接往数据库里存储。如图片，数据库中一般存储其路径、链接。如果非要存储，有 blob (binary large object)。</p>
 </li>
-<li><p>金额等小数一般不会用小数的数据类型存储，而是整数类型&#x2F;100使用。因为小数形式有误差，比如0.1+0.2&#x3D;0.30000000004.</p>
+<li>
+<p>金额等小数一般不会用小数的数据类型存储，而是整数类型/100使用。因为小数形式有误差，比如0.1+0.2=0.30000000004.</p>
 </li>
-<li><p>decimal 这种变长的数据，使用时速度比定长数据慢。而且 decimal 表示范围也有限，不如直接用 bigint。</p>
+<li>
+<p>decimal 这种变长的数据，使用时速度比定长数据慢。而且 decimal 表示范围也有限，不如直接用 bigint。</p>
 </li>
-<li><p>时间戳是有表示范围的，毕竟是个有上限的数，到2038年左右就不好用了。</p>
+<li>
+<p>时间戳是有表示范围的，毕竟是个有上限的数，到2038年左右就不好用了。</p>
 </li>
 </ol>
 <p>这里了解到了一个很有趣的“千年虫”问题 (<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/305603895">漫画：什么是“千年虫”问题？ - 知乎 (zhihu.com)</a>)。</p>
 <blockquote>
 <p>Grace Murray Hopper，最早的现代编译器、商用编程语言发明者，Bug 和 Debug词汇的流行使用也与她有关。</p>
-<p>早期计算机资源十分稀缺，内存空间必须精打细算。Grace Murray Hopper 采用6位数字组合来存储日期信息 （比如2022&#x2F;04&#x2F;19，就是22&#x2F;04&#x2F;19）</p>
+<p>早期计算机资源十分稀缺，内存空间必须精打细算。Grace Murray Hopper 采用6位数字组合来存储日期信息 （比如2022/04/19，就是22/04/19）</p>
 <p>尽管节约了内存空间，但是40年后1999-&gt;2000年时，问题就出现了……对计算机来说，相当于99-&gt;00年，年份倒退了。小到银行存款利息变成负的，大到飞机、发电厂运作、核弹发射……都可能出现故障，后果不堪设想。</p>
 <p>如果修改所有程序，是改不过来的。于是程序员们主要采取两种方法：</p>
-<p>1.只修改核心关键的医疗、航空、金融、军事领域的程序；<br>2.对于大多数不那么核心的程序，采用时间窗口的方式。1910年代表2010年，1920年代表2020年，暂缓问题。在这20年期间，大多数程序设备都已更新换代，现如今千年虫问题已经不那么严重了。</p>
+<p>1.只修改核心关键的医疗、航空、金融、军事领域的程序；<br>
+2.对于大多数不那么核心的程序，采用时间窗口的方式。1910年代表2010年，1920年代表2020年，暂缓问题。在这20年期间，大多数程序设备都已更新换代，现如今千年虫问题已经不那么严重了。</p>
 </blockquote>
 <p>回到刚才的话题，因此时间戳也并不推荐使用。</p>
 <p>5.7 之后版本的 Mysql 支持 json 属性，以键值对的方式存储，内容相对灵活。因为虽然数据库结构相对严谨，但是很多时候并不是所有属性都能考虑得到（如二手交易平台，不同的售卖品属性差的很多，如自行车和冰箱）加入相对灵活的 json ，一定程度上就能解决这类问题。包括以前 Mysql 没有这个功能的时候，许多公司也会建一个 varchar() 字段来存储 json 字符</p>
-<h1 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h1><table>
+<h1>DDL</h1>
+<table>
 <thead>
 <tr>
 <th>SQL 语句</th>
@@ -301,15 +324,16 @@ L-->DCL[DCL]</pre>
 <th>使用示例</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>create</td>
-<td>创建数据库 &#x2F; 表</td>
-<td>create database `数据库名`; &#x2F; create table `表名` ( 字段描述 );</td>
+<td>创建数据库 / 表</td>
+<td>create database `数据库名`; / create table `表名` ( 字段描述 );</td>
 </tr>
 <tr>
 <td>drop</td>
-<td>删除数据库 &#x2F; 表</td>
-<td>drop database `数据库名`; &#x2F; drop table `表名`;</td>
+<td>删除数据库 / 表</td>
+<td>drop database `数据库名`; / drop table `表名`;</td>
 </tr>
 <tr>
 <td>use</td>
@@ -318,34 +342,35 @@ L-->DCL[DCL]</pre>
 </tr>
 <tr>
 <td>alter</td>
-<td>更改数据库 &#x2F; 表信息</td>
+<td>更改数据库 / 表信息</td>
 <td>alter table `表名` add constraint `约束名` unique (`字段名`);</td>
 </tr>
-</tbody></table>
-<p>PS： </p>
-<p>修改表的引擎 &#x2F; 更改自增约束初始值是在 create table `表名` () 后面添加的。</p>
+</tbody>
+</table>
+<p>PS：</p>
+<p>修改表的引擎 / 更改自增约束初始值是在 create table `表名` () 后面添加的。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create table `表名`(</span><br><span class="line"></span><br><span class="line">)engine = innodb auto_increment=2 comment &#x27;表示例&#x27;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h2><h3 id="主键约束"><a href="#主键约束" class="headerlink" title="主键约束"></a>主键约束</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">primary key (`列名`),</span><br></pre></td></tr></table></figure>
-
+<h2 id="约束">约束</h2>
+<h3 id="主键约束">主键约束</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">primary key (`列名`),</span><br></pre></td></tr></table></figure>
 <p><em>复合主键语法上没错，但是开发使用时非常不好用，因为需要至少两条字段才能唯一确定一条记录。一般不会用。</em></p>
 <p><em>如选课表，有课程号和学生学号字段，合在一起作为复合主键可以唯一确定记录。但是一般会在新建一个选课id之类的可以唯一确定所有选课记录的字段作为主键。</em></p>
-<h3 id="默认约束"><a href="#默认约束" class="headerlink" title="默认约束"></a>默认约束</h3><p><code>default val;</code> 设置默认值。</p>
-<h3 id="自增约束、非空约束"><a href="#自增约束、非空约束" class="headerlink" title="自增约束、非空约束"></a>自增约束、非空约束</h3><p>都在字段描述后面写即可</p>
+<h3 id="默认约束">默认约束</h3>
+<p><code>default val;</code> 设置默认值。</p>
+<h3 id="自增约束、非空约束">自增约束、非空约束</h3>
+<p>都在字段描述后面写即可</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`col_name` int auto_increment not null comment &#x27;列名&#x27;,</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 创建表时：</span><br><span class="line">create table(</span><br><span class="line">    id int primary key comment &#x27;id&#x27;;</span><br><span class="line">	age int check (age&gt;=0 &amp;&amp; age&lt;=100) comment &#x27;年龄&#x27;,</span><br><span class="line">	gender char(1) default &#x27;m&#x27; comment &#x27;性别&#x27;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"># 修改表时，主键，unique，check，外键用 add，其他用 modify</span><br><span class="line">alter table add primary key(列名);</span><br><span class="line">alter  table table_name modify 列名 数据类型  not null;# 如果是 null，就是取消非空约束</span><br></pre></td></tr></table></figure>
-
-<h3 id="唯一约束"><a href="#唯一约束" class="headerlink" title="唯一约束"></a>唯一约束</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">constraint `uk_col_name` unique (`col_name`),</span><br></pre></td></tr></table></figure>
-
+<h3 id="唯一约束">唯一约束</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">constraint `uk_col_name` unique (`col_name`),</span><br></pre></td></tr></table></figure>
 <p>类似主键约束，唯一约束也可以设定多个字段，再括号里多写几个字段就行（如选课记录，一个学生不能重复选课，学生学号和课程编号不能重复）</p>
-<h3 id="检查约束"><a href="#检查约束" class="headerlink" title="检查约束"></a>检查约束</h3><p>检查约束可以帮忙检查数据合法性，但是相对的，肯定对性能有损耗。</p>
+<h3 id="检查约束">检查约束</h3>
+<p>检查约束可以帮忙检查数据合法性，但是相对的，肯定对性能有损耗。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">constraint `ck_col_sex` check (`col_sex`=&#x27;M&#x27; or `col_sex`=&#x27;F&#x27;),</span><br></pre></td></tr></table></figure>
-
-<h3 id="外键约束"><a href="#外键约束" class="headerlink" title="外键约束"></a>外键约束</h3><p>首先在需要加外键的表中添加和另一个表的主键一样格式（名称可以不一样）的字段。</p>
+<h3 id="外键约束">外键约束</h3>
+<p>首先在需要加外键的表中添加和另一个表的主键一样格式（名称可以不一样）的字段。</p>
 <p>外键约束也会损耗性能，要检查对应表中对应字段是否对应。很多公司都不用外键约束，会通过其他方法确定两表特定字段是否对应。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 外键需要先创建一个字段，然后给这个字段添加外键。原外键的字段和新的要添加外键的字段数据类型要一样。</span><br><span class="line">alter table 子表名 add constraint 外键名 foreign key (要添加外键的字段) references 父表名(父表字段);</span><br><span class="line"></span><br><span class="line">alter table 表名 drop foreign key 外键名;</span><br></pre></td></tr></table></figure>
-
 <p><em>一对多时，多的一方需要加外键约束。</em></p>
 <p>之后子表引用了父表，父表被引用的记录就不能随便删除了。子表也不能随便写外键的值，必须要在父表中存在才可以引用。</p>
 <table>
@@ -355,189 +380,199 @@ L-->DCL[DCL]</pre>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
-<td>no action&#x2F;restrict</td>
-<td>父表要删除&#x2F;更新的记录如果在子表中存在关联记录，则不删除&#x2F;更新</td>
+<tbody>
+<tr>
+<td>no action/restrict</td>
+<td>父表要删除/更新的记录如果在子表中存在关联记录，则不删除/更新</td>
 </tr>
 <tr>
 <td>cascade</td>
-<td>父表要删除&#x2F;更新的记录如果在子表中存在关联记录，则子表中的记录也删除&#x2F;更新</td>
+<td>父表要删除/更新的记录如果在子表中存在关联记录，则子表中的记录也删除/更新</td>
 </tr>
 <tr>
 <td>set null</td>
-<td>父表要删除&#x2F;更新的记录如果在子表中存在关联记录，则子表中的记录对应字段设为空值（前提：该字段可以为 null）</td>
+<td>父表要删除/更新的记录如果在子表中存在关联记录，则子表中的记录对应字段设为空值（前提：该字段可以为 null）</td>
 </tr>
 <tr>
 <td>set default</td>
-<td>父表要删除&#x2F;更新的记录如果在子表中存在关联记录，则子表中的记录也删除&#x2F;更新对应字段设为默认值</td>
+<td>父表要删除/更新的记录如果在子表中存在关联记录，则子表中的记录也删除/更新对应字段设为默认值</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 子表名 add constraint 外键名 foreign key (要添加外键的字段) references 父表名(父表字段) on update cascade on delete cascade;</span><br></pre></td></tr></table></figure>
-
-<h1 id="DML"><a href="#DML" class="headerlink" title="DML"></a>DML</h1><h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">insert into `表名` values (对应字段值)(对应字段值)(对应字段值);//写多个括号，可以一次填写多行</span><br><span class="line">insert into `表名` (要填写的字段) values (对应字段值); //省略不写的一定是有默认值的或者可以非空的</span><br></pre></td></tr></table></figure>
-
+<h1>DML</h1>
+<h2 id="插入">插入</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">insert into `表名` values (对应字段值)(对应字段值)(对应字段值);//写多个括号，可以一次填写多行</span><br><span class="line">insert into `表名` (要填写的字段) values (对应字段值); //省略不写的一定是有默认值的或者可以非空的</span><br></pre></td></tr></table></figure>
 <p>注意：对应字段值一定要和字段相匹配。如果有默认值的字段也不要省略不写，要写上 <code>default</code> ，不然系统也难以分辨哪一项使用默认值。</p>
 <p><em>日期可以写字符串 2002-01-01，会自动转换</em></p>
 <p>插入完后显示：1 row(s) affected（如果写了多个括号，一次插入多行，会显示多个 row(s) affected）是影响了几行的意思。</p>
-<p><strong>如果主键、unique 的记录重复会报错。</strong>报错显示： <code>duplicate key for key &#39;定义的约束键名称&#39;</code></p>
-<p><strong>填写了规定的 check 以外的内容会报错。</strong>报错显示：<code>check constraint &#39;定义的约束键名称&#39; is violated.</code> 不过字符串不区分大小写，规定性别只能填 ‘F’ ‘M’ 的话，填 ‘f’ ‘m’ 也行。</p>
+<p>**如果主键、unique 的记录重复会报错。**报错显示： <code>duplicate key for key '定义的约束键名称'</code></p>
+<p>**填写了规定的 check 以外的内容会报错。**报错显示：<code>check constraint '定义的约束键名称' is violated.</code> 不过字符串不区分大小写，规定性别只能填 ‘F’ ‘M’ 的话，填 ‘f’ ‘m’ 也行。</p>
 <p><strong>如果对应的外键在原表中没有对应的记录会报错。</strong> 报错显示：<code>cannot add or update a child row: a foreign constraint fails</code> 比如学生表的学院号参照了学院表，但是有学院表中不存在的学院号时。</p>
-<p><strong>如果没有给 NOT NULL且没有默认值的字段赋值时会报错。</strong> 报错显示：<code>Field &#39;字段名&#39; doesn&#39;t have a default value.</code> 尽量不要出现空列，之后处理空值会带来很多麻烦。哪怕用空字符串、0、1代替也更好一些。</p>
-<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">delete from `表名`;//这可不兴用啊！</span><br><span class="line">delete from `表名` where `字段名`=&#x27;要删除的记录的对应字段值&#x27;;//不等于可以用&lt;&gt;，有的 DBMS 支持!=</span><br><span class="line">delete from `表名` where `字段名` = &#x27;字段值&#x27; or `字段名` = &#x27;字段值&#x27;;//根据多个条件删除语句</span><br><span class="line">delete from `表名` where `字段名` in (&#x27;字段值&#x27;,&#x27;字段值&#x27;);//删除多条语句</span><br></pre></td></tr></table></figure>
-
+<p><strong>如果没有给 NOT NULL且没有默认值的字段赋值时会报错。</strong> 报错显示：<code>Field '字段名' doesn't have a default value.</code> 尽量不要出现空列，之后处理空值会带来很多麻烦。哪怕用空字符串、0、1代替也更好一些。</p>
+<h2 id="删除">删除</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">delete from `表名`;//这可不兴用啊！</span><br><span class="line">delete from `表名` where `字段名`=&#x27;要删除的记录的对应字段值&#x27;;//不等于可以用&lt;&gt;，有的 DBMS 支持!=</span><br><span class="line">delete from `表名` where `字段名` = &#x27;字段值&#x27; or `字段名` = &#x27;字段值&#x27;;//根据多个条件删除语句</span><br><span class="line">delete from `表名` where `字段名` in (&#x27;字段值&#x27;,&#x27;字段值&#x27;);//删除多条语句</span><br></pre></td></tr></table></figure>
 <p>但是如果要删除的这条记录在其他表里是外键，就无法删除。报错显示： <code>Cannot delete or update a parent row</code> 。</p>
 <p>删除了外键约束之后就可以随意修改两个表对应的值而不报错了。</p>
 <p>另一种删除表的方式是：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">truncate table `表名`;</span><br></pre></td></tr></table></figure>
-
 <p>截断表，这个比 delete 还要危险。delete 了表之后，如果有日志，还是可以找回原数据的。截断就算有日志也没法恢复。</p>
-<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">update `表名` set `列名` = &#x27;值&#x27;;//把这一列的数据全都改成这个值，不常用</span><br><span class="line">update `表名` set `列名` = &#x27;值&#x27;,`列名` = &#x27;值&#x27;,`列名` = &#x27;值&#x27; where `字段`=&#x27;值&#x27;;//限制条件，只修改某几个记录</span><br></pre></td></tr></table></figure>
-
-<h1 id="DQL"><a href="#DQL" class="headerlink" title="DQL"></a>DQL</h1><p>学习自b站骆昊jackfrued 老师的网课以及黑马网课。</p>
+<h2 id="更新">更新</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">update `表名` set `列名` = &#x27;值&#x27;;//把这一列的数据全都改成这个值，不常用</span><br><span class="line">update `表名` set `列名` = &#x27;值&#x27;,`列名` = &#x27;值&#x27;,`列名` = &#x27;值&#x27; where `字段`=&#x27;值&#x27;;//限制条件，只修改某几个记录</span><br></pre></td></tr></table></figure>
+<h1>DQL</h1>
+<p>学习自b站骆昊jackfrued 老师的网课以及黑马网课。</p>
 <p>查询语句。</p>
 <p><em>本节中使用到的例子：主要包含 tb_student 学生表（学号 stu_id，姓名 stu_name，地址 stu_address,所属学院号 col_id）</em></p>
 <p><em>tb_record 记录表，连接学生和所选的课 id 及课程成绩（学号 stu_id，课程号）</em></p>
-<h2 id="编写顺序、执行顺序"><a href="#编写顺序、执行顺序" class="headerlink" title="编写顺序、执行顺序"></a>编写顺序、执行顺序</h2><p>编写顺序如下：<code>select from where group by having order by limit;</code></p>
+<h2 id="编写顺序、执行顺序">编写顺序、执行顺序</h2>
+<p>编写顺序如下：<code>select from where group by having order by limit;</code></p>
 <p>执行顺序：</p>
 <ol>
-<li><p>from 表名</p>
+<li>
+<p>from 表名</p>
 </li>
-<li><p>where 条件（where 可以用表别名，但是不能用 select 中的字段别名）</p>
+<li>
+<p>where 条件（where 可以用表别名，但是不能用 select 中的字段别名）</p>
 </li>
-<li><p>group by 分组</p>
+<li>
+<p>group by 分组</p>
 </li>
-<li><p>having 分组条件</p>
+<li>
+<p>having 分组条件</p>
 </li>
-<li><p>select 投影</p>
+<li>
+<p>select 投影</p>
 </li>
-<li><p>order by 排序</p>
+<li>
+<p>order by 排序</p>
 </li>
-<li><p>limit 分页</p>
+<li>
+<p>limit 分页</p>
 </li>
 </ol>
-<h2 id="Select"><a href="#Select" class="headerlink" title="Select"></a>Select</h2><p>查询所有学生的所有信息</p>
+<h2 id="Select">Select</h2>
+<p>查询所有学生的所有信息</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from `表名`;-- * 号表示所有字段</span><br></pre></td></tr></table></figure>
-
 <p>但是这样有一点影响效率，会先查出学生表中有哪些列，再查询这些列的数据。</p>
 <p>实际使用一般都是手动写上所有要查询的字段。（投影 Projection，只查询某几列）</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select `stu_id`,`stu_sex`,`stu_name`,`stu_address` from `tb_student`;</span><br></pre></td></tr></table></figure>
-
 <p>如果只查询部分列，就只写那几列就行。</p>
-<h2 id="联合-Union"><a href="#联合-Union" class="headerlink" title="联合 Union"></a>联合 Union</h2><p>Union 会把查询结果联合起来。</p>
+<h2 id="联合-Union">联合 Union</h2>
+<p>Union 会把查询结果联合起来。</p>
 <p>union all：结果可能重复。</p>
 <p>union：重复的结果合并。</p>
 <p><strong>想做union操作，两个要联合的表必须字段数相同，字段类型匹配。</strong></p>
-<h2 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h2><p>给字段或表起别名—— alias，简写为 as。</p>
+<h2 id="别名">别名</h2>
+<p>给字段或表起别名—— alias，简写为 as。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select `stu_id` as `学号` from `tb_student`;</span><br></pre></td></tr></table></figure>
-
 <p>as 可以省略，不过还是写上可读性高一些。<em><strong>一般字段不省略，表省略</strong>。具体还得看公司编程规范的要求，没有就看个人喜好了。</em></p>
-<h2 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h2><p>限制查询记录的条件——where（选择 Selection，只查询某几行）</p>
+<h2 id="条件">条件</h2>
+<p>限制查询记录的条件——where（选择 Selection，只查询某几行）</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from table where `stu_sex`=&#x27;M&#x27; or `stu_name`=&#x27;Jingqing&#x27;;</span><br></pre></td></tr></table></figure>
-
 <p>多个条件之间用 or 连接就是或者的关系，满足一个即可；用 and 连接就是和的关系，同时满足。</p>
 <p><em>性能问题，一般不用 or 而使用 union，结果取并集。</em></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select * from table where `stu_sex`=&#x27;M&#x27; </span><br><span class="line">union</span><br><span class="line">select * from table where `stu_name`=&#x27;Jingqing&#x27;;</span><br></pre></td></tr></table></figure>
-
 <p><em><strong>如果在 union 后面加 all，意思是并集不会去掉重复的部分，相交的部分会显示两遍。</strong></em></p>
 <p>类似 10&lt;x&lt;30 的形式不可以直接写两个等式，要拆成 x&gt;10 and x&lt;30 。</p>
-<p>这里的字段如果是数字类型的，也可以进行 + - * &#x2F; % mod（也是取余）以及 &lt; &gt;  &#x3D; &gt;&#x3D; &lt;&#x3D; &lt;&gt; 等形式的运算。</p>
-<p>还有一种条件写法是 <code>between …… and ……</code> </p>
+<p>这里的字段如果是数字类型的，也可以进行 + - * / % mod（也是取余）以及 &lt; &gt;  = &gt;= &lt;= &lt;&gt; 等形式的运算。</p>
+<p>还有一种条件写法是 <code>between …… and ……</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from table where `stu_age` between 10 and 30;-- 相当于 &lt;=30 and &gt;=10</span><br></pre></td></tr></table></figure>
-
-<h2 id="分支结构"><a href="#分支结构" class="headerlink" title="分支结构"></a>分支结构</h2><p>如果 sex 是布尔值，1代表男，0代表女，怎么把0和1处理成对应的性别？</p>
+<h2 id="分支结构">分支结构</h2>
+<p>如果 sex 是布尔值，1代表男，0代表女，怎么把0和1处理成对应的性别？</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select if(`stu_sex`,&#x27;男&#x27;,&#x27;女&#x27;) as &#x27;性别&#x27; from `tb_student`;-- 有点类似三目运算符 ?:</span><br></pre></td></tr></table></figure>
-
 <p>if 中第一项可以是表达式，如 age &gt; 10.</p>
-<p><strong>这个是 Mysql 数据库的方言，只能在 Mysql 数据库中生效。</strong>比如 Oracle 数据库中对应的函数是 decode，不能通用。</p>
+<p>**这个是 Mysql 数据库的方言，只能在 Mysql 数据库中生效。**比如 Oracle 数据库中对应的函数是 decode，不能通用。</p>
 <p>通用的分支结构：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select case `sex` </span><br><span class="line">when 1 then &#x27;男&#x27; </span><br><span class="line">elseif 0 then &#x27;女&#x27; </span><br><span class="line">else &#x27;未知&#x27;</span><br><span class="line">end as &#x27;性别&#x27; from `tb_student`;-- end 表示条件判断结束</span><br></pre></td></tr></table></figure>
-
-<h2 id="模糊查询"><a href="#模糊查询" class="headerlink" title="模糊查询"></a>模糊查询</h2><p>如：查询所有姓王的学生。</p>
+<h2 id="模糊查询">模糊查询</h2>
+<p>如：查询所有姓王的学生。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from `student` where `stu_name` like &#x27;王%&#x27;;-- % 代表零个或多个任意字符，表示查询姓的且名字只有2个字的学生</span><br><span class="line">select * from `student` where `stu_name` like &#x27;王_&#x27;;-- _ 代表一个任意字符，表示查询姓王的且名字只有2个字的学生</span><br></pre></td></tr></table></figure>
-
 <p>这里和正则表达式有一定联系，之后会单独学习。</p>
 <p>2023-01-23 补档：我后来确实学习了正则表达式~学习笔记在这里：<a target="_blank" rel="noopener" href="https://blog.csdn.net/jtwqwq/category_11807727.html?spm=1001.2014.3001.5482">Regex_灰海宽松的博客-CSDN博客</a></p>
 <p>事实上 Mysql 语句也支持正则表达式的，正则表达式也比这两种模糊查询的通配符功能强大很多。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from `student` where `字段名` regexp &#x27;正则表达式&#x27;;</span><br></pre></td></tr></table></figure>
-
 <p>模糊查询，特别是 % 在左侧的时候，性能还是比较差的，尽量避免。</p>
-<h2 id="空值处理，以及三值逻辑"><a href="#空值处理，以及三值逻辑" class="headerlink" title="空值处理，以及三值逻辑"></a>空值处理，以及三值逻辑</h2><p><strong>下面两种写法是错误的！</strong></p>
+<h2 id="空值处理，以及三值逻辑">空值处理，以及三值逻辑</h2>
+<p><strong>下面两种写法是错误的！</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from `student` where `stu_address` = null;</span><br><span class="line">select * from `student` where `stu_address` &lt;&gt; null;</span><br></pre></td></tr></table></figure>
-
 <p>因为表达式产生的值有三种（三值逻辑），true, false, unknown。和空值做运算的时候，就会得到 unknown 的结果。</p>
 <p>正确做法：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from `student` where `stu_address` is null;</span><br><span class="line">select * from `student` where `stu_address` is not null;</span><br></pre></td></tr></table></figure>
-
-<h2 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select distinct `字段名` from `表名`;</span><br></pre></td></tr></table></figure>
-
-<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select `字段名` from `表名` order by `字段名1` asc, `字段名2` desc; -- asc: 默认，ascending，升序；desc：descending，降序</span><br></pre></td></tr></table></figure>
-
+<h2 id="去重">去重</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select distinct `字段名` from `表名`;</span><br></pre></td></tr></table></figure>
+<h2 id="排序">排序</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select `字段名` from `表名` order by `字段名1` asc, `字段名2` desc; -- asc: 默认，ascending，升序；desc：descending，降序</span><br></pre></td></tr></table></figure>
 <p>order by 后面跟多个字段，就是先按字段1排序，字段1相等时再按字段2排序。</p>
-<h2 id="当前日期"><a href="#当前日期" class="headerlink" title="当前日期"></a>当前日期</h2><p>curdate()获取当前日期，使用 datediff(datepart, date1, date2) 函数可以和出生日期做差获取年龄。</p>
+<h2 id="当前日期">当前日期</h2>
+<p>curdate()获取当前日期，使用 datediff(datepart, date1, date2) 函数可以和出生日期做差获取年龄。</p>
 <p>now()获取当前年月日时分秒（datetime）。</p>
-<h2 id="取整"><a href="#取整" class="headerlink" title="取整"></a>取整</h2><p>floor() 函数是下取整。floor(3.99) &#x3D; 3.</p>
-<p>ceil() 函数是向上取整，ceil(3.1) &#x3D; 4.</p>
-<p>round() 函数是四舍五入，第二个参数是保留几位小数的意思，round(3.5,0)&#x3D;4</p>
+<h2 id="取整">取整</h2>
+<p>floor() 函数是下取整。floor(3.99) = 3.</p>
+<p>ceil() 函数是向上取整，ceil(3.1) = 4.</p>
+<p>round() 函数是四舍五入，第二个参数是保留几位小数的意思，round(3.5,0)=4</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select floor(datediff(curdate(),`date`)/365) from `staff`;</span><br></pre></td></tr></table></figure>
-
 <p><em>可以通过? functions 查看函数一览。还会有相应的例子提示~</em></p>
-<h2 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h2><p>描述性统计信息：包括集中趋势和离散趋势。</p>
+<h2 id="聚合函数">聚合函数</h2>
+<p>描述性统计信息：包括集中趋势和离散趋势。</p>
 <p>集中趋势：平均值，中位数等。</p>
 <p>离散趋势：方差，标准差等。</p>
 <p>聚合函数属于 SQL 语句，所有 DBMS 都能用。</p>
 <ul>
-<li><p>min(字段名)</p>
+<li>
+<p>min(字段名)</p>
 </li>
-<li><p>max(字段名)</p>
+<li>
+<p>max(字段名)</p>
 </li>
-<li><p>avg(字段名) <em>做计算的时候会忽略 null 值</em></p>
+<li>
+<p>avg(字段名) <em>做计算的时候会忽略 null 值</em></p>
 </li>
-<li><p>sum(字段名)</p>
+<li>
+<p>sum(字段名)</p>
 </li>
-<li><p>count(字段名) <em>做计算的时候会忽略 null 值</em></p>
+<li>
+<p>count(字段名) <em>做计算的时候会忽略 null 值</em></p>
 <p><em><strong>如果利用 sum()和count() 做除法求平均值，要考虑空值对结果的影响。</strong></em></p>
-<p><em>比如有10个学生，但有一个学生的成绩为空，如果忽略掉成绩为空的学生， sum(score) &#x2F; count(stu_id) 就是错误的，因为是9个人的成绩 &#x2F; 10.</em> </p>
-<p><em>如果成绩为空的学生视为 &#x3D; 0，就要用 sum(score) &#x2F; count(stu_id)，或者对 avg() 函数做如下处理：</em></p>
+<p><em>比如有10个学生，但有一个学生的成绩为空，如果忽略掉成绩为空的学生， sum(score) / count(stu_id) 就是错误的，因为是9个人的成绩 / 10.</em></p>
+<p><em>如果成绩为空的学生视为 = 0，就要用 sum(score) / count(stu_id)，或者对 avg() 函数做如下处理：</em></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select avg(ifnull(`score`,0)) from student;-- 如果第一个表达式!=null，则返回第一个表达式</span><br></pre></td></tr></table></figure>
-
 <p><em>ifnull() 函数也是 mysql 的方言，类似 if。在 Oracle 中就是 nvl。</em></p>
 <p>coalesce() 也可以处理空值，是标准数据库的函数，它会取第一个非空值。如：coalesce(score, 0)。</p>
 </li>
-<li><p>std(字段名)，计算标准差，越小说明越稳定。</p>
+<li>
+<p>std(字段名)，计算标准差，越小说明越稳定。</p>
 <ul>
 <li>std(), stddev() 和 stddev_pop()：所有数据总体的标准差</li>
 <li>stddev_samp()：样本标准差，抽样计算。</li>
 </ul>
 </li>
-<li><p>variance(字段名)，计算方差，标准差的平方。</p>
+<li>
+<p>variance(字段名)，计算方差，标准差的平方。</p>
 <ul>
 <li>variance(), var_pop()</li>
 <li>var_samp()</li>
 </ul>
 </li>
 </ul>
-<h2 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h2><p>聚合函数通常和分组一起使用。分组是非常重要的操作。</p>
+<h2 id="分组">分组</h2>
+<p>聚合函数通常和分组一起使用。分组是非常重要的操作。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select avg(`score`) from `student` group by `sex`;</span><br></pre></td></tr></table></figure>
-
 <p>PS： Excel 的数据透视表有同样功能：</p>
 <p>插入-数据透视表-选择所有数据范围（选中左上角的单元格，Ctrl + Shift + →，Ctrl + Shift + ↓选中所有有数据的单元格）-选择放置数据表的位置（选择某一列的第一行的单元格，如 J1 或 K1 ）-确认</p>
 <p>行里选择要分组的列（如：销售区域）值选择要分组运算的对应值（如：销售额），值默认做的就是求和运算。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from `student` group by `sex` with rollup; -- with rollup: 在最后一列求个总和</span><br></pre></td></tr></table></figure>
-
 <p>group by 后面也可以跟多个字段，先按第一个分组，然后在每个组里再按第二个分组。</p>
 <p><strong>如果进行了条件查询，用到了 group by 得到的结果，不能直接用 where，要使用 having.</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select `stu_id`,avg(score) from `Score` where avg(score)&gt;90 group by `stu_id`; -- 错误</span><br><span class="line">select `stu_id`,avg(score) from `Score` group by `stu_id` having avg(score)&gt;90; -- 正确</span><br></pre></td></tr></table></figure>
-
 <p>分组以前的筛选： where, 写在分组后</p>
 <p>分组以后的筛选： having, 写在分组后。</p>
 <p><em>其实这里个人有一个小误区：select 不用非得查出 avg() 才能做 having 条件判断。比如要查询平均成绩大于90分的学生学号，就可以改成：</em></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select `stu_id` from `tb_record` group by `stu_id` having avg(score)&gt;90;</span><br></pre></td></tr></table></figure>
-
 <p><em>也是没有问题的。</em></p>
 <p>查询 1111,2222,3333三门课程平均成绩大于90分的学生的平均成绩：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select `stu_id`,avg(score) from `Score` where `cou_id` in (1111,2222,3333) group by `stu_id` having avg(score)&gt;90;</span><br></pre></td></tr></table></figure>
-
-<h2 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h2><p>子查询 (subquery) 的用途：</p>
+<h2 id="子查询">子查询</h2>
+<p>子查询 (subquery) 的用途：</p>
 <ul>
 <li>集合成员资格，判断某一元素是否是某一个集合的成员</li>
 <li>集合之间的比较，某一个集合是否包含另一个集合等</li>
@@ -547,168 +582,175 @@ L-->DCL[DCL]</pre>
 <p>可以先查询出最大年龄，再查询学生表中年龄等于这个值的学生姓名。</p>
 <p>一种方法是嵌套子查询：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select `stu_name` from `tb_student` </span><br><span class="line">where `stu_birth` = (</span><br><span class="line">    select min(`stu_birth`) from `tb_student`</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
 <p>另一种方法是定义变量：mysql 定义变量，需要加@（但是不能把多个值赋给一个变量！）</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set @a =(select min(`stu_birth`) from `tb_student`);</span><br><span class="line">select @a; -- 可以查看一下 @a 的值。</span><br></pre></td></tr></table></figure>
-
 <p>如果子查询有很多结果，满足其中一个即可：不能用等号，要用 <strong>in</strong> 。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select `name` from `tb_student` </span><br><span class="line">where `stu_id` in (</span><br><span class="line">    select `stu_id` from `tb_record` group by `stu_id` where count(*)&gt;=2</span><br><span class="line">); -- 查询出所有至少选了2门课的学生姓名</span><br></pre></td></tr></table></figure>
-
 <p>如果用了等号，报错： subquery returns more than 1 row.</p>
-<p>标量子查询：结果为一个。可以做&gt; &lt; &#x3D;操作。</p>
+<p>标量子查询：结果为一个。可以做&gt; &lt; =操作。</p>
 <p>列子查询：结果为一列。可以做 IN NOT IN SOME ALL ANY 操作。（ANY SOME 等价）</p>
-<p>行子查询：结果为一行。可以做 &#x3D; &lt;&gt; IN NOT IN 操作。</p>
+<p>行子查询：结果为一行。可以做 = &lt;&gt; IN NOT IN 操作。</p>
 <p>表子查询：结果为多行多列。最常用 IN NOT IN 操作。</p>
-<h2 id="多表连接"><a href="#多表连接" class="headerlink" title="多表连接"></a>多表连接</h2><p>一对一，一对多，多对多（两个一对多）</p>
+<h2 id="多表连接">多表连接</h2>
+<p>一对一，一对多，多对多（两个一对多）</p>
 <p>一对一：其中一方设置unique的外键。</p>
 <p>一对多：多的一方设置外键。</p>
 <p>多对多：建立中间表，设置两个外键。</p>
-<h3 id="笛卡尔积"><a href="#笛卡尔积" class="headerlink" title="笛卡尔积"></a>笛卡尔积</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select `stu_name`,`stu_id`,`col_name`,`tb_college`.`col_id` from `tb_student`,`tb_college`;</span><br></pre></td></tr></table></figure>
-
+<h3 id="笛卡尔积">笛卡尔积</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select `stu_name`,`stu_id`,`col_name`,`tb_college`.`col_id` from `tb_student`,`tb_college`;</span><br></pre></td></tr></table></figure>
 <p>如果不加条件的从两个表中投影出数据，就会获得两个表中所有记录的笛卡尔积，即排列组合。</p>
 <p>本例中，学生表和学员表中都有学院号 col_id 字段，因此投影该字段的时候需要指明是从那个表中得到的，用 表名.字段 指定。</p>
-<h3 id="自然连接"><a href="#自然连接" class="headerlink" title="自然连接"></a>自然连接</h3><ol>
+<h3 id="自然连接">自然连接</h3>
+<ol>
 <li>有外键约束：利用外键连接，不用加条件，自动连接。</li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select `stu_name`,`stu_id`,`col_name`,`tb_college`.`col_id` </span><br><span class="line">from `tb_student` natural join `tb_college`;</span><br></pre></td></tr></table></figure>
-
 <ol start="2">
 <li>没有外键，但是两个表中有同名的列（如本例中两个表中都有 col_id 列）也可以进行自然连接。<em>注意：不管有几个同名的列，所有列都会作为连接的条件！</em></li>
 <li>如果没有外键也没有同名列，就只会得到笛卡尔积的结果。</li>
 </ol>
-<h3 id="内-外连接"><a href="#内-外连接" class="headerlink" title="内 &#x2F; 外连接"></a>内 &#x2F; 外连接</h3><p>另一种连接方式是 inner join &#x2F; outer join </p>
+<h3 id="内-外连接">内 / 外连接</h3>
+<p>另一种连接方式是 inner join / outer join</p>
 <p>或者用 <code>where A.id=B.id</code> ，这种内连接方式叫做隐式内连接。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select `stu_name`,`stu_id`,`col_name`,`tb_college`.`col_id` </span><br><span class="line">from `tb_student` inner join `tb_college` </span><br><span class="line">on `tb_student`.`col_id`=`tb_college`.`col_id`; -- 查询所有学生的姓名、学号、对应的学院名、学院号</span><br></pre></td></tr></table></figure>
-
 <p>inner join：只有左表中有的记录，而且在右表中能找到对应的记录才会呈现出来。</p>
 <p>left outer join：左表中所有内容都会呈现出来，右表中如果没有对应的内容补 null。</p>
 <p>right outer join：右表中所有内容都会呈现出来，左表中如果没有对应的内容补 null。</p>
 <p>full outer join：左右表数据全拿出来，没有对应的内容都补 null。但是 mysql 并不支持全外连接，可以用左外连接 union 右外连接代替。</p>
-<h3 id="自连接"><a href="#自连接" class="headerlink" title="自连接"></a>自连接</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from A AS1 inner join A AS2 where 条件;-- 自连接可以是内或外连接。必须起别名！！！</span><br></pre></td></tr></table></figure>
-
-<h3 id="θ-连接"><a href="#θ-连接" class="headerlink" title="θ 连接"></a>θ 连接</h3><p>添加条件使得两个表中的数据相互对应：</p>
+<h3 id="自连接">自连接</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from A AS1 inner join A AS2 where 条件;-- 自连接可以是内或外连接。必须起别名！！！</span><br></pre></td></tr></table></figure>
+<h3 id="θ-连接">θ 连接</h3>
+<p>添加条件使得两个表中的数据相互对应：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select `stu_name`,`stu_id`,`col_name`,`tb_college`.`col_id` from `tb_student`,`tb_college` </span><br><span class="line">where `tb_student`.`col_id`=`tb_college`.`col_id`; -- 查询所有学生的姓名、学号、对应的学院名、学院号</span><br></pre></td></tr></table></figure>
-
-<h3 id="三表连接"><a href="#三表连接" class="headerlink" title="三表连接"></a>三表连接</h3><p>链接条件用多个条件筛选。</p>
+<h3 id="三表连接">三表连接</h3>
+<p>链接条件用多个条件筛选。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">select `stu_name`,`tb_student`.`stu_id`,`tb_course`.`cou_name`,`tb_course`.`cou_id` from `tb_student`,`tb_course`, `tb_record`</span><br><span class="line">where `tb_course`.`cou_id`=`tb_record`.`cou_id` </span><br><span class="line">and `tb_student`.`stu_id`=`tb_record`.`stu_id`;</span><br><span class="line"></span><br><span class="line">select `stu_name`,`tb_student`.`stu_id`,`tb_course`.`cou_name`,`tb_course`.`cou_id` from `tb_student`</span><br><span class="line">inner join `tb_record`</span><br><span class="line">on `tb_student`.`stu_id`=`tb_record`.`stu_id`</span><br><span class="line">inner join `tb_course`</span><br><span class="line">on `tb_course`.`cou_id`=`tb_record`.`cou_id`</span><br><span class="line">where `tb_course`.`cou_name` is not null; -- where 写在最后</span><br><span class="line"></span><br><span class="line">select `stu_name`,`tb_student`.`stu_id`,`tb_course`.`cou_name`,`tb_course`.`cou_id` from `tb_student`</span><br><span class="line">natural join `tb_record`</span><br><span class="line">natural join `tb_course`;</span><br></pre></td></tr></table></figure>
-
-<h2 id="查询小技巧"><a href="#查询小技巧" class="headerlink" title="查询小技巧"></a>查询小技巧</h2><p>百度搜索：filetype:pdf python 搜索带 python 名的 pdf 文件</p>
+<h2 id="查询小技巧">查询小技巧</h2>
+<p>百度搜索：filetype:pdf python 搜索带 python 名的 pdf 文件</p>
 <p>python -推广链接 不想看到广告推送</p>
 <p>site:zhihu.com python 只搜索知乎里的 python 内容</p>
 <p>2023-01-23 补充：关于信息检索，博主也有开一个新坑：<a target="_blank" rel="noopener" href="https://blog.csdn.net/jtwqwq/category_12158048.html?spm=1001.2014.3001.5482">信息检索_灰海宽松的博客-CSDN博客</a>。目前更新还不完全，不过对于搜索引擎部分应该足够用了。</p>
-<h2 id="分页查询"><a href="#分页查询" class="headerlink" title="分页查询"></a>分页查询</h2><p>limit 是 mysql 的<strong>方言</strong>。</p>
+<h2 id="分页查询">分页查询</h2>
+<p>limit 是 mysql 的<strong>方言</strong>。</p>
 <p>limit 查询最值有个缺陷，就是只能查出一条。如果有两个最大值就只能显示一个。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select * from `tb_student` order by `stu_id` desc limit 5;-- 只显示前五条数据.如果不足5条，就有几条显示几条。</span><br><span class="line">select * from `tb_student` order by `stu_id` desc limit 5 offset 3;-- 只显示4-8条数据(跳过前3条数据)</span><br><span class="line">select * from `tb_student` order by `stu_id` desc limit (3,5);-- 只显示4-8条数据(跳过前3条数据)</span><br></pre></td></tr></table></figure>
-
-<h2 id="派生表"><a href="#派生表" class="headerlink" title="派生表"></a>派生表</h2><p>select 的返回值也是一个关系。（关系运算的封闭性，关系的运算仍然是关系）</p>
+<h2 id="派生表">派生表</h2>
+<p>select 的返回值也是一个关系。（关系运算的封闭性，关系的运算仍然是关系）</p>
 <p>查询学生姓名和平均成绩。</p>
 <p>查询学生学号和平均成绩的话，可以在 tb_record 表里根据学生学号分组，然后投影出来。但查询学生姓名有需要拿着对应的学号去学生表里连接，要怎么把学生姓名和学生平均成绩关联起来呢？</p>
 <p>先通过一个查询，得到一个派生表：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select `stu_id`,avg(score) from `tb_record` group by `stu_id`;</span><br></pre></td></tr></table></figure>
-
 <p>然后把其结果作为一个新表，和学生表做关联。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select `stu_name`,`avg(score)`from `tb_student`</span><br><span class="line">natural join (select `stu_id`,avg(score) from `tb_record` group by `stu_id`) `tb_derived`;-- 最后是起别名的意思</span><br></pre></td></tr></table></figure>
-
-<p><strong>临时表必须要起别名！！！</strong>不然报错。</p>
-<p><strong>注意：查询学生姓名和选课数 和 查询每个学生姓名和选课数的区别！</strong>因为有的同学没有选课，如果用 natural join，inner join，就只能查询到选了课的学生，<strong>没选课的学生就不会查出来。</strong></p>
+<p>**临时表必须要起别名！！！**不然报错。</p>
+<p>**注意：查询学生姓名和选课数 和 查询每个学生姓名和选课数的区别！**因为有的同学没有选课，如果用 natural join，inner join，就只能查询到选了课的学生，<strong>没选课的学生就不会查出来。</strong></p>
 <p>如果要查询每个学生，就要用到外连接。没选课的学生选课数显示 null。（当然可以用 ifnull(字段, 0) 把 null 替换成 0。记得 ifnull 是 mysql 方言）。</p>
-<h1 id="DQL-例题及注意事项"><a href="#DQL-例题及注意事项" class="headerlink" title="DQL 例题及注意事项"></a>DQL 例题及注意事项</h1><h2 id="简单排序——查询最大值、次大只"><a href="#简单排序——查询最大值、次大只" class="headerlink" title="简单排序——查询最大值、次大只"></a>简单排序——查询最大值、次大只</h2><ol>
-<li><p>员工表中含有员工号、姓名、薪水、职位、补贴 、所在部门等信息。查询薪水最高的员工姓名和薪水值。</p>
+<h1>DQL 例题及注意事项</h1>
+<h2 id="简单排序——查询最大值、次大只">简单排序——查询最大值、次大只</h2>
+<ol>
+<li>
+<p>员工表中含有员工号、姓名、薪水、职位、补贴 、所在部门等信息。查询薪水最高的员工姓名和薪水值。</p>
 <p>做法①：最普通的子查询，先查出最大工资值，再筛选出员工表中工资值等于这个数的员工。</p>
 <p>做法②：limit 做法。先按薪水降序排序所有员工，再只 limit 1 取第一条员工信息。这种做法的局限性在 limit 介绍的时候我也有写，就是当最值不只一位的时候，这种方法只能查出1位员工。</p>
-<p>做法③：查询一名没有人薪水比他大的员工（即：薪水大于这名员工的员工数&#x3D;0）。</p>
+<p>做法③：查询一名没有人薪水比他大的员工（即：薪水大于这名员工的员工数=0）。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select `ename`,`salary` from `tb_employee` t1 where(</span><br><span class="line">    select count(*) from `tb_employee` t2 where `t2`.`salary`&gt;`t1`.`salary`</span><br><span class="line">)=0;-- 结尾改成1，就是工资第二高的人</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>查询除了 boss 外工资最高的人。</p>
+<li>
+<p>查询除了 boss 外工资最高的人。</p>
 <p>在题1的基础上，用 where 排除掉 boss。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select `ename`,`salary` from `tb_employee` </span><br><span class="line">where `salary`=(</span><br><span class="line">    select max(salary) from `tb_employee` where `position`&lt;&gt;&#x27;boss&#x27;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>查询月薪 top 3的人。</p>
+<li>
+<p>查询月薪 top 3的人。</p>
 <p>这时出现了和题1一样的情况。用 limit ，可能会漏掉工资并列的第四人；因此，这里用题1的方法③最合适。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select `ename`,`salary` from `tb_employee` t1 where(</span><br><span class="line">    select count(*) from `tb_employee` t2 where `t2`.`salary`&gt;`t1`.`salary`</span><br><span class="line">)&lt;3 order by `salary` desc;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>查询所有员工的姓名和年薪。年薪计算公式：月薪*12+补贴。</p>
-<p>题目很简单，但是<strong>遇到计算一定要注意数据是否 Not Null，如果出现 Null 数据结果也会变成 Null。</strong>要用 ifnull() 或 coalesce() 函数限制一下。</p>
+<li>
+<p>查询所有员工的姓名和年薪。年薪计算公式：月薪*12+补贴。</p>
+<p>题目很简单，但是**遇到计算一定要注意数据是否 Not Null，如果出现 Null 数据结果也会变成 Null。**要用 ifnull() 或 coalesce() 函数限制一下。</p>
 </li>
-<li><p>查询所有部门名称及员工人数。</p>
-<p>部门名称在部门表中，每个部门的人数则需要根据员工表中部门号统计。显然这里要先查出员工表的员工号和统计员工信息，再把结果表和部门表做连接。<strong>重点注意几种连接的不同，思考一下题中哪个信息要全部展示出来。</strong>比如此题，即便有的部门没有员工，也要显示出来，因此应该部门表 left join 派生表。</p>
+<li>
+<p>查询所有部门名称及员工人数。</p>
+<p>部门名称在部门表中，每个部门的人数则需要根据员工表中部门号统计。显然这里要先查出员工表的员工号和统计员工信息，再把结果表和部门表做连接。**重点注意几种连接的不同，思考一下题中哪个信息要全部展示出来。**比如此题，即便有的部门没有员工，也要显示出来，因此应该部门表 left join 派生表。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select dname,total from `tb_department` t1</span><br><span class="line">left join (</span><br><span class="line">    select dname, count(*) as total from `tb_department` t2 group by `dno`</span><br><span class="line">) on t1.`stu_id`=t2.`stu_id`;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>查询每个部门比本部门平均薪水高的员工名及薪水。记得说清楚列属于哪个表，不然报错 ambigious</p>
+<li>
+<p>查询每个部门比本部门平均薪水高的员工名及薪水。记得说清楚列属于哪个表，不然报错 ambigious</p>
 <p>先按部门分组，查询出平均成绩和员工号表；再通过部门号和员工表连接，并筛选出薪水值大于平均值的。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select sname,salary from `tb_employee` t1</span><br><span class="line">inner join (</span><br><span class="line">	select avg(salary),dno from `tb_employee` group by dno;</span><br><span class="line">)t2 on t1.dno=t2.dno and t1.salary &gt; t2.avg(salary);-- 两个连表条件</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>查询每个部门中薪水最高的员工的用户姓名、薪水、部门名称。</p>
+<li>
+<p>查询每个部门中薪水最高的员工的用户姓名、薪水、部门名称。</p>
 <p>派生表通过薪水值、部门号和员工表、部门表相连接。</p>
 </li>
-<li><p>查询薪水排名4-6员工的薪水、姓名、<strong>排名</strong>。</p>
+<li>
+<p>查询薪水排名4-6员工的薪水、姓名、<strong>排名</strong>。</p>
 <p>问题1：怎么查出排名？</p>
 <p>问题2：这题并没有想象中的简单。比如员工薪水前8名是5000,5000,4000,4000,3000,3000,3000,2000，那么其实第三、第四人两个人并列第三，4-6显示的排名值就应该是3，5，5</p>
-<p>解决：mysql 8的窗口函数可以解决排名 &#x2F; top N 问题。</p>
+<p>解决：mysql 8的窗口函数可以解决排名 / top N 问题。</p>
 <p>①不用窗口函数：</p>
 <p>系统变量一般不写@或写两个@@（可以通过 show variables 查询），自己定义的变量写一个@，赋值的方法：<code>set @a=0;</code>或<code>select@a:=0;</code>而且变量也可以通过 as 起别名。</p>
 <p>我们先定义一个变量，变量从0开始，每次选择＋1，就可以当做序号用了。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set @a=0;</span><br><span class="line">select row_num,ename,salary from (</span><br><span class="line">	select @a=@a+1 as `row_num`,ename,salary,(select @a:=0) -- @a 重新赋值为0</span><br><span class="line">    from `tb_employee` order by salary desc</span><br><span class="line">) where `row_num` between 4 and 6;-- 子查询中做了几次查询，@a 就加几次</span><br></pre></td></tr></table></figure>
-
 <p>注意不要在括号里用 limit 3 offset 3，因为这样的话子查询就只会进行3次，@a 的值就只会从1到3.</p>
 <p>另外，每次查询时都要重新给@a 赋值为0，不然其值会累加。</p>
 </li>
-<li><p>查询每个部门薪水排名前两名的员工。</p>
+<li>
+<p>查询每个部门薪水排名前两名的员工。</p>
 <p>Top N 问题通过题1的做法③解决。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select eno,ename,salary,dno from `tb_employee` t1</span><br><span class="line">where (</span><br><span class="line">	select count(*) from `tb_employee` t2 where t1.`dno`=t2.`dno` and t2.salary&gt;t1.salary</span><br><span class="line">)&lt;2 order by t1.dno asc, t1.salary desc;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select eno,ename,salary,dno from `tb_employee` t1</span><br><span class="line">where (</span><br><span class="line">	select count(*) from `tb_employee` t2 where t1.`dno`=t2.`dno` and t2.salary&gt;t1.salary</span><br><span class="line">)&lt;2 order by t1.dno asc, t1.salary desc;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<h2 id="窗口函数"><a href="#窗口函数" class="headerlink" title="窗口函数"></a>窗口函数</h2><p>内容来自：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/92654574">通俗易懂的学会：SQL 窗口函数 - 知乎</a></p>
+<h2 id="窗口函数">窗口函数</h2>
+<p>内容来自：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/92654574">通俗易懂的学会：SQL 窗口函数 - 知乎</a></p>
 <p>应用于组内排名和 Top N 类问题。 一般是处理 where 和 group by</p>
 <p>窗口函数不光是函数，有一套完整的语法。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;窗口函数&gt; over (partition by &lt;用于分组的列名&gt;</span><br><span class="line">                order by &lt;用于排序的列名&gt;)</span><br></pre></td></tr></table></figure>
-
 <p>&lt;窗口函数&gt; 处放聚合函数或专用窗口函数。</p>
 <p>窗口函数是以一个列的形式使用的。</p>
-<h3 id="专用窗口函数"><a href="#专用窗口函数" class="headerlink" title="专用窗口函数"></a>专用窗口函数</h3><p>rank、dese rank、row_number</p>
+<h3 id="专用窗口函数">专用窗口函数</h3>
+<p>rank、dese rank、row_number</p>
 <p>看图即知区别。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152337617.png" alt="img"></p>
-<h3 id="partition-by-和-group-by-的区别"><a href="#partition-by-和-group-by-的区别" class="headerlink" title="partition by 和 group by 的区别"></a>partition by 和 group by 的区别</h3><p>partition by 是把所有数据分成绩一个窗口，而并不汇总。比如上图中，如果按班级号分窗口再进行排序，就会在每个班级内部从1到无穷排序。不写的话就默认整个表是一个大窗口。</p>
+<h3 id="partition-by-和-group-by-的区别">partition by 和 group by 的区别</h3>
+<p>partition by 是把所有数据分成绩一个窗口，而并不汇总。比如上图中，如果按班级号分窗口再进行排序，就会在每个班级内部从1到无穷排序。不写的话就默认整个表是一个大窗口。</p>
 <p>group by 是分组后汇总。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152337023.png" alt="img"></p>
 <p>使用：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select `ename`,`sal`,</span><br><span class="line">rank() over (order by `sal` desc)as `r1`,</span><br><span class="line">dense_rank() over (order by `sal` desc)as `r2`,</span><br><span class="line">row_number() over (order by `sal` desc)as `r3`</span><br><span class="line">from `tb_emp`;</span><br></pre></td></tr></table></figure>
-
 <p>第八题窗口函数做法：加一个 where r between 4 and 6 的条件。</p>
-<p>第九题窗口函数做法：因为产生了分组，因此不能直接用 where r &lt;&#x3D;2。但是<strong>窗口函数的分窗口后的列做筛选，既不能直接用 where 也不能用 having</strong>。应该把窗口函数的查询结果作为一个派生表，再用 where 做选择。</p>
+<p>第九题窗口函数做法：因为产生了分组，因此不能直接用 where r &lt;=2。但是<strong>窗口函数的分窗口后的列做筛选，既不能直接用 where 也不能用 having</strong>。应该把窗口函数的查询结果作为一个派生表，再用 where 做选择。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select `ename`,`sal`,`dno`</span><br><span class="line">from(</span><br><span class="line">    select `ename`,`sal`,`dno`,</span><br><span class="line">    rank() over (partition by `dno` order by `sal` desc)as `r`</span><br><span class="line">    from `tb_emp`</span><br><span class="line">) `temp` where `r`&lt;=2;-- 不能在派生表里直接筛选</span><br></pre></td></tr></table></figure>
-
 <p><em>窗口函数性能还是比较差的，业务中不应使用，数据分析师可能会常用一些。</em></p>
-<h1 id="DCL"><a href="#DCL" class="headerlink" title="DCL"></a>DCL</h1><p>Data Control Language，给用户授权，不同用户能操作数据权限也是不一样的。主要是 DBA 使用。</p>
+<h1>DCL</h1>
+<p>Data Control Language，给用户授权，不同用户能操作数据权限也是不一样的。主要是 DBA 使用。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select * from user;</span><br><span class="line">create user &#x27;人名&#x27;@&#x27;域名&#x27; identified by &#x27;密码&#x27;;-- 添加一个用户，并且限制这个人只能通过这个域名访问。域名如 localhost，%代表任意路径</span><br><span class="line">alter user &#x27;人名&#x27;@&#x27;域名&#x27; identified with mysql_native_password by &#x27;新密码&#x27;;-- with mysql_native_password 是 mysql 的修改方式</span><br><span class="line">drop user &#x27;人名&#x27;@&#x27;域名&#x27;;</span><br></pre></td></tr></table></figure>
-
 <p>如果数据库本来就是在局域网里，那么即便改了权限，公网也是访问不到的。</p>
 <p>查看权限：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select grants for &#x27;用户名&#x27;@&#x27;主机名&#x27;;</span><br></pre></td></tr></table></figure>
-
 <p>授权：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant 权限 on 数据库名.表名 to &#x27;用户名&#x27;@&#x27;主机名&#x27;;</span><br></pre></td></tr></table></figure>
-
 <p>数据库名和表名可以用通配符 * 代替。</p>
 <p>权限包括： all (privileges), select, insert, update, delete, alter, drop, create</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">grant select on hrs.* to &#x27;人名&#x27;@&#x27;%&#x27;;-- 这个人对 hrs 数据库下所有表都有查询权限，但是不能增删改</span><br><span class="line">grant insert, delete, update on hrs.* to &#x27;人名&#x27;@&#x27;%&#x27;;</span><br><span class="line">grant all privileges on *.* to &#x27;人名&#x27;@&#x27;%&#x27;;-- 这个人对所有数据库所有对象拥有所有权限</span><br><span class="line">grant all privileges on *.* to &#x27;人名&#x27;@&#x27;%&#x27; with grant option;-- 这个人不仅有所有权限，还能授予权限给别人</span><br></pre></td></tr></table></figure>
-
 <p>召回权限：revoke</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">revoke 权限 数据库名.表名 from &#x27;人名&#x27;@&#x27;%&#x27;;</span><br></pre></td></tr></table></figure>
-
 <p>添加权限之后最好 Reconnect 刷新一下。或者执行：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
-
 <p>Workbench - Administration - Management - Users and privileges - 选中某个用户 - Schema Privileges，可以查看这个人的权限。</p>
 <p>至此，SQL 语句基本内容就已经学完啦~接下来涉及 Python 数据持久化的内容。</p>
-<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>很多内容其实在 DQL 早就介绍过。</p>
-<h2 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h2><table>
+<h1>函数</h1>
+<p>很多内容其实在 DQL 早就介绍过。</p>
+<h2 id="字符串函数">字符串函数</h2>
+<table>
 <thead>
 <tr>
 <th>函数</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>CONCAT(s1, s2, sn)</td>
 <td>字符串拼接</td>
 </tr>
@@ -736,18 +778,20 @@ L-->DCL[DCL]</pre>
 <td>SUBSTRING(str, start, len)</td>
 <td>返回 str 从指定位置 start 开始 len 长度的子字符串（从0开始）</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>如：所有员工的工号都必须是五位数，不足的话在左端补0：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update 表名 set 字段名 = lpad(字段名,5,&#x27;0&#x27;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="数值函数"><a href="#数值函数" class="headerlink" title="数值函数"></a>数值函数</h2><table>
+<h2 id="数值函数">数值函数</h2>
+<table>
 <thead>
 <tr>
 <th>函数</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>CEIL(x)</td>
 <td>向上取整</td>
 </tr>
@@ -757,7 +801,7 @@ L-->DCL[DCL]</pre>
 </tr>
 <tr>
 <td>mod(x,y)</td>
-<td>返回x&#x2F;y的模</td>
+<td>返回x/y的模</td>
 </tr>
 <tr>
 <td>rand()</td>
@@ -767,19 +811,21 @@ L-->DCL[DCL]</pre>
 <td>round(x,y)</td>
 <td>返回x四舍五入值，保留y位小数</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>例：生成6位验证码。</p>
 <p>首先靠随机数生成，然后*1000000并四舍五入，然后还要考虑开头为0的情况，因此不足六位补0。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select lpad(round(rand()*1000000,0),6,&#x27;0&#x27;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="日期函数"><a href="#日期函数" class="headerlink" title="日期函数"></a>日期函数</h2><table>
+<h2 id="日期函数">日期函数</h2>
+<table>
 <thead>
 <tr>
 <th>函数</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>curdate()</td>
 <td>返回当前日期</td>
 </tr>
@@ -811,15 +857,18 @@ L-->DCL[DCL]</pre>
 <td>datediff(date1, date2)</td>
 <td>求两个日期相差天数</td>
 </tr>
-</tbody></table>
-<h2 id="流程函数"><a href="#流程函数" class="headerlink" title="流程函数"></a>流程函数</h2><table>
+</tbody>
+</table>
+<h2 id="流程函数">流程函数</h2>
+<table>
 <thead>
 <tr>
 <th>函数</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>if(value, t, f)</td>
 <td>true 返回t， false 返回f</td>
 </tr>
@@ -835,165 +884,162 @@ L-->DCL[DCL]</pre>
 <td>case expr when val1 then res1 else default end</td>
 <td>表达式形式的 switch case</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(case workaddress </span><br><span class="line"> when &#x27;北京&#x27; then &#x27;一线城市&#x27; </span><br><span class="line"> when &#x27;上海&#x27; then &#x27;一线城市&#x27; </span><br><span class="line"> else &#x27;二线城市&#x27; </span><br><span class="line"> end) as &#x27;工作地&#x27;;</span><br><span class="line"> </span><br><span class="line">(case score </span><br><span class="line"> when score=100 then &#x27;满分&#x27; </span><br><span class="line"> when score&gt;=90 then &#x27;优秀&#x27; </span><br><span class="line"> else &#x27;懒得写了&#x27; </span><br><span class="line"> end) as &#x27;成绩所在段&#x27;;</span><br></pre></td></tr></table></figure>
-
-<h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><p>事务是一组不可分割的操作集合，要么都成功执行，要么都失败。如银行账户数据库操作，一个人给另一个人转账1000元，那么这两个人的update操作就是不可分割的，不然如果有一个操作成功执行另一个没有，就可能银行平白无故少了1000或者收款人没收到钱。</p>
+<h1>事务</h1>
+<p>事务是一组不可分割的操作集合，要么都成功执行，要么都失败。如银行账户数据库操作，一个人给另一个人转账1000元，那么这两个人的update操作就是不可分割的，不然如果有一个操作成功执行另一个没有，就可能银行平白无故少了1000或者收款人没收到钱。</p>
 <p>事务的步骤：</p>
 <ol>
 <li>开启事务</li>
 <li>执行一条条操作。这期间如果有失败则事务回滚。或者手动进行事务回滚。</li>
 <li>全部执行完后提交事务。默认mysql是自动提交事务的，每执行一条语句就会提交一条。</li>
 </ol>
-<h2 id="开启事务"><a href="#开启事务" class="headerlink" title="开启事务"></a>开启事务</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select @@autocommit;-- 1：自动提交；0：手动提交</span><br></pre></td></tr></table></figure>
-
+<h2 id="开启事务">开启事务</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select @@autocommit;-- 1：自动提交；0：手动提交</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set @@autocommit=0;-- 开启手动提交</span><br><span class="line"></span><br><span class="line">rollback;-- 回滚</span><br><span class="line"></span><br><span class="line">commit;-- 提交</span><br></pre></td></tr></table></figure>
-
 <p>或者在<code>@@autocommit=1</code>时临时开启事务：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">start transaction;-- 开启事务</span><br></pre></td></tr></table></figure>
-
-<h2 id="事务四大特性-ACID"><a href="#事务四大特性-ACID" class="headerlink" title="事务四大特性 ACID"></a>事务四大特性 ACID</h2><p>atomicity 原子性：事务是不可分割的最小操作单元。</p>
+<h2 id="事务四大特性-ACID">事务四大特性 ACID</h2>
+<p>atomicity 原子性：事务是不可分割的最小操作单元。</p>
 <p>consistency 一致性：所有数据保持一致状态。</p>
 <p>isolation 隔离性：事务不受外部干扰，独立进行。</p>
 <p>durability 持久性：提交或回滚后，事务对数据库的操作就是永久的。</p>
-<h2 id="并发事务问题及解决办法"><a href="#并发事务问题及解决办法" class="headerlink" title="并发事务问题及解决办法"></a>并发事务问题及解决办法</h2><p>多个事务同时进行时会出现的问题。</p>
+<h2 id="并发事务问题及解决办法">并发事务问题及解决办法</h2>
+<p>多个事务同时进行时会出现的问题。</p>
 <p>以下是数据库事务可以设置的几种隔离级别，分别是应对不同问题用的。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336578.png" alt="image-20220801231316895"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336578.png" alt=""></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select @@TRANSACTION_ISOLATION;-- 查看数据库隔离级别</span><br><span class="line">set session/global TRANSACTION ISOLATION LEVEL SERIALIZABLE;-- 设置当前会话/全局事务隔离级别为serializable</span><br></pre></td></tr></table></figure>
-
 <p>read uncommitted 是数据库最低隔离级别，即：一个事务中的数据还未提交别的事务就可以读得到。</p>
 <p><strong>问题1</strong>：脏读：一个事务读到另一个事务未提交的数据（Read uncommitted会发生）</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544202.png" alt="image-20220802212804661"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544202.png" alt=""></p>
 <p><strong>解决办法</strong>：read committed 限制一个事务修改的数据要等到提交后别的数据才能读得到。解决了脏读问题，但是没有解决不可重复读问题，事务2第一次读和第二次读数据可能值不一样。</p>
 <p>解决后：（给要读取的左边的窗口设置 read-committed 隔离级别）</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544203.png" alt="image-20220802212544087"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544203.png" alt=""></p>
 <p><strong>问题2</strong>：不可重复读：一个事务前后读了同一个数据两次，两次值不一样。因为其他事务在这中间提交过一次。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544204.png" alt="image-20220802213646432"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544204.png" alt=""></p>
 <p><strong>解决办法</strong>：repeatable 使得事务2开启后事务1才提交的数据事务2读取不到，避免了不可重复读的问题。但是没有解决串行化问题，即事务2再对数据的修改会覆盖事务1的修改。</p>
 <p><strong>问题3</strong>：幻读：每个事务开启时把数据读入缓存内，这样重复读取的时候直接从缓存中读取，避免了重复读取数据不一样。但是数据不及时更新，比如事务1删库了，事务2还能读；或者事务1新增了一条主键为i的数据提交了，事务2随后也想新增一条主键为i的数据，提交的时候发现1已经写过了，交不进去了。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336806.png" alt="image-20220802221507795"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336806.png" alt=""></p>
 <p><strong>解决办法</strong>：serializable 让事务1在操作当前数据库时，别的事务直接操作不了。</p>
 <p><strong>问题4</strong>：开启序列化后，其他事务插入会卡住，等待当前事务插入完成后再执行插入操作。会导致用户体验差，需要等待。所以序列化等级还是很少使用的。</p>
-<h1 id="存储引擎"><a href="#存储引擎" class="headerlink" title="存储引擎"></a>存储引擎</h1><h2 id="Mysql-体系结构"><a href="#Mysql-体系结构" class="headerlink" title="Mysql 体系结构"></a>Mysql 体系结构</h2><p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336306.png" alt="image-20220803115255247"></p>
+<h1>存储引擎</h1>
+<h2 id="Mysql-体系结构">Mysql 体系结构</h2>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336306.png" alt=""></p>
 <p>连接层：连接池部分，与客户端连接，并检查授权认证、权限、最大连接数等。</p>
 <p>服务层：SQL接口一行，绝大部分核心功能如SQL解析优化、所有跨存储引擎的实现都在这一层。</p>
 <p>引擎层：可插拔存储引擎一行，<strong>索引</strong>在这一层实现，决定数据库数据如何存、取、组织。如果当前引擎不满足需求还可以拓展，因此被称作可插拔。</p>
 <p>存储层：最下面一行，存取数据库的相关数据。</p>
-<h2 id="存储引擎简介"><a href="#存储引擎简介" class="headerlink" title="存储引擎简介"></a>存储引擎简介</h2><p>存储数据、建立索引、更新&#x2F;查询数据等技术的实现方式。存储引擎是基于表的，而不是基于库的。</p>
+<h2 id="存储引擎简介">存储引擎简介</h2>
+<p>存储数据、建立索引、更新/查询数据等技术的实现方式。存储引擎是基于表的，而不是基于库的。</p>
 <p>查询建表语句：<code>show create table 表名;</code>时在结尾就可以看到该表的存储引擎。</p>
 <p><code>show engines;</code>查询当前数据库支持的所有引擎。</p>
 <p>创建指定引擎的表：<code>create table (...) engine=指定引擎;</code></p>
 <p>修改表引擎：<code>alter table 表名 engine=指定引擎;</code></p>
-<h2 id="InnoDB"><a href="#InnoDB" class="headerlink" title="InnoDB"></a>InnoDB</h2><p>高性能存储引擎，Mysql 5.5后的默认引擎。</p>
+<h2 id="InnoDB">InnoDB</h2>
+<p>高性能存储引擎，Mysql 5.5后的默认引擎。</p>
 <p>支持事务、行级锁、外键。</p>
 <p>文件后缀.ibd是InnoDB存储引擎的表空间文件，每个表有一个，存储表结构数据和索引。<em>表结构早期是frm，后来变成sdi，sdi又融入了ibd格式中。</em></p>
-<p>有一个系统变量<code>innodb_file_per_table</code>，可以通过<code>show variables like &#39;innodb_file_per_table&#39;</code>查看，ON则表示每张表都对应一个表空间文件ibd。</p>
+<p>有一个系统变量<code>innodb_file_per_table</code>，可以通过<code>show variables like 'innodb_file_per_table'</code>查看，ON则表示每张表都对应一个表空间文件ibd。</p>
 <p>ibd文件在mysql文件夹-data文件夹-对应数据库文件夹里。</p>
 <p>ibd文件直接打开是看不了的，都是二进制。可以进入目标文件夹后，通过命令行<code>ibd2sdi 指定表名.ibd</code>，就可以查看该表的json文件信息了。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544208.png" alt="image-20220803210405717"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544208.png" alt=""></p>
 <p>表空间文件逻辑存储结构如图所示，段-区-页-行，每一行就是表中的一行数据。</p>
 <p>一个区大小固定为1M，一页大小固定为16K。（大概了解，SQL优化部分还要涉及）</p>
-<h2 id="MYISAM"><a href="#MYISAM" class="headerlink" title="MYISAM"></a>MYISAM</h2><p>数据库早期的默认存储引擎。（现在功能几乎可以被NoSQL的Mongodb取代）</p>
+<h2 id="MYISAM">MYISAM</h2>
+<p>数据库早期的默认存储引擎。（现在功能几乎可以被NoSQL的Mongodb取代）</p>
 <p>不支持事务和外键，支持表锁，不支持行锁，访问速度快。</p>
 <p>存储文件包括：</p>
 <p>.MYD：数据</p>
 <p>.MYI：索引</p>
 <p>.sdi：表结构，可以直接打开，里面装的是json格式内容（可以通过json.cn格式化）。</p>
-<h2 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h2><p>存放在内存中，数据是临时的。（现在功能几乎可以被NoSQL的Redis取代）</p>
+<h2 id="Memory">Memory</h2>
+<p>存放在内存中，数据是临时的。（现在功能几乎可以被NoSQL的Redis取代）</p>
 <p>访问速度快，支持hash索引。</p>
 <p>存储文件只包括：.sdi，因为数据索引都存在内存里了。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544209.png" alt="image-20220803211018558"></p>
-<h2 id="三种存储引擎的选择"><a href="#三种存储引擎的选择" class="headerlink" title="三种存储引擎的选择"></a>三种存储引擎的选择</h2><p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544210.png" alt="image-20220803211235879"></p>
-<h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><p>索引是高效获取数据的数据结构。</p>
-<h2 id="Linux中安装Mysql"><a href="#Linux中安装Mysql" class="headerlink" title="Linux中安装Mysql"></a>Linux中安装Mysql</h2><p>首先在Linux中安装Mysql。还好前两天接触了一点虚拟机。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544209.png" alt=""></p>
+<h2 id="三种存储引擎的选择">三种存储引擎的选择</h2>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544210.png" alt=""></p>
+<h1>索引</h1>
+<p>索引是高效获取数据的数据结构。</p>
+<h2 id="Linux中安装Mysql">Linux中安装Mysql</h2>
+<p>首先在Linux中安装Mysql。还好前两天接触了一点虚拟机。</p>
 <p><a target="_blank" rel="noopener" href="https://downloads.mysql.com/archives/community/">Mysql 下载地址</a></p>
 <p>FinalShell可以直接点击上传标志上传下载的压缩包：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544211.png" alt="image-20220803220722619"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544211.png" alt=""></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">mkdir mysql</span><br><span class="line"></span><br><span class="line">tar -xvf 压缩包名 -C mysql //解压到该文件夹内</span><br><span class="line"></span><br><span class="line">//安装其中的所有rpm文件</span><br><span class="line">rpm -ivh mysql-community-common-8.0.26-1.el7.x86_64.rpm </span><br><span class="line"></span><br><span class="line">rpm -ivh mysql-community-client-plugins-8.0.26-1.el7.x86_64.rpm </span><br><span class="line"></span><br><span class="line">rpm -ivh mysql-community-libs-8.0.26-1.el7.x86_64.rpm </span><br><span class="line"></span><br><span class="line">rpm -ivh mysql-community-libs-compat-8.0.26-1.el7.x86_64.rpm</span><br><span class="line"></span><br><span class="line">yum install openssl-devel</span><br><span class="line"></span><br><span class="line">rpm -ivh  mysql-community-devel-8.0.26-1.el7.x86_64.rpm</span><br><span class="line"></span><br><span class="line">rpm -ivh mysql-community-client-8.0.26-1.el7.x86_64.rpm</span><br><span class="line"></span><br><span class="line">rpm -ivh  mysql-community-server-8.0.26-1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
-
 <p>启动：安装好mysql后，linux会自动提供mysqld服务。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld //启动mysql</span><br><span class="line"></span><br><span class="line">mysql -uroot -p //然后去日志文件里找密码~</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart mysqld</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop mysqld</span><br></pre></td></tr></table></figure>
-
 <p>查找密码可以执行：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep &#x27;temporary password&#x27; /var/log/mysqld.log</span><br></pre></td></tr></table></figure>
-
 <p>也可以直接打开该文件看。登录后就是用熟悉的SQL改密码.</p>
 <p>linux密码默认校验规则等级为Medium，要求&gt;8位，包括数字，大小写字母和符号。可以设置强度为：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set global validate_password.policy = 0;</span><br><span class="line">set global validate_password.length = 4;</span><br></pre></td></tr></table></figure>
-
 <p>然后可以设置个简单点的密码：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter user &#x27;root&#x27;@&#x27;localhost&#x27; identified by &#x27;1234&#x27;;</span><br></pre></td></tr></table></figure>
-
 <p>然后为了DataGrip可以访问，创建一个可以远程访问新用户：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create user &#x27;Windows&#x27;@&#x27;%&#x27; identified with mysql_native_password by &#x27;1234&#x27;;</span><br><span class="line"></span><br><span class="line">grant all privileges on *.* to &#x27;Windows&#x27;@&#x27;%&#x27;;</span><br></pre></td></tr></table></figure>
-
 <p>可以通过ifconfig查看ip地址。查看后就可以在DataGrip中链接啦。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336010.png" alt="image-20220803223712197"></p>
-<h2 id="索引介绍"><a href="#索引介绍" class="headerlink" title="索引介绍"></a>索引介绍</h2><p>是帮助Mysql高效<strong>获取数据</strong>的有序数据结构。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336010.png" alt=""></p>
+<h2 id="索引介绍">索引介绍</h2>
+<p>是帮助Mysql高效<strong>获取数据</strong>的有序数据结构。</p>
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544213.png" alt="image-20220803224534102" style="zoom:80%;" />
-
-<p>比如查找age&#x3D;45的记录，如果age采用二叉树的存储方式，很明显右边比左边更高效。</p>
+<p>比如查找age=45的记录，如果age采用二叉树的存储方式，很明显右边比左边更高效。</p>
 <p>索引使得查询和排序成本降低，但是增删改成本增加，而且索引也要占用空间（MYI文件）。</p>
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336564.png" alt="image-20220803224920983" style="zoom:67%;" />
-
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544216.png" alt="image-20220803225009939" style="zoom:67%;" />
-
-<h2 id="B树"><a href="#B树" class="headerlink" title="B树"></a>B树</h2><p>二叉树比较简单，小数插在左子树，大数插在右子树。</p>
+<h2 id="B树">B树</h2>
+<p>二叉树比较简单，小数插在左子树，大数插在右子树。</p>
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544217.png" alt="image-20220803225242447" style="zoom:67%;" />
-
 <p>但是如果一直往左或右插，树就变成一边倒的形状了，查询效率大大降低。</p>
 <p>红黑树可以解决平衡问题。但是大数据情况下还是层级较深，检索速度较慢。</p>
 <p>B树：又名多路平衡查找树。</p>
 <p>首先每个节点的子节点个数叫度数。</p>
 <p>以最大度数为5的5阶B树为例：</p>
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544218.png" alt="image-20220803230306405" style="zoom:67%;" />
-
 <p>一开始插入4个数以内，都在一个节点里</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336423.png" alt="image-20220804001653602"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336423.png" alt=""></p>
 <p>然后插入第五个数，就开始分裂，中间的数作为父节点，左右两组数作为子节点</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544220.png" alt="image-20220804001734711"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544220.png" alt=""></p>
 <p>然后插入数还是往子节点里插入</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544221.png" alt="image-20220804001859705"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544221.png" alt=""></p>
 <p>如果子节点够5个，中间的提到父节点处。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336894.png" alt="image-20220804002347547"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336894.png" alt=""></p>
 <p>一直插入到父节点达到5个，父节点再次分裂。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544223.png" alt="image-20220804002649191"></p>
-<h2 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h2><p>就是B树的所有叶子节点会形成一个单向链表</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544223.png" alt=""></p>
+<h2 id="B-树">B+树</h2>
+<p>就是B树的所有叶子节点会形成一个单向链表</p>
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544224.png" alt="image-20220804003347742" style="zoom:67%;" />
-
 <p>Mysql里的B+树就是叶子结点变成了双向循环链表，提高区间访问性能。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544225.png" alt="image-20220804003507672"></p>
-<h2 id="Hash-索引"><a href="#Hash-索引" class="headerlink" title="Hash 索引"></a>Hash 索引</h2><p>通过一定的Hash算法，把值都归到对应hash值的槽位上。如果出现槽位冲突，采用链表的方式解决。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544226.png" alt="image-20220804003919738"></p>
-<p>只能用于&#x3D;等值查询，不能查询范围(&gt;&lt; between)，不能排序。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544225.png" alt=""></p>
+<h2 id="Hash-索引">Hash 索引</h2>
+<p>通过一定的Hash算法，把值都归到对应hash值的槽位上。如果出现槽位冲突，采用链表的方式解决。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544226.png" alt=""></p>
+<p>只能用于=等值查询，不能查询范围(&gt;&lt; between)，不能排序。</p>
 <p>效率很高，通常一次查询就找得到。</p>
 <p>只有Memory存储引擎支持。但是InnoDB具有自适应hash功能，可以在给定的条件下将B+树构建为hash索引。</p>
-<h2 id="索引分类"><a href="#索引分类" class="headerlink" title="索引分类"></a>索引分类</h2><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336338.png" alt="image-20220804004326046" style="zoom:80%;" />
-
+<h2 id="索引分类">索引分类</h2>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336338.png" alt="image-20220804004326046" style="zoom:80%;" />
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544228.png" alt="image-20220804004404121" style="zoom:80%;" />
-
 <p>有主键，主键就是聚集索引；</p>
 <p>没有主键，第一个unique是聚集索引；</p>
 <p>没有主键和unique唯一索引，则表会自动生成一个rowid作为隐藏的聚集索引。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336849.png" alt="image-20220804131209280"></p>
-<p><code>select ... where name=&#39;Arm&#39;;</code>会先在二级索引中找到对应节点，然后根据id去聚集索引B+树中找主键，进而找到对应的row行数据。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336849.png" alt=""></p>
+<p><code>select ... where name='Arm';</code>会先在二级索引中找到对应节点，然后根据id去聚集索引B+树中找主键，进而找到对应的row行数据。</p>
 <p>因此直接<code>select ... where id=10;</code>效率会更高，哪怕name有索引也需要回表查询（回id表）。</p>
-<h2 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE [UNIQUE|FULLTEXT] INDEX index_name ON table_name (col_name,...);</span><br><span class="line">-- 查看表中索引：</span><br><span class="line">SHOW INDEX FROM table_name;</span><br><span class="line">-- 删除索引</span><br><span class="line">DROP INDEX index_name ON table_name;</span><br></pre></td></tr></table></figure>
-
-<h2 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h2><p><code>show global status like &#39;Com_______&#39;;</code>查看当前数据库增删改查等操作的频次。如 Com_commit Com_select。</p>
+<h2 id="创建索引">创建索引</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE [UNIQUE|FULLTEXT] INDEX index_name ON table_name (col_name,...);</span><br><span class="line">-- 查看表中索引：</span><br><span class="line">SHOW INDEX FROM table_name;</span><br><span class="line">-- 删除索引</span><br><span class="line">DROP INDEX index_name ON table_name;</span><br></pre></td></tr></table></figure>
+<h2 id="性能分析">性能分析</h2>
+<p><code>show global status like 'Com_______';</code>查看当前数据库增删改查等操作的频次。如 Com_commit Com_select。</p>
 <p>慢查询日志：记录了所有查询时间超过10s（long_query_time）sql语句的日志。查询变量：slow_query_log 可以看是否开启。</p>
-<p>默认没有开启，需要到&#x2F;etc&#x2F;my.cnf中开启 slow_query_log。</p>
-<p>开启后&#x2F;var&#x2F;lib&#x2F;mysql&#x2F;主机吗名-slow.log中就会生成慢查询日志。</p>
+<p>默认没有开启，需要到/etc/my.cnf中开启 slow_query_log。</p>
+<p>开启后/var/lib/mysql/主机吗名-slow.log中就会生成慢查询日志。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/my.cnf</span><br><span class="line"></span><br><span class="line">// 编辑，添加：</span><br><span class="line"></span><br><span class="line">slow_query_log=1</span><br><span class="line">long_query_time=10</span><br><span class="line"></span><br><span class="line">:x//保存退出</span><br><span class="line"></span><br><span class="line">systemctl restart mysqld//重启</span><br><span class="line"></span><br><span class="line">show variables like &#x27;slow_query_log&#x27;;//查询是否开启</span><br></pre></td></tr></table></figure>
-
 <p>但是慢查询查询不到少于它规定秒数的语句。</p>
 <p>show profiles 可以帮助我们了解每条sql语句耗时。首先通过：have_profiling参数 查看当前数据库是否支持profile操作</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">select @@have_profiling;</span><br><span class="line"></span><br><span class="line">select @@profiling;-- 默认关闭</span><br><span class="line"></span><br><span class="line">set profiling=1;</span><br><span class="line"></span><br><span class="line">show profiles;-- 查看刚才执行的所有sql耗时</span><br><span class="line"></span><br><span class="line">show profile for query 数字序号;-- 查看某一条特定的sql具体查询耗时，从start到cleaning up</span><br><span class="line"></span><br><span class="line">show profile cpu for query 数字序号;-- 还可以查看cpu占用情况</span><br></pre></td></tr></table></figure>
-
 <p>然而时间并不是准确的判定性能方法。explain才是更好的方法。explain可以查看select的详细执行状况。在任意select语句前加上explain或 desc 就可以了。</p>
 <p>属性含义：</p>
 <p>id：select查询的序列号，表示select或操作表的顺序，从大到小，相同id值从上到下。</p>
@@ -1009,41 +1055,48 @@ L-->DCL[DCL]</pre>
 <p><strong>key</strong>：实际用到的索引。</p>
 <p><strong>key_len</strong>：使用到的索引中的最大可能字节数。越短越好。</p>
 <p>rows：Mysql认为必须要执行查询的行数（估计值）。</p>
-<p>filtered：返回的行数&#x2F;读取的行数百分比，越大越好。比如查主键就不用遍历，查一条就查得出来。</p>
-<h2 id="使用索引"><a href="#使用索引" class="headerlink" title="使用索引"></a>使用索引</h2><p>通过 create index 给某个属性添加索引。</p>
-<p><em>查询结果结尾加 &#x2F;G ，可以把列转换为行显示。</em></p>
-<h3 id="使用规则"><a href="#使用规则" class="headerlink" title="使用规则"></a>使用规则</h3><ol>
+<p>filtered：返回的行数/读取的行数百分比，越大越好。比如查主键就不用遍历，查一条就查得出来。</p>
+<h2 id="使用索引">使用索引</h2>
+<p>通过 create index 给某个属性添加索引。</p>
+<p><em>查询结果结尾加 /G ，可以把列转换为行显示。</em></p>
+<h3 id="使用规则">使用规则</h3>
+<ol>
 <li>联合索引的<strong>最左前缀法则</strong>。比如一个索引要关联多列，那么查询从最左列开始，且不跳过索引中的列。比如我们给 profession age status 三列添加了一个索引，那么查询时就该写：<code>select * from table where profession=&quot;&quot; and age=&quot;&quot; and status=&quot;&quot;; </code> 不写 profession 查询或者只写 profession 和 status 查询会出错，会出现有 null 的列。（好像8.0可以不写最左列）原理大概是复合属性的索引是先按第一个排序，再按第二个，再第三个……所以只按后面的排序查找就出错。当然这三个查询顺序无所谓，关键是左边的一定得有。（这里的左指的是创建索引的时候的顺序，比如 <code>create index index_name on table_name(left_column, right column);</code>）</li>
-<li>联合索引中如果出现范围查询（&lt; &gt;），范围查询右侧的属性失效。比如 <code>select * from table where profession=&quot;&quot; and age&gt;30 and status=&quot;&quot;; </code>  status 查询就会失效。解决办法是尽量用 &gt;&#x3D; &lt;&#x3D;。</li>
+<li>联合索引中如果出现范围查询（&lt; &gt;），范围查询右侧的属性失效。比如 <code>select * from table where profession=&quot;&quot; and age&gt;30 and status=&quot;&quot;; </code>  status 查询就会失效。解决办法是尽量用 &gt;= &lt;=。</li>
 <li>索引列上不要做运算，否则会失效。 比如查询姓名三个字以“松”结尾的学生，姓名有索引，但是 <code>select * from students where substring(name,3,1)=&quot;松&quot;;</code> 不走索引。</li>
 <li>查询字符串没加单引号也失效。</li>
-<li>尾部模糊匹配（”abc%”）不会失效，头部模糊匹配（”%abc”）失效。</li>
+<li>尾部模糊匹配（“abc%”）不会失效，头部模糊匹配（“%abc”）失效。</li>
 <li>or 的失效情况：<code>有索引列条件 or 无索引列条件</code> ，结果是所有索引都不会被用到。处理办法就是右边的属性也建立索引。</li>
 </ol>
 <p>总结就是，mysql 评估说全表扫描比索引查找快，那么就决定用全表。比如当前列 null 值比较多，<code>is null</code> 查询就会全表查询，<code>is not null</code> 是索引查询。</p>
-<h3 id="SQL-提示"><a href="#SQL-提示" class="headerlink" title="SQL 提示"></a>SQL 提示</h3><p>有的列可能用了多个索引。可以人为提示指明用哪一个。</p>
+<h3 id="SQL-提示">SQL 提示</h3>
+<p>有的列可能用了多个索引。可以人为提示指明用哪一个。</p>
 <p><code>explain select * from table use index(index_name) where 条件;</code></p>
 <p><code>explain select * from table ignore index(index_name) where 条件;</code></p>
 <p><code>explain select * from table force index(index_name) where 条件;</code> use 可能不接受。force 是强制使用这个索引。</p>
-<h3 id="覆盖索引"><a href="#覆盖索引" class="headerlink" title="覆盖索引"></a>覆盖索引</h3><p>查询使用了索引，且查询返回的列都在该索引当中。</p>
+<h3 id="覆盖索引">覆盖索引</h3>
+<p>查询使用了索引，且查询返回的列都在该索引当中。</p>
 <p>覆盖索引效率高于 select *。</p>
 <p>如果查询多列，包括有索引列和没索引列，explain 中 extra 显示 using index condition，意为使用了索引查找，但是最后又回表查询非索引列。</p>
 <p>如果查询的多列只包含索引列，explain 中 extra 显示 using where; using index 意为只使用了索引查找，因为要查询的列只在索引列中就找得到。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202304041241125.png" alt="image-20230404124124952"></p>
-<p>比如上例，如果 <code>select * from table where id=2;</code> 先去聚集索引表中找 id&#x3D;2 的行，然后回表找到这一行，找到这一行的所有数据。</p>
-<p>如果 <code>select id, name from table where name=&#39;Arm&#39;;</code> 先去辅助索引表中找到 Arm，辅助索引表中也会存储其 id 信息。这样就已经能查到所有字段了，就不用回表了。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202304041241125.png" alt=""></p>
+<p>比如上例，如果 <code>select * from table where id=2;</code> 先去聚集索引表中找 id=2 的行，然后回表找到这一行，找到这一行的所有数据。</p>
+<p>如果 <code>select id, name from table where name='Arm';</code> 先去辅助索引表中找到 Arm，辅助索引表中也会存储其 id 信息。这样就已经能查到所有字段了，就不用回表了。</p>
 <p>但是如果查询的字段是 <code>id, name, gender</code> ，gender 不在辅助索引表中，因此还是用回表的。先根据 arm 对应的 id 值，去聚集索引表中找到相关的行信息，再回表查询 gender。这就超出了覆盖索引的范围。</p>
-<p>例：<code>select id, username, pwd from user where username=&#39;jingqing&#39;;</code> 怎样设置索引使得查询最优？</p>
+<p>例：<code>select id, username, pwd from user where username='jingqing';</code> 怎样设置索引使得查询最优？</p>
 <p>答：id 是主键索引，为了达成覆盖索引，我们要给 username pwd 建立复合索引。</p>
-<h3 id="前缀索引"><a href="#前缀索引" class="headerlink" title="前缀索引"></a>前缀索引</h3><p>varchar int 等类型可能是很长的字符串，导致索引变得很大，查询时浪费大量磁盘 IO。</p>
+<h3 id="前缀索引">前缀索引</h3>
+<p>varchar int 等类型可能是很长的字符串，导致索引变得很大，查询时浪费大量磁盘 IO。</p>
 <p>创建索引时可以只选择一定长度的前缀建立索引。如：</p>
 <p><code>create index index_name on table_name(column(n));</code> 表示前n个字符建立前缀。</p>
-<p>至于n取多少合适，可以根据索引的选择性决定，选择性&#x3D;不重复的索引值&#x2F;记录总数，越大越好，1是最好的唯一索引。（count(distinct column)&#x2F;count(column)）</p>
-<p>我们可以用 substring(column, 1, n) &#x2F; count(*) 来计算前n个前缀的选择性。</p>
-<h3 id="单列索引和联合索引"><a href="#单列索引和联合索引" class="headerlink" title="单列索引和联合索引"></a>单列索引和联合索引</h3><p>包含多列的是联合索引。</p>
+<p>至于n取多少合适，可以根据索引的选择性决定，选择性=不重复的索引值/记录总数，越大越好，1是最好的唯一索引。（count(distinct column)/count(column)）</p>
+<p>我们可以用 substring(column, 1, n) / count(*) 来计算前n个前缀的选择性。</p>
+<h3 id="单列索引和联合索引">单列索引和联合索引</h3>
+<p>包含多列的是联合索引。</p>
 <p>多个查询条件时推荐使用建立联合索引。因为比如 column a 和 column b 建立了两个单列索引，同时查询两者时 mysql 也只会选择其中一个索引查询，另一个字段回表查询（如果 mysql 自动选择了单列索引，可以用 use index() 限制）。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336398.png" alt="image-20230404131344451"></p>
-<h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><ol>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336398.png" alt=""></p>
+<h2 id="设计原则">设计原则</h2>
+<ol>
 <li>什么时候用索引？数据量比较大，且查询比较频繁的表要建立。</li>
 <li>哪几列建立索引？常作为查询条件的列（where, order by, group by)。</li>
 <li>建议区分度高的列建立唯一索引。</li>
@@ -1052,14 +1105,19 @@ L-->DCL[DCL]</pre>
 <li>索引也会影响维护，因此并不是多多益善。</li>
 <li>如果索引列不能存储 null，建表的时候请用 not null 约束该列。当优化器知道每列是否有 null 值时，可以更好的决定用哪个索引查询。</li>
 </ol>
-<h1 id="SQL-优化"><a href="#SQL-优化" class="headerlink" title="SQL 优化"></a>SQL 优化</h1><h2 id="插入优化"><a href="#插入优化" class="headerlink" title="插入优化"></a>插入优化</h2><p><code>insert into table values(1,1...);</code></p>
+<h1>SQL 优化</h1>
+<h2 id="插入优化">插入优化</h2>
+<p><code>insert into table values(1,1...);</code></p>
 <ol>
-<li><p><code>insert into table values(1,1...),(1,1...),(1,1...);</code> 使用批量插入，和数据库之间建立连接也不用每条数据插入一次，效率会高。建议500~1000条数据使用批量插入。</p>
+<li>
+<p><code>insert into table values(1,1...),(1,1...),(1,1...);</code> 使用批量插入，和数据库之间建立连接也不用每条数据插入一次，效率会高。建议500~1000条数据使用批量插入。</p>
 </li>
-<li><p>插入的时候是自动开启和关闭事务的，插入前开启，插入后关闭。太频繁了性能也不高，我们可以手动开启和关闭事务。</p>
+<li>
+<p>插入的时候是自动开启和关闭事务的，插入前开启，插入后关闭。太频繁了性能也不高，我们可以手动开启和关闭事务。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">start transaction;</span><br><span class="line">insert into table values(1,1,1);</span><br><span class="line">insert into table values(2,2,2);</span><br><span class="line">insert into table values(3,3,3);</span><br><span class="line">commit;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>主键顺序插入，这个和 mysql 的数据组织结构有关系。</p>
+<li>
+<p>主键顺序插入，这个和 mysql 的数据组织结构有关系。</p>
 </li>
 </ol>
  
@@ -1479,6 +1537,30 @@ L-->DCL[DCL]</pre>
     viewer_init()
 </script> 
 <!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
 
 <!-- Katex -->
 

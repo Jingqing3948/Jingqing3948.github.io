@@ -115,51 +115,59 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>主要围绕考试提纲里的所有问题展开，没有拓展内容，Exam oriented Study。</p>
+  <h1>前言</h1>
+<p>主要围绕考试提纲里的所有问题展开，没有拓展内容，Exam oriented Study。</p>
 <p>关注微信公众号：灰海宽松，回复 “微处理器” 可获取本文pdf格式。</p>
-<h1 id="Introduction-随便聊"><a href="#Introduction-随便聊" class="headerlink" title="Introduction-随便聊"></a>Introduction-随便聊</h1><p>嵌入式系统是什么？专用的计算机系统。为专门功能可能对计算机架构，外设等做出一些取舍。</p>
+<h1>Introduction-随便聊</h1>
+<p>嵌入式系统是什么？专用的计算机系统。为专门功能可能对计算机架构，外设等做出一些取舍。</p>
 <p>通常的限制：Cost（比如大量部署传感器节点），Size and weight limits（特定应用场景，比如下水道流量检测系统，需要体积小的节点），Power and energy limits（比如部署在极端环境下，喜马拉雅山顶采集节点，不方便去充电），Environment（防水，防高温等）</p>
 <p>MCU MPU两种嵌入式系统区别：focus on 控制 还是 处理。控制比如点灯，机械臂，电机这些都是。处理比如摄像头采集到的数据进行图像处理。</p>
 <p>编程语言：靠近计算机底层，主要使用汇编和c。</p>
 <p>OS：嵌入式系统里不一定有操作系统结构。操作系统这个东西说白了就是更好地帮助管理计算机资源调度用的。现在我们来分析一下我们lab2的代码主函数：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="comment">//background</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">IRQ_Handler</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="comment">//interrupt handler function, frontground</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>后台部分：一个循环，重复去执行要做的任务。</p>
 <p>这种方法乍一看也没啥问题。但是想想这样的计算机能做什么，只能按顺序执行一遍又一遍所有任务，甚至没法变顺序。</p>
 <p>前台部分：中断处理，我们lab2里的uart_rx_isr函数，一般也用IRQ_Handler（实际上如果对lab2里的uart_rx_isr溯源一下，就会发现其实他也是被IRQ_Handler调用的，这个方法在启动对应中断时，触发中断就会自动调用）。</p>
 <p>前后台合起来的系统还是一个裸机无os系统，只不过加了中断之后允许我们用中断的任务去打断后台轮询，改变一下执行顺序。比如串口中断发个数过来，CPU把手头后台的事情放下，去处理一下前台中断，处理完了再回来。</p>
 <p>我们课程仅限于裸机开发的内容。</p>
-<h1 id="计算机系统简要介绍"><a href="#计算机系统简要介绍" class="headerlink" title="计算机系统简要介绍"></a>计算机系统简要介绍</h1><h2 id="Von-Neumann-Architecture"><a href="#Von-Neumann-Architecture" class="headerlink" title="Von Neumann Architecture"></a>Von Neumann Architecture</h2><p>运算器控制器 (合在CPU中) 存储器 main memory 输入设备输出设备 IO，以及三条传输总线：数据，控制，地址 data bus &#x2F; control bus &#x2F; address bus.</p>
+<h1>计算机系统简要介绍</h1>
+<h2 id="Von-Neumann-Architecture">Von Neumann Architecture</h2>
+<p>运算器控制器 (合在CPU中) 存储器 main memory 输入设备输出设备 IO，以及三条传输总线：数据，控制，地址 data bus / control bus / address bus.</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686650488954.png" alt="1686650488954"></p>
 <p>前面介绍过MPU重点在于数据计算处理，MCU则是控制，因此MPU不需要一些外设去控制外接的组件。</p>
-<h2 id="Harvard-Architecture"><a href="#Harvard-Architecture" class="headerlink" title="Harvard Architecture"></a>Harvard Architecture</h2><p>和冯诺依曼区别就是在于指令和数据分开存储。这样寻指取指取数效率高。</p>
-<h2 id="Stored-Program-Concept"><a href="#Stored-Program-Concept" class="headerlink" title="Stored Program Concept"></a>Stored Program Concept</h2><p>主要两个部分：RAM存储程序和数据，ROM存储不变只读的程序和数据。</p>
+<h2 id="Harvard-Architecture">Harvard Architecture</h2>
+<p>和冯诺依曼区别就是在于指令和数据分开存储。这样寻指取指取数效率高。</p>
+<h2 id="Stored-Program-Concept">Stored Program Concept</h2>
+<p>主要两个部分：RAM存储程序和数据，ROM存储不变只读的程序和数据。</p>
 <p>cpu执行指令就是三个步骤的重复执行：fetch decode execute 取指解码执行</p>
-<h2 id="assembly"><a href="#assembly" class="headerlink" title="assembly"></a>assembly</h2><p>如果高级语言相当于人话翻译给计算机，汇编语言相当于计算机语言翻译给我们。更贴近底层，因此运行效率也更高，而且可以直接操作硬件。</p>
+<h2 id="assembly">assembly</h2>
+<p>如果高级语言相当于人话翻译给计算机，汇编语言相当于计算机语言翻译给我们。更贴近底层，因此运行效率也更高，而且可以直接操作硬件。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ADD r3, r1, r2 	;r3 = r1 + r2</span><br><span class="line">SUB r3, r0, r3 </span><br><span class="line">MOV r2, r1 		;r2 = r1</span><br></pre></td></tr></table></figure>
-
 <p>; 是注释。变量r123是寄存器register，是可以操纵硬件的部分，我们可以通过对其赋值来操作硬件。</p>
 <p>高级语言通过 compiler 翻译为汇编语言，汇编语言通过 assembler翻译为二进制机器语言。</p>
-<h1 id="ARM架构"><a href="#ARM架构" class="headerlink" title="ARM架构"></a>ARM架构</h1><p>ARM是一个指令集，前面讲的几个汇编指令这些都算做指令。</p>
+<h1>ARM架构</h1>
+<p>ARM是一个指令集，前面讲的几个汇编指令这些都算做指令。</p>
 <p>ARM公司有意思的地方是，他们不做ARM设备，他们只设计指令集架构，然后授权（知识产权核，IP核）给其他半导体厂商做。</p>
 <p>A：application，主打高性能，手机电脑有许多就是ARM架构的。</p>
 <p>R：realtime，主打实时，比如车联网对实时性要求很高。</p>
 <p>M：microcontroller，应用于小型嵌入式系统，我们使用的板子。</p>
 <p>m系列有m0到m7（简单说就是性能逐渐增加？），而且向下兼容即m7兼容m0~m6.</p>
-<h2 id="SoC"><a href="#SoC" class="headerlink" title="SoC"></a>SoC</h2><p>我们的板子上有一个黑色的小芯片，上面写着stm32blabla一串字符。这个就是整个板子的核心，相当于囊括了上文提到的计算机架构的芯片结构，system on chips。</p>
+<h2 id="SoC">SoC</h2>
+<p>我们的板子上有一个黑色的小芯片，上面写着stm32blabla一串字符。这个就是整个板子的核心，相当于囊括了上文提到的计算机架构的芯片结构，system on chips。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686658267695.png" alt="1686658267695"></p>
 <p>设计soc规则：首先选用IP核，设计ARM处理器，外加一系列存储、IO外设结构，全部集成在黑芯片上。</p>
 <p>ARM处理器 processor 是 architecture 的具体涵盖，多了很多新内容比如定时器。</p>
 <p>我们主要学习m4架构。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686658682835.png" alt="1686658682835"></p>
 <p>只看非optional大概了解即可，处理器核访问代码，数据接口。</p>
-<h2 id="register"><a href="#register" class="headerlink" title="register"></a>register</h2><p>前面我们已经简单介绍了register。事实上如果想对内存中数据做处理，也要先拿到处理器核中的寄存器里做运算，然后返回回去。</p>
+<h2 id="register">register</h2>
+<p>前面我们已经简单介绍了register。事实上如果想对内存中数据做处理，也要先拿到处理器核中的寄存器里做运算，然后返回回去。</p>
 <p>arm register 如下：</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686659016141.png" alt="1686659016141"></p>
 <p>通用寄存器：临时变量，可以存储计算数据之类的。</p>
 <p>SP：栈顶指针寄存器，指向栈顶。</p>
 <p>LR：函数返回用，保存返回地址。比如要调用函数了，把PC的值存入LR，然后PC跳转到函数起始位置；函数返回的时候LR的值还给PC。</p>
-<p>PC：指向程序当前执行到的位置（下一个要执行的指令的地址）程序计数器。每条指令取了之后PC自动加一条指令，比如32位指令集PC+&#x3D;4B。</p>
+<p>PC：指向程序当前执行到的位置（下一个要执行的指令的地址）程序计数器。每条指令取了之后PC自动加一条指令，比如32位指令集PC+=4B。</p>
 <p>PSR系列是状态寄存器，指明当前程序状态。比如当前是用户模式还是内核模式？IPSR指明当前是否允许中断？等。</p>
 <p>xPSR包括：</p>
 <ul>
@@ -168,19 +176,21 @@
 <li>EPSR：执行相关，指明指令集，中断是否继续等信息。</li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686659814546.png" alt="1686659814546"></p>
-<h2 id="Memory-Map"><a href="#Memory-Map" class="headerlink" title="Memory Map"></a>Memory Map</h2><p>m4有4g的内存空间默认映射到一片空间中，用户也可以根据自己喜好修改。有存储代码的code region，存储数据的sram region，存储外设的peripheral region，external ram region，external device region，Internal Private Peripheral Bus (PPB)。</p>
+<h2 id="Memory-Map">Memory Map</h2>
+<p>m4有4g的内存空间默认映射到一片空间中，用户也可以根据自己喜好修改。有存储代码的code region，存储数据的sram region，存储外设的peripheral region，external ram region，external device region，Internal Private Peripheral Bus (PPB)。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686669411390.png" alt="1686669411390"></p>
-<h2 id="Bit-band-Operations"><a href="#Bit-band-Operations" class="headerlink" title="Bit-band Operations"></a>Bit-band Operations</h2><p>位带操作。</p>
+<h2 id="Bit-band-Operations">Bit-band Operations</h2>
+<p>位带操作。</p>
 <p>如果我们要读写32位数据中的某一位，比如第三位（从左往右是31:0，第三位是右边第4个），有的寄存器允许我们直接获取r[3]，但是大多数是不允许直接获取的。</p>
 <p>如何处理？如果写入1，那么r|0000 0000 0000 0000 0000 0000 0000 1000.</p>
 <p>如果写入0，那么 r &amp; 1111 1111 1111 1111 1111 1111 1111 0111.</p>
 <p>读取：看 r &amp; 0000 0000 0000 0000 0000 0000 0000 1000 结果是否为0.</p>
 <p>这样很麻烦，比如我们要给0x2000 0000处的数据第3位写1，详细汇编代码：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230613232342659.png" alt="image-20230613232342659"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230613232342659.png" alt=""></p>
 <p>LDR是把后面的数据加载到前面的寄存器中，[R1]是把R1的值当做一个地址，取得其中存储的数据。</p>
 <p>这样挺麻烦的，但是因为有内存映射我们可以直接写入和获取“位带别名地址”中的数据。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230613232721037.png" alt="image-20230613232721037"></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230613232713587.png" alt="image-20230613232713587"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230613232721037.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230613232713587.png" alt=""></p>
 <p>0x2000 0000处的第0位到第31位分别是：</p>
 <p>0x2200 0000</p>
 <p>0x2200 0004</p>
@@ -190,127 +200,152 @@
 <p>所以直接获取，修改0x2200 000c的数据即可。</p>
 <p>0x2000 0000映射到0x2200 0000是 sram 区域映射，0x4000 0000映射到0x4200 0000是外设 peripheral 区域映射。</p>
 <p>操作更快，指令更少，而且只访问一位更安全，比如刚取出0x2000 0000的32位数据，这时候中断修改了0x2000 0000的数据，这时我们取得的数据就是旧的错误数据了，修改完第3位再写回去，相当于中断白改了。</p>
-<h2 id="Program-Image"><a href="#Program-Image" class="headerlink" title="Program Image"></a>Program Image</h2><p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686670722574.png" alt="1686670722574"></p>
+<h2 id="Program-Image">Program Image</h2>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686670722574.png" alt="1686670722574"></p>
 <p>vector：向量表，存储比如main堆栈的地址（MSP），异常的地址等信息。</p>
 <p>start-up：板子上电或rst时的启动代码。</p>
 <p>program code：我们烧进去的程序代码。</p>
 <p>c lib code：库函数代码。</p>
 <p>复位时，先读取 msp 地址找到 main 在哪。然后读取 reset vector 执行 BIOS 初始化代码，再开始读取第一条，第二条指令……</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686670972039.png" alt="1686670972039"></p>
-<h2 id="Endianness"><a href="#Endianness" class="headerlink" title="Endianness"></a>Endianness</h2><p>两种存储规范。</p>
+<h2 id="Endianness">Endianness</h2>
+<p>两种存储规范。</p>
 <p>比如十进制数字，1234，一千二百三十四。然后我们记录到数据库中，地址从低到高存储为4321，权值大的位1存在地址最高处，这就是大端存储 Big endian。否则，权值大的位存在地址低处，1234地址从低到高，就是小端存储 Little endian。m4两种方法都支持。</p>
 <blockquote>
 <p>术语“little endian(小端)”和“big endian(大端)”出自Jonathan Swift的《格列佛游记》（Gulliver’s Trabels）一书，其中交战的两个派别无法就应该从哪一端（小端还是大端）打开一个半熟的鸡蛋达成一致。</p>
 <p>一下是Jonathan Swift在1726年关于大小端之争历史的描述：</p>
-<p><em>“……下面要告诉你的是，Lilliput和Blefuscu这两大强国在过去36个月里一直在苦战。战争开始是由于以下的原因：我们大家都认为，吃鸡蛋前，原始的方法是打破鸡蛋较大的一端，可是当今皇帝的祖父小时候吃鸡蛋，一次按古法打鸡蛋是碰巧将一个手指弄破了，因此他的父亲，当时的皇帝，就下了一道敕令，命令全体臣民吃鸡蛋时打破鸡蛋较小的一端，违令者重罚。老百姓们对这项命令极为反感。历史告诉我们，由此曾发生过六次叛乱，其中一个皇帝送了命，另一个丢了王位。这些叛乱大多都是由Blefuscu的国王大臣们煽动起来的。叛乱平息后，流亡的人总是逃到那个帝国去寻救避难。据估计，先后几次有11000人情愿受死也不肯去打破鸡蛋较小的一端。关于这一争端，曾出版过几百本大部著作，不过大端派的书一直是受禁的，法律也规定该派的任何人不得做官。”（此段译文摘自网上蒋剑锋译的 《格列佛游记》第一卷第4章。）</em></p>
+<p><em>“…下面要告诉你的是，Lilliput和Blefuscu这两大强国在过去36个月里一直在苦战。战争开始是由于以下的原因：我们大家都认为，吃鸡蛋前，原始的方法是打破鸡蛋较大的一端，可是当今皇帝的祖父小时候吃鸡蛋，一次按古法打鸡蛋是碰巧将一个手指弄破了，因此他的父亲，当时的皇帝，就下了一道敕令，命令全体臣民吃鸡蛋时打破鸡蛋较小的一端，违令者重罚。老百姓们对这项命令极为反感。历史告诉我们，由此曾发生过六次叛乱，其中一个皇帝送了命，另一个丢了王位。这些叛乱大多都是由Blefuscu的国王大臣们煽动起来的。叛乱平息后，流亡的人总是逃到那个帝国去寻救避难。据估计，先后几次有11000人情愿受死也不肯去打破鸡蛋较小的一端。关于这一争端，曾出版过几百本大部著作，不过大端派的书一直是受禁的，法律也规定该派的任何人不得做官。”（此段译文摘自网上蒋剑锋译的 《格列佛游记》第一卷第4章。）</em></p>
 <p>在他那个时代，Swift是在讽刺英国（Lilliput）和法国（Blefuscu）之间的持续的冲突。Danny Cohen，一位网络协议的早期开创者，第一次使用这两个术语来指代字节顺序，后来这个术语被广泛接纳了.</p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/316347205">大端、小端基础知识 - 知乎 (zhihu.com)</a></p>
 </blockquote>
-<h2 id="Instruction-Set"><a href="#Instruction-Set" class="headerlink" title="Instruction Set"></a>Instruction Set</h2><p>指令集。早期arm指令集32位，性能好能实现的功能强大。但是太长了处理效率低。</p>
+<h2 id="Instruction-Set">Instruction Set</h2>
+<p>指令集。早期arm指令集32位，性能好能实现的功能强大。但是太长了处理效率低。</p>
 <p>thumb-1 指令集16位，处理效率高了，性能也降了。早期arm架构如果是支持两种指令集的，就要频繁切换模式，效率低。</p>
 <p>后来thumb-2指令集包含早期16位和新的32位，和arm指令集的混合指令集性能没减太多，代码量和处理效率还高了。</p>
-<h1 id="Assembly"><a href="#Assembly" class="headerlink" title="Assembly"></a>Assembly</h1><p>汇编语法。</p>
-<h2 id="顺序结构"><a href="#顺序结构" class="headerlink" title="顺序结构"></a>顺序结构</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">label							; 可省略，用于跳转到此位置</span><br><span class="line">	助记符 operand1, operand2, … ; Comments</span><br><span class="line">	</span><br><span class="line">MOV r1, #0x01					; 数据0x01放入r1</span><br><span class="line">MOV r1, #&#x27;A&#x27;					; 数据A的ascii码放入r1</span><br><span class="line">MOV R0, R1 						; move R1 into R0</span><br><span class="line">MOVS R0, R1 					; move R1 into R0, 并且更新APSR的状态</span><br><span class="line"></span><br><span class="line">LDR R1, [R0]					; R0存的是一个地址值如0x2000 0000, 这个指令是取出R0代表的地址中的数据存入R1</span><br><span class="line">STR R1, [R0]					; 写回去</span><br><span class="line">LDR R0, =0x12345678 			; Set R0 to 0x12345678</span><br><span class="line">; 等效于：</span><br><span class="line">; LDR R0, [PC, #offset] </span><br><span class="line">; ...</span><br><span class="line">; DCD 0x12345678</span><br><span class="line">; 也就是先在文档末尾的一条指令里写入数据0x12345678，然后编译器自动计算PC+多少offset到达DCD的位置，把其值返给R0</span><br><span class="line">; DCD是声明一个字 32bit，DCB是声明一个Byte</span><br><span class="line">; 如果多个数值的声明可以用标签声明</span><br><span class="line">LDR R3, =MY_NUMBER</span><br><span class="line"></span><br><span class="line">ALIGN 4 ; 字要先用这个声明，代表停止长度</span><br><span class="line">MY_NUMBER DCD 0x2000ABCC</span><br><span class="line">HELLO_TEXT DCB “Hello\n”, 0 ; Null terminated string</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">LDRB R1, [R0]					; B: 只写8位，就是说R0地址处的数据写入R1后，R1高24位清零</span><br><span class="line">SDRH R1, [R0]					; H: 只写16位</span><br><span class="line"></span><br><span class="line">LDRSH R1, [R0]					; 视作signed有符号数，写16位</span><br><span class="line"></span><br><span class="line">LDRB R0, [R1, #0x3]				; 从R1+3读取一个字节给R0</span><br><span class="line">LDR R3, [R0, R2, LSL #2]		; 从R0+（R2&lt;&lt;2)读取一个字节给R3</span><br><span class="line">LDR R0, [R1], #4				; 赋完值后，令R1=R1+4</span><br><span class="line"></span><br><span class="line">ADD R0, R0, R1</span><br><span class="line">ADDS R0, R0, R1					; 加完更新APSR状态，比如有溢出或者进位则更新</span><br><span class="line">ADC R0, R1, R2					; R1+R2还要+APSR的carry位</span><br><span class="line"></span><br><span class="line">; SUB SBC类似</span><br><span class="line"></span><br><span class="line">MUL R0, R1, R2</span><br><span class="line">UDIV R0, R1, R2</span><br><span class="line">SDIV R0, R1, R2					; signed</span><br></pre></td></tr></table></figure>
-
+<h1>Assembly</h1>
+<p>汇编语法。</p>
+<h2 id="顺序结构">顺序结构</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">label							; 可省略，用于跳转到此位置</span><br><span class="line">	助记符 operand1, operand2, … ; Comments</span><br><span class="line">	</span><br><span class="line">MOV r1, #0x01					; 数据0x01放入r1</span><br><span class="line">MOV r1, #&#x27;A&#x27;					; 数据A的ascii码放入r1</span><br><span class="line">MOV R0, R1 						; move R1 into R0</span><br><span class="line">MOVS R0, R1 					; move R1 into R0, 并且更新APSR的状态</span><br><span class="line"></span><br><span class="line">LDR R1, [R0]					; R0存的是一个地址值如0x2000 0000, 这个指令是取出R0代表的地址中的数据存入R1</span><br><span class="line">STR R1, [R0]					; 写回去</span><br><span class="line">LDR R0, =0x12345678 			; Set R0 to 0x12345678</span><br><span class="line">; 等效于：</span><br><span class="line">; LDR R0, [PC, #offset] </span><br><span class="line">; ...</span><br><span class="line">; DCD 0x12345678</span><br><span class="line">; 也就是先在文档末尾的一条指令里写入数据0x12345678，然后编译器自动计算PC+多少offset到达DCD的位置，把其值返给R0</span><br><span class="line">; DCD是声明一个字 32bit，DCB是声明一个Byte</span><br><span class="line">; 如果多个数值的声明可以用标签声明</span><br><span class="line">LDR R3, =MY_NUMBER</span><br><span class="line"></span><br><span class="line">ALIGN 4 ; 字要先用这个声明，代表停止长度</span><br><span class="line">MY_NUMBER DCD 0x2000ABCC</span><br><span class="line">HELLO_TEXT DCB “Hello\n”, 0 ; Null terminated string</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">LDRB R1, [R0]					; B: 只写8位，就是说R0地址处的数据写入R1后，R1高24位清零</span><br><span class="line">SDRH R1, [R0]					; H: 只写16位</span><br><span class="line"></span><br><span class="line">LDRSH R1, [R0]					; 视作signed有符号数，写16位</span><br><span class="line"></span><br><span class="line">LDRB R0, [R1, #0x3]				; 从R1+3读取一个字节给R0</span><br><span class="line">LDR R3, [R0, R2, LSL #2]		; 从R0+（R2&lt;&lt;2)读取一个字节给R3</span><br><span class="line">LDR R0, [R1], #4				; 赋完值后，令R1=R1+4</span><br><span class="line"></span><br><span class="line">ADD R0, R0, R1</span><br><span class="line">ADDS R0, R0, R1					; 加完更新APSR状态，比如有溢出或者进位则更新</span><br><span class="line">ADC R0, R1, R2					; R1+R2还要+APSR的carry位</span><br><span class="line"></span><br><span class="line">; SUB SBC类似</span><br><span class="line"></span><br><span class="line">MUL R0, R1, R2</span><br><span class="line">UDIV R0, R1, R2</span><br><span class="line">SDIV R0, R1, R2					; signed</span><br></pre></td></tr></table></figure>
 <p>例题：应该是因为有可能减成负的所以signed</p>
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686672985123.png" alt="1686672985123" style="zoom:50%;" />
-
 <p>指令有1字长，半字长的。hw1是指明功能用的，hw2是一些拓展比如立即数。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686713591015.png" alt="1686713591015"></p>
 <p>地址从低到高分别是：4F F0 0A 00 0A 68 10 44……</p>
 <p>PC每次取到半个字 hw，就+2B跳转到下一个hw。</p>
-<h2 id="选择结构"><a href="#选择结构" class="headerlink" title="选择结构"></a>选择结构</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">	CMP R0, R1						; 相当于if，比较后更新APSR。EQ= LT&lt; GT&gt; LE&lt;= GE &gt;=</span><br><span class="line">	BEQ BRANCH_1					; B是跳转，BL是跳转到函数执行完后返回，BX是根据地址最低位判断目标地址是arm还是thumb在决定跳转到整字还是半字。bx操作数不能是立即数，必须是寄存器</span><br><span class="line">	B BRANCH_2</span><br><span class="line">	</span><br><span class="line">BRANCH_1</span><br><span class="line">	...</span><br><span class="line">	B IFEND							; 不写这个就继续执行BRANCH_2了，像switch的break</span><br><span class="line">BRANCH_2</span><br><span class="line">	...</span><br><span class="line">B IFEND</span><br></pre></td></tr></table></figure>
-
-<h2 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">WHILE_BEGIN </span><br><span class="line">	UDIV R2, R0, R1 ; R2 = n / x</span><br><span class="line">	MUL R3, R2, R1 ; R3 = R2 * x</span><br><span class="line">	CMP R0, R3 ; n == (n / x) * x</span><br><span class="line">	BEQ WHILE_END</span><br><span class="line">	SUBS R1, R1, #1 ; x--</span><br><span class="line">	B WHILE_BEGIN ; loop back</span><br><span class="line">WHILE_END</span><br></pre></td></tr></table></figure>
-
-<h2 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h2><p>内存中有一片内存空间类似栈的数据结构。SP指针指向栈顶。</p>
+<h2 id="选择结构">选择结构</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">	CMP R0, R1						; 相当于if，比较后更新APSR。EQ= LT&lt; GT&gt; LE&lt;= GE &gt;=</span><br><span class="line">	BEQ BRANCH_1					; B是跳转，BL是跳转到函数执行完后返回，BX是根据地址最低位判断目标地址是arm还是thumb在决定跳转到整字还是半字。bx操作数不能是立即数，必须是寄存器</span><br><span class="line">	B BRANCH_2</span><br><span class="line">	</span><br><span class="line">BRANCH_1</span><br><span class="line">	...</span><br><span class="line">	B IFEND							; 不写这个就继续执行BRANCH_2了，像switch的break</span><br><span class="line">BRANCH_2</span><br><span class="line">	...</span><br><span class="line">B IFEND</span><br></pre></td></tr></table></figure>
+<h2 id="循环结构">循环结构</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">WHILE_BEGIN </span><br><span class="line">	UDIV R2, R0, R1 ; R2 = n / x</span><br><span class="line">	MUL R3, R2, R1 ; R3 = R2 * x</span><br><span class="line">	CMP R0, R3 ; n == (n / x) * x</span><br><span class="line">	BEQ WHILE_END</span><br><span class="line">	SUBS R1, R1, #1 ; x--</span><br><span class="line">	B WHILE_BEGIN ; loop back</span><br><span class="line">WHILE_END</span><br></pre></td></tr></table></figure>
+<h2 id="Stack">Stack</h2>
+<p>内存中有一片内存空间类似栈的数据结构。SP指针指向栈顶。</p>
 <p>这个栈地址是从高到低的，也就是存入数据 SP–，取出数据 SP++，类似一个翻转过来的，倒着的书堆。</p>
 <p>满堆栈：sp指针指向最后一个栈顶数据。</p>
 <p>空堆栈：指向最后一个数据的下一个要放入数据的空位置。</p>
 <p>我们的课程中使用空堆栈，指向下一个空位置，存数据就先存入再SP-4，取数据就先SP+4再出栈。不过这两条指令都不需要我们手动执行，有专门的指令：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PUSH &#123;R0, R4-R7&#125; 	; Push r0, r4, r5, r6, r7</span><br><span class="line">POP &#123;R2-R3, R5&#125; 	; Pop to r2, r3, r5。入栈出栈顺序不是按照书写顺序而是自动根据寄存器地址，高地址值给高地址寄存器</span><br></pre></td></tr></table></figure>
-
 <p>存入5个数据和取出3个数据。</p>
-<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><p>BL先保存当前PC值到LR，然后PC跳转到函数地址，</p>
+<h2 id="Functions">Functions</h2>
+<p>BL先保存当前PC值到LR，然后PC跳转到函数地址，</p>
 <p>BX LR跳转到LR中的地址用于函数返回。</p>
 <p>Architecture Procedure Call Standard (AAPCS) ：规范定义哪些寄存器主函数和函数通用，哪些是独有的。</p>
 <p>arm AAPCS规定：r0-r3是通用寄存器（类似全局变量），但main和函数的R4 – R8, R10-R11不通用（类似临时变量，到了函数里这些值就变了，不是原函数的），要压入栈保存。函数调用和返回的时候要保存和恢复通用寄存器值。这些由调用原函数的子函数 callee-procedure 执行。</p>
 <p>简单的参数的函数调用：传参给R0-R3作为函数参数，R4-R11压入栈，然后跳转到函数处。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686733381292.png" alt="1686733381292"></p>
-<h2 id="Program-Memory-Use"><a href="#Program-Memory-Use" class="headerlink" title="Program Memory Use"></a>Program Memory Use</h2><p>ROM里都是只读数据，比如常量常数。</p>
+<h2 id="Program-Memory-Use">Program Memory Use</h2>
+<p>ROM里都是只读数据，比如常量常数。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686733480351.png" alt="1686733480351"></p>
-<h2 id="const-static-volatile"><a href="#const-static-volatile" class="headerlink" title="const, static, volatile"></a>const, static, volatile</h2><p>貌似是不会过多涉及具体代码实现的部分，就先简单介绍一下了。</p>
+<h2 id="const-static-volatile">const, static, volatile</h2>
+<p>貌似是不会过多涉及具体代码实现的部分，就先简单介绍一下了。</p>
 <p>const 就是定义常量变量，定义后无法再次修改。</p>
 <p>static 通常定义静态函数，静态函数里的值是通用的，也就是每次调用该函数其值都是接着上次调用该函数的值继续。</p>
 <p>volatile：一个在嵌入式里挺重要的东西，软考题里出现过几次。大概就是禁止编译器优化该变量来防止不必要的错误。</p>
 <p>比如编译器优化num变量，这样每次修改num变量的值的时候都不会立刻写入内存中，可能会先把修改时的值写入寄存器，函数返回时写回内存。</p>
-<p>现在比如我们在main中num+&#x3D;5, 修改值后的num暂时存在寄存器里。然后我们调用中断，从内存中读取当前num的值并+1.但是内存中值还没改，还是原值。返回后，main再把自己手中的num值写回内存，最后内存中num值只+5，而不是我们期望的+6.</p>
+<p>现在比如我们在main中num+=5, 修改值后的num暂时存在寄存器里。然后我们调用中断，从内存中读取当前num的值并+1.但是内存中值还没改，还是原值。返回后，main再把自己手中的num值写回内存，最后内存中num值只+5，而不是我们期望的+6.</p>
 <p>volatile 声明后的变量不会做这样的优化，值改变了就立刻写回内存，虽然可能效率低但是安全。</p>
-<h1 id="Interrupts"><a href="#Interrupts" class="headerlink" title="Interrupts"></a>Interrupts</h1><p>比如我们程序的逻辑是按键按下的时候点亮小灯。第一种做法是 Polling 轮询，一直看：按键按下了吗？没有。按下了吗？没。按下了吗？……</p>
+<h1>Interrupts</h1>
+<p>比如我们程序的逻辑是按键按下的时候点亮小灯。第一种做法是 Polling 轮询，一直看：按键按下了吗？没有。按下了吗？没。按下了吗？……</p>
 <p>这样主要是效率低浪费CPU资源，如果为了节约资源轮询间隔大了，又不能及时响应。</p>
 <p>中断允许CPU专心处理background的事情，触发中断的时候先放下后台处理前台。对于无os的裸机也能实现简单的多线程切换。</p>
-<h2 id="异常处理流程"><a href="#异常处理流程" class="headerlink" title="异常处理流程"></a>异常处理流程</h2><ol>
-<li><p>结束当前正在执行的指令。</p>
+<h2 id="异常处理流程">异常处理流程</h2>
+<ol>
+<li>
+<p>结束当前正在执行的指令。</p>
 </li>
-<li><p>当前模式寄存器值压栈保存。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230614171134845.png" alt="image-20230614171134845"></p>
+<li>
+<p>当前模式寄存器值压栈保存。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230614171134845.png" alt=""></p>
 </li>
-<li><p>切换模式。</p>
+<li>
+<p>切换模式。</p>
 </li>
-<li><p>PC LR更新（根据异常处理器提供的值）。PC去查中断向量表，看要跳到哪里，EXC_RETURN Code赋值给LR。</p>
+<li>
+<p>PC LR更新（根据异常处理器提供的值）。PC去查中断向量表，看要跳到哪里，EXC_RETURN Code赋值给LR。</p>
 </li>
-<li><p>更新IPSR状态。</p>
+<li>
+<p>更新IPSR状态。</p>
 </li>
-<li><p>开始执行异常代码。</p>
+<li>
+<p>开始执行异常代码。</p>
 </li>
-<li><p>退出，BX LR把 EXC_RETURN Code 值返回给PC。</p>
+<li>
+<p>退出，BX LR把 EXC_RETURN Code 值返回给PC。</p>
 </li>
-<li><p>出栈。</p>
+<li>
+<p>出栈。</p>
 </li>
 </ol>
-<h2 id="Timing"><a href="#Timing" class="headerlink" title="Timing"></a>Timing</h2><p>中断执行也是耗时的，需要一定的时间保存源程序状态，执行中断，恢复。</p>
+<h2 id="Timing">Timing</h2>
+<p>中断执行也是耗时的，需要一定的时间保存源程序状态，执行中断，恢复。</p>
 <p>FMax_Int：最大中断执行频率，即：单位时间内最多执行几次中断。</p>
 <p>F_CPU：CPU频率，即：单位时间内CPU有多少次指令周期。</p>
 <p>C_ISR：执行中断内容需要多少周期。</p>
 <p>C_Overhd：中断保存、恢复数据等准备工作用多少周期。</p>
 <p>中断一次执行所需周期：C_Overhd+C_ISR</p>
-<p>因此， $F_{Max_Int&#x3D;}F_{CPU}&#x2F;(C_{ISR}+C_{Overhd})$</p>
+<p>因此， $F_{Max_Int=}F_{CPU}/(C_{ISR}+C_{Overhd})$</p>
 <p>U_int：中断处理实际消耗的利用率，上面那个毕竟是最大值。</p>
-<p>$U_{int}&#x3D;F_{Int}&#x2F;F_{Max_Int}$</p>
+<p>$U_{int}=F_{Int}/F_{Max_Int}$</p>
 <p>中断执行速度（和频率一样）：F_Int</p>
 <p>非中断执行速度：(1-U_Int)*F_Int</p>
-<h1 id="GPIO"><a href="#GPIO" class="headerlink" title="GPIO"></a>GPIO</h1><p>General Purpose Input Output, </p>
-<h2 id="Memory-Mapped-IO"><a href="#Memory-Mapped-IO" class="headerlink" title="Memory-Mapped IO"></a>Memory-Mapped IO</h2><p>把设备，控制等寄存器映射到内存里。好处就是访问设备方式和内存一样，也不用设计复杂的IO电路，便捷；缺点在于占用了内存空间。</p>
-<h2 id="Peripheral-Mapped-IO"><a href="#Peripheral-Mapped-IO" class="headerlink" title="Peripheral-Mapped IO"></a>Peripheral-Mapped IO</h2><p>IO有一块专门的存储区域，和内存不一样，也有专门的不同的电路指令去访问IO。好处就是节省内存空间，也能清晰的知道什么时候发生IO了；缺点在于开发、设计上的造价增加。</p>
-<h2 id="GPIO-1"><a href="#GPIO-1" class="headerlink" title="GPIO"></a>GPIO</h2><p>通用IO可以判断引脚高低电平，可以给引脚赋值高低电平进行控制。</p>
+<h1>GPIO</h1>
+<p>General Purpose Input Output,</p>
+<h2 id="Memory-Mapped-IO">Memory-Mapped IO</h2>
+<p>把设备，控制等寄存器映射到内存里。好处就是访问设备方式和内存一样，也不用设计复杂的IO电路，便捷；缺点在于占用了内存空间。</p>
+<h2 id="Peripheral-Mapped-IO">Peripheral-Mapped IO</h2>
+<p>IO有一块专门的存储区域，和内存不一样，也有专门的不同的电路指令去访问IO。好处就是节省内存空间，也能清晰的知道什么时候发生IO了；缺点在于开发、设计上的造价增加。</p>
+<h2 id="GPIO">GPIO</h2>
+<p>通用IO可以判断引脚高低电平，可以给引脚赋值高低电平进行控制。</p>
 <p>stm32有几组GPIO，每个有16个Pin，可以配置为input output pullin pullup等模式，以及定时器、串口、中断等功能。</p>
 <p>什么是上下拉模式？如果不设置为上下拉，引脚浮空的时候（没有设置输入为高或低电平的时候）浮空引脚可能收到电磁波干扰等等问题导致输入状态不确定，有0有1的，容易造成错误。</p>
 <p>下拉：三极管控制默认接地，无输入的时候默认低电平。</p>
 <p>上拉：三极管控制默认接Vdd 芯片工作电压。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686742220470.png" alt="1686742220470"></p>
 <p>大多数引脚是这两个功能都有的，我们初始化GPIO的时候选用一个，寄存器根据值控制接通相应电路。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230614193552367.png" alt="image-20230614193552367"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230614193552367.png" alt=""></p>
 <p>输入输出信号真的可以被称为“信号”。输入规定为0-0.5视作低电平，0.5-Vdd视作高电平，范围以外的值无效。输出电流也只有5mA左右是没有能力直接驱动一些设备的，我们可以通过一些电路比如三极管，放大器等，电路接收到信号得知”需要输出驱动电流了“然后输出大电流。</p>
-<h2 id="Control"><a href="#Control" class="headerlink" title="Control"></a>Control</h2><p>每个GPIO口有：</p>
-<p>4 * 32bit configuration registers: 配置相关信息，比如in&#x2F;out，上啦下拉，开漏输出或推挽输出，输出频率等。</p>
+<h2 id="Control">Control</h2>
+<p>每个GPIO口有：</p>
+<p>4 * 32bit configuration registers: 配置相关信息，比如in/out，上啦下拉，开漏输出或推挽输出，输出频率等。</p>
 <ul>
 <li>推挽输出 push-pull：能输出高低电平。</li>
 <li>开漏输出 open-drain：没有能力输出高电平，想输出高电平需要设置上拉电路来输出。</li>
 </ul>
 <p>2 * 32bit data registers: 输入输出数据寄存器。</p>
-<p>1 * 32bit set&#x2F;reset registers: 设置或复位寄存器。</p>
+<p>1 * 32bit set/reset registers: 设置或复位寄存器。</p>
 <p>1 * 32bit locking registers: 锁定寄存器。</p>
 <p>2 * 32bit alternate function selection register.</p>
-<h3 id="Mode"><a href="#Mode" class="headerlink" title="Mode"></a>Mode</h3><p>如图，32个Pin，每个两位来设置4种模式（in out 可选 模拟）。</p>
+<h3 id="Mode">Mode</h3>
+<p>如图，32个Pin，每个两位来设置4种模式（in out 可选 模拟）。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686743308300.png" alt="1686743308300"></p>
-<h3 id="Pull"><a href="#Pull" class="headerlink" title="Pull"></a>Pull</h3><p>只有3种模式（无pull，上拉，下拉）。</p>
+<h3 id="Pull">Pull</h3>
+<p>只有3种模式（无pull，上拉，下拉）。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686743360055.png" alt="1686743360055"></p>
-<h3 id="data"><a href="#data" class="headerlink" title="data"></a>data</h3><p>输入输出数据寄存器分开的。</p>
+<h3 id="data">data</h3>
+<p>输入输出数据寄存器分开的。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686743538223.png" alt="1686743538223"></p>
-<h2 id="CMSIS"><a href="#CMSIS" class="headerlink" title="CMSIS"></a>CMSIS</h2><p>先说一下考试定义：</p>
-<p>CMSIS transforms memory mapped registers  into C structs </p>
+<h2 id="CMSIS">CMSIS</h2>
+<p>先说一下考试定义：</p>
+<p>CMSIS transforms memory mapped registers  into C structs</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> PORT0 ((struct PORT*)0x2000030)</span></span><br></pre></td></tr></table></figure>
-
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686747214412.png" alt="1686747214412"></p>
 <p>再说一下和一些嵌入式前辈讨论的理解，以下内容不许考试写：</p>
 <blockquote>
@@ -329,15 +364,14 @@
 <p>以上内容感兴趣的看个乐呵。</p>
 <p>例：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">enum</span> &#123;</span></span><br><span class="line">Reset, <span class="comment">//!&lt; Resets the pin-mode to the default value.</span></span><br><span class="line">Input, <span class="comment">//!&lt; Sets the pin as an input with no pull-up or pull-down.</span></span><br><span class="line">Output, <span class="comment">//!&lt; Sets the pin as a low impedance output.</span></span><br><span class="line">PullUp, <span class="comment">//!&lt; Enables the internal pull-up resistor and sets as input.</span></span><br><span class="line">PullDown <span class="comment">//!&lt; Enables the internal pull-down resistor and sets as input.</span></span><br><span class="line">&#125; PinMode;</span><br><span class="line"></span><br><span class="line">gpio_set_mode(P1_10, Input);</span><br><span class="line">gpio_set_mode(P2_8, Output);</span><br><span class="line"><span class="type">int</span> PBstatus=gpio_get(P1_10); </span><br><span class="line">gpio_set(P2_8, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-
 <p>以上代码是老师提供的driver，大意就是选定pin，传入特定参数，即可设置模式，设置输出。</p>
 <p>感兴趣可以看看我的这篇文章，如果使用arm定义的cmsis直接去开发也是可以的：</p>
 <p><a target="_blank" rel="noopener" href="https://jingqing3948.blog.csdn.net/article/details/130299783">STM32 学习笔记_4 GPIO：LED，蜂鸣器，按键，传感器的使用_灰海宽松的博客-CSDN博客</a></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">    <span class="comment">/* 控制gpio需要三个步骤：开启rcc时钟，初始化，输入输出函数控制 */</span></span><br><span class="line">    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);</span><br><span class="line">    </span><br><span class="line">    GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">    GPIO_InitStructure.GPIO_Mode=GPIO_Mode_Out_PP;</span><br><span class="line">    GPIO_InitStructure.GPIO_Pin=GPIO_Pin_0;</span><br><span class="line">    GPIO_InitStructure.GPIO_Speed=GPIO_Speed_50MHz;</span><br><span class="line">    GPIO_Init(GPIOA, &amp;GPIO_InitStructure);</span><br><span class="line">    </span><br><span class="line">    GPIO_SetBits(GPIOA,GPIO_Pin_0);</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>drivers二次开发，可以帮助简化。</p>
 <p>当然这一段都是题外话了。考试就理解为“cmsis是变量宏定义直接映射到寄存器上；drivers是对其添加进一步行为”即可。</p>
-<h1 id="Serial-Communication"><a href="#Serial-Communication" class="headerlink" title="Serial Communication"></a>Serial Communication</h1><p>串口通信，一种发送消息的通信方式。</p>
+<h1>Serial Communication</h1>
+<p>串口通信，一种发送消息的通信方式。</p>
 <p>串，指的是发数据的方式：一位一位串行发，并行是可能有多路通道，每路同时发一个数据，多路同时到达。</p>
 <p>串口通信有单工 Simplex，半双工 Half Duplex，全双工 Full Duplex。</p>
 <p>两种传输方式：同步 Synchronous，共用一个时钟；异步 Asynchronous，有各自的时钟。</p>
@@ -345,73 +379,82 @@
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686749582568.png" alt="1686749582568"></p>
 <p>异步：需要通过异步通讯协议 Asynchronous Comm. Protocol 来协调。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686749956698.png" alt="1686749956698"></p>
-<p>1位起始位标志开始传输，7&#x2F;8&#x2F;9位数据位，1位可选奇偶校验位，1位停止位。</p>
+<p>1位起始位标志开始传输，7/8/9位数据位，1位可选奇偶校验位，1位停止位。</p>
 <p>RT两方需要有相同的波特率。</p>
 <p>当然这只是最简单的串口通信因为只有双方。如果更多方通信我们需要校验地址来判断是哪个发给哪个；数据需要更复杂的校验方式。</p>
 <p>异步通信不需要同步时钟之类电路，开销小，但是开发起来难度大一些因为需要起始结束位啥的。</p>
-<h2 id="RS232"><a href="#RS232" class="headerlink" title="RS232"></a>RS232</h2><p>异步通信，Reversed Polarity 标准电压（-3<del>-15是1,3</del>15是0.还有一些其他标准比如TTL是+5为1，-5为0.）</p>
+<h2 id="RS232">RS232</h2>
+<p>异步通信，Reversed Polarity 标准电压（-3~-15是1,3~15是0.还有一些其他标准比如TTL是+5为1，-5为0.）</p>
 <p>发送数据有两种类型，ascii码和二进制，都得转化为二进制传输。</p>
-<h2 id="uart"><a href="#uart" class="headerlink" title="uart"></a>uart</h2><p>针对stm32f401.</p>
+<h2 id="uart">uart</h2>
+<p>针对stm32f401.</p>
 <p>全双工异步串口。</p>
 <p>为了处理RT缓冲数据（因为发收数据需要时间）我们可以通过缓冲区数组，头指针表示已经发到的位置，尾指针表示要发的数据的结尾。增加新数据，尾指针++；发一个数据，头指针++直到碰到尾。</p>
 <p>原来发送方一直是发高电平，start frame 起始帧是1帧低电平来表示开始发数据了。</p>
 <p>如何判断是1帧低电平？通过在这一帧里多次采样判断是不是真的是一帧低电平。</p>
 <p>为什么多次采样？因为异步两个信号有一定的偏移，多次采样准，能确定是不是真的一整帧都低电平。</p>
 <p>采样是有一定采样率的，不是说真的能像模拟信号一样一直采。</p>
-<p>采样率 oversampling&#x3D;16: 这个是最大可以达到的采样频率而不是真的一帧采了16次。</p>
+<p>采样率 oversampling=16: 这个是最大可以达到的采样频率而不是真的一帧采了16次。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686756691253.png" alt="1686756691253"></p>
 <p>接收方首先第一次检测到0位，开始怀疑：有可能是串口有消息。这是start frame的第一次采样。</p>
 <p>然后每隔一帧检测一次，3 5 7检测3次，如果2个都是0，说明确实有可能。</p>
 <p>然后连着检测8910，如果还是2个0，说明确实是start frame。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686756881390.png" alt="1686756881390"></p>
 <p>8采样率因为采样间隔长了，更容易碰到左右边界的高电平，所以容错率低。但是速度更快。</p>
-<h2 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h2><p>波特率计算：</p>
-<p>$T_x&#x2F;R_x(baud)&#x3D;\frac{f_{PCLK}}{8*(2-OVER8)*USARTDIV}$</p>
+<h2 id="计算">计算</h2>
+<p>波特率计算：</p>
+<p>$T_x/R_x(baud)=\frac{f_{PCLK}}{8*(2-OVER8)*USARTDIV}$</p>
 <p>OVER8是过采样率，fPCLK是时钟频率。</p>
 <p>USARTDIV是一个浮点数</p>
 <p>USARTDIV浮点数怎么存储？通过算法转化为十六进制。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686759124660.png" alt="1686759124660"></p>
-<p>小数部分用一个16进制位表示，比如例1是C也就是12，转换后即为12&#x2F;16也就是0.75.</p>
+<p>小数部分用一个16进制位表示，比如例1是C也就是12，转换后即为12/16也就是0.75.</p>
 <p>例2转换为一位16进制，就是0.62*16约等于10也就是A。</p>
 <p>整数部分直接转换十六进制即可，例2的25转为19，例1的27转为1B。</p>
 <p>然后整数小数部分拼接起来（最多3个整数位，1个小数位，32位寄存器）。</p>
-<h1 id="Timer"><a href="#Timer" class="headerlink" title="Timer"></a>Timer</h1><p>想让程序定时运行，比如led 1s闪烁一次。如何做到？</p>
+<h1>Timer</h1>
+<p>想让程序定时运行，比如led 1s闪烁一次。如何做到？</p>
 <p>第一种方法是愚蠢的delay延时，我自己估算一下：嗯，delay(2000)差不多1s。然后在程序中delay，点亮，delay，熄灭……</p>
 <p>太浪费资源了。</p>
 <p>第二种方法，32是有定时器中断的。</p>
 <p>定时器中断大概原理是，32上有时钟晶振按固定频率周期输出0101010……定时器里有一个cnt，收到一个时钟晶振就++。</p>
 <p>我们可以设置定时器溢出值，比如溢出值是1000，cnt加到1000会自动触发定时器中断。然后归0，继续++。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230615014136641.png" alt="image-20230615014136641"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230615014136641.png" alt=""></p>
 <p>执行周期数量：1+1+1+1+(0xFFFFFFFF一直-1-1-1直到变为0x00FFFFFF的循环次数)+(r0+1的执行次数，1次)</p>
 <p>定时器也有一些扩展方法，比如我们可以设定++还是–；可以设定信号源是时钟或者外部输入的方波信号；可以读取计数值……</p>
 <p><strong>我们课件常用方法好像是–到0触发中断，然后恢复初值。</strong></p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686764952191.png" alt="1686764952191"></p>
-<h2 id="PWM"><a href="#PWM" class="headerlink" title="PWM"></a>PWM</h2><p>PWM这个东西是什么？</p>
+<h2 id="PWM">PWM</h2>
+<p>PWM这个东西是什么？</p>
 <p>PWM（Pulse Width Modulation）脉冲宽度调制，在具有惯性的系统中，可以通过对一系列脉冲的宽度进行调制，来等效地获得所需要的模拟参量，常应用于电机控速等领域。</p>
 <p>就好比说，你骑自行车速度只能是100和0，模拟电信号只能输出高低。</p>
 <p>但是呢，你骑自行车是有惯性的，以100速度蹬一脚，以0速度蹬1脚，100速度蹬一脚……</p>
 <p>整体来看你的自行车平均速度是50（我们假设加速度不需要时间哈）</p>
-<p>这个应用场景有很多，比如设定led闪烁频率：高低高低高低……，因为频率极高，我们肉眼看不出来在闪，给我们呈现的视觉效果就是以一半的亮度在亮。高低低高低低就是1&#x2F;3亮度。</p>
+<p>这个应用场景有很多，比如设定led闪烁频率：高低高低高低……，因为频率极高，我们肉眼看不出来在闪，给我们呈现的视觉效果就是以一半的亮度在亮。高低低高低低就是1/3亮度。</p>
 <p>比如电机通过这个方式调速度。</p>
 <p>那么他有什么应用场景。第一，输入捕获 Input capture。</p>
 <p>对于一个这种有惯性的系统，我们也可以反过来读取其波形来判断其速度。比如电机放一个转速检测传感器，把输入波形作为定时器的时钟源信号，定时器一直++：检测上升下降沿时记录cnt值，通过差值比较计算时间间隔。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230615020829378.png" alt="image-20230615020829378"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230615020829378.png" alt=""></p>
 <p>第二，输出比较 output compare。</p>
 <p>定时器一直++，与预先设定好的阈值比较，如果相等触发中断输出。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686767856060.png" alt="1686767856060"></p>
 <p>这就是PWM。占空比相当好算。</p>
-<h2 id="Low-Power-Timer"><a href="#Low-Power-Timer" class="headerlink" title="Low Power Timer"></a>Low Power Timer</h2><p>我们目前假设的是CPU一直运作的，只是在后台和前台之间切换。有一种低功耗定时器使得没有发生定时器中断的时候CPU被置为低功耗状态，只有发生定时器中断的时候才启动。（使用 __WFI() wait for instruction 指令）</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230621235021294.png" alt="image-20230621235021294"></p>
-<h2 id="SysTick"><a href="#SysTick" class="headerlink" title="SysTick"></a>SysTick</h2><p>M系列自带的一个系统时钟，使用处理器时钟或者参考时钟作为时钟源。</p>
+<h2 id="Low-Power-Timer">Low Power Timer</h2>
+<p>我们目前假设的是CPU一直运作的，只是在后台和前台之间切换。有一种低功耗定时器使得没有发生定时器中断的时候CPU被置为低功耗状态，只有发生定时器中断的时候才启动。（使用 __WFI() wait for instruction 指令）</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230621235021294.png" alt=""></p>
+<h2 id="SysTick">SysTick</h2>
+<p>M系列自带的一个系统时钟，使用处理器时钟或者参考时钟作为时钟源。</p>
 <p>有四位寄存器：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230621235527699.png" alt="image-20230621235527699"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230621235527699.png" alt=""></p>
 <p>每次赋值是load，一直–到0时重新load赋值。ctrl是控制启用系统时钟。这个是CMSIS有提供的数据结构和相关操作函数的时钟处理部分。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230621235805628.png" alt="image-20230621235805628"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230621235805628.png" alt=""></p>
 <p>init 参数是中断间隔的毫秒数。timer_set_callback() 里跟一个可以是自己定义的函数，使得触发定时器中断时该函数被执行。以上代码意思是每隔100ms LED灯翻转一次，且 CPU 常态下处于低功耗状态。</p>
-<h1 id="I2C"><a href="#I2C" class="headerlink" title="I2C"></a>I2C</h1><p>连接多个模块的传输方案：I2C，使用两根总线。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622000302459.png" alt="image-20230622000302459"></p>
+<h1>I2C</h1>
+<p>连接多个模块的传输方案：I2C，使用两根总线。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622000302459.png" alt=""></p>
 <p>两根总线分别是时钟总线 SCL 和数据总线 SDA。</p>
-<h2 id="通信过程"><a href="#通信过程" class="headerlink" title="通信过程"></a>通信过程</h2><p>现在我们串一遍I2C上一个模块（master）要给另一个模块（slave）发消息的过程。</p>
+<h2 id="通信过程">通信过程</h2>
+<p>现在我们串一遍I2C上一个模块（master）要给另一个模块（slave）发消息的过程。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1687363434463.png" alt="1687363434463"></p>
 <ol>
 <li>MCU 使用一定的方法标识自己开始传输了。</li>
@@ -421,38 +464,41 @@
 <li>发送完 MCU 等着 ACK，收到 ACK 后继续发送下一帧数据。</li>
 <li>一直发送到发送停止位 stop 结束。</li>
 </ol>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622000920336.png" alt="image-20230622000920336"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622000920336.png" alt=""></p>
 <p>数据长度可以设置，比如789.</p>
 <p>总线上的器件是开漏输出的半双工通信。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713135505107.png" alt="image-20230713135505107"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713135505107.png" alt=""></p>
 <p>默认总线是上拉电阻拉成高电平。</p>
 <p>当器件输出 out 为低电平时，总线导通到接地，总线被拉低（整条总线都被拉低）。江协科技老师举的例子很好，就像公交车上的一根横杆，有人拉住横杆拽下来，整条横杆都被拉低了，其他人都知道“横杆被一个人拉低了，说明有人正在使用总线”。</p>
-<p>然后是总线传输数据的方式，SCL SDA 两根总线在何种情况下表示 start stop 0 1 bit? </p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713140225426.png" alt="image-20230713140225426"></p>
+<p>然后是总线传输数据的方式，SCL SDA 两根总线在何种情况下表示 start stop 0 1 bit?</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713140225426.png" alt=""></p>
 <p>首先都是 SCL 为高电平时 SDA 的数值才有意义。</p>
 <p>SDA 从高到低，表示 start 位。从低到高，表示 stop 位。</p>
 <p>start 位后，SDA 高电平表示1，低电平表示0.</p>
 <p>发送完 1byte 数据后，总线保持拉高状态。如果接收方把总线拉低了，发送方发现总线1→0了（不是发送方自己拉的，是接收方给他拉下来的，但是发送方能察觉到），说明接收方成功接收了并且拉了拉总线以示“收到”。如果 SDA 还是保持在高电平，说明接收方没有成功收到或者成功发送 ACK。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713140822834.png" alt="image-20230713140822834"></p>
-<h2 id="问题处理"><a href="#问题处理" class="headerlink" title="问题处理"></a>问题处理</h2><p>I2C 是一种很简单的主从通信协议了，但是局限性也很多，比如7 bit 的地址线只允许 2^7 个设备；一次顶多两个设备主从通信；一个设备的快慢会影响到整条总线的通信等。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713140822834.png" alt=""></p>
+<h2 id="问题处理">问题处理</h2>
+<p>I2C 是一种很简单的主从通信协议了，但是局限性也很多，比如7 bit 的地址线只允许 2^7 个设备；一次顶多两个设备主从通信；一个设备的快慢会影响到整条总线的通信等。</p>
 <p>问题1：从设备处理速度太慢了，赶不及在下一个时钟周期接收新数据帧怎么办？</p>
 <p>方法：clock stretching, 拉低一段时间 SCL 假装下一个时钟周期还没到。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713141906054.png" alt="image-20230713141906054"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713141906054.png" alt=""></p>
 <p>问题2：多个设备同时发数据冲突了怎么办？</p>
 <p>方法：Bus Aribitation，前面我们知道总线被一个设备拉低了，所有设备都能接收到总线拉低的信号。因此如果两个设备同时开始发信息，前面数据一致都无所谓，等到第一次数据不一致的时候，一个设备发送数据0，一个发送数据1，这时 SDA 总线被 DATA2 的0拉低了。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713142029471.png" alt="image-20230713142029471"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713142029471.png" alt=""></p>
 <p>发送 DATA1 数据的设备就明白了：有人同时在和我一起发数据，因此总线不是我预期的1而是被他拉低为0了。那我 quit，你发吧。然后就只有 DATA2 发送的数据了。</p>
 <p>问题3：以上发送的数据每次都是 1byte 8bits 很正好。那如果要发送的地址不是 8bits 呢？</p>
 <p>方法：少于 8bits 用一些固定的额外的 start 位填充，多于 8bits 的地址用两个 bytes，不够的也是用额外的 start 位填充。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713143052018.png" alt="image-20230713143052018"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713143052018.png" alt=""></p>
 <p>问题3：如果我 master 发完数据，想紧接着再收数据，变成 slave，可行吗？</p>
 <p>方法：通过一个 sr 信号，也就是 repeat start 重发 start 位，来标识自己是 read 而不再是 write 了重新开始通信。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713143601570.png" alt="image-20230713143601570"></p>
-<h2 id="编址格式"><a href="#编址格式" class="headerlink" title="编址格式"></a>编址格式</h2><p>slave 地址编址有一些固定格式。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713143744619.png" alt="image-20230713143744619"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713143601570.png" alt=""></p>
+<h2 id="编址格式">编址格式</h2>
+<p>slave 地址编址有一些固定格式。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713143744619.png" alt=""></p>
 <p>0000 000 0：广播，对所有 slave 结点讲话。如果 slave 无视（NACK），就不会参与广播。如果返回 ACK 就参与进来了。不过多个 slave 都返回 ACK 的话 master 是不知道都有谁回应了的。</p>
 <p>第二个 byte 发送一些行为相关，比如：start，clear，reset software</p>
-<h2 id="编程应用"><a href="#编程应用" class="headerlink" title="编程应用"></a>编程应用</h2><p>slave mode: </p>
+<h2 id="编程应用">编程应用</h2>
+<p>slave mode:</p>
 <ul>
 <li>I2C 设备默认工作在 slave mode。</li>
 <li>外设时钟在 I2C_CR2 寄存器中编程。频率介于 2kHz~100kHz。</li>
@@ -464,31 +510,31 @@
 <li>BTF 位标识收没收完。</li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1689255491311.png" alt="1689255491311"></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713214410998.png" alt="image-20230713214410998"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713214410998.png" alt=""></p>
 <p>这么说起来还是有点混乱 I2C 到底经历了哪些才顺利发送了数据？</p>
 <p>首先，从主模式的概念。master 主模式驱动时钟信号，发起传输；slave 从模式响应传输。</p>
-<h2 id="主模式"><a href="#主模式" class="headerlink" title="主模式"></a>主模式</h2><p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/Figure-1-4.png" alt="用于主发送数据的 I2C 传输序列图"></p>
+<h2 id="主模式">主模式</h2>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/Figure-1-4.png" alt="用于主发送数据的 I2C 传输序列图"></p>
 <p>发送：</p>
 <p>所有 EV 事件都会拉低 SCL，直到相应软件序列执行完成。</p>
 <p>S：start 事件。比如CR2 寄存器中设置外设时钟，配置时钟寄存器，上升时钟寄存器，使能 CR1 来启用时钟，CR1 中设置 start 位，等待总线被拉低表示就绪，发送启动信号，并切换为主模式。</p>
-<p>EV5：启动事件成功进行，设置 SB 寄存器&#x3D;1. SB 寄存器&#x3D;1后才可以进行地址阶段，执行完地址阶段会自动清除 SB 和 EV5 事件。</p>
+<p>EV5：启动事件成功进行，设置 SB 寄存器=1. SB 寄存器=1后才可以进行地址阶段，执行完地址阶段会自动清除 SB 和 EV5 事件。</p>
 <p>Address：地址阶段。传输7位地址+1位读写位，然后等待从机的 ack。收到 ack 进入 EV6.</p>
-<p>EV6：设置 addr 位&#x3D;1代表地址阶段顺利执行， master 收到 ack了。清除 EV6 后自动进入 EV8.</p>
-<p>EV8：设置 TxE ，准备写入主机要传入的数据。TxE 表示数据寄存器为空可以写入。每次数据写入 DR 都会清空 TxE 和 EV8 事件。写完数据数据传过去了，主机收到 ack 后继续传输。以 BTF&#x3D;1 表示数据传输的结尾。</p>
+<p>EV6：设置 addr 位=1代表地址阶段顺利执行， master 收到 ack了。清除 EV6 后自动进入 EV8.</p>
+<p>EV8：设置 TxE ，准备写入主机要传入的数据。TxE 表示数据寄存器为空可以写入。每次数据写入 DR 都会清空 TxE 和 EV8 事件。写完数据数据传过去了，主机收到 ack 后继续传输。以 BTF=1 表示数据传输的结尾。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">i2c_write</span><span class="params">(<span class="type">uint8_t</span> address, <span class="type">uint8_t</span> *buffer, <span class="type">int</span> buff_len)</span> &#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// Send in sequence: Start bit, Contents of buffer 0..buff_len, Stop</span></span><br><span class="line">    <span class="keyword">while</span> (((I2C1-&gt;SR2&gt;&gt;<span class="number">1</span>)&amp;<span class="number">1</span>)); <span class="comment">// wait until I2C1 is not busy anymore</span></span><br><span class="line">    I2C_GenerateSTART(I2C1, ENABLE); <span class="comment">// Send I2C1 START condition</span></span><br><span class="line">    <span class="comment">// wait for I2C1 EV5 --&gt; Slave has acknowledged start condition</span></span><br><span class="line">    <span class="keyword">while</span> (!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_MODE_SELECT));</span><br><span class="line">    <span class="comment">// Send slave Address for write then wait for EV6</span></span><br><span class="line">    I2C_Send7bitAddress(I2C1, address, I2C_Direction_Transmitter);</span><br><span class="line">    <span class="keyword">while</span> (!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));</span><br><span class="line">    <span class="keyword">while</span> (i &lt; buff_len)&#123;</span><br><span class="line">        I2C_SendData(I2C1, buffer[i]); <span class="comment">// send data then wait for EV8_2</span></span><br><span class="line">        <span class="keyword">while</span> (!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_BYTE_TRANSMITTED));</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    I2C_GenerateSTOP(I2C1, ENABLE); <span class="comment">// send stop bit</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230714110003657.png" alt="image-20230714110003657"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230714110003657.png" alt=""></p>
 <p>接收：</p>
 <p>前面和 master transmit 都一样。</p>
-<p>TxE 改为 RxE 了，&#x3D;1标识接收到了数据。</p>
+<p>TxE 改为 RxE 了，=1标识接收到了数据。</p>
 <p>master 自己设置 stop 事件后（发送 NACK）停止接收。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">i2c_read</span><span class="params">(<span class="type">uint8_t</span> address, <span class="type">uint8_t</span> *buffer, <span class="type">int</span> buff_len)</span> &#123;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// Start bit, Contents of buffer from 0..buff_len, sending a NACK</span></span><br><span class="line">    <span class="comment">// for the last item and an ACK otherwise, Stop bit</span></span><br><span class="line">    I2C_GenerateSTART(I2C1, ENABLE);</span><br><span class="line">    <span class="keyword">while</span>(!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_MODE_SELECT)); <span class="comment">//EV5</span></span><br><span class="line">    <span class="comment">// Send slave Address for write then wait for EV6</span></span><br><span class="line">    I2C_Send7bitAddress(I2C1, address, I2C_Direction_Receiver);</span><br><span class="line">    <span class="keyword">while</span> (!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED));</span><br><span class="line">    I2C_AcknowledgeConfig(I2C1, ENABLE); <span class="comment">// going to send ACK</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt; buff_len - <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">while</span> (!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_BYTE_RECEIVED)); <span class="comment">//EV7</span></span><br><span class="line">        buffer[i] = I2C_ReceiveData(I2C1); <span class="comment">// get data byte</span></span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    I2C_AcknowledgeConfig(I2C1, DISABLE); <span class="comment">// going to send NACK</span></span><br><span class="line">    <span class="keyword">while</span> (!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_BYTE_RECEIVED)); <span class="comment">//EV7</span></span><br><span class="line">    buffer[i] = I2C_ReceiveData(I2C1); <span class="comment">// get the last byte</span></span><br><span class="line">    I2C_GenerateSTOP(I2C1, ENABLE); <span class="comment">// send stop</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="从模式"><a href="#从模式" class="headerlink" title="从模式"></a>从模式</h3><p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1689259086166.png" alt="1689259086166"></p>
+<h3 id="从模式">从模式</h3>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1689259086166.png" alt="1689259086166"></p>
 <p>发送：</p>
 <p>start 启动事件由 master 发起。从机校验地址并决定是否发送 ack 位。</p>
 <p>EV1：设置 addr 位表示地址匹配。</p>
-<p>EV3-1：设置 TxE 位，开始传入数据。一直到主机返回 NACK 表示不想再要数据了，或者 AF&#x3D;1 说明 ack 失败了为止。</p>
+<p>EV3-1：设置 TxE 位，开始传入数据。一直到主机返回 NACK 表示不想再要数据了，或者 AF=1 说明 ack 失败了为止。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1689259113895.png" alt="1689259113895"></p>
 <p>接收：</p>
 <p>前面到 EV1 和 slave transmit 都一样。</p>
@@ -500,7 +546,7 @@
 </ol>
 <p>异常情况：</p>
 <p>总线错误，NACK，仲裁失败，时钟异常超时。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230714110916968.png" alt="image-20230714110916968"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230714110916968.png" alt=""></p>
  
       <!-- reward -->
       
@@ -918,6 +964,30 @@
     viewer_init()
 </script> 
 <!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
 
 <!-- Katex -->
 

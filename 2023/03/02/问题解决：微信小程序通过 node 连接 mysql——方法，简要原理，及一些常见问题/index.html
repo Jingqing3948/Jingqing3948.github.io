@@ -115,75 +115,91 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>博主自己在22年夏天根据课程要求做了一个小程序连接阿里云服务器的案例，在最近又碰到了相应的需求。</p>
-<p>原参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_56598099/article/details/119105587?app_version=5.14.2&code=app_1562916241&csdn_share_tail=%7B%22type%22:%22blog%22,%22rType%22:%22article%22,%22rId%22:%22119105587%22,%22source%22:%22jtwqwq%22%7D&uLinkId=usr1mkqgl919blen&utm_source=app">微信小程序 Node连接本地MYSQL_微信小程序nodejs连接数据库_JJJenny0607的博客-CSDN博客</a> ,还请多多支持原作者！</p>
+  <h1>前言</h1>
+<p>博主自己在22年夏天根据课程要求做了一个小程序连接阿里云服务器的案例，在最近又碰到了相应的需求。</p>
+<p>原参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_56598099/article/details/119105587?app_version=5.14.2&amp;code=app_1562916241&amp;csdn_share_tail=%7B%22type%22%3A%22blog%22%2C%22rType%22%3A%22article%22%2C%22rId%22%3A%22119105587%22%2C%22source%22%3A%22jtwqwq%22%7D&amp;uLinkId=usr1mkqgl919blen&amp;utm_source=app">微信小程序 Node连接本地MYSQL_微信小程序nodejs连接数据库_JJJenny0607的博客-CSDN博客</a> ,还请多多支持原作者！</p>
 <p>第二次尝试的时候已经熟练许多了，但是还是遇到了很多挺烦人的问题，也浪费了很多时间排查 bug。因此博主打算趁着刚做过记忆还深刻的时候，把全过程、博主自己的理解和遇到的一些问题的解决方法整理出来。当然我也不可能能解决所有问题，遇到的部分问题也只是针对我自己的情况可以解决。因此如果 solutions 不起效或遇到其他问题，可以在评论区留言，我会与大家沟通（不保证能否解决~）。</p>
-<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343956.png" alt="55ff06e4153087c9216fd7b56763ea7"></p>
+<h1>原理</h1>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343956.png" alt="55ff06e4153087c9216fd7b56763ea7"></p>
 <p>nodejs 作为中介服务器，可以让小程序连接 mysql 数据库。</p>
-<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><p>如果不出错误的话， 基本流程就是跟着上面的文章来的。</p>
+<h1>步骤</h1>
+<p>如果不出错误的话， 基本流程就是跟着上面的文章来的。</p>
 <ol>
-<li><p>下载 node。可以在 cmd 中输入 <code>node -v</code> 查看有无成功下载。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212344379.png" alt="image-20230302134251274"></p>
+<li>
+<p>下载 node。可以在 cmd 中输入 <code>node -v</code> 查看有无成功下载。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212344379.png" alt=""></p>
 </li>
-<li><p>新建一个数据库，这一部分很简单，有 mysql 相关基础的读者应该没问题，也可以看博主的 mysql 专栏学习。</p>
+<li>
+<p>新建一个数据库，这一部分很简单，有 mysql 相关基础的读者应该没问题，也可以看博主的 mysql 专栏学习。</p>
 </li>
-<li><p>新建一个小程序，在结构中新建 server 文件夹用于存储 node 本地服务器相关代码。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212344368.png" alt="image-20230302135701456"></p>
+<li>
+<p>新建一个小程序，在结构中新建 server 文件夹用于存储 node 本地服务器相关代码。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212344368.png" alt=""></p>
 </li>
-<li><p>右键 server 文件夹，点击“在内建终端中打开”，安装一些所需的包。</p>
+<li>
+<p>右键 server 文件夹，点击“在内建终端中打开”，安装一些所需的包。</p>
 </li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br><span class="line">npm i mysql --save-dev</span><br><span class="line">npm install body-parser --save-dev</span><br><span class="line">npm install express --save-dev</span><br></pre></td></tr></table></figure>
-
 <ol start="5">
 <li>在文件夹下新建 server.js 文件，编写代码。</li>
 </ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express=<span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> bodyParser =<span class="built_in">require</span>(<span class="string">&#x27;body-parser&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> app=<span class="title function_">express</span>()</span><br><span class="line"><span class="keyword">const</span> mysql = <span class="built_in">require</span>(<span class="string">&#x27;mysql&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">IPAddress</span>=<span class="string">&#x27;[你的数据库地址]&#x27;</span><span class="comment">//因为这里是要链接远程数据库，ip 地址是 mysql 的地址！！本地就是 127.0.0.1，服务器上就自己找找看</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">UserName</span>=<span class="string">&#x27;[mysql 用户名]&#x27;</span></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">PWD</span>=<span class="string">&#x27;[mysql 密码]&#x27;</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">DBName</span>=<span class="string">&#x27;[要操作的数据库名]&#x27;</span></span><br><span class="line">app.<span class="title function_">use</span>(express.<span class="title function_">json</span>())</span><br><span class="line">app.<span class="title function_">use</span>(bodyParser.<span class="title function_">json</span>())</span><br><span class="line">app.<span class="title function_">use</span>(bodyParser.<span class="title function_">urlencoded</span>(&#123; <span class="attr">extended</span>: <span class="literal">false</span> &#125;))</span><br><span class="line"><span class="comment">//这上面一段固定的，[] 的部分需要根据自己数据库的信息修改</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//处理get请求。这里是一个 get 请求的方法演示，作用是查询 table1 表中的所有数据并返回。</span></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/getUser&#x27;</span>,<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123; <span class="comment">//这里的是 get 方法 getUser，对应了刚才的页面发来的请求。就会执行这个方法。</span></span><br><span class="line">  <span class="comment">//参数传入是在 req.body 对象里面。比如上面的语句是获取传入的 openid 变量，并且我们新定义一个叫 openid 的变量存储传入的 openid 变量</span></span><br><span class="line">  <span class="keyword">var</span> connection=mysql.<span class="title function_">createConnection</span>(&#123;</span><br><span class="line">    <span class="attr">host</span>:<span class="title class_">IPAddress</span>,</span><br><span class="line">    <span class="attr">port</span>: <span class="number">3306</span>,		<span class="comment">//端口号，mysql 固定3306</span></span><br><span class="line">    <span class="attr">user</span>:<span class="title class_">UserName</span>,</span><br><span class="line">    <span class="attr">password</span>:<span class="variable constant_">PWD</span>,</span><br><span class="line">    <span class="attr">database</span>:<span class="title class_">DBName</span></span><br><span class="line">  &#125;)<span class="comment">//配置连接的属性</span></span><br><span class="line">  connection.<span class="title function_">connect</span>();<span class="comment">//尝试连接</span></span><br><span class="line">  connection.<span class="title function_">query</span>(<span class="string">&quot;select * from table1&quot;</span>,<span class="keyword">function</span>(<span class="params">error,results,fields</span>)&#123;<span class="comment">//执行查找语句</span></span><br><span class="line">    <span class="keyword">if</span>(error) <span class="variable language_">console</span>.<span class="title function_">log</span>(error);<span class="comment">//执行失败的话</span></span><br><span class="line">    res.<span class="title function_">json</span>(results)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(results)</span><br><span class="line">    </span><br><span class="line">  &#125;)</span><br><span class="line">  connection.<span class="title function_">end</span>();<span class="comment">//断开连接</span></span><br><span class="line">  </span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3000</span>,<span class="function">()=&gt;</span>&#123;<span class="comment">//这是一个监听端口，会输出监听到的信息。上面的 console.log 就会在这里输出</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;server running at http://&#x27;</span>+<span class="title class_">IPAddress</span>+<span class="string">&#x27;:3000&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <p>我们的 nodejs 是部署在本地的，就在 server 文件夹里。node_modules 是下载的 nodejs 包，server.js 是我们的操作 nodejs 的代码。</p>
 <p>我们在需要调用数据库的页面里先调用本地服务器，比如在 mysqlTest.js 中，onLoad 里：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">onLoad</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">//我们写一个调用数据库函数，使得本页面加载时调用此函数，查找 youqi.data 里的所有条目。</span></span><br><span class="line">        wx.<span class="title function_">request</span>(&#123;</span><br><span class="line">            <span class="attr">method</span>: <span class="string">&#x27;GET&#x27;</span>,<span class="comment">//这里要和 server.js 定义的 post or get 一致！！！</span></span><br><span class="line">            <span class="attr">url</span>: <span class="string">&#x27;http://[本地 IPV4 地址]:3000/getUser&#x27;</span>,<span class="comment">//这里的 ip 地址不是数据库的地址，而是你的电脑本地的地址，因为这一步的操作是要找到本地 nodejs 服务器。getUser 要和 server.js 中定义的方法名一致。</span></span><br><span class="line">            <span class="attr">data</span>: &#123;</span><br><span class="line">              <span class="comment">//这里面是传入参数。比如我们要 select * from data where openid= 给定的 openid，就可以从这里传入</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">success</span>: <span class="keyword">function</span> (<span class="params">res</span>) &#123;<span class="comment">//成功获取到值，返回一个 res 对象。如果不知道 res 对象里面包含什么，可以先输出 res 对象看一下其中都包含什么</span></span><br><span class="line">              <span class="variable language_">console</span>.<span class="title function_">log</span>(res);</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">fail</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;<span class="comment">//没有获取到值，说明这中间出问题了。</span></span><br><span class="line">              <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;获取失败&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;)</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
-
 <p>本地 IPV4 地址是怎么查出来的？打开 cmd，输入 ipconfig。无线局域网适配器 WLAN 里的 IPV4 即是。</p>
 <p>nodejs 接收到了请求，就会执行 server.js 里对应的方法。</p>
-<h1 id="如何运行"><a href="#如何运行" class="headerlink" title="如何运行"></a>如何运行</h1><p>首先 <strong>nodejs 服务器需要手动开启</strong>，我还不会自动开启。</p>
+<h1>如何运行</h1>
+<p>首先 <strong>nodejs 服务器需要手动开启</strong>，我还不会自动开启。</p>
 <p>右键 server 文件夹，在内建终端中打开，然后在终端中输入：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212344060.png" alt="image-20230227001627448"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212344060.png" alt=""></p>
 <p>下面那句话说明正常启动服务器并且开始监听。</p>
 <p>我们输出一下 res，看看成功会返回什么信息。调试器里的 console 输出：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343123.png" alt="image-20230227000549916"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343123.png" alt=""></p>
 <p>data 里是我们数据库的查询结果。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343704.png" alt="image-20230227000639178"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343704.png" alt=""></p>
 <p>res.data 获取这个15长度的 Array。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343282.png" alt="image-20230227000715899"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343282.png" alt=""></p>
 <p>然后比如我们要获取其中的 time 值，就是 res.data[0].time, res.data[1].time… res.dat[14].time。</p>
 <p>{} 表示其中是一个对象变量，通过句号+索引名称获取特定的值。</p>
 <p>而刚才的一直在监听的内建终端里输出：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212344070.png" alt="image-20230302140540514"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212344070.png" alt=""></p>
 <p>这个的输出对应 function(error,results,fields) 里的 console.log(results)。如果查询失败，error 也是在这个内建终端里输出。</p>
-<h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1><h2 id="数据库无法连接？"><a href="#数据库无法连接？" class="headerlink" title="数据库无法连接？"></a>数据库无法连接？</h2><p>建好数据库后，最好就先用 cmd 或 workbench 连接一下试试。如果能成功连接并查询，之后出问题也可以排除 mysql 的一部分问题。</p>
+<h1>常见问题</h1>
+<h2 id="数据库无法连接？">数据库无法连接？</h2>
+<p>建好数据库后，最好就先用 cmd 或 workbench 连接一下试试。如果能成功连接并查询，之后出问题也可以排除 mysql 的一部分问题。</p>
 <p>如果采用云服务器（如阿里云）连接不上，可能的问题有：</p>
 <ul>
-<li><p>服务器端口 80 和 3306 没开。（不建议一键全部放行，有被hacker get 的风险）</p>
+<li>
+<p>服务器端口 80 和 3306 没开。（不建议一键全部放行，有被hacker get 的风险）</p>
 </li>
-<li><p>mysql 需要有一个用户能在所有 ip 地址里对该数据库进行读写操作，这里可以参考 DCL 的内容来新建符合要求的 user。<a target="_blank" rel="noopener" href="https://jingqing3948.blog.csdn.net/article/details/124430926">Mysql_9 SQL 语句——DCL_sql语言dcl_灰海宽松的博客-CSDN博客</a></p>
+<li>
+<p>mysql 需要有一个用户能在所有 ip 地址里对该数据库进行读写操作，这里可以参考 DCL 的内容来新建符合要求的 user。<a target="_blank" rel="noopener" href="https://jingqing3948.blog.csdn.net/article/details/124430926">Mysql_9 SQL 语句——DCL_sql语言dcl_灰海宽松的博客-CSDN博客</a></p>
 </li>
-<li><p>服务器防火墙的问题，要开启3306端口。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343761.png" alt="image-20230302141204512"></p>
+<li>
+<p>服务器防火墙的问题，要开启3306端口。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343761.png" alt=""></p>
 </li>
 </ul>
-<h2 id="小程序报错-ERR-TIMEOUT"><a href="#小程序报错-ERR-TIMEOUT" class="headerlink" title="小程序报错 ERR TIMEOUT"></a>小程序报错 ERR TIMEOUT</h2><p>打开网站可以看到 404 显示。</p>
+<h2 id="小程序报错-ERR-TIMEOUT">小程序报错 ERR TIMEOUT</h2>
+<p>打开网站可以看到 404 显示。</p>
 <ul>
-<li><p>首先先确保前面那个问题确实解决了，该数据库确实可以从本地连接，，不是数据库的问题。</p>
+<li>
+<p>首先先确保前面那个问题确实解决了，该数据库确实可以从本地连接，，不是数据库的问题。</p>
 </li>
-<li><p>再确认 get post 方法是否对应，方法名是否写错。很多时候输入了错误的链接也会显示 404.</p>
+<li>
+<p>再确认 get post 方法是否对应，方法名是否写错。很多时候输入了错误的链接也会显示 404.</p>
 </li>
-<li><p>小程序不校验合法域名是否打开。</p>
+<li>
+<p>小程序不校验合法域名是否打开。</p>
 </li>
-<li><p>启用或关闭 windows 功能——Internet Information Services，及其可承载 web 核心，<strong>子项</strong>全部打开。点击确定。如果成功启动，在浏览器中输入 127.0.0.1，应该可以看到：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343506.png" alt="image-20230302141638928"></p>
+<li>
+<p>启用或关闭 windows 功能——Internet Information Services，及其可承载 web 核心，<strong>子项</strong>全部打开。点击确定。如果成功启动，在浏览器中输入 127.0.0.1，应该可以看到：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343506.png" alt=""></p>
 </li>
-<li><p>检查方法名，get post 类别是否写错。</p>
+<li>
+<p>检查方法名，get post 类别是否写错。</p>
 </li>
 </ul>
  
@@ -603,6 +619,30 @@
     viewer_init()
 </script> 
 <!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
 
 <!-- Katex -->
 
