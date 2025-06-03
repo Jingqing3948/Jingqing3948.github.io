@@ -131,11 +131,11 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1>前言</h1>
+  <h2 id="前言">前言</h2>
 <p>主要围绕考试提纲里的所有问题展开，没有拓展内容，Exam oriented Study。</p>
 <p>关注微信公众号：灰海宽松，回复 “RFID” 可获取本文pdf格式。</p>
-<h1>1. Introduction</h1>
-<h2 id="Comparison-of-different-automatic-identification-technologies">Comparison of different automatic identification technologies</h2>
+<h2 id="Introduction">Introduction</h2>
+<h3 id="Comparison-of-different-automatic-identification-technologies">Comparison of different automatic identification technologies</h3>
 <p>首先明确一下比较对象。human identification（cost too high）是人力识别就不用说了。</p>
 <p>fingerprint identification:</p>
 <ul>
@@ -176,7 +176,7 @@
 <li>certain computing and storage capabilities;</li>
 </ul>
 <p>主要考虑各个的缺点，人脸和声音特征点多速度慢，而且人脸容易被影响，声音由于国际标准技术难以提升；条码需要视觉可见；指纹容易被盗取。</p>
-<h2 id="The-main-features-of-RFID">The main features of RFID</h2>
+<h3 id="The-main-features-of-RFID">The main features of RFID</h3>
 <ul>
 <li>
 <p>Non-contact automatic and rapid identification 快速薄纱复杂的人脸和声音，无接触薄纱条码和指纹</p>
@@ -194,14 +194,14 @@
 <p>Low cost, can be deployed at a large scale</p>
 </li>
 </ul>
-<h2 id="Constraints-of-RFID-technology">Constraints of RFID technology</h2>
+<h3 id="Constraints-of-RFID-technology">Constraints of RFID technology</h3>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1687019780697.png" alt="1687019780697"></p>
-<h2 id="Core-technologies-of-RFID">Core technologies of RFID</h2>
+<h3 id="Core-technologies-of-RFID">Core technologies of RFID</h3>
 <p>Anti-collision mechanism：rfid并不支持传统的cmsa/ca无线通信协议，需要采取一些措施防碰撞（reader-reader, tag-reader, tag-tag)</p>
 <p>Efficient information storage, retrieval and mining: 尽量节能的信息存储，检索，挖掘</p>
 <p>Make full use of the attenuation laws of backscatter signal to assist in positioning and mobile behavior sensing: 我们知道rfid信号会随着距离衰减。反之我们也可以利用这一点来定位物体位置和移动行为感知。</p>
 <p>Security certification and privacy protection: 如何利用逻辑门电路校验安全性。</p>
-<h2 id="The-advantage-of-RFID-in-IoT-and-the-development-trend">The advantage of RFID in IoT, and the development trend</h2>
+<h3 id="The-advantage-of-RFID-in-IoT-and-the-development-trend">The advantage of RFID in IoT, and the development trend</h3>
 <p>充电方式：Backscatter, small node and indefinitely time of endurance. but rely on reader, one to many centralized communication 利用无线电 ratio signal 充电的方式</p>
 <p>ptp communication: 建立 channel awareness technologies 使得支持被动点对点通信来建立分布式系统</p>
 <p>Combine with Sensors: 开发更多应用方式。</p>
@@ -212,14 +212,14 @@
 <li>provides a low-cost communication way to achieve effective communication between nodes.</li>
 <li>makes the physical objects in a passive environment achieve “passive intelligence“, providing fundamental guarantee for the “thing-thing connection”</li>
 </ul>
-<h1>2. Identification</h1>
+<h2 id="Identification">Identification</h2>
 <p>简单说RFID就是物体上贴tag，用reader上的antenna去读取，这三个是主要组成。</p>
-<h2 id="Reader’s-function">Reader’s function</h2>
+<h3 id="Reader’s-function">Reader’s function</h3>
 <p>Energy supply: 比如有的标签自身不带能量需要reader提供信号中蕴含的能量</p>
 <p>Communication: 最基本的功能，和tag识别，通信</p>
 <p>Security Assurance: 比如加密解密</p>
 <p>扩展功能：比如自组网 ad-hoc, 管理天线 antenna management 中间件接口 interface of middle components 连接外设 connecting peripherals</p>
-<h2 id="Reader’s-classification">Reader’s classification</h2>
+<h3 id="Reader’s-classification">Reader’s classification</h3>
 <p>按频率：LF HF算低频，UHF和SHF算高频（ultra super)，高频数据传输速度快，距离远，但是衰减快 signal attenuation，收到障碍物影响大  sensitive to obstacles。</p>
 <p>按外观：</p>
 <ul>
@@ -227,7 +227,7 @@
 <li>portable 可移动的像手持手机一样，small, charging battery, easy to move</li>
 <li>Industrial 为工厂目的而生，比如集成其他 sensor</li>
 </ul>
-<h2 id="Influencing-factors-of-R-W-range">Influencing factors of R&amp;W range</h2>
+<h3 id="Influencing-factors-of-R-W-range">Influencing factors of R&amp;W range</h3>
 <p>许多东西都有说明书，规范，来提醒我们怎么不把东西玩坏比如手机提示不要放水里玩。</p>
 <p>RFID的R&amp;W range是其中一种。影响因素如下：</p>
 <ul>
@@ -250,7 +250,7 @@
 <p>Movement speed of tags</p>
 </li>
 </ul>
-<h2 id="Reader’s-components-and-their-functions">Reader’s components and their functions</h2>
+<h3 id="Reader’s-components-and-their-functions">Reader’s components and their functions</h3>
 <p>Signal Processing and Control Module: 主要是控制功能，协调一些本地计算</p>
 <ul>
 <li>Communicate with upper computer,  and execute command from it</li>
@@ -266,7 +266,7 @@
 <li>Modulate signal to sent,  transferring data to RF tags</li>
 <li>Receive and demodulate RF signal  from RF tags.</li>
 </ul>
-<h2 id="Tag’s-functions">Tag’s functions</h2>
+<h3 id="Tag’s-functions">Tag’s functions</h3>
 <ul>
 <li>data storage</li>
 <li>energy harvesting 吸收能量，与reader的 energy supply 对应</li>
@@ -274,7 +274,7 @@
 <li>Security Encryption 与 reader 的 Security Assurance 对应</li>
 <li>Collision Concessions 碰撞让步</li>
 </ul>
-<h2 id="Tag-classification-by-package-form-by-power-source-by-work-frequency-by-R-W-capability">Tag classification: by package form, by power source, by work frequency, by R&amp;W capability</h2>
+<h3 id="Tag-classification-by-package-form-by-power-source-by-work-frequency-by-R-W-capability">Tag classification: by package form, by power source, by work frequency, by R&amp;W capability</h3>
 <p>Package form 也就是外观上的分类：</p>
 <ul>
 <li>card-like</li>
@@ -292,26 +292,26 @@
 <p>LF HF UHF。UHF读写性能，距离最好，更多会使用 active 型。</p>
 <p>By R&amp;W Capability</p>
 <p>read-only 和 R&amp;W 两种，结构复杂度也有所不同</p>
-<h2 id="Two-work-modes-of-RFID-middleware">Two work modes of RFID middleware</h2>
+<h3 id="Two-work-modes-of-RFID-middleware">Two work modes of RFID middleware</h3>
 <p>interactive, independent。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230618045820043.png" alt=""></p>
 <p>交互模式大概就是一直接收主机的命令，你让我读我就读，读完把结果还给你。</p>
 <p>独立模式是可以不接收主机命令自行按预设的程序和读取到的结果信息循环执行指令，并将结果返回给主机。</p>
-<h1>3. Wireless Communication Principle of RFID</h1>
-<h2 id="Different-work-principles-of-different-carrier-frequency">Different work principles of different carrier frequency</h2>
+<h2 id="Wireless-Communication-Principle-of-RFID">Wireless Communication Principle of RFID</h2>
+<h3 id="Different-work-principles-of-different-carrier-frequency">Different work principles of different carrier frequency</h3>
 <p>不同频率载波也适用不同的工作原则。</p>
 <p>前面已经有所涉及，比如LF HF适用于近距离，UHF SHF适合远距离。</p>
 <p>前者适用 Inductively Coupled RF Module 电感耦合，通过感应方式获取能量。</p>
 <p>后者适用 Electromagnetic Backscatter Coupled RF Module 电磁反向散射耦合，持续不断发送射频信号来供给能量。backscatter 指的是接收机信号调制后通过发送机天线产生可被识别的信号。</p>
 <p>两者的能量消耗都和距离平方成正比 squared distance</p>
-<h2 id="Signal-voltage-and-energy-dB-dBm，重点：如何计算">Signal voltage and energy: dB, dBm，重点：如何计算</h2>
+<h3 id="Signal-voltage-and-energy-dB-dBm，重点：如何计算">Signal voltage and energy: dB, dBm，重点：如何计算</h3>
 <p>变化的电压通常用 $V(t)=v_0cos(\omega t)$ 表示。</p>
 <p>功率P=VI=V^2/R这不用多说。平均功率 $=\frac{v_0^2}{2R}$ 很简单推因为正余弦平均就是/根2.</p>
 <p>相对变化 The relative change，这是一个比较新鲜的而且信号变化中比较重要的指标。</p>
 <p>$G_{dB}=10log_{10}\frac{P2}{P1}$</p>
 <p>参考功率 referenced power $dBm=10log_{10}\frac{P}{10^{-3}}$</p>
 <p>dBm单位是功率的W，GdB单位是dB，代表一个比值。</p>
-<h2 id="Modulation-of-reader-signal-OOK-and-its-problem-solution-PIE-Tag-encoding-FM0">Modulation of reader signal: OOK and its problem, solution: PIE; Tag encoding: FM0</h2>
+<h3 id="Modulation-of-reader-signal-OOK-and-its-problem-solution-PIE-Tag-encoding-FM0">Modulation of reader signal: OOK and its problem, solution: PIE; Tag encoding: FM0</h3>
 <p>一些阅读器通过调制使得正弦电压信号携带信息的方法。</p>
 <p>OOK：on off keying，高功率1低功率0.</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1687036831437.png" alt="1687036831437"></p>
@@ -322,7 +322,7 @@
 <p>FM0编码方式：位窗起始处翻转信号表示1，中间翻转表示0.</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1687037382818.png" alt="1687037382818"></p>
 <p>FM0属于 FSK frequent shift key 通过信号变化频率来识别的机制。</p>
-<h2 id="Link-budget-重点">Link budget (重点)</h2>
+<h3 id="Link-budget-重点">Link budget (重点)</h3>
 <p>Link budget: forward link budget  and backward link budget 发射过程中能量增减的总和</p>
 <p>reader transmit energy(+) path loss(-) tag activate energy(-)</p>
 <ul>
@@ -332,12 +332,12 @@
 <p>来看上例，发送方30dBm对应1W，tag接收到-10dBm对应10^-4W. 然后5dB的衰减到-15dBm。这个5dB衰减就是两个dBm做差得到的。</p>
 <p>所以，dBm相当于对功率P的另一种衡量方式，为什么这么麻烦的要用log来表示？因为两个dBm的差值就是分贝（放大系数），所以由一个dBm能量转到另一个只需要加减两者间差的分贝即可，很方便。</p>
 <p>从tags反射回来的信号 reflection link 和路径四次方成反比 inversely proportional. $P_{RX,back}:\frac{1}{r^4}$</p>
-<h2 id="Antenna-gain-and-polarization-EIRP">Antenna gain and polarization, EIRP</h2>
+<h3 id="Antenna-gain-and-polarization-EIRP">Antenna gain and polarization, EIRP</h3>
 <p>antenna gain: 输入条件相同情况下，实际情况某一点能量密度/理想条件下的密度单元。反应了天线 concentrates the input power 的能力。就比如把阅读器放中间，标签围一圈，360度去读取周围标签对能量消耗就大，可能因此传输距离也近；但是如果把标签集中放在一块区域，周围放置的 reader 利用定向天线 Directional antenna，固定读取某一个角度范围内的tags能量利用效率就高。</p>
 <p>Polarization：事物在一定条件下发生极化 polarization，使得其表现的和原有状态不一样  its properties deviate from the  original state。</p>
 <p>EIRP, Equivalent Isotropic Radiated Power: 天线在所指方向上获得最大增益效果 maximum gain effect 所需要的能量。</p>
 <p>For example, FCC regulations in the United States, a non-irradiated  transmitter can transmit 1W of energy signals, and can use 6dBi antenna; antenna gain increased by 1dB, transmission energy needs to  be reduced by 1dB. In fact, FCC is not more than  36dBm(30dBm+6dBi).</p>
-<h2 id="Effects-of-antenna-gain，重点：分析-link-budget，几个计算公式">Effects of antenna gain，重点：分析 link budget，几个计算公式</h2>
+<h3 id="Effects-of-antenna-gain，重点：分析-link-budget，几个计算公式">Effects of antenna gain，重点：分析 link budget，几个计算公式</h3>
 <p>directional gain: radiation density of one direction d / average value in all direction</p>
 <p>power gain: radiation efficiency of that direction G</p>
 <p>平面角：单位rad，比如圆周180度单位角=2pi rad</p>
@@ -349,14 +349,14 @@
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230619104251622.png" alt=""></p>
 <p>$R_{forward}=\frac{\lambda}{4\pi}\sqrt{\frac{P_{TX,reader}T_bG_{reader}G_{tag}}{P_{min,tag}}}$</p>
 <p>$R_{reverse}=\frac{\lambda}{4\pi}\sqrt[4]{\frac{P_{TX,reader}T_bG_{reader}^2G_{tag}^2}{P_{min,reader}}}$</p>
-<h1>4. <strong>Tag</strong> Identification Protocol</h1>
-<h2 id="Checksum-procedure-parity-checks-LRC-CRC">Checksum procedure: parity checks, LRC, CRC</h2>
+<h2 id="Tag-Identification-Protocol">Tag Identification Protocol</h2>
+<h3 id="Checksum-procedure-parity-checks-LRC-CRC">Checksum procedure: parity checks, LRC, CRC</h3>
 <p>奇偶校验不多说，查1的个数，poor error recognition。电路通过所有位异或是偶校验，结果为1说明有错误；再取反是奇校验。</p>
 <p>LRC longitudinal redundancy check (LRC) procedure 循环冗余检测，所有字节进行异或运算，得到的结果是LRC校验码。也就是说数据发送到终点后，所有字节（数据和LRC）进行字节异或运算结果应该为0. 也有一些错误无法纠正，主要用于小的数据块校验。</p>
 <p>CRC (cyclic redundancy check) procedure</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1687142701838.png" alt="1687142701838"></p>
 <p>接收方计算原数据+CRC数据拼接起来的CRC数据值，应该为0. 不能纠错，不过检错效率很高。</p>
-<h2 id="ASK-FSK-PSK">ASK, FSK, PSK</h2>
+<h3 id="ASK-FSK-PSK">ASK, FSK, PSK</h3>
 <p>amplitude Shift Keying: 幅度调制，y轴上的调制。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1687142836442.png" alt="1687142836442"></p>
 <p>计算方法2：duty factor: $m=1-\frac{u_1}{u_0}$</p>
@@ -366,16 +366,16 @@
 <p>Phase shift keying: 频率相位翻转180.</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1687143252934.png" alt="1687143252934"></p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1687143276722.png" alt="1687143276722"></p>
-<h2 id="Difficulty-of-traditional-anti-collision-algorithms-for-solving-collision-detection-between-RFID-tags">Difficulty of traditional anti-collision algorithms for solving collision detection between RFID tags</h2>
+<h3 id="Difficulty-of-traditional-anti-collision-algorithms-for-solving-collision-detection-between-RFID-tags">Difficulty of traditional anti-collision algorithms for solving collision detection between RFID tags</h3>
 <p>Compared with the reader, limited by hardware resources, tags have very limited storage capacity and computing.</p>
 <p>标签受制于硬件资源，存储容量和计算能力都不高。</p>
-<h2 id="TDMA-FDMA-CSMA">TDMA, FDMA, CSMA</h2>
+<h3 id="TDMA-FDMA-CSMA">TDMA, FDMA, CSMA</h3>
 <p>首先主要有两种方式，一个是reader broadcast 广播到诸多 tags，一个是多个 tags Multi-access 每个tags单独访问reader。</p>
 <p>TDMA FDMA是multi-access, CSMA是broadcast</p>
 <p>FDMA: 多个频率通道 several frequency channels 传输数据。</p>
 <p>TDMA:</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230619212501183.png" alt=""></p>
-<h2 id="ALOHA-based-protocols-pure-ALOHA-S-ALOHA-FSA-DFSA-Q-算法。重点：性能分析、执行过程">ALOHA based protocols: pure ALOHA, S-ALOHA, FSA, DFSA, Q 算法。重点：性能分析、执行过程</h2>
+<h3 id="ALOHA-based-protocols-pure-ALOHA-S-ALOHA-FSA-DFSA-Q-算法。重点：性能分析、执行过程">ALOHA based protocols: pure ALOHA, S-ALOHA, FSA, DFSA, Q 算法。重点：性能分析、执行过程</h3>
 <p>Pure ALOHA algorithm：收到成功确认 ack 后就不再发送。否则一直随机等待后继续发送。简单但是通道利用率 channel utilization 低，poor performance.</p>
 <p>offered load G：单位时间 tau 里同时发送的应答器数量</p>
 <p>s-aloha: 规定时间片 slot，一个时间片只能发一次，冲突就下一次时间片去发。channel utilization 几乎是 pure 的两倍。</p>
@@ -391,7 +391,7 @@
 <p>没有回复：Qfp-C C是一个参数，比如0.1.</p>
 <p>有冲突&gt;1：+C。注意有上下限。</p>
 <p>ALOHA 算法公平。<strong>但是可能发生饥饿</strong> ，比如有一个 tag 每次都是有冲突的 slot，一直没有办法被处理。</p>
-<h2 id="Binary-tree-based-protocols-BT-QT-重点：执行过程">Binary tree based protocols: BT, QT, 重点：执行过程</h2>
+<h3 id="Binary-tree-based-protocols-BT-QT-重点：执行过程">Binary tree based protocols: BT, QT, 重点：执行过程</h3>
 <p>第二种算法，基于二进制数。就像二叉树不断拆分冲突的结点变为两个结点，直到节点里只有一个 tag。</p>
 <p>random binary tree BT：随机。</p>
 <p>binary query tree QT：排序，查询。</p>
@@ -413,7 +413,7 @@
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620010802734.png" alt=""></p>
 <p>不会饿死，也不需要一个可以读写的cnt，识别的时间和 tag id 有关。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620011058481.png" alt=""></p>
-<h2 id="Binary-search-Manchester-code-instead-of-NRZ-code-重点：执行过程">Binary search: Manchester code instead of NRZ code, 重点：执行过程</h2>
+<h3 id="Binary-search-Manchester-code-instead-of-NRZ-code-重点：执行过程">Binary search: Manchester code instead of NRZ code, 重点：执行过程</h3>
 <p>具体分辨哪一位有冲突。1代表冲突。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620011804411.png" alt=""></p>
 <p>NRZ混合没法检测错误。</p>
@@ -433,28 +433,28 @@
 <p>第三次迭代：限定bit4为0的request……</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620013603192.png" alt=""></p>
 <p>长度 L(N)=log2(N)+1</p>
-<h2 id="Dynamic-binary-search-重点：执行过程">Dynamic binary search, 重点：执行过程</h2>
+<h3 id="Dynamic-binary-search-重点：执行过程">Dynamic binary search, 重点：执行过程</h3>
 <p>Binary Search 是每次都传输完整二进制字符串. 其实我们只需要动态改变的部分.</p>
 <p>比如我们查询1010 1111 1111, 那返回值前面一定是1010呀, 就不用传输了. 前缀叫 NVB, Number of Valid Bits</p>
 <p>每次请求发送的信息: Request+NVB=4+1010</p>
-<h2 id="Advantages-and-disadvantages-of-ALOHA-based-anti-collision-algorithm">Advantages and disadvantages of ALOHA based anti-collision algorithm</h2>
+<h3 id="Advantages-and-disadvantages-of-ALOHA-based-anti-collision-algorithm">Advantages and disadvantages of ALOHA based anti-collision algorithm</h3>
 <p>simple</p>
 <p>good identification performance</p>
 <p>results can be statistically analyzed 结果可以被统计化分析</p>
 <p>缺点就是可能 starvation 饥饿，delay trend to ∞</p>
-<h2 id="Advantages-and-disadvantages-of-binary-tree-based-anti-collision-algorithm">Advantages and disadvantages of binary tree based anti-collision algorithm</h2>
+<h3 id="Advantages-and-disadvantages-of-binary-tree-based-anti-collision-algorithm">Advantages and disadvantages of binary tree based anti-collision algorithm</h3>
 <p>simple</p>
 <p>intermediate state variables 不需要存储中间状态变量（QT）</p>
 <p>缺点：查询时间受到 tags id 和 长度限制，比如二叉树沿着一个方向一直偏。</p>
-<h1>5. EPCglobal Standard &amp; protocol</h1>
-<h2 id="Concept-of-EPC-global-network">Concept of EPC global network</h2>
+<h2 id="EPCglobal-Standard-protocol">EPCglobal Standard &amp; protocol</h2>
+<h3 id="Concept-of-EPC-global-network">Concept of EPC global network</h3>
 <p>EPCglobal Network: a technology that</p>
 <ul>
 <li>allows trading partners to document and determine the location of individual goods</li>
 <li>if possible in real time</li>
 <li>additional information: such as 生产使用日期，能否被贸易伙伴交换</li>
 </ul>
-<h2 id="Five-basic-services-of-EPC-global-network-interaction-of-different-components-of-EPCglobal-network">Five basic services of EPC global network, interaction of different components of EPCglobal network</h2>
+<h3 id="Five-basic-services-of-EPC-global-network-interaction-of-different-components-of-EPCglobal-network">Five basic services of EPC global network, interaction of different components of EPCglobal network</h3>
 <p>Electronic product code (EPC)</p>
 <p>The identification system</p>
 <p>EPCglobal Middleware</p>
@@ -467,9 +467,9 @@
 <p>Middleware</p>
 <p>Discovery services</p>
 <p>EPC Information Services : access to EPC-related data</p>
-<h2 id="EPC-code-组成">EPC code 组成</h2>
+<h3 id="EPC-code-组成">EPC code 组成</h3>
 <p>Domain Manager Number + Object Class Number + Serial Number</p>
-<h2 id="Basic-procedures-of-the-EPC-Network">Basic procedures of the EPC Network</h2>
+<h3 id="Basic-procedures-of-the-EPC-Network">Basic procedures of the EPC Network</h3>
 <p>EPC码用于标识对应对象</p>
 <p>all information about the object 在EPCGlobal Network里注册 administer</p>
 <p>each company in the EPCglobal Network: 各个公司管理数据集和数据对象</p>
@@ -500,10 +500,10 @@
 <p>root -&gt; local -&gt; the EPCIS</p>
 </li>
 </ol>
-<h2 id="Binary-tree-based-variant-algorithm-for-EPCglobal-Class-0">Binary tree based variant algorithm for EPCglobal Class 0</h2>
+<h3 id="Binary-tree-based-variant-algorithm-for-EPCglobal-Class-0">Binary tree based variant algorithm for EPCglobal Class 0</h3>
 <p>这种tag是只读的，制造商赋值。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1687148304873.png" alt=""></p>
-<h2 id="EPCglobal-C1-G1-PingID-C1G2-four-commands-是什么，分别干什么用的-two-types-of-performance-trade-offs">EPCglobal C1 G1: PingID; C1G2: four commands (是什么，分别干什么用的), two types of performance  trade-offs</h2>
+<h3 id="EPCglobal-C1-G1-PingID-C1G2-four-commands-是什么，分别干什么用的-two-types-of-performance-trade-offs">EPCglobal C1 G1: PingID; C1G2: four commands (是什么，分别干什么用的), two types of performance  trade-offs</h3>
 <p>EPC C1G1：查询tags EPC的一种标准。</p>
 <p>被动标签，支持kill和lock两种操作。</p>
 <p>pingID：掩码，用于查询tag EPC</p>

@@ -131,11 +131,11 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1>前言</h1>
+  <h2 id="前言">前言</h2>
 <p>这回参加的是 csdn 李肯老师的攻城狮计划，简单说就是我白嫖板子，输出学习笔记。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/a3cc9258486e875c183b4fbbb1ce5fbe.jpeg" alt="552ca9fa46d8c1c7f192cdad4d207d4"></p>
 <p>板子是瑞萨的CPK_RA2E1，还有触摸元件，看起来很有意思hh。</p>
-<h1>环境搭建</h1>
+<h2 id="环境搭建">环境搭建</h2>
 <p>一开始决定采取vscode搭建的方式。后期进行到最后一步——cmake build的时候一直显示语法错误，肯哥表示是环境配置不全，但是我反反复复根据官网和其他博主的文章检查了不下10遍都不知道问题何在。最终决定还是老老实实用keil。</p>
 <ol>
 <li>
@@ -168,7 +168,7 @@
 </li>
 </ol>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/d34a7cfbf5f7e0bdbb55a0063df5887f.png" alt=""></p>
-<h1>下载</h1>
+<h2 id="下载">下载</h2>
 <p>终于考完试了，然而攻城狮的截止期限也快到了QAQ，得尽快水（划掉）写几篇文章了！</p>
 <p>先争取可以成功下载一个空的程序。</p>
 <p>先对上一篇文章下载 DFP 也就是 keil MDK Software Packs 做一个补充。我们要下载的是 RA_DFP，下载地址为：<a target="_blank" rel="noopener" href="https://www.keil.arm.com/packs/ra_dfp-renesas/versions/">Arm Keil | Renesas RA_DFP</a></p>
@@ -188,10 +188,10 @@
 </ol>
 <p>刚插上板子的时候板子上是有白色的 power 指示灯和一个红蓝交替闪烁灯。下载空程序之后，应该只有电源指示灯还在亮。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/de933bcec619535b3e8b7fe60f61238.jpg" alt="de933bcec619535b3e8b7fe60f61238"></p>
-<h1>点亮LED</h1>
+<h2 id="点亮LED">点亮LED</h2>
 <p>本文主要参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/oxygen23333/article/details/130306105">【致敬未来的攻城狮计划】— 连续打卡第十一天：FSP固件库开发点亮第一个灯。_嵌入式up的博客-CSDN博客</a></p>
 <p>在32阶段我们已经接触过类似做法了。初始化引脚模式（可以手动库函数，或者在工具包图形化界面里配置），设置引脚输出值。</p>
-<h2 id="设置-FSP-Smart-Configurator">设置 FSP Smart Configurator</h2>
+<h3 id="设置-FSP-Smart-Configurator">设置 FSP Smart Configurator</h3>
 <p>像上次一样创建一个项目。</p>
 <p>首先我们翻一下RA2E1的数据手册看看led在哪。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624005444720.png" alt=""></p>
@@ -199,7 +199,7 @@
 <p>因此 configurator 里的pin如图所示设置501 502为output initial high</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624005611958.png" alt=""></p>
 <p>配置完成后点击右上角 generate project content，输出更新配置到该项目中。</p>
-<h2 id="Keil代码编写">Keil代码编写</h2>
+<h3 id="Keil代码编写">Keil代码编写</h3>
 <p>接下来就是编写keil里，驱动两个led灯输出高电平的部分了。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624011259206.png" alt=""></p>
 <p>hal_entry.c 是相当于 main.c 的入口函数。其他都是 configurator 提供的配置函数。</p>
@@ -217,10 +217,10 @@
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624013206720.png" alt=""></p>
 <p>然后就简单了，只需要在主函数里调用write函数写亮led。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">hal_entry</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* <span class="doctag">TODO:</span> add your own code here */</span></span><br><span class="line">		<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">				 R_IOPORT_PinWrite(&amp;g_ioport_ctrl, BSP_IO_PORT_05_PIN_01, BSP_IO_LEVEL_HIGH);</span><br><span class="line">				 R_IOPORT_PinWrite(&amp;g_ioport_ctrl, BSP_IO_PORT_05_PIN_02, BSP_IO_LEVEL_HIGH);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> BSP_TZ_SECURE_BUILD</span></span><br><span class="line">    <span class="comment">/* Enter non-secure code */</span></span><br><span class="line">    R_BSP_NonSecureEnter();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="实验结果">实验结果</h2>
+<h3 id="实验结果">实验结果</h3>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624013456059.png" alt=""></p>
-<h1>按键模块</h1>
-<h2 id="后台轮询">后台轮询</h2>
+<h2 id="按键模块">按键模块</h2>
+<h3 id="后台轮询">后台轮询</h3>
 <p>按键也是一个比较简单的模块，主要是为了学习IO输入模式。</p>
 <p>查看RA2E1电路图可见：</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624133704709.png" alt=""></p>
@@ -237,7 +237,7 @@
 <p>实现效果：</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/8d99e5ae0be2c97e2e2bb44a1ed92f6.jpg" alt="8d99e5ae0be2c97e2e2bb44a1ed92f6"></p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/59b0f842762bb1349190932bdcb4e74.jpg" alt="59b0f842762bb1349190932bdcb4e74"></p>
-<h1>活动总结</h1>
+<h2 id="活动总结">活动总结</h2>
 <p>一转眼攻城狮计划就已经到了最后一天了。<br>
 5月我还处在一个迷茫期，那时候刚刚入坑嵌入式，只学了几款电子积木，对整个体系也不是很清楚，也不知道应该学些什么。因为刚刚转到硬件领域，也缺少相关经历和能力证明，科研实习面试都失败了。</p>
 <p>一开始得到的少许鼓励来源于C站推荐的一系列交流会活动。我去参加了RTThread的学习营，第一次尝试在单片机开发中加入RTOS系统，也算是跳脱出自己当时缓慢的按部就班学习路线，如井底之蛙般弹出脑袋窥探了一眼外面的风景。</p>

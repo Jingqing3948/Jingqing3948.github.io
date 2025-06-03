@@ -131,11 +131,11 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1>Introduction</h1>
-<h2 id="software-types">software types</h2>
+  <h2 id="Introduction">Introduction</h2>
+<h3 id="software-types">software types</h3>
 <p>general: developed for a general market. (ps, office)</p>
 <p>custom: developed for a particular aim. (embeded system)</p>
-<h2 id="good-software-features">good software features</h2>
+<h3 id="good-software-features">good software features</h3>
 <p>delivers required functionality</p>
 <p>usable</p>
 <p>efficient</p>
@@ -144,15 +144,15 @@
 <p>understandable</p>
 <p>cost-effective</p>
 <p>security</p>
-<h2 id="what-is-software-engineering">what is software engineering?</h2>
+<h3 id="what-is-software-engineering">what is software engineering?</h3>
 <p>using proper theories, tools, methods(organized and systematic), constraints to develop high quantity software.</p>
-<h2 id="4-layers">4 layers</h2>
+<h3 id="4-layers">4 layers</h3>
 <p>Tools, method, process, quality focus.</p>
-<h2 id="Why-important">Why important?</h2>
+<h3 id="Why-important">Why important?</h3>
 <p>large scale projects are hard to finish in time properly because of time, budget, disaster, etc. guiding scientific principles and universally applicable methods can reduce practice and frequent failures.</p>
-<h2 id="General-issues-that-affect-software">General issues that affect software</h2>
+<h3 id="General-issues-that-affect-software">General issues that affect software</h3>
 <p>Heterogeneity (distributed systems, different type of devices), business and social change, security and trust, scale.</p>
-<h1>Software process</h1>
+<h2 id="Software-process">Software process</h2>
 <p>a set of structured activities to produce software.</p>
 <p>includes: required specification, development(analysis, design, implementation), validation (test), evolution.</p>
 <ul>
@@ -164,22 +164,22 @@
 <li>deployment: install, run and test on real environment.</li>
 <li>evolution: corrective, adaptive, perfective, preventive.</li>
 </ul>
-<h2 id="process-models">process models</h2>
+<h3 id="process-models">process models</h3>
 <p>a abstraction of process. activities must be modelled to be managed.</p>
-<h3 id="waterfall">waterfall</h3>
+<h4 id="waterfall">waterfall</h4>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332918.png" alt="1685629715429"></p>
 <p>易于管理 monitor，结构化很好。前面的模块必须完成才能跳到下一个，也就要求我们在最初设计的时候对需求很清楚，但是很难不遇到一些问题，很难按照正常流程正常走。</p>
-<h3 id="evolutionary-development">evolutionary development</h3>
+<h4 id="evolutionary-development">evolutionary development</h4>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1685629943510.png" alt="1685629943510"></p>
 <p>交互性的活动，及时的反馈。核心需求能很好的满足，但是扩展性很差，结构性很差，缺少过程中的可见性。适合小型项目。</p>
-<h3 id="rational-unified-process">rational unified process</h3>
+<h4 id="rational-unified-process">rational unified process</h4>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1685630556923.png" alt="1685630556923"></p>
 <p>inception: 分析项目可行性。</p>
 <p>elaboration: 分析风险，架构。</p>
 <p>construction: iterative 迭代开发到 beta 版本为止。</p>
 <p>transition: 交付到客户手中。</p>
 <p>通用的完整流程，动态。但是开销大了。</p>
-<h3 id="Agile-Software-Development">Agile Software Development</h3>
+<h4 id="Agile-Software-Development">Agile Software Development</h4>
 <p>现代软件开发流程：敏捷开发。</p>
 <p>Rapid software development 快速开发：争取每一版都交一个可以交付的东西给客户。</p>
 <p>敏捷开发：系统在一次一次迭代小增量过程中建立而成。specification, design, implementation, testing 并行。专注于代码，轻量级代码频繁发布，维护简单。</p>
@@ -232,7 +232,7 @@
 </li>
 </ul>
 <p>适用于多变的，客户要求明确的中小型系统。</p>
-<h2 id="requirements">requirements</h2>
+<h3 id="requirements">requirements</h3>
 <p>确定需求是软工设计中最重要的部分。</p>
 <ul>
 <li>
@@ -249,10 +249,10 @@
 <p>客户不一定清晰描述其需求，也不一定清楚产品特性和功能，且其需求可能不断变化。</p>
 <p>在确定需求环节投入的额外时间长远角度来看会节省更多的时间和金钱。</p>
 <p>需求分为：functional 和 non functional.</p>
-<h3 id="functional-requirements">functional requirements</h3>
+<h4 id="functional-requirements">functional requirements</h4>
 <p>定义系统的需求，要干什么。比如教务系统对于老师和学生端提供的不同的服务。</p>
 <p>这一部分要完整 completeness 清晰一致 consistency 的描述大需求，避免不必要的误解。</p>
-<h3 id="non-functional-requirements">non-functional requirements</h3>
+<h4 id="non-functional-requirements">non-functional requirements</h4>
 <p>这一部分比功能性更重要，相当于不满足这一部分系统错误，不满足功能需求系统有一些小bug。</p>
 <p>Define system properties and constraints，比如时空复杂度，设备 capability。</p>
 <p>Process requirements：比如质量标准，编程语言等。</p>
@@ -260,38 +260,38 @@
 <p>external requirements: 比如“用户密码不能泄露”。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332607.png" alt="1685634113657"></p>
 <p>非功能性需求需要定量描述指标。不然比如“希望程序跑的快一点”这就很模糊。要有measure的方法区测量quantitative定量指标。</p>
-<h3 id="Requirement-conflicts">Requirement conflicts</h3>
+<h4 id="Requirement-conflicts">Requirement conflicts</h4>
 <p>要trade-off权衡需求，让所有人都同意一个最优需求。</p>
-<h3 id="Requirement-document">Requirement document</h3>
+<h4 id="Requirement-document">Requirement document</h4>
 <p>Software Requirements Specification (SRS) 软件需求规范，确认测试的参考规范，指明了应该实现的需求，但是不指明如何实现。</p>
-<h3 id="Requirements-Capture">Requirements Capture</h3>
+<h4 id="Requirements-Capture">Requirements Capture</h4>
 <p>Background Reading</p>
 <p>Interviewing</p>
 <p>Observation（观察用户使用系统的情况）</p>
 <p>Document or Record Sampling（专业的observation）</p>
 <p>Questionnaires</p>
-<h2 id="敏捷开发中的需求">敏捷开发中的需求</h2>
-<h3 id="usr-stories">usr stories</h3>
+<h3 id="敏捷开发中的需求">敏捷开发中的需求</h3>
+<h4 id="usr-stories">usr stories</h4>
 <p>用户需求被称作用户故事，一两句话写在卡片上。</p>
 <p>customer 给他们排序需求，development team分解实现任务。</p>
 <p><em>As a user,  I want to backup my entire hard drive  so that I won’t lose any work.</em></p>
 <p>写在 stories cards 上，按顺序贴在墙上大家讨论，注意重点不是记录而是大家的讨论。</p>
-<h3 id="Project-glossary">Project glossary</h3>
+<h4 id="Project-glossary">Project glossary</h4>
 <p>一些项目相关的专业术语，建议总结出来方便大家理解讨论。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230601235612956.png" alt=""></p>
-<h3 id="Epics">Epics</h3>
+<h4 id="Epics">Epics</h4>
 <p>大的 usr story。通常开始讨论前被拆分为小的块。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230601235720919.png" alt=""></p>
-<h3 id="Acceptance-Criteria">Acceptance Criteria</h3>
+<h4 id="Acceptance-Criteria">Acceptance Criteria</h4>
 <p>验收标准，通常写在故事卡背面，有助于理解需求和 invite negotiation with the team about the business  value that we are trying to create.</p>
-<h3 id="Non-functional-Requirements-as-User-Stories">Non-functional Requirements as User Stories</h3>
+<h4 id="Non-functional-Requirements-as-User-Stories">Non-functional Requirements as User Stories</h4>
 <p>比如用户表示：我希望电脑打cf fps高于100.</p>
-<h3 id="usr-stories注意事项">usr stories注意事项</h3>
+<h4 id="usr-stories注意事项">usr stories注意事项</h4>
 <ol>
 <li>谁都能写，最好让更多的成员写。</li>
 <li>整个 agile development 过程中都可以写。一开始开故事讨论会确定基本，后续随时可以添加。</li>
 </ol>
-<h3 id="Product-backlog">Product backlog</h3>
+<h4 id="Product-backlog">Product backlog</h4>
 <p>需求按优先级排列的需求表。综合考虑多方因素。</p>
 <p>MoSCoW：一种 dsdm 动态系统开发方法。</p>
 <ul>
@@ -300,7 +300,7 @@
 <li>could have：用户期望的需求，完成后用户满意度会高。但是不必要。</li>
 <li>want to have: 当前阶段不重要的。</li>
 </ul>
-<h3 id="Estimating">Estimating</h3>
+<h4 id="Estimating">Estimating</h4>
 <p>估计项目用时。</p>
 <blockquote>
 <p>story point：故事点，用于表示完成一个产品待办项或者其他任何某项工作所需的所有工作量的估算结果。</p>
@@ -308,22 +308,22 @@
 <p>团队不要采用100、200、300，或者1百万、2百万、3百万，而要使用1、2、3。估算结果是比值，而不是绝对值。</p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/351172855">敏捷开发中到底什么是故事点（Story Point）？ - 知乎 (zhihu.com)</a></p>
 </blockquote>
-<h3 id="评判-good-usr-story">评判 good usr story</h3>
+<h4 id="评判-good-usr-story">评判 good usr story</h4>
 <p>INVEST原则。</p>
 <p>– Independent – Negotiable – Valuable – Estimatable – Small – Testable</p>
-<h3 id="Prototyping">Prototyping</h3>
+<h4 id="Prototyping">Prototyping</h4>
 <p>physical：比如画gui。</p>
 <p>logical：元素，元素之间的关联……</p>
 <p>Low-fidelity 低保真：最简单，比如手绘图，纸板做的，快速验证产品概念的可行性。</p>
 <p>Medium-fidelity 中保真：数字模型。</p>
 <p>high-fidelity：如3d打印，最接近产品但是制作麻烦。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1685636483862.png" alt="1685636483862"></p>
-<h2 id="analysis">analysis</h2>
+<h3 id="analysis">analysis</h3>
 <p>仅仅从用户的需求来看得到的消息不全面，还需要分析。用户可能认为你明白了，或者他考虑不全面，觉得一些地方是不需要的。</p>
 <p>因此我们需要分析来 Refining requirements。</p>
 <p>gather requirements-analyse in real world context-develop the architecture</p>
 <p>分析包括：Textual analysis (针对文档分析)，Entities and concepts（应用层面分析），Experience（过往经验分析）</p>
-<h3 id="conceptual-model">conceptual model</h3>
+<h4 id="conceptual-model">conceptual model</h4>
 <p>面向对象的UML图。</p>
 <blockquote>
 <p>边界类用于系统外部环境与内部交互进行建模的类。我的理解是不同系统之间的胶合层。能够减少系统之间的耦合。</p>
@@ -347,17 +347,17 @@
 <li>Identify attributes for each entity class</li>
 <li>Add constraints</li>
 </ol>
-<h2 id="design">design</h2>
+<h3 id="design">design</h3>
 <p>design 是把分析模型转换成设计模型，不是代码实现！implementation才是实现。</p>
 <p>design must have a purpose: how things works.</p>
 <p>A software design: enough information for a  development team to implement the solution.</p>
-<h3 id="roles">roles</h3>
+<h4 id="roles">roles</h4>
 <ul>
 <li>finish non-functional requirements</li>
 <li>break down the overall task.</li>
 <li>Create a ‘skeleton’ of the system 创建易于实现的骨架结构。</li>
 </ul>
-<h3 id="Fundamental-Concepts">Fundamental Concepts</h3>
+<h4 id="Fundamental-Concepts">Fundamental Concepts</h4>
 <ul>
 <li>Abstraction：抽象类和行为的功能。</li>
 <li>Encapsulation：information hiding。限制某些对象对内容的直接访问。</li>
@@ -367,14 +367,14 @@
 <li>Refactoring：在代码正常完成要求的前提下修正代码减少重复。主要改进非功能属性。</li>
 </ul>
 <p>面向对象设计的好处：对象就是实体；对象可以重用，继承；有的系统对象是现实世界的明显映射。</p>
-<h3 id="steps">steps</h3>
+<h4 id="steps">steps</h4>
 <p>conceptual class diagram</p>
 <p>Class Relationships</p>
 <p>operations</p>
 <p>Describing methods</p>
 <p>Captures implementation requirements</p>
 <p>Produce detailed design class diagram</p>
-<h2 id="Implementation">Implementation</h2>
+<h3 id="Implementation">Implementation</h3>
 <p>分析和设计阶段基本上把创意都列出来了。实现就是比较机械地按照前面的设计去敲代码。</p>
 <p>利用一些组件去实现。组件主要包括：excutable 可执行文件，file 源码和数据，document，table 数据库表。</p>
 <p>implementing subsystem 实现部分功能，利用打包功能导出一个有接口的模块.</p>
@@ -384,7 +384,7 @@
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1685692194908.png" alt="1685692194908"></p>
 <p>一对多可以在一个类里包含另一个类的一个对象集合。</p>
 <p>类的实现要从最小耦合到最大耦合 least  coupled to most coupled。</p>
-<h2 id="Testing">Testing</h2>
+<h3 id="Testing">Testing</h3>
 <p>在交付给用户前尽可能发现错误，验证每个阶段的结果。测试占据了40%。</p>
 <p>组件层面：开发者测试。</p>
 <p>集成测试：测试工程师，专注于质量。</p>
@@ -392,14 +392,14 @@
 <li>Validation testing：验证测试，测试系统正常需求已经满足。</li>
 <li>Defect testing：检测系统的缺陷。</li>
 </ul>
-<h3 id="Testing-policies">Testing policies</h3>
+<h4 id="Testing-policies">Testing policies</h4>
 <p>我们不可能把所有可能情况都找到并且测试出来。因此只能选取有代表性的子集。</p>
 <p>好的测试：测试人员能预料到可能哪里出错；没有多余的测试用例；应选取“最可能出错”的用例；合适的复杂程度。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1685693050733.png" alt="1685693050733"></p>
 <p>test case：输入的规范和预期的输出。</p>
 <p>test data：输入。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1685693215844.png" alt="1685693215844"></p>
-<h3 id="testing-strategy">testing strategy</h3>
+<h4 id="testing-strategy">testing strategy</h4>
 <p>what 测试用例？when 测试？how to 测试？如何比对输出是否正确？</p>
 <p>test cases 示例（正确的输入。错误的输入比如学号输入英文）：</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230602160905111.png" alt=""></p>
@@ -408,7 +408,7 @@
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230602161119974.png" alt=""></p>
 <p>发现缺陷：比如上例，错误的密码也能登录，于是测试工程师把错误信息返回给开发者：</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230602161157432.png" alt=""></p>
-<h3 id="Testing-Techniques">Testing: Techniques</h3>
+<h4 id="Testing-Techniques">Testing: Techniques</h4>
 <p>黑盒测试，black box/behavior test，即我们要测试的模块，对我们来说像一个内部结构不可见的黑盒子，我们重点关注他行为对不对，与外界的接口是否正确，访问外界数据库正不正确。</p>
 <ul>
 <li>Partition testing：典型的黑盒测试，把数据分成等效的几个区域，比如正数负数0.</li>
@@ -422,12 +422,12 @@
 </ul>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1685696256126.png" alt="1685696256126"></p>
 <p>总体测试流程：白盒测试，建立 test harness 测试装置，测试正确性，测试健壮性；然后黑盒测试。</p>
-<h3 id="TDD">TDD</h3>
+<h4 id="TDD">TDD</h4>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">assertEquals(<span class="number">20</span>, student.getAge());<span class="comment">//判断返回值是不是20岁</span></span><br></pre></td></tr></table></figure>
 <p>在开发代码前编写测试。 simple, short-cycled mechanism。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332492.png" alt="1685710646767"></p>
 <p>small cycle：编写测试，编写代码，测试失败，修改代码，测试通过。</p>
-<h1>Software architecture</h1>
+<h2 id="Software-architecture">Software architecture</h2>
 <p>功能需求和软件架构关系紧密，非功能需求是软件架构的选择结果（好的架构运行效率高之类的）。可以以表格或图的形式，比如UML图。</p>
 <p>设计难以更改。敏捷开发的早期阶段就是设计系统架构。</p>
 <p>好处：</p>
@@ -436,19 +436,19 @@
 <li>large-scale reuse：架构可重用，更安全、更快。</li>
 <li>Stakeholder communication：可以 成为一个讨论点。</li>
 </ul>
-<h1>Project management</h1>
+<h2 id="Project-management">Project management</h2>
 <p>让项目能在有限的时间和预算范围内按预期保质落地。</p>
 <p>软件工程比较灵活，没有标准的完全正确的方案，需要随机应变，敏锐的洞察力。</p>
-<h2 id="Project-planning">Project planning</h2>
+<h3 id="Project-planning">Project planning</h3>
 <p>最耗时的环节。</p>
 <p>计划只有在项目完成时才算完成，因为计划在项目开发阶段也不断变化。</p>
 <p>计划可能包括多种，如质量计划，员工开发计划……</p>
-<h2 id="Activity-organisation">Activity organisation</h2>
+<h3 id="Activity-organisation">Activity organisation</h3>
 <p>活动应该组织成切实的输出以及可以判断的进度。</p>
 <p>milestone：标志阶段的结束，不一定是能输出给用户的成果。比如文档，或者逻辑阶段的结束。</p>
 <p>Deliverables：可以交付给用户的设计，规格等成果。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332283.png" alt=""></p>
-<h2 id="Project-scheduling">Project scheduling</h2>
+<h3 id="Project-scheduling">Project scheduling</h3>
 <p>估计项目时间预算的花费，并按顺序排布。</p>
 <p>比较难估计。通常根据过往项目经验估计。</p>
 <p>先把大项目分解为几个小项目，然后并发的组织任务——尽可能充分利用劳动力 workforce，以及 Minimise task dependencies 尽量减少因为前面的任务没完成对后面任务的延误。</p>
@@ -461,9 +461,9 @@
 <p>甘特图：</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1685724424966.png" alt="1685724424966"></p>
 <p>Monitoring/Reporting：定期周会周报监督进度。</p>
-<h3 id="Metrics">Metrics</h3>
+<h4 id="Metrics">Metrics</h4>
 <p>代码行数，代码中的缺陷，测试用例通过情况。</p>
-<h3 id="People-in-the-process">People in the process</h3>
+<h4 id="People-in-the-process">People in the process</h4>
 <p>选择成员，管理，激励他们，解决大家遇到的技术和非技术问题。</p>
 <ul>
 <li>Consistency：对大家态度一致。</li>
@@ -471,42 +471,42 @@
 <li>Inclusion：让大家都参与进项目，聆听所有人的意见。</li>
 <li>Honesty：进度保持诚实。</li>
 </ul>
-<h3 id="Group-working">Group working</h3>
+<h4 id="Group-working">Group working</h4>
 <p>不仅仅是个人的集合。团队能力的组成，凝聚力，沟通，大型团队的层次结构。</p>
 <p>敏捷开发的团队合作方法：Scrum approcah，有一个Scrum master，日会，跟随进度，记录决策，和客户等沟通。</p>
 <p>项目被分解为易于管理和理解的小部分。不稳定的需求不影响项目进度。团队成员对项目把控更到位 visibility，客户能常常看到项目进度，双方交流更相信彼此。</p>
-<h2 id="Risk-management">Risk management</h2>
+<h3 id="Risk-management">Risk management</h3>
 <p>失败是常有的事。我们要做好备选方案，推迟时间或者放弃目标。</p>
 <p>风险管理是预测可能的失败，决定该在什么地方制定备选方案 alternative plans 。</p>
 <p>Project risks：项目开发或者资源的问题。比如项目员工走了；原材料没法及时收到了；项目要求时间提前了。</p>
 <p>Product risks：产品质量和性能的问题。比如开发软件出bug了，开发出的软件质量不行，用户对gui不满意，有没考虑到的错误。</p>
 <p>Business risks：开发，采购组织的问题。比如上市了发现其他公司的技术，竞品比我们的好；负责该系统的组织因财务原因倒闭了。</p>
 <p>Project+Product：需求一直变；分析阶段太慢了；开发团队技能能力不行；项目比预想的要大。</p>
-<h3 id="Risk-Identification">Risk Identification</h3>
+<h4 id="Risk-Identification">Risk Identification</h4>
 <p>识别风险。</p>
-<h3 id="Risk-Analysis">Risk Analysis</h3>
+<h4 id="Risk-Analysis">Risk Analysis</h4>
 <p>评估风险的影响。</p>
-<h3 id="Risk-Planning">Risk Planning</h3>
+<h4 id="Risk-Planning">Risk Planning</h4>
 <p>制定应对风险的计划。</p>
-<h3 id="Risk-Monitoring">Risk Monitoring</h3>
+<h4 id="Risk-Monitoring">Risk Monitoring</h4>
 <p>在项目开发过程中监控风险。</p>
-<h3 id="Avoidance-Strategies">Avoidance Strategies</h3>
+<h4 id="Avoidance-Strategies">Avoidance Strategies</h4>
 <p>尽量使用熟悉的模式，但是也接受新技术，时刻关注市场动向；</p>
 <p>对员工合理培训，确保技术没被掌握在一个人手中；创造良好的工作环境；</p>
 <p>员工不要欺瞒进度，高管要时刻了解进度以及其对项目的重要性。</p>
-<h3 id="Contingencies-突发事件">Contingencies 突发事件</h3>
+<h4 id="Contingencies-突发事件">Contingencies 突发事件</h4>
 <p>换人，换工具，换资源。</p>
 <p>改变，舍弃一部分目标。</p>
 <p>争取做的改动最小，但是损失也降到最小。</p>
 <p>我们知道敏捷开发持续提交小版本，因此经常进行测试修改当阶段错误。但是缺陷在于敏捷开发不注重长远眼光 long term planning，因此可能带来一些问题。</p>
-<h2 id="Quality-Management">Quality Management</h2>
+<h3 id="Quality-Management">Quality Management</h3>
 <p>对质量的评估，最好从软件开发过程中抽离出来。因为开发的过程会错误影响开发者自己对质量的评估（我都这么努力了，做出来的东西肯定很好吧）。</p>
 <p>瀑布模型中在系统实现后单独测试软件质量。敏捷开发在每次发布新版本的时候测试。因为主要是在实际使用场合的测试，因此会比“为了达成测试而开发”的系统想的更多一些。</p>
 <p>好的软件符合目的 Fitness for purpose，标准好，易于使用，高效，代码写的好（当然从用户角度来说他看不到这一层。但是代码写得好是前提，比如时间复杂度运行得快）。开发者需要考虑用户的需求前提下，自己用专业知识思维去想：这个需求实现合理吗。然后多喝用户沟通表达看法。</p>
 <p>区分bug和特性：正常运行的是特性。有的时候哪怕系统除了意想不到的bug，但是功能意外的很合适，这也可以是特性。</p>
 <p>特性很难移除，当用户开始依赖特性功能的时候，移除用户可能不乐意不习惯；而且向后（版本）兼容变得很难。</p>
 <p>软件标准有很多好处，新员工快速入手，大家更熟悉项目等，但是标准可能对一些过去常常发生而现在不怎么出现的问题采取忽略的态度，从而兼容性上出现问题；而且可能浪费很多时间填文书。注重标准好的部分。</p>
-<h2 id="Design-principle">Design principle</h2>
+<h3 id="Design-principle">Design principle</h3>
 <p>设计的软件不仅要正确，高效运行，还要在限定时间，人力，软件，经济条件下。差代码后期可能要花很多时间弥补隐患；而且不同模块的代码经常交互，差代码还会有安全隐患。</p>
 <p>我们仅仅想着怎么“正确”地编写代码是不够的，还要更省事省力地去开发。</p>
 <p>Software lifespan：软件生命周期，软件是一直在持续开发的，比如新技术，客户新需求。</p>
@@ -540,15 +540,15 @@
 <p>Design by Contract：一种思想。客户端代码应当满足承包商的先决需求pre-conditions；应当对异常做处理（exception）；后置条件post-conditions在测试中作为断言assertions合并到程序中。（前置条件：前提；后置条件：方法运行后的状态）</p>
 </li>
 </ul>
-<h3 id="Single-Responsibility-Principle-SRP"><strong>Single Responsibility Principle (SRP)</strong></h3>
+<h4 id="Single-Responsibility-Principle-SRP"><strong>Single Responsibility Principle (SRP)</strong></h4>
 <p>单一责任原则：每个类有一个职责 responsibility，其所有对象都服务于这个职责。Leads to highly cohesive 内聚性高</p>
-<h3 id="Open-Closed-Principle-OCP">Open-Closed Principle (OCP)</h3>
+<h4 id="Open-Closed-Principle-OCP">Open-Closed Principle (OCP)</h4>
 <p>开放闭合原则：模块（类和方法）open to extension，close to modification</p>
 <p>对扩展开放，意味着有新的需求或变化时，可以对现有代码进行扩展，以适应新的情况。</p>
 <p>对修改封闭，意味着类一旦设计完成，就可以独立完成其工作，而不要对类进行任何修改。比如一个类以不同对象形式表现这就是扩展，因为需求改变或者有新需求。</p>
-<h3 id="Do-not-Repeat-Yourself-principle-DRY"><strong>Do not Repeat Yourself principle (DRY)</strong></h3>
+<h4 id="Do-not-Repeat-Yourself-principle-DRY"><strong>Do not Repeat Yourself principle (DRY)</strong></h4>
 <p>不要复读机原则（不要重复自己原则）。本模块中如果发现重复内容，建议再抽象为方法和类。</p>
-<h3 id="Liskov-Substitution-Principle-LSP">**Liskov Substitution Principle (LSP) **</h3>
+<h4 id="Liskov-Substitution-Principle-LSP">**Liskov Substitution Principle (LSP) **</h4>
 <p>Liskov替代原理：重写方法，不应该抱着”修改其方法“的想法。不能加强 strengthen 前置条件，不能削弱 weaken 后置条件。</p>
 <p>比如父类people方法AddPeople(String name, int age) 子类Student构造方法AddPeople(String name, int age)里先校验一下学生年龄，如果年龄大于25岁则不允许add，这就修改了原来方法。这就是前置条件加强了，要求年龄的限制多了。</p>
 <p>后置条件比如原来返回值大于0，现在返回值可以小于0了，那么返回值限制弱了，后置条件削弱了，不满足里氏原则。</p>
@@ -556,9 +556,9 @@
 <p>Association, Aggregation and Composition：association是两个不同东西的对应，比如家长和孩子。另外两个是子集，aggregation是彼此可以独立存在，比如班级和学生。composition是可以彼此独立存在，比如house和room。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1685957816284.png" alt="1685957816284"></p>
 <p>有的时候继承满足不了LSP（比如令正方形为矩形的子类），可以使用聚类来防止破坏LSP。</p>
-<h3 id="Interface-Segregation-Principle-ISP"><strong>Interface-Segregation Principle (ISP)</strong></h3>
+<h4 id="Interface-Segregation-Principle-ISP"><strong>Interface-Segregation Principle (ISP)</strong></h4>
 <p>接口隔离原则：首先接口应该尽量分解为小接口。客户端每个类不应该依赖他不使用的方法。就是接口用啥实现啥，别多实现。</p>
-<h3 id="Dependency-Inversion-Principle-DIP">Dependency-Inversion Principle (DIP)</h3>
+<h4 id="Dependency-Inversion-Principle-DIP">Dependency-Inversion Principle (DIP)</h4>
 <p>依赖倒置原则：</p>
 <blockquote>
 <p>如果高层模块直接调用低层模块提供的服务，那么就是具体耦合关系，这样高层模块依赖于低层模块就不可避免。但是，如果我们使用抽象耦合关系，在高层模块和低层模块之间定义一个抽象接口，高层模块调用抽象接口定义的方法，低层模块实现该接口。这样，就消除了高层模块和低层模块之间的直接依赖关系。现在，高层模块就不依赖于低层模块了，二者都依赖于抽象。同时也实现了“抽象不应该依赖于细节，细节应该依赖于抽象”。</p>
@@ -566,14 +566,14 @@
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/171757199427415.png" alt="img"></p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/gaochundong/p/dependency_inversion_principle.html">依赖倒置原则（Dependency Inversion Principle） - sangmado - 博客园 (cnblogs.com)</a></p>
 </blockquote>
-<h2 id="Design-Patterns">Design Patterns</h2>
-<h3 id="Decorator-Design-pattern">Decorator Design pattern</h3>
+<h3 id="Design-Patterns">Design Patterns</h3>
+<h4 id="Decorator-Design-pattern">Decorator Design pattern</h4>
 <p>用于扩展系统功能的装饰模式。</p>
 <p>比如我们有一个鸭子类，可以调用其鸭子叫的方法。我们初始化了一个鸭子对象，如何统计这个对象叫了几次，也就是其鸭子叫方法被调用了几次？记住OCP原则不允许我们直接修改鸭子类。</p>
 <p>我们可以用一个计数类来把鸭子类包住。</p>
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332689.png" alt="image-20230605183433552" style="zoom:67%;" />
 <p>装饰模式实现一个接口，接口中的方法通过该变量的同一个参数去调用同一个方法，比如本例中是鸭子呱呱的计数，每次调用++。</p>
-<h3 id="Adapter-design-patterns">Adapter design patterns</h3>
+<h4 id="Adapter-design-patterns">Adapter design patterns</h4>
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332186.png" alt="1685983233527" style="zoom:50%;" />
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1685983255642.png" alt="1685983255642"></p>
 <p>这个例子包括了几个原则：</p>
@@ -583,14 +583,14 @@
 <li>如果想鸭子叫同时计数，直接调用包装类即可，DRY。</li>
 <li>GooseAdapter 只访问了 Goose 的 honk 方法而不是对其完全访问，DIP。这里如果改成继承的子类，就有全部访问权了。</li>
 </ol>
-<h3 id="Wrapper-design-patterns">Wrapper design patterns</h3>
+<h4 id="Wrapper-design-patterns">Wrapper design patterns</h4>
 <p>Wrapper 模式包括 decorator 和 adapter。decorator 主要是外面的包裹类和里面的类都实现一个接口，比如上例的鸭子嘎嘎。adapter 是内部类不需实现。</p>
 <p>Immutable View：前面提过java引用的问题，比如两个变量引用同一个对象，一改都改。这样就相当于有引用的时候，该目标对象完全暴露出来了。在wrapper里我们可以限制包装类：禁止修改对象，修改则抛出异常。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1685986070602.png" alt="1685986070602"></p>
-<h3 id="Composite-Design-Pattern">Composite Design Pattern</h3>
+<h4 id="Composite-Design-Pattern">Composite Design Pattern</h4>
 <p>包装了一个集合。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1685985869548.png" alt="1685985869548"></p>
-<h3 id="Observer-Pattern">Observer Pattern</h3>
+<h4 id="Observer-Pattern">Observer Pattern</h4>
 <p>比如看到绿灯汽车知道该走了，这种观察者一个变量改变影响其他变量的实现。</p>
 <p>java是提供了observable的api的，当对应变量值改变时触发函数。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332446.png" alt="1685986641156"></p>
@@ -600,7 +600,7 @@
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1685989787205.png" alt="1685989787205"></p>
 <p>如果dogbots是一个接口，dogwatcher 可以实现计数功能，还可以在文件，在gui中实现dogbots，实现集合的dogbots，两者代码几乎是分离的。</p>
 <p>我们先用一个ObservableDogBot类继承Observable，且实现未完成的dogbots，然后写一个dogreporter实现observer。最后<code>rover.addObserver(reporter1);</code></p>
-<h3 id="Factory-Methods">Factory Methods</h3>
+<h4 id="Factory-Methods">Factory Methods</h4>
 <p>如果我们设定饥饿值大于6的狗要被构造为greedyDogBot是普通狗的子类，那么PlainDogBot和greedyDogBot都直接提供出来构造方法不太好。可以通过一个构造类来判断需要返回什么对象。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230606123312445.png" alt=""></p>
 <p>这个构造方法可以返回接口类，但是实际方法里返回的都是实现了接口类的具体类，这样可以隐藏返回类类型：</p>
@@ -613,30 +613,30 @@
 <p>像计数等额外包装功能，我们也可以不用“先用一个计数类包装普通类，再用工厂类包装计数类”，而是把计数内容包装在工厂类里。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686026955303.png" alt="1686026955303"></p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686026838784.png" alt="1686026838784"></p>
-<h3 id="Singleton-Design-Pattern">Singleton Design Pattern</h3>
+<h4 id="Singleton-Design-Pattern">Singleton Design Pattern</h4>
 <p>构造方法不一定返回必须是新创建的对象，工厂类里可以返回已有的对象。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332922.png" alt="1686027588395"></p>
 <p>注意LSP原则。</p>
-<h3 id="Object-Pool-Design-Pattern">Object Pool Design Pattern</h3>
+<h4 id="Object-Pool-Design-Pattern">Object Pool Design Pattern</h4>
 <p>对象池模式，保留一个对象列表，在需要的时候返回一个特定对象。</p>
-<h3 id="Strategy-Design-Pattern">Strategy Design Pattern</h3>
+<h4 id="Strategy-Design-Pattern">Strategy Design Pattern</h4>
 <p>选择要执行的策略。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686027938500.png" alt="1686027938500"></p>
 <p>上图是狗执行几次action的函数。我们也可以利用重写的Comparator实现条件结构，比如比较ab两狗叫了几次，叫的少的补差。</p>
-<h3 id="State-Design-Pattern">State Design Pattern</h3>
+<h4 id="State-Design-Pattern">State Design Pattern</h4>
 <p>可以改变对象的状态类型。</p>
 <p>下面改变的几个类型都是accountState抽象类的实现类，通过多态的方式初始化。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332513.png" alt=""></p>
-<h3 id="Bridge-Design-Pattern">Bridge Design Pattern</h3>
+<h4 id="Bridge-Design-Pattern">Bridge Design Pattern</h4>
 <p>解耦思想。比如我们需要12种颜色的画笔，可以选择12根固定颜色的蜡笔，或者1根毛笔和12种颜料。毛笔的例子就很好地解耦了画笔和颜色。</p>
 <p>例子来源：<a target="_blank" rel="noopener" href="https://blog.csdn.net/LoveLion/article/details/7464183">处理多维度变化——桥接模式（一）_LoveLion的博客-CSDN博客</a></p>
 <p>下例：求父子交集。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230606181219816.png" alt=""></p>
-<h3 id="Flyweight-Pattern">Flyweight Pattern</h3>
+<h4 id="Flyweight-Pattern">Flyweight Pattern</h4>
 <p>将那些大量的，具有很多内部状态而外部状态很少的对象进行共享，可以以类似缓存的方式共享。</p>
 <p>概念来源：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/336732854">精读《设计模式 - Flyweight 享元模式》 - 知乎 (zhihu.com)</a></p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230606181617881.png" alt=""></p>
-<h1>Open Source Software</h1>
+<h2 id="Open-Source-Software">Open Source Software</h2>
 <p>free of charge, free of legal restrictions on usage.</p>
 <p>也需要敏捷开发，但是开发方式略有不同，毕竟不是利益相关的模式。强调个人之间的密切交互 close personal interaction，开发者也是自己的客户，因此有很多人做测试，而且修改后的小版本可以很快发布；通常分的小模块很多，世界各地的大家分别开发。</p>
 <p>世界各地大家通过电子方式互相交流 electronically。</p>
@@ -652,7 +652,7 @@
 <li>approver：决定这些修改是否要合并进大版本的人，和verifier都需要审核面试筛选。</li>
 <li>Project leads：监督单个项目的工程。</li>
 </ul>
-<h2 id="software-freedom">software freedom</h2>
+<h3 id="software-freedom">software freedom</h3>
 <ul>
 <li>
 <p>运行程序的自由 run the program</p>
@@ -667,42 +667,42 @@
 <p>发布自己的版本给他人的自由  distribute copies of your modified versions to others。</p>
 </li>
 </ul>
-<h2 id="Copyright">Copyright</h2>
+<h3 id="Copyright">Copyright</h3>
 <p>只有制作者producer有权利制作副本和创建新内容 produce copies and create new work based on it，但是可以授权允许别人复制和改编该作品 make copies of the work and adapt it。制作者可以通过收费等方式赋予这些权力给他人，或者对改编的范围加限制，因为这算是加在producer身上的一种义务，有点回报也正常。</p>
-<h2 id="Copyleft">Copyleft</h2>
+<h3 id="Copyleft">Copyleft</h3>
 <p>但是OSS的版权声明采用的是copyleft，一种 free software license，并不是限定他人复制改编的权力，而是赋予他人这种权力。许可证内容包括：声明源代码可用，以及改编允许的范围。</p>
-<h2 id="voting">voting</h2>
+<h3 id="voting">voting</h3>
 <p>有权投票的人每人最多一票；没权投票的人不能投；有权投票且选择投票的人不能被阻止投票；其须拥有充足的选择 full choice；其投票结果必须被正确统计不能被别人篡改；总票数正确相加，不能篡改；大多数时候没有人能知道任何一个投票者的选择。</p>
 <p>电子投票有风险，比如数据容易被篡改，被伪造等。</p>
-<h1>Software Development Tools</h1>
-<h2 id="Software-Craftsmanship-and-Clean-Code">Software Craftsmanship and Clean Code</h2>
+<h2 id="Software-Development-Tools">Software Development Tools</h2>
+<h3 id="Software-Craftsmanship-and-Clean-Code">Software Craftsmanship and Clean Code</h3>
 <p>注意代码整洁，比如格式、注释等。</p>
-<h2 id="Saying-“No”">Saying “No”</h2>
+<h3 id="Saying-“No”">Saying “No”</h3>
 <p>不要一直盲目答应老板和客户的需求，程序员更熟悉代码，而且需要帮老板规避可能发生的错误。</p>
-<h2 id="Learning-from-Mistakes">Learning from Mistakes</h2>
-<h2 id="Microsoft’s-Best-Practices">Microsoft’s Best Practices</h2>
-<h3 id="Revision-Control-System">Revision Control System</h3>
+<h3 id="Learning-from-Mistakes">Learning from Mistakes</h3>
+<h3 id="Microsoft’s-Best-Practices">Microsoft’s Best Practices</h3>
+<h4 id="Revision-Control-System">Revision Control System</h4>
 <p>版本控制。</p>
 <p>roll-back：版本回滚。</p>
 <p>check-out：开发者拉下来代码。</p>
 <p>check-in：开发者提交自己的修订版。</p>
 <p>conflict：两个人的提交出冲突了。</p>
 <p>merge：合并入主分支。</p>
-<h3 id="Daily-Build">Daily Build</h3>
+<h4 id="Daily-Build">Daily Build</h4>
 <p>每日构建一次代码，编译链接源代码，进行一些测试，确保第二天大家能使用最新版本。</p>
-<h3 id="Continuous-Integration">Continuous Integration</h3>
+<h4 id="Continuous-Integration">Continuous Integration</h4>
 <p>开发人员也建议每天check-in一次。</p>
-<h3 id="Build-Verification-Tests">Build Verification Tests</h3>
+<h4 id="Build-Verification-Tests">Build Verification Tests</h4>
 <p>断言和单元测试。</p>
-<h3 id="Bug-Database">Bug Database</h3>
+<h4 id="Bug-Database">Bug Database</h4>
 <p>记录以前的bug记录，解决方法，严重程度，优先级等信息。</p>
-<h3 id="War-Team-and-Bug-Triage">War Team and Bug Triage</h3>
+<h4 id="War-Team-and-Bug-Triage">War Team and Bug Triage</h4>
 <p>发布前，作战小组确认系统“好到可以发布”。检查运行是否正常，剩余的bug严重程度等。</p>
-<h3 id="Code-reviews-and-coding-guidelines">Code reviews and coding guidelines</h3>
+<h4 id="Code-reviews-and-coding-guidelines">Code reviews and coding guidelines</h4>
 <p>团队对彼此代码进行彻底审查。</p>
-<h3 id="Globalisation-and-Localisation">Globalisation and Localisation</h3>
+<h4 id="Globalisation-and-Localisation">Globalisation and Localisation</h4>
 <p>针对不同语言、脚本的差异处理。</p>
-<h3 id="Documentation-Generators">Documentation Generators</h3>
+<h4 id="Documentation-Generators">Documentation Generators</h4>
 <p>文档生成。</p>
  
       <!-- reward -->
