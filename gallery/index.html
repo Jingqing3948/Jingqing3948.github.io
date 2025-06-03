@@ -284,35 +284,6 @@
    
   
    
-  <div class="gitalk" id="gitalk-container"></div>
-  <link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
-
-  <script>
-    window.addEventListener('DOMContentLoaded', function () {
-      const gitalkScript = document.createElement('script');
-      gitalkScript.src = 'https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js';
-      gitalkScript.onload = function () {
-        const md5Script = document.createElement('script');
-        md5Script.src = 'https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js';
-        md5Script.onload = function () {
-          const gitalk = new Gitalk({
-            clientID: 'Ov23li1TkQEYXFu51qLu',
-            clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
-            repo: 'Jingqing3948.github.io',
-            owner: 'Jingqing3948',
-            admin: ['Jingqing3948'],
-            id: md5(location.pathname),
-            distractionFreeMode: true,
-            pagerDirection: 'last'
-          });
-          gitalk.render('gitalk-container');
-        };
-        document.body.appendChild(md5Script);
-      };
-      document.body.appendChild(gitalkScript);
-    });
-  </script>
-
   
   
 </article>
@@ -572,25 +543,8 @@
     viewer_init()
 </script> 
 <!-- MathJax -->
- <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-      tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-  });
+ 
 
-  MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-      for(i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-      }
-  });
-</script>
-
-<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
-<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
 <script>
   var ayerConfig = {
     mathjax: true,

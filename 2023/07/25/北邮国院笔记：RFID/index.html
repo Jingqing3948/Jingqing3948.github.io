@@ -604,11 +604,11 @@
    
   <nav class="article-nav">
     
-      <a href="/2023/10/09/%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%87%EF%BC%9AWin11%E7%A3%81%E8%B4%B4%E9%85%8D%E7%BD%AE/" class="article-nav-link">
+      <a href="/2023/10/09/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%EF%BC%9Aubuntu%20%E5%AE%89%E8%A3%85%20emscripten%20%E6%97%B6%20install%20latest%20%E6%8A%A5%E9%94%99/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            效率提升：Win11磁贴配置
+            问题解决：ubuntu 安装 emscripten 时 install latest 报错
           
         </div>
       </a>
@@ -935,25 +935,22 @@
     viewer_init()
 </script> 
 <!-- MathJax -->
- <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
+ 
+  <script type="text/javascript">
+    window.MathJax = {
       tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-  });
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      showProcessingMessages: false,
+      messageStyle: 'none',
+      skipStartupTypeset: false
+    };
+  </script>
+  <script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script>
 
-  MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-      for(i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-      }
-  });
-</script>
 
-<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
-<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
 <script>
   var ayerConfig = {
     mathjax: true,
