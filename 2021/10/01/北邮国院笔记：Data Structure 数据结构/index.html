@@ -131,12 +131,12 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1>前言</h1>
+  <h2 id="前言">前言</h2>
 <p>因为考试要求，博主学习的是双语的数据结构，因此自己总结一些英文的概念、知识点。希望也可以对读者学习这门课程有所帮助~<br>
 特别感谢许可老师的教导！</p>
 <p>理解时间复杂度的定义<br>
 （本课程涉及到的所有算法，都需要记住时间复杂度O）</p>
-<h1>Data structure notes</h1>
+<h2 id="Data-structure-notes">Data structure notes</h2>
 <p>Program = Algorithm + Data Structure<br>
 An algorithm is a finite set of instructions that, fi followed, accomplishes a particular task. In addition, all algorithms must satisfy the following criteria:</p>
 <ul>
@@ -151,7 +151,7 @@ A program is written in some programming language, and does not have to be finit
 An algorithm can be described by human languages, flow charts, some programming languages, or pseudocode.</em></p>
 <p>引入 time complexities 和 space complexities 的概念。</p>
 <p>$2^n^&gt;n^2^&gt;nlogn&gt;n&gt;logn&gt;1$</p>
-<h1>单词：</h1>
+<h2 id="单词：">单词：</h2>
 <p>Algorithm 算法<br>
 Definiteness 确定性<br>
 Finiteness 有限性<br>
@@ -174,9 +174,9 @@ Pow 指数</p>
 <p><em>【栈和队列】</em><br>
 <em>理解原理，会算法：两种实现方法</em><br>
 <em>会应用算法，如：中序后序互转；前中后缀表达式互换；栈（队列）操作后的状态</em></p>
-<h1>ADT</h1>
+<h2 id="ADT">ADT</h2>
 <p><strong>ADT(Abstract Data Type)</strong> is a data type that is organized in such a way that the <strong>specification</strong>  on the objects and <strong>specification</strong> of the operations on the objects are <strong>separated from</strong> the <strong>representation</strong> of the objects and the <strong>implementation</strong> on the operations.</p>
-<h1>The List ADT</h1>
+<h2 id="The-List-ADT">The List ADT</h2>
 <ol>
 <li>Array implementation</li>
 </ol>
@@ -192,30 +192,30 @@ Pow 指数</p>
 <li>三种操作：Find_Kth、Find_Value、Find_Length take O(N) time. 注意循环逻辑，以及有无头结点时对边界情况的处理</li>
 <li>找前一个结点不方便，只能重新从头遍历、</li>
 </ul>
-<h2 id="Doubly-Linked-Lists">Doubly Linked Lists</h2>
+<h3 id="Doubly-Linked-Lists">Doubly Linked Lists</h3>
 <p>找前一个结点更方便。注意初始化、插入、删除、双向遍历的区别。</p>
-<h2 id="Circular-Lists">Circular Lists</h2>
+<h3 id="Circular-Lists">Circular Lists</h3>
 <p>头尾相接的单链表。注意判空条件（<code>L-&gt;Next==L</code>）、判断表尾结点条件(<code>p-&gt;Next==L</code>)以及插入删除时修改的操作。<br>
 双向循环链表不再赘述。</p>
-<h2 id="Application-The-polynomial-ADT">Application: The polynomial ADT</h2>
+<h3 id="Application-The-polynomial-ADT">Application: The polynomial ADT</h3>
 <p>多项式求和、求积函数，使用链表更好，因为如果出现形如x^100000^+x^5^+x^1^这种，数组会浪费大量空间，而单链表只需要将系数非0的部分申请空间创造结点。<br>
 （也可以建立十字链表，两个维度分别存储系数和指数）</p>
-<h2 id="Cursor-Implementation-of-Linked-Lists-no-pointer">Cursor Implementation of Linked Lists (no pointer)</h2>
+<h3 id="Cursor-Implementation-of-Linked-Lists-no-pointer">Cursor Implementation of Linked Lists (no pointer)</h3>
 <p>可以使用一个游标int Cursor来作为指针，游标移动访问数组，从而实现类似于指针移动的操作。<br>
 The cursor implementation is usually significantly <strong>faster</strong> because of the lack of memory management routines.</p>
-<h1>The Stack ADT</h1>
+<h2 id="The-Stack-ADT">The Stack ADT</h2>
 <p>A Stack is a <strong>Last-in-First-Out (LIFO)</strong> list. An ordered list in which insertions and deletion are made at the top only.<br>
 类似于一堆书，放书和拿书都只能从最顶上进行。最后放上的书最早被拿出来。<br>
 Push: 入栈<br>
 Top: 读取并返回栈顶元素<br>
 Pop: 栈顶元素出栈</p>
-<h2 id="Application-1-Balancing-symbols-括号匹配">Application 1: Balancing symbols 括号匹配</h2>
+<h3 id="Application-1-Balancing-symbols-括号匹配">Application 1: Balancing symbols 括号匹配</h3>
 <p>输入一串表达式，判断其中的括号()[]{}是否匹配。<br>
 检验方法：每个右括号都和离他最近的，也就是最晚输入的左括号匹配，正符合栈的后进先出原则。<br>
 读到左括号的时候入栈，读到右括号的时候与栈顶的左括号比较，比较后出栈。<br>
 最后结束输入，还要检查一下栈是否为空，若非空，栈内剩下的括号全都不匹配。<br>
 <a target="_blank" rel="noopener" href="https://github.com/Jingqing3948/Data-Structure-in-BUPT/blob/main/1%20STACK/7-1%20Balancing%20Symbols.cpp">7-1 Balancing symbols 代码实现</a></p>
-<h2 id="Application-2-Postfix-Evaluation-后缀表达式的计算">Application 2: Postfix Evaluation 后缀表达式的计算</h2>
+<h3 id="Application-2-Postfix-Evaluation-后缀表达式的计算">Application 2: Postfix Evaluation 后缀表达式的计算</h3>
 <p>Infix expression中缀表达式： a + b * c - d / e<br>
 Prefix expression 前缀表达式：- + a * b c / d e<br>
 Postfix expression 后缀表达式： a b c * + d e / -<br>
@@ -234,13 +234,13 @@ e)	操作符是右括号，则一直出栈（pop）直到左括号出栈<br>
 f)	最终输入结束，栈若非空，栈中元素全部出栈。</li>
 </ol>
 <p><a target="_blank" rel="noopener" href="https://github.com/Jingqing3948/Data-Structure-in-BUPT/blob/main/1%20STACK/7-2%20Infix%20to%20Postfix%20Conversion.cpp">7-2 Infix to postfix Conversion 代码实现</a></p>
-<h1>The Queue ADT</h1>
+<h2 id="The-Queue-ADT">The Queue ADT</h2>
 <p>A Queue is a <strong>First-In-First-Out (FIFO)</strong> list. An ordered list in which insertions take place at one end and deletions take place at the opposite end.<br>
 就像日常生活中的排队，先来后到，先排的有机会先出。<br>
 EnQueue: 入队<br>
 DeQueue: 出队</p>
-<h2 id="Circular-Queue：循环链表">Circular Queue：循环链表</h2>
-<h2 id="Application-who-is-the-last">Application: who is the last</h2>
+<h3 id="Circular-Queue：循环链表">Circular Queue：循环链表</h3>
+<h3 id="Application-who-is-the-last">Application: who is the last</h3>
 <p>输入n、m；n个人坐成一个圈，从第一个人开始报数，每m个人淘汰掉第m个人，然后下一个人继续重新报数。问：谁能留到最后？<br>
 <a target="_blank" rel="noopener" href="https://github.com/Jingqing3948/Data-Structure-in-BUPT/blob/main/2%20QUEUE/7-4%20who%20is%20the%20last.cpp">7-4 who is the last 代码实现</a></p>
 <p>树<br>
@@ -250,8 +250,8 @@ DeQueue: 出队</p>
 【B-树】：会画图 构建B-树，增加节点，删除节点 B-树<br>
 【霍夫曼树】：理解原理 给出数据 会画霍夫曼树的图；节点关系<br>
 理清各种树之间的关系</p>
-<h1>Tree</h1>
-<h2 id="Conception">Conception</h2>
+<h2 id="Tree">Tree</h2>
+<h3 id="Conception">Conception</h3>
 <ul>
 <li>degree of a node: number of its subtrees</li>
 <li>degree of a tree: max{degree(node)}</li>
@@ -264,21 +264,21 @@ DeQueue: 出队</p>
 <li>ancestors of anode: all the nodes along the path from the node up to the root</li>
 <li>descendants of a node: all the nodes in its subtrees</li>
 </ul>
-<h2 id="Representation">Representation</h2>
-<h3 id="FirstChild-NextSibling-Representation">FirstChild-NextSibling Representation</h3>
+<h3 id="Representation">Representation</h3>
+<h4 id="FirstChild-NextSibling-Representation">FirstChild-NextSibling Representation</h4>
 <p>Each Node carries its element and 2 pointers. The first points its FirstChild; The second points its NextSibling.<br>
 <em>This representation is <strong>not unique</strong> since the children in a tree can be of any order.</em></p>
-<h3 id="Binary-Trees">Binary Trees</h3>
+<h4 id="Binary-Trees">Binary Trees</h4>
 <p>a tree in wh ich no node can have more than 2 children.<br>
 <em>Rotate the FirstChild-NextSibling tree clockwise by 45°</em></p>
-<h2 id="Tree-Traversals-significant">Tree Traversals (significant!)</h2>
-<h3 id="Preorder-Traversal">Preorder Traversal</h3>
+<h3 id="Tree-Traversals-significant">Tree Traversals (significant!)</h3>
+<h4 id="Preorder-Traversal">Preorder Traversal</h4>
 <p>visit This Node first;<br>
 visit its child recursively.</p>
-<h3 id="Postorder-Traversal">Postorder Traversal</h3>
+<h4 id="Postorder-Traversal">Postorder Traversal</h4>
 <p>visit its child recursively;<br>
 At last, visit this node itself.</p>
-<h3 id="Levelorder-Traversal">Levelorder Traversal</h3>
+<h4 id="Levelorder-Traversal">Levelorder Traversal</h4>
 <p>visit Tree via a queue.</p>
 <ul>
 <li>Enqueue root node;</li>
@@ -286,7 +286,7 @@ At last, visit this node itself.</p>
 <li>visit first node in queue and Dequeue;</li>
 <li>for its each child, enqueue.}</li>
 </ul>
-<h3 id="Inorder-Traversal-for-binary-trees">Inorder Traversal(for binary trees)</h3>
+<h4 id="Inorder-Traversal-for-binary-trees">Inorder Traversal(for binary trees)</h4>
 <p>Recursive:</p>
 <ul>
 <li>visit left tree recursively.</li>
@@ -300,13 +300,13 @@ preorder traversal: prefix expression<br>
 postorder traversal: postfix expression<br>
 <em>Depth is a evry important conception. we can use a function to calculate it:</em></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">ListDir</span><span class="params">(DirOrFile D,<span class="type">int</span> Depth)</span><span class="comment">//at first, Depth is 0</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(D is a legitimate entry)&#123;</span><br><span class="line">		PrintName(D,Depth);</span><br><span class="line">		<span class="keyword">if</span>(D is a directory)</span><br><span class="line">			<span class="keyword">for</span>(each child C of D)</span><br><span class="line">				ListDir(C,Depth+<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Threaded-Binary-Trees">Threaded Binary Trees</h2>
+<h3 id="Threaded-Binary-Trees">Threaded Binary Trees</h3>
 <ul>
 <li>If tree-&gt;Left is null, 指向中序遍历的前一个结点  a pointer to the inorder predecessor of Tree.</li>
 <li>If tree-&gt;Right is null, 指向中序遍历的前一个结点  a pointer to the inorder successor of Tree.</li>
 <li>最开头、最结尾结点的左、右指针指向head node. There must not be any loose threads. Therefore a threaded binary tree must have a <strong>head node</strong> of which the left child points to the first node.</li>
 </ul>
-<h2 id="The-Search-Tree-ADT-–-Binary-Search-Trees">The Search Tree ADT – Binary Search Trees</h2>
+<h3 id="The-Search-Tree-ADT-–-Binary-Search-Trees">The Search Tree ADT – Binary Search Trees</h3>
 <ul>
 <li>Every node has a key which is an integer, and it’s distinct.</li>
 <li>The keys in a nonempty <strong>left</strong> subtree must be <strong>smaller</strong> than the key in the root of the subtree.</li>
@@ -326,7 +326,7 @@ Delete:</p>
 </ul>
 <p>Get Depth: preorder traversal</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">Height</span><span class="params">(Tree T)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(T==<span class="literal">NULL</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	ekse <span class="keyword">return</span> <span class="number">1</span>+Max(Height(T-&gt;Left),Height(T-&gt;Right));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="AVL-Trees">AVL Trees</h2>
+<h3 id="AVL-Trees">AVL Trees</h3>
 <p>If the tree is too high, AST can be very large and time complexities is O(N). So we need to balance the height by rotating.<br>
 <strong>If |h_L-h_R|&gt;1,rotate.</strong></p>
 <ul>
@@ -337,8 +337,8 @@ Delete:</p>
 <li>Double Rotation: Trouble is left subtree’s right subtree or right subtree’s left subtree.</li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Tree <span class="title function_">DoubleRotatewithLeft</span><span class="params">(Tree T)</span> 			</span><br><span class="line">&#123;</span><br><span class="line">	T-&gt;LeftChild = SingleRotatewithRight(T-&gt;LeftChild);</span><br><span class="line">	<span class="keyword">return</span> SingleRotatewithLeft(T);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Tree <span class="title function_">DoubleRotatewithRight</span><span class="params">(Tree T)</span> 			</span><br><span class="line">&#123;</span><br><span class="line">	T-&gt;RightChild = SingleRotatewithLeft(T-&gt;RightChild);</span><br><span class="line">	<span class="keyword">return</span> SingleRotatewithRight(T);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="B-Trees-要会插入、建立">B Trees 要会插入、建立</h2>
-<h3 id="Insertion">Insertion</h3>
+<h3 id="B-Trees-要会插入、建立">B Trees 要会插入、建立</h3>
+<h4 id="Insertion">Insertion</h4>
 <p>考完试补全<br>
 $$<br>
 Depth(M,N)=O(log_{[M/2]}N)<br>
@@ -346,8 +346,8 @@ $$</p>
 <p>$$<br>
 T_{Find}(M,N)=O(log N)<br>
 $$</p>
-<h2 id="Forest-Empty">Forest Empty</h2>
-<h2 id="Huffman-Tree">Huffman Tree</h2>
+<h3 id="Forest-Empty">Forest Empty</h3>
+<h3 id="Huffman-Tree">Huffman Tree</h3>
 <p>Weighted Path Length, WPL<br>
 $$<br>
 WPL=\sum^k_{i=1}w_i*l_i<br>
@@ -361,7 +361,7 @@ Huffman Tree: the binary tree with the minimum weighted path length.<br>
 【分离链接法】<br>
 【开放定址法】线性探测法 平方探测法 双散列<br>
 【再散列】</p>
-<h1>HASHING</h1>
+<h2 id="HASHING">HASHING</h2>
 <p>散列表（hashing table）的实现叫散列（hashing）散列是一种用于以常数时间执行插入、删除和查找的技术，但不能排序。<br>
 散列函数（hashing function）是关键字被映射到0～TableSize-1范围内的函数。</p>
 <ul>
@@ -370,16 +370,16 @@ Huffman Tree: the binary tree with the minimum weighted path length.<br>
 ** f(x)=x%TableSize**<br>
 TableSize=prime number is good for random integer keys.</li>
 </ul>
-<h2 id="处理冲突的办法">处理冲突的办法</h2>
-<h3 id="open-addressing-开放定址法">open addressing 开放定址法</h3>
+<h3 id="处理冲突的办法">处理冲突的办法</h3>
+<h4 id="open-addressing-开放定址法">open addressing 开放定址法</h4>
 <p>find another empty cell to solve collision</p>
-<h4 id="Linear-Probing-线性探测法">Linear Probing 线性探测法</h4>
+<h5 id="Linear-Probing-线性探测法">Linear Probing 线性探测法</h5>
 <p>f(i)=i (a linear function)<br>
 如果对应位被占了，则往下继续寻找空位。<br>
 下一位是否为空？若为空放入，若不为空检查下一位；<br>
 再下一位是否为空？……<br>
 查找：先去对应位找，如果没找到再继续往下遍历。</p>
-<h4 id="Quadratic-Probing-平方探测法">Quadratic Probing 平方探测法</h4>
+<h5 id="Quadratic-Probing-平方探测法">Quadratic Probing 平方探测法</h5>
 <p>f(i)=i^2^<br>
 如果对应位被占了，则+1^1；<br>
 若这一位也被占了，则原位置+2^2；<br>
@@ -387,11 +387,11 @@ TableSize=prime number is good for random integer keys.</li>
 （也有的算法是±i^2）<br>
 最大加到（n/2）的平方<br>
 查找：先去对应位找，如果没找到再去加1、加4等等位找。</p>
-<h4 id="Double-Hashing-双散列法">Double Hashing 双散列法</h4>
+<h5 id="Double-Hashing-双散列法">Double Hashing 双散列法</h5>
 <p>第一个散列函数冲突时，使用第二个散列函数。<br>
 <strong>hash2(x)必须不恒等于0！</strong><br>
 <em>Tips: hash2(x)=R-(x%R) with R a prime smaller than TableSize, will work well.</em></p>
-<h3 id="Rehashing-再散列">Rehashing 再散列</h3>
+<h4 id="Rehashing-再散列">Rehashing 再散列</h4>
 <p>当插入数据达到N/2时，再散列。</p>
 <ul>
 <li>建立一个原表的二倍大的表（接近原表二倍大的素数）</li>
@@ -400,7 +400,7 @@ TableSize=prime number is good for random integer keys.</li>
 <p>堆<br>
 【二叉堆】<br>
 要求：会构建堆 插入 删除； 画图，手动执行中间数据；</p>
-<h1>Piority Queue(Heap)</h1>
+<h2 id="Piority-Queue-Heap">Piority Queue(Heap)</h2>
 <p>Can find the element with the highest \ lowest priority.</p>
 <table>
 <thead>
@@ -475,11 +475,11 @@ TableSize=prime number is good for random integer keys.</li>
 </table>
 <p><strong>A min tree</strong> is a tree in which the key value in each node is no larger than the key values in its children.<br>
 <strong>A min heap</strong> :a complete binary tree + a min tree. And the max heap is visa versa.</p>
-<h2 id="Insertion-Min-Heap">Insertion(Min Heap)</h2>
+<h3 id="Insertion-Min-Heap">Insertion(Min Heap)</h3>
 <p>Because a heap is a complete binary tree, the nth node only has one possible position to insert. Then, if nth node is smaller than its parent:exchange upward will its location is proper.</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ( i = ++H-&gt;Size; H-&gt;Elements[ i / <span class="number">2</span> ] &gt; X; i /= <span class="number">2</span> ) </span><br><span class="line">	H-&gt;Elements[ i ] = H-&gt;Elements[ i / <span class="number">2</span> ]; </span><br><span class="line"></span><br><span class="line">     H-&gt;Elements[ i ] = X; </span><br></pre></td></tr></table></figure>
 <p><em>Another kind of Insertion is: insert all nodes first, then adjust their location. We need to check from n/2 node. If its children node is smaller than it, choose the smallest node and exchange them. n/2 node go downward until reach the proper location. Then do the same thing to the n/2-1 node until the first node.</em></p>
-<h2 id="Deletion">Deletion</h2>
+<h3 id="Deletion">Deletion</h3>
 <p>We only need to delete the root node——the smallest node.</p>
 <ul>
 <li>Exchange the root node with the last node——the nth node.</li>
@@ -488,7 +488,7 @@ TableSize=prime number is good for random integer keys.</li>
 *<em>Those 2 operations’ time complexity are O(log N). Insertion all node is O(nlogn).</em></li>
 </ul>
 <p><em>For the perfect binary tree of height h containing 2h+1 - 1 nodes, the sum of the heights of the nodes is 2h+1 - 1 - (h + 1).</em></p>
-<h1>Graph</h1>
+<h2 id="Graph">Graph</h2>
 <p>G:graph</p>
 <p>V:finite nonempty set of vertices</p>
 <p>E:finite set of edges</p>
@@ -508,10 +508,10 @@ TableSize=prime number is good for random integer keys.</li>
 (Graph without direction: <strong>weakly connected</strong>)</p>
 <p><strong>Stronhly connected component</strong>: the maximal subgraph that is strongly connected</p>
 <p><strong>Degree(v)</strong>: in-degree and out-degree  进入某个顶点的边数和传出该顶点的边数</p>
-<h2 id="Representation-of-Graphs">Representation of Graphs</h2>
-<h3 id="Adjacency-Matrix-邻接矩阵法">Adjacency Matrix 邻接矩阵法</h3>
+<h3 id="Representation-of-Graphs">Representation of Graphs</h3>
+<h4 id="Adjacency-Matrix-邻接矩阵法">Adjacency Matrix 邻接矩阵法</h4>
 <p>二维矩阵存储边信息。如果v_i to v_j 有边，adj_mat[i][j]=1，否则=0.（undirected graph还要考虑双向，同时也要让adj_mat[j][i]=1）</p>
-<h3 id="Adjacency-Lists-邻接表法">Adjacency Lists 邻接表法</h3>
+<h4 id="Adjacency-Lists-邻接表法">Adjacency Lists 邻接表法</h4>
 <p>每个顶点结点都是一个单链表的头结点，后面挂着他连接的顶点的节点。</p>
 <p>如：</p>
 <p>0-&gt;1-&gt;2</p>
@@ -519,7 +519,7 @@ TableSize=prime number is good for random integer keys.</li>
 <p>2-&gt;0</p>
 <p>这就是一个三个顶点的无向图，01、02相连。</p>
 <p>S(n+2e) Space complexities</p>
-<h2 id="Topological-Sort">Topological Sort</h2>
+<h3 id="Topological-Sort">Topological Sort</h3>
 <p><strong>AOV Network</strong>: digraph in which V(G) represents activities and E(G) represents precedence relations 顶点表示事件，边表示事件之间的进程关系。比如A-&gt;B，就是要先做完A才能做B</p>
 <p><strong>i is a predecessor of j</strong>: there is a path from i to j  前驱</p>
 <p><strong>i is an immediate predecessor</strong>: &lt;i,j&gt;=1.  直接前驱 Then j is called a <strong>successor (immediate successor)</strong> of i 直接后继</p>
@@ -533,13 +533,13 @@ TableSize=prime number is good for random integer keys.</li>
 <li>再重新寻找入度为0，没有 visit 过的节点，循环往复</li>
 </ol>
 <p>If we use a special box (queue or stack) to sort, T=O(|V|+|E|)</p>
-<h2 id="Shortest-Path-Algorithms-最短路径算法">Shortest Path Algorithms 最短路径算法</h2>
+<h3 id="Shortest-Path-Algorithms-最短路径算法">Shortest Path Algorithms 最短路径算法</h3>
 <p>两类问题：</p>
 <ol>
 <li>从物流中心（一个顶点）往其他所有顶点运输物品，怎样路径最短？</li>
 <li>怎样让所有顶点之间路径总和最短？</li>
 </ol>
-<h3 id="1-Single-Source-Shortest-Path-Problem">1. Single-Source Shortest-Path Problem</h3>
+<h4 id="1-Single-Source-Shortest-Path-Problem">1. Single-Source Shortest-Path Problem</h4>
 <p>Given as input a weighted graph, G = ( V, E ), and a distinguished vertex, s, find the shortest weighted path from s to every other vertex in G.</p>
 <p><strong>Breadth-first search 广度优先搜索</strong></p>
 <p>Similar to the topological order. We will visit every node connect to the fist node (if they haven’t been visit) and Enquque; and Dequeue this node, do the same thing to every node in the Queue.</p>
@@ -553,7 +553,7 @@ TableSize=prime number is good for random integer keys.</li>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Dijkstra</span><span class="params">( Table T )</span></span><br><span class="line">&#123;   <span class="comment">/* T is initialized by Figure 9.30 on p.303 */</span></span><br><span class="line">    Vertex  V, W;</span><br><span class="line">    <span class="keyword">for</span> ( ; ; ) &#123;</span><br><span class="line">        V = smallest unknown distance vertex;</span><br><span class="line">        <span class="keyword">if</span> ( V == NotAVertex )</span><br><span class="line">	<span class="keyword">break</span>; </span><br><span class="line">        T[ V ].Known = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span> ( each W adjacent to V )</span><br><span class="line">	<span class="keyword">if</span> ( !T[ W ].Known ) </span><br><span class="line">	    <span class="keyword">if</span> ( T[ V ].Dist + Cvw &lt; T[ W ].Dist ) &#123;</span><br><span class="line">	    	Decrease( T[ W ].Dist  to</span><br><span class="line">			 T[ V ].Dist + Cvw );</span><br><span class="line">		T[ W ].Path = V;</span><br><span class="line">	    &#125; <span class="comment">/* end-if update W */</span></span><br><span class="line">    &#125; <span class="comment">/* end-for( ; ; ) */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>not work for edge with negative cost!</strong></p>
 <p>T=O(|E|log|V|)</p>
-<h2 id="Acylic-Graphs">Acylic Graphs</h2>
+<h3 id="Acylic-Graphs">Acylic Graphs</h3>
 <p>If the graph is acyclic, vertices amy be selected in topological order since when a vertex is selected, its distance can no longer be lowered without any incoming edges from unknown nodes.</p>
 <p>T=O(|E|+|V|)</p>
 <p>Application: AOE(Activity On Edge)Networks</p>
@@ -567,7 +567,7 @@ TableSize=prime number is good for random integer keys.</li>
 <p>Method 1: Use single-source algorithm  for |V| times.<br>
 T = O(|V|^3) – works fast on sparse graph. 稀疏图</p>
 <p>Method 2  O( |V|^3 ) algorithm given in Ch.10, works faster on dense graphs.</p>
-<h2 id="Network-Flow-Problems">Network Flow Problems</h2>
+<h3 id="Network-Flow-Problems">Network Flow Problems</h3>
 <p>Find Maximum Path from s to t.</p>
 <p>Step 1:  Find any path s -&gt; t in Gr ;</p>
 <p>Step 2:  Take the minimum edge on this path as the amount of flow and add to G_f ;</p>
@@ -576,14 +576,14 @@ T = O(|V|^3) – works fast on sparse graph. 稀疏图</p>
 Goto Step 1;<br>
 Else<br>
 End.</p>
-<h2 id="Minimum-Spanning-Tree">Minimum Spanning Tree</h2>
+<h3 id="Minimum-Spanning-Tree">Minimum Spanning Tree</h3>
 <p>is a tree which consists of V(G) and a subset of E(G).</p>
 <ul>
 <li>It is acyclic – the number of edges is |V|-1.</li>
 <li>It is minimum for the total cost of edges is minimized.</li>
 <li>A minimum spanning tree exists if G is connected.</li>
 </ul>
-<h2 id="2-Method-of-calculating-the-minimum-spanning-tree">2 Method of calculating the minimum spanning tree:</h2>
+<h3 id="2-Method-of-calculating-the-minimum-spanning-tree">2 Method of calculating the minimum spanning tree:</h3>
 <ol>
 <li>
 <p>Prim’s Algorithm<br>
@@ -594,7 +594,7 @@ very samiliar to Dijkstra’s algorithm. We choose a vertex to start, and every 
 every time add a a least cost edge &lt;v,w&gt; from E until all vertex is connected.</p>
 </li>
 </ol>
-<h2 id="DFS-–-Depth-First-Search">DFS – Depth-First Search</h2>
+<h3 id="DFS-–-Depth-First-Search">DFS – Depth-First Search</h3>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">ListComponents</span> <span class="params">( Graph G )</span> </span><br><span class="line">&#123;   <span class="keyword">for</span> ( each V in G ) </span><br><span class="line">        <span class="keyword">if</span> ( !visited[ V ] ) &#123;</span><br><span class="line">	DFS( V );</span><br><span class="line">               <span class="built_in">printf</span>(“\n“);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">DFS</span> <span class="params">( Vertex V )</span>  <span class="comment">/* this is only a template */</span></span><br><span class="line">&#123;   visited[ V ] = <span class="literal">true</span>;  <span class="comment">/* mark this vertex to avoid cycles */</span></span><br><span class="line">    <span class="keyword">for</span> ( each W adjacent to V )</span><br><span class="line">        <span class="keyword">if</span> ( !visited[ W ] )</span><br><span class="line">	DFS( W );</span><br><span class="line">&#125; <span class="comment">/* T = O( |E| + |V| ) as long as adjacency lists are used */</span></span><br></pre></td></tr></table></figure>
 <p>Applications:</p>
 <ol>
@@ -602,21 +602,21 @@ every time add a a least cost edge &lt;v,w&gt; from E until all vertex is connec
 <li>Biconnectivity</li>
 <li>Euler Circuits</li>
 </ol>
-<h2 id="NP-Completeness">NP-Completeness</h2>
-<h1>KMP</h1>
-<h2 id="Basic-String-Operations">Basic String Operations</h2>
+<h3 id="NP-Completeness">NP-Completeness</h3>
+<h2 id="KMP">KMP</h2>
+<h3 id="Basic-String-Operations">Basic String Operations</h3>
 <p>The StrAssign、Strcopy、StrCompare、StrLength、Concat and SubString</p>
-<h2 id="String-Operations-Library-in-C">String Operations Library (in C)</h2>
+<h3 id="String-Operations-Library-in-C">String Operations Library (in C)</h3>
 <p>gets(str)  //Input a string;</p>
 <p>puts(str) //Output a string；</p>
 <p>strcat(str1, str2)  // string Concatenation；</p>
 <p>strcpy(str1, str2, k)  //String copy；</p>
 <p>strcmp(str1, str2) //String comparision；</p>
 <p>strlen(str)  //Get the length of string</p>
-<h2 id="Pattern-Matching-algorithm">Pattern Matching algorithm</h2>
+<h3 id="Pattern-Matching-algorithm">Pattern Matching algorithm</h3>
 <p>旧模式匹配算法：每次不匹配时，子串都从头重新匹配。效率很低</p>
 <p>Basic match algorithm is inefficient</p>
-<h3 id="Knuth-Morris-Pratt-KMP-Algorithms">Knuth-Morris-Pratt (KMP Algorithms)</h3>
+<h4 id="Knuth-Morris-Pratt-KMP-Algorithms">Knuth-Morris-Pratt (KMP Algorithms)</h4>
 <p>When dismatch happens, we don’t need to go back to first. We can use a next array to decide where to go back.</p>
 <p>next[]: compare s[i] and t[j]，if equals then continue comparing following items, else compare s[i] and t [ next[j] ], till end.</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span>  <span class="title function_">Get_next</span><span class="params">( SString T, <span class="type">int</span>  &amp;next[] )</span></span><br><span class="line">&#123;    j = <span class="number">1</span> ;  <span class="comment">// postfix pointer</span></span><br><span class="line">     k = <span class="number">0</span>;   <span class="comment">//prefix pointer</span></span><br><span class="line">     next[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> ( j &lt;= T[<span class="number">0</span>] )</span><br><span class="line">     &#123;  <span class="keyword">if</span> ( k == <span class="number">0</span> || T[j] == T[k] ) </span><br><span class="line">             &#123; ++j ;  ++k ;  next[j]=k; &#125;</span><br><span class="line">         <span class="keyword">else</span>  </span><br><span class="line">             k = next[k];  <span class="comment">// k go back, then compare T[j] with T[ next[k] ]</span></span><br><span class="line">     &#125;<span class="comment">// end while</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
