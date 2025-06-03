@@ -37,3 +37,22 @@
     transform: translateX(0);
   }
 }
+.cover .bg-box img {
+  will-change: transform, filter;
+  transition: none;
+}
+.cover .cover-inner {
+  transition: none;
+  will-change: opacity, filter;
+}
+.cover .bg-box::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: 0; /* 默认透明 */
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(2px);
+  pointer-events: none;
+  z-index: 2;
+}

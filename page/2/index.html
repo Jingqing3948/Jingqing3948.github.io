@@ -68,64 +68,118 @@
       
     <main class="content on">
       
-<section class="cover">
-    
-      
-  <div class="cover-frame">
-    <div class="bg-box">
-      <img id="random-cover" src="/images/cover1.jpg" alt="image frame" />
-    </div>
-    <div class="cover-inner text-center text-white">
-      <h1><a href="/">灰海宽松的博客</a></h1>
-      <div id="subtitle-box">
-        
-        <span id="subtitle"></span>
-        
-      </div>
-      <div>
-        
-      </div>
-    </div>
-  </div>
-  <div class="cover-learn-more">
-    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
-  </div>
-</section>
+	<section class="cover" id="cover">
+		
+					
+						<div class="cover-frame">
+							<div class="bg-box">
+								<img id="random-cover" src="/images/cover1.jpg" alt="image frame" />
+							</div>
+							<div class="cover-inner text-center text-white">
+								<h1><a href="/">
+										灰海宽松的博客
+									</a></h1>
+								<div id="subtitle-box">
+									
+										<span id="subtitle"></span>
+										
+								</div>
+								<div>
+									
+								</div>
+							</div>
+						</div>
+						<div class="cover-learn-more">
+							<a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
+						</div>
+	</section>
+	
 
 
-
-<script src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js"></script>
+	<script src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js"></script>
 
 
 <!-- Subtitle -->
 
-  <script>
-    try {
-      var typed = new Typed("#subtitle", {
-        strings: ['没有一条路无风无浪', '常应常静，常清净矣', 'Love the Life You Live'],
-        startDelay: 0,
-        typeSpeed: 200,
-        loop: true,
-        backSpeed: 100,
-        showCursor: true
-      });
-    } catch (err) {
-      console.log(err)
-    }
-  </script>
+	<script>
+		try {
+			var typed = new Typed("#subtitle", {
+				strings: ['没有一条路无风无浪', '常应常静，常清净矣', 'Love the Life You Live'],
+				startDelay: 0,
+				typeSpeed: 200,
+				loop: true,
+				backSpeed: 100,
+				showCursor: true
+			});
+		} catch (err) {
+			console.log(err)
+		}
+	</script>
 
-  <script>
-  (function () {
-    const coverCount = 5; // 修改为你有几张封面图
-    const index = Math.floor(Math.random() * coverCount) + 1;
-    const imgPath = `/images/cover${index}.jpg`;
-    const imgEl = document.getElementById('random-cover');
-    if (imgEl) {
-      imgEl.src = imgPath;
-    }
-  })();
+
+
+
+
+<script>
+	(function () {
+		const coverCount = 5; // 修改为你有几张封面图
+		const index = Math.floor(Math.random() * coverCount) + 1;
+		const imgPath = `/images/cover${index}.jpg`;
+		const imgEl = document.getElementById('random-cover');
+		if (imgEl) {
+			imgEl.src = imgPath;
+		}
+	})();
 </script>
-  
+
+<script>
+	window.addEventListener('DOMContentLoaded', function () {
+    const scrollContainer = document.querySelector('main.content.on') || window;
+    const img = document.getElementById('random-cover');
+    const inner = document.querySelector('.cover-inner');
+    const mask = document.querySelector('.cover-mask');  // ✅ 选中新的真实遮罩层
+
+    let currentScroll = 0;
+    let targetScroll = 0;
+
+    function animate() {
+      // 平滑追踪滚动值
+      currentScroll += (targetScroll - currentScroll) * 0.13;
+
+      // 视觉映射
+	const blurVal = Math.min(currentScroll / 200, 10);
+	const scaleVal = 1 + Math.min(currentScroll / 3000, 0.12);
+	const opacityVal = 1 - Math.min(currentScroll / 2000, 0.5);
+	const maskOpacity = Math.min(currentScroll / 1500, 0.5);
+
+      // 封面图像效果
+	if (img) {
+        img.style.transform = `scale(${scaleVal})`;
+        img.style.filter = `blur(${blurVal}px) brightness(${1 - blurVal / 20})`;
+	}
+
+      // 标题区域
+	if (inner) {
+        inner.style.opacity = opacityVal;
+        inner.style.filter = `blur(${blurVal / 2}px)`;
+	}
+
+      // 新遮罩层
+	if (mask) {
+        mask.style.opacity = maskOpacity.toFixed(2);
+	}
+
+	requestAnimationFrame(animate);
+    }
+
+    scrollContainer.addEventListener('scroll', () => {
+	targetScroll = scrollContainer === window ? window.scrollY : scrollContainer.scrollTop;
+    });
+
+    requestAnimationFrame(animate);
+	});
+</script>
+
 <div id="main">
   <section class="outer">
   
@@ -219,31 +273,34 @@
 
    
    
-<div class="gitalk" id="gitalk-container"></div>
+  <div class="gitalk" id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
 
-<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
-
-
-<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
-
-
-<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
-
-<script type="text/javascript">
-  var gitalk = new Gitalk({
-    clientID: 'Ov23li1TkQEYXFu51qLu',
-    clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
-    repo: 'Jingqing3948.github.io',
-    owner: 'Jingqing3948',
-    admin: 'Jingqing3948',
-    // id: location.pathname,      // Ensure uniqueness and length less than 50
-    id: md5(location.pathname),
-    distractionFreeMode: true,  // Facebook-like distraction free mode
-    pagerDirection: 'last'
-  })
-
-  gitalk.render('gitalk-container')
-</script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      const gitalkScript = document.createElement('script');
+      gitalkScript.src = 'https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js';
+      gitalkScript.onload = function () {
+        const md5Script = document.createElement('script');
+        md5Script.src = 'https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js';
+        md5Script.onload = function () {
+          const gitalk = new Gitalk({
+            clientID: 'Ov23li1TkQEYXFu51qLu',
+            clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
+            repo: 'Jingqing3948.github.io',
+            owner: 'Jingqing3948',
+            admin: ['Jingqing3948'],
+            id: md5(location.pathname),
+            distractionFreeMode: true,
+            pagerDirection: 'last'
+          });
+          gitalk.render('gitalk-container');
+        };
+        document.body.appendChild(md5Script);
+      };
+      document.body.appendChild(gitalkScript);
+    });
+  </script>
 
   
   
@@ -291,31 +348,34 @@
 
    
    
-<div class="gitalk" id="gitalk-container"></div>
+  <div class="gitalk" id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
 
-<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
-
-
-<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
-
-
-<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
-
-<script type="text/javascript">
-  var gitalk = new Gitalk({
-    clientID: 'Ov23li1TkQEYXFu51qLu',
-    clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
-    repo: 'Jingqing3948.github.io',
-    owner: 'Jingqing3948',
-    admin: 'Jingqing3948',
-    // id: location.pathname,      // Ensure uniqueness and length less than 50
-    id: md5(location.pathname),
-    distractionFreeMode: true,  // Facebook-like distraction free mode
-    pagerDirection: 'last'
-  })
-
-  gitalk.render('gitalk-container')
-</script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      const gitalkScript = document.createElement('script');
+      gitalkScript.src = 'https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js';
+      gitalkScript.onload = function () {
+        const md5Script = document.createElement('script');
+        md5Script.src = 'https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js';
+        md5Script.onload = function () {
+          const gitalk = new Gitalk({
+            clientID: 'Ov23li1TkQEYXFu51qLu',
+            clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
+            repo: 'Jingqing3948.github.io',
+            owner: 'Jingqing3948',
+            admin: ['Jingqing3948'],
+            id: md5(location.pathname),
+            distractionFreeMode: true,
+            pagerDirection: 'last'
+          });
+          gitalk.render('gitalk-container');
+        };
+        document.body.appendChild(md5Script);
+      };
+      document.body.appendChild(gitalkScript);
+    });
+  </script>
 
   
   
@@ -363,31 +423,34 @@
 
    
    
-<div class="gitalk" id="gitalk-container"></div>
+  <div class="gitalk" id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
 
-<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
-
-
-<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
-
-
-<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
-
-<script type="text/javascript">
-  var gitalk = new Gitalk({
-    clientID: 'Ov23li1TkQEYXFu51qLu',
-    clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
-    repo: 'Jingqing3948.github.io',
-    owner: 'Jingqing3948',
-    admin: 'Jingqing3948',
-    // id: location.pathname,      // Ensure uniqueness and length less than 50
-    id: md5(location.pathname),
-    distractionFreeMode: true,  // Facebook-like distraction free mode
-    pagerDirection: 'last'
-  })
-
-  gitalk.render('gitalk-container')
-</script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      const gitalkScript = document.createElement('script');
+      gitalkScript.src = 'https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js';
+      gitalkScript.onload = function () {
+        const md5Script = document.createElement('script');
+        md5Script.src = 'https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js';
+        md5Script.onload = function () {
+          const gitalk = new Gitalk({
+            clientID: 'Ov23li1TkQEYXFu51qLu',
+            clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
+            repo: 'Jingqing3948.github.io',
+            owner: 'Jingqing3948',
+            admin: ['Jingqing3948'],
+            id: md5(location.pathname),
+            distractionFreeMode: true,
+            pagerDirection: 'last'
+          });
+          gitalk.render('gitalk-container');
+        };
+        document.body.appendChild(md5Script);
+      };
+      document.body.appendChild(gitalkScript);
+    });
+  </script>
 
   
   
@@ -435,31 +498,34 @@
 
    
    
-<div class="gitalk" id="gitalk-container"></div>
+  <div class="gitalk" id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
 
-<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
-
-
-<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
-
-
-<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
-
-<script type="text/javascript">
-  var gitalk = new Gitalk({
-    clientID: 'Ov23li1TkQEYXFu51qLu',
-    clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
-    repo: 'Jingqing3948.github.io',
-    owner: 'Jingqing3948',
-    admin: 'Jingqing3948',
-    // id: location.pathname,      // Ensure uniqueness and length less than 50
-    id: md5(location.pathname),
-    distractionFreeMode: true,  // Facebook-like distraction free mode
-    pagerDirection: 'last'
-  })
-
-  gitalk.render('gitalk-container')
-</script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      const gitalkScript = document.createElement('script');
+      gitalkScript.src = 'https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js';
+      gitalkScript.onload = function () {
+        const md5Script = document.createElement('script');
+        md5Script.src = 'https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js';
+        md5Script.onload = function () {
+          const gitalk = new Gitalk({
+            clientID: 'Ov23li1TkQEYXFu51qLu',
+            clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
+            repo: 'Jingqing3948.github.io',
+            owner: 'Jingqing3948',
+            admin: ['Jingqing3948'],
+            id: md5(location.pathname),
+            distractionFreeMode: true,
+            pagerDirection: 'last'
+          });
+          gitalk.render('gitalk-container');
+        };
+        document.body.appendChild(md5Script);
+      };
+      document.body.appendChild(gitalkScript);
+    });
+  </script>
 
   
   
@@ -507,31 +573,34 @@
 
    
    
-<div class="gitalk" id="gitalk-container"></div>
+  <div class="gitalk" id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
 
-<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
-
-
-<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
-
-
-<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
-
-<script type="text/javascript">
-  var gitalk = new Gitalk({
-    clientID: 'Ov23li1TkQEYXFu51qLu',
-    clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
-    repo: 'Jingqing3948.github.io',
-    owner: 'Jingqing3948',
-    admin: 'Jingqing3948',
-    // id: location.pathname,      // Ensure uniqueness and length less than 50
-    id: md5(location.pathname),
-    distractionFreeMode: true,  // Facebook-like distraction free mode
-    pagerDirection: 'last'
-  })
-
-  gitalk.render('gitalk-container')
-</script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      const gitalkScript = document.createElement('script');
+      gitalkScript.src = 'https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js';
+      gitalkScript.onload = function () {
+        const md5Script = document.createElement('script');
+        md5Script.src = 'https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js';
+        md5Script.onload = function () {
+          const gitalk = new Gitalk({
+            clientID: 'Ov23li1TkQEYXFu51qLu',
+            clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
+            repo: 'Jingqing3948.github.io',
+            owner: 'Jingqing3948',
+            admin: ['Jingqing3948'],
+            id: md5(location.pathname),
+            distractionFreeMode: true,
+            pagerDirection: 'last'
+          });
+          gitalk.render('gitalk-container');
+        };
+        document.body.appendChild(md5Script);
+      };
+      document.body.appendChild(gitalkScript);
+    });
+  </script>
 
   
   
@@ -579,31 +648,34 @@
 
    
    
-<div class="gitalk" id="gitalk-container"></div>
+  <div class="gitalk" id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
 
-<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
-
-
-<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
-
-
-<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
-
-<script type="text/javascript">
-  var gitalk = new Gitalk({
-    clientID: 'Ov23li1TkQEYXFu51qLu',
-    clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
-    repo: 'Jingqing3948.github.io',
-    owner: 'Jingqing3948',
-    admin: 'Jingqing3948',
-    // id: location.pathname,      // Ensure uniqueness and length less than 50
-    id: md5(location.pathname),
-    distractionFreeMode: true,  // Facebook-like distraction free mode
-    pagerDirection: 'last'
-  })
-
-  gitalk.render('gitalk-container')
-</script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      const gitalkScript = document.createElement('script');
+      gitalkScript.src = 'https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js';
+      gitalkScript.onload = function () {
+        const md5Script = document.createElement('script');
+        md5Script.src = 'https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js';
+        md5Script.onload = function () {
+          const gitalk = new Gitalk({
+            clientID: 'Ov23li1TkQEYXFu51qLu',
+            clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
+            repo: 'Jingqing3948.github.io',
+            owner: 'Jingqing3948',
+            admin: ['Jingqing3948'],
+            id: md5(location.pathname),
+            distractionFreeMode: true,
+            pagerDirection: 'last'
+          });
+          gitalk.render('gitalk-container');
+        };
+        document.body.appendChild(md5Script);
+      };
+      document.body.appendChild(gitalkScript);
+    });
+  </script>
 
   
   
@@ -651,31 +723,34 @@
 
    
    
-<div class="gitalk" id="gitalk-container"></div>
+  <div class="gitalk" id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
 
-<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
-
-
-<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
-
-
-<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
-
-<script type="text/javascript">
-  var gitalk = new Gitalk({
-    clientID: 'Ov23li1TkQEYXFu51qLu',
-    clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
-    repo: 'Jingqing3948.github.io',
-    owner: 'Jingqing3948',
-    admin: 'Jingqing3948',
-    // id: location.pathname,      // Ensure uniqueness and length less than 50
-    id: md5(location.pathname),
-    distractionFreeMode: true,  // Facebook-like distraction free mode
-    pagerDirection: 'last'
-  })
-
-  gitalk.render('gitalk-container')
-</script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      const gitalkScript = document.createElement('script');
+      gitalkScript.src = 'https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js';
+      gitalkScript.onload = function () {
+        const md5Script = document.createElement('script');
+        md5Script.src = 'https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js';
+        md5Script.onload = function () {
+          const gitalk = new Gitalk({
+            clientID: 'Ov23li1TkQEYXFu51qLu',
+            clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
+            repo: 'Jingqing3948.github.io',
+            owner: 'Jingqing3948',
+            admin: ['Jingqing3948'],
+            id: md5(location.pathname),
+            distractionFreeMode: true,
+            pagerDirection: 'last'
+          });
+          gitalk.render('gitalk-container');
+        };
+        document.body.appendChild(md5Script);
+      };
+      document.body.appendChild(gitalkScript);
+    });
+  </script>
 
   
   
@@ -723,31 +798,34 @@
 
    
    
-<div class="gitalk" id="gitalk-container"></div>
+  <div class="gitalk" id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
 
-<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
-
-
-<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
-
-
-<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
-
-<script type="text/javascript">
-  var gitalk = new Gitalk({
-    clientID: 'Ov23li1TkQEYXFu51qLu',
-    clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
-    repo: 'Jingqing3948.github.io',
-    owner: 'Jingqing3948',
-    admin: 'Jingqing3948',
-    // id: location.pathname,      // Ensure uniqueness and length less than 50
-    id: md5(location.pathname),
-    distractionFreeMode: true,  // Facebook-like distraction free mode
-    pagerDirection: 'last'
-  })
-
-  gitalk.render('gitalk-container')
-</script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      const gitalkScript = document.createElement('script');
+      gitalkScript.src = 'https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js';
+      gitalkScript.onload = function () {
+        const md5Script = document.createElement('script');
+        md5Script.src = 'https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js';
+        md5Script.onload = function () {
+          const gitalk = new Gitalk({
+            clientID: 'Ov23li1TkQEYXFu51qLu',
+            clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
+            repo: 'Jingqing3948.github.io',
+            owner: 'Jingqing3948',
+            admin: ['Jingqing3948'],
+            id: md5(location.pathname),
+            distractionFreeMode: true,
+            pagerDirection: 'last'
+          });
+          gitalk.render('gitalk-container');
+        };
+        document.body.appendChild(md5Script);
+      };
+      document.body.appendChild(gitalkScript);
+    });
+  </script>
 
   
   
@@ -795,31 +873,34 @@
 
    
    
-<div class="gitalk" id="gitalk-container"></div>
+  <div class="gitalk" id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
 
-<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
-
-
-<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
-
-
-<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
-
-<script type="text/javascript">
-  var gitalk = new Gitalk({
-    clientID: 'Ov23li1TkQEYXFu51qLu',
-    clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
-    repo: 'Jingqing3948.github.io',
-    owner: 'Jingqing3948',
-    admin: 'Jingqing3948',
-    // id: location.pathname,      // Ensure uniqueness and length less than 50
-    id: md5(location.pathname),
-    distractionFreeMode: true,  // Facebook-like distraction free mode
-    pagerDirection: 'last'
-  })
-
-  gitalk.render('gitalk-container')
-</script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      const gitalkScript = document.createElement('script');
+      gitalkScript.src = 'https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js';
+      gitalkScript.onload = function () {
+        const md5Script = document.createElement('script');
+        md5Script.src = 'https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js';
+        md5Script.onload = function () {
+          const gitalk = new Gitalk({
+            clientID: 'Ov23li1TkQEYXFu51qLu',
+            clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
+            repo: 'Jingqing3948.github.io',
+            owner: 'Jingqing3948',
+            admin: ['Jingqing3948'],
+            id: md5(location.pathname),
+            distractionFreeMode: true,
+            pagerDirection: 'last'
+          });
+          gitalk.render('gitalk-container');
+        };
+        document.body.appendChild(md5Script);
+      };
+      document.body.appendChild(gitalkScript);
+    });
+  </script>
 
   
   
@@ -867,31 +948,34 @@
 
    
    
-<div class="gitalk" id="gitalk-container"></div>
+  <div class="gitalk" id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
 
-<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
-
-
-<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
-
-
-<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
-
-<script type="text/javascript">
-  var gitalk = new Gitalk({
-    clientID: 'Ov23li1TkQEYXFu51qLu',
-    clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
-    repo: 'Jingqing3948.github.io',
-    owner: 'Jingqing3948',
-    admin: 'Jingqing3948',
-    // id: location.pathname,      // Ensure uniqueness and length less than 50
-    id: md5(location.pathname),
-    distractionFreeMode: true,  // Facebook-like distraction free mode
-    pagerDirection: 'last'
-  })
-
-  gitalk.render('gitalk-container')
-</script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      const gitalkScript = document.createElement('script');
+      gitalkScript.src = 'https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js';
+      gitalkScript.onload = function () {
+        const md5Script = document.createElement('script');
+        md5Script.src = 'https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js';
+        md5Script.onload = function () {
+          const gitalk = new Gitalk({
+            clientID: 'Ov23li1TkQEYXFu51qLu',
+            clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
+            repo: 'Jingqing3948.github.io',
+            owner: 'Jingqing3948',
+            admin: ['Jingqing3948'],
+            id: md5(location.pathname),
+            distractionFreeMode: true,
+            pagerDirection: 'last'
+          });
+          gitalk.render('gitalk-container');
+        };
+        document.body.appendChild(md5Script);
+      };
+      document.body.appendChild(gitalkScript);
+    });
+  </script>
 
   
   
@@ -1274,23 +1358,6 @@
 </script>
 
 
-    
-    <div id="music">
-    
-    
-    
-    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="86"
-        src="//music.163.com/outchain/player?type=2&id=1357960253&auto=0&height=66"></iframe>
-</div>
-
-<style>
-    #music {
-        position: fixed;
-        right: 15px;
-        bottom: 0;
-        z-index: 998;
-    }
-</style>
     
     
 

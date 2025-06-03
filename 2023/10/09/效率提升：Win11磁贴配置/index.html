@@ -258,50 +258,53 @@
    
   <nav class="article-nav">
     
-      <a href="/2023/11/26/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%EF%BC%9ASTM32%20F407%20%E9%9C%B8%E5%A4%A9%E8%99%8E%E5%BC%80%E5%8F%91%E6%9D%BF/" class="article-nav-link">
+      <a href="/2023/10/09/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%EF%BC%9Aubuntu%20%E5%AE%89%E8%A3%85%20emscripten%20%E6%97%B6%20install%20latest%20%E6%8A%A5%E9%94%99/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            技术学习：STM32 F407 霸天虎开发板
+            问题解决：ubuntu 安装 emscripten 时 install latest 报错
           
         </div>
       </a>
     
     
-      <a href="/2023/10/09/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%EF%BC%9Aubuntu%20%E5%AE%89%E8%A3%85%20emscripten%20%E6%97%B6%20install%20latest%20%E6%8A%A5%E9%94%99/" class="article-nav-link">
+      <a href="/2023/07/25/%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E7%AC%94%E8%AE%B0%EF%BC%9ARFID/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">问题解决：ubuntu 安装 emscripten 时 install latest 报错</div>
+        <div class="article-nav-title">北邮国院笔记：RFID</div>
       </a>
     
   </nav>
 
   
    
-<div class="gitalk" id="gitalk-container"></div>
+  <div class="gitalk" id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
 
-<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
-
-
-<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
-
-
-<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
-
-<script type="text/javascript">
-  var gitalk = new Gitalk({
-    clientID: 'Ov23li1TkQEYXFu51qLu',
-    clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
-    repo: 'Jingqing3948.github.io',
-    owner: 'Jingqing3948',
-    admin: 'Jingqing3948',
-    // id: location.pathname,      // Ensure uniqueness and length less than 50
-    id: md5(location.pathname),
-    distractionFreeMode: true,  // Facebook-like distraction free mode
-    pagerDirection: 'last'
-  })
-
-  gitalk.render('gitalk-container')
-</script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      const gitalkScript = document.createElement('script');
+      gitalkScript.src = 'https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js';
+      gitalkScript.onload = function () {
+        const md5Script = document.createElement('script');
+        md5Script.src = 'https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js';
+        md5Script.onload = function () {
+          const gitalk = new Gitalk({
+            clientID: 'Ov23li1TkQEYXFu51qLu',
+            clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
+            repo: 'Jingqing3948.github.io',
+            owner: 'Jingqing3948',
+            admin: ['Jingqing3948'],
+            id: md5(location.pathname),
+            distractionFreeMode: true,
+            pagerDirection: 'last'
+          });
+          gitalk.render('gitalk-container');
+        };
+        document.body.appendChild(md5Script);
+      };
+      document.body.appendChild(gitalkScript);
+    });
+  </script>
 
   
    
@@ -696,23 +699,6 @@
 </script>
 
 
-    
-    <div id="music">
-    
-    
-    
-    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="86"
-        src="//music.163.com/outchain/player?type=2&id=1357960253&auto=0&height=66"></iframe>
-</div>
-
-<style>
-    #music {
-        position: fixed;
-        right: 15px;
-        bottom: 0;
-        z-index: 998;
-    }
-</style>
     
     
 
