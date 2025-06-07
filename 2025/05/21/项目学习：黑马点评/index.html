@@ -229,7 +229,7 @@ end</pre>
 <p>按理来说我们应该在每个 Controller 里面补全代码，根据获取到的 cookie 里携带的 session id 去找到对应的 session，进而获取到对应的用户数据。但是有很多 Controller 可能都需要这样获取用户信息，所以这种写法就不太好。</p>
 <p>我们可以用拦截器处理：</p>
 <pre class="mermaid">graph LR
-    A[拦截器<br>（统一入口）] --> B[OrderController]
+    A[拦截器（统一入口）] --> B[OrderController]
     A --> C[UserController]
     A --> D[XxxController]</pre>
 <p>然后拦截器校验完，按我们之前说的，把用户信息缓存到 ThreadLocal 里面供这些控制类取用。</p>
