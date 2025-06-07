@@ -147,11 +147,11 @@
 
     function animate() {
       // 平滑追踪滚动值
-      currentScroll += (targetScroll - currentScroll) * 0.13;
+      currentScroll += (targetScroll - currentScroll) * 0.08;
 
       // 视觉映射
 	const blurVal = Math.min(currentScroll / 200, 10);
-	const scaleVal = 1 + Math.min(currentScroll / 3000, 0.12);
+	const scaleVal = 1 + Math.min(currentScroll / 7000, 0.3);
 	const opacityVal = 1 - Math.min(currentScroll / 2000, 0.5);
 	const maskOpacity = Math.min(currentScroll / 1500, 0.5);
 
