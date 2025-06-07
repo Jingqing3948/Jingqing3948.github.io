@@ -154,7 +154,7 @@
 <li>DTS 高电平，Q2 NPN 导通，U18 是一个由 EN 控制开关的模拟开关，2 脚被导通为低电平，连接1脚拉低 NRST 复位。程序下载执行。</li>
 <li>U18 模拟开关的作用是稳定电路。开发板复位的时候 DTR RTS 是不稳定的状态，如果没有这个模拟开关，DTR RTS 可能进入 ISP 状态，复位，进入 ISP 状态，复位，进入……一直运行不起来了。模拟开关右侧电容使得 VCC 需要花一点时间充电给 EN，而不是立刻激活 EN（EN 1.8V 左右）。这时候 DTR RTS 已经稳定了，可以导通 U18 12 引脚来给 NRST 复位了。</li>
 </ol>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1698858387784.png" alt=" "></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1698858387784.png" alt=" " /></p>
 <p>不过 FlyMcu 实际配置方式是反过来的，因为他的协议是 232（+3~+15 是 0，-3~-15 是 1），和 TTL（3.3v 是1,0v 是0）正相反。</p>
 <p><em>但是实际操作的时候可能遇到一种状况：部分开发板无法使用 FlyMcu 写入。我就碰到了。解决办法是使用 stm32 cube programmer 烧录程序。</em></p>
 <p><em>配置如下：开发板上 boot 连接 3v3，RTS DTR=0，选中 read unprotect，建立连接后再烧录程序。</em></p>
@@ -168,26 +168,26 @@
 <p>32：32位微控制器。</p>
 <blockquote>
 <p>正点原子网课：8051，X86 属于 CISC；ARM, MIPS, RISC-V 属于 RISC.</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202304012212735.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202304012212735.png" alt="" /></p>
 <p>冯诺依曼和哈佛结构的主要区别：程序存储器和数据存储器是否分开存储。不分开是冯诺依曼，分开是哈佛。哈佛执行效率更高，冯诺伊曼资源占据更少。</p>
-<p>CORTEX-M 系列介绍<br>
+<p>CORTEX-M 系列介绍<br />
 ARM 公司（做精简指令集计算机的）只设计内核架构和授权知识产权，不参与设计芯片，给其他合作公司授权设计芯片。半导体厂商再根据架构完善周边电路并制作芯片。现在95%手机、平板都是 ARM 架构的， ARM 公司是真的牛。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202304012216885.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202304012216885.png" alt="" /></p>
 <p>其优点在于低功耗低成本高性能，且支持16/32位双指令集。</p>
 <p>ARM 有9个版本，从 v6 开始出现 cortex 的命名。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202304012219288.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202304012219288.png" alt="" /></p>
 </blockquote>
 <p>随着需求不断发展，stm32 在一众 8/16位 MCU 中脱颖而出。</p>
 <p>stm32 自带许多通信接口，如 spi i2c uart 等；扫地机，无人机，手环等都可以是 stm32 的作品。</p>
 <p>如何选型？以下是几大类 stm32 的特点。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20231102013709264.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20231102013709264.png" alt="" /></p>
 <p>本课程学习使用的开发板命名方式：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20231102013830412.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20231102013830412.png" alt="" /></p>
 <p>选型：满足项目需求的前提下，尽可能选便宜的，比如主频低，功耗低，引脚少，flash 少。</p>
 <p>引脚分配：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1698860405030.png" alt="1698860405030"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1698860405030.png" alt="1698860405030" /></p>
 <p>看手册的重点：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1698860693691.png" alt="1698860693691"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1698860693691.png" alt="1698860693691" /></p>
 <p>外设资源，芯片功能，引脚，引脚大致分类，内存，封装……</p>
 <p>哎想起前两天面试被问，如果选型 MCU 我应该看哪些因素。我只想到了外设和内存hhh。属于是只会写代码的笨比了。这也是我开始重新看野火课程的原因之一。</p>
 <h2 id="寄存器">寄存器</h2>
@@ -196,11 +196,11 @@ ARM 公司（做精简指令集计算机的）只设计内核架构和授权知�
 <p>芯片视图如下。</p>
 <p>丝印：芯片上印的信息。型号，内核，生产批次等。</p>
 <p>引脚：左上角是有小圆点的，从左上-左下-右下-右上逆时针看。或者如果没有小圆点，把丝印方向摆正，从左上角开始看。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20231102121423731.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20231102121423731.png" alt="" /></p>
 <p>芯片内部组成：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20231102121841662.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20231102121841662.png" alt="" /></p>
 <p>寄存器映射：32位，2^32^=4GB，因此所有程序都需要通过内存 4GB 去映射访问。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20231102122058475.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20231102122058475.png" alt="" /></p>
 <p>block7：M4 芯片内外设，比如一些通信总线这些都算外设。</p>
 <p>block1：内存。</p>
 <p>block0：代码。不过实际上由于设计工艺的问题，block0 block1 都只用了很少的一部分来存代码或者作为内存。</p>
@@ -208,7 +208,7 @@ ARM 公司（做精简指令集计算机的）只设计内核架构和授权知�
 <p>总线速度：AHB&gt;APB2&gt;APB1. APB1 是较低速的外设，包括 I2C UART SPI 看门狗等。</p>
 <p>我们想要操作特定的外设，其实就是控制他的寄存器。控制寄存器就要找到寄存器相应的地址往里面写入数据，寄存器地址就是内存中的地址映射。</p>
 <p>比如 GPIOF 我们想让其端口全部输出高电平。我们查找 stm32f407 手册，发现 GPIOF 的地址是 0x40021400，GPIOF 的 ODR（output data register）相对起始地址的偏移地址是14，则我们需要给 0x40021414 的地址写入数据 0xFFFF.</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20231102123404182.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20231102123404182.png" alt="" /></p>
 <p>51 单片机库函数中封装的 reg51.h 中，利用 sfr 定义寄存器地址；而 stm32 库函数中使用宏定义，这些就是寄存器映射操作。<strong>对芯片里一个特殊功能的内存单元起别名的过程就是寄存器映射。</strong> 给这个地址再分配一个地址交重映射，stm32 中不咋常用。</p>
 <h3 id="C语言对寄存器的封装">C语言对寄存器的封装</h3>
 <p>这样逐个地址，哪怕已经进行了寄存器映射，还是很复杂。</p>
@@ -227,11 +227,11 @@ ARM 公司（做精简指令集计算机的）只设计内核架构和授权知�
 <p>import 的作用相当于 extern，所以没有找到这个函数的定义，需要我们自己去定义。这就是为什么简单引入了启动文件会报错。</p>
 <p>而 __main 是当我们定义了 main() 函数后，编译器会自动链接一些c语言库定义好的函数，用于初始化堆栈并且调用我们的 main().</p>
 <p><strong>注意，如果想要生成 __main 函数，必须勾选下面这一项。</strong></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20231102200243099.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20231102200243099.png" alt="" /></p>
 <p>野火你讲的是真好啊。我之前草草学了学 stm32 单片机用法，比赛的时候自己想移植代码，改了启动文件也不好使，就是报错。原来是这个原因。</p>
 <p>那么我们只需要定义这么一个函数，哪怕内容是空都无所谓。</p>
 <p>最终我们定义的初步项目框架如下：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1698926683862.png" alt="1698926683862"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1698926683862.png" alt="1698926683862" /></p>
 <p>stm32f4xx.h：内容为空，有这么个东西就行。</p>
 <p>main.c：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f4xx.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">SystemInit</span><span class="params">()</span>&#123;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -241,24 +241,24 @@ ARM 公司（做精简指令集计算机的）只设计内核架构和授权知�
 <p>调用代码：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;reg51.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> 0 </span></span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">	PA0=<span class="number">0xFE</span>;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
 <p>接下来我们需要定义 LED 灯的寄存器位置。阅读原理图如下：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1698939342199.png" alt="1698939342199"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1698939342199.png" alt="1698939342199" /></p>
 <p>大致可以看出，板子上的这个 RGB LED 通过三个引脚来控制 RGB 亮度。输出低电平则导通点亮。</p>
 <p>具体输出方式是通过 ODR 进行输出。查找 stm32f4xx 中文参考手册可见：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1698940158585.png" alt="1698940158585"></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1698940257044.png" alt="1698940257044"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1698940158585.png" alt="1698940158585" /></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1698940257044.png" alt="1698940257044" /></p>
 <p>那么我们就要给 0x4002 1400 +14 的地址赋值，让 1&lt;&lt;6 1&lt;&lt;7 1&lt;&lt;8 的位分别赋值为低电平.</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">	 *(<span class="type">unsigned</span> <span class="type">int</span> *)(<span class="number">0x40021400</span>+<span class="number">14</span>)&amp;=~(<span class="number">1</span>&lt;&lt;<span class="number">6</span>); </span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>然而这样也不亮。亮就怪了，stm32 寄存器是需要先做初始化配置的。</p>
 <h4 id="点灯——stm32-版">点灯——stm32 版</h4>
 <p>首先我们要设置 GPIO 模式。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1698940961543.png" alt="1698940961543"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1698940961543.png" alt="1698940961543" /></p>
 <p>想点灯 输出高低电平，是 01 通用输出模式。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*(<span class="type">unsigned</span> <span class="type">int</span> *)(<span class="number">0x40021400</span>+<span class="number">0</span>)&amp;=~(<span class="number">3</span>&lt;&lt;(<span class="number">6</span>*<span class="number">2</span>)); </span><br><span class="line">*(<span class="type">unsigned</span> <span class="type">int</span> *)(<span class="number">0x40021400</span>+<span class="number">0</span>)|=(<span class="number">1</span>&lt;&lt;(<span class="number">6</span>*<span class="number">2</span>)); </span><br></pre></td></tr></table></figure>
 <p>意思是先把 PF6 模式位置为00，然后赋值为01通用输出。</p>
 <p>配置完模式之后，还需要配置时钟，stm32 每个外设都需要配置时钟。</p>
 <p>前面提到过 GPIO 是在 AHB1.</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1699103516061.png" alt="1699103516061"></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1699103724261.png" alt="1699103724261"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1699103516061.png" alt="1699103516061" /></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1699103724261.png" alt="1699103724261" /></p>
 <p>全部代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f4xx.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="comment">//RCC</span></span><br><span class="line">    *(<span class="type">unsigned</span> <span class="type">int</span> *)(<span class="number">0x40023800</span>+<span class="number">0x30</span>)|=(<span class="number">1</span>&lt;&lt;<span class="number">5</span>); </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//Mode</span></span><br><span class="line">    *(<span class="type">unsigned</span> <span class="type">int</span> *)(<span class="number">0x40021400</span>+<span class="number">0</span>)&amp;=~(<span class="number">3</span>&lt;&lt;(<span class="number">6</span>*<span class="number">2</span>)); </span><br><span class="line">    *(<span class="type">unsigned</span> <span class="type">int</span> *)(<span class="number">0x40021400</span>+<span class="number">0</span>)|=(<span class="number">1</span>&lt;&lt;(<span class="number">6</span>*<span class="number">2</span>)); </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    *(<span class="type">unsigned</span> <span class="type">int</span> *)(<span class="number">0x40021400</span>+<span class="number">0x14</span>)&amp;=~(<span class="number">1</span>&lt;&lt;<span class="number">6</span>); </span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">SystemInit</span><span class="params">()</span>&#123;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>接下来，我们把这几个地址值提取出来，宏定义映射寄存器。</p>
@@ -270,7 +270,7 @@ ARM 公司（做精简指令集计算机的）只设计内核架构和授权知�
 <p>GPIO：通用输入输出引脚。我们可以通过编程来输出或者读取数据。大部分 GPIO 是已经连接、定义好了一些功能（比如上面尝试过的 PF6 LED），有的引脚有多个功能支持重新映射。</p>
 <p>STM32 GPIO 除了 adc 是 3.3v，其他 GPIO 都是 5v 容忍。</p>
 <p>GPIO 框图（<strong>重点</strong>）如下：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20231104221140325.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20231104221140325.png" alt="" /></p>
 <p>先从输出开始看。最右侧的 IO 引脚是连接在芯片周围一圈的144个引脚之一。除了 IO 引脚，此图中其他所有部分都是封装在芯片内部我们看不到的。</p>
 <p>往左有两个保护二极管。当电压大于 5V，电流会往上 VDD_FT 走。当电压为负电压，电流会由 VSS 往 IO 引脚走。</p>
 <p>上下拉电阻：比武外接一个低电平工作的设备，但是我们不希望一上电外设就工作，可以设置上拉电阻，稳定一段时间。</p>
@@ -278,12 +278,12 @@ ARM 公司（做精简指令集计算机的）只设计内核架构和授权知�
 <p>配置 GPIO 模式（输入/输出，选择哪一路）通过前面用过的 MODER 配置。</p>
 <p>输出模式（图中输出控制部分）配置端口输出类型寄存器 OTYPER，比如推挽输出，开漏输出。</p>
 <p>推挽输出：有直接驱动能力，输出0就是低电平，输出1就输出可以工作的高电平。原理是采用了一个放大的电路？</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1699356797818.png" alt="1699356797818"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1699356797818.png" alt="1699356797818" /></p>
 <p>输入（INT）为高电平时，反向后 PMOS 导通，输出高电平。输入为低电平时，反向后 NMOS 导通，输出低电平。我们可以用一个小电流去驱动出来一个大电流。</p>
 <p>开漏输出：自己本身没有输出高电平的手段。低电平可以接地，高电平没有 PMOS 管，是浮空状态。需要外接一个电阻。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1699357078909.png" alt="1699357078909"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1699357078909.png" alt="1699357078909" /></p>
 <p>stm32 输出 5V 电压的方法就是开漏输出外接电阻。通过接两个三极管的方式反向。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1699357296750.png" alt="1699357296750"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1699357296750.png" alt="1699357296750" /></p>
 <p>框图中的模拟部分输入输出则不用配置这些模式信息，直接由外设接到保护二极管再接到输出引脚。</p>
 <p>框图中的输入部分经过保护电压后，还需要施密特触发器调整一下。比如原来电压的数值并非精确的0或 3.3V，施密特触发器将高于 1.8V 的全部视作1，低于的全部视作0后输入芯片。模拟部分则不需要经过施密特触发器。</p>
 <p>因此配置 GPIO 输出的步骤如下：</p>
@@ -321,7 +321,7 @@ ARM 公司（做精简指令集计算机的）只设计内核架构和授权知�
 <p>固件是什么？其实就是程序，固化到 EEPROM 或 FLASH 中，操作最底层的设备。<strong>不是具体的应用，而是只操作最底层的设备。比如点灯算应用，给应用工程师提供库函数的工作是固件工程师的。</strong></p>
 <p>stm32 官方 stmf4 固件库下载地址：</p>
 <p><a target="_blank" rel="noopener" href="https://www.st.com/zh/embedded-software/stm32-standard-peripheral-libraries/products.html?querycriteria=productId=LN1939">STM32标准外设软件库: 相关产品</a></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20231108222206160.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20231108222206160.png" alt="" /></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ls</span></span></span><br><span class="line">Mode                 LastWriteTime         Length Name</span><br><span class="line">----                 -------------         ------ ----</span><br><span class="line">d-----         2023/11/8     22:16                Libraries</span><br><span class="line">d-----         2023/11/8     22:16                Project</span><br><span class="line">d-----         2023/11/8     22:17                Utilities</span><br><span class="line">d-----         2023/11/8     22:17                _htmresc</span><br><span class="line">-ar---         2023/11/8     22:15          88007 Package_license.html</span><br><span class="line">-ar---         2023/11/8     22:15          19611 Package_license.md</span><br><span class="line">-ar---         2023/11/8     22:15         152599 Release_Notes.html</span><br><span class="line">-ar---         2023/11/8     22:15       37185187 stm32f4xx_dsp_stdperiph_lib_um.chm</span><br></pre></td></tr></table></figure>
 <p>.chm：使用帮助文档。</p>
 <p>.html .md：一些版本更新，包许可证相关信息。</p>
@@ -402,15 +402,15 @@ ARM 公司（做精简指令集计算机的）只设计内核架构和授权知�
 <p>在 Project 文件夹里可以包含多给项目文件，不光只有 Keil 的。比如 IAR 的我们新建一个 IAR 文件夹，Keil 我们新建一个 RVMDK(uv5) 文件夹。RealView 是包含不止 MDK 的开发工具集合的称呼，MDK 是 MCU 开发工具集成包，uVersion 是 IDE，Keil 是公司名字。</p>
 <p>uVision 里新建工程，新建在 RVMDK(uv5) 文件夹下。</p>
 <p>新建组、添加文件如下：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20231109002542997.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20231109002542997.png" alt="" /></p>
 <p>STM32F4xx_StdPeriph_Driver 添加 STM32F4xx_StdPeriph_Driver/src 下的所有文件，屏蔽掉 dma2d fmc ltdc，后两个是 sd 和 lcd 屏幕组件。</p>
 <p>头文件如下：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20231109002823229.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20231109002823229.png" alt="" /></p>
 <p>宏定义如下：</p>
 <p>USE_STDPERIPH_DRIVER,STM32F40_41xxx</p>
 <p>我现在好想明白为什么宏定义在这里了，这样后面换单片机型号的时候可以直接修改这个宏定义。</p>
 <p><strong>PS：我下载的是 1.8.1 版本 stm32f4xx.h 库函数，里面出现了一段重复定义导致编译产生了200多个 warning。我把下面那一段删掉了就好了。</strong></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/true" alt="jingqing3948_1-1699463889291.png"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/true" alt="jingqing3948_1-1699463889291.png" /></p>
 <p>Output 里设置 Output 文件夹，不然都在 Proj 里太乱。</p>
 <p>记得勾选 MicroLib。</p>
 <h4 id="点灯——官方库函数版">点灯——官方库函数版</h4>
@@ -468,7 +468,7 @@ void RCC_AHB1PeriphClockCmd(uint32_t RCC_AHB1Periph, FunctionalState NewState)
 </ol>
 <h3 id="输入——按键点灯">输入——按键点灯</h3>
 <p>开发板按键电路如下：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20231109191525189.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20231109191525189.png" alt="" /></p>
 <p>按键未按下接地，按下后为高电平。电容起到消抖作用，软件处理就不需要手动延时消抖了。</p>
 <p>编程没啥难度，就是改了一下输入模式。使用 <code>ReadInputDataBits</code> 读取。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//bsp_button.c</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;bsp_button.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">Button_GPIO_Config</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA,ENABLE);</span><br><span class="line">    &#123;</span><br><span class="line">        GPIO_InitTypeDef GPIOInitStruct;</span><br><span class="line">        GPIOInitStruct.GPIO_Mode=GPIO_Mode_IN;</span><br><span class="line">        GPIOInitStruct.GPIO_Pin=GPIO_Pin_0;</span><br><span class="line">        GPIOInitStruct.GPIO_OType=GPIO_OType_PP;</span><br><span class="line">        GPIOInitStruct.GPIO_Speed=GPIO_Speed_50MHz;</span><br><span class="line">        GPIOInitStruct.GPIO_PuPd=GPIO_PuPd_NOPULL;</span><br><span class="line">        </span><br><span class="line">        GPIO_Init(GPIOA,&amp;GPIOInitStruct);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//main.c</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f4xx.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;bsp_led.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;bsp_button.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//RCC</span></span><br><span class="line">    LED_GPIO_Config();</span><br><span class="line">    Button_GPIO_Config();</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_0))GPIO_SetBits(GPIOF, GPIO_Pin_6);</span><br><span class="line">        <span class="keyword">else</span> GPIO_ResetBits(GPIOF, GPIO_Pin_6);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -481,7 +481,7 @@ void RCC_AHB1PeriphClockCmd(uint32_t RCC_AHB1Periph, FunctionalState NewState)
 <p>stm32 里有一部分别名区域，用于映射外设、SRAM 中特定的位带区，我们操作这一部分别名区域时就可以实现对外设、SRAM 位带区与的位操作。</p>
 <p>片上外设位带区：0X4000 0000~0X400F 0000，别名区：0X4200 0000~0X43FF FFFF，包含 APB12，AHB1 外设。</p>
 <p>SRAM 位带区：0X2000 0000~0X200F 0000，别名区：0X2200 0000~0X23FF FFFF</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20231109220918350.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20231109220918350.png" alt="" /></p>
 <p>外设地址 A 别名地址为：AliasAddr= =0x42000000+ (A-0x40000000)<em>8</em>4 +n*4  （n是位序号）</p>
 <p>SRAM 地址 A 别名地址为：AliasAddr= =0x22000000+ (A-0x20000000)<em>8</em>4 +n*4</p>
 <p>扩大了32倍，可以对32位寄存器中的每一位进行操作。</p>
@@ -582,9 +582,9 @@ void RCC_AHB1PeriphClockCmd(uint32_t RCC_AHB1Periph, FunctionalState NewState)
       </a>
     
     
-      <a href="/2023/10/09/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%EF%BC%9Aubuntu%20%E5%AE%89%E8%A3%85%20emscripten%20%E6%97%B6%20install%20latest%20%E6%8A%A5%E9%94%99/" class="article-nav-link">
+      <a href="/2023/10/09/%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%87%EF%BC%9AWin11%E7%A3%81%E8%B4%B4%E9%85%8D%E7%BD%AE/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">问题解决：ubuntu 安装 emscripten 时 install latest 报错</div>
+        <div class="article-nav-title">效率提升：Win11磁贴配置</div>
       </a>
     
   </nav>

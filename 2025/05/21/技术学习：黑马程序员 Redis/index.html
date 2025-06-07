@@ -137,7 +137,7 @@
 <ul>
 <li>S：结构化，比如在 MySQL 我们需要定义一个表，第一个属性是 id 第二个是 name 第三个是 age…… 定义好表之后所有新插入的数据都必须遵循这个结构，各个表还可能有外键等关联，所以总的来说不能随意修改表的属性。而 NoSQL 结构要求没那么严格，比如下面这种 Redis 定义方式也可以，就是没啥章法：</li>
 </ul>
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505211052874.png" alt="image-20250521105232832" style="zoom:67%;" />
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505211052874.png" style="zoom:67%;" />
 <p>​	除了键值类型，还有文档类型，列类型，图类型等 NoSQL。</p>
 <ul>
 <li>
@@ -255,7 +255,7 @@
 <p>Redis 允许键值进行拼接，如：<code>项目名:业务名:类型:id</code> 这样。</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">6379</span>&gt; <span class="built_in">set</span> project:user:<span class="number">1</span> &#x27;&#123;&quot;id&quot;:<span class="number">1</span>, &quot;name&quot;:&quot;Jack&quot;, &quot;age&quot;: <span class="number">21</span>&#125;&#x27;</span><br><span class="line">OK</span><br><span class="line"><span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">6379</span>&gt; <span class="built_in">set</span> project:user:<span class="number">2</span> &#x27;&#123;&quot;id&quot;:<span class="number">2</span>, &quot;name&quot;:&quot;Rose&quot;, &quot;age&quot;: <span class="number">18</span>&#125;&#x27;</span><br><span class="line">OK</span><br><span class="line"><span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">6379</span>&gt; <span class="built_in">set</span> project:product:<span class="number">1</span> &#x27;&#123;&quot;id&quot;:<span class="number">1</span>, &quot;name&quot;:&quot;小米<span class="number">11</span>&quot;, &quot;price&quot;: <span class="number">4999</span>&#125;&#x27;</span><br><span class="line"><span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">6379</span>&gt; <span class="built_in">set</span> project:product:<span class="number">2</span> &#x27;&#123;&quot;id&quot;:<span class="number">2</span>, &quot;name&quot;:&quot;荣耀<span class="number">6</span>&quot;, &quot;price&quot;: <span class="number">2999</span>&#125;&#x27;</span><br><span class="line">OK</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>查看图形化客户端可以发现：Key 已经形成层级结构。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212230806.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212230806.png" alt="" /></p>
 <h4 id="Hash">Hash</h4>
 <p>无序字典，类似 java HashMap.</p>
 <p>之前我们学过，String 处理对象的方式是变成 json 字符串，但是这样缺点是修改比较难操作。而 Hash 数据结构是可以真正将所有字段都分开存储方便操作。</p>
@@ -306,7 +306,7 @@
 </tbody>
 </table>
 <p>添加完字段之后，图形化界面中可视化结构：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212241594.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212241594.png" alt="" /></p>
 <h4 id="List">List</h4>
 <p>大致可以看做 java 的双向链表结构。有序，插入删除速度快，查询速度一般。</p>
 <p>常常用于存储有顺序的数据，比如排队，朋友圈点赞列表等。</p>
@@ -401,7 +401,7 @@
 <p><em>java 的 treeset：一种有序集合，底层逻辑是红黑树。红黑树类似 AVL 树，这两种树在排序的同时也会保证树的左右子节点深度，数量差别不大以免树结构的复杂度变得和线性结构差不多，AVL 是规定左右子节点深度差不能超过1，而红黑树要求松一些，规定从根到叶子的最长路径不可能达到最短路径的2倍长，所以旋转操作相对 AVL 少一些，AVL 更适用于查找操作远多于插入删除操作数量的情况。</em></p>
 <p>SortedSet 每个元素都带有一个 score 属性可以排序，通过跳表+hash表排序。</p>
 <p><em>跳表结构大概如下，来加速单链表的查找效率。可以再多建几级索引。图源：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Appleeatingboy/article/details/119948340">跳表的原理与实现 [图解]_跳表实现-CSDN博客</a></em></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212313909.png" alt="img"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212313909.png" alt="img" /></p>
 <p>SortedSet 由于其排序效率高，常常被用于实现如排行榜这样的功能。</p>
 <table>
 <thead>
@@ -487,7 +487,7 @@
 <p>使用方式很简单：引入依赖，建立连接，使用，释放资源。</p>
 <h5 id="引入依赖">引入依赖</h5>
 <p>在 pom.xml 文件中粘贴：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505221740557.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505221740557.png" alt="" /></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--jedis--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>redis.clients<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jedis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.7.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--单元测试--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.jupiter<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-jupiter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.7.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>第一部分依赖是必须引入的，第二部分是测试用的。</p>
 <p>执行代码：</p>
@@ -495,7 +495,7 @@
 <h5 id="连接池">连接池</h5>
 <p>Jedis 线程不安全，而且频繁创建销毁 Jedis 线程性能损耗比较大。</p>
 <p><em>线程不安全的大概原因：每次 set 的时候都要调用 connect 方法。在 connect 方法里，一个实例的多个线程都共用一个 socket, inputstream, outputstream。所以如果线程1正在读写，线程2把 socket重新初始化了，那么1的连接就断了。或者两个线程同时读写，inputstream outputstream 共用可能就会导致输入或读取数据错误。<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1678172">使用jedis面临的非线程安全问题-腾讯云开发者社区-腾讯云</a></em></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505222302284.png" alt="img"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505222302284.png" alt="img" /></p>
 <blockquote>
 <p>图源：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/84481313">java客户端：Jedis和Jedis连接池的基本使用和配置 - 知乎</a></p>
 </blockquote>
@@ -570,7 +570,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> RedisTemplate&lt;String, Object&gt; redisTemplate;</span><br></pre></td></tr></table></figure>
 <p>重新运行后发现数据库里面的键值都没有乱码了（值的话，可能 String Object 转换成 JSON 也是 String 的形式）。</p>
 <p>尝试传入对象也非常顺利，假设新建了一个 User 对象，数据库中成功传入后的 json value 如下（第一句话就是帮助反序列化还原用的）：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505231149205.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505231149205.png" alt="" /></p>
 <p>并且 java 输出里面自动反序列化成对象的输出形式：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">value User(name=jingqing, age=22)</span><br></pre></td></tr></table></figure>
 <p>但是可以看出，上面 class 那一行占用存储空间还是挺大的，比这个对象的其余部分内容都长。</p>

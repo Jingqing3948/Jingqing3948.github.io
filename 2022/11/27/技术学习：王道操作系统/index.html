@@ -141,7 +141,7 @@
 <li>硬件</li>
 </ul>
 <p>操作系统是一类系统软件，调度硬件资源，合理分配管理软件（因此操作系统又被称作资源管理器（resource manager））。</p>
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211121137338.png" alt="image-20221026211255236" style="zoom:67%;" />
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211121137338.png" style="zoom:67%;" />
 <p>程序要运行首先要被放到内存中，然后才能被 CPU 处理；运行中的程序叫进程。</p>
 <p>双击打开 QQ.exe，对应进程就会被放到内存中；</p>
 <p>QQ 正常运行过程中，对应进程被 CPU 处理。</p>
@@ -167,16 +167,16 @@
 <p>手工操作阶段：用户手工打点，给机器。人机协调不均衡，资源分配不均匀。</p>
 <p>批处理阶段——单道批处理系统：用户打好的点交给磁带，磁带读入计算机速度快得多（监督程序，早期的操作系统）。但是利用率仍然很低。</p>
 <p>批处理阶段——多道批处理系统：每次内存中同时读入多个程序。多个程序并发执行，有了”中断“的概念。但是用户在程序执行的时候没法干涉，人机交互很差。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212021804594.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212021804594.png" alt="" /></p>
 <p>分时操作系统：计算机以<strong>时间片</strong>为单位轮流给所有用户提供服务。用户的请求可以被及时响应，解决了人机交互问题；各个用户之间也感受不到其他用户的存在。但是众生平等，没有优先级。</p>
 <p>实时操作系统：优先度高的任务可以先被处理，并且必须在给定的时限内完成任务。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212021811216.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212021811216.png" alt="" /></p>
 <h2 id="OS-运行机制和体系结构">OS 运行机制和体系结构</h2>
 <p>计算机中的指令有的安全（加减乘除运算），有的危险一点（清空内存）。因此需要通过权限控制限制用户能执行的指令。</p>
 <p>具体实现方法为：CPU 处于核心态（管态）时可以执行所有指令；处于用户态（目态）时只能执行非特权指令。</p>
 <p>内核程序是系统的管理者，可以执行所有指令，运行在核心态；</p>
 <p>应用程序只能执行非特权指令，运行在用户态。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212022149616.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212022149616.png" alt="" /></p>
 <p>操作系统的内核包含橙黄两部分：大内核。</p>
 <p>只包含黄色部分：微内核。</p>
 <p>各自的缺点：大内核组织结构混乱，难以维护；微内核频发切换，性能低。</p>
@@ -184,36 +184,36 @@
 <p>一开始的计算机只是简单的串行执行程序。</p>
 <p>现在的操作系统不仅可以并发执行程序，而且收到中断指令时，CPU 会切换到内核模式，中断当前程序的执行，按中断指令调整程序执行顺序，然后恢复到用户态继续执行。</p>
 <p>中断分内中断、外中断。区别在于中断指令来自于 CPU 内部还是外部。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212022249948.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212022249948.png" alt="" /></p>
 <h2 id="系统调用">系统调用</h2>
 <p>我们知道计算机硬件为了供用户使用，向上层提供了一些接口。用户直接使用的接口叫命令接口；用户通过应用程序间接使用的接口叫程序接口。系统调用是操作系统提供给应用程序的接口。</p>
 <p>系统调用可以增加安全性，不让用户可以直接随意访问所有功能。如两个人去打印店用打印机，第一个人打到一半第二个人发送了他的打印任务请求，可打印机最终还是有序地把两个人的任务分别打印好了。如果用户能直接让打印机打印自己的任务，不加协调，无法实现这样的结果。</p>
 <p>哪些操作要通过系统调用的方式进行？凡是和资源相关的。这样可以保证系统的安全性和稳定性。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212030058354.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212030058354.png" alt="" /></p>
 <p>编程语言提供的一些库函数也是从下往上提供的一些封装的功能。但库函数不一定是系统调用。如求绝对值的库函数，这个库函数就不是系统调用，用户直接就能访问。</p>
 <p>现在大多数系统调用都是高级语言中封装的部分库函数。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212030122447.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212030122447.png" alt="" /></p>
 <p>陷入指令核心态不能执行，可以理解为：核心态只能执行系统调用，不能发起系统调用给自己。</p>
 <h2 id="进程">进程</h2>
 <p>进程（process）是操作系统中最基本的抽象。</p>
 <p>进程就是运行中的程序，程序本身只是存放在磁盘上的一些静态指令，是操作系统让其运行起来。</p>
 <p>现在我们的计算机可以同时运行上百个进程，是通过虚拟化 CPU 而实现。每个进程只运行一个时间片段，然后跳转到其他进程，造成多个进程同时运行的假象。</p>
 <p>内存中存放每个进程的程序段和数据段，但内存怎么知道哪个是哪个进程的？通过一种数据结构叫进程控制块（PCB）找到对应进程的额程序段和数据段。程序段、数据段、PCB 组成了进程实体。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212031509614.png" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212031512628.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212031509614.png" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212031512628.png" alt="" /></p>
 <p>操作系统需要一些低级机制（mechanism）切换程序运行，如上下文切换（context switch，停止当前程序，并运行另一个程序）；还需要一些智能决定要切换到哪个程序，如策略（poliicy，根据一些算法判断要运行哪个程序，如“哪个程序在上一分钟运行的时间更长？”）</p>
 <h3 id="进程的几种状态">进程的几种状态</h3>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212031514568.png" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212031605299.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212031514568.png" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212031605299.png" alt="" /></p>
 <p>就绪态就是除了处理机其他资源都准备就绪了。阻塞态还需要准备资源才能进入就绪态。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212031608044.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212031608044.png" alt="" /></p>
 <h3 id="进程控制">进程控制</h3>
 <p>就是这几种进程状态之间的切换。</p>
-<p>通过两个指针实现：就绪队列指针和阻塞队列指针，用于存放就绪和阻塞的进程（阻塞队列可能还有好几个，按阻塞原因分组）。<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212031747844.png" alt=""></p>
+<p>通过两个指针实现：就绪队列指针和阻塞队列指针，用于存放就绪和阻塞的进程（阻塞队列可能还有好几个，按阻塞原因分组）。<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212031747844.png" alt="" /></p>
 <p>状态切换使用原语，因为原语执行过程中不会受到中断的干扰。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212031748654.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212031748654.png" alt="" /></p>
 <p>原语做的操作无非是：1. 修改 PCB；2. 把 PCB 放到对应队列中；3. 分配/释放资源。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212032207002.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212032207002.png" alt="" /></p>
 <h3 id="进程通信">进程通信</h3>
 <p>进程之间互相通信，安全起见不能直接进行。</p>
 <ol>
@@ -230,7 +230,7 @@
 <h2 id="线程">线程</h2>
 <p>让一个进程可以并发执行多个任务。比如 qq 聊天的同时可以发文件收消息发消息。</p>
 <p>一个进程包含多个线程。线程是调度， CPU 的程序执行单元，进程是资源分配的单元，比如把显示器资源分配给 QQ。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212041613632.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212041613632.png" alt="" /></p>
 <p>线程有两种实现方式：</p>
 <ol>
 <li>用户级线程 （ULT），进程的切换由应用程序实现，而不需要操作系统管理，因此用户态下就能实现线程的切换，且线程的存在对用户透明，对操作系统不透明。</li>
@@ -242,17 +242,17 @@
 <ol>
 <li>
 <p>多个用户级进程映射到一个内核级进程上。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212041620426.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212041620426.png" alt="" /></p>
 <p>线程切换不用在核心态下进行，切换效率高，但是并发度不高。</p>
 </li>
 <li>
 <p>一对一。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212041621304.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212041621304.png" alt="" /></p>
 <p>优缺点正好和1相反。</p>
 </li>
 <li>
 <p>n 对 m，用户级线程多于内核级线程，较为折中。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212041622150.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212041622150.png" alt="" /></p>
 </li>
 </ol>
 <h2 id="进程调度和切换">进程调度和切换</h2>
@@ -272,7 +272,7 @@
 <p>其对应的 PCB 并不会一起移出内存，而是存储了被挂起的进程的信息，被放到内存中的挂起队列里。</p>
 <p>中级调度就是挑选挂起的进程调入内存。</p>
 <p>引入挂起的进程实际上可以说是有七种状态。不能运行的进程都会先放到就绪挂起态或阻塞挂起态，能运行再回到内存（有的操作系统阻塞挂起态直接回到就绪挂起态）。注意挂起和阻塞的区别！</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212041640940.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212041640940.png" alt="" /></p>
 <p><strong>调度层次3：初级调度（就绪态→运行态）</strong></p>
 <p>就是从就绪队列中按一定算法挑一个进程来执行。</p>
 <h3 id="调度时机">调度时机</h3>
@@ -330,7 +330,7 @@
 <tr>
 <td>高响应比优先 HRRN</td>
 <td>综合考虑等待时间和处理时间</td>
-<td>$\frac{等待时间+服务时间}{服务时间}$，优先执行响应比大的</td>
+<td><mjx-container class="MathJax" jax="SVG" style="direction: ltr;"><svg style="overflow: visible; min-height: 1px; min-width: 1px; vertical-align: -1.158ex;" xmlns="http://www.w3.org/2000/svg" width="15.038ex" height="3.447ex" role="img" focusable="false" viewBox="0 -1011.8 6647 1523.5"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mfrac"><g data-mml-node="mrow" transform="translate(220,481.4) scale(0.707)"><g data-mml-node="mi"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">等</text></g><g data-mml-node="mi" transform="translate(1000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">待</text></g><g data-mml-node="mi" transform="translate(2000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">时</text></g><g data-mml-node="mi" transform="translate(3000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">间</text></g><g data-mml-node="mo" transform="translate(4000,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(4778,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">服</text></g><g data-mml-node="mi" transform="translate(5778,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">务</text></g><g data-mml-node="mi" transform="translate(6778,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">时</text></g><g data-mml-node="mi" transform="translate(7778,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">间</text></g></g><g data-mml-node="mrow" transform="translate(1909.3,-370.3) scale(0.707)"><g data-mml-node="mi"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">服</text></g><g data-mml-node="mi" transform="translate(1000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">务</text></g><g data-mml-node="mi" transform="translate(2000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">时</text></g><g data-mml-node="mi" transform="translate(3000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">间</text></g></g><rect width="6407" height="60" x="120" y="220"/></g></g></g></svg></mjx-container>，优先执行响应比大的</td>
 <td>都用</td>
 <td>非抢占式（当前进程主动结束时才进行调度）</td>
 <td>综合考虑了等待时间和服务时间，长作业等久了也会执行</td>
@@ -381,12 +381,12 @@
 </tr>
 </tbody>
 </table>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212071304330.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212071304330.png" alt="" /></p>
 <h2 id="进程同步和互斥">进程同步和互斥</h2>
 <p>虽然之前提过进程是异步的，各个进程相互独立，但是有的工作是有顺序的，比如先读入再写。</p>
 <p>同步，即相互制约，指部分工作的次序需要协调。</p>
 <p>互斥：一些共享资源不允许多个进程同时访问。比如一次只允许一个进程访问的资源叫临界资源。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212071354552.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212071354552.png" alt="" /></p>
 <p><strong>进程互斥遵循以下原则</strong>：</p>
 <ol>
 <li>空闲让进</li>
@@ -396,14 +396,14 @@
 </ol>
 <h3 id="进程互斥软件实现方法">进程互斥软件实现方法</h3>
 <ol>
-<li><strong>单标志法</strong>	<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212071403844.png" alt=""></li>
+<li><strong>单标志法</strong>	<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212071403844.png" alt="" /></li>
 </ol>
 <p>​	一开始只允许 P1 访问。一直到P1把 turn 变为0，然后切时间片的时候才能交给 P0. 两者交替访问。</p>
 <p>​	但是违背了空闲让进。如果只有 P0 想访问临界区，就一直进不去。</p>
 <ol start="2">
 <li>
 <p><strong>双标志先检查法</strong></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212071408231.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212071408231.png" alt="" /></p>
 <p>判断对方有没有在访问。</p>
 <p>但是如果按照①⑤③②⑥⑦的顺序，两者会同时访问临界资源，违反了忙则等待。</p>
 </li>
@@ -413,7 +413,7 @@
 </li>
 <li>
 <p><strong>Peterson 算法</strong></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212071417229.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212071417229.png" alt="" /></p>
 <p>可惜没有遵守让权等待。</p>
 </li>
 </ol>
@@ -426,66 +426,66 @@
 <li>
 <p><strong>TestAndSet 指令</strong></p>
 <p>是硬件实现方法，下图为软件实现方式。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212071812977.png" alt="TS 软件实现方式"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212071812977.png" alt="TS 软件实现方式" /></p>
 <p>如果 lock 原来是 true，那么其他进程访问的时候一直卡在 while 处。知道访问临界区的进程退出并解锁，其他进程访问的时候 lock 才是 false，才能跳出循环。</p>
 <p>但是无法解决让权等待问题，如果有一个进程把 lock 变成 true 之后又进不去临界区，其他进程就永远无法访问，一直忙等。</p>
 </li>
 <li>
 <p><strong>Swap 指令</strong></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212071819188.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212071819188.png" alt="" /></p>
 <p>逻辑上等同于 TS，也无法解决让权等待问题。</p>
 </li>
 <li>
 <p><strong>信号量</strong></p>
 <p>信号量用于表示系统中某种资源的数量。我们用一对原语（等待 P，信号 V）对信号量做操作.信号量涉及到的三个操作就是初始化、P、V。</p>
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212071834097.png" alt="image-20221207183421978" style="zoom:67%;" />
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212071834097.png" style="zoom:67%;" />
 <p>然而这样的信号量也没能解决让权等待问题。不过一个记录型信号量可以解决。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212071941190.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212071941190.png" alt="" /></p>
 <p>释放完资源，S.value≤0 说明还有进程在阻塞队列中，直接把当前刚释放的处理机给阻塞队列的进程执行。</p>
 <p>这样如果该进程进不去自己的处理机，就会把自己调整到堵塞态，把处理机让出来给别人，解决了让权等待问题。</p>
 </li>
 </ol>
 <h3 id="信号量实现进程同步和互斥">信号量实现进程同步和互斥</h3>
 <p><strong>互斥</strong>：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212072021901.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212072021901.png" alt="" /></p>
 <p><strong>同步</strong>：如怎样保证2一定在4之前执行</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212072032942.png" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212072035570.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212072032942.png" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212072035570.png" alt="" /></p>
 <h2 id="进程种类">进程种类</h2>
 <p><strong>生产者和消费者</strong></p>
 <p>生产者把产品放入未满的缓冲区，消费者从未空的缓冲区取出。两者要互斥地对缓冲区访问；同时如果生产者要放入满缓冲区要先等消费者取出，消费者要从空缓冲区取要先等生产者放，这两件事是同步关系。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212072051458.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212072051458.png" alt="" /></p>
 <p>注意 决定互斥的 mutex 顺序不能和决定同步的 empty full 颠倒！！！</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212080032409.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212080032409.png" alt="" /></p>
 <p>如上图，如果先进行①②，则互斥锁打开，生产者因为仓库已满无法放入，阻塞。消费者又因为互斥锁打开无法取东西，阻塞，就死锁了。</p>
 <p><strong>多生产者 多消费者</strong></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212080034113.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212080034113.png" alt="" /></p>
 <p>缓冲区大小（盘子）如果为1，那么不用互斥变量也能解决。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212080038949.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212080038949.png" alt="" /></p>
 <p>因为苹果、橘子、盘子变量同时只能有一个=1，每次最多也只能有一个变量访问。如果缓冲区变为2就需要 mutex 了，父母同时放入水果可能覆盖对方的值。</p>
 <p><strong>吸烟者问题</strong></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212080042576.png" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212080207995.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212080042576.png" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212080207995.png" alt="" /></p>
 <p>因为只有一个缓冲区，所以不需要 mutex 就能实现互斥。</p>
 <p>吸烟者问题其实是实现了一个生产者生产多种产品的问题。此例中生产者生产的产品顺序固定，还可以修改生产顺序逻辑。</p>
 <p><strong>读者-写者问题</strong></p>
 <p>允许多人同时读，但是有人在写的时候其他人不能读写。</p>
 <p>读进程有限的解决办法：mutex 用于所有读进程互斥访问 count 变量，当 count 变量=0时才可写入。但是写进程有饿死的风险。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212081327613.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212081327613.png" alt="" /></p>
 <p>如果再加一个写的互斥信号量，就能让写操作优先于读操作了。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212081327794.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212081327794.png" alt="" /></p>
 <p><strong>哲学家进餐问题</strong></p>
 <p>一个进程同时持有多个临界资源的情况。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212081937374.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212081937374.png" alt="" /></p>
 <p>如果只是简单地用两个信号量判断左右两根筷子是否空闲，可能所有进程并发拿起了左手的筷子，并发地卡住了右手的筷子，造成死锁。</p>
 <p>有几种解决方案：①拿两只筷子的行为添加一个互斥信号量。这样一个哲学家拿不起来被阻塞的时候，其他哲学家也不会尝试拿。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212090131892.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212090131892.png" alt="" /></p>
 <p>②奇数先拿左手，偶数先拿右手，这样相邻的人拿筷子就会互斥。</p>
 <h2 id="管程">管程</h2>
 <p>信号量挺琐碎的，而且容易出错，顺序错了都会影响结果。</p>
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212091244806.png" alt="管程是什么" style="zoom:67%;" />
 <p>管程内的数据只有在管程内的过程（函数）才能访问；一次只允许一个进程进入管程。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212091302459.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212091302459.png" alt="" /></p>
 <p>monitor 是 java 语法的管程，每次只允许一个进程访问（互斥），进程只能通过管程提供的特定入口进入。我们可以自己定义逻辑判断，让进程等待或释放（同步）。</p>
 <p>关键字 synchronized 修饰的函数同一时间段内只能被一个进程访问。</p>
 <h2 id="死锁">死锁</h2>
@@ -517,15 +517,15 @@
 <p>请求保持：采用静态分配方法，进程开始运行时就把所有需要的资源都给他，全程让他运行。但是可能有的资源这个进程就用一两下，一直占着会比较浪费；可能导致饥饿。</p>
 </li>
 <li>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212092228135.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212092228135.png" alt="" /></p>
 <p>比如上例，两个进程申请资源顺序都从小到大，先1后2，就不会死锁了。但是实际资源使用顺序可能并不是从小到大，效率低；而且增添设备要修改编号，不方便；而且用户编程要注意顺序，比较费事。</p>
 </li>
 </ol>
 <h3 id="避免死锁">避免死锁</h3>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212092245236.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212092245236.png" alt="" /></p>
 <p>安全序列就是按某种顺序分配资源，所有进程都能顺利得到，不会死锁。存在一种安全序列的情况，那么当前系统就是处于安全状态。</p>
 <p>银行家算法：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212092328566.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212092328566.png" alt="" /></p>
 <p>如图，剩余资源 (3, 3, 2)，视作一个一维数组。P0 全分配也不够，不行；P1可以，全分配给P1后P1归还资源，剩余资源数变成 (5, 3, 2)；然后P2不够，P3可以，变成 (7, 4, 3)；p4 变成 (7, 4, 5); P1 变成 (7, 5, 5)，最后 P2 P4，五轮循环全部分配。</p>
 <p>最大需求：Max</p>
 <p>已分配：Allocation</p>
@@ -535,18 +535,18 @@
 <p>Request≤Available：说明有多余空闲。系统先尝试分配一下，成功后证明安全，正式分配。</p>
 <h3 id="检测、消除死锁">检测、消除死锁</h3>
 <p>点表示进程，方框表示资源，箭头表示分配。如果所有箭头都能被顺利消除，证明不会发生死锁。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212100101090.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212100101090.png" alt="" /></p>
 <p>P1向R2要一个。R2给了P2一个自己还剩下一个，所以可以要到。（P1释放后，就能把P1的所有边去掉了）</p>
 <p>P2向R1要一个。但是R1三个都给出去了，所以P2要不到，阻塞了。</p>
 <p>P1运行完释放，R1里就有两个空闲的了，P2就能要到了。</p>
 <p>下例就没法全部消除，死锁了。只有P3能正常运行并释放。</p>
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212100117430.png" alt="image-20221210011729366" style="zoom:67%;" />
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212100117430.png" style="zoom:67%;" />
 <p>解决办法：可以挂起或终止死锁的部分节点，或者回退到没有发生死锁的断点。</p>
 <h2 id="内存">内存</h2>
 <p>存放数据的硬件，程序要先被放到内存中才能被处理.</p>
 <p>代码被编译成指令，通常还会涉及到几个地址。比如一个加法指令涉及的三部分（A，B，C）A代表：这是一个加法指令；B C代表：把B中的数据加到C中。</p>
 <p>指令中采取的是相对的逻辑地址，因为还不能确定物理存到了哪里。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212101408696.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212101408696.png" alt="" /></p>
 <p>装入有三种：</p>
 <ol>
 <li>绝对装入，编译时就知道要放到哪个物理地址里，编译时直接采用物理地址；适用于单道程序环境。</li>
@@ -558,7 +558,7 @@
 <p>内存中存了多少？空闲多少？进程分配到哪里？怎么释放？内存扩充（游戏60G，内存4G，采用虚拟内存的方式扩充）、地址转换（就是装入。逻辑地址和物理地址之间的链接 是操作系统解决，程序员不用管）、内存保护。</p>
 <p><strong>覆盖与交换技术</strong></p>
 <p>覆盖技术：解决内存太小的问题。内存中分固定区和覆盖区。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212101818476.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212101818476.png" alt="" /></p>
 <p>缺点在于固定区覆盖区要程序员自己规定，不透明。</p>
 <p>交换技术：把内存中某些进程拿出来，再把某些进程换进去。磁盘中专门有一块交换区，追求交换的速度，采用连续存储方式，IO 比文件区要快得多。缺页率高时换出得多。优先换出阻塞和优先级低的进程。</p>
 <p><em>覆盖是同一个进程中的</em>，交换是多个进程中的。</p>
@@ -601,17 +601,17 @@
 <p>页表存储页面信息，页表项包含页号和块号信息，每个页表项应该能表示出所有块数的信息。比如有2^20个块，则每个页表项要有20种状态，20位即至少三个字节。(但是通常采用4个字节 这样让总内存数可以等于证书个页表项)</p>
 <p><strong>基本地址变换机构</strong></p>
 <p>用于实现分页管理逻辑地址转变为物理地址的操作。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212111322421.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212111322421.png" alt="" /></p>
 <p>基本地址变换结构 每次要访问两次内存。</p>
 <p>查页表，知道要访问的数据的位置：一次；</p>
 <p>去访问数据：二次。</p>
 <p><strong>具有快表的地址变换机构</strong></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212111948810.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212111948810.png" alt="" /></p>
 <p>让最近访问过的页表项存到快表中。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212111948830.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212111948830.png" alt="" /></p>
 <p>如果快表中有该页表项，直接取出该项计算出物理地址，就不用到慢表中查表了。</p>
 <p>访问快表命中了，就只需要一次访存。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212112026971.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212112026971.png" alt="" /></p>
 <p><strong>两级页表</strong></p>
 <ol>
 <li>单极页表必须连续存储；</li>
@@ -619,19 +619,19 @@
 </ol>
 <p>可以把长长的页表再分成离散的几块，即第二级页表。又叫顶级页表。这样就解决了问题1.</p>
 <p>然后对于没有进内存的目标页，访问的时候产生缺页中断，然后调入页。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212121211186.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212121211186.png" alt="" /></p>
 <p>但是没有快表的话，两级页表要访存3次。</p>
 <p><strong>基本分段存储管理方式</strong></p>
 <p>按逻辑把程序分为一个个段（如 主函数，sum 函数……）分段离散的存储到内存中。可读性更高。</p>
 <p>段号规定了可以有多少个段，段内地址规定了段的大小。</p>
 <p>当然啦，为了查找到哪个段放在哪里，也需要段表。段表每一条包含段号、基址（起始位置）、段长。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212121532859.png" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212121541529.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212121532859.png" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212121541529.png" alt="" /></p>
 <p>段表寄存器存储在系统区的 PCB 中，即段表的位置。</p>
 <p>相比分页，分段是有意义的，是二维的，用户既要给出段名（如 main 函数的段），又要给出地址。</p>
 <p>分段也更容易实现信息共享和保护。首先什么代码可以共享？不能修改的代码可以共享，如常量，防止多个进程并发访问会出问题。</p>
 <p>然后分段是按逻辑分的。比如每个函数分一个段。分页是按大小直接截断的。所以分段可能提取出可以共享的代码片段，分页会更难一些。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212121545141.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212121545141.png" alt="" /></p>
 <p>分段也是两次访存，也可以尝试快表。</p>
 <p><strong>段页式管理方式</strong></p>
 <p>分段和分页的缺点是什么？</p>
@@ -640,12 +640,12 @@
 <p>那，把大的段分页就好了。</p>
 <p>分页的页表包含：页号 页内偏移量信息。分段的段表包含：段号 段长 基址信息（段号可以隐含）。</p>
 <p>段页式系统的逻辑地址结构 段包含：段号 页表长 页存放块号（起始地址）。页包含：页号 页面存放的内存块号。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212121726546.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212121726546.png" alt="" /></p>
 <h3 id="虚拟内存">虚拟内存</h3>
 <p>归根结底，以上的内存分配方法需要把整个程序都装入内存运行。而且由于内存的<strong>驻留性</strong>，程序运行完之前整个都一直留在内存中。</p>
 <p>第一，没必要，程序的某些部分不常使用，不用一直占在内存里，内存利用率低。第二，太大的程序装不进来。第三，很多程序排队时，这样一次只能运行很少的几个，并发性差。</p>
 <p>根据之前快存学到的局部性原理，可以把常用的部分留到内存中，不常用的拿出去。要用到的不在内存里，就拿进来；内存太满，就把不常用的再拿出去。</p>
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212121801081.png" alt="image-20221212180126990" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212121801081.png" style="zoom:50%;" />
 <p>虚拟内存有多次性（分多次装入）、对换性（可以换出来）、虚拟性。</p>
 <p>存储方式：采用连续型并不合适，因为要分多次装入。改用请求式管理。</p>
 <p><strong>请求分页管理</strong></p>
@@ -653,11 +653,11 @@
 <ol start="2">
 <li>暂时不用的可以换出去。如果在内存中做过修改，那么不用拿回到外存；如果做过修改了就要了。</li>
 </ol>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212121843299.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212121843299.png" alt="" /></p>
 <p>先根据状态位<strong>判断要访问的页在不在内存中</strong>，不在里面，就先产生缺页中断，<strong>调入内存</strong>。如果有空闲块就插到空闲块里，没有就根据<strong>页面置换</strong>算法换出来一个不常用的。调出内存的页面如果发生改变就要写入外存，没有就直接丢掉。最后还要<strong>修改请求页表中的状态信息</strong>。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212121916450.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212121916450.png" alt="" /></p>
 <p>缺页中断是自行产生的内中断。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212121858690.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212121858690.png" alt="" /></p>
 <p>几个值得注意的点：</p>
 <ol>
 <li>我们知道，如果内存中的内容被修改（发生了”写“操作），状态位中的修改位变为1，移出内存时要再写入外存。实际上修改位的改变不一定用在内存中修改，可能只修改快表中的修改位即可，这样少访存。</li>
@@ -667,16 +667,16 @@
 <p><strong>页面置换算法</strong></p>
 <p>追求更小的缺页率，这样换入换出更少。</p>
 <p>最佳置换算法 OPT：选择不再使用，或者最长时间内不再被访问的页面淘汰。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212121943217.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212121943217.png" alt="" /></p>
 <p>插入701之后满了，再想插入2就要顶掉一个。看看后面要访问的页面，7是最不着急的，先把7顶掉。后面以此类推。</p>
 <p><em>注意缺页不一定就会发生页面置换。如果还有块空闲就不用。</em></p>
 <p>但最大问题就是操作系统无法提前预判后面的页面访问序列。</p>
 <p>先进先出置换算法 FIFO：最早进来的页面最早被淘汰。就是队列的数据结构。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212121946779.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212121946779.png" alt="" /></p>
 <p>但是这就是再猜啊。怎么能因为用的早就觉得下一秒他不会用了呢？买彩票呢。可能会引发 Belady 异常（为进程分配的物理块变大时，缺页次数反而变多）。</p>
 <p>最近最久未使用置换算法 LRU：</p>
 <p>哪个最久没用过，就先替换掉哪个。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212121953012.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212121953012.png" alt="" /></p>
 <p>性能确实好，但是开销大，实现困难。</p>
 <p>时钟置换算法 CLOCK：每个页面添加一个访问位，初值都是0，访问过了改为1.每次优先替换掉0的页面。如果全为1，则全置0后再次扫描。</p>
 <p>改进的时钟置换算法：同时考虑访问位和修改位。</p>
@@ -691,12 +691,12 @@
 <p>动态分配：根据运行过程中的情况动态分配大小。</p>
 <p>局部置换：缺页时只能当前进程自己的物理块置换需要的页进来。</p>
 <p>全局置换：可以用空闲的物理块，或其他进程的物理块置换。全局置换大小肯定不固定，肯定是动态分配。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212130102033.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212130102033.png" alt="" /></p>
 <p>调入哪些页？</p>
 <p>首次调入时，根据局部性原理，某个页相邻的页也会容易用到。因此一调调一小片。</p>
 <p>运行中缺页调入时，只调缺少的页。</p>
 <p>从何处调入页面？</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212130114188.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212130114188.png" alt="" /></p>
 <p>抖动/颠簸现象：刚换出去的页面又换进来。主要原因是驻留集太少了，少于要频繁使用的块。</p>
 <p>工作集：运行时进程实际访问的页面集合。驻留集不应小于工作集。</p>
 <h2 id="文件">文件</h2>
@@ -724,7 +724,7 @@
 <p>类似数据结构中学到的中间表，如果索引中只存储必要的少部分信息（文件名，指针），索引占的小，能放更多的索引，用更少的磁盘块存储，就平均需要访问更少的磁盘块就能找到文件。</p>
 </li>
 </ol>
-<img src="C:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20221213034225243.png" alt="image-20221213034225243" style="zoom:50%;" />
+<img src="C:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20221213034225243.png" style="zoom:50%;" />
 <p>​	外存中的索引节点叫磁盘索引节点，内存中的叫索引节点，可能包含更多信息，如文件是否被修改、同时有几个进程在访问等。</p>
 <h3 id="文件目录">文件目录</h3>
 <p>文件控制块 FCB 中存储文件名、类型（是否是目录）、权限、地址等信息。</p>
@@ -735,7 +735,7 @@
 <p>引入当前目录概念：如果没有此概念，我们要找根目录下 /目录1/目录2/照片.jpg，需要三次访存。根目录找目录1，目录1找目录2，目录2找jpg。要是有当前目录的相对路径就会方便得多。</p>
 <p>树形目录结构缺点在于不能共享文件。</p>
 <p><strong>无环图目录结构</strong></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212130400399.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212130400399.png" alt="" /></p>
 <p>不同用户不同目录下可以访问到相同的共享文件。</p>
 <p>共享文件要设置共享计数器。当有用户取消共享后，要删除共享信息，共享计数器–。减为0时删除共享节点。</p>
 <h3 id="文件的物理结构">文件的物理结构</h3>
@@ -749,13 +749,13 @@
 <p>链接分配都不会有外部碎片。</p>
 <p><strong>索引分配</strong></p>
 <p>每个文件建立一个索引表。索引表存放的磁盘块叫索引块，文件数据存放的磁盘块叫数据块。FAT是一个磁盘对应一张，索引表是一个文件对应一张。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131026788.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131026788.png" alt="" /></p>
 <p>也支持随机存取，也方便拓展，但是索引表占空间。</p>
 <p>要是文件太大，索引表一个索引块存不下，需要多个。</p>
 <p>可以让索引块之间链接起来。但是不支持顺序存储，要找最后一块就要从头便历。</p>
 <p>可以建立多级索引。每级大小不超过一个数据块。k级表访问数据，要访问k+1次磁盘块（k次查找位置，1次查找数据）。</p>
 <p>混合索引：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131040897.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131040897.png" alt="" /></p>
 <p>小文件层级小一点。因小文件访问可能频繁一些，就少访问几次。</p>
 <h3 id="文件存储空间管理">文件存储空间管理</h3>
 <p>操作系统的盘有什么用？又叫文件卷，每个文件卷都包含目录区和文件区。</p>
@@ -763,26 +763,26 @@
 <p>分配磁盘块给用户：类似动态分区分配，可采用首次适应、最佳适应、最坏适应等。</p>
 <p>回收磁盘块：也类似动态分区分配，考虑前后有无空闲块。</p>
 <p><strong>空闲链表法</strong></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131057529.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131057529.png" alt="" /></p>
 <p>空闲盘块链分配：空闲链从链头摘下来k个空闲块，并修改链头位置。</p>
 <p>空闲盘块链回收：回收的空闲块挂到空闲链结尾，并修改链尾位置。</p>
 <p>空闲盘区链分配：先按算法找到合适的空闲盘区。如果没有合适的，也可以把不同盘区的盘块同时给一个文件。</p>
 <p>空闲盘区链回收：如果和空闲盘区挨着，直接合并。否则变成一个单独的空闲盘区挂到队尾。</p>
 <p><strong>位示图法</strong></p>
 <p>一定注意从0还是1开始！</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131113265.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131113265.png" alt="" /></p>
 <p>分配：扫描位图，找到连续的k个0，修改为1.</p>
 <p>回收：算出回收盘块的位图字号、位号，置为0.</p>
 <p><strong>成组链接法</strong></p>
 <p>大文件不适用空闲块法。</p>
 <p>超级块存放在内存中，其中包含下一组空闲块块数和块号。</p>
 <p>如果没有下一级了，下一组空闲盘块数可以用特殊标识符如-1表示。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131251971.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131251971.png" alt="" /></p>
 <p>空闲分配：如果&lt;100个，从超级块分配就够。</p>
 <p>如果=100个，不能直接分配超级块因为这样超级块对后面的链接就消失了。要先把300的内容提到超级块作为新的超级块，再分配。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131309663.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131309663.png" alt="" /></p>
 <p>回收：直接加到超级块上。如果超级块最大大小为100，已经满了，还要回收，就要让新回收的块作为新的超级块，并指向原来的超级块。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131313202.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131313202.png" alt="" /></p>
 <h3 id="文件基本操作">文件基本操作</h3>
 <p><strong>文件创建</strong></p>
 <p>需要关注：文件名；文件路径；需要的外存空间。</p>
@@ -799,7 +799,7 @@
 <p><strong>打开文件</strong></p>
 <p>需要用户提供的信息：文件名；文件目录；打开方式（读；写；……）</p>
 <p>操作系统先去目录表找到对应的文件，复制到内存中。并且把目录项复制到内存系统的“打开文件表”中。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131338588.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131338588.png" alt="" /></p>
 <p><strong>关闭文件</strong></p>
 <p>删除用户打开文件表的对应项；回收空间；系统打开文件表的打开计数器-1，减到0则删除打开文件表的对应项。</p>
 <p><strong>读文件</strong></p>
@@ -808,11 +808,11 @@
 <p>和read很像。最后再通过write系统调用写回外存。</p>
 <h3 id="文件共享">文件共享</h3>
 <p>基于索引节点的共享方式（硬链接）：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131621187.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131621187.png" alt="" /></p>
 <p>count说明还有几个进程在共享该文件。</p>
 <p>要删除时，count–，若&gt;0则不能删除，=0才能删除。</p>
 <p>基于符号链的共享方式（软链接）：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131626995.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131626995.png" alt="" /></p>
 <p>删掉文件1，软链接仍然存在，只是无法通过软链接去访问文件1了。</p>
 <p>因为访问共享文件要查询多级目录，进行多次 IO，因此采用软链接。</p>
 <h3 id="文件保护">文件保护</h3>
@@ -820,31 +820,31 @@
 <p>加密保护：用密码对文件加密。如异或加密。有点费时。</p>
 <p>访问控制：文件的 FCB 中增加一个访问控制列表 ACL，记录用户可以有哪些权限（读写运行ls）。以组为单位，如：管理员，文件主，文件主的伙伴，陌生人。</p>
 <h3 id="文件系统的层次结构">文件系统的层次结构</h3>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131650838.png" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131653423.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131650838.png" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131653423.png" alt="" /></p>
 <h2 id="磁盘">磁盘</h2>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131724309.png" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131726317.png" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131726041.png" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131726557.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131724309.png" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131726317.png" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131726041.png" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131726557.png" alt="" /></p>
 <h3 id="磁盘调度算法">磁盘调度算法</h3>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131813172.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131813172.png" alt="" /></p>
 <p>先来先服务算法 FCFS：就是单纯的先处理先来的进程。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131821625.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131821625.png" alt="" /></p>
 <p>最短寻找时间优先 SSTF：先找离当前磁道近的。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131824597.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131824597.png" alt="" /></p>
 <p>扫描算法 SCAN：只有磁道移到最外侧之后才允许往回移动，避免 SSTF 的左右横跳。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131830038.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131830038.png" alt="" /></p>
 <p>LOOK 调度算法：改进 SCAN 算法，观察到当前磁道已经是访问请求最右边的磁道后，就可以立即改变磁道移动方向往回。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131833520.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131833520.png" alt="" /></p>
 <p>循环扫描算法 C-SCAN：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131844015.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131844015.png" alt="" /></p>
 <p>C-LOOK 算法：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131845424.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131845424.png" alt="" /></p>
 <h3 id="减少延迟时间">减少延迟时间</h3>
 <p>磁盘一直旋转的。如果要读几个相邻的扇区，读了第一个处理的过程中磁盘还在转，处理好了的时候可能又转到不知道哪里去了。可能就会产生很长的延迟时间。</p>
 <p>解决办法：交替编号。逻辑上相邻的扇区物理上分开。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131921182.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212131921182.png" alt="" /></p>
 <p>为什么磁盘的物理地址是（柱面号，盘面号，扇区号）而不是（盘面号，柱面号，扇区号）？因为更改柱面号需要移动磁头臂，更改盘面号不用移动臂，只需要激活相邻盘面的磁头即可。可以减少磁头移动消耗的时间。</p>
 <h3 id="磁盘管理">磁盘管理</h3>
 <p>初始化：</p>
@@ -878,21 +878,21 @@
 </li>
 </ul>
 <p>CPU 要通过 IO 控制器作为中介才能控制机械部件。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132007717.png" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132008149.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132007717.png" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132008149.png" alt="" /></p>
 <p>一个 IO 控制器可能控制多个设备；而且可能有多个寄存器。有的操作系统让这些寄存器存到内存里，叫做内存映像 IO；有的采用专门的地址，即寄存器独立编址。独立编址不在内存里，因此还要设置专门的指令来实现对其的操作，还要指明具体对哪个控制器操作。</p>
 <h3 id="IO-控制方式">IO 控制方式</h3>
 <p>关注：一次读写操作的流程；CPU 干预的频率；数据传送单位；数据流向；优缺点。</p>
 <p><strong>程序直接控制</strong></p>
 <p>读：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132014482.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132014482.png" alt="" /></p>
 <p>重点在轮询。CPU要不断轮询。</p>
 <p>数据传送单位：每次一个字。</p>
 <p>数据流向：内存和 IO 设备经由 CPU 读写。每个字读写都需要 CPU 帮助。</p>
 <p>简单，但是 CPU 和 IO 只能串行工作，CPU 一直轮询检查效率也很低。</p>
 <p><strong>中断驱动方式</strong></p>
 <p>CPU 发出读写命令后，等待 IO 的进程暂时阻塞，先运行其他程序。IO 完成后控制器会向 CPU 发一个中断信号，CPU 收到后继续执行。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132032231.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132032231.png" alt="" /></p>
 <p>CPU 执行完每个指令的周期末尾检查中断。中断处理过程需要保存、恢复进程的运行环境，也需要一定时间开销。</p>
 <p>CPU 只有 IO 开始时干预一下，等待 IO 过程中就运行其他进程了。</p>
 <p>数据传送单位：每次一个字。</p>
@@ -900,17 +900,17 @@
 <p>相比程序直接控制，CPU 利用率高一点了。但是一个字一个字的传，速度还是慢。</p>
 <p><strong>DMA 方式</strong></p>
 <p>数据传输单位是块；设备和内存之间数据传输不用每次都经过 CPU ，只有开始传输或结束时才需要干预。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132141644.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132141644.png" alt="" /></p>
 <p>缺点：CPU 每发一条 IO 指令，只能读写几次连续的数据块。离散的数据块就要多次中断。</p>
 <p><strong>通道控制方式</strong></p>
 <p>通道相当于简化版的 CPU。CPU向通道发出指令，指明通道程序在内存中的位置，并指明要操作的是哪个 IO 设备，然后 CPU 就去运行其他程序了。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132150157.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132150157.png" alt="" /></p>
 <p>通道能执行的指令很单一，而且放在内存中。</p>
 <p>CPU 干预次数极少，效率也高，就是需要专门的通道程序支持。</p>
 <h3 id="I-O-软件层次">I/O 软件层次</h3>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132153000.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132153000.png" alt="" /></p>
 <p>设备独立性软件：向上提供接口（入库函数）。校验用户是否有权限使用当前设备。差错处理。分配和回收设备。管理数据缓冲区。建立逻辑设备名到物理设备名的映射，并根据实际的物理设备选择合适的驱动程序。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132205495.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132205495.png" alt="" /></p>
 <p>可以只设立一个系统 LUT，但是所有用户的逻辑设备名不能重复；也可以给每个用户设计一个。</p>
 <p>为什么不同设备驱动程序也不同？因为不同设备内部结构也不一样。比如不同打印机内部寄存器数量可能不一样。驱动程序一般作为单独的进程。</p>
 <p>设备驱动程序：主要负责具体控制硬件设备。</p>
@@ -921,23 +921,23 @@
 <p>批处理几段引入了脱机输入，先通过外围控制机把数据输入到更快速的磁带上再让主机读入。脱机指的是脱离主机控制的 IO 操作。</p>
 <p>不仅 IO 快了，而且 CPU 忙的时候用户也可以先处理数据到磁带上。</p>
 <p>假脱机技术 SPOOLing 用软件模拟脱机技术。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132359303.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132359303.png" alt="" /></p>
 <p>输入输出进程模拟外围控制机。</p>
 <p>借助 SPOOLing 技术，可以让打印机实现共享。收到用户的打印请求时，在输出井里申请空闲缓冲区（在磁盘上），并放入要打印的数据；且给用户进程申请一张空白的打印请求表，里面存储打印的相关信息，并把该表挂到假脱机文件队列上。打印机空闲时从队列中取出打印请求表，根据表取出打印的数据到输出缓冲区，再到打印机打印。</p>
 <h3 id="设备的分配和回收">设备的分配和回收</h3>
 <p>分配设备要考虑：<strong>设备属性</strong>（独占？共享？虚拟？虚拟就是假脱机技术等独占改成共享）。<strong>设备分配算法</strong>（FCFS 优先级高的优先 短任务优先）。<strong>安全性</strong>。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132238185.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132238185.png" alt="" /></p>
 <p>分配分为静态分配和动态分配。</p>
 <p><strong>设备分配管理中的数据结构</strong></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132240499.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132240499.png" alt="" /></p>
 <p><strong>设备控制表 DCT</strong></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132242703.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132242703.png" alt="" /></p>
 <p><strong>控制器控制表 COCT</strong></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132243321.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132243321.png" alt="" /></p>
 <p><strong>通道控制表 CHCT</strong></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132244138.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132244138.png" alt="" /></p>
 <p><strong>系统设备表 SDT</strong></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132245062.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132245062.png" alt="" /></p>
 <p><strong>设备分配步骤</strong></p>
 <ol>
 <li>根据进程的物理设备名，去 SDT 找设备。</li>
@@ -954,20 +954,20 @@
 <p>可以缓冲 CPU 和 IO 之间速度不匹配的矛盾，进而 CPU 中断次数也会减少；解决数据颗粒度不匹配的问题；提高 CPU 与 IO 的并行性。</p>
 <p><strong>单缓冲区</strong></p>
 <p>某用户进程请求设备读入若干个块的数据。。如果采用单缓冲策略，主存中会被分配一个缓冲区（一般是一个块大小）。缓冲区中只有空的时候才能冲入数据，只有非空的时候才能传出数据。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132311260.png" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132315136.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132311260.png" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132315136.png" alt="" /></p>
 <p><strong>双缓冲区</strong></p>
 <p>一满一空，可以空的边读，满的边往工作区写。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132321677.png" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132321658.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132321677.png" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132321658.png" alt="" /></p>
 <p>用时=Max(C+M, T)</p>
 <p>如果两台机器各配置2个缓冲区，就能同时收发了。</p>
 <p><strong>循环缓冲区</strong></p>
 <p>多个大小相同的缓冲区链接成一个循环队列。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132329586.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132329586.png" alt="" /></p>
 <p><strong>缓冲池</strong></p>
 <p>放满了各种各样缓冲区的池子。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132331181.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202212132331181.png" alt="" /></p>
 <p>输入：取出一个空缓冲区挂到收容输入队列中，输入放到收容输入队列中，装好了挂到输入队列中。</p>
 <p>提取输入：从输入队列取下来，放到提取输入队列中提取到用户进程，再挂回空缓冲区。</p>
  
@@ -1063,9 +1063,9 @@
       </a>
     
     
-      <a href="/2022/07/20/%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E9%A1%B9%E7%9B%AE%EF%BC%9AJava%20Wordle/" class="article-nav-link">
+      <a href="/2022/07/20/%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E7%AC%94%E8%AE%B0%EF%BC%9AMySQL%20%E6%95%B0%E6%8D%AE%E5%BA%93/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">北邮国院项目：Java Wordle</div>
+        <div class="article-nav-title">北邮国院笔记：MySQL 数据库</div>
       </a>
     
   </nav>

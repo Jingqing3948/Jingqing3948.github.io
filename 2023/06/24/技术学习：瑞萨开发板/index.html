@@ -133,7 +133,7 @@
        
   <h2 id="前言">前言</h2>
 <p>这回参加的是 csdn 李肯老师的攻城狮计划，简单说就是我白嫖板子，输出学习笔记。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/a3cc9258486e875c183b4fbbb1ce5fbe.jpeg" alt="552ca9fa46d8c1c7f192cdad4d207d4"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/a3cc9258486e875c183b4fbbb1ce5fbe.jpeg" alt="552ca9fa46d8c1c7f192cdad4d207d4" /></p>
 <p>板子是瑞萨的CPK_RA2E1，还有触摸元件，看起来很有意思hh。</p>
 <h2 id="环境搭建">环境搭建</h2>
 <p>一开始决定采取vscode搭建的方式。后期进行到最后一步——cmake build的时候一直显示语法错误，肯哥表示是环境配置不全，但是我反反复复根据官网和其他博主的文章检查了不下10遍都不知道问题何在。最终决定还是老老实实用keil。</p>
@@ -146,9 +146,9 @@
 </li>
 <li>
 <p>接下来我们尝试新建编译一个项目。这是我第一次没有跟着一块有完整开发流程的板子的视频课，而几乎完全是自己检索资料探索尝试的项目构建，因此碰到了很多弯路。首先rasc软件我们新建一个项目。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1d1872b93bd272401e7d2a90a943d622.png" alt="项目起名"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1d1872b93bd272401e7d2a90a943d622.png" alt="项目起名" /></p>
 <p>板子型号这里是根据我的学习板设置的。IDE一定记得改为keil。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/091c255e2177162e613b3635d9e8128b.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/091c255e2177162e613b3635d9e8128b.png" alt="" /></p>
 </li>
 </ol>
 <p>后两页选择 no rtos 和 minimal 即可，因为我们现在的目的只是尝试编译通过一个项目。</p>
@@ -158,7 +158,7 @@
 </li>
 <li>
 <p>我第一次遇到的问题是报了19个错。我还以为是pack导入的不对，但是后来搜了一下发现不是那么回事，是编译方式选错了。参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_20017379/article/details/119523286">keil出现大量未知语法错误（系统移植）_portforce_inline_IT小生lkc的博客-CSDN博客</a></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/73a1e19aee6d2d2b7837c180d17939dc.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/73a1e19aee6d2d2b7837c180d17939dc.png" alt="" /></p>
 </li>
 <li>
 <p>于是我把编译器改为version5，编译到一半，再次报错：error: A3903U: Argument ‘Cortex-M7.fp.sp’ not permitted for option  cpu’.。这个问题原因是因为编译器版本太低，于是我又去下载了新的keil5.</p>
@@ -167,82 +167,82 @@
 <p>再次编译的时候提示我，不能用version5，新版本已经不支持了。于是我又改为version6进行编译。这次非常顺利！</p>
 </li>
 </ol>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/d34a7cfbf5f7e0bdbb55a0063df5887f.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/d34a7cfbf5f7e0bdbb55a0063df5887f.png" alt="" /></p>
 <h2 id="下载">下载</h2>
 <p>终于考完试了，然而攻城狮的截止期限也快到了QAQ，得尽快水（划掉）写几篇文章了！</p>
 <p>先争取可以成功下载一个空的程序。</p>
 <p>先对上一篇文章下载 DFP 也就是 keil MDK Software Packs 做一个补充。我们要下载的是 RA_DFP，下载地址为：<a target="_blank" rel="noopener" href="https://www.keil.arm.com/packs/ra_dfp-renesas/versions/">Arm Keil | Renesas RA_DFP</a></p>
-<p>至于版本我看到有前辈使用 3.5.0 的版本可以成功运行，而我下载的是4+的版本也可以。只不过在选择 device 的时候会有一点不同：<br>
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622160103209.png" alt=""></p>
+<p>至于版本我看到有前辈使用 3.5.0 的版本可以成功运行，而我下载的是4+的版本也可以。只不过在选择 device 的时候会有一点不同：<br />
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622160103209.png" alt="" /></p>
 <p>可以看到 4.1.0 的版本无法细化选择到 R7FA2E1A92DFM，只能选择大类 A9. 不过经过下面的烧录尝试，是没有问题的。</p>
 <p>流程：基于上次的空项目，用keil打开，编译，下载成功。</p>
 <p>一直到编译的步骤前面都做完了。下载主要需要以下几个步骤：</p>
 <ol>
-<li>引入项目的 src 文件夹。在 options for target - c/c++ 里引入即可很简单。<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622154546545.png" alt=""></li>
+<li>引入项目的 src 文件夹。在 options for target - c/c++ 里引入即可很简单。<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622154546545.png" alt="" /></li>
 <li>debug 模式设置为 jlink 模式。设置完之后插上板子设置配置，这里因为我的jlink版本太低出现了一个报错：unkown to this version of the jlink software。解决办法就是在官网上下载了一个新版本的jlink（官网链接：<a target="_blank" rel="noopener" href="https://www.segger.com/downloads/jlink%EF%BC%8C%E6%88%91%E9%80%89%E6%8B%A9%E7%9A%84%E6%98%AF">https://www.segger.com/downloads/jlink，我选择的是</a> windows 版本），下载好后直接会提示“检测到你电脑里的 keil 环境，请问是否更新其 jlink 调试器”，更新后重新启动就没有问题了。</li>
 <li>上一步参考文章: <a target="_blank" rel="noopener" href="https://blog.csdn.net/wsq_666/article/details/124367141">keil识别不到芯片，提示unkown to this version of the jlink software_keil识别不到单片机_王小琪0712的博客-CSDN博客</a> 里面也有如果没有提示自动更新 jlink 调试器的选项如何手动进行更新的步骤，建议多多支持原作者。</li>
-<li>只是选择了 jlink 调试器也并不算设置完成。如果这个时候点击下载，会提示“找不到 flash”，也就是还没有配置完成，需要设置闪存。首先确保插上了板子，然后打开 jlink 的setting：<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622155204869.png" alt=""></li>
-<li>如果显示下图说明板子被正常识别。如果没有显示这些数据，可能是 jlink 的版本还是过低，或者线坏了，或者还未下载对应 rcsa 包。<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622155322848.png" alt=""></li>
-<li>接下来我们配置 flash download. 打开这个页面后点击 add，添加图中所示的这款型号芯片，然后 start 和 size 应该就会自动配置成和图中一样的情形，这样就算成功了。<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622155451715.png" alt=""></li>
-<li>点击 load，如果显示如下信息说明成功下载程序。<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622155546525.png" alt=""></li>
+<li>只是选择了 jlink 调试器也并不算设置完成。如果这个时候点击下载，会提示“找不到 flash”，也就是还没有配置完成，需要设置闪存。首先确保插上了板子，然后打开 jlink 的setting：<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622155204869.png" alt="" /></li>
+<li>如果显示下图说明板子被正常识别。如果没有显示这些数据，可能是 jlink 的版本还是过低，或者线坏了，或者还未下载对应 rcsa 包。<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622155322848.png" alt="" /></li>
+<li>接下来我们配置 flash download. 打开这个页面后点击 add，添加图中所示的这款型号芯片，然后 start 和 size 应该就会自动配置成和图中一样的情形，这样就算成功了。<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622155451715.png" alt="" /></li>
+<li>点击 load，如果显示如下信息说明成功下载程序。<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622155546525.png" alt="" /></li>
 </ol>
 <p>刚插上板子的时候板子上是有白色的 power 指示灯和一个红蓝交替闪烁灯。下载空程序之后，应该只有电源指示灯还在亮。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/de933bcec619535b3e8b7fe60f61238.jpg" alt="de933bcec619535b3e8b7fe60f61238"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/de933bcec619535b3e8b7fe60f61238.jpg" alt="de933bcec619535b3e8b7fe60f61238" /></p>
 <h2 id="点亮LED">点亮LED</h2>
 <p>本文主要参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/oxygen23333/article/details/130306105">【致敬未来的攻城狮计划】— 连续打卡第十一天：FSP固件库开发点亮第一个灯。_嵌入式up的博客-CSDN博客</a></p>
 <p>在32阶段我们已经接触过类似做法了。初始化引脚模式（可以手动库函数，或者在工具包图形化界面里配置），设置引脚输出值。</p>
 <h3 id="设置-FSP-Smart-Configurator">设置 FSP Smart Configurator</h3>
 <p>像上次一样创建一个项目。</p>
 <p>首先我们翻一下RA2E1的数据手册看看led在哪。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624005444720.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624005444720.png" alt="" /></p>
 <p>如图所示，一红一蓝，502 501，输出高电平亮。</p>
 <p>因此 configurator 里的pin如图所示设置501 502为output initial high</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624005611958.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624005611958.png" alt="" /></p>
 <p>配置完成后点击右上角 generate project content，输出更新配置到该项目中。</p>
 <h3 id="Keil代码编写">Keil代码编写</h3>
 <p>接下来就是编写keil里，驱动两个led灯输出高电平的部分了。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624011259206.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624011259206.png" alt="" /></p>
 <p>hal_entry.c 是相当于 main.c 的入口函数。其他都是 configurator 提供的配置函数。</p>
 <p>引脚设置已经设置好了。我们打开 pin_data.c 可以看到：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624011748710.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624011748710.png" alt="" /></p>
 <p>这就代表确实初始化配置加进代码里了。</p>
 <p>然后在 hal_entry.c 里是通过这个 open 函数在 warm_start 里初始化了。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624012345948.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624012345948.png" alt="" /></p>
 <p>接下来我们需要一个写入位函数。在 r_ioport.c 里。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624012543274.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624012543274.png" alt="" /></p>
 <p>参数1：固定参数，传入 &amp;p_ctrl。</p>
 <p>参数2：引脚，老方法 goto the definition</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624013133790.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624013133790.png" alt="" /></p>
 <p>参数3：电平。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624013206720.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624013206720.png" alt="" /></p>
 <p>然后就简单了，只需要在主函数里调用write函数写亮led。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">hal_entry</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* <span class="doctag">TODO:</span> add your own code here */</span></span><br><span class="line">		<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">				 R_IOPORT_PinWrite(&amp;g_ioport_ctrl, BSP_IO_PORT_05_PIN_01, BSP_IO_LEVEL_HIGH);</span><br><span class="line">				 R_IOPORT_PinWrite(&amp;g_ioport_ctrl, BSP_IO_PORT_05_PIN_02, BSP_IO_LEVEL_HIGH);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> BSP_TZ_SECURE_BUILD</span></span><br><span class="line">    <span class="comment">/* Enter non-secure code */</span></span><br><span class="line">    R_BSP_NonSecureEnter();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="实验结果">实验结果</h3>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624013456059.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624013456059.png" alt="" /></p>
 <h2 id="按键模块">按键模块</h2>
 <h3 id="后台轮询">后台轮询</h3>
 <p>按键也是一个比较简单的模块，主要是为了学习IO输入模式。</p>
 <p>查看RA2E1电路图可见：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624133704709.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624133704709.png" alt="" /></p>
 <p>按键相关引脚是004引脚，默认上拉高电平，按下接地为低电平。</p>
 <p>首先第一步还是设置对应引脚。类似上一期设置LED的方式，只不过Mode改为Input mode。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624133750237.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624133750237.png" alt="" /></p>
 <p>设置好之后仍然是记得generate。</p>
 <p>然后就是程序编写。首先还是明确一下开发流程。首先我们尝试后台轮询的按键检测。在while里不断检测按键电平，如果为高点亮蓝灯，如果为低点亮红灯。</p>
 <p>点亮好写，上一次已经尝试过write函数。那么我们接下来再去看类似的read函数。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624135423601.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624135423601.png" alt="" /></p>
 <p>第一个参数还是传入固定的&amp;g_ioport_ctrl。第二个是引脚。第三个是存放我们要存储的读取按键的值。比如传入变量state的地址 &amp;state，函数执行结束后state的值就是读取的按键电平。</p>
 <p>主函数编写：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">hal_entry</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">bsp_io_level_t</span> state;</span><br><span class="line">    <span class="comment">/* <span class="doctag">TODO:</span> add your own code here */</span></span><br><span class="line">		<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">			R_IOPORT_PinRead(&amp;g_ioport_ctrl, BSP_IO_PORT_00_PIN_04,&amp;state);</span><br><span class="line">			<span class="keyword">if</span>(state==BSP_IO_LEVEL_HIGH)&#123;</span><br><span class="line">				R_IOPORT_PinWrite(&amp;g_ioport_ctrl, BSP_IO_PORT_05_PIN_01, BSP_IO_LEVEL_HIGH);</span><br><span class="line">				R_IOPORT_PinWrite(&amp;g_ioport_ctrl, BSP_IO_PORT_05_PIN_02, BSP_IO_LEVEL_LOW);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				R_IOPORT_PinWrite(&amp;g_ioport_ctrl, BSP_IO_PORT_05_PIN_01, BSP_IO_LEVEL_LOW);</span><br><span class="line">				R_IOPORT_PinWrite(&amp;g_ioport_ctrl, BSP_IO_PORT_05_PIN_02, BSP_IO_LEVEL_HIGH);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> BSP_TZ_SECURE_BUILD</span></span><br><span class="line">    <span class="comment">/* Enter non-secure code */</span></span><br><span class="line">    R_BSP_NonSecureEnter();</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>实现效果：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/8d99e5ae0be2c97e2e2bb44a1ed92f6.jpg" alt="8d99e5ae0be2c97e2e2bb44a1ed92f6"></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/59b0f842762bb1349190932bdcb4e74.jpg" alt="59b0f842762bb1349190932bdcb4e74"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/8d99e5ae0be2c97e2e2bb44a1ed92f6.jpg" alt="8d99e5ae0be2c97e2e2bb44a1ed92f6" /></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/59b0f842762bb1349190932bdcb4e74.jpg" alt="59b0f842762bb1349190932bdcb4e74" /></p>
 <h2 id="活动总结">活动总结</h2>
-<p>一转眼攻城狮计划就已经到了最后一天了。<br>
+<p>一转眼攻城狮计划就已经到了最后一天了。<br />
 5月我还处在一个迷茫期，那时候刚刚入坑嵌入式，只学了几款电子积木，对整个体系也不是很清楚，也不知道应该学些什么。因为刚刚转到硬件领域，也缺少相关经历和能力证明，科研实习面试都失败了。</p>
 <p>一开始得到的少许鼓励来源于C站推荐的一系列交流会活动。我去参加了RTThread的学习营，第一次尝试在单片机开发中加入RTOS系统，也算是跳脱出自己当时缓慢的按部就班学习路线，如井底之蛙般弹出脑袋窥探了一眼外面的风景。</p>
 <p>后来偶然收到李肯老师的攻城狮活动邀请。虽然因为选在了期末周，自己又比较懒，基本没更几篇文章hh。但是借助李肯老师的交流活动认识了很多嵌入式领域的前辈，同伴，从每天的交流话题中也能学到很多。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624180328147.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230624180328147.png" alt="" /></p>
 <p>现如今，虽然学到的知识相比之前可能没有太多，但是整个系统的框架，从硬件到ISA，操作系统解释器等系统软件，汇编语言和机器语言的转化等……确实见识到了很多。</p>
 <p>再聊到本次活动。虽然自己没有做过多的尝试，但是因为之前我也只尝试过51和32的库函数开发，rcsa的configurator配置本身对我来说就是一种新奇的开发模式。与32的hal库对比更能让我体会到这些driver的便捷之处，也开始适应这种开发方式。</p>
 <p>非常感谢给予这次机会的李肯老大！也期望自己能保持这股热情继续学下去~</p>

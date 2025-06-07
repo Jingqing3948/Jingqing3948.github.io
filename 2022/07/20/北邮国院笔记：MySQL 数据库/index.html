@@ -243,7 +243,7 @@ L-->DCL[DCL]</pre>
 <p>**真正做项目、设计数据库时，**实际并没有这么简单，比如还有很多用户看不到、但为了方便 DBA 使用而创建的字段。如 id，一般还会有两条 Date 字段（一表示这条记录被创建的时间，二表示这条记录最后更新的时间），以及预留一个 VARCHAR / json 字段；还有一些其他注意事项（比如 auto-increment 约束其实开发中不常用，更多使用算法比如分布式 ID 生成算法（如 SnowFlake……）当然对课程来说这并不重要）<strong>是不可能一上来就写 SQL 语句的，需要先设计表的结构和表之间的关系。</strong></p>
 <h4 id="ER-模型">ER 模型</h4>
 <p>ER 图（Entity Relationship, 实体关系）因此出现。下图是一个 ER 图的示例，其中矩形框代表：表（也就是实体），椭圆框代表：表中的字段（实体的属性），菱形框代表：关系，在连接线上表明了关系的重数。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336311.png" alt="百度百科图片"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336311.png" alt="百度百科图片" /></p>
 <p>相较于大段的 SQL 建表语句，只要能看懂 ER 图，表的结构、关系一目了然。</p>
 <h4 id="EER-模型">EER 模型</h4>
 <p>以下部分内容有参考自文章：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/356216273">为了彻底搞清楚数据库 E-R 模型设计，我肝了这篇万字长文 - 知乎 (zhihu.com)</a></p>
@@ -257,17 +257,17 @@ L-->DCL[DCL]</pre>
 <p>其中，子类和超类又有两个关系属性：mandatory 和 optional、disjoint 和 overlapping。</p>
 <p><strong>mandatory / optional</strong>：父类中的所有属性都必须包含在每一个子类中 / 不用全部继承，选择部分继承即可（完全性限制）</p>
 <p><strong>disjoint / overlapping</strong>：继承同一个父类的几个子类之间是否可以有相交的属性（相交性限制）</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336748.png" alt="img"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336748.png" alt="img" /></p>
 <p>图中 运输工具是父类，飞机、火车、汽车是子类。圆圈中写 D / O，表示 disjoint / overlapping。父类和圆圈之间是双实线，表示是 mandatory 完全性继承。</p>
 <h5 id="汇集层次">汇集层次</h5>
 <p>Aggregation, 汇集层次不再有父类子类的区别，而是由……组成的区别。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336896.png" alt="img"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336896.png" alt="img" /></p>
 <p>如图，房间、门窗、电脑、投影仪等是教室的组成部分，不是继承关系。</p>
 <h5 id="弱实体">弱实体</h5>
 <p>一种实体只有另一种实体存在的时候才有意义。如父母和子女，少了一方另一方就没有意义了。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336013.png" alt="img"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336013.png" alt="img" /></p>
 <p>Workbench 等工具支持画 ER 图，甚至画好后可以自动生成 SQL 语句建表。 Workbench 中的图是 EER 图（扩展的ER 图）</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336256.png" alt="EER 图示例"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336256.png" alt="EER 图示例" /></p>
 <p>在 EER 图下，点击 DATABASE - FORWARD ENGINEER 正向工程，可以选择要生成的表、字段，生成 SQL 语句建立表。</p>
 <p><em>自动生成的 SQL 语句中，外键下方有两句话<code>ON DELETE NO ACTION</code> <code>ON UPDATE NO ACTION</code>，意为：当外键参考的主键修改/删除时，外键所在的表会受到什么样的影响？——不采取任何行动。建议去掉这两句话。如果去掉，就不能随便修改/删除外键在使用的主键。</em></p>
 <p>同样地，在 SQL 语句页面，点击DATABASE - REVERSE ENGINEER 反向工程，可以根据表的结构生成 EER 图。</p>
@@ -326,7 +326,7 @@ L-->DCL[DCL]</pre>
 <p>早期计算机资源十分稀缺，内存空间必须精打细算。Grace Murray Hopper 采用6位数字组合来存储日期信息 （比如2022/04/19，就是22/04/19）</p>
 <p>尽管节约了内存空间，但是40年后1999-&gt;2000年时，问题就出现了……对计算机来说，相当于99-&gt;00年，年份倒退了。小到银行存款利息变成负的，大到飞机、发电厂运作、核弹发射……都可能出现故障，后果不堪设想。</p>
 <p>如果修改所有程序，是改不过来的。于是程序员们主要采取两种方法：</p>
-<p>1.只修改核心关键的医疗、航空、金融、军事领域的程序；<br>
+<p>1.只修改核心关键的医疗、航空、金融、军事领域的程序；<br />
 2.对于大多数不那么核心的程序，采用时间窗口的方式。1910年代表2010年，1920年代表2020年，暂缓问题。在这20年期间，大多数程序设备都已更新换代，现如今千年虫问题已经不那么严重了。</p>
 </blockquote>
 <p>回到刚才的话题，因此时间戳也并不推荐使用。</p>
@@ -727,11 +727,11 @@ L-->DCL[DCL]</pre>
 <h4 id="专用窗口函数">专用窗口函数</h4>
 <p>rank、dese rank、row_number</p>
 <p>看图即知区别。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152337617.png" alt="img"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152337617.png" alt="img" /></p>
 <h4 id="partition-by-和-group-by-的区别">partition by 和 group by 的区别</h4>
 <p>partition by 是把所有数据分成绩一个窗口，而并不汇总。比如上图中，如果按班级号分窗口再进行排序，就会在每个班级内部从1到无穷排序。不写的话就默认整个表是一个大窗口。</p>
 <p>group by 是分组后汇总。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152337023.png" alt="img"></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152337023.png" alt="img" /></p>
 <p>使用：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select `ename`,`sal`,</span><br><span class="line">rank() over (order by `sal` desc)as `r1`,</span><br><span class="line">dense_rank() over (order by `sal` desc)as `r2`,</span><br><span class="line">row_number() over (order by `sal` desc)as `r3`</span><br><span class="line">from `tb_emp`;</span><br></pre></td></tr></table></figure>
 <p>第八题窗口函数做法：加一个 where r between 4 and 6 的条件。</p>
@@ -924,24 +924,24 @@ L-->DCL[DCL]</pre>
 <h3 id="并发事务问题及解决办法">并发事务问题及解决办法</h3>
 <p>多个事务同时进行时会出现的问题。</p>
 <p>以下是数据库事务可以设置的几种隔离级别，分别是应对不同问题用的。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336578.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336578.png" alt="" /></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select @@TRANSACTION_ISOLATION;-- 查看数据库隔离级别</span><br><span class="line">set session/global TRANSACTION ISOLATION LEVEL SERIALIZABLE;-- 设置当前会话/全局事务隔离级别为serializable</span><br></pre></td></tr></table></figure>
 <p>read uncommitted 是数据库最低隔离级别，即：一个事务中的数据还未提交别的事务就可以读得到。</p>
 <p><strong>问题1</strong>：脏读：一个事务读到另一个事务未提交的数据（Read uncommitted会发生）</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544202.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544202.png" alt="" /></p>
 <p><strong>解决办法</strong>：read committed 限制一个事务修改的数据要等到提交后别的数据才能读得到。解决了脏读问题，但是没有解决不可重复读问题，事务2第一次读和第二次读数据可能值不一样。</p>
 <p>解决后：（给要读取的左边的窗口设置 read-committed 隔离级别）</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544203.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544203.png" alt="" /></p>
 <p><strong>问题2</strong>：不可重复读：一个事务前后读了同一个数据两次，两次值不一样。因为其他事务在这中间提交过一次。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544204.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544204.png" alt="" /></p>
 <p><strong>解决办法</strong>：repeatable 使得事务2开启后事务1才提交的数据事务2读取不到，避免了不可重复读的问题。但是没有解决串行化问题，即事务2再对数据的修改会覆盖事务1的修改。</p>
 <p><strong>问题3</strong>：幻读：每个事务开启时把数据读入缓存内，这样重复读取的时候直接从缓存中读取，避免了重复读取数据不一样。但是数据不及时更新，比如事务1删库了，事务2还能读；或者事务1新增了一条主键为i的数据提交了，事务2随后也想新增一条主键为i的数据，提交的时候发现1已经写过了，交不进去了。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336806.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336806.png" alt="" /></p>
 <p><strong>解决办法</strong>：serializable 让事务1在操作当前数据库时，别的事务直接操作不了。</p>
 <p><strong>问题4</strong>：开启序列化后，其他事务插入会卡住，等待当前事务插入完成后再执行插入操作。会导致用户体验差，需要等待。所以序列化等级还是很少使用的。</p>
 <h2 id="存储引擎">存储引擎</h2>
 <h3 id="Mysql-体系结构">Mysql 体系结构</h3>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336306.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336306.png" alt="" /></p>
 <p>连接层：连接池部分，与客户端连接，并检查授权认证、权限、最大连接数等。</p>
 <p>服务层：SQL接口一行，绝大部分核心功能如SQL解析优化、所有跨存储引擎的实现都在这一层。</p>
 <p>引擎层：可插拔存储引擎一行，<strong>索引</strong>在这一层实现，决定数据库数据如何存、取、组织。如果当前引擎不满足需求还可以拓展，因此被称作可插拔。</p>
@@ -959,7 +959,7 @@ L-->DCL[DCL]</pre>
 <p>有一个系统变量<code>innodb_file_per_table</code>，可以通过<code>show variables like 'innodb_file_per_table'</code>查看，ON则表示每张表都对应一个表空间文件ibd。</p>
 <p>ibd文件在mysql文件夹-data文件夹-对应数据库文件夹里。</p>
 <p>ibd文件直接打开是看不了的，都是二进制。可以进入目标文件夹后，通过命令行<code>ibd2sdi 指定表名.ibd</code>，就可以查看该表的json文件信息了。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544208.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544208.png" alt="" /></p>
 <p>表空间文件逻辑存储结构如图所示，段-区-页-行，每一行就是表中的一行数据。</p>
 <p>一个区大小固定为1M，一页大小固定为16K。（大概了解，SQL优化部分还要涉及）</p>
 <h3 id="MYISAM">MYISAM</h3>
@@ -973,16 +973,16 @@ L-->DCL[DCL]</pre>
 <p>存放在内存中，数据是临时的。（现在功能几乎可以被NoSQL的Redis取代）</p>
 <p>访问速度快，支持hash索引。</p>
 <p>存储文件只包括：.sdi，因为数据索引都存在内存里了。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544209.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544209.png" alt="" /></p>
 <h3 id="三种存储引擎的选择">三种存储引擎的选择</h3>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544210.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544210.png" alt="" /></p>
 <h2 id="索引">索引</h2>
 <p>索引是高效获取数据的数据结构。</p>
 <h3 id="Linux中安装Mysql">Linux中安装Mysql</h3>
 <p>首先在Linux中安装Mysql。还好前两天接触了一点虚拟机。</p>
 <p><a target="_blank" rel="noopener" href="https://downloads.mysql.com/archives/community/">Mysql 下载地址</a></p>
 <p>FinalShell可以直接点击上传标志上传下载的压缩包：</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544211.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544211.png" alt="" /></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">mkdir mysql</span><br><span class="line"></span><br><span class="line">tar -xvf 压缩包名 -C mysql //解压到该文件夹内</span><br><span class="line"></span><br><span class="line">//安装其中的所有rpm文件</span><br><span class="line">rpm -ivh mysql-community-common-8.0.26-1.el7.x86_64.rpm </span><br><span class="line"></span><br><span class="line">rpm -ivh mysql-community-client-plugins-8.0.26-1.el7.x86_64.rpm </span><br><span class="line"></span><br><span class="line">rpm -ivh mysql-community-libs-8.0.26-1.el7.x86_64.rpm </span><br><span class="line"></span><br><span class="line">rpm -ivh mysql-community-libs-compat-8.0.26-1.el7.x86_64.rpm</span><br><span class="line"></span><br><span class="line">yum install openssl-devel</span><br><span class="line"></span><br><span class="line">rpm -ivh  mysql-community-devel-8.0.26-1.el7.x86_64.rpm</span><br><span class="line"></span><br><span class="line">rpm -ivh mysql-community-client-8.0.26-1.el7.x86_64.rpm</span><br><span class="line"></span><br><span class="line">rpm -ivh  mysql-community-server-8.0.26-1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
 <p>启动：安装好mysql后，linux会自动提供mysqld服务。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld //启动mysql</span><br><span class="line"></span><br><span class="line">mysql -uroot -p //然后去日志文件里找密码~</span><br></pre></td></tr></table></figure>
@@ -998,7 +998,7 @@ L-->DCL[DCL]</pre>
 <p>然后为了DataGrip可以访问，创建一个可以远程访问新用户：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create user &#x27;Windows&#x27;@&#x27;%&#x27; identified with mysql_native_password by &#x27;1234&#x27;;</span><br><span class="line"></span><br><span class="line">grant all privileges on *.* to &#x27;Windows&#x27;@&#x27;%&#x27;;</span><br></pre></td></tr></table></figure>
 <p>可以通过ifconfig查看ip地址。查看后就可以在DataGrip中链接啦。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336010.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336010.png" alt="" /></p>
 <h3 id="索引介绍">索引介绍</h3>
 <p>是帮助Mysql高效<strong>获取数据</strong>的有序数据结构。</p>
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544213.png" alt="image-20220803224534102" style="zoom:80%;" />
@@ -1016,23 +1016,23 @@ L-->DCL[DCL]</pre>
 <p>以最大度数为5的5阶B树为例：</p>
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544218.png" alt="image-20220803230306405" style="zoom:67%;" />
 <p>一开始插入4个数以内，都在一个节点里</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336423.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336423.png" alt="" /></p>
 <p>然后插入第五个数，就开始分裂，中间的数作为父节点，左右两组数作为子节点</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544220.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544220.png" alt="" /></p>
 <p>然后插入数还是往子节点里插入</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544221.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544221.png" alt="" /></p>
 <p>如果子节点够5个，中间的提到父节点处。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336894.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336894.png" alt="" /></p>
 <p>一直插入到父节点达到5个，父节点再次分裂。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544223.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544223.png" alt="" /></p>
 <h3 id="B-树">B+树</h3>
 <p>就是B树的所有叶子节点会形成一个单向链表</p>
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544224.png" alt="image-20220804003347742" style="zoom:67%;" />
 <p>Mysql里的B+树就是叶子结点变成了双向循环链表，提高区间访问性能。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544225.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544225.png" alt="" /></p>
 <h3 id="Hash-索引">Hash 索引</h3>
 <p>通过一定的Hash算法，把值都归到对应hash值的槽位上。如果出现槽位冲突，采用链表的方式解决。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544226.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544226.png" alt="" /></p>
 <p>只能用于=等值查询，不能查询范围(&gt;&lt; between)，不能排序。</p>
 <p>效率很高，通常一次查询就找得到。</p>
 <p>只有Memory存储引擎支持。但是InnoDB具有自适应hash功能，可以在给定的条件下将B+树构建为hash索引。</p>
@@ -1042,7 +1042,7 @@ L-->DCL[DCL]</pre>
 <p>有主键，主键就是聚集索引；</p>
 <p>没有主键，第一个unique是聚集索引；</p>
 <p>没有主键和unique唯一索引，则表会自动生成一个rowid作为隐藏的聚集索引。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336849.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336849.png" alt="" /></p>
 <p><code>select ... where name='Arm';</code>会先在二级索引中找到对应节点，然后根据id去聚集索引B+树中找主键，进而找到对应的row行数据。</p>
 <p>因此直接<code>select ... where id=10;</code>效率会更高，哪怕name有索引也需要回表查询（回id表）。</p>
 <h3 id="创建索引">创建索引</h3>
@@ -1095,7 +1095,7 @@ L-->DCL[DCL]</pre>
 <p>覆盖索引效率高于 select *。</p>
 <p>如果查询多列，包括有索引列和没索引列，explain 中 extra 显示 using index condition，意为使用了索引查找，但是最后又回表查询非索引列。</p>
 <p>如果查询的多列只包含索引列，explain 中 extra 显示 using where; using index 意为只使用了索引查找，因为要查询的列只在索引列中就找得到。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202304041241125.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202304041241125.png" alt="" /></p>
 <p>比如上例，如果 <code>select * from table where id=2;</code> 先去聚集索引表中找 id=2 的行，然后回表找到这一行，找到这一行的所有数据。</p>
 <p>如果 <code>select id, name from table where name='Arm';</code> 先去辅助索引表中找到 Arm，辅助索引表中也会存储其 id 信息。这样就已经能查到所有字段了，就不用回表了。</p>
 <p>但是如果查询的字段是 <code>id, name, gender</code> ，gender 不在辅助索引表中，因此还是用回表的。先根据 arm 对应的 id 值，去聚集索引表中找到相关的行信息，再回表查询 gender。这就超出了覆盖索引的范围。</p>
@@ -1110,7 +1110,7 @@ L-->DCL[DCL]</pre>
 <h4 id="单列索引和联合索引">单列索引和联合索引</h4>
 <p>包含多列的是联合索引。</p>
 <p>多个查询条件时推荐使用建立联合索引。因为比如 column a 和 column b 建立了两个单列索引，同时查询两者时 mysql 也只会选择其中一个索引查询，另一个字段回表查询（如果 mysql 自动选择了单列索引，可以用 use index() 限制）。</p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336398.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336398.png" alt="" /></p>
 <h3 id="设计原则">设计原则</h3>
 <ol>
 <li>什么时候用索引？数据量比较大，且查询比较频繁的表要建立。</li>
@@ -1219,19 +1219,19 @@ L-->DCL[DCL]</pre>
    
   <nav class="article-nav">
     
-      <a href="/2022/07/20/%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E9%A1%B9%E7%9B%AE%EF%BC%9AJava%20Wordle/" class="article-nav-link">
+      <a href="/2022/11/27/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%EF%BC%9A%E7%8E%8B%E9%81%93%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            北邮国院项目：Java Wordle
+            技术学习：王道操作系统
           
         </div>
       </a>
     
     
-      <a href="/2022/05/12/%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E9%A1%B9%E7%9B%AE%EF%BC%9AWeb%20%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%20%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%A0%87%E7%82%B9%E5%9C%B0%E5%9B%BE/" class="article-nav-link">
+      <a href="/2022/07/20/%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E9%A1%B9%E7%9B%AE%EF%BC%9AJava%20Wordle/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">北邮国院项目：Web 开发实践 小程序标点地图</div>
+        <div class="article-nav-title">北邮国院项目：Java Wordle</div>
       </a>
     
   </nav>
