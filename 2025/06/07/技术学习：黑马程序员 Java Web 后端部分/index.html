@@ -107,7 +107,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">506</span>
+            <span class="post-count">2.1k</span>
         </span>
     </span>
 
@@ -116,7 +116,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">8 min</span>
         </span>
     </span>
 </div>
@@ -146,7 +146,7 @@
 </div></div><ol>
 <li>方便快捷地管理项目依赖（jar 包），避免冲突问题。手动导入 jar 包，一个项目可能会导入上百个，彼此之间还有相互依赖，一个升级了会影响很多也要一起升级才能正常工作。maven 只需要在 pom.xml 文件里面寥寥几句就能定义要引入的 jar 包。</li>
 <li>提供统一的项目结构。不同 IDE 构建生成的项目（如 eclipse， IDEA）彼此之间不通用，而 maven 提供了一套标准项目结构。</li>
-<li>标准跨平台的自动化项目构建方式。不同平台构建项目方式可能也不同，maven 则提供了一套标准，统一的项目结构，编译后放到 target 下，还可快捷打包。2,3如下图。</li>
+<li>标准跨平台的自动化项目构建方式。不同平台构建项目方式可能也不同，maven 则提供了一套标准，统一的项目结构，编译后放到 target 下，还可快捷打包。2,3 如下图。</li>
 </ol>
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506072332264.png" alt=" " style="zoom:67%;" />
 <p>main：实际项目资源。</p>
@@ -171,6 +171,155 @@
 <p>远程仓库（私服）是公司团队搭建的私有仓库。</p>
 <p>优先查找本地 -&gt; 私服 -&gt; 中央仓库，只要有一个人用到一个新 jar 包，这个包就会从中央仓库下载到私服。</p>
 <p><em>安装我也不赘述了，网上好教程很多。</em></p>
+<p>引入其他项目的 maven 就是在 IDEA 中导入其 pom.xml 文件。</p>
+<h3 id="依赖配置">依赖配置</h3>
+<p>在 pom.xml 中写 dependencies 依赖，在其中写 dependency 单个依赖，并声明要引入的包的坐标。</p>
+<p>然后需要点击刷新才能引入。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ch.qos.logback<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>logback-classic<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.5.13<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可以去 <a target="_blank" rel="noopener" href="http://mvnrepository.com">mvnrepository.com</a> 中找要引入的包，按下载量选择版本号比较好。</p>
+<h3 id="依赖传递">依赖传递</h3>
+<p>上面这个依赖其实需要其他两个依赖。不过点击刷新的时候自动全部引入了。</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506080913143.png" alt=" " style="zoom: 80%;" />
+<p>直接依赖：我们通过依赖配置引入的依赖。</p>
+<p>间接依赖：直接依赖项对其他依赖的依赖。</p>
+<p>可以在 IDEA 中以图表形式查看依赖。</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506080916676.png" alt=" " style="zoom:67%;" />
+<p>排除依赖：比如 A 依赖了 B，B 依赖了 C，但是 A 不想依赖 C：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;ch.qos.logback&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;logback-classic&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;<span class="number">1.5</span><span class="number">.13</span>&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;exclusion&gt;</span><br><span class="line">    	&lt;exclusion&gt;</span><br><span class="line">    		&lt;groupId&gt;&lt;/groupId&gt; &lt;!-- 在这里写不想依赖的包的组织名和模块名 --&gt;</span><br><span class="line">        	&lt;artifactId&gt;&lt;/artifactId&gt;</span><br><span class="line">    	&lt;/exclusion&gt;</span><br><span class="line">    &lt;/exclusion&gt;</span><br><span class="line">&lt;/dependencies&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="依赖范围">依赖范围</h3>
+<p>可以限定 jar 包在主程序范围内是否生效（main 文件夹），测试程序中是否也生效（test 文件夹），是否参与打包运行（package 指令）。</p>
+<p>通过 scope 标签声明。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ch.qos.logback<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>logback-classic<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.5.13<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>scope 值</th>
+<th>主程序</th>
+<th>测试程序</th>
+<th>打包（运行）</th>
+<th>范例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>compile（默认）</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>log4j</td>
+</tr>
+<tr>
+<td>test</td>
+<td>-</td>
+<td>Y</td>
+<td>-</td>
+<td>junit</td>
+</tr>
+<tr>
+<td>provided</td>
+<td>Y</td>
+<td>-</td>
+<td>-</td>
+<td>servlet-api</td>
+</tr>
+<tr>
+<td>runtime</td>
+<td>-</td>
+<td>Y</td>
+<td>Y</td>
+<td>jdbc 驱动</td>
+</tr>
+</tbody>
+</table>
+<p>在 IDEA - maven 列表 - 生命周期 - package 双击可以进行打包测试看设置不同 scope 值的 jar 包是否被引入了。</p>
+<h3 id="生命周期">生命周期</h3>
+<p>maven 的生命周期就是为了对所有 maven 项目的构建进行统一。</p>
+<p>Maven 中有 3 套相互独立的生命周期：</p>
+<ul>
+<li><strong>clean</strong>：清理工作。</li>
+<li><strong>default</strong>：核心工作，如：编译、测试、打包、安装、部署等。</li>
+<li><strong>site</strong>：生成报告、发布站点等。</li>
+</ul>
+
+<div class="callout" data-callout="note">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+</div>
+<div class="callout-title-inner">Note</div>
+</div>
+<div class="callout-content"><p></p>
+<p>在同一套生命周期中，运行后面的工作前面也会运行，比如运行打包，编译测试也会运行。不过 clean 不会运行因为不属于同一套生命周期。</p>
+</div></div><p>IDEA 中双击对应的生命周期项目就能执行，点击上面这个符号可以跳过测试。</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506080939516.png" alt=" " style="zoom:80%;" />
+<p>也可以终端 <code>mvn compile</code> 这样执行。</p>
+
+<div class="callout" data-callout="note">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+</div>
+<div class="callout-title-inner">Note</div>
+</div>
+<div class="callout-content"><p></p>
+<p>其实真正执行这些命令的时候，生命周期是依赖下面这些插件来具体执行的。</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506080943557.png" alt=" " style="zoom:80%;" />
+</div></div><h2 id="MVC-架构">MVC 架构</h2>
+<p>Controller：控制层，接收前端发送的请求，处理请求，响应数据。</p>
+<p>Service：业务逻辑处理。</p>
+<p>Dao：有的时候用 Mapper 表示，数据访问层（持久层），CRUD 数据。</p>
+<p>分为三层架构实现，提高程序的扩展性和可维护性。</p>
+<p>具体拆分示例如下，建立 <code>controller/xxxController</code> <code>servoce/xxxService</code> <code>dao/xxxDao</code> 三个文件将功能分开。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506080957969.png" alt=" " /></p>
+<h3 id="解耦">解耦</h3>
+<p>内聚：软件中各个功能模块 <strong>内部</strong> 的功能联系。</p>
+<p>耦合：软件中各个层，依赖 <strong>之间</strong> 的关联程度。</p>
+<p>软件设计原则是高内聚低耦合，比如一个用户服务类，里面就尽量只包含和用户相关的服务不要包含其他的；而几个模块之间的耦合性要尽可能低。</p>
+<p>比如上面这个例子，controller 中 新建了一个 service 类，service 中新建了一个 dao 类。这就是耦合了。如果 service dao 中发生变化了比如换了一个其他的 service 类，那么 controller service 中也要相应地改动新建对象的部分。</p>
+<p>我们可以通过下面这种容器思想进行进一步解耦，把 service 对象放在容器里，controller 只负责从容器中拿一个 EmpService 的对象，不用关心其怎么实现的。</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506081004138.png" alt=" " style="zoom:80%;" />
+<p>控制反转（Inversion Of Control IOC）：对象的创建控制权不是在程序中，而是转移到外部（容器）。</p>
+<p>依赖注入（Dependency Injection DI）：容器为应用程序提供运行时所依赖的资源。</p>
+<p>Bean 对象：IOC 容器中创建，管理的对象。比如上面的 A 对象就是 bean。</p>
+<h3 id="IOC-DI">IOC DI</h3>
+<p>IOC 实现：在要放入容器的类的声明前加一句 <code>@Component</code>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EmpServiceA</span> <span class="keyword">implements</span> <span class="title class_">EmpService</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EmpDaoA</span> <span class="keyword">implements</span> <span class="title class_">EmpDao</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>这样就指明了要将其交给容器管理，并成为 IOC 容器中的 bean。</p>
+<p>DI 实现：在声明对象，申请 bean 的语句前加一个 <code>@Autowired</code>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EmpController</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> EmpService empService;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EmpServiceA</span> <span class="keyword">implements</span> <span class="title class_">EmpService</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> EmpDao empDao;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>@Controller</code> <code>@Service</code> <code>@Repository</code> 分别用于定义 Controller Service Dao 的 bean 对象，如果不属于以上三种的用 <code>@Component</code>。<em>Repository 用的比较少，一般用 mybatis 整合。</em></p>
+<p>默认的 bean 对象名就是类名首字母小写，也可以自己指定 <code>@Service(value = &quot;serviceA&quot;)</code> 如果只有一个参数而且是 value，可以省略 <code>@Service(&quot;serviceA&quot;)</code></p>
+
+<div class="callout" data-callout="warning">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-alert-triangle"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+</div>
+<div class="callout-title-inner">Warning</div>
+</div>
+<div class="callout-content"><p></p>
+<p>Springboot 集成 web 开发的时候控制器必须用 <code>@Controller</code> 定义。</p>
+</div></div><h3 id="Bean-组件扫描">Bean 组件扫描</h3>
+<p>其实声明完注解，要想生效，还需要被组件扫描注解 <code>@ComponentScan</code> 扫描到。比如 <code>@SpringBootApplication</code> 中默认的扫描范围是启动类所在包以及其子包。</p>
+<p><code>@ComponentScan(value = &quot;要扫描的包1&quot;, “要扫描的包2”)</code> value 可以省略。不过不推荐这种方法，最好还是 <code>@SpringBootApplication</code> 而且将所有包放在启动类所在包中。</p>
+<h3 id="Bean-指定注入">Bean 指定注入</h3>
+<p>如果容器中有多个符合条件的 bean，就无法分辨要注入哪个而报错。解决方式有以下两种：</p>
+<ol>
+<li>
+<p>声明默认的 bean：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Primary</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Dog</span> <span class="keyword">implements</span> <span class="title class_">Animal</span> &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>在使用的时后指定要注入哪一个，这个比较常用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="meta">@Qualifier(&quot;cat&quot;)</span>	<span class="comment">// 可以直接声明对应类名小写，这样 Spring 就知道我们选的是哪个类。</span></span><br><span class="line"><span class="comment">// 如果想自定义其他类名，需要在 @Component 里也声明对应的 value，如@Component(&quot;objectName&quot;)</span></span><br><span class="line"><span class="keyword">private</span> Animal animal;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><code>@Resource</code>。</p>
+<pre><code class="language-java">@Resource(name = &quot;cat&quot;)	// 不用写 Autowired 了。Resource 是 jdk 中的注解不是 Spring 中的。
+// Autowired 默认是按照类型进行注入的，而 Resource 默认是按照名称注入的所以必须写名称
+private Animal animal;</code></pre>
+</li>
+</ol>
  
       <!-- reward -->
       
