@@ -107,7 +107,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">12.2k</span>
+            <span class="post-count">12.3k</span>
         </span>
     </span>
 
@@ -116,7 +116,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">49 min</span>
+            <span class="post-count">50 min</span>
         </span>
     </span>
 </div>
@@ -605,6 +605,17 @@ E1 --> Z1</pre>
 <p>（这里其实要改一下，把 endTime 改成在你当前时间之后。这样才能在前端看到优惠券）</p>
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505272216808.png" style="zoom:50%;" />
 <p>不过现在没法点击抢购，会显示功能未完成。请求 URL 为：<code>http://localhost:8080/api/voucher-order/seckill/10</code></p>
+<p>实现优惠券抢购的逻辑如下：</p>
+<pre class="mermaid">flowchart TD
+    A[开始] --> B[提交优惠券 id]
+    B --> C[查询优惠券信息]
+    C --> D{判断秒杀是否开始}
+    D -- 否 --> E1[返回异常结果] --> F[结束]
+    D -- 是 --> G{判断库存是否充足}
+    G -- 否 --> E1
+    G -- 是 --> H[扣减库存]
+    H --> I[创建订单]
+    I --> J[返回订单 id] --> F</pre>
  
       <!-- reward -->
       
