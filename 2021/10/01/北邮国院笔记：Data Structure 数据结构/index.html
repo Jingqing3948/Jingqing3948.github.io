@@ -134,8 +134,7 @@
   <h2 id="前言">前言</h2>
 <p>因为考试要求，博主学习的是双语的数据结构，因此自己总结一些英文的概念、知识点。希望也可以对读者学习这门课程有所帮助~<br />
 特别感谢许可老师的教导！</p>
-<p>理解时间复杂度的定义<br />
-（本课程涉及到的所有算法，都需要记住时间复杂度O）</p>
+<p>理解时间复杂度的定义（本课程涉及到的所有算法，都需要记住时间复杂度O）</p>
 <h2 id="Data-structure-notes">Data structure notes</h2>
 <p>Program = Algorithm + Data Structure<br />
 An algorithm is a finite set of instructions that, fi followed, accomplishes a particular task. In addition, all algorithms must satisfy the following criteria:</p>
@@ -168,12 +167,8 @@ Fibonacci 斐波那契<br />
 Euclid 欧几里得<br />
 Exponentiation 幂<br />
 Pow 指数</p>
-<p>【表】<br />
-理解链表、数组的特点（优缺点）<br />
-会代码实现：单链表 循环链表 双向链表……</p>
-<p><em>【栈和队列】</em><br />
-<em>理解原理，会算法：两种实现方法</em><br />
-<em>会应用算法，如：中序后序互转；前中后缀表达式互换；栈（队列）操作后的状态</em></p>
+<p>【表】理解链表、数组的特点（优缺点）会代码实现：单链表 循环链表 双向链表……</p>
+<p><em>【栈和队列】</em><em>理解原理，会算法：两种实现方法</em><em>会应用算法，如：中序后序互转；前中后缀表达式互换；栈（队列）操作后的状态</em></p>
 <h2 id="ADT">ADT</h2>
 <p><strong>ADT(Abstract Data Type)</strong> is a data type that is organized in such a way that the <strong>specification</strong>  on the objects and <strong>specification</strong> of the operations on the objects are <strong>separated from</strong> the <strong>representation</strong> of the objects and the <strong>implementation</strong> on the operations.</p>
 <h2 id="The-List-ADT">The List ADT</h2>
@@ -195,11 +190,9 @@ Pow 指数</p>
 <h3 id="Doubly-Linked-Lists">Doubly Linked Lists</h3>
 <p>找前一个结点更方便。注意初始化、插入、删除、双向遍历的区别。</p>
 <h3 id="Circular-Lists">Circular Lists</h3>
-<p>头尾相接的单链表。注意判空条件（<code>L-&gt;Next==L</code>）、判断表尾结点条件(<code>p-&gt;Next==L</code>)以及插入删除时修改的操作。<br />
-双向循环链表不再赘述。</p>
+<p>头尾相接的单链表。注意判空条件（<code>L-&gt;Next==L</code>）、判断表尾结点条件(<code>p-&gt;Next==L</code>)以及插入删除时修改的操作。双向循环链表不再赘述。</p>
 <h3 id="Application-The-polynomial-ADT">Application: The polynomial ADT</h3>
-<p>多项式求和、求积函数，使用链表更好，因为如果出现形如x^100000^+x^5^+x^1^这种，数组会浪费大量空间，而单链表只需要将系数非0的部分申请空间创造结点。<br />
-（也可以建立十字链表，两个维度分别存储系数和指数）</p>
+<p>多项式求和、求积函数，使用链表更好，因为如果出现形如x^100000^+x^5^+x^1^这种，数组会浪费大量空间，而单链表只需要将系数非0的部分申请空间创造结点。（也可以建立十字链表，两个维度分别存储系数和指数）</p>
 <h3 id="Cursor-Implementation-of-Linked-Lists-no-pointer">Cursor Implementation of Linked Lists (no pointer)</h3>
 <p>可以使用一个游标int Cursor来作为指针，游标移动访问数组，从而实现类似于指针移动的操作。<br />
 The cursor implementation is usually significantly <strong>faster</strong> because of the lack of memory management routines.</p>
@@ -210,19 +203,13 @@ Push: 入栈<br />
 Top: 读取并返回栈顶元素<br />
 Pop: 栈顶元素出栈</p>
 <h3 id="Application-1-Balancing-symbols-括号匹配">Application 1: Balancing symbols 括号匹配</h3>
-<p>输入一串表达式，判断其中的括号()[]{}是否匹配。<br />
-检验方法：每个右括号都和离他最近的，也就是最晚输入的左括号匹配，正符合栈的后进先出原则。<br />
-读到左括号的时候入栈，读到右括号的时候与栈顶的左括号比较，比较后出栈。<br />
-最后结束输入，还要检查一下栈是否为空，若非空，栈内剩下的括号全都不匹配。<br />
+<p>输入一串表达式，判断其中的括号()[]{}是否匹配。检验方法：每个右括号都和离他最近的，也就是最晚输入的左括号匹配，正符合栈的后进先出原则。读到左括号的时候入栈，读到右括号的时候与栈顶的左括号比较，比较后出栈。最后结束输入，还要检查一下栈是否为空，若非空，栈内剩下的括号全都不匹配。<br />
 <a target="_blank" rel="noopener" href="https://github.com/Jingqing3948/Data-Structure-in-BUPT/blob/main/1%20STACK/7-1%20Balancing%20Symbols.cpp">7-1 Balancing symbols 代码实现</a></p>
 <h3 id="Application-2-Postfix-Evaluation-后缀表达式的计算">Application 2: Postfix Evaluation 后缀表达式的计算</h3>
 <p>Infix expression中缀表达式： a + b * c - d / e<br />
 Prefix expression 前缀表达式：- + a * b c / d e<br />
 Postfix expression 后缀表达式： a b c * + d e / -<br />
-中缀表达式更符合人脑的计算方法，而后缀表达式更符合计算机的计算方法。<br />
-实际上在计算机中计算表达式，是先转化为postfix expression，再进行计算的。<br />
-转换方法：<br />
-建立堆栈。</p>
+中缀表达式更符合人脑的计算方法，而后缀表达式更符合计算机的计算方法。实际上在计算机中计算表达式，是先转化为postfix expression，再进行计算的。转换方法：建立堆栈。</p>
 <ol>
 <li>读入的字符是操作数：直接输出</li>
 <li>读入的字符是操作符：<br />
@@ -243,13 +230,7 @@ DeQueue: 出队</p>
 <h3 id="Application-who-is-the-last">Application: who is the last</h3>
 <p>输入n、m；n个人坐成一个圈，从第一个人开始报数，每m个人淘汰掉第m个人，然后下一个人继续重新报数。问：谁能留到最后？<br />
 <a target="_blank" rel="noopener" href="https://github.com/Jingqing3948/Data-Structure-in-BUPT/blob/main/2%20QUEUE/7-4%20who%20is%20the%20last.cpp">7-4 who is the last 代码实现</a></p>
-<p>树<br />
-【基本概念】各类树的度、高、深、节点数与叶子节点的关系；孩子兄弟节点树；<br />
-【二分检索树】：概念 平衡二叉树 完全二叉树 满二叉树 AVL树…… 会插入 删除；<br />
-【遍历树】：先序 后序 中序 层序；会代码创建树和检索、会执行画图<br />
-【B-树】：会画图 构建B-树，增加节点，删除节点 B-树<br />
-【霍夫曼树】：理解原理 给出数据 会画霍夫曼树的图；节点关系<br />
-理清各种树之间的关系</p>
+<p>树【基本概念】各类树的度、高、深、节点数与叶子节点的关系；孩子兄弟节点树；【二分检索树】：概念 平衡二叉树 完全二叉树 满二叉树 AVL树…… 会插入 删除；【遍历树】：先序 后序 中序 层序；会代码创建树和检索、会执行画图【B-树】：会画图 构建B-树，增加节点，删除节点 B-树【霍夫曼树】：理解原理 给出数据 会画霍夫曼树的图；节点关系理清各种树之间的关系</p>
 <h2 id="Tree">Tree</h2>
 <h3 id="Conception">Conception</h3>
 <ul>
@@ -346,15 +327,9 @@ Delete:</p>
 <mjx-container class="MathJax" jax="SVG" display="true" style="direction: ltr; display: block; text-align: center; margin: 1em 0;"><svg style="overflow: visible; min-height: 1px; min-width: 1px; vertical-align: -2.819ex;" xmlns="http://www.w3.org/2000/svg" width="18.182ex" height="6.757ex" role="img" focusable="false" viewBox="0 -1740.7 8036.6 2986.6"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D44A" d="M436 683Q450 683 486 682T553 680Q604 680 638 681T677 682Q695 682 695 674Q695 670 692 659Q687 641 683 639T661 637Q636 636 621 632T600 624T597 615Q597 603 613 377T629 138L631 141Q633 144 637 151T649 170T666 200T690 241T720 295T759 362Q863 546 877 572T892 604Q892 619 873 628T831 637Q817 637 817 647Q817 650 819 660Q823 676 825 679T839 682Q842 682 856 682T895 682T949 681Q1015 681 1034 683Q1048 683 1048 672Q1048 666 1045 655T1038 640T1028 637Q1006 637 988 631T958 617T939 600T927 584L923 578L754 282Q586 -14 585 -15Q579 -22 561 -22Q546 -22 542 -17Q539 -14 523 229T506 480L494 462Q472 425 366 239Q222 -13 220 -15T215 -19Q210 -22 197 -22Q178 -22 176 -15Q176 -12 154 304T131 622Q129 631 121 633T82 637H58Q51 644 51 648Q52 671 64 683H76Q118 680 176 680Q301 680 313 683H323Q329 677 329 674T327 656Q322 641 318 637H297Q236 634 232 620Q262 160 266 136L501 550L499 587Q496 629 489 632Q483 636 447 637Q428 637 422 639T416 648Q416 650 418 660Q419 664 420 669T421 676T424 680T428 682T436 683Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(1048,0)"><path data-c="1D443" d="M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(1799,0)"><path data-c="1D43F" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 217 683Q271 680 344 680Q485 680 506 683H518Q524 677 524 674T522 656Q517 641 513 637H475Q406 636 394 628Q387 624 380 600T313 336Q297 271 279 198T252 88L243 52Q243 48 252 48T311 46H328Q360 46 379 47T428 54T478 72T522 106T564 161Q580 191 594 228T611 270Q616 273 628 273H641Q647 264 647 262T627 203T583 83T557 9Q555 4 553 3T537 0T494 -1Q483 -1 418 -1T294 0H116Q32 0 32 10Q32 17 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z" style="stroke-width: 3;"/></g><g data-mml-node="mo" transform="translate(2757.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z" style="stroke-width: 3;"/></g><g data-mml-node="munderover" transform="translate(3813.6,0)"><g data-mml-node="mo"><path data-c="2211" d="M60 948Q63 950 665 950H1267L1325 815Q1384 677 1388 669H1348L1341 683Q1320 724 1285 761Q1235 809 1174 838T1033 881T882 898T699 902H574H543H251L259 891Q722 258 724 252Q725 250 724 246Q721 243 460 -56L196 -356Q196 -357 407 -357Q459 -357 548 -357T676 -358Q812 -358 896 -353T1063 -332T1204 -283T1307 -196Q1328 -170 1348 -124H1388Q1388 -125 1381 -145T1356 -210T1325 -294L1267 -449L666 -450Q64 -450 61 -448Q55 -446 55 -439Q55 -437 57 -433L590 177Q590 178 557 222T452 366T322 544L56 909L55 924Q55 945 60 948Z" style="stroke-width: 3;"/></g><g data-mml-node="TeXAtom" transform="translate(148.2,-1087.9) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z" style="stroke-width: 3;"/></g><g data-mml-node="mo" transform="translate(345,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z" style="stroke-width: 3;"/></g><g data-mml-node="mn" transform="translate(1123,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z" style="stroke-width: 3;"/></g></g><g data-mml-node="mi" transform="translate(537.8,1150) scale(0.707)"><path data-c="1D458" d="M121 647Q121 657 125 670T137 683Q138 683 209 688T282 694Q294 694 294 686Q294 679 244 477Q194 279 194 272Q213 282 223 291Q247 309 292 354T362 415Q402 442 438 442Q468 442 485 423T503 369Q503 344 496 327T477 302T456 291T438 288Q418 288 406 299T394 328Q394 353 410 369T442 390L458 393Q446 405 434 405H430Q398 402 367 380T294 316T228 255Q230 254 243 252T267 246T293 238T320 224T342 206T359 180T365 147Q365 130 360 106T354 66Q354 26 381 26Q429 26 459 145Q461 153 479 153H483Q499 153 499 144Q499 139 496 130Q455 -11 378 -11Q333 -11 305 15T277 90Q277 108 280 121T283 145Q283 167 269 183T234 206T200 217T182 220H180Q168 178 159 139T145 81T136 44T129 20T122 7T111 -2Q98 -11 83 -11Q66 -11 57 -1T48 16Q48 26 85 176T158 471L195 616Q196 629 188 632T149 637H144Q134 637 131 637T124 640T121 647Z" style="stroke-width: 3;"/></g></g><g data-mml-node="msub" transform="translate(5424.2,0)"><g data-mml-node="mi"><path data-c="1D464" d="M580 385Q580 406 599 424T641 443Q659 443 674 425T690 368Q690 339 671 253Q656 197 644 161T609 80T554 12T482 -11Q438 -11 404 5T355 48Q354 47 352 44Q311 -11 252 -11Q226 -11 202 -5T155 14T118 53T104 116Q104 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Q21 293 29 315T52 366T96 418T161 441Q204 441 227 416T250 358Q250 340 217 250T184 111Q184 65 205 46T258 26Q301 26 334 87L339 96V119Q339 122 339 128T340 136T341 143T342 152T345 165T348 182T354 206T362 238T373 281Q402 395 406 404Q419 431 449 431Q468 431 475 421T483 402Q483 389 454 274T422 142Q420 131 420 107V100Q420 85 423 71T442 42T487 26Q558 26 600 148Q609 171 620 213T632 273Q632 306 619 325T593 357T580 385Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(749,-150) scale(0.707)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z" style="stroke-width: 3;"/></g></g><g data-mml-node="mo" transform="translate(6689.4,0)"><path data-c="2217" d="M229 286Q216 420 216 436Q216 454 240 464Q241 464 245 464T251 465Q263 464 273 456T283 436Q283 419 277 356T270 286L328 328Q384 369 389 372T399 375Q412 375 423 365T435 338Q435 325 425 315Q420 312 357 282T289 250L355 219L425 184Q434 175 434 161Q434 146 425 136T401 125Q393 125 383 131T328 171L270 213Q283 79 283 63Q283 53 276 44T250 35Q231 35 224 44T216 63Q216 80 222 143T229 213L171 171Q115 130 110 127Q106 124 100 124Q87 124 76 134T64 161Q64 166 64 169T67 175T72 181T81 188T94 195T113 204T138 215T170 230T210 250L74 315Q65 324 65 338Q65 353 74 363T98 374Q106 374 116 368T171 328L229 286Z" style="stroke-width: 3;"/></g><g data-mml-node="msub" transform="translate(7411.6,0)"><g data-mml-node="mi"><path data-c="1D459" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(331,-150) scale(0.707)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z" style="stroke-width: 3;"/></g></g></g></g></svg></mjx-container><p>Huffman Tree: the binary tree with the minimum weighted path length.<br />
 0 is appended to left branch,<br />
 1 is appended to right branch.</p>
-<p>哈希<br />
-要求：<br />
-会算法 给出散列函数 会画图 会计算比较成功的次数 比较失败的次数 平均查找时间<br />
-【分离链接法】<br />
-【开放定址法】线性探测法 平方探测法 双散列<br />
-【再散列】</p>
+<p>哈希要求：会算法 给出散列函数 会画图 会计算比较成功的次数 比较失败的次数 平均查找时间【分离链接法】【开放定址法】线性探测法 平方探测法 双散列【再散列】</p>
 <h2 id="HASHING">HASHING</h2>
-<p>散列表（hashing table）的实现叫散列（hashing）散列是一种用于以常数时间执行插入、删除和查找的技术，但不能排序。<br />
-散列函数（hashing function）是关键字被映射到0～TableSize-1范围内的函数。</p>
+<p>散列表（hashing table）的实现叫散列（hashing）散列是一种用于以常数时间执行插入、删除和查找的技术，但不能排序。散列函数（hashing function）是关键字被映射到0～TableSize-1范围内的函数。</p>
 <ul>
 <li>must be easy to compute and minimizes the number of collisions.</li>
 <li>Should be unbiased. For any x and any i, we have that probability(f(x)=i)=1/b. (Uniform hash function)<br />
@@ -366,18 +341,13 @@ TableSize=prime number is good for random integer keys.</li>
 <p>find another empty cell to solve collision</p>
 <h5 id="Linear-Probing-线性探测法">Linear Probing 线性探测法</h5>
 <p>f(i)=i (a linear function)<br />
-如果对应位被占了，则往下继续寻找空位。<br />
-下一位是否为空？若为空放入，若不为空检查下一位；<br />
-再下一位是否为空？……<br />
+如果对应位被占了，则往下继续寻找空位。下一位是否为空？若为空放入，若不为空检查下一位；再下一位是否为空？……<br />
 查找：先去对应位找，如果没找到再继续往下遍历。</p>
 <h5 id="Quadratic-Probing-平方探测法">Quadratic Probing 平方探测法</h5>
 <p>f(i)=i^2^<br />
-如果对应位被占了，则+1^1；<br />
-若这一位也被占了，则原位置+2^2；<br />
+如果对应位被占了，则+1^1；若这一位也被占了，则原位置+2^2；<br />
 ……<br />
-（也有的算法是±i^2）<br />
-最大加到（n/2）的平方<br />
-查找：先去对应位找，如果没找到再去加1、加4等等位找。</p>
+（也有的算法是±i^2）最大加到（n/2）的平方查找：先去对应位找，如果没找到再去加1、加4等等位找。</p>
 <h5 id="Double-Hashing-双散列法">Double Hashing 双散列法</h5>
 <p>第一个散列函数冲突时，使用第二个散列函数。<br />
 <strong>hash2(x)必须不恒等于0！</strong><br />
@@ -388,9 +358,7 @@ TableSize=prime number is good for random integer keys.</li>
 <li>建立一个原表的二倍大的表（接近原表二倍大的素数）</li>
 <li>从原表中读取数据，用新hash function 存到新表中。</li>
 </ul>
-<p>堆<br />
-【二叉堆】<br />
-要求：会构建堆 插入 删除； 画图，手动执行中间数据；</p>
+<p>堆【二叉堆】要求：会构建堆 插入 删除； 画图，手动执行中间数据；</p>
 <h2 id="Piority-Queue-Heap">Piority Queue(Heap)</h2>
 <p>Can find the element with the highest \ lowest priority.</p>
 <table>
@@ -537,10 +505,8 @@ TableSize=prime number is good for random integer keys.</li>
 <p>Just simply scan the whole table</p>
 <p>T+(|V|^2+|E|)</p>
 <p><strong>Dijkstra’s Algorithm 迪杰斯特拉算法</strong></p>
-<p>建立三个数组，final[]标记哥哥顶点是否已经找到最短路径；dist[]最短路径长度；path[]路径上的前驱<br />
-第一次循环：遍历所有结点，找到还没有确定最短路径且dist最小的顶点，final[i]=true<br />
-检查i结点的所有final=false邻接节点，如果把i作为路径上的前驱，最短路径会不会缩短？如果会，更新最短路径长度dist和路径上的前驱path信息。<br />
-进入下一轮循环。</p>
+<p>建立三个数组，final[]标记哥哥顶点是否已经找到最短路径；dist[]最短路径长度；path[]路径上的前驱第一次循环：遍历所有结点，找到还没有确定最短路径且dist最小的顶点，final[i]=true<br />
+检查i结点的所有final=false邻接节点，如果把i作为路径上的前驱，最短路径会不会缩短？如果会，更新最短路径长度dist和路径上的前驱path信息。进入下一轮循环。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Dijkstra</span><span class="params">( Table T )</span></span><br><span class="line">&#123;   <span class="comment">/* T is initialized by Figure 9.30 on p.303 */</span></span><br><span class="line">    Vertex  V, W;</span><br><span class="line">    <span class="keyword">for</span> ( ; ; ) &#123;</span><br><span class="line">        V = smallest unknown distance vertex;</span><br><span class="line">        <span class="keyword">if</span> ( V == NotAVertex )</span><br><span class="line">	<span class="keyword">break</span>; </span><br><span class="line">        T[ V ].Known = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span> ( each W adjacent to V )</span><br><span class="line">	<span class="keyword">if</span> ( !T[ W ].Known ) </span><br><span class="line">	    <span class="keyword">if</span> ( T[ V ].Dist + Cvw &lt; T[ W ].Dist ) &#123;</span><br><span class="line">	    	Decrease( T[ W ].Dist  to</span><br><span class="line">			 T[ V ].Dist + Cvw );</span><br><span class="line">		T[ W ].Path = V;</span><br><span class="line">	    &#125; <span class="comment">/* end-if update W */</span></span><br><span class="line">    &#125; <span class="comment">/* end-for( ; ; ) */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>not work for edge with negative cost!</strong></p>
 <p>T=O(|E|log|V|)</p>
@@ -697,11 +663,11 @@ a  a  b  c  a  a  a  b  c  a  d<br />
    
   <nav class="article-nav">
     
-      <a href="/2022/05/02/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%EF%BC%9A%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98%20Java%20Spring/" class="article-nav-link">
+      <a href="/2022/05/02/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%EF%BC%9A%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98%20Java/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            技术学习：黑马程序员 Java Spring
+            技术学习：黑马程序员 Java
           
         </div>
       </a>
