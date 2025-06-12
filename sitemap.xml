@@ -318,13 +318,6 @@
   </url>
   
   <url>
-    <loc>https://jingqing3948.github.io/tags/MySQL/</loc>
-    <lastmod>2025-06-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://jingqing3948.github.io/tags/Java/</loc>
     <lastmod>2025-06-12</lastmod>
     <changefreq>weekly</changefreq>
@@ -340,6 +333,13 @@
   
   <url>
     <loc>https://jingqing3948.github.io/tags/Software/</loc>
+    <lastmod>2025-06-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jingqing3948.github.io/tags/MySQL/</loc>
     <lastmod>2025-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -381,14 +381,14 @@
   </url>
   
   <url>
-    <loc>https://jingqing3948.github.io/tags/Ubuntu/</loc>
+    <loc>https://jingqing3948.github.io/tags/WXMiniProgram/</loc>
     <lastmod>2025-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://jingqing3948.github.io/tags/WXMiniProgram/</loc>
+    <loc>https://jingqing3948.github.io/tags/Ubuntu/</loc>
     <lastmod>2025-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

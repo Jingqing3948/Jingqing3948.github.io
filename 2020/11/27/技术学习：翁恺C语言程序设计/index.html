@@ -2700,6 +2700,7 @@ fwrite 可以把数据以二进制形式写到文件中，fread 类似。定位�
     
 <script src="/js/jquery-3.6.0.min.js"></script>
  
+
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
@@ -2837,20 +2838,25 @@ fwrite 可以把数据以二进制形式写到文件中，fread 类似。定位�
     viewer_init()
 </script> 
 <!-- MathJax -->
- 
-  <script type="text/javascript">
-    window.MathJax = {
-      tex2jax: {
-        inlineMath: [['$','$'], ['\\(','\\)']],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      },
-      showProcessingMessages: false,
-      messageStyle: 'none',
-      skipStartupTypeset: false
-    };
+  
+  <script>
+    setTimeout(function () {
+      window.MathJax = {
+        tex2jax: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        },
+        showProcessingMessages: false,
+        messageStyle: 'none',
+        skipStartupTypeset: false
+      };
+      var script = document.createElement('script');
+      script.src = "https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML";
+      script.async = true;
+      document.head.appendChild(script);
+    }, 1000); // 延迟 1 秒加载
   </script>
-  <script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script>
 
 
 <script>
