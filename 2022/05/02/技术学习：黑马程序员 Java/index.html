@@ -108,7 +108,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">34.4k</span>
+            <span class="post-count">35.2k</span>
         </span>
     </span>
 
@@ -117,7 +117,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">137 min</span>
+            <span class="post-count">140 min</span>
         </span>
     </span>
 </div>
@@ -1573,7 +1573,151 @@ cfe-->|yes|X("集合没有被修改,继续遍历")</pre>
 </div>
 <div class="callout-content"><p></p>
 <p>注意，toSet 对于重复元素会去重，而 toMap 遇到重复的键会报错。</p>
-</div></div><h2 id="多线程">多线程</h2>
+</div></div><h2 id="文件">文件</h2>
+<p>要保存文件的位置：文件路径（注意区分绝对和相对路径）。</p>
+<p>写入方式：IO 流。</p>
+<p>通过 IO 流将程序数据写入硬盘。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public File(String pathname)</code></td>
+<td>根据文件路径字符串创建文件对象</td>
+</tr>
+<tr>
+<td><code>public File(String parent, String child)</code></td>
+<td>根据父路径字符串和子路径字符串创建文件对象</td>
+</tr>
+<tr>
+<td><code>public File(File parent, String child)</code></td>
+<td>根据父路径对应的 File 对象和子路径字符串创建文件对象</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">path</span> <span class="operator">=</span> <span class="string">&quot;C:\\Desktop\\a.txt&quot;</span>;</span><br><span class="line"><span class="type">File</span> <span class="variable">f</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(path);</span><br><span class="line"></span><br><span class="line"><span class="type">String</span> <span class="variable">pathFather</span> <span class="operator">=</span> <span class="string">&quot;C:\\Desktop&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">pathChild</span> <span class="operator">=</span> <span class="string">&quot;a.txt&quot;</span>;</span><br><span class="line"><span class="type">File</span> <span class="variable">f1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(pathFather, pathChild);	<span class="comment">// 其实就是拼接，中间补了一个 //。</span></span><br><span class="line"><span class="comment">// 但是还是建议用构造方法拼接而不是我们自己手动拼接，因为不同os文件的路径分隔符也不一样，用构造方法会根据平台自动补不同的路径分隔符。</span></span><br></pre></td></tr></table></figure>
+<h3 id="文件操作">文件操作</h3>
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>public boolean isDirectory()</td>
+<td>判断此路径名表示的File是否为文件夹</td>
+</tr>
+<tr>
+<td>public boolean isFile()</td>
+<td>判断此路径名表示的File是否为文件</td>
+</tr>
+<tr>
+<td>public boolean exists()</td>
+<td>判断此路径名表示的File是否存在</td>
+</tr>
+<tr>
+<td>public long length()</td>
+<td>返回文件的大小（字节数量）无法获取路径大小（=0）<br />可以 % 1024 获取 MB GB 等单位</td>
+</tr>
+<tr>
+<td>public String getAbsolutePath()</td>
+<td>返回文件的绝对路径</td>
+</tr>
+<tr>
+<td>public String getPath()</td>
+<td>返回定义文件时使用的路径</td>
+</tr>
+<tr>
+<td>public String getName()</td>
+<td>返回文件的名称，带后缀<br />如果是文件，就返回文件名+扩展名<br />如果是文件夹，就返回文件夹名称，无扩展名</td>
+</tr>
+<tr>
+<td>public long lastModified()</td>
+<td>返回文件的最后修改时间（时间戳毫秒值）</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>public boolean createNewFile()</td>
+<td>创建一个新的空的文件（根据当前文件路径字符串创建）<br />成功返回 true，失败（比如已存在）返回 false<br />如果父级文件夹不存在，报异常 IO Exception<br />默认创建文件，如果没有文件后缀名，会创建一个无后缀的文件，而不是文件夹</td>
+</tr>
+<tr>
+<td>public boolean mkdir()</td>
+<td>创建单级文件夹（根据当前文件路径字符串创建）<br />如果已经存在路径，或存在同名文件，则无法创建<br />此外，不能创建多级文件夹</td>
+</tr>
+<tr>
+<td>public boolean mkdirs()</td>
+<td>创建多级文件夹<br />也可以创建单级文件夹，所以我们只用这个方法就行<br />不过其底层还是依靠 mkdir 实现的</td>
+</tr>
+<tr>
+<td>public boolean delete()</td>
+<td>删除文件、空文件夹，不走回收站</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public File[] listFiles()</code></td>
+<td>获取当前该路径下所有内容，包括隐藏文件<br />如果是空目录，或者需要权限才能访问，返回 null</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>public static File[] listRoots()</td>
+<td>列出可用的文件系统根</td>
+</tr>
+<tr>
+<td>public String[] list()</td>
+<td>获取当前该路径下所有内容</td>
+</tr>
+<tr>
+<td>public String[] list(FilenameFilter filter)</td>
+<td>利用文件名过滤器获取当前该路径下所有内容<br />可以传递一个 `FilenameFilter 在里面自定义规则<br />不常用 一般 listFile 手动判断多些</td>
+</tr>
+<tr>
+<td>public File[] listFiles()</td>
+<td>获取当前该路径下所有内容</td>
+</tr>
+<tr>
+<td>public File[] listFiles(FileFilter filter)</td>
+<td>利用文件名过滤器获取当前该路径下所有内容</td>
+</tr>
+<tr>
+<td>public File[] listFiles(FilenameFilter filter)</td>
+<td>利用文件名过滤器获取当前该路径下所有内容</td>
+</tr>
+</tbody>
+</table>
+<h2 id="多线程">多线程</h2>
 <p>进程是程序的基本执行实体，一个程序是一个进程。线程是计算机执行计算调度的最小单位。</p>
 <p>有了多线程我们就可以同时执行多个任务。</p>
 <p>常用于：解决拷贝，迁移大文件，以及加载大量的资源文件等软件中的耗时操作；所有的聊天软件，后台服务器也都会用到多线程。</p>
