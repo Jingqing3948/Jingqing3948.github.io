@@ -900,8 +900,17 @@
 <script src="/js/dz.js"></script>
  
 
-  <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
   <script>
+    // 动态加载 Mermaid 脚本并初始化
+    function loadMermaid(callback) {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js';
+      script.defer = true;  // ✅ 非阻塞加载
+      script.onload = callback;
+      document.body.appendChild(script);
+    }
+
+    // Mermaid 渲染逻辑
     const rerenderMermaid = () => {
       const isDark = document.body.classList.contains('darkmode');
       const theme = isDark ? 'dark' : 'default';
@@ -931,16 +940,21 @@
       mermaid.init(undefined, document.querySelectorAll('.mermaid'));
     };
 
-    document.addEventListener('DOMContentLoaded', rerenderMermaid);
+    // 页面加载后执行懒加载
+    document.addEventListener('DOMContentLoaded', () => {
+      loadMermaid(rerenderMermaid);
+    });
 
+    // 主题切换时重新渲染（注意也需确保 Mermaid 已加载）
     document.getElementById('todark')?.addEventListener('click', () => {
       setTimeout(() => {
-        if (document.querySelector('.mermaid')) {
+        if (window.mermaid && document.querySelector('.mermaid')) {
           rerenderMermaid();
         }
       }, 200);
     });
   </script>
+
 
 
 
