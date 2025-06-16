@@ -306,6 +306,13 @@
   </url>
   
   <url>
+    <loc>https://jingqing3948.github.io/tags/Miprocessor/</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://jingqing3948.github.io/tags/Machine-Learning/</loc>
     <lastmod>2025-06-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -313,7 +320,7 @@
   </url>
   
   <url>
-    <loc>https://jingqing3948.github.io/tags/Miprocessor/</loc>
+    <loc>https://jingqing3948.github.io/tags/MySQL/</loc>
     <lastmod>2025-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -327,13 +334,6 @@
   </url>
   
   <url>
-    <loc>https://jingqing3948.github.io/tags/Java/</loc>
-    <lastmod>2025-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://jingqing3948.github.io/tags/Software/</loc>
     <lastmod>2025-06-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -341,14 +341,14 @@
   </url>
   
   <url>
-    <loc>https://jingqing3948.github.io/tags/Wechat-Miniprogram/</loc>
+    <loc>https://jingqing3948.github.io/tags/Java/</loc>
     <lastmod>2025-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://jingqing3948.github.io/tags/MySQL/</loc>
+    <loc>https://jingqing3948.github.io/tags/Wechat-Miniprogram/</loc>
     <lastmod>2025-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -404,14 +404,14 @@
   </url>
   
   <url>
-    <loc>https://jingqing3948.github.io/tags/Data-Structure/</loc>
+    <loc>https://jingqing3948.github.io/tags/WXMiniProgram/</loc>
     <lastmod>2025-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://jingqing3948.github.io/tags/WXMiniProgram/</loc>
+    <loc>https://jingqing3948.github.io/tags/Data-Structure/</loc>
     <lastmod>2025-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
