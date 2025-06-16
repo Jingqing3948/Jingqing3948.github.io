@@ -108,7 +108,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">35.2k</span>
+            <span class="post-count">38.1k</span>
         </span>
     </span>
 
@@ -117,7 +117,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">140 min</span>
+            <span class="post-count">152 min</span>
         </span>
     </span>
 </div>
@@ -1573,7 +1573,20 @@ cfe-->|yes|X("集合没有被修改,继续遍历")</pre>
 </div>
 <div class="callout-content"><p></p>
 <p>注意，toSet 对于重复元素会去重，而 toMap 遇到重复的键会报错。</p>
-</div></div><h2 id="文件">文件</h2>
+</div></div><h2 id="方法引用">方法引用</h2>
+<p>有的方法传入的形参需要我们实现一个函数接口。比如 <code>Arrays.sort</code> 对自定义对象排序的时候：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Arrays.sort(arr, <span class="keyword">new</span> <span class="title class_">Comparator</span>&lt;Integer&gt;()&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(Integer o1, Integer o2)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> o2-o1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">    </span><br><span class="line"><span class="comment">// 当然简洁一些可以写成 lambda 表达式</span></span><br><span class="line">Arrays.sort(arr, (o2,o1)-&gt; o2 - o1);</span><br></pre></td></tr></table></figure>
+<p>方法引用就是我们可以不用在这个地方再实现方法，可以提前实现一个同样数据类型的形参，同样数据类型的返回值的方法，直接传入这个形参作为函数接口实现。</p>
+<p>想使用方法引用的前提：</p>
+<ul>
+<li>引用处必须是函数式接口；</li>
+<li>被引用的方法需要已经存在，自定义的或者 java 自带的都可以；</li>
+<li>形参，返回值数据类型相对应；</li>
+<li>功能上满足当前需求。</li>
+</ul>
+<p>比如对上面这个重写 Integer 数组排序的方法引用实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 此类类名：FunctionDemo1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="comment">// 引用 FunctionDemo1 里的 substraction 方法</span></span><br><span class="line">    <span class="comment">// 将其作为抽象方法的方法体</span></span><br><span class="line">    <span class="comment">// 双冒号是方法引用符</span></span><br><span class="line">    Arrays.sort(arr, FunctionDemo1::substraction);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">substraction</span><span class="params">(<span class="type">int</span> num1, <span class="type">int</span> num2)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> num2 - num1;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="文件">文件</h2>
 <p>要保存文件的位置：文件路径（注意区分绝对和相对路径）。</p>
 <p>写入方式：IO 流。</p>
 <p>通过 IO 流将程序数据写入硬盘。</p>
@@ -1683,6 +1696,7 @@ cfe-->|yes|X("集合没有被修改,继续遍历")</pre>
 </tr>
 </tbody>
 </table>
+<p>以下方法全部是扩展补充，不常用：</p>
 <table>
 <thead>
 <tr>
@@ -1704,19 +1718,257 @@ cfe-->|yes|X("集合没有被修改,继续遍历")</pre>
 <td>利用文件名过滤器获取当前该路径下所有内容<br />可以传递一个 `FilenameFilter 在里面自定义规则<br />不常用 一般 listFile 手动判断多些</td>
 </tr>
 <tr>
-<td>public File[] listFiles()</td>
-<td>获取当前该路径下所有内容</td>
-</tr>
-<tr>
 <td>public File[] listFiles(FileFilter filter)</td>
-<td>利用文件名过滤器获取当前该路径下所有内容</td>
+<td>利用文件名过滤器获取当前该路径下所有内容<br />accept 方法里形参就是一个 String 的文件路径</td>
 </tr>
 <tr>
 <td>public File[] listFiles(FilenameFilter filter)</td>
-<td>利用文件名过滤器获取当前该路径下所有内容</td>
+<td>利用文件名过滤器获取当前该路径下所有内容<br />accept 方法里是两个形参，一个是 File 类型的文件目录<br />一个是 String 类型的文件名</td>
 </tr>
 </tbody>
 </table>
+<h2 id="IO-流">IO 流</h2>
+<p>存储，读取数据的写入方案。操作本地文件数据，或者从网络中读写数据，都要用到 IO 流。</p>
+<p>按照流向可以分为：输出流（程序到文件）和输入流（文件到程序）；按照操作文件类型可以分为：字节流（可以操作任何类型的文件）和字符流（只能操作文本文件，文本文件就是用记事本打开可以正常读懂的文件，比如 docx 其实不是文本文件，如 txt, md, xml, lrc 等）。</p>
+<h3 id="输出字节流">输出字节流</h3>
+<p>写入：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 创建对象</span></span><br><span class="line"><span class="comment">// 写出 输出流 OutputStream</span></span><br><span class="line"><span class="comment">// 本地文件 File</span></span><br><span class="line"><span class="type">FileOutputStream</span> <span class="variable">fos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;myio\\a.txt&quot;</span>); <span class="comment">// 参数可以是路径或者 File 对象</span></span><br><span class="line"><span class="comment">// 不存在就会创建 a.txt 文件，但是如果路径不存在不会创建路径</span></span><br><span class="line"><span class="comment">// 如果已经存在文件，会清空文件！</span></span><br><span class="line"><span class="comment">// 不过，构造方法的第二个参数是“是否续写文件”. 默认为 false</span></span><br><span class="line"><span class="comment">// 如果是 new FileOutputStream(&quot;myio\\a.txt&quot;, true); 这样，就不会清空文件了</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 写出数据。这里参数是整数的话，会写入对应的 ASCII 字符 a</span></span><br><span class="line">fos.write(<span class="number">97</span>);</span><br><span class="line"><span class="comment">// 换行：windows 是 &quot;\r\n&quot;</span></span><br><span class="line"><span class="comment">// linux 是 &quot;\n&quot;</span></span><br><span class="line"><span class="comment">// mac 是 &quot;\r&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 释放资源，解除对资源的占用</span></span><br><span class="line">fos.close();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>方法签名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>void write(int b)</code></td>
+<td>一次写一个字节数据</td>
+</tr>
+<tr>
+<td><code>void write(byte[] b)</code></td>
+<td>一次写一个字节数组数据</td>
+</tr>
+<tr>
+<td><code>void write(byte[] b, int off, int len)</code></td>
+<td>一次写一个字节数组的部分数据</td>
+</tr>
+</tbody>
+</table>
+<h3 id="输入字节流">输入字节流</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">FileInputStream</span> <span class="variable">fos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;myio\\a.txt&quot;</span>);<span class="comment">// 不存在直接报错</span></span><br><span class="line">fis.read(); <span class="comment">// 只读取一个字节，读出来是字节 byte 型，需要转类型。</span></span><br><span class="line"><span class="comment">// 如果想持续读就需要多调用几次</span></span><br><span class="line"><span class="comment">// 读到末尾再读，会读到 -1</span></span><br><span class="line">fis.close();</span><br></pre></td></tr></table></figure>
+<p>循环读取：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> b;</span><br><span class="line"><span class="keyword">while</span>(b = (fis.read())!= -<span class="number">1</span>)&#123;</span><br><span class="line">    sout((<span class="type">char</span>)b);</span><br><span class="line">&#125;</span><br><span class="line">fis.close;</span><br></pre></td></tr></table></figure>
+<p>文件拷贝代码示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 创建对象</span></span><br><span class="line"><span class="type">FileInputStream</span> <span class="variable">fis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;D:\\itheima\\movie.mp4&quot;</span>);</span><br><span class="line"><span class="type">FileOutputStream</span> <span class="variable">fos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;myio\\copy.mp4&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 拷贝</span></span><br><span class="line"><span class="type">int</span> b;</span><br><span class="line"><span class="keyword">while</span> ((b = fis.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">    fos.write(b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 释放资源，后开的先关</span></span><br><span class="line">fos.close();</span><br><span class="line">fis.close();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>但是这个文件拷贝速率特别慢，原因就是读一个写一个。</p>
+<p>还有一个重构 <code>read(byte[] bytes)</code> 方法是读取到 byte[] 数组中的，每次读取会尽可能将数组装满，牺牲一定空间换取时间。返回值是 len 读取到的长度。</p>
+
+<div class="callout" data-callout="note">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+</div>
+<div class="callout-title-inner">Note</div>
+</div>
+<div class="callout-content"><p></p>
+<p>假设创建了一个 byte[2] 数组，我们读取一个内容为 “abcde” 的文件。</p>
+<p>第一次读取，获取到 “ab”（要转换数据类型才能看到字符，<code>new String(bytes)</code>，返回值2。</p>
+<p>第二次读取，获取到 “cd”，返回值2,。</p>
+<p>第三次读取，获取到 “ed”，这是为什么？因为只获取到 e 结尾字节，后面就没了，就不会再继续对字节数组做覆盖了。返回值1.</p>
+<p>所以读取结果转换为字符串可以这样处理：<code>new String(bytes, offset, length)</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">&gt;<span class="type">byte</span>[] bytes = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">2</span>];</span><br><span class="line">&gt;<span class="keyword">while</span>((len = fis.read(bytes))!=-<span class="number">1</span>)&#123; <span class="comment">// 没读到内容返回 -1 长度</span></span><br><span class="line">   sout(<span class="keyword">new</span> <span class="title class_">String</span>(bytes, <span class="number">0</span>, len));<span class="comment">// ab, cd, e</span></span><br><span class="line">&gt;&#125;</span><br><span class="line"></span><br><span class="line">&gt;fis.close();</span><br></pre></td></tr></table></figure>
+</div></div>
+<div class="callout" data-callout="tip">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flame"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+</div>
+<div class="callout-title-inner">Tip</div>
+</div>
+<div class="callout-content"><p></p>
+<p>try catch 如何处理 IO 流操作？要记住一定要关闭 IO 流不然别的程序就无法操作文件了，所以 close 一定放在 final 里面。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 创建对象</span></span><br><span class="line"><span class="type">FileInputStream</span> <span class="variable">fis</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"><span class="type">FileOutputStream</span> <span class="variable">fos</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123; <span class="comment">// 文件不存在异常</span></span><br><span class="line">    fis = <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;D:\\itheima\\movie.mp4&quot;</span>);</span><br><span class="line">    fos = <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;myio\\copy.mp4&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. 拷贝</span></span><br><span class="line">    <span class="type">int</span> len;</span><br><span class="line">    <span class="type">byte</span>[] bytes = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1024</span> * <span class="number">1024</span> * <span class="number">5</span>]; <span class="comment">// 5MB 缓冲区</span></span><br><span class="line">    <span class="keyword">while</span> ((len = fis.read(bytes)) != -<span class="number">1</span>) &#123;</span><br><span class="line">        fos.write(bytes, <span class="number">0</span>, len);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="comment">// 3. 释放资源</span></span><br><span class="line">    <span class="keyword">if</span> (fos != <span class="literal">null</span>) &#123; <span class="comment">// 因为文件不存在所以指针为空，无法 close</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            fos.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (fis != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            fis.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>不过，这个实现实在太抽象了。下面有简洁版。</p>
+</div></div><p>对于实现了 AutoCloseable 接口的类，可以用如下两种方式使用，就会自动释放（一个是在 try 括号里面创建，一个是先创建再放到 try 括号里面）：</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506140959067.png" alt=" " style="zoom:67%;" />
+<p>FileInputStream FileOutputStream 是已经实现了 AutoCloseable 类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> (</span><br><span class="line">    <span class="type">FileInputStream</span> <span class="variable">fis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;D:\\itheima\\movie.mp4&quot;</span>);</span><br><span class="line">    <span class="type">FileOutputStream</span> <span class="variable">fos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;myio\\copy.mp4&quot;</span>)</span><br><span class="line">) &#123;</span><br><span class="line">    <span class="type">int</span> len;</span><br><span class="line">    <span class="type">byte</span>[] bytes = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1024</span> * <span class="number">1024</span> * <span class="number">5</span>];  <span class="comment">// 5MB 缓冲区</span></span><br><span class="line">    <span class="keyword">while</span> ((len = fis.read(bytes)) != -<span class="number">1</span>) &#123;</span><br><span class="line">        fos.write(bytes, <span class="number">0</span>, len);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>JDK 1.9 就是可以先定义，然后传入变量在 try 括号里。外面可能还要加一个抛出找不到文件异常。</p>
+<p>这部分不是重点大致看看即可。</p>
+<h3 id="Unicode-字符集">Unicode 字符集</h3>
+<p>如果读取中文内容的文件会乱码，为什么？</p>
+<p>计算机存储数据的最小单位是字节。</p>
+<p>ASCII 码：主要给欧美国家使用，不支持中文。</p>
+<p>GB2312：我国第一步支持中文的字符集。</p>
+<p>GBK：中日韩。中文字符用两个字节存储。高位字节首位一定是1，所以转成二进制一定是负数，以此和英文区分。</p>
+<p>Unicode：支持大多数语言。**Unicode 是字符集，其中又有UTF-8 UTF-16 UTF-32 等编码方式，这些不是字符集是编码方式！**中文字符用三个字节存储。UTF-16 是所有字符都用2-4个字节存储，UTF-32 是所有字符都用4个字节存储，UTF-8 则是根据不同的语言用不同的长度存储，比如英文还是一个字节（和 ASCII 码兼容），中文3个字节。1-4字节字符存储形式如下：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506141738939.png" alt=" " /></p>
+<p>使用字节流读取数据，读取到的是底层二进制码，而且每次只读取一个字节，就会把汉字拆开读取。然后用 <code>new String</code> 直接强转数据类型，采用的编码方式是 JVM 的默认编码方式，比如  Eclipse 上是 GBK，IDEA上是 UTF-8，没法具体指定，所以用错误的编码方式解码，而且不读取完整汉字所有字节，就会读到乱码。</p>
+<p>所以处理文本文件的正确方式是用字符流，且用正确的编码方式读取。</p>
+<h3 id="Java-编解码">Java 编解码</h3>
+<p>编码：</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>public byte[] getBytes()</td>
+<td>使用默认方式进行编码</td>
+</tr>
+<tr>
+<td>public byte[] getBytes(String charsetName)</td>
+<td>使用指定方式进行编码，比如<code>&quot;GBK&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<p>解码：</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>String(byte[] bytes)</td>
+<td>使用默认方式进行解码</td>
+</tr>
+<tr>
+<td>String(byte[] bytes, String charsetName)</td>
+<td>使用指定方式进行解码</td>
+</tr>
+</tbody>
+</table>
+<h3 id="输入字符流">输入字符流</h3>
+<p>字符流的 Reader 读取到非单个字节的字符的时候（比如 GBK UTF-8 的中文）会一次默认读取多个字节。</p>
+<p>文件读取类：<code>FileReader</code></p>
+<table>
+<thead>
+<tr>
+<th>构造方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>public FileReader(File file)</td>
+<td>创建字符输入流关联本地文件</td>
+</tr>
+<tr>
+<td>public FileReader(String pathname)</td>
+<td>创建字符输入流关联本地文件</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>成员方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>public int read()</td>
+<td>读取数据，返回读取到的字符的十进制值<br />如果读取到中文会自动读入多个字节<br />读到末尾返回 -1</td>
+</tr>
+<tr>
+<td>public int read(char[] buffer)</td>
+<td>读取多个数据，并直接转成字符<br />相当于在空参 read 的基础上多做了一步。<br />空参 read 是自动读入一个字符长度的字节<br />有参 read 是再将其转换为字符存入字符数组<br />读到末尾返回 -1</td>
+</tr>
+</tbody>
+</table>
+<p>关闭还是 <code>close()</code> 方法。</p>
+<h3 id="输出字符流">输出字符流</h3>
+<table>
+<thead>
+<tr>
+<th>构造方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public FileWriter(File file)</code></td>
+<td>创建字符输出流关联本地文件</td>
+</tr>
+<tr>
+<td><code>public FileWriter(String pathname)</code></td>
+<td>创建字符输出流关联本地文件</td>
+</tr>
+<tr>
+<td><code>public FileWriter(File file, boolean append)</code></td>
+<td>创建字符输出流关联本地文件，续写</td>
+</tr>
+<tr>
+<td><code>public FileWriter(String pathname, boolean append)</code></td>
+<td>创建字符输出流关联本地文件，续写</td>
+</tr>
+</tbody>
+</table>
+<p>细节上和之前字节流差不多，比如可以传入字符串路径或者 File 对象，可以创建不存在的文件但是不会连着创建不存在的父级路径，还有续写开关默认 false 不打开的话创建输出字符流对象的时候就会清空文件内容。</p>
+<table>
+<thead>
+<tr>
+<th>成员方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>void write(int c)</code></td>
+<td>写出一个字符<br />传入的是字符的二进制编码<br />不过实际写入的内容是对应字符</td>
+</tr>
+<tr>
+<td><code>void write(String str)</code></td>
+<td>写出一个字符串</td>
+</tr>
+<tr>
+<td><code>void write(String str, int off, int len)</code></td>
+<td>写出一个字符串的一部分</td>
+</tr>
+<tr>
+<td><code>void write(char[] cbuf)</code></td>
+<td>写出一个字符数组</td>
+</tr>
+<tr>
+<td><code>void write(char[] cbuf, int off, int len)</code></td>
+<td>写出字符数组的一部分</td>
+</tr>
+</tbody>
+</table>
+<h3 id="输入字符流底层原理">输入字符流底层原理</h3>
+<p>实际上，输入字符流在内存中有一个长度8192字节的缓冲区，每次读取的时候都会尽量填满这个缓冲区，省得硬盘和内存之间真的每次读取一个字节。</p>
+<p>如下图，第一次 read 读取其实缓冲区中被装入了4个字节的数据，第一个代表字母 a，后三个代表汉字 我。</p>
+<p>然后 ch 被赋值为 a 的十进制数据。</p>
+<p>第二次阅读的时候，首先判断缓冲区中是否还有没读的数据，有三个字节，并且判断是一个中文字符。于是将这个中文字符的底层十进制传递给 ch。</p>
+<p>第三次阅读的时候，我们发现缓冲区中已经没有数据了，于是再次去数据源中读取并覆盖缓冲区。这次读取到的是字符串的结尾值 -1，原封不动地存入缓冲区再存入 ch 数组。</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506141939275.png" alt=" " style="zoom:50%;" />
+<p>有参 read 类似，就是多了一步，直接强转成 char 然后存到字符数组里了。</p>
+
+<div class="callout" data-callout="note">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+</div>
+<div class="callout-title-inner">Note</div>
+</div>
+<div class="callout-content"><p></p>
+<p>如果先调用输入字符流 read 读了一次，然后创建了输出字符流，这个时候文件被清空了，但是内存中的缓冲区没有被清空，还可以继续读到清空前的2-8192字节的数据。</p>
+</div></div><h3 id="输出字符流底层原理">输出字符流底层原理</h3>
+<p>也是内存有一个缓冲区，写入数据的时候不是直接写到内存中的，而是先写到缓冲区中的。有三种情况会写入内存：</p>
+<ol>
+<li>缓冲区满了。</li>
+<li>调用了 <code>flush()</code> 方法。</li>
+<li>调用了 <code>close()</code> 方法。</li>
+</ol>
+<p>close 和 flush 的区别主要就是 flush 还可以继续写。</p>
 <h2 id="多线程">多线程</h2>
 <p>进程是程序的基本执行实体，一个程序是一个进程。线程是计算机执行计算调度的最小单位。</p>
 <p>有了多线程我们就可以同时执行多个任务。</p>
@@ -2475,7 +2727,7 @@ TCP协议：传输控制协议TCP（Transmission Control Protocol）。TCP协议
   rel="stylesheet"
   href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
 />
-<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/jquery.justifiedGallery.js"></script>
 
 <script src="/dist/main.js"></script>
 
