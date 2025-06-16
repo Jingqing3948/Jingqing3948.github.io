@@ -312,15 +312,16 @@
   
    
   <div class="gitalk" id="gitalk-container"></div>
-  <link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css">
 
   <script>
     window.addEventListener('DOMContentLoaded', function () {
       const gitalkScript = document.createElement('script');
-      gitalkScript.src = 'https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js';
+      gitalkScript.src = 'https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js';
       gitalkScript.onload = function () {
         const md5Script = document.createElement('script');
-        md5Script.src = 'https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js';
+        md5Script.src = 'https://cdn.jsdelivr.net/npm/blueimp-md5@2.19.0/js/md5.min.js';
         md5Script.onload = function () {
           const gitalk = new Gitalk({
             clientID: 'Ov23li1TkQEYXFu51qLu',
@@ -360,13 +361,6 @@
     </ul>
     <ul>
       <li>
-        
-        
-        <span>
-  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
-  <span class="division">|</span>
-  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
-</span>
         
       </li>
     </ul>
@@ -628,7 +622,7 @@
         skipStartupTypeset: false
       };
       var script = document.createElement('script');
-      script.src = "https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML";
+      script.src = "https://cdn.jsdelivr.net/npm/mathjax@2.7.7/MathJax.js?config=TeX-MML-AM_CHTML";
       script.async = true;
       document.head.appendChild(script);
     }, 1000); // 延迟 1 秒加载
@@ -644,9 +638,7 @@
 <!-- Katex -->
 
 <!-- busuanzi  -->
- 
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
- 
+
 <!-- ClickLove -->
 
 <!-- ClickBoom1 -->
