@@ -299,6 +299,13 @@
 
   
   <url>
+    <loc>https://jingqing3948.github.io/tags/Machine-Learning/</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://jingqing3948.github.io/tags/C/</loc>
     <lastmod>2025-06-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -313,13 +320,6 @@
   </url>
   
   <url>
-    <loc>https://jingqing3948.github.io/tags/Machine-Learning/</loc>
-    <lastmod>2025-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://jingqing3948.github.io/tags/MySQL/</loc>
     <lastmod>2025-06-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -327,14 +327,7 @@
   </url>
   
   <url>
-    <loc>https://jingqing3948.github.io/tags/RFID/</loc>
-    <lastmod>2025-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jingqing3948.github.io/tags/Software/</loc>
+    <loc>https://jingqing3948.github.io/tags/Wechat-Miniprogram/</loc>
     <lastmod>2025-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -348,7 +341,14 @@
   </url>
   
   <url>
-    <loc>https://jingqing3948.github.io/tags/Wechat-Miniprogram/</loc>
+    <loc>https://jingqing3948.github.io/tags/Software/</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jingqing3948.github.io/tags/RFID/</loc>
     <lastmod>2025-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -390,14 +390,14 @@
   </url>
   
   <url>
-    <loc>https://jingqing3948.github.io/tags/Ubuntu/</loc>
+    <loc>https://jingqing3948.github.io/tags/Hexo/</loc>
     <lastmod>2025-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://jingqing3948.github.io/tags/Hexo/</loc>
+    <loc>https://jingqing3948.github.io/tags/Ubuntu/</loc>
     <lastmod>2025-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
