@@ -108,7 +108,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">38.1k</span>
+            <span class="post-count">38.6k</span>
         </span>
     </span>
 
@@ -117,7 +117,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">152 min</span>
+            <span class="post-count">154 min</span>
         </span>
     </span>
 </div>
@@ -1579,13 +1579,28 @@ cfe-->|yes|X("集合没有被修改,继续遍历")</pre>
 <p>方法引用就是我们可以不用在这个地方再实现方法，可以提前实现一个同样数据类型的形参，同样数据类型的返回值的方法，直接传入这个形参作为函数接口实现。</p>
 <p>想使用方法引用的前提：</p>
 <ul>
-<li>引用处必须是函数式接口；</li>
+<li>引用处必须是函数式接口 <code>FunctionalInterface</code>；要么是已经定义了 <code>@FunctionalInterface</code> 的接口，要么就是只有一个抽象方法，可以有多个非抽象方法的接口。</li>
 <li>被引用的方法需要已经存在，自定义的或者 java 自带的都可以；</li>
 <li>形参，返回值数据类型相对应；</li>
 <li>功能上满足当前需求。</li>
 </ul>
+<h3 id="静态方法引用">静态方法引用</h3>
 <p>比如对上面这个重写 Integer 数组排序的方法引用实现：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 此类类名：FunctionDemo1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="comment">// 引用 FunctionDemo1 里的 substraction 方法</span></span><br><span class="line">    <span class="comment">// 将其作为抽象方法的方法体</span></span><br><span class="line">    <span class="comment">// 双冒号是方法引用符</span></span><br><span class="line">    Arrays.sort(arr, FunctionDemo1::substraction);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">substraction</span><span class="params">(<span class="type">int</span> num1, <span class="type">int</span> num2)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> num2 - num1;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>还有比如 String 集合转为 Integer 并输出，结合方法引用 + 集合流处理：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">list.stream.map(<span class="keyword">new</span> <span class="title class_">Function</span>&lt;String, Integer&gt;()&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Integer <span class="title function_">apply</span><span class="params">(String s)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Integer.parseInt(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).forEach(s -&gt; System.out.println(s));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法重写</span></span><br><span class="line">list.stream().map(Integer::parseInt).forEach(s -&gt; System.out.println(s));</span><br></pre></td></tr></table></figure>
+<h3 id="其他类方法引用">其他类方法引用</h3>
+<p>比如专门写了一个 <code>StringOperation</code> 类，里面有实现等效于集合流 <code>.filter(s -&gt; s.startsWith(&quot;张&quot;)).filter(s -&gt; s.length==3)</code> 的非静态方法 <code>stringJudge</code>，那么我们可以：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">list.stream().map(<span class="keyword">new</span> <span class="title class_">StringOperation</span>()::stringJudge).forEach(s -&gt; System.out.println(s));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="type">StringOperation</span> <span class="variable">so</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringOperation</span>();</span><br><span class="line">list.stream().map(so::stringJudge).forEach(s -&gt; System.out.println(s));</span><br></pre></td></tr></table></figure>
+<h3 id="本类或父类方法引用">本类或父类方法引用</h3>
+<p>这里不可以引用静态方法。必须是非静态方法。（因为 this 和 super 可能就相当于创建了两个对象吧）。</p>
+<h3 id="构造方法引用">构造方法引用</h3>
+<p>比如下面这个例子，我们想将集合中的每个字符串映射成一个 Student 对象，存储为一个 Student 集合：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">Collections.addAll(list, <span class="string">&quot;张无忌,15&quot;</span>, <span class="string">&quot;周芷若,14&quot;</span>, <span class="string">&quot;赵敏,13&quot;</span>, <span class="string">&quot;张强,20&quot;</span>);</span><br><span class="line"></span><br><span class="line">List&lt;Student&gt; newList = list.stream().map(<span class="keyword">new</span> <span class="title class_">Function</span>&lt;String, Student&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Student <span class="title function_">apply</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        String[] arr = s.split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> arr[<span class="number">0</span>];</span><br><span class="line">        <span class="type">int</span> <span class="variable">age</span> <span class="operator">=</span> Integer.parseInt(arr[<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Student</span>(name, age);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).collect(Collectors.toList());</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>首先我们可以先写一个 Student 构造方法，接收这个集合中的字符串，将其分隔并创建相应的 Student 对象。因为我们还记得，方法引用一个前提就是形参和返回值要对应。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="title function_">Student</span><span class="params">(String str)</span>&#123;</span><br><span class="line">	String[] arr = s.split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">    <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> arr[<span class="number">0</span>];</span><br><span class="line">    <span class="type">int</span> <span class="variable">age</span> <span class="operator">=</span> Integer.parseInt(arr[<span class="number">1</span>]);</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后 map 就可以直接简写为构造方法方法引用形式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Student&gt; newList = list.stream().map(Student::<span class="keyword">new</span>).collect(Collectors.toList());</span><br></pre></td></tr></table></figure>
 <h2 id="文件">文件</h2>
 <p>要保存文件的位置：文件路径（注意区分绝对和相对路径）。</p>
 <p>写入方式：IO 流。</p>
