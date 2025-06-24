@@ -179,7 +179,7 @@
 <p>流程：基于上次的空项目，用keil打开，编译，下载成功。</p>
 <p>一直到编译的步骤前面都做完了。下载主要需要以下几个步骤：</p>
 <ol>
-<li>引入项目的 src 文件夹。在 options for target - c/c++ 里引入即可很简单。<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622154546545.png" alt="" /></li>
+<li>引入项目的 src 文件夹。在 options for target - c/C++ 里引入即可很简单。<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622154546545.png" alt="" /></li>
 <li>debug 模式设置为 jlink 模式。设置完之后插上板子设置配置，这里因为我的jlink版本太低出现了一个报错：unkown to this version of the jlink software。解决办法就是在官网上下载了一个新版本的jlink（官网链接：<a target="_blank" rel="noopener" href="https://www.segger.com/downloads/jlink%EF%BC%8C%E6%88%91%E9%80%89%E6%8B%A9%E7%9A%84%E6%98%AF">https://www.segger.com/downloads/jlink，我选择的是</a> windows 版本），下载好后直接会提示“检测到你电脑里的 keil 环境，请问是否更新其 jlink 调试器”，更新后重新启动就没有问题了。</li>
 <li>上一步参考文章: <a target="_blank" rel="noopener" href="https://blog.csdn.net/wsq_666/article/details/124367141">keil识别不到芯片，提示unkown to this version of the jlink software_keil识别不到单片机_王小琪0712的博客-CSDN博客</a> 里面也有如果没有提示自动更新 jlink 调试器的选项如何手动进行更新的步骤，建议多多支持原作者。</li>
 <li>只是选择了 jlink 调试器也并不算设置完成。如果这个时候点击下载，会提示“找不到 flash”，也就是还没有配置完成，需要设置闪存。首先确保插上了板子，然后打开 jlink 的setting：<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622155204869.png" alt="" /></li>

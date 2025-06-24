@@ -591,8 +591,8 @@ C 语言是有类型的语言，所有变量在使用前必须先定义或声明
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> x,ret=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;x);</span><br><span class="line">	<span class="type">int</span> t=x;</span><br><span class="line">	<span class="keyword">while</span>(x&gt;<span class="number">1</span>)&#123;</span><br><span class="line">		x/=<span class="number">2</span>;</span><br><span class="line">		ret++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;log2 of %d is %d.&quot;</span>,t,ret);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>其实都是相互牵扯的。</p>
-<p>1、	当 x = 1 的时候，结果是 0.也就是说我们希望当 x = 1 时不要进入这个循环。</p>
-<p>2、	计数 ret 是我们希望进入这个循环是最小的数。</p>
+<p>1、 当 x = 1 的时候，结果是 0.也就是说我们希望当 x = 1 时不要进入这个循环。</p>
+<p>2、 计数 ret 是我们希望进入这个循环是最小的数。</p>
 <p>如果想改成 while(x &gt; 2)，那我们的计数 ret 就要相应改成初始值 = 1.但是 x = 1 时条件不满足。为了兼顾两种情况，还得用上面的方法。</p>
 <p>也可以 ret =-1，while(x &gt; 0)</p>
 <p>编程肯定会有很多不同的方法。</p>
@@ -1013,7 +1013,7 @@ unsigned 的初衷不是为了扩展数能表达的范围，而是为了做纯�
 <p>但是到了其他程序那边运行</p>
 <p>123<br />
 456</p>
-<p>原因：dev c++那个黑框框，是别人写的程序(shell)来帮助我们运行的；部分东西是经过它处理的，比如\b\n，不同 shell 对此处理不一样。如 dev c++用 <strong>BS</strong> 字符来表示。</p>
+<p>原因：dev C++那个黑框框，是别人写的程序(shell)来帮助我们运行的；部分东西是经过它处理的，比如\b\n，不同 shell 对此处理不一样。如 dev C++用 <strong>BS</strong> 字符来表示。</p>
 <p>\b\n 都是控制字符</p>
 <p>BS 是回到上一格，没输出东西就什么结果都没有，输出了就把他盖住了</p>
 <p>也不能否认有的程序，输出的时候把\b 翻译成删除</p>
@@ -1025,7 +1025,7 @@ unsigned 的初衷不是为了扩展数能表达的范围，而是为了做纯�
 <p>一直敲键盘，打字机的轴就往左移</p>
 <p>敲一下回车就回到右边，这叫回车</p>
 <p>然后往上调一下纸，这叫换行。</p>
-<p>不过 dev c++把回车就当做回车+换行了。</p>
+<p>不过 dev C++把回车就当做回车+换行了。</p>
 <h3 id="类型转换">类型转换</h3>
 <p>自动类型转换：当运算符两边出现不一样的类型时，会自动转成较大的类型，即能表达的数范围更大的类型。</p>
 <p><code>char-&gt;short-&gt;int-&gt;long-&gt;long long</code></p>
@@ -1188,9 +1188,9 @@ unsigned 的初衷不是为了扩展数能表达的范围，而是为了做纯�
 <p><code>return</code> 停止函数的执行，并返回一个值</p>
 <p><code>return;</code></p>
 <p><code>return 一个值;</code></p>
-<p>可以写 <code> c=函数()</code>；这样 c = 函数的返回值。</p>
+<p>可以写 <code>c=函数()</code>；这样 c = 函数的返回值。</p>
 <p>可以把这个值赋给变量/传给函数/丢掉。</p>
-<p>没有返回值的函数: <code>void</code>，不能使用带值的 <code>return</code> ，可以没有 <code>return </code>。调用的时候也不可以做返回值的赋值。</p>
+<p>没有返回值的函数: <code>void</code>，不能使用带值的 <code>return</code> ，可以没有 <code>return</code>。调用的时候也不可以做返回值的赋值。</p>
 <h3 id="函数原型：用来告诉编译器这个函数长什么样">函数原型：用来告诉编译器这个函数长什么样</h3>
 <p>使用函数的先后顺序：先写函数再调用。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505302325484.png" alt=" " /></p>
@@ -1211,7 +1211,7 @@ unsigned 的初衷不是为了扩展数能表达的范围，而是为了做纯�
 <p>传递给函数的值可以是表达式的结果 <code>(max(a+b,c))</code></p>
 <p>包括字面量、变量、函数返回值（函数调用里有函数）、计算结果</p>
 <p>当调用函数的值与参数类型不匹配：编译器总是悄悄替你把类型转换好，但是这很可能不是你所期望的。这是 C 语言传统上最大的漏洞。</p>
-<p>后续语言如 c++/java 在这方面会很严格。</p>
+<p>后续语言如 C++/Java 在这方面会很严格。</p>
 <p>这样的函数代码能交换 a, b 的值吗？</p>
  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  <span class="type">void</span> <span class="title function_">swap</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span><span class="comment">//形参</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> a=<span class="number">5</span>;</span><br><span class="line">	b=<span class="number">6</span>;</span><br><span class="line">	swap(a,b);<span class="comment">//实参</span></span><br><span class="line">&#125;</span><br><span class="line"> <span class="type">void</span> <span class="title function_">swap</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span><span class="comment">//形参</span></span><br><span class="line"> &#123;</span><br><span class="line"> 	<span class="type">int</span> t=a;</span><br><span class="line"> 	a=b;</span><br><span class="line"> 	b=t;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 <p>不能。</p>
@@ -1605,7 +1605,7 @@ C 语言中常见的错误：误以为 <code>char*</code> 就是定义了字符�
 argc 告诉我们，后面的数组有多少个字符串。然后我们试着输出后面字符串的内容</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;argc;i++)&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d:%s\n&quot;</span>,i,argv[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>然后 <code>./a.out</code> 运行，只输出了 0:./a.out<br />
-第二次输入 <code>./a.out 123</code>，输出了<code>0:./a.out  1:123</code><br />
+第二次输入 <code>./a.out 123</code>，输出了<code>0:./a.out 1:123</code><br />
 然后随便输入，<code>./a.out 123 asd asd asd asd</code> 这些字符串都会被一个个记录下来。它从第 2 个字符串开始记录所有你输入的字符串，而第一个参数，即 argv [0]，则是输入的这个文件的名字（<code>./a.out</code>）即可执行程序的名字。如果将 a.out 称之为 my，<code>ln -s a.out my</code> ，然后我们看 my，<code>ls -l my</code> 发现 my 是个指向 a.out 的链接。如果执行 my <code>./my 123</code> 输出的字符串 argv [0] 也是 <code>./my</code> 而不是 <code>./a.out</code> 了。关于到底是怎样运行程序的，建议搜索 busybox，看看别的 box 是怎么做的。（蒙……）等做快捷方式的时候会更理解。</p>
 <h3 id="字符、字符串操作">字符、字符串操作</h3>
 <h4 id="单字符输入输出">单字符输入输出</h4>
@@ -1833,14 +1833,14 @@ s1 必须要有足够的空间。<br />
 <p>这样 C 语言在编译预处理时会把所有 PI 变成 3.14159。我们可以通过下面的方法看在编译过程中留下来的零始文件<br />
 gcc：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc xxx.c --save-temps</span><br><span class="line">ls-l</span><br></pre></td></tr></table></figure>
-<p>可以看到会出现 <code>xxx. c</code>, <code> xxx. i</code>, <code>xxx. s</code>, <code>xxx. o</code>, <code>xxx. out</code><br />
+<p>可以看到会出现 <code>xxx. c</code>, <code>xxx. i</code>, <code>xxx. s</code>, <code>xxx. o</code>, <code>xxx. out</code><br />
 文件 c-&gt; i 这一步做了 π 的替换，i-&gt; s 这一步产生汇编代码文件，s-&gt; o 产生目标代码文件 ，最后再和其他可链接的东西链接起来生成可执行的 out。<em>可以发现.i 比.c 大很多</em>如果用 tail 来输出 c 和 i 的结尾部分</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tail xxx.c;</span><br><span class="line">tail xxx.i;</span><br></pre></td></tr></table></figure>
-<p>可以看到.i 中把已经所有的 PI 替换为 3.14159。同样的，我们也可以 <code>#define FORMAT &quot;%f\n&quot;</code> FORMAT 是按格式输出。在 main 函数中写：<code>printf(FORMAT,2*PI);</code> 编译出来也是没有问题的。<strong>不过注意如果 FORMAT 是写在双引号里面，printf 输出的就是 FORMAT 这六个字母了。</strong><br />
-#define 会先对程序进行预处理，把宏都替换掉；<br />
-<code>#define 单词 值</code><br />
-#define 会对后面的值原封不动地进行文本替换，<strong>所以千万小心结尾不要加分号。因为这不是 c 的语句，c 的语句结尾才需要加分号。</strong><br />
-如果一个宏中嵌套有其他宏的名字，还会再次被替换；如果一个宏的值超过一行，最后一行之前的行末需要加\，应该是处理回车的问题。宏的结尾可以有注释。</p>
+<p>可以看到.i 中把已经所有的 PI 替换为 3.14159。同样的，我们也可以 <code>#define FORMAT &quot;%f\n&quot;</code> FORMAT 是按格式输出。在 main 函数中写：<code>printf(FORMAT,2*PI);</code> 编译出来也是没有问题的。<strong>不过注意如果 FORMAT 是写在双引号里面，printf 输出的就是 FORMAT 这六个字母了。</strong></p>
+<h1>define 会先对程序进行预处理，把宏都替换掉</h1>
+<p><code>#define 单词 值</code></p>
+<h1>define 会对后面的值原封不动地进行文本替换，<strong>所以千万小心结尾不要加分号。因为这不是 c 的语句，c 的语句结尾才需要加分号。</strong></h1>
+<p>如果一个宏中嵌套有其他宏的名字，还会再次被替换；如果一个宏的值超过一行，最后一行之前的行末需要加\，应该是处理回车的问题。宏的结尾可以有注释。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> prt printf(<span class="string">&quot;123&quot;</span>);\</span></span><br><span class="line"><span class="meta">			printf(<span class="string">&quot;456&quot;</span>);</span></span><br></pre></td></tr></table></figure>
 <p>我们还可以定义没有值的宏 <code>#define -DEBUG</code> 用来做条件编译，例如如果存在编译这一部分代码；如果不存在编译其他部分代码。<br />
 c 编译器里有一些预先定义的宏，可以直接用的</p>
@@ -1869,14 +1869,16 @@ main 中默认 a, b 是 int→ 传入 double 的 max→ 以 int 形式传回来�
 <code>int max(int a,int b);</code><br />
 3.在所有调用这个函数的源代码文件：main.c 和 max.c 文件中都加入该头文件</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&quot;max.h&quot;</span></span></span><br></pre></td></tr></table></figure>
-<p>这下如果两边的 max 函数类型不一样，编译就会提示有问题了。<br />
-#include 是一个编译预处理指令，会把该头文件下的所有内容原封不动地插入他所在的地方；因此也不是必须在最开头。注意到#include 后面的括号有两种：<br />
+<p>这下如果两边的 max 函数类型不一样，编译就会提示有问题了。</p>
+<h1>include 是一个编译预处理指令，会把该头文件下的所有内容原封不动地插入他所在的地方；因此也不是必须在最开头</h1>
+<p>注意到#include 后面的括号有两种：<br />
 “”：先去找系统内指定目录有没有这个头文件，没有再去当前目录找。<br />
 &lt;&gt;：只在系统内找这个头文件。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505302330977.png" alt=" " /></p>
 <p>这样查看 stdio.h 里都有什么关于#include 的误区：#include 不是用来引入库的。而是 <strong>原封不动地把库里的东西插入到这一行来</strong><br />
-stdio.h 里只有 printf 的原型，其代码在另外的地方。比如 windows 在.lib 里，unix 在.a 里。而 stdlib.h 里有 malloc 的原型而现在的 C 语言编译器会默认引入所有标准库<br />
-#include &lt;stdio.h&gt; 只是为了让编译器知道 printf 函数的原型，保证调用时给出的参数值是正确的类型。应该在使用、定义该函数的地方都包含该头文件，把所有对外公开的函数的原型和全局变量的声明都放进去。<br />
+stdio.h 里只有 printf 的原型，其代码在另外的地方。比如 windows 在.lib 里，unix 在.a 里。而 stdlib.h 里有 malloc 的原型而现在的 C 语言编译器会默认引入所有标准库</p>
+<h1>include &lt;stdio.h&gt; 只是为了让编译器知道 printf 函数的原型，保证调用时给出的参数值是正确的类型</h1>
+<p>应该在使用、定义该函数的地方都包含该头文件，把所有对外公开的函数的原型和全局变量的声明都放进去。<br />
 <strong>全局变量也可以在多个源代码文件中共享；不过也像函数一样要有恰当的方法。</strong><br />
 如果在函数前加 static：只能在该源代码文件中使用如果在全局变量前加 static：只能在该编译单元中使用。</p>
 <h3 id="声明">声明</h3>
@@ -1884,8 +1886,8 @@ stdio.h 里只有 printf 的原型，其代码在另外的地方。比如 window
 <code>extern int gAll;</code><br />
 <code>int x;</code> 是变量的定义；<code>extern int x;</code> 是变量的声明。声明不产生代码（单纯地记住这句声明：这个项目中不管在哪里，有一个全局变量 gAll）；而定义产生代码。只有声明才可以被放在头文件中。否则一个项目中多个编译单元里会有重名的实体。重复声明：同一个头文件中，同名的结构不能被重复声明。如果头文件里有结构的声明，很难这个文件不会在一个编译单元里被#include 多次。（比如我们在 max.h 里定义过该 struct，然后在 min.h 里要用到这个结构就会#include “max.h”；这样在主函数中就要#include “max.h”  #include “min.h”，就会重复声明，再次出现在.i 中。尽管再怎么避免这件事的发生，在.h 中加入了结构，还是很有可能会发生的。）为了解决这种情况，我们需要在 max.h 和 min.h 开头加入标准头文件结构：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> __MAX_H__</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __MAX_H__<span class="comment">//如果没有定义过max.h则定义max.h</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//中间是声明</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
-<p>这样，只要 max.h 被定义过了，在其他头文件就不会被重复#include 了。<br />
-#pragma once 也能起到相同的作用，但是并不是所有的编译器都支持。所以还是用标准头文件结构。</p>
+<p>这样，只要 max.h 被定义过了，在其他头文件就不会被重复#include 了。</p>
+<h1>pragma once 也能起到相同的作用，但是并不是所有的编译器都支持。所以还是用标准头文件结构</h1>
 <h3 id="格式化输入输出">格式化输入输出</h3>
 <p>从第一天学 c 语言就接触到了 printf 和 scanf.下面彻底研究下占位符%d 有多少细节。<br />
 printf: <code>%[flags][width][.prec][hIL]type</code><br />

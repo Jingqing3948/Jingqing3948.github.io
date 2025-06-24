@@ -151,7 +151,7 @@ A program is written in some programming language, and does not have to be finit
 An algorithm can be described by human languages, flow charts, some programming languages, or pseudocode.</em></p>
 <p>引入 time complexities 和 space complexities 的概念。</p>
 <p><mjx-container class="MathJax" jax="SVG" style="direction: ltr;"><svg style="overflow: visible; min-height: 1px; min-width: 1px; vertical-align: -0.452ex;" xmlns="http://www.w3.org/2000/svg" width="32.579ex" height="2.149ex" role="img" focusable="false" viewBox="0 -750 14400 950"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="merror" data-mjx-error="Double exponent: use braces to clarify" title="Double exponent: use braces to clarify"><rect data-background="true" width="14400" height="950" y="-200" style="fill: yellow; stroke: none;"/><title>Double exponent: use braces to clarify</title><g data-mml-node="mtext" style="fill: red; stroke: red; font-family: serif;"><text data-variant="-explicitFont" transform="scale(1,-1)" font-size="884px">2^n^&gt;n^2^&gt;nlogn&gt;n&gt;logn&gt;1</text></g></g></g></g></svg></mjx-container></p>
-<h2 id="单词：">单词：</h2>
+<h2 id="单词">单词</h2>
 <p>Algorithm 算法<br />
 Definiteness 确定性<br />
 Finiteness 有限性<br />
@@ -207,19 +207,19 @@ Pop: 栈顶元素出栈</p>
 <p>输入一串表达式，判断其中的括号()[]{}是否匹配。检验方法：每个右括号都和离他最近的，也就是最晚输入的左括号匹配，正符合栈的后进先出原则。读到左括号的时候入栈，读到右括号的时候与栈顶的左括号比较，比较后出栈。最后结束输入，还要检查一下栈是否为空，若非空，栈内剩下的括号全都不匹配。<br />
 <a target="_blank" rel="noopener" href="https://github.com/Jingqing3948/Data-Structure-in-BUPT/blob/main/1%20STACK/7-1%20Balancing%20Symbols.cpp">7-1 Balancing symbols 代码实现</a></p>
 <h3 id="Application-2-Postfix-Evaluation-后缀表达式的计算">Application 2: Postfix Evaluation 后缀表达式的计算</h3>
-<p>Infix expression中缀表达式： a + b * c - d / e<br />
-Prefix expression 前缀表达式：- + a * b c / d e<br />
+<p>Infix expression中缀表达式： a + b <em>c - d / e<br />
+Prefix expression 前缀表达式：- + a</em> b c / d e<br />
 Postfix expression 后缀表达式： a b c * + d e / -<br />
 中缀表达式更符合人脑的计算方法，而后缀表达式更符合计算机的计算方法。实际上在计算机中计算表达式，是先转化为postfix expression，再进行计算的。转换方法：建立堆栈。</p>
 <ol>
 <li>读入的字符是操作数：直接输出</li>
 <li>读入的字符是操作符：<br />
-a)	堆栈是空的，则直接存入堆栈中（push）<br />
-b)	该操作符的优先级&gt;栈顶元素操作符，则直接入栈（push）<br />
-c)	该操作符的优先级&lt;=栈顶元素操作符，则栈顶元素出栈（pop），直到该操作符的优先级大于栈顶元素（这个栈顶元素也要出栈），然后该操作符入栈（push）<br />
-d)	操作符是左括号，则直接入栈（pop），遇到右括号之前永不输出<br />
-e)	操作符是右括号，则一直出栈（pop）直到左括号出栈<br />
-f)	最终输入结束，栈若非空，栈中元素全部出栈。</li>
+a) 堆栈是空的，则直接存入堆栈中（push）<br />
+b) 该操作符的优先级&gt;栈顶元素操作符，则直接入栈（push）<br />
+c) 该操作符的优先级&lt;=栈顶元素操作符，则栈顶元素出栈（pop），直到该操作符的优先级大于栈顶元素（这个栈顶元素也要出栈），然后该操作符入栈（push）<br />
+d) 操作符是左括号，则直接入栈（pop），遇到右括号之前永不输出<br />
+e) 操作符是右括号，则一直出栈（pop）直到左括号出栈<br />
+f) 最终输入结束，栈若非空，栈中元素全部出栈。</li>
 </ol>
 <p><a target="_blank" rel="noopener" href="https://github.com/Jingqing3948/Data-Structure-in-BUPT/blob/main/1%20STACK/7-2%20Infix%20to%20Postfix%20Conversion.cpp">7-2 Infix to postfix Conversion 代码实现</a></p>
 <h2 id="The-Queue-ADT">The Queue ADT</h2>
@@ -334,7 +334,7 @@ Delete:</p>
 <ul>
 <li>must be easy to compute and minimizes the number of collisions.</li>
 <li>Should be unbiased. For any x and any i, we have that probability(f(x)=i)=1/b. (Uniform hash function)<br />
-** f(x)=x%TableSize**<br />
+<strong>f(x)=x%TableSize</strong><br />
 TableSize=prime number is good for random integer keys.</li>
 </ul>
 <h3 id="处理冲突的办法">处理冲突的办法</h3>
@@ -541,7 +541,7 @@ End.</p>
 <li>It is minimum for the total cost of edges is minimized.</li>
 <li>A minimum spanning tree exists if G is connected.</li>
 </ul>
-<h3 id="2-Method-of-calculating-the-minimum-spanning-tree">2 Method of calculating the minimum spanning tree:</h3>
+<h3 id="2-Method-of-calculating-the-minimum-spanning-tree">2 Method of calculating the minimum spanning tree</h3>
 <ol>
 <li>
 <p>Prim’s Algorithm<br />

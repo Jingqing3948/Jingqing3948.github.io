@@ -156,7 +156,7 @@
 <p>一眼看上去也是哈希的思路。</p>
 <p>键：排序过后的字符串。</p>
 <p>值：一个装有所有对应组合的字符串的列表。</p>
-<p>难点主要就是语法。好久不刷 java 了，想了半天，哎。</p>
+<p>难点主要就是语法。好久不刷 Java 了，想了半天，哎。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;String&gt;&gt; <span class="title function_">groupAnagrams</span><span class="params">(String[] strs)</span> &#123;</span><br><span class="line">        Map&lt;String, List&lt;String&gt;&gt; map=<span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;String, List&lt;String&gt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (String s : strs)&#123;</span><br><span class="line">            <span class="type">char</span>[] temp_char_array=s.toCharArray();</span><br><span class="line">            Arrays.sort(temp_char_array);</span><br><span class="line">            String sp=String.valueOf(temp_char_array);</span><br><span class="line">            <span class="keyword">if</span>(!map.containsKey(sp))&#123;</span><br><span class="line">                map.put(sp, <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;());</span><br><span class="line">            &#125;</span><br><span class="line">            map.get(sp).add(s);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;List&lt;String&gt;&gt;(map.values());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="128-最长连续序列">128. 最长连续序列</h3>
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506172042165.png" alt=" " style="zoom:80%;" />
@@ -201,7 +201,7 @@
 <li>如果右侧窗口指针出现了该窗口中已经出现过的重复元素，则左侧窗口指针向右移动直到略过重复元素出现的位置，形成新窗口。此时不用判断新窗口长度是否为最大长度，因为右侧向右移动了 1，左侧向右至少移动了 1，长度不可能变得比上一轮循环的窗口长度更长。</li>
 </ol>
 <p>比如对于示例 1：</p>
-<p>起始窗口：	ptr_left = 0, ptr_right = 1, (ab), window_length = 2</p>
+<p>起始窗口： ptr_left = 0, ptr_right = 1, (ab), window_length = 2</p>
 <p>第一次移动：    ptr_left = 0, ptr_right = 2, (abc), window_length = 3</p>
 <p>第二次移动：    ptr_left = 0, ptr_right = 3, (abca)，出现重复元素。则左指针向右移动直到不再出现重复元素为止：ptr_left = 1, ptr_right = 3, (bca)</p>
 <p>第三次移动：    ptr_left = 1, ptr_right = 4, (bcab)，出现重复元素。则左指针向右移动直到不再出现重复元素为止：ptr_left = 2, ptr_right = 4, (cab)</p>

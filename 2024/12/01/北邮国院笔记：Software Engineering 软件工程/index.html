@@ -527,7 +527,7 @@
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332627.png" alt="img" /></p>
 <p>class and objects：类和对象。对象是类的实例 instance。两者关系很像static 中的method和动态中的method call。</p>
 <p>static：静态方法只能被类自己和其附加类调用。静态类实例化的对象是只有一个通用的对象，而不是实例化出无数个对象。</p>
-<p>Variables and referencing：java中变量是对对象的引用，比如var2=var1不是赋值而是改变var2指向var1的引用。包括一个变量的自带方法的</p>
+<p>Variables and referencing：Java中变量是对对象的引用，比如var2=var1不是赋值而是改变var2指向var1的引用。包括一个变量的自带方法的</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332273.png" alt="" /></p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1685806438306.png" alt="1685806438306" /></p>
 <p>Scope and garbage collection：对象的作用域只要有变量还在引用这个对象，他就活着。没有人引用的时候就自动垃圾回收。</p>
@@ -549,7 +549,7 @@
 <p>对修改封闭，意味着类一旦设计完成，就可以独立完成其工作，而不要对类进行任何修改。比如一个类以不同对象形式表现这就是扩展，因为需求改变或者有新需求。</p>
 <h4 id="Do-not-Repeat-Yourself-principle-DRY"><strong>Do not Repeat Yourself principle (DRY)</strong></h4>
 <p>不要复读机原则（不要重复自己原则）。本模块中如果发现重复内容，建议再抽象为方法和类。</p>
-<h4 id="Liskov-Substitution-Principle-LSP">**Liskov Substitution Principle (LSP) **</h4>
+<h4 id="Liskov-Substitution-Principle-LSP"><strong>Liskov Substitution Principle (LSP)</strong></h4>
 <p>Liskov替代原理：重写方法，不应该抱着”修改其方法“的想法。不能加强 strengthen 前置条件，不能削弱 weaken 后置条件。</p>
 <p>比如父类people方法AddPeople(String name, int age) 子类Student构造方法AddPeople(String name, int age)里先校验一下学生年龄，如果年龄大于25岁则不允许add，这就修改了原来方法。这就是前置条件加强了，要求年龄的限制多了。</p>
 <p>后置条件比如原来返回值大于0，现在返回值可以小于0了，那么返回值限制弱了，后置条件削弱了，不满足里氏原则。</p>
@@ -586,14 +586,14 @@
 </ol>
 <h4 id="Wrapper-design-patterns">Wrapper design patterns</h4>
 <p>Wrapper 模式包括 decorator 和 adapter。decorator 主要是外面的包裹类和里面的类都实现一个接口，比如上例的鸭子嘎嘎。adapter 是内部类不需实现。</p>
-<p>Immutable View：前面提过java引用的问题，比如两个变量引用同一个对象，一改都改。这样就相当于有引用的时候，该目标对象完全暴露出来了。在wrapper里我们可以限制包装类：禁止修改对象，修改则抛出异常。</p>
+<p>Immutable View：前面提过Java引用的问题，比如两个变量引用同一个对象，一改都改。这样就相当于有引用的时候，该目标对象完全暴露出来了。在wrapper里我们可以限制包装类：禁止修改对象，修改则抛出异常。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1685986070602.png" alt="1685986070602" /></p>
 <h4 id="Composite-Design-Pattern">Composite Design Pattern</h4>
 <p>包装了一个集合。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1685985869548.png" alt="1685985869548" /></p>
 <h4 id="Observer-Pattern">Observer Pattern</h4>
 <p>比如看到绿灯汽车知道该走了，这种观察者一个变量改变影响其他变量的实现。</p>
-<p>java是提供了observable的api的，当对应变量值改变时触发函数。</p>
+<p>Java是提供了observable的api的，当对应变量值改变时触发函数。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332446.png" alt="1685986641156" /></p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1685986768769.png" alt="1685986768769" /></p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332896.png" alt="1685986796502" /></p>

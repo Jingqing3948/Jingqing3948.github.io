@@ -133,13 +133,13 @@
     <div class="article-entry" itemprop="articleBody">
        
   <h2 id="前言">前言</h2>
-<p>学习自：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1cr4y1671t/?p=2&amp;share_source=copy_web&amp;vd_source=dcdc734e318da0cd82bcccb180b12b40">【黑马程序员Redis入门到实战教程，深度透析redis底层原理+redis分布式锁+企业解决方案+黑马点评实战项目】 </a></p>
+<p>学习自：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1cr4y1671t/?p=2&amp;share_source=copy_web&amp;vd_source=dcdc734e318da0cd82bcccb180b12b40">【黑马程序员Redis入门到实战教程，深度透析redis底层原理+redis分布式锁+企业解决方案+黑马点评实战项目】</a></p>
 <h3 id="SQL-vs-NoSQL">SQL vs. NoSQL</h3>
 <ul>
 <li>S：结构化，比如在 MySQL 我们需要定义一个表，第一个属性是 id 第二个是 name 第三个是 age…… 定义好表之后所有新插入的数据都必须遵循这个结构，各个表还可能有外键等关联，所以总的来说不能随意修改表的属性。而 NoSQL 结构要求没那么严格，比如下面这种 Redis 定义方式也可以，就是没啥章法：</li>
 </ul>
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505211052874.png" style="zoom:67%;" />
-<p>​	除了键值类型，还有文档类型，列类型，图类型等 NoSQL。</p>
+<p>除了键值类型，还有文档类型，列类型，图类型等 NoSQL。</p>
 <ul>
 <li>
 <p>R：关联的，SQL 数据库的各个属性之间有关联而 NoSQL 未必。</p>
@@ -258,7 +258,7 @@
 <p>查看图形化客户端可以发现：Key 已经形成层级结构。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212230806.png" alt="" /></p>
 <h4 id="Hash">Hash</h4>
-<p>无序字典，类似 java HashMap.</p>
+<p>无序字典，类似 Java HashMap.</p>
 <p>之前我们学过，String 处理对象的方式是变成 json 字符串，但是这样缺点是修改比较难操作。而 Hash 数据结构是可以真正将所有字段都分开存储方便操作。</p>
 <table>
 <thead>
@@ -309,7 +309,7 @@
 <p>添加完字段之后，图形化界面中可视化结构：</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212241594.png" alt="" /></p>
 <h4 id="List">List</h4>
-<p>大致可以看做 java 的双向链表结构。有序，插入删除速度快，查询速度一般。</p>
+<p>大致可以看做 Java 的双向链表结构。有序，插入删除速度快，查询速度一般。</p>
 <p>常常用于存储有顺序的数据，比如排队，朋友圈点赞列表等。</p>
 <table>
 <thead>
@@ -398,8 +398,8 @@
 </tbody>
 </table>
 <h4 id="SortedSet">SortedSet</h4>
-<p>有点类似 java 的 treeset 但是底层逻辑差得很远。</p>
-<p><em>java 的 treeset：一种有序集合，底层逻辑是红黑树。红黑树类似 AVL 树，这两种树在排序的同时也会保证树的左右子节点深度，数量差别不大以免树结构的复杂度变得和线性结构差不多，AVL 是规定左右子节点深度差不能超过1，而红黑树要求松一些，规定从根到叶子的最长路径不可能达到最短路径的2倍长，所以旋转操作相对 AVL 少一些，AVL 更适用于查找操作远多于插入删除操作数量的情况。</em></p>
+<p>有点类似 Java 的 treeset 但是底层逻辑差得很远。</p>
+<p><em>Java 的 treeset：一种有序集合，底层逻辑是红黑树。红黑树类似 AVL 树，这两种树在排序的同时也会保证树的左右子节点深度，数量差别不大以免树结构的复杂度变得和线性结构差不多，AVL 是规定左右子节点深度差不能超过1，而红黑树要求松一些，规定从根到叶子的最长路径不可能达到最短路径的2倍长，所以旋转操作相对 AVL 少一些，AVL 更适用于查找操作远多于插入删除操作数量的情况。</em></p>
 <p>SortedSet 每个元素都带有一个 score 属性可以排序，通过跳表+hash表排序。</p>
 <p><em>跳表结构大概如下，来加速单链表的查找效率。可以再多建几级索引。图源：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Appleeatingboy/article/details/119948340">跳表的原理与实现 [图解]_跳表实现-CSDN博客</a></em></p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212313909.png" alt="img" /></p>
@@ -498,7 +498,7 @@
 <p><em>线程不安全的大概原因：每次 set 的时候都要调用 connect 方法。在 connect 方法里，一个实例的多个线程都共用一个 socket, inputstream, outputstream。所以如果线程1正在读写，线程2把 socket重新初始化了，那么1的连接就断了。或者两个线程同时读写，inputstream outputstream 共用可能就会导致输入或读取数据错误。<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1678172">使用jedis面临的非线程安全问题-腾讯云开发者社区-腾讯云</a></em></p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505222302284.png" alt="img" /></p>
 <blockquote>
-<p>图源：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/84481313">java客户端：Jedis和Jedis连接池的基本使用和配置 - 知乎</a></p>
+<p>图源：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/84481313">Java客户端：Jedis和Jedis连接池的基本使用和配置 - 知乎</a></p>
 </blockquote>
 <p>创建连接池代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JedisConnectionFacotry</span> &#123;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> JedisPool jedisPool;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">static</span> &#123;</span><br><span class="line">         <span class="comment">//配置连接池</span></span><br><span class="line">         <span class="type">JedisPoolConfig</span> <span class="variable">poolConfig</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JedisPoolConfig</span>();</span><br><span class="line">         poolConfig.setMaxTotal(<span class="number">8</span>);<span class="comment">// 最大连接数</span></span><br><span class="line">         poolConfig.setMaxIdle(<span class="number">8</span>);<span class="comment">// 最大空闲连接数</span></span><br><span class="line">         poolConfig.setMinIdle(<span class="number">0</span>);<span class="comment">// 最小空闲连接数，防止空闲连接被释放</span></span><br><span class="line">         poolConfig.setMaxWaitMillis(<span class="number">1000</span>);</span><br><span class="line">         <span class="comment">//创建连接池对象</span></span><br><span class="line">         jedisPool = <span class="keyword">new</span> <span class="title class_">JedisPool</span>(poolConfig,</span><br><span class="line">                 <span class="string">&quot;192.168.150.101&quot;</span>,<span class="number">6379</span>,<span class="number">1000</span>,<span class="string">&quot;123321&quot;</span>);</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">static</span> Jedis <span class="title function_">getJedis</span><span class="params">()</span>&#123;</span><br><span class="line">          <span class="keyword">return</span> jedisPool.getResource();</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -572,7 +572,7 @@
 <p>重新运行后发现数据库里面的键值都没有乱码了（值的话，可能 String Object 转换成 JSON 也是 String 的形式）。</p>
 <p>尝试传入对象也非常顺利，假设新建了一个 User 对象，数据库中成功传入后的 json value 如下（第一句话就是帮助反序列化还原用的）：</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505231149205.png" alt="" /></p>
-<p>并且 java 输出里面自动反序列化成对象的输出形式：</p>
+<p>并且 Java 输出里面自动反序列化成对象的输出形式：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">value User(name=jingqing, age=22)</span><br></pre></td></tr></table></figure>
 <p>但是可以看出，上面 class 那一行占用存储空间还是挺大的，比这个对象的其余部分内容都长。</p>
 <p>不要这部分，就不能实现自动的反序列化了。要吧，又要占用内存空间。</p>

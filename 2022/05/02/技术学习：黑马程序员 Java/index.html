@@ -144,7 +144,7 @@
    A --> C[JRE]
    C -->D[JVM, JRE 的 bin 目录下]
    C -->E[运行所需要的核心类库, JRE 的 lib 目录下]</pre>
-<p>尽管 JRE 对于运行 java 文件已经足够，作为学习肯定还是要下载 JDK 的~</p>
+<p>尽管 JRE 对于运行 Java 文件已经足够，作为学习肯定还是要下载 JDK 的~</p>
 <p>JDK 的安装目录如下：</p>
 <table>
 <thead>
@@ -156,7 +156,7 @@
 <tbody>
 <tr>
 <td>bin</td>
-<td>存放工具命令，如：javac, java, etc.</td>
+<td>存放工具命令，如：javac, Java, etc.</td>
 </tr>
 <tr>
 <td>conf</td>
@@ -184,9 +184,9 @@
 </tr>
 </tbody>
 </table>
-<p>环境配置等就不多赘述了，网上好的教程太多太多。总之就是终端 javac 和 java 可以执行，最好使用 IDEA 作为 IDE。</p>
+<p>环境配置等就不多赘述了，网上好的教程太多太多。总之就是终端 javac 和 Java 可以执行，最好使用 IDEA 作为 IDE。</p>
 <h3 id="IDEA-环境介绍">IDEA 环境介绍</h3>
-<p>集成环境：能够把代码编写、编译、执行、调试等功能集合到一起的开发工具。IDEA  就是 java 的集成环境之一。</p>
+<p>集成环境：能够把代码编写、编译、执行、调试等功能集合到一起的开发工具。IDEA  就是 Java 的集成环境之一。</p>
 <p>创建项目-项目内创建模块（实现不同的功能）-模块 src 下创建包（类似文件夹，用于归纳区分不同的类）-包下创建类-类中编写代码。</p>
 <p>其中，.class 文件都会放在模块同级的 out 文件夹中。</p>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505201224741.png" alt="AJdw2.png" /></p>
@@ -197,7 +197,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloWorld</span> &#123; <span class="comment">// class 类名必须和文件名一致</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123; <span class="comment">//main 方法</span></span><br><span class="line">        System.out.println(<span class="string">&quot;Hello World!&quot;</span>); <span class="comment">// 单独输出一行的意思。注意大小写不可以出错</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>然后在 DOS 窗口中进入当前文件所在目录，输入命令：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">javac HelloWorld.java //编译，得到 .class 字节码文件，可以在任何支持 java 的平台上运行</span><br><span class="line">java HelloWorld // .class 文件被解释执行，转化为可以直接在本地对应平台上运行的机器码文件</span><br></pre></td></tr></table></figure>
-<p>java 和 C、C++ 一样，属于 <strong>编译型语言</strong>（一次性翻译全部源程序，然后执行机器语言程序），而不是解释型语言（源程序逐条翻译并执行）。</p>
+<p>Java 和 C、C++ 一样，属于 <strong>编译型语言</strong>（一次性翻译全部源程序，然后执行机器语言程序），而不是解释型语言（源程序逐条翻译并执行）。</p>
 <h3 id="注释">注释</h3>
 <p>单行注释 <code>//</code> 、多行注释 <code>/* */</code> 都和 C 一样。还有一个文件注释 <code>/** */</code> 暂时用不到，之后了解。</p>
 <h3 id="关键字">关键字</h3>
@@ -237,19 +237,19 @@ F-->G[double]</pre>
 <p>强制类型转换：赋值运算符中隐含。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">short</span> s=<span class="number">10</span>;		</span><br><span class="line">s+=<span class="number">10</span>;			<span class="comment">// 正常</span></span><br><span class="line">s=s+<span class="number">10</span>;			<span class="comment">// 错，因为右边发生了自动类型转换，变成了int型</span></span><br><span class="line">s=(<span class="type">short</span>)(s+<span class="number">10</span>);<span class="comment">// 也可以</span></span><br></pre></td></tr></table></figure>
 <h3 id="数据输入">数据输入</h3>
-<p>输入通过 Scanner 类实现。Scanner 类在 java.util 包下，要先导包才能使用。</p>
+<p>输入通过 Scanner 类实现。Scanner 类在 Java.util 包下，要先导包才能使用。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;<span class="comment">//导包</span></span><br><span class="line">Scanner sc=<span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);<span class="comment">//创建对象。这句话中除了 sc 是变量名可以修改，其他的都不能改。</span></span><br><span class="line"><span class="type">int</span> i=sc.nextInt();<span class="comment">//接收数据</span></span><br><span class="line">String s=sc.nextLine();</span><br></pre></td></tr></table></figure>
 <h3 id="分支、循环语句">分支、循环语句</h3>
 <p>if - else 语句：和 C 语言一样。</p>
 <p>switch 语句：表达式的取值可以是 byte、short、int、char，JDK5 之后可以是枚举，JDK7 之后可以是 String。其他 case break default 用法和 C 一样。</p>
 <p>for, while, do - while 语句，及 break continue 和 C 一样。</p>
 <h3 id="随机数">随机数</h3>
-<p>Random 类，在 java.util 包下，需要导包。</p>
+<p>Random 类，在 Java.util 包下，需要导包。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line">Random r=<span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line"><span class="type">int</span> n=r.nextInt(<span class="number">10</span>);<span class="comment">//[0,10)的范围内取随机数</span></span><br></pre></td></tr></table></figure>
 <h3 id="数组">数组</h3>
 <p>一次性声明大量 <strong>同类型</strong> 变量。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] arr;<span class="comment">//推荐。定义了一个 int 型的数组，数组名是 arr</span></span><br><span class="line"><span class="type">int</span> arr[];<span class="comment">//定义了一个 int 型变量，变量名是 arr 数组</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span>[] arr=<span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;<span class="comment">//静态初始化</span></span><br><span class="line"><span class="type">int</span>[] arr=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;<span class="comment">//静态初始化简化版</span></span><br><span class="line"><span class="type">int</span>[] arr=<span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">3</span>];<span class="comment">//动态初始化，只申请了空间，系统赋予初始值</span></span><br><span class="line"><span class="comment">//数字类型：初始值为0.0</span></span><br><span class="line"><span class="comment">//布尔类型：初始值为 false</span></span><br><span class="line"><span class="comment">//字符串类型：初始值为&quot;&quot;</span></span><br><span class="line"><span class="comment">//引用类型：初始值为 null</span></span><br></pre></td></tr></table></figure>
-<p>java 程序运行时需要在内存中分配空间，为了提高效率，内存空间也被划分为不同的部分。</p>
+<p>Java 程序运行时需要在内存中分配空间，为了提高效率，内存空间也被划分为不同的部分。</p>
 <h4 id="栈内存">栈内存</h4>
 <p>定义的方法中的变量放在栈内存中，使用完直接消失。</p>
 <p>如 <code>int a</code>，以及上文中定义的数组名 arr（其值是指向堆内存中数组内容的地址）。</p>
@@ -272,13 +272,13 @@ F-->G[double]</pre>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Scanner sc=<span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">String line=sc.nextLine();</span><br><span class="line"><span class="comment">//这里只输入 sc.nextLine() 然后 alt enter 代码自动补全，就会自动生成左边 String line。</span></span><br></pre></td></tr></table></figure>
 <h3 id="String">String</h3>
 <p>String 类型代表字符串。其内容都是被双引号引住的。</p>
-<p>在 java.lang 包下，不用导包。</p>
+<p>在 Java.lang 包下，不用导包。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">String s=<span class="string">&quot;abc&quot;</span>;<span class="comment">//直接赋值</span></span><br><span class="line">String s1=<span class="keyword">new</span> <span class="title class_">String</span>();<span class="comment">//空字符串</span></span><br><span class="line"></span><br><span class="line"><span class="type">char</span>[] c=&#123;<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>&#125;;</span><br><span class="line">String s2=<span class="keyword">new</span> <span class="title class_">String</span>(c);<span class="comment">//根据字符数组创建字符串</span></span><br><span class="line"></span><br><span class="line"><span class="type">byte</span>[] b=&#123;<span class="number">97</span>,<span class="number">98</span>,<span class="number">99</span>&#125;;<span class="comment">//a, b, c 对应的 ascii 码</span></span><br><span class="line">String s3=<span class="keyword">new</span> <span class="title class_">String</span>(b);</span><br></pre></td></tr></table></figure>
 <p>字符串一旦创建不能再修改。不过多个字符串的值可以共享 <code>s1=s2;</code></p>
 <p><em>字符串在效果上像字符数组 char []，但（JDK9）以后底层实现方法其实是字节数组 byte []。</em></p>
 <h4 id="字符串比较：-和-equals">字符串比较：== 和 equals()</h4>
 <p>用 == 判断的比较，是比较 s1 和 s2 的值（即：对应字符串的地址值）是否相同。</p>
-<p>基本类型 == 比较的是数据值是否相同，引用类型 **== ** 比较的是 ** 地址 ** 是否相同。</p>
+<p>基本类型 == 比较的是数据值是否相同，引用类型 <strong>==</strong> 比较的是 <strong>地址</strong> 是否相同。</p>
 <p>用字符串的成员方法 <strong>equals()</strong> 判断，是比较字符串 <strong>内容</strong> 是否相同。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span>[] c=&#123;<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>&#125;;</span><br><span class="line">String s1=<span class="keyword">new</span> <span class="title class_">String</span>(c);</span><br><span class="line">String s2=<span class="keyword">new</span> <span class="title class_">String</span>(c);</span><br><span class="line">System.out.println(s1==s2);<span class="comment">//输出 false，因为 s1 s2 地址不同，只有内容是一样的</span></span><br><span class="line">System.out.println(s1.equals(s2));<span class="comment">//输出 true</span></span><br><span class="line"></span><br><span class="line">String s3=<span class="string">&quot;abc&quot;</span>;</span><br><span class="line">String s4=<span class="string">&quot;abc&quot;</span>;</span><br><span class="line">System.out.println(s3==s4);<span class="comment">//输出 true，因为对于相同内容的字符串，JVM 会建立一个字符串对象（在堆内存的字符串池中）供它俩参考。</span></span><br><span class="line">System.out.println(s3.equals(s4));<span class="comment">//输出 true</span></span><br><span class="line"></span><br><span class="line">System.out.println(s1==s3);<span class="comment">//输出 false</span></span><br><span class="line">System.out.println(s1.equals(s3));<span class="comment">//输出 true</span></span><br></pre></td></tr></table></figure>
 <h4 id="遍历字符串：成员方法-length-和-charAt">遍历字符串：成员方法 length() 和 charAt()</h4>
@@ -294,7 +294,7 @@ F-->G[double]</pre>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String s1=<span class="string">&quot;hello world&quot;</span>;</span><br><span class="line">s1.endsWith(<span class="string">&quot;world&quot;</span>);</span><br></pre></td></tr></table></figure>
 <h4 id="StringBuilder-类">StringBuilder 类</h4>
 <p>与 String 类相比，最主要的特点在于内容可变。</p>
-<p>在 java.lang 包下，不用导包。</p>
+<p>在 Java.lang 包下，不用导包。</p>
 <p>构造方法：</p>
 <table>
 <thead>
@@ -346,7 +346,7 @@ F-->G[double]</pre>
 <p>用 StringBuilder 完成字符串反转操作：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String s=<span class="string">&quot;Hello World&quot;</span>;</span><br><span class="line">String sr=<span class="keyword">new</span> <span class="title class_">StringBuilder</span>(s).reverse().toString();</span><br></pre></td></tr></table></figure>
 <h3 id="方法">方法</h3>
-<p>java 中的方法类似 C 中的函数。只是涉及类和对象的问题，有一些小不同。</p>
+<p>Java 中的方法类似 C 中的函数。只是涉及类和对象的问题，有一些小不同。</p>
 <p>像函数一样，是有独立功能的代码块组成的集合，可以拿去调用。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> 返回值类型 方法名(形参)&#123;<span class="comment">//和 main 方法同级</span></span><br><span class="line">    方法体</span><br><span class="line">    <span class="keyword">return</span> 返回值;</span><br><span class="line">&#125;<span class="comment">//定义</span></span><br><span class="line"></span><br><span class="line">方法名(实参);<span class="comment">//在 main 方法中调用。有返回值类型的方法建议用变量接收调用</span></span><br></pre></td></tr></table></figure>
 <p>方法不能嵌套定义。</p>
@@ -453,7 +453,7 @@ C-->S[Set]-->H[HashSet]
 C-->Q[Queue]</pre>
 <p>ArrayList 就是集合的一种。</p>
 <h3 id="ArrayList-E">ArrayList &lt; E &gt;</h3>
-<p>在 java.util 包下，需要导包。</p>
+<p>在 Java.util 包下，需要导包。</p>
 <p>&lt; E &gt; 表示泛型，限制数组中的元素只能是某一种类型（或者其子类，多态），可以在编译阶段约束操作的数据类型并进行检查（下面左边的 String）。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt; array=<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br></pre></td></tr></table></figure>
 <p>泛型只能使用引用数据类型（比如包装类 Integer, Character… 或者我们自己定义的对象 Student，但是不可以使用基本数据类型 int char 这些，具体原因后面还会深入讲解）。</p>
@@ -536,7 +536,7 @@ C-->Q[Queue]</pre>
 <p>静态成员方法则是与类本身相关（非静态的方法是和类的具体实例对象有关，静态方法是和整个类有关），调用方式也是 <code>类名.静态方法名</code>。静态方法中不能使用 this 关键字（因为没有具体的实例对象）。此外，<strong>静态成员方法只能访问静态成员变量 / 方法！</strong></p>
 <h3 id="包-Package">包 Package</h3>
 <p>文件夹，用于存放编译后生成的 class 文件，方便管理。</p>
-<p>在 IDEA 中新建的 java 文件会自动生成包路径。如果要在 cmd 窗口中运行带有包路径的文件，编译照常，执行需要注明 class 文件的路径。</p>
+<p>在 IDEA 中新建的 Java 文件会自动生成包路径。如果要在 cmd 窗口中运行带有包路径的文件，编译照常，执行需要注明 class 文件的路径。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ithema;</span><br><span class="line"></span><br><span class="line"><span class="comment">//命令行根据路径建包</span></span><br><span class="line">javac -d . HelloWorld.java</span><br><span class="line"></span><br><span class="line"><span class="comment">//编译</span></span><br><span class="line">javac HelloWorld.java</span><br><span class="line"></span><br><span class="line"><span class="comment">//运行</span></span><br><span class="line">java com.ithema.HelloWorld</span><br></pre></td></tr></table></figure>
 <h3 id="导包-import">导包 import</h3>
 <p>如果测试类在 src 文件夹的 A 文件夹下，要调用的类在 src 文件夹的 B 文件夹下，可以通过导包的方式来调用</p>
@@ -573,7 +573,7 @@ C-->Q[Queue]</pre>
 <p>（没有抽象方法的类也可以是抽象类，但是意义何在）</p>
 <p>抽象类不能直接创建对象，需要子类把抽象方法重写补全后才能创建对象。否则，子类也是抽象类。</p>
 <h3 id="接口">接口</h3>
-<p>接口是一种公共的行为规范标准，只要符合规范，大家都可以使用。 java 中的接口主要是对行为的抽象。如：</p>
+<p>接口是一种公共的行为规范标准，只要符合规范，大家都可以使用。 Java 中的接口主要是对行为的抽象。如：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Jumpping</span>&#123; <span class="comment">// 接口</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">Jump</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Cat</span> <span class="keyword">implements</span> <span class="title class_">Jumpping</span>&#123; <span class="comment">// 实现</span></span><br><span class="line">    <span class="comment">// 重写 Jump() 方法。如果不重写， Cat 就是一个抽象类</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>接口中的成员变量默认是 public static final 的，不能修改，而且可以通过 Class.成员变量 的方式直接访问。</p>
 <p>接口中没有构造方法和非抽象方法。成员方法默认是 public abstract 的。</p>
@@ -786,7 +786,7 @@ C-->F[篮球教练]</pre>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Integer i=Integer.valueOf(<span class="number">100</span>);<span class="comment">//装箱</span></span><br><span class="line">Integer ii=<span class="number">100</span>;<span class="comment">//自动装箱</span></span><br><span class="line"></span><br><span class="line">ii=ii.intValue()+<span class="number">200</span>;<span class="comment">//拆箱</span></span><br><span class="line">ii+=<span class="number">200</span>;<span class="comment">//自动拆箱</span></span><br><span class="line"></span><br><span class="line">Integer i3=<span class="literal">null</span>;</span><br><span class="line">i3+=<span class="number">300</span>;<span class="comment">//NullPointerException。因此对象使用之前最好先判断是否为 null</span></span><br></pre></td></tr></table></figure>
 <h3 id="日期类">日期类</h3>
 <h4 id="Date">Date</h4>
-<p>Date 类，需要导包。<strong>注意是 java.util 下的，而不是 java.sql 下的！</strong> java.util 下的 Date 类非最终类，所以可以有子类， java.sql 下的 Date 类就是其子类。</p>
+<p>Date 类，需要导包。<strong>注意是 Java.util 下的，而不是 Java.SQL 下的！</strong> Java.util 下的 Date 类非最终类，所以可以有子类， Java.SQL 下的 Date 类就是其子类。</p>
 <table>
 <thead>
 <tr>
@@ -896,7 +896,7 @@ C-->O[其他 <br> 编译型异常]</pre>
 <h4 id="try…catch">try…catch</h4>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    可能出现异常的代码;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span>(异常类名 变量名)&#123;</span><br><span class="line">    出现异常后的处理代码;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">String s=<span class="string">&quot;2022-05-07&quot;</span>;</span><br><span class="line">SimpleDateFormat sdf=<span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>(<span class="string">&quot;yyyy-mm-dd&quot;</span>);</span><br><span class="line">sdf.parse(s);<span class="comment">// 这个方法不能直接用，必须要加异常处理</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    sdf.parse(s);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span>(ParseException e)&#123;</span><br><span class="line">    System.out.print(<span class="string">&quot;parseException!&quot;</span>);<span class="comment">//不管会不会发生异常，都要写</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>出现异常时，异常对象会被提交给 Java 运行时系统，如果和 catch 中的异常类匹配就会进行异常的处理，<strong>处理完成后可以继续执行。</strong></p>
-<p>如果异常变量命名为 e , 调用 e 的成员方法 <code>e.printStackTrace()</code> 就会输出平时出现异常时系统默认提示的信息：<code>java.lang.ArrayIndexOutOfBoundsException: Index 3 out of bounds for length 3  at com.ithema_02.ExceptionDemo02.method..... </code></p>
+<p>如果异常变量命名为 e , 调用 e 的成员方法 <code>e.printStackTrace()</code> 就会输出平时出现异常时系统默认提示的信息：<code>java.lang.ArrayIndexOutOfBoundsException: Index 3 out of bounds for length 3  at com.ithema_02.ExceptionDemo02.method.....</code></p>
 <p>但是通过这种方法处理异常之后，异常后面的部分仍然可以执行。</p>
 <h4 id="Throwable-的成员方法">Throwable 的成员方法</h4>
 <p>Throwable 作为超类，其所有子类都可以使用他的成员方法。</p>
@@ -1019,7 +1019,7 @@ M-->HM(HashMap)</pre>
 </table>
 <p>快捷键：Alt+7，能看到类的所有信息</p>
 <h4 id="迭代器-iterator">迭代器 iterator</h4>
-<p>java.util.Iterator</p>
+<p>Java.util.Iterator</p>
 <p>Iterator 是一个接口。使用 Iterator 迭代器遍历集合元素。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Iterator&lt;String&gt; it=c.iterator();<span class="comment">//通过集合对象中的迭代方法获取对象</span></span><br></pre></td></tr></table></figure>
 <p>追根溯源可以得知，Collection.iterator()方法返回的是一个实现了 Iterator 接口的类：Itr.</p>
@@ -1070,7 +1070,7 @@ cfe-->|yes|X("集合没有被修改,继续遍历")</pre>
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505282318767.png" alt="" /></p>
 <p>但是通过 for 循环遍历集合，在遍历过程中对集合进行修改，不会报异常。</p>
 <h3 id="List">List</h3>
-<p>java.util.List</p>
+<p>Java.util.List</p>
 <p>继承自 Collection 类，可以使用其中的方法。</p>
 <p>List 是有序、有索引的。相较于集合 Set，List 中的元素可以重复。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; l=<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;String&gt;();</span><br><span class="line">l.add(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">l.add(<span class="string">&quot;World&quot;</span>);</span><br><span class="line">System.out.println(l);<span class="comment">//按存储的顺序输出，[&quot;Hello&quot;,&quot;World&quot;]</span></span><br></pre></td></tr></table></figure>
@@ -1199,8 +1199,8 @@ cfe-->|yes|X("集合没有被修改,继续遍历")</pre>
 <p>之前在介绍 ArrayList 的时候简单介绍过，泛型用于编译阶段约束操作的数据类型，如 <code>ArrayList&lt;String&gt; arrayList=new ArrayList&lt;&gt;();</code> 就只能存入 String 包装类型了。只能存入指定的泛型数据类型或者其子类（多态）。</p>
 <p>如果集合没有限制泛型类型，那么传入什么类型的对象都可以，<code>ArrayList arrayList=new ArrayList&lt;&gt;();</code> 传一个 Integer，传一个 String，传一个 Student……（默认 Object 类型，多态）</p>
 <p>但是多态的弊端在于没法使用子类中的特有自定义方法。迭代器的类型也和泛型定义的一样。</p>
-<p>但是其实 java 中的泛型是伪泛型。就是只在编译阶段检查，其实泛型检查相当于一个保安大爷。编译阶段会简单判断一下你传入的数据是否都符合泛型数据类型，符合才让存；但是存进去的时候还是按照 Object 类型存入的。只不过取出数据准备处理的时候多做了一步操作，就是将 Object 类型的数据再转化为对应的泛型数据类型。</p>
-<p>为什么这样做？因为泛型的概念是 JDK 1.5 才提出的，在之前的集合是没有泛型的，而新版本要尽可能向下兼容（因为之前已经诞生了很多 java 代码了，如果全部改成按指定泛型存入数据类型，之前很多旧版本的代码就用不了了，都要改）。</p>
+<p>但是其实 Java 中的泛型是伪泛型。就是只在编译阶段检查，其实泛型检查相当于一个保安大爷。编译阶段会简单判断一下你传入的数据是否都符合泛型数据类型，符合才让存；但是存进去的时候还是按照 Object 类型存入的。只不过取出数据准备处理的时候多做了一步操作，就是将 Object 类型的数据再转化为对应的泛型数据类型。</p>
+<p>为什么这样做？因为泛型的概念是 JDK 1.5 才提出的，在之前的集合是没有泛型的，而新版本要尽可能向下兼容（因为之前已经诞生了很多 Java 代码了，如果全部改成按指定泛型存入数据类型，之前很多旧版本的代码就用不了了，都要改）。</p>
 <p><em>其实这也解释了为什么泛型不能设定为基本数据类型如 <code>int</code> <code>char</code> 这些，因为这些类型存入的时候无法转换为 <code>Object</code> 类型）</em></p>
 <h4 id="泛型的几种应用场景">泛型的几种应用场景</h4>
 <p>泛型类：当不确定数据类型的时候使用。</p>
@@ -1255,7 +1255,7 @@ cfe-->|yes|X("集合没有被修改,继续遍历")</pre>
 <p>第二种排序方式：</p>
 <p>创建集合对象的时候，传递比较器进行比较。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">需求：请自行选择比较器排序和自然排序两种方式；</span></span><br><span class="line"><span class="comment">要求：存入四个字符串 “c”, “ab”, “df”, “qwer”</span></span><br><span class="line"><span class="comment">按照长度排序，如果一样长则按照首字母排序</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">采取第二种排序方式：比较器排序</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. 创建集合</span></span><br><span class="line">TreeSet&lt;String&gt; ts = <span class="keyword">new</span> <span class="title class_">TreeSet</span>&lt;&gt;(<span class="keyword">new</span> <span class="title class_">Comparator</span>&lt;String&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(String o1, String o2)</span> &#123;</span><br><span class="line">        <span class="comment">// 按照长度排序</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> o1.length() - o2.length();</span><br><span class="line">        <span class="comment">// 如果一样长则按字母顺序</span></span><br><span class="line">        i = i == <span class="number">0</span> ? o1.compareTo(o2) : i;</span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者 lambda 表达式：</span></span><br><span class="line">TreeSet&lt;String&gt; ts = <span class="keyword">new</span> <span class="title class_">TreeSet</span>&lt;&gt;((o1, o2) -&gt; &#123;</span><br><span class="line">    <span class="comment">// 按照长度排序</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> o1.length() - o2.length();</span><br><span class="line">    <span class="comment">// 如果一样长则按照首字母排序</span></span><br><span class="line">    i = (i == <span class="number">0</span> ? o1.compareTo(o2) : i);</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>Comparator 优先级高于 compareTo，对于 Integer 和 String java 已经定义好 compareTo 的情况我们又不想修改源码，就可以使用 Comparator 来重新设置排序方法。</p>
+<p>Comparator 优先级高于 compareTo，对于 Integer 和 String Java 已经定义好 compareTo 的情况我们又不想修改源码，就可以使用 Comparator 来重新设置排序方法。</p>
 <h3 id="List-Set-集合使用场景总结">List Set 集合使用场景总结</h3>
 <p><code>ArrayList</code>：元素可重复，随机存取。</p>
 <p><code>LinkedList</code>：元素可重复，且增删操作数量明显多于查询。</p>
@@ -1580,7 +1580,7 @@ cfe-->|yes|X("集合没有被修改,继续遍历")</pre>
 <p>想使用方法引用的前提：</p>
 <ul>
 <li>引用处必须是函数式接口 <code>FunctionalInterface</code>；要么是已经定义了 <code>@FunctionalInterface</code> 的接口，要么就是只有一个抽象方法，可以有多个非抽象方法的接口。</li>
-<li>被引用的方法需要已经存在，自定义的或者 java 自带的都可以；</li>
+<li>被引用的方法需要已经存在，自定义的或者 Java 自带的都可以；</li>
 <li>形参，返回值数据类型相对应；</li>
 <li>功能上满足当前需求。</li>
 </ul>
@@ -2087,7 +2087,7 @@ cfe-->|yes|X("集合没有被修改,继续遍历")</pre>
 <p>那是不是给 ticket 加一个 static 字段就解决了呢？真实执行发现也并不是的。主要是安全问题，就比如窗口 1 输出自己卖了第 44 张票，还没来得及 ticket++，窗口 2 读取了当前票数并且说我也卖了第 44 张票，然后 ticket++。然后两个窗口都加完了，窗口三读取到第 46 张票，说我卖了第 46 张票。输出结果特别混乱，44 还有两张重复了。</p>
 <h4 id="同步代码块">同步代码块</h4>
 <p>使用 <code>synchronized</code> 将要操作的对象锁住。我要操作数据的时候，把数据先锁起来自己操作，操作完了才解锁让别人能访问到。这样避免同时操作出现错误。</p>
-<p>java 实现真的是简单到极致：</p>
+<p>Java 实现真的是简单到极致：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyThread</span> <span class="keyword">extends</span> <span class="title class_">Thread</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="type">int</span> <span class="variable">ticket</span> <span class="operator">=</span> <span class="number">0</span>; <span class="comment">// 票号，多个线程共享，需加锁</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Object</span> <span class="variable">lock</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Object</span>(); <span class="comment">// 加锁用的共享对象</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (lock) &#123; <span class="comment">// 加锁，确保同一时间只有一个线程进入</span></span><br><span class="line">                <span class="keyword">if</span> (ticket &lt; <span class="number">100</span>) &#123;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        Thread.sleep(<span class="number">100</span>); <span class="comment">// 模拟出票延迟</span></span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                    ticket++;</span><br><span class="line">                    System.out.println(getName() + <span class="string">&quot; 正在卖第 &quot;</span> + ticket + <span class="string">&quot; 张票！！！&quot;</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>注意：</p>
 <ol>
@@ -2140,7 +2140,7 @@ cfe-->|yes|X("集合没有被修改,继续遍历")</pre>
 <h3 id="线程-6-大状态">线程 6 大状态</h3>
 <p>如下图。</p>
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506111835767.png" alt=" " style="zoom:50%;" />
-<p>为什么说是只有 6 个状态？因为 java 中没有定义运行态。java ThreadState 定义如下：</p>
+<p>为什么说是只有 6 个状态？因为 Java 中没有定义运行态。Java ThreadState 定义如下：</p>
 <ul>
 <li>新建 NEW</li>
 <li>就绪 RUNNABLE</li>
@@ -2155,16 +2155,16 @@ cfe-->|yes|X("集合没有被修改,继续遍历")</pre>
 <ol>
 <li>抢红包问题。5 个人抢 3 个包，100 块钱随机分成 3 个包。最小金额 0.01.</li>
 </ol>
-<p>​	这里第一个点在于：前三个线程抢到红包，如何随机计算钱数。前两个线程的问题在于，不能随机出 0 或者全部剩余金额（这样就没给另外两个人留下钱了）。比如线程 1 最少能抢到 0.01，顶多只能抢到 99.98，这样才能给后面俩人留下至少 0.02 的红包。所以计算公式是 <code>random.nextDouble(leftAmount - 0.01*(leftCount - 1)) + 0.01</code></p>
-<p>​	然后，第三个人就不用随机计算能抢到多少了，第三个人直接获得剩余的所有金额。</p>
-<p>​	最后，抢到红包的三个人要输出自己抢到的金额，但是不能输出 double，要约到小数点后两位。老师是用了什么 BigDecimal 实现，我看到有一种比较有意思的方法是随机整数 <code>(0~9999)*0.01</code>.</p>
+<p>这里第一个点在于：前三个线程抢到红包，如何随机计算钱数。前两个线程的问题在于，不能随机出 0 或者全部剩余金额（这样就没给另外两个人留下钱了）。比如线程 1 最少能抢到 0.01，顶多只能抢到 99.98，这样才能给后面俩人留下至少 0.02 的红包。所以计算公式是 <code>random.nextDouble(leftAmount - 0.01*(leftCount - 1)) + 0.01</code></p>
+<p>然后，第三个人就不用随机计算能抢到多少了，第三个人直接获得剩余的所有金额。</p>
+<p>最后，抢到红包的三个人要输出自己抢到的金额，但是不能输出 double，要约到小数点后两位。老师是用了什么 BigDecimal 实现，我看到有一种比较有意思的方法是随机整数 <code>(0~9999)*0.01</code>.</p>
 <ol start="2">
 <li>多线程比较问题，比如抽奖箱问题每个抽奖箱都抽到金额不等的一系列奖券，最后我们要输出谁抢到了最大的奖券，谁的总计奖券最大。也就是说需要多线程返回结果，需要使用 <code>Callable</code> 创建多线程的方法，并且通过 FutureTask 获取返回值。</li>
 </ol>
 <h3 id="线程池">线程池</h3>
 <p>其实之前的线程使用方法都比较浪费，每次针对不同的任务我们都需要新建线程，任务结束再销毁线程。老师举了一个比喻很有意思，就像每次要吃饭就去买碗，吃完饭把碗摔了。</p>
 <p>线程池可以保存线程。线程池会一口气创建完所有线程，然后所有线程进入 wait 状态阻塞。线程池负责将线程唤醒分配给任务，完成任务后继续休眠阻塞。程序关闭线程池回收，销毁所有线程。但是如果是 24 小时运行的服务器，线程池就不会关闭了。</p>
-<p>这部分在 java 里实现非常简单：</p>
+<p>这部分在 Java 里实现非常简单：</p>
 <table>
 <thead>
 <tr>
@@ -2285,7 +2285,7 @@ cfe-->|yes|X("集合没有被修改,继续遍历")</pre>
 <p>CAS 的优点是不脱离用户态，所以减少上下文切换开销。缺点在于轮询长时间 CPU 性能浪费，而且可能面临 ABA 问题（一个对象 A 被改为 B 又改回 A，值没变但是其实也改了，可能会发生一些逻辑问题，比如对象引用其实指向了一个新的同样值的不一样的新对象。不过版本号乐观锁可以避免这个问题，就是如果有改动版本号就++，能看到历史版本而不是只根据值判断有无改动），适合读多写少的情况。synchronized 比较慢，有上下文切换开销，并发性能低，适合读少写多的情况。</p>
 <h4 id="HashMap-安全性问题">HashMap 安全性问题</h4>
 <p>HashMap 是不安全的。比如两个线程同时往一个 HashMap 写入大量的值，可能就会丢数据。</p>
-<p>解决方法可以加锁，实际上 java 中有一种 HashTable 就是加锁版的 HashMap 实现，底层很多方法都用 synchronized 修饰。但是这样效率会大大降低，因为每次读写数据都要阻塞其他线程（不过其倒可以绝对保证线程安全）。</p>
+<p>解决方法可以加锁，实际上 Java 中有一种 HashTable 就是加锁版的 HashMap 实现，底层很多方法都用 synchronized 修饰。但是这样效率会大大降低，因为每次读写数据都要阻塞其他线程（不过其倒可以绝对保证线程安全）。</p>
 <p>ConcurrentHashMap 是 JDK 1.5 之后的类。</p>
 <h5 id="JDK-1-7-ConcurrentHashMap">JDK 1.7 ConcurrentHashMap</h5>
 <p>我们先来看 1.7 版本的 ConcurrentHashMap 源码。</p>
