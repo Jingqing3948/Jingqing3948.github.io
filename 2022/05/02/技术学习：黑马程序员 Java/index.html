@@ -108,7 +108,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">38.6k</span>
+            <span class="post-count">40.2k</span>
         </span>
     </span>
 
@@ -117,7 +117,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">154 min</span>
+            <span class="post-count">160 min</span>
         </span>
     </span>
 </div>
@@ -2447,6 +2447,156 @@ TCP协议：传输控制协议TCP（Transmission Control Protocol）。TCP协议
 <p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506121651377.png" alt=" " /></p>
 <p>客户端获取 Socket 对象（与指定服务器连接）-&gt; 获取输出流 -&gt; 写入数据 -&gt; 释放资源。</p>
 <p>服务端获取 Socket 对象-&gt; 监听客户端连接，返回一个 Socket 对象 -&gt; 获取输入流，读取数据 -&gt; 释放资源。</p>
+<p>客户端代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.OutputStream;</span><br><span class="line"><span class="keyword">import</span> java.net.Socket;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Client</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="comment">// TCP 协议，发送数据</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 1. 创建 Socket 对象（连接服务端）这里会用三次握手确保连接</span></span><br><span class="line">        <span class="type">Socket</span> <span class="variable">socket</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Socket</span>(<span class="string">&quot;127.0.0.1&quot;</span>, <span class="number">10000</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2. 从连接通道中获取输出流</span></span><br><span class="line">        <span class="type">OutputStream</span> <span class="variable">os</span> <span class="operator">=</span> socket.getOutputStream();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 写出数据</span></span><br><span class="line">        os.write(<span class="string">&quot;aaa&quot;</span>.getBytes());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3. 释放资源。</span></span><br><span class="line">       	<span class="comment">// 下面这句可写可不写。因为这个通道不是我们自己创建的，是通过 Socket 创建的。所以 socket 关了 is os 通道也关了。</span></span><br><span class="line">        os.close();</span><br><span class="line">        socket.close();<span class="comment">// 这里还有四次挥手协议，确保安全断开。</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>服务端代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.net.ServerSocket;</span><br><span class="line"><span class="keyword">import</span> java.net.Socket;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Server</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="comment">// TCP 协议，接收数据</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 1. 创建 ServerSocket 对象，监听端口</span></span><br><span class="line">        <span class="type">ServerSocket</span> <span class="variable">ss</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ServerSocket</span>(<span class="number">10000</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2. 监听客户端的连接，轮训等待客户端连接</span></span><br><span class="line">        <span class="type">Socket</span> <span class="variable">socket</span> <span class="operator">=</span> ss.accept();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3. 从连接通道中获取输入流读取数据</span></span><br><span class="line">        <span class="type">InputStream</span> <span class="variable">is</span> <span class="operator">=</span> socket.getInputStream();</span><br><span class="line">        <span class="type">int</span> b;</span><br><span class="line">        <span class="keyword">while</span> ((b = is.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">            System.out.println((<span class="type">char</span>) b);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4. 释放资源</span></span><br><span class="line">        is.close();</span><br><span class="line">        socket.close();</span><br><span class="line">        ss.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这样默认是字节流 utf-8 编码输入和读取，所以中文会乱码。可以替换为字符流：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 3. 从连接通道中获取输入流读取数据（字符流方式）</span></span><br><span class="line"><span class="type">InputStream</span> <span class="variable">is</span> <span class="operator">=</span> socket.getInputStream();</span><br><span class="line"><span class="type">InputStreamReader</span> <span class="variable">isr</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(is); <span class="comment">// 字节流 → 字符流转换</span></span><br><span class="line"><span class="type">int</span> b;</span><br><span class="line"><span class="keyword">while</span> ((b = isr.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">    System.out.println((<span class="type">char</span>) b); <span class="comment">// 打印每个字符</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>还可以用 BufferedReader 提高效率。</p>
+<h4 id="三次握手，四次挥手">三次握手，四次挥手</h4>
+<p>三次握手：确保连接建立。</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506251206312.png" alt=" " style="zoom:67%;" />
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506251207392.png" alt=" " /></p>
+<h4 id="服务端回写数据">服务端回写数据</h4>
+<p>服务端也可以用类似的方式新建 output 输出流，让客户端新建 input 输入流，回写数据。</p>
+<p>如果客户端先给服务端发送数据，然后想让服务端给客户端回写，需要客户端先关闭输出流 <code>os.shutdownOutput();</code> 写入结束符，服务端才会停止读取。</p>
+<h4 id="服务端多线程">服务端多线程</h4>
+<p>同时开多个线程接收不同客户端的数据（把客户端之前的输入流，回写数据，关闭流和 socket 封装在 Runnable run 方法里）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.net.ServerSocket;</span><br><span class="line"><span class="keyword">import</span> java.net.Socket;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Server</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="comment">// 客户端：将本地文件上传到服务器，接收服务器的反馈。</span></span><br><span class="line">        <span class="comment">// 服务器：接收客户端上传的文件，上传完毕后给出反馈。</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 1. 创建对象并绑定端口</span></span><br><span class="line">        <span class="type">ServerSocket</span> <span class="variable">ss</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ServerSocket</span>(<span class="number">10000</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            <span class="comment">// 2. 等待客户端来连接</span></span><br><span class="line">            <span class="type">Socket</span> <span class="variable">socket</span> <span class="operator">=</span> ss.accept();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 开启一条线程（一个用户就对应服务端的一条线程）</span></span><br><span class="line">            <span class="keyword">new</span> <span class="title class_">Thread</span>(<span class="keyword">new</span> <span class="title class_">MyRunnable</span>(socket)).start();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>当然手动一个个创建线程太消耗资源，可以用线程池方式处理。</p>
+<h4 id="BS-架构">BS 架构</h4>
+<p>浏览器作为客户端：访问 <code>127.0.0.1:10000</code> 和之前创建 <code>new Socket(&quot;127.0.0.1&quot;, 10000);</code> 是等效的。服务端也可以读取或回写数据。</p>
+<h2 id="反射">反射</h2>
+<p>允许对封装类的成员对象，成员方法，构造函数的信息等进行编程访问。比如 IDEA 的自动补全就是依靠反射实现的，输入一个函数名，后面显示其有哪些构造方法，参数信息等。</p>
+<p>主要分为两部分：获取（先获取 class 字节码对象，然后获取其字段，构造方法，成员方法）和解剖（比如字段获取修饰符，类型，变量名，值；方法获取修饰符，返回值类型，方法名，形参，抛出的异常，注解……）。</p>
+<h3 id="获取-class-字节码对象">获取 class 字节码对象</h3>
+<p>主要三种获取方式，获取到的都是 Class 对象：</p>
+<ul>
+<li><code>Class.forName('包名+类名');</code></li>
+<li><code>类名.class();</code> 一般传参时使用</li>
+<li><code>对象.getClass();</code> 有对象了才能用</li>
+</ul>
+<p>基本流程都是一样的：</p>
+<ol>
+<li>源代码阶段，java 文件被编译成 .class 字节码文件，不过这个时候字节码文件还没被加载到内存中；</li>
+<li>加载阶段，字节码文件被加载到内存中；</li>
+<li>运行阶段，获取内存中的字节码文件。</li>
+</ol>
+
+<div class="callout" data-callout="tip">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flame"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+</div>
+<div class="callout-title-inner">Tip</div>
+</div>
+<div class="callout-content"><p></p>
+<p>在 IDEA 中，右键类名，copy reference 就可以复制到包名加类名。粘贴在代码里只有类名，粘贴在注释里或者 forName(“”) 方法里就是包名+类名，很神奇。</p>
+</div></div><h3 id="构造方法-2">构造方法</h3>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Constructor&lt;?&gt;[] getConstructors()</code></td>
+<td>返回所有 <strong>public</strong> 构造方法对象的数组</td>
+</tr>
+<tr>
+<td><code>Constructor&lt;?&gt;[] getDeclaredConstructors()</code></td>
+<td>返回所有构造方法对象的数组</td>
+</tr>
+<tr>
+<td><code>Constructor&lt;T&gt; getConstructor(Class&lt;?&gt;... parameterTypes)</code></td>
+<td>返回单个 <strong>public</strong> 构造方法对象<br />比如 <code>clazz.getConstructor()</code> 会获取到无参构造方法<br /><code>clazz.getConstructor(String.class)</code> 会获取到一个 String 形参的构造方法</td>
+</tr>
+<tr>
+<td><code>Constructor&lt;T&gt; getDeclaredConstructor(Class&lt;?&gt;... parameterTypes)</code></td>
+<td>返回单个构造方法对象</td>
+</tr>
+</tbody>
+</table>
+<p>然后可以 <code>constructor.getModifiers()</code> <code>constructor.getParameters()</code> 获取修饰符和所有参数（modifier 是 <code>int</code> 类型，比如 1 2 4 8……1024 对应 <code>public private</code> 那些，顺序我瞎写的，这种对应方式运算效率比较高；parameter 是 <code>Parameter</code> 类型，第二个方法返回的是 <code>Parameter[]</code> 数组）。</p>
+
+<div class="callout" data-callout="note">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+</div>
+<div class="callout-title-inner">Note</div>
+</div>
+<div class="callout-content"><p></p>
+<p>IDEA 方法自动补全就借助 <code>getModifiers</code> 判断是否为 public 方法，如果不是则不提示，只有公共方法才会显示出来供外部类参考。</p>
+</div></div><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>T newInstance(Object... initargs)</code></td>
+<td>根据指定的构造方法创建对象</td>
+</tr>
+<tr>
+<td><code>setAccessible(boolean flag)</code></td>
+<td>设置为 <code>true</code> 表示取消访问检查</td>
+</tr>
+</tbody>
+</table>
+<p>比如 <code>Student</code> 类有一个 <code>private Student(String name, int age)</code> 的私有构造方法，我们可以通过 <code>getDeclaredConstructor(String.class, int.class)</code> 获取到这个构造方法对象，但是还不能 <code>Student s1 = (Student) constructor.newInstance(&quot;张三&quot;, 22)</code> 直接创建对象因为构造方法是 private 的，可以先 <code>constructor.setAccessible(true)</code> 让其取消访问权限检查，然后暴力创建对象。</p>
+<h3 id="成员变量">成员变量</h3>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Field[] getFields()</code></td>
+<td>返回所有公共成员变量对象的数组<br />格式类似 <code>public java.lang.String 包名+类名+字段名</code></td>
+</tr>
+<tr>
+<td><code>Field[] getDeclaredFields()</code></td>
+<td>返回所有成员变量对象的数组</td>
+</tr>
+<tr>
+<td><code>Field getField(String name)</code></td>
+<td>返回单个公共成员变量对象</td>
+</tr>
+<tr>
+<td><code>Field getDeclaredField(String name)</code></td>
+<td>返回单个成员变量对象</td>
+</tr>
+</tbody>
+</table>
+<p>字段可以 <code>getModifiers()</code> <code>String getName()</code> <code>Class getType()</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>void set(Object obj, Object value)</code></td>
+<td>给指定对象的字段赋值</td>
+</tr>
+<tr>
+<td><code>Object get(Object obj)</code></td>
+<td>获取指定对象的字段值<br /><code>Field name = studentClass.getField(&quot;name&quot;);</code><br /><code>Object value = name.get(student);</code><br />value 就获取到 student 对象中的 name 值了<br />当然如果这个字段修饰符是 private 的也要 setAccessible 一下</td>
+</tr>
+</tbody>
+</table>
+<h3 id="成员方法">成员方法</h3>
  
       <!-- reward -->
       
@@ -2530,19 +2680,19 @@ TCP协议：传输控制协议TCP（Transmission Control Protocol）。TCP协议
    
   <nav class="article-nav">
     
-      <a href="/2022/05/02/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%EF%BC%9A%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98%20Java%20Spring/" class="article-nav-link">
+      <a href="/2022/05/12/%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E9%A1%B9%E7%9B%AE%EF%BC%9AWeb%20%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%20%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%A0%87%E7%82%B9%E5%9C%B0%E5%9B%BE/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            技术学习：黑马程序员 Java Spring
+            北邮国院项目：Web 开发实践 小程序标点地图
           
         </div>
       </a>
     
     
-      <a href="/2021/10/01/%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E7%AC%94%E8%AE%B0%EF%BC%9AData%20Structure%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="article-nav-link">
+      <a href="/2022/05/02/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%EF%BC%9A%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98%20Java%20Spring/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">北邮国院笔记：Data Structure 数据结构</div>
+        <div class="article-nav-title">技术学习：黑马程序员 Java Spring</div>
       </a>
     
   </nav>
