@@ -335,20 +335,6 @@
 
   
   <url>
-    <loc>https://jingqing3948.github.io/tags/Algorithm/</loc>
-    <lastmod>2025-07-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jingqing3948.github.io/tags/Machine-Learning/</loc>
-    <lastmod>2025-07-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://jingqing3948.github.io/tags/AI/</loc>
     <lastmod>2025-07-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -356,7 +342,7 @@
   </url>
   
   <url>
-    <loc>https://jingqing3948.github.io/tags/MySQL/</loc>
+    <loc>https://jingqing3948.github.io/tags/Algorithm/</loc>
     <lastmod>2025-07-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -377,7 +363,21 @@
   </url>
   
   <url>
+    <loc>https://jingqing3948.github.io/tags/Product-Development/</loc>
+    <lastmod>2025-07-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://jingqing3948.github.io/tags/Java/</loc>
+    <lastmod>2025-07-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jingqing3948.github.io/tags/Machine-Learning/</loc>
     <lastmod>2025-07-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -391,7 +391,7 @@
   </url>
   
   <url>
-    <loc>https://jingqing3948.github.io/tags/Product-Development/</loc>
+    <loc>https://jingqing3948.github.io/tags/MySQL/</loc>
     <lastmod>2025-07-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -456,13 +456,6 @@
 
   
   <url>
-    <loc>https://jingqing3948.github.io/categories/%E9%82%AE%E9%80%94%EF%BC%88%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0%EF%BC%89/</loc>
-    <lastmod>2025-07-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://jingqing3948.github.io/categories/%E7%8E%8B%E9%81%93%EF%BC%88KCL%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B%E4%B8%93%E4%B8%9A%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0%EF%BC%89/</loc>
     <lastmod>2025-07-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -470,7 +463,14 @@
   </url>
   
   <url>
-    <loc>https://jingqing3948.github.io/categories/%E9%82%AE%E9%80%94%EF%BC%88%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0%EF%BC%89/Lecture/</loc>
+    <loc>https://jingqing3948.github.io/categories/%E9%82%AE%E9%80%94%EF%BC%88%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0%EF%BC%89/</loc>
+    <lastmod>2025-07-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jingqing3948.github.io/categories/%E7%8E%8B%E9%81%93%EF%BC%88KCL%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B%E4%B8%93%E4%B8%9A%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0%EF%BC%89/Lecture/</loc>
     <lastmod>2025-07-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -484,7 +484,7 @@
   </url>
   
   <url>
-    <loc>https://jingqing3948.github.io/categories/%E7%8E%8B%E9%81%93%EF%BC%88KCL%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B%E4%B8%93%E4%B8%9A%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0%EF%BC%89/Lecture/</loc>
+    <loc>https://jingqing3948.github.io/categories/%E9%82%AE%E9%80%94%EF%BC%88%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0%EF%BC%89/Lecture/</loc>
     <lastmod>2025-07-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -526,14 +526,14 @@
   </url>
   
   <url>
-    <loc>https://jingqing3948.github.io/categories/%E8%B8%8F%E6%98%9F%EF%BC%88%E5%88%9B%E6%96%B0%E6%8E%A2%E7%B4%A2%EF%BC%89/Efficiency/</loc>
+    <loc>https://jingqing3948.github.io/categories/%E7%AE%97%E9%81%93%EF%BC%88%E8%AF%BE%E5%A4%96IT%E6%8A%80%E8%83%BD%E5%AD%A6%E4%B9%A0%EF%BC%89/Practice/</loc>
     <lastmod>2025-07-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://jingqing3948.github.io/categories/%E7%AE%97%E9%81%93%EF%BC%88%E8%AF%BE%E5%A4%96IT%E6%8A%80%E8%83%BD%E5%AD%A6%E4%B9%A0%EF%BC%89/Practice/</loc>
+    <loc>https://jingqing3948.github.io/categories/%E8%B8%8F%E6%98%9F%EF%BC%88%E5%88%9B%E6%96%B0%E6%8E%A2%E7%B4%A2%EF%BC%89/Efficiency/</loc>
     <lastmod>2025-07-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
