@@ -97,7 +97,7 @@
      
     <div class="article-meta">
       <a href="/2022/05/02/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%EF%BC%9A%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98%20Java/" class="article-date">
-  <time datetime="2022-05-01T23:00:00.000Z" itemprop="datePublished">2022-05-02</time>
+  <time datetime="2022-05-01T16:00:00.000Z" itemprop="datePublished">2022-05-02</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E7%AE%97%E9%81%93%EF%BC%88%E8%AF%BE%E5%A4%96IT%E6%8A%80%E8%83%BD%E5%AD%A6%E4%B9%A0%EF%BC%89/">算道（课外IT技能学习）</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E9%81%93%EF%BC%88%E8%AF%BE%E5%A4%96IT%E6%8A%80%E8%83%BD%E5%AD%A6%E4%B9%A0%EF%BC%89/Lecture/">Lecture</a>
@@ -108,7 +108,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">40.2k</span>
+            <span class="post-count">41.1k</span>
         </span>
     </span>
 
@@ -117,7 +117,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">160 min</span>
+            <span class="post-count">164 min</span>
         </span>
     </span>
 </div>
@@ -2597,6 +2597,114 @@ TCP协议：传输控制协议TCP（Transmission Control Protocol）。TCP协议
 </tbody>
 </table>
 <h3 id="成员方法">成员方法</h3>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Method[] getMethods()</code></td>
+<td>返回所有 public 成员方法对象的数组，包括父类的</td>
+</tr>
+<tr>
+<td><code>Method[] getDeclaredMethods()</code></td>
+<td>返回所有成员方法对象的数组，不包括父类的</td>
+</tr>
+<tr>
+<td><code>Method getMethod(String name, Class&lt;?&gt;... parameterTypes)</code></td>
+<td>返回单个公共成员方法对象</td>
+</tr>
+<tr>
+<td><code>Method getDeclaredMethod(String name, Class&lt;?&gt;... parameterTypes)</code></td>
+<td>返回单个成员方法对象</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Object invoke(Object obj, Object... args)</code></td>
+<td>运行方法</td>
+</tr>
+</tbody>
+</table>
+<p>如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Method</span> <span class="variable">method</span> <span class="operator">=</span> getDeclaredMethod(<span class="string">&quot;eat&quot;</span>, <span class="number">19</span>); </span><br><span class="line">method.setAccessible(<span class="literal">true</span>);</span><br><span class="line">method.invoke(student, <span class="number">19</span>); <span class="comment">// 相当于 student.eat(19);</span></span><br></pre></td></tr></table></figure>
+<h2 id="动态代理">动态代理</h2>
+<p>比如我们想给一个方法添加新功能，与其直接修改方法代码，使用动态代理无侵入地增加新功能更好。</p>
+<p>或者说一个方法包含的功能太多，也可以分出一部分给代理。比如歌手能唱歌，然后如果要办演唱会，歌手就需要完成门票报名，收钱，唱歌这一系列操作，但是全部给歌手的唱歌方法实现太臃肿。可以分出一个代理方法，我们想听歌的时候调用的不是歌手的唱歌方法而是代理的唱歌方法；代理的唱歌方法会完成自己的一些扩展功能比如举办演唱会，卖门票等，然后调用歌手方法让歌手对象唱歌。</p>
+<p>如何保证代理？让对象和代理实现同一个接口。比如唱歌这个接口，对象是负责唱歌，代理是运行负责演唱会等杂项额外事宜 + 对象的唱歌接口实现。外部使用的时候是使用代理对象的唱歌方法。</p>
+<p>Java 动态代理方法 <code>Proxy.newProxyInstance()</code> 参数说明</p>
+<table>
+<thead>
+<tr>
+<th>参数序号</th>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>作用描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>参数一</td>
+<td><code>loader</code></td>
+<td><code>ClassLoader</code></td>
+<td>指定用于加载生成的代理类的类加载器</td>
+</tr>
+<tr>
+<td>参数二</td>
+<td><code>interfaces</code></td>
+<td><code>Class&lt;?&gt;[]</code></td>
+<td>指定接口数组，决定生成的代理类具有哪些方法（即实现哪些接口）</td>
+</tr>
+<tr>
+<td>参数三</td>
+<td><code>h</code></td>
+<td><code>InvocationHandler</code></td>
+<td>指定代理对象的行为逻辑，通过实现<code>invoke</code>方法定义代理方法的实际处理逻辑</td>
+</tr>
+</tbody>
+</table>
+<p><code>InvocationHandler.invoke()</code> 方法参数说明</p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>作用描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>proxy</code></td>
+<td><code>Object</code></td>
+<td>代理对象本身（通常不使用，避免递归调用）</td>
+</tr>
+<tr>
+<td><code>method</code></td>
+<td><code>Method</code></td>
+<td>当前被调用的方法对象，通过反射获取方法信息</td>
+</tr>
+<tr>
+<td><code>args</code></td>
+<td><code>Object[]</code></td>
+<td>调用方法时传入的参数数组，若无参数则为<code>null</code></td>
+</tr>
+</tbody>
+</table>
+<p>假设 Star 是待实现的接口类（里面有待实现的唱歌，跳舞方法），BigStar 是歌手类，实现了唱歌和跳舞方案。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ProxyUtil</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Star <span class="title function_">createProxy</span> <span class="params">(BigStar bigStar)</span>&#123;</span><br><span class="line">        <span class="type">Star</span> <span class="variable">star</span> <span class="operator">=</span> (Star) Proxy.newProxyInstance(</span><br><span class="line">        ProxyUtil.class.getClassLoader(),          <span class="comment">// 参数一：类加载器</span></span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Class</span>[]&#123;Star.class&#125;,                   <span class="comment">// 参数二：接口数组，这里指定的是实现的接口类。这里就限定了这个代理能代理哪些方法，只有这个接口里的抽象方法</span></span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">InvocationHandler</span>() &#123;                  <span class="comment">// 参数三：行为定义</span></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> Object <span class="title function_">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> &#123; </span><br><span class="line">                <span class="comment">// 方法拦截逻辑</span></span><br><span class="line">                <span class="keyword">if</span> (<span class="string">&quot;sing&quot;</span>.equals(method.getName())) &#123;</span><br><span class="line">                    System.out.println(<span class="string">&quot;准备话筒，收钱&quot;</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">&quot;dance&quot;</span>.equals(method.getName())) &#123;</span><br><span class="line">                    System.out.println(<span class="string">&quot;准备场地，收钱&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 调用真实对象的方法</span></span><br><span class="line">                <span class="keyword">return</span> method.invoke(bigStar, args);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    	);</span><br><span class="line">        <span class="keyword">return</span> star;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">BigStar</span> <span class="variable">bigStar</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigStar</span>(<span class="string">&quot;鸡哥&quot;</span>);</span><br><span class="line"><span class="type">Star</span> <span class="variable">proxy</span> <span class="operator">=</span> ProxyUtil.createProxy(bigStar);<span class="comment">// 获取代理对象</span></span><br><span class="line">proxy.sing();<span class="comment">// 调用代理方法</span></span><br></pre></td></tr></table></figure>
  
       <!-- reward -->
       
@@ -2680,19 +2788,19 @@ TCP协议：传输控制协议TCP（Transmission Control Protocol）。TCP协议
    
   <nav class="article-nav">
     
-      <a href="/2022/05/12/%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E9%A1%B9%E7%9B%AE%EF%BC%9AWeb%20%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%20%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%A0%87%E7%82%B9%E5%9C%B0%E5%9B%BE/" class="article-nav-link">
+      <a href="/2022/05/02/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%EF%BC%9A%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98%20Java%20Spring/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            北邮国院项目：Web 开发实践 小程序标点地图
+            技术学习：黑马程序员 Java Spring
           
         </div>
       </a>
     
     
-      <a href="/2022/05/02/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%EF%BC%9A%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98%20Java%20Spring/" class="article-nav-link">
+      <a href="/2021/10/01/%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E7%AC%94%E8%AE%B0%EF%BC%9AData%20Structure%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">技术学习：黑马程序员 Java Spring</div>
+        <div class="article-nav-title">北邮国院笔记：Data Structure 数据结构</div>
       </a>
     
   </nav>
