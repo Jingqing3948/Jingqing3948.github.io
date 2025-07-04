@@ -74,116 +74,126 @@
       
 	<section class="cover" id="cover">
 		
-					
-						<div class="cover-frame">
-							<div class="bg-box">
-								<img id="random-cover" src="/images/cover1.webp" alt="image frame" loading = "eager" />
-							</div>
-							<div class="cover-inner text-center text-white">
-								<h1><a href="/">
-										灰海宽松的博客
-									</a></h1>
-								<div id="subtitle-box">
-									
-										<span id="subtitle"></span>
-										
-								</div>
-								<div>
-									
-								</div>
-							</div>
+
+				<div class="cover-frame">
+					<div class="bg-box">
+						<!-- 初始加载占位图，JS会替换 -->
+						<img id="random-cover" src="/images/cover1.webp" alt="封面图" loading="eager" />
+					</div>
+					<div class="cover-inner text-center text-white">
+						<h1><a href="/">
+								灰海宽松的博客
+							</a></h1>
+						<div id="subtitle-box">
+							
+								<span id="subtitle"></span>
+								
 						</div>
-						<div class="cover-learn-more">
-							<a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
-						</div>
+						
+					</div>
+				</div>
+
+				<div class="cover-learn-more">
+					<a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
+				</div>
 	</section>
 	
 
+		<!-- 合并所有JS到单个脚本块 -->
+		<script>
+			(function () {
+				// 初始化封面图
+				function initCover() {
+					const coverCount = 5; // 封面图数量
+					const index = Math.floor(Math.random() * coverCount) + 1;
+					const imgEl = document.getElementById('random-cover');
 
-	<script src="/js/typed.min.js"></script>
+					if (imgEl) {
+						// 使用WebP格式图片
+						imgEl.src = `/images/cover${index}.webp`;
 
+						// 添加加载完成后的类名
+						imgEl.onload = function () {
+							this.classList.add('loaded');
+						};
+					}
+				}
 
-<!-- Subtitle -->
+				// 滚动动画效果
+				function initScrollAnimation() {
+					const scrollContainer = document.querySelector('main.content.on') || window;
+					const img = document.getElementById('random-cover');
+					const inner = document.querySelector('.cover-inner');
+					const mask = document.querySelector('.cover-mask');
 
-	<script>
-		try {
-			var typed = new Typed("#subtitle", {
-				strings: ['没有一条路无风无浪', '常应常静，常清净矣', 'Love the Life You Live'],
-				startDelay: 0,
-				typeSpeed: 200,
-				loop: true,
-				backSpeed: 100,
-				showCursor: true
-			});
-		} catch (err) {
-			console.log(err)
-		}
-	</script>
+					if (!img || !inner) return;
 
+					let currentScroll = 0;
+					let targetScroll = 0;
 
+					function animate() {
+						currentScroll += (targetScroll - currentScroll) * 0.08;
 
+						const blurVal = Math.min(currentScroll / 200, 10);
+						const scaleVal = 1 + Math.min(currentScroll / 7000, 0.3);
+						const opacityVal = 1 - Math.min(currentScroll / 2000, 0.5);
+						const maskOpacity = Math.min(currentScroll / 1500, 0.5);
 
+						img.style.transform = `scale(${scaleVal})`;
+						img.style.filter = `blur(${blurVal}px) brightness(${1 - blurVal / 20})`;
+						inner.style.opacity = opacityVal;
+						inner.style.filter = `blur(${blurVal / 2}px)`;
 
-<script>
-	(function () {
-		const coverCount = 5; // 修改为你有几张封面图
-		const index = Math.floor(Math.random() * coverCount) + 1;
-		const imgPath = `/images/cover${index}.webp`;
-		const imgEl = document.getElementById('random-cover');
-		if (imgEl) {
-			imgEl.src = imgPath;
-		}
-	})();
-</script>
+						if (mask) {
+							mask.style.opacity = maskOpacity.toFixed(2);
+						}
 
-<script>
-	window.addEventListener('DOMContentLoaded', function () {
-    const scrollContainer = document.querySelector('main.content.on') || window;
-    const img = document.getElementById('random-cover');
-    const inner = document.querySelector('.cover-inner');
-    const mask = document.querySelector('.cover-mask');  // ✅ 选中新的真实遮罩层
+						requestAnimationFrame(animate);
+					}
 
-    let currentScroll = 0;
-    let targetScroll = 0;
+					scrollContainer.addEventListener('scroll', () => {
+						targetScroll = scrollContainer === window ? window.scrollY : scrollContainer.scrollTop;
+					});
 
-    function animate() {
-      // 平滑追踪滚动值
-      currentScroll += (targetScroll - currentScroll) * 0.08;
+					requestAnimationFrame(animate);
+				}
 
-      // 视觉映射
-	const blurVal = Math.min(currentScroll / 200, 10);
-	const scaleVal = 1 + Math.min(currentScroll / 7000, 0.3);
-	const opacityVal = 1 - Math.min(currentScroll / 2000, 0.5);
-	const maskOpacity = Math.min(currentScroll / 1500, 0.5);
-
-      // 封面图像效果
-	if (img) {
-        img.style.transform = `scale(${scaleVal})`;
-        img.style.filter = `blur(${blurVal}px) brightness(${1 - blurVal / 20})`;
-	}
-
-      // 标题区域
-	if (inner) {
-        inner.style.opacity = opacityVal;
-        inner.style.filter = `blur(${blurVal / 2}px)`;
-	}
-
-      // 新遮罩层
-	if (mask) {
-        mask.style.opacity = maskOpacity.toFixed(2);
-	}
-
-	requestAnimationFrame(animate);
+				// 初始化Typed.js字幕效果
+				function initSubtitle() {
+      
+        // 动态加载Typed.js（避免阻塞）
+        const script = document.createElement('script');
+						script.src = '/js/typed.min.js';
+						script.onload = function () {
+							try {
+								new Typed("#subtitle", {
+									strings: [
+										'没有一条路无风无浪',
+										'常应常静，常清净矣',
+										'Love the Life You Live'
+									],
+									startDelay: 0,
+									typeSpeed: 200,
+									loop: true,
+									backSpeed: 100,
+									showCursor: true
+            });
+							} catch (err) {
+								console.error('Typed.js error:', err);
+							}
+						};
+						document.head.appendChild(script);
+      
     }
 
-    scrollContainer.addEventListener('scroll', () => {
-	targetScroll = scrollContainer === window ? window.scrollY : scrollContainer.scrollTop;
-    });
-
-    requestAnimationFrame(animate);
-	});
-</script>
-
+				// 页面加载完成后初始化所有功能
+				document.addEventListener('DOMContentLoaded', function () {
+					initCover();
+					initScrollAnimation();
+					initSubtitle();
+				});
+			})();
+		</script>
 <div id="main">
   <section class="outer">
   
