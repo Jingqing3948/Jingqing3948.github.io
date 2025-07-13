@@ -335,7 +335,21 @@
 
   
   <url>
+    <loc>https://jingqing3948.github.io/tags/AI/</loc>
+    <lastmod>2025-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://jingqing3948.github.io/tags/Machine-Learning/</loc>
+    <lastmod>2025-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jingqing3948.github.io/tags/Algorithm/</loc>
     <lastmod>2025-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -356,21 +370,14 @@
   </url>
   
   <url>
+    <loc>https://jingqing3948.github.io/tags/MySQL/</loc>
+    <lastmod>2025-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://jingqing3948.github.io/tags/Product-Development/</loc>
-    <lastmod>2025-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jingqing3948.github.io/tags/AI/</loc>
-    <lastmod>2025-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jingqing3948.github.io/tags/Web/</loc>
     <lastmod>2025-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -384,14 +391,7 @@
   </url>
   
   <url>
-    <loc>https://jingqing3948.github.io/tags/MySQL/</loc>
-    <lastmod>2025-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jingqing3948.github.io/tags/Algorithm/</loc>
+    <loc>https://jingqing3948.github.io/tags/Web/</loc>
     <lastmod>2025-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
