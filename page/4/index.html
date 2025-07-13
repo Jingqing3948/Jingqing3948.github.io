@@ -78,7 +78,7 @@
 				<div class="cover-frame">
 					<div class="bg-box">
 						<!-- 初始加载占位图，JS会替换 -->
-						<img id="random-cover" src="/images/cover1.webp" alt="封面图" loading="eager" />
+						<img id="random-cover" src="/images/cover1.jpg" alt="封面图" loading="eager" />
 					</div>
 					<div class="cover-inner text-center text-white">
 						<h1><a href="/">
@@ -110,7 +110,7 @@
 
 					if (imgEl) {
 						// 使用WebP格式图片
-						imgEl.src = `/images/cover${index}.webp`;
+						imgEl.src = `/images/cover${index}.jpg`;
 
 						// 添加加载完成后的类名
 						imgEl.onload = function () {
