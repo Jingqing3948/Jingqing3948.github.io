@@ -362,28 +362,7 @@
 
   
   <url>
-    <loc>https://jingqing3948.github.io/tags/AI/</loc>
-    <lastmod>2025-08-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jingqing3948.github.io/tags/Algorithm/</loc>
-    <lastmod>2025-08-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jingqing3948.github.io/tags/Project-Management/</loc>
-    <lastmod>2025-08-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jingqing3948.github.io/tags/Machine-Learning/</loc>
+    <loc>https://jingqing3948.github.io/tags/Digital-Signal-Processing/</loc>
     <lastmod>2025-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -397,14 +376,35 @@
   </url>
   
   <url>
-    <loc>https://jingqing3948.github.io/tags/Java/</loc>
+    <loc>https://jingqing3948.github.io/tags/C/</loc>
     <lastmod>2025-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://jingqing3948.github.io/tags/Web/</loc>
+    <loc>https://jingqing3948.github.io/tags/Project-Management/</loc>
+    <lastmod>2025-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jingqing3948.github.io/tags/AI/</loc>
+    <lastmod>2025-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jingqing3948.github.io/tags/Machine-Learning/</loc>
+    <lastmod>2025-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jingqing3948.github.io/tags/Algorithm/</loc>
     <lastmod>2025-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -418,14 +418,7 @@
   </url>
   
   <url>
-    <loc>https://jingqing3948.github.io/tags/Digital-Signal-Processing/</loc>
-    <lastmod>2025-08-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jingqing3948.github.io/tags/C/</loc>
+    <loc>https://jingqing3948.github.io/tags/Web/</loc>
     <lastmod>2025-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -433,6 +426,13 @@
   
   <url>
     <loc>https://jingqing3948.github.io/tags/Product-Development/</loc>
+    <lastmod>2025-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jingqing3948.github.io/tags/Java/</loc>
     <lastmod>2025-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -453,14 +453,14 @@
   </url>
   
   <url>
-    <loc>https://jingqing3948.github.io/tags/Python/</loc>
+    <loc>https://jingqing3948.github.io/tags/LLM/</loc>
     <lastmod>2025-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://jingqing3948.github.io/tags/LLM/</loc>
+    <loc>https://jingqing3948.github.io/tags/Python/</loc>
     <lastmod>2025-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -518,14 +518,14 @@
   </url>
   
   <url>
-    <loc>https://jingqing3948.github.io/categories/%E9%82%AE%E9%80%94%EF%BC%88%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0%EF%BC%89/Project/</loc>
+    <loc>https://jingqing3948.github.io/categories/%E9%82%AE%E9%80%94%EF%BC%88%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0%EF%BC%89/Lecture/</loc>
     <lastmod>2025-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://jingqing3948.github.io/categories/%E9%82%AE%E9%80%94%EF%BC%88%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0%EF%BC%89/Lecture/</loc>
+    <loc>https://jingqing3948.github.io/categories/%E9%82%AE%E9%80%94%EF%BC%88%E5%8C%97%E9%82%AE%E5%9B%BD%E9%99%A2%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0%EF%BC%89/Project/</loc>
     <lastmod>2025-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
