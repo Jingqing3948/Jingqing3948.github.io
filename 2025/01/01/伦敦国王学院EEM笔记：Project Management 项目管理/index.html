@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="伦敦国王学院工程学院电子工程管理专业项目管理课程学习笔记" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+
+      <meta name="google-site-verification" content="YwYbA1LbL6DK2afClSAZcmUaT2QiD4rluljLHHU4120" />
+      
+      <title>伦敦国王学院EEM笔记：Project Management 项目管理 |  灰海宽松的博客</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      <!-- 
+<link rel="stylesheet" href="/css/custom.css">
+ -->
+      
+        <script src="/js/pace.min.js"></script>
+         
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      /> 
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+      <!-- <link
+        rel="stylesheet"
+        href="https://cdn.staticfile.org/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.staticfile.org/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script> -->
+
+      <!-- mermaid -->
+      <!-- 
+        <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+       -->
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-伦敦国王学院EEM笔记：Project Management 项目管理"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  伦敦国王学院EEM笔记：Project Management 项目管理
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2025/01/01/%E4%BC%A6%E6%95%A6%E5%9B%BD%E7%8E%8B%E5%AD%A6%E9%99%A2EEM%E7%AC%94%E8%AE%B0%EF%BC%9AProject%20Management%20%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" class="article-date">
+  <time datetime="2024-12-31T16:00:00.000Z" itemprop="datePublished">2025-01-01</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%8E%8B%E9%81%93%EF%BC%88KCL%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B%E4%B8%93%E4%B8%9A%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0%EF%BC%89/">王道（KCL电子工程专业课内学习）</a> / <a class="article-category-link" href="/categories/%E7%8E%8B%E9%81%93%EF%BC%88KCL%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B%E4%B8%93%E4%B8%9A%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0%EF%BC%89/Lecture/">Lecture</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">13.8k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">51 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="Preface">Preface</h2>
+<p>项目 project: 简单来说就是一部分人，为了一个共同的目标，利用有限的时间和其他资源制定计划来达到目标。</p>
+<p>It is a piece of planned work completed over a period of time or an activity that is and intended to achieve a particular purpose.</p>
+<p>程序 Program：关联多个项目来达到大目标，可能涉及到不同领域的项目，比如造一个飞机，要审批，竞标，科研，生产等等。项目的结果可能更加注重成品，而程序的结果注重多个项目的效益（除了成品，还有花费的时间金钱等）。</p>
+<p>Project Structure, work package, task, activity 是逐步细化的概念。比如 project structure 是“后端开发”，work package 是“设计后端数据库”，task 是“设计数据库接口”，activity是“编写单元测试代码”。</p>
+<p>project和business operations的区别在于introduces business change.</p>
+<h2 id="项目模型">项目模型</h2>
+<h3 id="Waterfall-瀑布模型">Waterfall 瀑布模型</h3>
+<p>瀑布模型的特点在于专门化，每个阶段都只基于之前的阶段，考虑这个阶段的任务（因果性？）。</p>
+<div align="center">
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410032132696.png" alt=" " style="zoom:67%;" />
+</div>
+<h3 id="V-模型">V 模型</h3>
+<p>也叫 Verification and Validation 验证确认模型，客户的最终反馈可以让我们反过来从头修改迭代计划。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410032133598.png" alt=" " /></p>
+<h3 id="Agile-敏捷开发模型">Agile 敏捷开发模型</h3>
+<p>持续集成/持续交付（CI/CD）。rapid delivery</p>
+<p>打个比方，瀑布模型可能是做一道菜，我先准备食材，下锅，加调料，炒完出锅再给客户品尝，客户才能反馈做得如何。敏捷开发可以拆成一些小任务持续地交付，比如煮一点，尝一口，看看咸淡，及时调整。不需要整个大项目组一起做几个月做出全部成果再等反馈。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410032135489.png" alt=" " /></p>
+<h2 id="项目管理概述">项目管理概述</h2>
+<h3 id="基本概念">基本概念</h3>
+<p>Project Management: Project Management (PM): is the Application of knowledge, skills,  tools and techniques to the project activities in order to meet stakeholders needs and expectations from the project. 利用所学知识管理项目来达到预期结果。</p>
+<ul>
+<li>Bid Manager 投标经理：主要协调客户和项目组，制定工作计划和提案达到客户预期。</li>
+<li>Project Manager 项目经理：主要管他负责的一块进度。</li>
+</ul>
+<p>Project Management Context：为了完成项目需求的一系列活动，包括 initiating, planning, organizing, executing, monitoring  and controlling the project activities （启动，计划，组织，执行，监控）</p>
+<p>Project Life Cycle (PLC)：项目生命周期。定义了项目运行过程中的不同阶段 distinct phases，这些阶段需要哪些人，花多长时间。</p>
+<p>比如瀑布模型，大致分为：</p>
+<ol>
+<li>初始化阶段，分析客户需求，研究可行性。</li>
+<li>计划阶段，选择合适的人，制定计划。</li>
+<li>执行和交付阶段，下达指令，监控执行情况，提出新方案，发给客户。</li>
+</ol>
+<h3 id="技术对项目管理的促进">技术对项目管理的促进</h3>
+<p>技术指的是科技产物，比如有形的工具（计算机），无形的软件，算法等。</p>
+<h3 id="成熟度">成熟度</h3>
+<p>Readiness Level 是衡量项目的指标之一。</p>
+<ul>
+<li>Customer Readiness Level：比如低成熟度，用户需要自己百度才能用明白对方的产品。高成熟度，产品非常好懂，易于操作。</li>
+<li>Business Readiness Level：市场需求，是否可扩展到其他项目。</li>
+<li>Technology Readiness Level TRL：从简单的技术概念，到可交付的系统。</li>
+</ul>
+<p>随着项目发展，成熟度会越来越高，比如项目前期可能会提出一些新技术概念，项目后期新概念经过多次迭代后已经成熟许多。</p>
+<h3 id="Bid-Proposal-B-P-投标提案">Bid &amp; Proposal B&amp;P 投标提案</h3>
+<p>向客户证明：我们有能力能完成你的目标，我们的初步计划，公司价值等。</p>
+<p>在提案开始的过程中会进行两个操作（<strong>PROSPECT PHASE</strong>）：</p>
+<ul>
+<li>Horizon Scanning：对新兴技术和威胁的早期检测评估。Aims to spot changes in the world, so that we can plan on how to  exploit these changes</li>
+<li>Technology Watch：获取有用信息用于制定策略。Systematic process of capturing, analysing and exploiting useful  information for strategic decision making in the company</li>
+</ul>
+<p>招标方会发布 Request For Proposal （RFP）由招标方发布，发布自己的需求，让感兴趣的投标方提供解决方案，报价等。</p>
+<h3 id="Sources-of-Project-Initiation-项目启动来源">Sources of Project Initiation 项目启动来源</h3>
+<ul>
+<li><strong>客户请求 (Customer Requests)</strong>: 基于客户的具体需求启动项目。</li>
+<li><strong>高层管理指令 (Top Management Directives)</strong>: 由战略决策推动的新项目。</li>
+<li><strong>已有系统 (Existing systems)</strong>：进一步迭代。</li>
+<li><strong>外部因素 (External Factors)</strong>: 市场趋势、新技术或监管变化促发项目创意。</li>
+</ul>
+<h3 id="Project-Organization-Structure-项目组织结构">Project Organization Structure 项目组织结构</h3>
+<p>项目组织是项目和上级组织之间的中间者 Project organisation is defined as the interface  between the project and its parent organisation.</p>
+<table>
+<thead>
+<tr>
+<th>组织类型</th>
+<th>描述</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Functional Organisation 职能组织</td>
+<td>项目由多个组织部门组成，每个部门管理特定职能，如研发，市场，HR等。项目经理通常是其中的成员，由职能部门经理控制该职能。</td>
+<td>资源利用率高；同专业人员沟通方便</td>
+<td>跨部门沟通困难；过度关注自身目标可能偏离项目目标</td>
+</tr>
+<tr>
+<td>Pure Project Organisation 纯项目组织</td>
+<td>每个项目有独立的组织实体；项目经理控制整个项目；团队成员不受其他组织影响</td>
+<td>减少层级审批，效率高；大家目标一致</td>
+<td>可能导致资源浪费（每个项目都是独立团队，行政管理成本大）</td>
+</tr>
+<tr>
+<td>Matrix Organisation 矩阵组织</td>
+<td>结合两者，在不同项目间共享人力物资等资源。不同部门的人为了这个项目临时组成一个纯项目组织，项目完成后解散</td>
+<td>有效利用资源，平衡目标</td>
+<td>可能权责不清，沟通不便；决策效率降低</td>
+</tr>
+<tr>
+<td>Collaborative Projects Organisation 合作项目组织</td>
+<td>项目成员分布在不同地点甚至国家</td>
+<td>融会贯通，促进学习创新，扩展视野</td>
+<td>沟通交流可能存在问题；知识产权界限</td>
+</tr>
+</tbody>
+</table>
+<h2 id="项目人员组成">项目人员组成</h2>
+<h3 id="Stakeholders-股东">Stakeholders 股东</h3>
+<p>股东可以影响项目 having potential influence on the project</p>
+<p>但是只有内部股东需要担责 Only Internal stakeholders are responsible/accountable  towards the project.</p>
+<p><strong>两种重要的股东</strong>：</p>
+<ul>
+<li>
+<p>赞助者 sponsors / customers: 拥有项目，能管理项目，能提供资源给项目（比如资金，技术）。<strong>top level management</strong></p>
+</li>
+<li>
+<p>使用者 users</p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410111320043.png" alt=" " /></p>
+<p>在项目过程中，首先我们需要 identify stakeholders，因为这些人会制定一些需求，项目最终目标就是满足他们的这些需求。同时项目过程中缺什么资源也可以和他们要。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410111323177.png" alt=" " /></p>
+<p>methodology（制定需求）-&gt; capture requirements（实现需求）-&gt; consolodate requirements（评估结果）</p>
+<h4 id="Capture-requirements-实现股东需求">Capture requirements 实现股东需求</h4>
+<p>Validation: Checks the proposed concept/solution  stakeholders’ requirements  <strong>against the  and needs</strong> 确保股东需求能实现</p>
+<p>Verification：Check the implemented solution (prototype/service) <strong>meet  design specifications</strong> 验证股东的需求如何实现</p>
+<p>Performance:  <strong>meet certain  performance (KPI) characteristics</strong> 评估结果</p>
+<h4 id="Categorisation-of-Stakeholders-and-Engagement-股东分类">Categorisation of Stakeholders and Engagement 股东分类</h4>
+<p>然后需要对<strong>股东</strong>进行优先级排序，判断谁说的话更有分量。主要有两种分类方式：</p>
+<p>Stakeholder Power-Interest Matrix: 根据功能和股东兴趣两个维度制定优先级。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410111409382.png" alt=" " /></p>
+<p>Salience Model:  power, legitimacy, urgency 三个维度。（Power 影响力，比如我能给更多的钱，更能影响项目；Legitimacy 正当性，比如项目发起人，或者某些价值观的代表者；Urgency 紧迫性，比如我对这个项目的需求很急）</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410111416805.png" alt=" " /></p>
+<ul>
+<li>Dormant stakeholders 休眠利益相关者: no need for major communication，你有权力，那就用权帮我执行项目就完事了，少交流。</li>
+<li>Discretionary stakeholders 裁量型利益相关者：regular project updates . 也不需要过多交流，给他们项目更新进度就行。</li>
+<li>Demanding stakeholders 要求型利益相关者：Only keep them informed，他们比较急。</li>
+<li>Dominant stakeholders 支配型利益相关者：consider their communication and their involvement <strong>needs at all times</strong> 要保持沟通和参与。</li>
+<li>Dangerous stakeholders 危险利益相关者：有权，且需求很急，所以很危险。<strong>Must meet their needs</strong>.</li>
+<li>Dependent stakeholders 依存型利益相关者：他们有需求和正当性，但是没有权力执行项目，依存于其他人执行项目。<strong>Keep them informed</strong> when I <strong>need their helps</strong> 需要他们帮忙的时候才通知他们。</li>
+<li>Definitive stakeholders 决定型利益相关者：Always keep them <strong>informed, satisfied and involved</strong>。</li>
+</ul>
+<h4 id="Monitoring-评估股东">Monitoring 评估股东</h4>
+<p>股东部分先不讲怎么实现项目了（后面项目部分才会展开叙述），直接讲如何监控评估股东：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410111440485.png" alt="image-20241011144022366" /></p>
+<p><strong>Communicate with key stakeholders to  discover and manage their expectations upfront and during the project.</strong></p>
+<h3 id="Project-Teams-项目团队">Project Teams 项目团队</h3>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410111444012.png" alt=" " /></p>
+<p>核心执行团队： conducting the works on a continuous basis, and are required for decision making 负责持续工作，以及下决定。</p>
+<p>项目团队：负责贡献自己的部分，比如技术，人力。</p>
+<p>项目支持团队：负责支持核心团队。</p>
+<p>Characteristics of good team members:</p>
+<ul>
+<li>Credible and possess a high level of technical skill 技术能力强</li>
+<li>Resilient to pressures 抗压能力强</li>
+<li>Have an interest and ability in solving problems 解决问题兴趣高</li>
+<li>Should be robust 够强壮？？</li>
+<li>Should have a strong result/goal orientation 目标性强</li>
+</ul>
+<h3 id="Bid-Project-Manager-投标经理-项目经理">Bid / Project Manager 投标经理 / 项目经理</h3>
+<p>Bid Manger：做计划，拉人组建团队， 筹备资源，在项目执行中确保足够的细节等等。</p>
+<p>Project Manager：执行，监控，控制（可能还会改团队人员或者计划），报告（和 top management, 各个功能部门，other stakeholders）等等。</p>
+<h2 id="Managing-Bid-Proposal-标书管理">Managing Bid &amp; Proposal 标书管理</h2>
+<p>主要目的是创建优的投标提案，满足公司和客户需求。</p>
+<p>标书管理阶段和项目管理阶段关联紧密，比如对项目的组织规划，风险管理，各个阶段的评审等。</p>
+<p>整体结构图如下：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411031313153.png" alt="image-20241103131320088" /></p>
+<h3 id="Prospect-Phase-前景阶段">Prospect Phase 前景阶段</h3>
+<p>调研现有市场数据进行分析（如竞品分析），评估<strong>是否值得为某个项目准备投标</strong>。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410181326926.png" alt="image-20241018132641835" /></p>
+<h3 id="Project-Evaluation-Selection-项目评估选择">Project Evaluation &amp; Selection 项目评估选择</h3>
+<p>可能有很多值得公司做的项目，但不同项目之间要竞争资源，所以不可能所有项目都做，要选择项目进行投标。</p>
+<p>如何评估哪些项目适合选？</p>
+<ul>
+<li>是否符合公司的目标</li>
+<li>是否值得做，利益大于投入</li>
+<li>是否是现有项目中最好的最值得做的</li>
+</ul>
+<p><strong>Capital Budgeting</strong> 资本预算法：estimating the financial viability of a capital investment over the life of  the investment. 评估投资周期内金融可行性。</p>
+<p>其他方法：</p>
+<p>数字计算类方法：</p>
+<ul>
+<li><strong>Payback Period Method 回收期法</strong>: Length of time (years) required for a project to repay its initial fixed investment 项目偿还投资金需要花多久。</li>
+<li><strong>Accounting Rate of Return 会计收益率法</strong>: Uses accounting profits rather than cash flows expected from a project as a percentage of the capital invested 利润占投资的百分比</li>
+<li><strong>Discounted Cash Flow (DCF) techniques 折现回收期法</strong>: Calculates value of returns that occur over a long period rather than immediately after completion 计算折现后的现金流量收回投资金所需时间，考虑时间成本。</li>
+</ul>
+<p>非数字类方法，根据对项目的兴趣以及项目的难度评估：</p>
+<ul>
+<li><strong>The Sacred Cow 神圣的奶牛？</strong>（英语俚语，意为 神圣不可侵犯的思想、机构、制度等）: Project suggested by a senior and influential person 老板说选啥项目我就选啥</li>
+<li><strong>The Operating/Competitive Necessity Model 运营/竞争必要性模型</strong>: Project is necessary for continued operation of the company or for maintaining a competitive  position. 项目对公司的持续运营或者确保公司的竞争力的重要性</li>
+<li><strong>The Comparative Benefit Model 比较效益模型</strong>: A selection committee arranges projects in a ranked order and the projects will be selected 比较项目优先级。</li>
+</ul>
+<h4 id="Project-Selection-Review-GR1">Project Selection Review GR1</h4>
+<p>接下来，要进行 Review 环节。有外部客户的 Review 如下：</p>
+<ul>
+<li>B/P 负责人先建立一个 B&amp;P Data Repository 投标数据库。</li>
+<li>考虑项目可行性和收益 feasible &amp; benefits</li>
+<li>根据外部客户需求（如果涉及到外部客户的话）制定解决方案</li>
+<li>再重新考虑一下是否要投标</li>
+</ul>
+<p>这就引入了评估项目的优劣势、机会与威胁的重要方法：SWOT</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410181357066.png" alt="image-20241018135743001" /></p>
+<p>以及分析政治、经济、社会、技术、环境、法律等外部因素评估对项目的影响：PESTEL。</p>
+<p><strong>Political, Economic, Social, Technological,  Environmental and Legal</strong></p>
+<h3 id="Prepare-B-P-准备提案">Prepare B&amp;P 准备提案</h3>
+<p>评估完成后就开始准备提案了。首先需要根据客户需求创建 project 并制定项目计划。</p>
+<h4 id="Define-project-charter-定义项目章程">Define project charter 定义项目章程</h4>
+<p>主要作用是让大家尽早达成一致，别做着做着发现大家目标不同。</p>
+<ul>
+<li>项目定义 Project identification</li>
+<li>项目背景</li>
+<li>利益相关者 stakeholders</li>
+<li>项目描述</li>
+<li>goals, objectives, constraints</li>
+<li>等等……</li>
+</ul>
+<h5 id="Requirements-Requirements-baseline-需求和需求基线">Requirements &amp; Requirements baseline 需求和需求基线</h5>
+<p><strong>注意下面的部分会提到一些概念，ppt 中强调务必不能搞混。Requirements, Goals, Objectives, Deliverables</strong></p>
+<p>A requirement is a specific need or want defined in  unambiguous, abstract, clear, unique, consistent, atomic and verifiable terms and  identifies what is needed for stakeholder acceptance.</p>
+<p>需求有几大特点：</p>
+<ul>
+<li>abstract：不包括具体的技术实现方法，就只是需求。</li>
+<li>unambiguous：必须没有歧义，清晰描述需求。</li>
+<li>Traceable：需求描述 requirement description，system requirement，solution 这三者之间有关联性。</li>
+<li>Testable：必须有方法可以测试需求是否满足。</li>
+</ul>
+<p>需求基线：建立一个需求表格，对其中的需求分析是否保留，要采取什么样的措施解决这些需求。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411031220378.png" alt="image-20241103122003256" /></p>
+<h5 id="Goals-and-Objectives-目标和具体目标">Goals and Objectives 目标和具体目标</h5>
+<p>Goal is  an overarching long-term clear aim. 项目的总体方向和预期成果，是一个长期、清晰、覆盖整个项目的目标。<em>比如：开发一个可用于自动驾驶车辆认证的模拟器。</em></p>
+<p>Objectives are concrete measurable achievements to be made following a certain  number of steps. 为了实现目标而设立的具体行动步骤，需要在一定时间预算质量要求内完成。相比 Goals 是可以衡量的，所以采用<strong>SMART标准</strong>，即<strong>具体（Specific）、可衡量（Measurable）、可实现（Achievable）、相关性（Relevant）和时间限制（Time-bound）</strong>。<em>比如：构建一个可扩展的架构，实现自动化单域的服务级协议（SLA）谈判。</em></p>
+<p>需求是项目必须满足的特定条件，用于判断项目是否成功。具体目标是为了实现项目总体目标制定的短期步骤，有助于项目逐步达成预期成果。比如需求规定系统响应时间必须小于1秒，那么具体目标可能会是“优化代码和数据库查询，在6个月内将系统响应时间减少到1秒以内”。<em>主要区别可能是具体目标有特定的步骤，时间金钱等限制？</em></p>
+<h5 id="Deliverable-可交付物">Deliverable 可交付物</h5>
+<p>the outcome/result of a project’s task/activity. 在 execution phase 产生，交给股东衡量是否和 proposal phase 阶段的 objectives 相符。</p>
+<h4 id="Define-Project-Structures-定义项目结构">Define Project Structures 定义项目结构</h4>
+<h5 id="Organisational-Breakdown-Structure-组织分解结构">Organisational Breakdown Structure 组织分解结构</h5>
+<p>to Organize the people who will be working on the project 所有要给这个项目打工的人。下图是一个 OBS 的示例，细化到每个层次的人，以及他们要向谁汇报。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411031253335.png" alt="image-20241103125335269" /></p>
+<h5 id="Work-Breakdown-Structure-工作分解结构">Work Breakdown Structure 工作分解结构</h5>
+<p>把整体大工作分解为许多小工作（并且包含交付 deliverables 部分）。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411031259405.png" alt="image-20241103125915339" /></p>
+<p>并且每个 WP（Work package，第一章的概念）都需要细致的描述：</p>
+<ul>
+<li>SMART 目标</li>
+<li>scope, requirements, descriptions, dependencies, inputs 前置条件</li>
+<li>schedule 时间表</li>
+<li>deliverables, milestones 产出</li>
+<li>resources estimates 资源评估</li>
+</ul>
+<h5 id="Responsibility-Assignment-Matrix-RAM">Responsibility Assignment Matrix (RAM)</h5>
+<p>这部分有点像之前的股东分类。列出每个 WP 有谁参与，这些人的参与度。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411031310967.png" alt="image-20241103131021874" /></p>
+<h4 id="Create-Management-Plans-PMP-准备管理计划">Create Management Plans (PMP) 准备管理计划</h4>
+<p>defines how the project is executed,  monitored, and controlled.</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411031336900.png" alt="image-20241103133651829" /></p>
+<h4 id="Estimates-Develop-Costs-Budgets-评估成本">Estimates - Develop Costs/Budgets 评估成本</h4>
+<p>Identify, define and establish all cost elements to be consider in the Project Lifecycle</p>
+<p>为每个 WP 估算成本，最终加上整个项目的 factored risk impact 风险开销</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411031341374.png" alt="image-20241103134133315" /></p>
+<p>cost 分为 direct / indirect</p>
+<p>直接开销比如人员，材料，设备等。</p>
+<p>间接开销比如租房费，保险费，同时用在多个项目的费用。</p>
+<p>评估主要分为如下步骤：</p>
+<ul>
+<li>prepare estimating： Define/refine assumptions and quantifying the main parameters 估计量化主要参数；Choose the estimate techniques 选择合适的评估技术</li>
+<li>Develop estimate：用选定的评估技术计算，分析 cost impact of Risks，分析 confidencee in the estimates，并降低不确定度，确定最终的 risk 和 cost。</li>
+<li>aggregate duration 计算整个过程的资源花费并最终确定 estimate</li>
+<li>review</li>
+<li>monitor estimating process</li>
+<li>record, report, manage</li>
+</ul>
+<h4 id="Risks-风险">Risks 风险</h4>
+<p>A risk is an uncertain event, that, should it occur, would have an adverse effect  on the course of the project. 一旦发生会对项目造成不利影响。</p>
+<p>risk 主要分为：</p>
+<ul>
+<li>Risk Identification</li>
+<li>Risk Characterisation and Prioritisation</li>
+<li>Risk Handling</li>
+<li>Risk Monitoring</li>
+</ul>
+<h4 id="Establish-Resource-Needs-Schedule">Establish Resource Needs &amp; Schedule</h4>
+<p>Specify a baseline for task durations, deliverables/milestones, dependencies and  expected resources to be allocated.</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411031453759.png" alt="image-20241103145329682" /></p>
+<h5 id="Finalise-Project-Execution-Baseline">Finalise Project Execution Baseline</h5>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411031456267.png" alt="image-20241103145602198" /></p>
+<h4 id="Project-Proposal">Project Proposal</h4>
+<p>Bid Manager 把各个提案部分<strong>整合 integration</strong> 起来变成一个用户文档。</p>
+<h3 id="Proposal-Submission-Review-提案审核与提交">Proposal Submission Review 提案审核与提交</h3>
+<p>Bid Team 把最终的相关文档发给高层 Senior Management，等待其和  peer reviewers 的建议。确保 GR1 阶段决策基本都完成后进入下一阶段。</p>
+<h4 id="Technical-review-of-the-proposal-技术审核">Technical review of the proposal 技术审核</h4>
+<p>Reviewer 应该采纳用户建议 Customer Review Board，并且假设自己对项目没有任何先验知识 proir knowledge 地考虑一系列问题：</p>
+<ul>
+<li>提案是否符合招标文件（RFP）中的要求和标准？</li>
+<li>提案内容是否完整？</li>
+<li>所提出的方法是否合理，即方法和逻辑是否清晰、可靠？</li>
+<li>所交付的成果是否物有所值？</li>
+<li>完成该工作的时间（小时）是否被评估为可行和现实的？</li>
+<li>所提出的方法是否详细说明以便于理解？</li>
+<li>提案是否能够交付所需的成果？</li>
+</ul>
+<p>reviewer 应当在一定期限内考虑这些问题的解决方法和项目的改进方案，再发送给 technical lead。</p>
+<h4 id="Proposal-Submission-Review-GR2">Proposal Submission Review GR2</h4>
+<p>完成风险审核和技术审核后进入 GR2。总结如下内容：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411031530574.png" alt="image-20241103153039506" /></p>
+<h4 id="Proposal-Hearing-Negotiation-Review-GR3-听证会">Proposal Hearing &amp;  Negotiation Review GR3 听证会</h4>
+<p>用户可能会提问以及协商，bid team 需要准备召开听证会来获取用户授权许可签合同。</p>
+<p>签合同需要的条件：</p>
+<ul>
+<li>Define milestones/deliverables: 投标经理定义了项目里程碑和可交付产品</li>
+<li>Compliance and export controls 符合出口管制需求规定</li>
+<li>Declare background intellectual property: 后台知识产权用来保护公司</li>
+<li>Manage Price and contract: 销售经理确定可以协商的价钱范围，别给我砍一半我再不挣钱就完蛋了</li>
+<li>Establish the contractual terms of the commercial proposal：采购主管 capture leader 在 bid manager, financial controller 和 contract manager 投标经理，财务总监，合同经理的帮助下确定商业计划书的合同条款</li>
+</ul>
+<h4 id="Handover-–-GR4-交接">Handover – GR4 交接</h4>
+<p>提案现在就当交完了，也和用户协商通过签合同了。接下来就不是 bid manager 主要负责的事情了，要交接给 project manager 开始干项目了，所以要把现有文件进行交接。</p>
+<p>bid team 需要做的有：</p>
+<ul>
+<li>ensure smooth transition 在所有部门合力工作下尽量确保交接丝滑进行</li>
+<li>update the bid data repository 协商后可能投标数据库会有改动，所以记得更新</li>
+<li>present the project context and their bid knowledge to the projec manager 和项目经理讲讲项目背景和投标信息</li>
+<li>provide the access to bid data repository to project manager 给项目经理访问投标数据库的权限</li>
+<li>closing administrative activities 结束行政活动（文件和数据）</li>
+<li>closing the spending authorisations 结清支出授权（投标的预算，剩下的要平账）</li>
+<li>analysing lessons learnt and recording them 吸取教训</li>
+<li>updating the commercial opportunity data 更新商业机会数据，后续投标有用（这个公司这次采纳了我们的xx项目投标，说不定下次也很有机会继续合作）</li>
+<li>handover!</li>
+</ul>
+<h2 id="Managing-Risks-and-Estimates-风险和评估">Managing Risks and Estimates 风险和评估</h2>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411160420760.png" alt="image-20241116042026518" /></p>
+<h3 id="Risks-风险-2">Risks 风险</h3>
+<p>风险是不确定是否真的会发生但是可以预见的事件。</p>
+<p>风险管理的整体步骤：</p>
+<ul>
+<li>risk identification：找到可以影响项目的事件。</li>
+<li>Risk Analysis &amp; Prioritisation：分析风险严重性（潜在影响和发生可能性 potential impact and likelihood）</li>
+<li>Risk Handling (Actions)：制定行动计划，记录了解决 risk 的 action 和其实现方式，相关开销，以及 risk register.</li>
+<li>Risk Monitoring &amp; Control：观察风险，采取缓解措施 mitigation actions，控制 actions 管理风险，并且检验记录这些方法对解决风险和风险产生的根本原因的有效性。</li>
+</ul>
+<h4 id="建立风险管理策略">建立风险管理策略</h4>
+<ul>
+<li>establishing the risk management strategy 建立风险管理策略：通过一个结构化且连贯的方法来<strong>动态地</strong>管理风险；深入到具体细节（如股东，技术等）；定期根据项目的近期发展，重新评估方法以及采取新方法。</li>
+<li>Compiling a Risk Register 风险登记单：记录了风险源，风险严重程度，风险类型（技术类，顾客金融类等），相应的解决措施；而且定期重新审阅风险登记单，删除不再有效的风险。</li>
+</ul>
+<h4 id="Identification-of-Risks-识别风险">Identification of Risks 识别风险</h4>
+<p>主要分为四步：</p>
+<ol>
+<li>BM 和 RM <strong>reviews</strong> 项目的关键元素，比如客户的技术和非技术需求，法律法规，不确定的部分，过去经验等。</li>
+<li>BM PM 把相关领域的专家，同行，股东拉过来一块做风险识别。</li>
+<li>BM RM 通过一系列方法筛选出能影响项目的开销，周期，资源的风险。</li>
+<li>记录识别的风险。</li>
+</ol>
+<p>收集风险信息的方法有：头脑风暴，砖家判断，股东建议， Root Cause Analysis 根本原因分析，常见公司风险表，以及未证实的 assumption analysis.</p>
+<p>风险源有：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411161800507.png" alt="image-20241116180027359" /></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411161800333.png" alt="image-20241116180032263" /></p>
+<h4 id="Risk-Prioritisation-风险优先级分析">Risk Prioritisation 风险优先级分析</h4>
+<p>基于：发生概率，影响（如经济损失，时间损失，项目表现结果下降，公司形象受损）进行分类评级。两个维度是独立事件，求交集是分别的概率直接相乘。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411161802801.png" alt="image-20241116180239736" /></p>
+<h4 id="Risk-Handling-风险处理">Risk Handling 风险处理</h4>
+<p>避免 avoid，转移 transfer，减少 reduce，接受 accept / tolerate。</p>
+<p>一般 low 用 tolerate 处理方式，high 和 medium 用 reduce 处理方式。以防万一，还有 contingency plan 紧急预案。</p>
+<p>我们使用 Risk Register 记录风险和要采取的措施：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411162247195.png" alt="image-20241116224702124" /></p>
+<p>Severity = Impact * Likelihood</p>
+<h4 id="Risk-Monitoring-and-Control-风险检测控制">Risk Monitoring and Control 风险检测控制</h4>
+<p>由 RM PM 负责。</p>
+<p>制定标书阶段，要制定出缓解风险措施和相应预算。</p>
+<p>项目执行阶段，监控风险，检查其是否处于控制之下；采取风险应对措施并检测其效果；定期重新审阅并更新风险，风险处理方案等内容。</p>
+<h3 id="Estimate-评估">Estimate 评估</h3>
+<p>在项目整个生命周期都会进行，评估成本、时间周期、资源等。</p>
+<ol>
+<li>选取合适的评估方法和参数。</li>
+<li>估算评估值，尽可能减少不确定性。</li>
+<li>在项目过程中记录成本，时间周期，资源等，完成项目估算。</li>
+<li>复盘评估，分析置信度 confidence level of estimates.，总结。</li>
+</ol>
+<h4 id="待评估项">待评估项</h4>
+<ul>
+<li>
+<p>resources：人力资源，材料，设备，供应等。使用 work breakdown structure 分解每个结构。</p>
+</li>
+<li>
+<p>time：从活动信息和活动资源开始考虑，将其拆为 wp 或者 tasks 以及相应需要使用的工具。人们一般都会过度乐观，高估自己完成任务的速度，所以建议是找没做过类似工作的人评估时间，并且考虑只有80%的时间是有效工作的，再加上对突发事件的容错。</p>
+</li>
+<li>
+<p>costs：人力，材料，设备，风险等直接开销；公共资源（如电话费，邮费等）开销，非直接员工开销，非直接设备开销（如电费，房费，保险）等非直接开销。</p>
+</li>
+</ul>
+<h4 id="准备评估">准备评估</h4>
+<p>需要选出一个 estimate manager 评估经理。先确定评估范围，然后逐步细化到项目每个阶段每个部分，项目外部依赖等，给每个 WP 创建一个 Estimate Package，并且发给对应的 WP leaders。</p>
+<h4 id="评估方法">评估方法</h4>
+<ul>
+<li>top-bottom 自顶向下：适合项目具体细节不清楚或者需要在短时间内完成评估的场景，不太精细，大致算出总体的花费和总体解决方式即可。图像大致呈倒三角。</li>
+<li>bottom-top 自下向上：具体细化到每一个 WP，Tasks 的花费。正三角。</li>
+</ul>
+<p>这两种方法都可以应用一些评估技术：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411170906695.png" alt="image-20241117090615613" /></p>
+<ul>
+<li>
+<p>参数化 Parametric：自顶向下常用，基于一些项目参数进行评估（如代码行数，产品重量……）缺点在于参数太多可能过于复杂，也总需要随着参数改变而更新；参数太少评估又不一定准确。</p>
+</li>
+<li>
+<p>专家建议 Expertise：某领域的专家根据经验的看法。</p>
+</li>
+<li>
+<p>类比 analogy：如果存在和本项目相似的以往项目就比较适合使用。但是缺点在于不同团队运营起来效果不同，而且可能影响因素随着时间推移发生了变化，很难完全一致。</p>
+</li>
+<li>
+<p>共识 Consensus or Delphi：由 co-ordinator 协调员和多位专家一起制定。协调员单独和每位专家提供信息，专家之间彼此不沟通，制定出自己的评估计划。然后专家们依次展示分享自己的评估和原因，互相学习后再继续单独评估再讨论，直到达成共识。可能比较费时间，而且共识也可能带有偏见。</p>
+</li>
+</ul>
+<p><em>Playing Poker 打扑克：也是一种共识方法，用于估计项目工作量规模。专家们抽取面朝下的扑克牌，基于抽取结果进行讨论，避免偏见。</em></p>
+<ul>
+<li>工程评估 engineering：基于工程知识进一步细分，比如开发板的原材料的具体开销，工时具体到开发某一部分软件的花费等。需要开发者的基础知识足够扎实，输入信息准确且充分才能实施，而且也要花很多时间完成。</li>
+<li>三点评估法 3-point：见下。</li>
+<li>蒙特卡洛法 monte-carlo：见下。</li>
+</ul>
+<h4 id="Aggregate-Review-汇总">Aggregate &amp; Review 汇总</h4>
+<p>汇总总数据，记录以便后续项目过程中回顾。</p>
+<h4 id="三点评估法（处理不确定性）">三点评估法（处理不确定性）</h4>
+<p>当然肯定我们的评估预测不可能百分之百准确。三点评估法是一种处理工期和成本不确定性的方法，基于：输入数据的不确定性；历史数据的不确定性；评估过程中的方法的不准确性进行预测。</p>
+<p>预测最终目的是找到三个点：</p>
+<ol>
+<li>optimistic 乐观点：所有预测都准确情况下的工期。</li>
+<li>pessimistic 悲观点：大多数预测都不准确，有较大误差。</li>
+<li>most likely 最可能点：最可能发生的情况。</li>
+</ol>
+<p>基于这三点，有许多种评估值计算方法：</p>
+<ul>
+<li>
+<p>triangular distribution 三角评估：三者求期望。</p>
+</li>
+<li>
+<p>beta distribution (PERT - Program Evaluation and Review Technique) 加权平均：$$PERT,Estimate,=,[(Optimistic+(4*Most,Likely)+Pessimistic]/6$$</p>
+</li>
+<li>
+<p>PERT Standard Derivation 标准差：正态分布的 activity 在 PERT 的平均值左右两侧n个标准差范围内。n 被称作 confident level 可信度。</p>
+<mjx-container class="MathJax" jax="SVG" display="true" style="direction: ltr; display: block; text-align: center; margin: 1em 0;"><svg style="overflow: visible; min-height: 1px; min-width: 1px; vertical-align: -3.507ex;" xmlns="http://www.w3.org/2000/svg" width="54.397ex" height="8.145ex" role="img" focusable="false" viewBox="0 -2050 24043.6 3600"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtable"><g data-mml-node="mtr" transform="translate(0,1300)"><g data-mml-node="mtd" transform="translate(9727,0)"><g data-mml-node="mi"><path data-c="1D70E" d="M184 -11Q116 -11 74 34T31 147Q31 247 104 333T274 430Q275 431 414 431H552Q553 430 555 429T559 427T562 425T565 422T567 420T569 416T570 412T571 407T572 401Q572 357 507 357Q500 357 490 357T476 358H416L421 348Q439 310 439 263Q439 153 359 71T184 -11ZM361 278Q361 358 276 358Q152 358 115 184Q114 180 114 178Q106 141 106 117Q106 67 131 47T188 26Q242 26 287 73Q316 103 334 153T356 233T361 278Z" style="stroke-width: 3;"/></g></g><g data-mml-node="mtd" transform="translate(10298,0)"><g data-mml-node="mi"/><g data-mml-node="mo" transform="translate(277.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z" style="stroke-width: 3;"/></g><g data-mml-node="mo" transform="translate(1333.6,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(1722.6,0)"><path data-c="1D443" d="M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(2473.6,0)"><path data-c="1D452" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(2939.6,0)"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(3408.6,0)"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(3877.6,0)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(4222.6,0)"><path data-c="1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(5100.6,0)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(5445.6,0)"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(5914.6,0)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(6275.6,0)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(6620.6,0)"><path data-c="1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z" style="stroke-width: 3;"/></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(7053.6,0)"><g data-mml-node="mo"><path data-c="2013" d="M0 248V285H499V248H0Z" style="stroke-width: 3;"/></g></g><g data-mml-node="mi" transform="translate(7553.6,0)"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(8316.6,0)"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(8819.6,0)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(9180.6,0)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(9525.6,0)"><path data-c="1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(10403.6,0)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(10748.6,0)"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(11217.6,0)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(11578.6,0)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(11923.6,0)"><path data-c="1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z" style="stroke-width: 3;"/></g><g data-mml-node="mo" transform="translate(12356.6,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z" style="stroke-width: 3;"/></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(12745.6,0)"><g data-mml-node="mo"><path data-c="2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z" style="stroke-width: 3;"/></g></g><g data-mml-node="mn" transform="translate(13245.6,0)"><path data-c="36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z" style="stroke-width: 3;"/></g></g></g><g data-mml-node="mtr" transform="translate(0,0)"><g data-mml-node="mtd" transform="translate(9695,0)"><g data-mml-node="mi"><path data-c="1D707" d="M58 -216Q44 -216 34 -208T23 -186Q23 -176 96 116T173 414Q186 442 219 442Q231 441 239 435T249 423T251 413Q251 401 220 279T187 142Q185 131 185 107V99Q185 26 252 26Q261 26 270 27T287 31T302 38T315 45T327 55T338 65T348 77T356 88T365 100L372 110L408 253Q444 395 448 404Q461 431 491 431Q504 431 512 424T523 412T525 402L449 84Q448 79 448 68Q448 43 455 35T476 26Q485 27 496 35Q517 55 537 131Q543 151 547 152Q549 153 557 153H561Q580 153 580 144Q580 138 575 117T555 63T523 13Q510 0 491 -8Q483 -10 467 -10Q446 -10 429 -4T402 11T385 29T376 44T374 51L368 45Q362 39 350 30T324 12T288 -4T246 -11Q199 -11 153 12L129 -85Q108 -167 104 -180T92 -202Q76 -216 58 -216Z" style="stroke-width: 3;"/></g></g><g data-mml-node="mtd" transform="translate(10298,0)"><g data-mml-node="mi"/><g data-mml-node="mo" transform="translate(277.8,0)"><path data-c="3A" d="M78 370Q78 394 95 412T138 430Q162 430 180 414T199 371Q199 346 182 328T139 310T96 327T78 370ZM78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z" style="stroke-width: 3;"/></g><g data-mml-node="mstyle" transform="translate(555.8,0)"><g data-mml-node="mspace"/></g><g data-mml-node="mi" transform="translate(1000.6,0)"><path data-c="1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(1878.6,0)"><path data-c="1D452" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(2344.6,0)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(2873.6,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z" style="stroke-width: 3;"/></g></g></g><g data-mml-node="mtr" transform="translate(0,-1300)"><g data-mml-node="mtd"><g data-mml-node="mi"><path data-c="1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(704,0)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(1233,0)"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(1702,0)"><path data-c="1D458" d="M121 647Q121 657 125 670T137 683Q138 683 209 688T282 694Q294 694 294 686Q294 679 244 477Q194 279 194 272Q213 282 223 291Q247 309 292 354T362 415Q402 442 438 442Q468 442 485 423T503 369Q503 344 496 327T477 302T456 291T438 288Q418 288 406 299T394 328Q394 353 410 369T442 390L458 393Q446 405 434 405H430Q398 402 367 380T294 316T228 255Q230 254 243 252T267 246T293 238T320 224T342 206T359 180T365 147Q365 130 360 106T354 66Q354 26 381 26Q429 26 459 145Q461 153 479 153H483Q499 153 499 144Q499 139 496 130Q455 -11 378 -11Q333 -11 305 15T277 90Q277 108 280 121T283 145Q283 167 269 183T234 206T200 217T182 220H180Q168 178 159 139T145 81T136 44T129 20T122 7T111 -2Q98 -11 83 -11Q66 -11 57 -1T48 16Q48 26 85 176T158 471L195 616Q196 629 188 632T149 637H144Q134 637 131 637T124 640T121 647Z" style="stroke-width: 3;"/></g><g data-mml-node="mstyle" transform="translate(2223,0)"><g data-mml-node="mspace"/></g><g data-mml-node="mi" transform="translate(2390,0)"><path data-c="1D434" d="M208 74Q208 50 254 46Q272 46 272 35Q272 34 270 22Q267 8 264 4T251 0Q249 0 239 0T205 1T141 2Q70 2 50 0H42Q35 7 35 11Q37 38 48 46H62Q132 49 164 96Q170 102 345 401T523 704Q530 716 547 716H555H572Q578 707 578 706L606 383Q634 60 636 57Q641 46 701 46Q726 46 726 36Q726 34 723 22Q720 7 718 4T704 0Q701 0 690 0T651 1T578 2Q484 2 455 0H443Q437 6 437 9T439 27Q443 40 445 43L449 46H469Q523 49 533 63L521 213H283L249 155Q208 86 208 74ZM516 260Q516 271 504 416T490 562L463 519Q447 492 400 412L310 260L413 259Q516 259 516 260Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(3140,0)"><path data-c="1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(3573,0)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(3934,0)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(4279,0)"><path data-c="1D463" d="M173 380Q173 405 154 405Q130 405 104 376T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Q21 294 29 316T53 368T97 419T160 441Q202 441 225 417T249 361Q249 344 246 335Q246 329 231 291T200 202T182 113Q182 86 187 69Q200 26 250 26Q287 26 319 60T369 139T398 222T409 277Q409 300 401 317T383 343T365 361T357 383Q357 405 376 424T417 443Q436 443 451 425T467 367Q467 340 455 284T418 159T347 40T241 -11Q177 -11 139 22Q102 54 102 117Q102 148 110 181T151 298Q173 362 173 380Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(4764,0)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(5109,0)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(5470,0)"><path data-c="1D466" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z" style="stroke-width: 3;"/></g><g data-mml-node="mstyle" transform="translate(5960,0)"><g data-mml-node="mspace"/></g><g data-mml-node="mi" transform="translate(6127,0)"><path data-c="1D437" d="M287 628Q287 635 230 637Q207 637 200 638T193 647Q193 655 197 667T204 682Q206 683 403 683Q570 682 590 682T630 676Q702 659 752 597T803 431Q803 275 696 151T444 3L430 1L236 0H125H72Q48 0 41 2T33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM703 469Q703 507 692 537T666 584T629 613T590 629T555 636Q553 636 541 636T512 636T479 637H436Q392 637 386 627Q384 623 313 339T242 52Q242 48 253 48T330 47Q335 47 349 47T373 46Q499 46 581 128Q617 164 640 212T683 339T703 469Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(6955,0)"><path data-c="1D462" d="M21 287Q21 295 30 318T55 370T99 420T158 442Q204 442 227 417T250 358Q250 340 216 246T182 105Q182 62 196 45T238 27T291 44T328 78L339 95Q341 99 377 247Q407 367 413 387T427 416Q444 431 463 431Q480 431 488 421T496 402L420 84Q419 79 419 68Q419 43 426 35T447 26Q469 29 482 57T512 145Q514 153 532 153Q551 153 551 144Q550 139 549 130T540 98T523 55T498 17T462 -8Q454 -10 438 -10Q372 -10 347 46Q345 45 336 36T318 21T296 6T267 -6T233 -11Q189 -11 155 7Q103 38 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(7527,0)"><path data-c="1D45F" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(7978,0)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(8507,0)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(8868,0)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(9213,0)"><path data-c="1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(9698,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z" style="stroke-width: 3;"/></g></g><g data-mml-node="mtd" transform="translate(10298,0)"><g data-mml-node="mi"/><g data-mml-node="mo" transform="translate(277.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(1333.6,0)"><path data-c="1D438" d="M492 213Q472 213 472 226Q472 230 477 250T482 285Q482 316 461 323T364 330H312Q311 328 277 192T243 52Q243 48 254 48T334 46Q428 46 458 48T518 61Q567 77 599 117T670 248Q680 270 683 272Q690 274 698 274Q718 274 718 261Q613 7 608 2Q605 0 322 0H133Q31 0 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H757Q764 676 764 669Q764 664 751 557T737 447Q735 440 717 440H705Q698 445 698 453L701 476Q704 500 704 528Q704 558 697 578T678 609T643 625T596 632T532 634H485Q397 633 392 631Q388 629 386 622Q385 619 355 499T324 377Q347 376 372 376H398Q464 376 489 391T534 472Q538 488 540 490T557 493Q562 493 565 493T570 492T572 491T574 487T577 483L544 351Q511 218 508 216Q505 213 492 213Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(2097.6,0)"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(2566.6,0)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(2927.6,0)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(3272.6,0)"><path data-c="1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(4150.6,0)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(4679.6,0)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(5040.6,0)"><path data-c="1D452" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(5506.6,0)"><path data-c="1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z" style="stroke-width: 3;"/></g><g data-mml-node="mstyle" transform="translate(6026.6,0)"><g data-mml-node="mspace"/></g><g data-mml-node="mi" transform="translate(6193.6,0)"><path data-c="1D443" d="M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(6944.6,0)"><path data-c="1D438" d="M492 213Q472 213 472 226Q472 230 477 250T482 285Q482 316 461 323T364 330H312Q311 328 277 192T243 52Q243 48 254 48T334 46Q428 46 458 48T518 61Q567 77 599 117T670 248Q680 270 683 272Q690 274 698 274Q718 274 718 261Q613 7 608 2Q605 0 322 0H133Q31 0 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H757Q764 676 764 669Q764 664 751 557T737 447Q735 440 717 440H705Q698 445 698 453L701 476Q704 500 704 528Q704 558 697 578T678 609T643 625T596 632T532 634H485Q397 633 392 631Q388 629 386 622Q385 619 355 499T324 377Q347 376 372 376H398Q464 376 489 391T534 472Q538 488 540 490T557 493Q562 493 565 493T570 492T572 491T574 487T577 483L544 351Q511 218 508 216Q505 213 492 213Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(7708.6,0)"><path data-c="1D445" d="M230 637Q203 637 198 638T193 649Q193 676 204 682Q206 683 378 683Q550 682 564 680Q620 672 658 652T712 606T733 563T739 529Q739 484 710 445T643 385T576 351T538 338L545 333Q612 295 612 223Q612 212 607 162T602 80V71Q602 53 603 43T614 25T640 16Q668 16 686 38T712 85Q717 99 720 102T735 105Q755 105 755 93Q755 75 731 36Q693 -21 641 -21H632Q571 -21 531 4T487 82Q487 109 502 166T517 239Q517 290 474 313Q459 320 449 321T378 323H309L277 193Q244 61 244 59Q244 55 245 54T252 50T269 48T302 46H333Q339 38 339 37T336 19Q332 6 326 0H311Q275 2 180 2Q146 2 117 2T71 2T50 1Q33 1 33 10Q33 12 36 24Q41 43 46 45Q50 46 61 46H67Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628Q287 635 230 637ZM630 554Q630 586 609 608T523 636Q521 636 500 636T462 637H440Q393 637 386 627Q385 624 352 494T319 361Q319 360 388 360Q466 361 492 367Q556 377 592 426Q608 449 619 486T630 554Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(8467.6,0)"><path data-c="1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z" style="stroke-width: 3;"/></g><g data-mml-node="mo" transform="translate(9393.8,0)"><path data-c="B1" d="M56 320T56 333T70 353H369V502Q369 651 371 655Q376 666 388 666Q402 666 405 654T409 596V500V353H707Q722 345 722 333Q722 320 707 313H409V40H707Q722 32 722 20T707 0H70Q56 7 56 20T70 40H369V313H70Q56 320 56 333Z" style="stroke-width: 3;"/></g><g data-mml-node="mo" transform="translate(10394,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(10783,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z" style="stroke-width: 3;"/></g><g data-mml-node="mo" transform="translate(11605.2,0)"><path data-c="2217" d="M229 286Q216 420 216 436Q216 454 240 464Q241 464 245 464T251 465Q263 464 273 456T283 436Q283 419 277 356T270 286L328 328Q384 369 389 372T399 375Q412 375 423 365T435 338Q435 325 425 315Q420 312 357 282T289 250L355 219L425 184Q434 175 434 161Q434 146 425 136T401 125Q393 125 383 131T328 171L270 213Q283 79 283 63Q283 53 276 44T250 35Q231 35 224 44T216 63Q216 80 222 143T229 213L171 171Q115 130 110 127Q106 124 100 124Q87 124 76 134T64 161Q64 166 64 169T67 175T72 181T81 188T94 195T113 204T138 215T170 230T210 250L74 315Q65 324 65 338Q65 353 74 363T98 374Q106 374 116 368T171 328L229 286Z" style="stroke-width: 3;"/></g><g data-mml-node="mi" transform="translate(12327.4,0)"><path data-c="1D70E" d="M184 -11Q116 -11 74 34T31 147Q31 247 104 333T274 430Q275 431 414 431H552Q553 430 555 429T559 427T562 425T565 422T567 420T569 416T570 412T571 407T572 401Q572 357 507 357Q500 357 490 357T476 358H416L421 348Q439 310 439 263Q439 153 359 71T184 -11ZM361 278Q361 358 276 358Q152 358 115 184Q114 180 114 178Q106 141 106 117Q106 67 131 47T188 26Q242 26 287 73Q316 103 334 153T356 233T361 278Z" style="stroke-width: 3;"/></g><g data-mml-node="mo" transform="translate(12898.4,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z" style="stroke-width: 3;"/></g><g data-mml-node="mo" transform="translate(13287.4,0)"><path data-c="3B" d="M78 370Q78 394 95 412T138 430Q162 430 180 414T199 371Q199 346 182 328T139 310T96 327T78 370ZM78 60Q78 85 94 103T137 121Q202 121 202 8Q202 -44 183 -94T144 -169T118 -194Q115 -194 106 -186T95 -174Q94 -171 107 -155T137 -107T160 -38Q161 -32 162 -22T165 -4T165 4Q165 5 161 4T142 0Q110 0 94 18T78 60Z" style="stroke-width: 3;"/></g></g></g></g></g></g></svg></mjx-container><p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411172104797.png" alt="image-20241117210457670" /></p>
+</li>
+</ul>
+<h4 id="蒙特卡洛法">蒙特卡洛法</h4>
+<p>信息非常有限时使用，否则优先使用三点评估法。</p>
+<p>根据事件发生的概率生成随机事件计算评估值，最后再整合。</p>
+<h2 id="Structuring-and-Scheduling-组织计划">Structuring and Scheduling 组织计划</h2>
+<p>项目结构包括：</p>
+<ul>
+<li>introduction</li>
+<li>management / implementation</li>
+<li>technical</li>
+<li>other complimentary sections</li>
+<li>summary and conclusions</li>
+</ul>
+<h3 id="Work">Work</h3>
+<p>指明了项目中必做的 tasks and jobs</p>
+<h4 id="Work-Breakdown-Structure-WBS">Work Breakdown Structure (WBS)</h4>
+<p>把工作进行细分：</p>
+<p>project, sub-project, work package, task, activity （之前了解过，这些是逐步细化的）。</p>
+<p>WPs 在逻辑上依靠前一个 WPs，比如：场地准备，购买材料，建造，清理，这种细分程度是4个 WPs。</p>
+<p>WPs 是成本和进度的基础，每个 WPs 对一定的资源和管理责任负责。在项目执行过程中用项目预定进度和每个 WPs 的实际进度进行对比核实，并以 WPs 为单位采取相应的调整措施。</p>
+<h3 id="Scheduling">Scheduling</h3>
+<p>将项目计划转换成图表等形式，典型的例子是甘特图。</p>
+<p>甘特图可以显示项目的起止日期，相互之间的依赖情况，以及所需资源等。</p>
+<h4 id="Project-schedule">Project schedule</h4>
+<p>项目管理人员通过 Project schedule 来计划和审查项目。</p>
+<p>呈现出主要的项目活动，但是不会具体展开其细节。自顶向下地制定，自下向上（从细节到整体）地修改。</p>
+<p>比如：WP Schedule，</p>
+<h4 id="Scheduling-Process-Challenges-流程和挑战">Scheduling Process &amp; Challenges 流程和挑战</h4>
+<p>scheduling 的过程包括：</p>
+<ol>
+<li>Organize tasks concurrently 并发组织任务，有点像小时候做过的那种“淘米需要x分钟，煮饭需要x分钟，洗菜需要x分钟，如何让做好饭的总时间最短”问题。</li>
+<li>Minimize task dependencies 最小化任务之间的依赖，减少依赖后很多任务就不用等着其他任务先完成再做了。</li>
+<li>Estimated duration and resources 评估每个 tasks 所需时间和资源。</li>
+</ol>
+<p>挑战：</p>
+<ol>
+<li>任务优先级划分；</li>
+<li>任务重叠问题；</li>
+<li>资源有限；</li>
+<li>复杂任务的处理。</li>
+</ol>
+<h4 id="Schedule-Development-Activities-制定计划的12步活动">Schedule Development Activities 制定计划的12步活动</h4>
+<ol>
+<li>
+<p>Identify the WPs/tasks 判断此项目中哪些是 WP，哪些是 tasks。</p>
+</li>
+<li>
+<p>Identify the project’s Milestones/Deliverables 确定里程碑节点和最终可交付物。</p>
+<p>里程碑的概念不要和其他概念混淆。WPS 和 Tasks 是需要完成的消耗资源的任务；events 是某一个时刻的事；interface event 接口事件是指前一个 tasks 完成，后一个 tasks 开始的时刻。里程碑标志着项目的重要节点，比如完成了一系列重大任务的阶段，就某些重要事情达成共识，以及获取到了重要资源等。如果里程碑没有按预期完成，后果会比较严重，可能会影响后续计划预算。</p>
+</li>
+<li>
+<p>Identify Customer Milestones 客户提出的里程碑节点。</p>
+</li>
+<li>
+<p>Detail the schedule at different levels</p>
+</li>
+<li>
+<p>Estimate Activity/Task Durations 评估活动所需时间，使用前面提到的评估方法，包括处理不确定性的蒙特卡洛法</p>
+</li>
+<li>
+<p>Estimate Resources Needed 评估资源需求</p>
+</li>
+<li>
+<p>Activity Network Diagram 创建活动网络图。如下图：</p>
+</li>
+</ol>
+<p>​	<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412070014474.png" alt="image-20241207001424352" /></p>
+<p>其中，总用时最长的路径被称作 Critical Path 关键路径，因为其决定了整个项目最早什么时候才能完成。这条路径上的任务如果没有按时完成，延期了，那么整个项目都会延期。所以可以分配给关键路径上的活动更多资源来确保其能够风险最小地尽快完成。</p>
+<p><em>sub critical paths 是第二长用时的路径。</em></p>
+<p>而后再使用 PERT 方法进行评估（最优时间+最差时间+最可能情况*4）/6。</p>
+<p>下图是每个项目的具体浮动时间情况：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412070023167.png" alt="image-20241207002346054" /></p>
+<p>Total Float，或者叫 Slack，就是该活动的最长可延迟时间（在不影响<strong>该活动结束日期</strong>的前提下）。用最晚可开始时间-最早可开始时间，或者最晚可结束时间-最早可结束时间得到。ES-LS=EF-LF</p>
+<p>Duration 是项目的持续时间，用 EF-ES+1 得到。</p>
+<p>Free Float：该项目不影响<strong>后续项目</strong>的情况下最大可延迟时间。计算公式是 FF=该活动后续活动的 ES 的最小值 - 该活动的 ES - 该活动的 DU。</p>
+<p>比如 Activity P，FF(P)=min(6,8)-1-5=0</p>
+<p>Negative Float NF：该项目已经落后了，需要提前几天完成。</p>
+<ol start="8">
+<li>
+<p>Incorporate Risk Analysis (Estimates) 分析</p>
+</li>
+<li>
+<p>Incorporate resource constraints – Critical Chain Technique 关键链方法设置资源约束</p>
+<p>找到关键路径的资源和活动依赖，增加其他非工作活动的持续时间（来把其他不要紧的活动的资源分配给关键路径）。</p>
+<p>之前的关键路径方法我们要计算 Float，目的是判断每个项目最晚可以晚完成的时间；关键链方法则是设置缓冲区来留有一些余地。比如下图，非关键路径会设置 Feeding Buffer，这样在项目执行过程中如果发生了一些延迟也不一定会影响原计划。</p>
+<p>Project Buffer 设置在关键路径上，代表因为意外情况整个项目可以推迟完成的时间。</p>
+<p>除此之外还有 Resource Buffer，设置在关键路径上，叫做关键资源，这些资源相当于备用待命确保项目缺少资源的时候不会告急。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412070522402.png" alt="image-20241207052220311" /></p>
+<p>总结来说，Float 是关键路径和非关键路径之间的时间差，代表可以晚完成非关键路径多少天（关键路径不可以推迟完成）。而缓冲 buffer 是估计预留出一个安全期来确保项目的鲁棒性。</p>
+</li>
+<li>
+<p>Incorporate schedule constraints, imposed dates, or other schedule updates： Duration Compression 压缩技术压缩项目总用时。具体做法是：Fast Tracking 尽可能并行执行连续性任务；Crashing 以最小的成本增量获得最大的时间压缩，比如让工人加班（什么地狱笑话）。</p>
+</li>
+<li>
+<p>Resource Levelling 考虑资源因素调整活动的起止时间；常用甘特图，对于有共享资源的项目比较一目了然。</p>
+</li>
+<li>
+<p>Final Approval：制定 schedule baseline；把 schedule 上交给高级管理者批准，后续嵌入到项目中。</p>
+</li>
+</ol>
+<h2 id="Managing-Project-管理计划">Managing Project 管理计划</h2>
+<h3 id="Completing-Bid-Proposal">Completing Bid &amp; Proposal</h3>
+<p>首先我们需要完成投标。包括召开听证会给客户答疑，制定合同，交接到项目执行阶段，以及投标阶段的复盘与关闭。</p>
+<h3 id="Initialise">Initialise</h3>
+<p>将从投标阶段递交过来的数据整理存入项目数据库，检查有无缺少部分等。PM 审核后批准项目章程。</p>
+<p>PM 需要做的有：</p>
+<ul>
+<li>开放预算线 budget lines, 团队可以预订项目预算。</li>
+<li>开启所有的 planned management activities 管理活动，比如文档，配置，数据等。</li>
+<li>确定管理工具 tools。</li>
+<li>建立项目数据库。</li>
+<li>监控项目初始化 monitor and control。</li>
+</ul>
+<p>召开会议，确定股东和项目达成一致；解释项目目标；介绍项目的各个主要阶段。</p>
+<p>Present the project main parts in particular 呈现项目的主要部分，比如章程，组织，schdule，机制等等，并记录会议时长和事件。</p>
+<p>如果可能的话，还需要对项目进一步修改。</p>
+<h3 id="Project-Manager-Responsibilities">Project Manager Responsibilities</h3>
+<p>PM 负责的内容：</p>
+<ul>
+<li>
+<p>organization：管理项目，资源，时间等，预防会导致项目延期或预算不够的风险，决定是否向高级领导汇报进度，<strong>绝对不能让 top management surprised</strong>。</p>
+</li>
+<li>
+<p>Project：确保项目完整性；消除误解 misunderstandings；满足客户需求；按时按规定完成项目。</p>
+</li>
+<li>
+<p>Project Team：让团队高效工作；倾听团队成员意见；关心团队成员的个人发展和未来规划。</p>
+<ul>
+<li>人是一个项目中最重要的资产。PM 的人际交往应该做到：Consistency 一致性，一视同仁；Respect 尊重不同人的技能、文化、性格等；Inclusion 考虑到所有人的想法；Honesty 对项目现状要如实禀报。</li>
+</ul>
+</li>
+</ul>
+<p>PM 必须是一个很好的谈判者，无论是谈判获取资源，和项目成员沟通，和股东，高级管理者汇报进度，解决障碍，这些都需要良好的沟通能力。</p>
+<p>风险问题一般源自于低估项目所需资源以及资源分配得不好。如果出现障碍，PM 需要及时提出解决方案并和客户沟通，并吸取经验。</p>
+<h3 id="Project-Execution-Monitoring-Control">Project Execution, Monitoring &amp; Control</h3>
+<h4 id="Start-WPs-WGs">Start  WPs &amp; WGs</h4>
+<p>启动 WP 工作包和 WG 工作小组。WP 工作包必须要详细确定好其计划，组织，资源分配，和其他工作包的接口。</p>
+<h4 id="Control-Project">Control Project</h4>
+<p>防止出现偏差；定期更新记录；一旦出现偏差采取补救措施。</p>
+<h4 id="Progress-Reviews">Progress Reviews</h4>
+<p>与团队成员召开内部会议检查 WPS 进度；</p>
+<p>确保沟通质量；</p>
+<p>分享遇到的问题，预期解决方式，并在解决问题的过程中持续跟进；</p>
+<p>记录工作，采取的措施等；</p>
+<p>定期向高层汇报工作。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412071733296.png" alt="image-20241207173309122" /></p>
+<h4 id="Manage-Customer">Manage Customer</h4>
+<p>定期与客户交换信息达成一致；商务信息必须和商务经理沟通分析。</p>
+<h4 id="Manage-QA">Manage QA</h4>
+<p>确保品质；定期检查应用质量和客户评价。</p>
+<h3 id="Project-Closure">Project Closure</h3>
+<p>PM 确保项目按合同完成所有需求，产出相应交付物，并取得合规文件（如海关出口许可），让财务提出最终费用 final invoices 后准备关闭项目。需要获取客户同意，以及更新项目数据库，Lesson Learnt：在团队成员的帮助下总结项目的优缺点。</p>
+<h3 id="Project-Management-Methods">Project Management Methods</h3>
+<h4 id="Methods">Methods</h4>
+<p>Project Management Institute (PMI)：一种项目管理标准。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412071753104.png" alt="image-20241207175311009" /></p>
+<p>PRINCE2：一个面向商业化的项目管理方法，基于产品，强调将项目分为可管理和可控制的阶段。而且非常灵活，可以被应用于相似的项目。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412071759598.png" alt="1733594380554" /></p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412071759021.png" alt="image-20241207175949934" /></p>
+<h4 id="Tool">Tool</h4>
+<p>比如微软的 Microsoft Project Management，还有 Chorus 2.0。</p>
+<p>Chorus 2.0 是一个流程框架 process  &amp; procedures framework，所有工具都需要与其兼容。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412071835032.png" alt="image-20241207183515914" /></p>
+<p>B1 是电商套件；Primavera 是 schedule 工具，类似微软 Project 工具（相比微软工具，Primavera 量级更大，需要填写的细节更多，适合大型项目）；OTL Oracle Time and Labour 是时间和考勤管理工具；mTools 接受上述输入，并提供实际进度、预测花费等信息。</p>
+<h2 id="Project-Extcution-项目执行">Project Extcution 项目执行</h2>
+<p>下面介绍一些项目执行模型。</p>
+<h3 id="Waterfall-瀑布模型-2">Waterfall 瀑布模型</h3>
+<p>就像瀑布顺着台阶留下来一样，一级一级地执行。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412071850536.png" alt="image-20241207185052414" /></p>
+<p>优点在于模型很简单，也很好实现。缺点在于，如果在后续活动执行的时候很难再回去改之前的部分。而且不适用于太复杂的项目。</p>
+<p>Change Request 很常见，可能原因有：客户有新的需求；客户希望使用新技术；目前项目耽搁太多时间了；检测到新风险需要避免；等等。PM 在收到 Change Request Form 后必须评估改变请求对项目造成的影响。</p>
+<h3 id="Agile-敏捷开发">Agile 敏捷开发</h3>
+<p>实际上在项目过程中，保持需求不变几乎是不可能的。所以没办法在最开始就确保整个项目的所有需求。</p>
+<p>敏捷开发是快速，轻量级的项目管理过程，<strong>当项目的目标确定但中间的执行过程不确定时使用</strong>。项目被拆为许多个短而小的的迭代周期，争取每一次迭代都产生一个可以交付给客户的小版本。</p>
+<p>敏捷开发有12个原则：</p>
+<ol>
+<li>满足客户需求是最高优先事项 satisfy the  customer needs。</li>
+<li>大胆地修改需求，哪怕是在项目开发过程晚期 change the requirements.</li>
+<li>频繁交付 deliver working software frequently</li>
+<li>业务人员 business people 和开发人员 developers 在项目过程中必须每天合作 work together。</li>
+<li>信任有动力的员工可以完成工作，给予他们合适的环境和支持 trust。</li>
+<li>最有效的沟通方式是面对面交流 face-to-face conversation。</li>
+<li>working software 是进度的首要衡量标准。</li>
+<li>可持续开发，开发者应当维持恒定开发速度 sustainable development。</li>
+<li>持续关注优秀的技术和设计方案可以提高敏捷性 agility。</li>
+<li>保持简单，最大化未完成工作量 simplicity。</li>
+<li>最好的设计来自自组织团队 self-organizing teams.</li>
+<li>定期反思 reflects.</li>
+</ol>
+<p>4条敏捷宣言：</p>
+<ul>
+<li>individuals and interactions &gt; processes and tools 个体和交互胜过过程和工具</li>
+<li>working &gt; comprehensive documentation 可工作的软件胜过复杂的文档</li>
+<li>customer collaboration &gt; contract negotiations 客户合作胜过客户合同谈判</li>
+<li>responding to change &gt; following a plan 相应变化胜过遵守计划</li>
+</ul>
+<p>敏捷开发的优势在于持续快速的工作软件的交付；开发者和客户的关系更近；在项目开发过程中仍然可以更改需求，持续改进项目；高度透明化。</p>
+<p>缺点在于：可能相比线性模型更难理解；碎片化交付不一定适合所有项目；如果不恰当地使用敏捷开发，可能会导致更低的效率；文档的重要性被忽视。</p>
+<p>两种常见的敏捷开发框架是 Scrum and Kanban。开发流程如下：</p>
+<ol>
+<li>project planning，但是相比其他模型计划的没有那么详细，因为后续可能会做很多改动。</li>
+<li>Product Roadmap Creation：将最终产品拆成许多部分，分在不同周期中执行。以及根据需求制定一个 product backlog 产品待办事项列表，一项项执行。</li>
+<li>(Product) Release Planning 发布计划：在每个周期（sprints）开始都会发布一个新的计划。</li>
+<li>(Work) Sprint/cycle Planning：每个 Sprint 开始之前股东分配工作到各个团队/个人；以及实时记录工作流状态。</li>
+<li>Daily Meetings：每天召开15分钟左右的小会议，讨论昨天工作。</li>
+<li>Sprint Review and Retrospective：Review 是和股东，项目拥有者，团队等人开会检查产品是否达到需求。retrospective 是回顾总结项目开发过程中的问题，改进方案等。</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412072012009.png" alt="image-20241207201252884" /></p>
+<h4 id="Scrum">Scrum</h4>
+<p>Product Owner：客户。</p>
+<p>Scrum Master：PM。</p>
+<p>Development Team：项目团队。</p>
+<p>Scrum 需要召开的会议如下：</p>
+<ul>
+<li>
+<p>Sprint Planning Meeting 将任务分配到周期中。</p>
+<p>Sprint Planning PM 必须出席，而且容不得拖延；质量问题不可以协商……</p>
+<p>周期推荐长度为3周。</p>
+<p>sprint planning 需要确定每个周期的 story points 故事点数，故事点数是一个单位，一般4-12小时的活为一个故事点。Velocity 是下一个 sprint 的故事点数，estimated velocity 是预期完成这个 sprint 需要多少故事点，actually 是实际用的。</p>
+</li>
+<li>
+<p>Backlog Refinement Meeting 待办事项会议：定义待办事项。</p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412072025447.png" alt="image-20241207202522353" /></p>
+<ul>
+<li>Daily Scrum：每日15分钟的小会，汇报进度。</li>
+<li>Sprint Review / Demo：每个周期结束的时候开，调整待办事项列表。</li>
+<li>Sprint Retrospective：在 Sprint Review 之后开，改进工作方法。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412072022191.png" alt="image-20241207202241097" /></p>
+<ul>
+<li>sprint review：重审后就可以发布计划了。</li>
+</ul>
+<h4 id="Kanban">Kanban</h4>
+<p>看板是一种管理产品创建的方法，强调持续交付且不给开发团队带来太大的负担。</p>
+<p>下图是 kanban board：</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412100218175.png" alt="image-20241210021841013" /></p>
+<p>上面有多列内容，每一列同时存在的任务数量有限制 Work-in-Progress Limit，并且前置任务有前置平均时间限制 Lead Time（来保证持续地进行转移）。</p>
+<p>看板和 scrum 相似之处在于图表中呈现了任务内容和足够的透明度。</p>
+<table>
+<thead>
+<tr>
+<th>比较条目</th>
+<th>Scrum</th>
+<th>Kanban</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>角色和职责</td>
+<td>每个团队成员都有预定义的角色</td>
+<td>没有预定义的角色（除了 PM），鼓励团队合作</td>
+</tr>
+<tr>
+<td>DDL</td>
+<td>可交付成果由 Sprint 决定</td>
+<td>产品和过程在需要的基础上持续交付</td>
+</tr>
+<tr>
+<td>授权优先级</td>
+<td>每次迭代拉取一批新任务</td>
+<td>完成前一个任务再拉取下一个任务</td>
+</tr>
+<tr>
+<td>修改</td>
+<td>不建议</td>
+<td>允许</td>
+</tr>
+<tr>
+<td>生产力的量度</td>
+<td>velocity，每个 sprint 的完成时间都依赖于前一个 sprint 的完成</td>
+<td>cycle time：从开始到结束完成项目的一个完整部分来度量</td>
+</tr>
+<tr>
+<td>最佳应用场景</td>
+<td>有稳定优先级的工作和团队，优先级不会修改</td>
+<td>有广泛不同优先级的项目</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Scrummerfall">Scrummerfall</h3>
+<p>混合了瀑布模型和 Agile。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412100226532.png" alt="image-20241210022630433" /></p>
+<h2 id="Control-And-Monitoring-检查控制">Control And Monitoring 检查控制</h2>
+<p>执行过程中要持续监视项目状态并加以调控。这样让项目在有限的时间等资源范围内，在预期范围内发展，也可以减小风险，提高项目产出质量。</p>
+<p>但是需求和目标在项目执行过程中不断变化，控制不及时可能赶不上最佳时间。而且对于复杂项目来说控制难度更大。</p>
+<h3 id="Control-Steps">Control Steps</h3>
+<ol>
+<li>确定要控制的量度 criteria/metrics：选择要被衡量的指标</li>
+<li>建立标准 standards for performance analysis</li>
+<li>利用测量方法衡量 actual performance</li>
+<li>比较计划表现和实际表现</li>
+<li>识别不可接受的差异 identify unacceptable variance</li>
+<li>评估差异造成的影响 impact of variance</li>
+<li>找到差表现的根源 source of poor performance</li>
+<li>挑选合适的控制措施 control actions</li>
+<li>实施措施</li>
+<li>确保差表现不再出现 does not re-appear</li>
+</ol>
+<h3 id="控制重点">控制重点</h3>
+<ul>
+<li>Scope Control 控制范围：不要超出项目负责的范围，因为会浪费时间预算。</li>
+<li>Schedule 控制时间：和计划的时间表对比，不能超时（如甘特图）。可以在计划阶段加入 time buffers，避免一心多用 multi-tasking，频繁收集活动状态，公布提前完成的好处和晚完成的惩罚。</li>
+<li>cost 控制成本：消除未授权或者不恰当的花费。</li>
+<li>quality 控制质量：采取预防措施，遵循质量计划。</li>
+<li>Procurement 控制采购：控制对采购负责的承包商 contractor；提前列出应急解决措施。</li>
+</ul>
+<h3 id="控制可能存在的问题">控制可能存在的问题</h3>
+<ol>
+<li>不及时的控制措施可能跟不上变化；</li>
+<li>成员对控制了解不到位；尽量人手一本手册。</li>
+<li>发生问题时过度反应或者不采取措施。</li>
+<li>及时报告问题。</li>
+</ol>
+<h3 id="performance-analysis-分析表现">performance analysis 分析表现</h3>
+<h4 id="EVPM-分析时间金钱成本">EVPM 分析时间金钱成本</h4>
+<p>Earned Value Performance Management 挣值绩效管理方法</p>
+<p>三个基本变量:</p>
+<p>BCWS：budgeted cost of the work scheduled 计划预算</p>
+<p>BCWP：budgeted cost of the work performed 实际预算</p>
+<p>ACWP：Actual cost of the work performed 实际开销</p>
+<p>例题：</p>
+<p>Definition : A company signed £200K fixed cost contract to install 1,000 new parking meters. Cost of removing old parking meters and replacing them with new ones: £200 per meter. 25 meters can be installed each day. Project should take 40 working days to complete.</p>
+<p>a) BCWS：就是在规定时间内建造所有新停车计时器的预算，200*18*25</p>
+<p>b) 假设第18天装了400m，求 BCWP：实际工作量的预算，200*400（Sv = BCWP – BCWS 相减可知，现在的进度低于预期进度50m，2天的工作量）</p>
+<p>c) 实际上每米花费 210 英镑，求 ACWP：210*400</p>
+<ul>
+<li>
+<p>进度偏差：Schedule Deviation <strong>Sv = BCWP – BCWS</strong>，正值表示提前了，负值表示落后了（相当于：固定了单位工作量的开销和理想情况一致的前提下，总工作量低于预期）。</p>
+</li>
+<li>
+<p>花费偏差：Cost Deviation <strong>Cv= BCWP – ACWP</strong>，正值表示实际开销小了，负值表示大了。（SV CV 的正值都是我们期望的结果，都是用 BCWP 作为被减数）</p>
+</li>
+<li>
+<p>进度指数 Schedule Index <strong>SI = BCWP/BCWS</strong>，&gt;1 表示在计划进度之前。</p>
+</li>
+<li>
+<p>花费指数 cost index <strong>CI = BCWP/ACWP</strong>，&gt;1 表示实际开销更小。</p>
+</li>
+<li>
+<p>临界比 Critical Ratio <strong>CR=CPI*SPI</strong>，代表这个项目整体来看（时间和开销）怎么样，&gt;1 表示还可以。</p>
+</li>
+</ul>
+<p>但是如果出现了项目以外的开销影响（比如间接开销太大，影响 CV 为负数，但是对项目性能没影响）或者有没及时更新的数据，EVPM 方法就不一定准确。</p>
+<h3 id="Forcasting-预测是否即将完成-是否完成">Forcasting 预测是否即将完成/是否完成</h3>
+<p>BAC：budget at Completion 完成时（计划）预算。<strong>BCWP/BAC 表示工作量完成百分比</strong></p>
+<p>WR：work remaining 剩余工作量，用预算衡量。<strong>WR=BAC-BCWP</strong></p>
+<p>ETC：Estimate to complete 剩余工作成本，<strong>ETC = WP / CI</strong></p>
+<p>EAC：Estimate at Completion 完成时工作成本，<strong>EAC=ACWP+ETC</strong>，相当于现在的成本+按照现在的花费速度，完成剩余部分需要的成本。<strong>EAC=BAC / CI</strong></p>
+<h2 id="Project-Outputs-and-Managing-IP-项目产出；知识产权管理">Project Outputs and Managing IP 项目产出；知识产权管理</h2>
+<h3 id="Project-Outputs-项目产出">Project Outputs 项目产出</h3>
+<p>首先需要区分一下 Outputs 和 Outcomes 的概念。Outputs 是有形或无形的产出物，而 Outcomes 更接近于“间接价值”，比如价值，社会影响，有用性等。</p>
+<p>所以我们讨论的 Outputs 更接近于“产出物”注重结果而不是“意义”。比如有形的有硬件，设备等；无形的有代码，算法等。outputs 被用于衡量项目是否成功。<em>大多数 Outputs 都有相关联的 reports。</em></p>
+<p>因此，对于不同类型的产出，也需要定义相关联的指标来衡量其优劣。这部分内容在定义 WP/Tasks 的时候制定。</p>
+<p>开发软件指标：</p>
+<ul>
+<li>方法论 methodology：开发过程需要遵循软件研发方法论，比如计划-分析-设计-实现-测试-维护等流程。</li>
+<li>合规性 Compliance：符合行业规范。</li>
+<li>鲁棒性 Risks and vulnerabilities：有风险评估并嵌入使能器 embed enablers。<em>这里我对于使能器的理解：嵌入式开发的时候经常看到有很多端口需要使能才能启用，给不同的部分嵌入使能器后，当出现风险故障的时候可以确保未使能的部分受影响减轻。</em></li>
+<li>编程 Coding：选择合适的实现平台（linux, windows…）</li>
+<li>兼容性 Compatibility：软件更新迭代应向旧版本兼容。<em>延伸：向前兼容的意思是新版本的软件仍然可以与旧版本的硬件、文件格式等兼容；向后兼容则是旧版本的软件可以与新版本的硬件、软件或文件格式兼容。</em></li>
+<li>可升级性 upgradability</li>
+<li>维护支持 maintenance and support</li>
+</ul>
+<p>开发硬件类似，要遵循一定的硬件开发原则、代码编写规范等，并产出相应文档说明。</p>
+<h4 id="Intangible-Outputs-无形产出">Intangible  Outputs 无形产出</h4>
+<p>专利发明、创新这一类都属于无形的产出。不是一种技术，而是价值 value。</p>
+<h3 id="Intellectual-Property-IP">Intellectual Property IP</h3>
+<p>IP 是一种财产，比如人类智力的无形创造。有很多种形式的 IP 用于保护创意，比如“商标” trade marks 用于保护品牌形象 brand；“版权” copyright 用于保护文件，图片，音乐等；专利保护发明；设计权保护产品外观……</p>
+<p>如果没有 IP，那么别的公司花费大量时间人力物力研制出新技术应用到产品中，我一声不吭就偷过来了，那没有什么公司想自己耗费时间精力研制新技术了，都等着偷别人的就行。IP 保护了别人不可以从公司的努力、专业知识、投资等 inputs 中获利，确定了该公司的地位，也保护了其技术和未来市场。</p>
+<p>在项目执行过程中，要事先调查好是否已经有人生成了相关 IP，如果没有，那本项目成员才应该继续设计新技术方法来解决问题，并且<strong>在这个过程中保护好 IP 不泄露</strong>，避免被他人捷足先登。</p>
+<p>对于合作项目，也需要明确其他公司的 IP 范围并保护项目的未来 IP。</p>
+<p>业务销售部需要确定哪些关键技术需要 IP 保护，是否被保护了，以及能否使用这些 IP 攻击竞争对手。而法务部则避免发生此类情况（之前的中国乔丹，“乔丹是一种花名”，“我们的中国乔丹拿的是乒乓球拍”一案）。</p>
+<h4 id="IP-保护方法">IP 保护方法</h4>
+<ul>
+<li>商标 trade marks：比如图标，口号等。</li>
+<li>设计 Designs：分为外部可见的和内部设计两种。外部可见的设计（比如头盔，网页前端）保护其整体外观，最长注册时间25年，注册成功会有®标志。</li>
+<li>版权 Copyright：常用于保护文学、艺术、音乐、软件等作品。©符号，不用注册，有效期50年到我挂后70年不等，禁止其他人未经许可复制作品或一种概念的表达方式。另一种版权是著佐权 Copyleft，符号是一个左右相反的 Copyright 符号，意思是：只要遵循一定的规定，就可以使用、修改该作品。</li>
+<li>专利 Patent：一种地域性权利，主要保护物理设备对象，软件，信号，协议等。专利包含这些东西的功能，是怎么具体实现的，所需材料……禁止其他人未经许可制造、使用、进口、出售你的产品。最长20年。
+<ul>
+<li><em>软件只要对<strong>技术</strong>问题有所改进，比如能耗、效率等，就可以申请专利。但不包括非技术性的管理等方面。</em></li>
+</ul>
+</li>
+<li>商业机密 Trade Secret：比如配方，设计方法，工具等。相较其他知识产权，商业机密不公开。雇员可以签署合同来保证不泄露商业机密地使用。</li>
+</ul>
+<h3 id="Agreements-and-Liscences-协议和许可">Agreements and Liscences 协议和许可</h3>
+<ul>
+<li>在多方合作项目中，所有人需要达成一致，制定保密协议 Non Disclosure Agreement 明确哪些部分是保密的，并且遵守保密义务。最终，在 B&amp;P 阶段结尾，需要制定<strong>联盟协议 Consortium Agreements (CA)</strong>。</li>
+</ul>
+<p>​	Memorandum of Understanding MoU 谅解备忘录：诸方达成一致后的记录文本，没有法律效力，但是代表大家差不多达成一致准备签定合约了。</p>
+<ul>
+<li>Background *&amp; Foreground IP：项目执行前后的 IP，项目开始时就要声明好，不能损害 BIP，并保护好 FIP。</li>
+<li>软件保护：除了之前提到的 Copyright（复制），Patent（其他人抄袭，创造出同样的软件），Design（界面，图标等），Trademark（商标），还有 License 许可，比如开源软件，闭源软件等，下图往左是开源，往右是闭源。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412251801392.png" alt="image-20241225180148283" /></p>
+<h3 id="Dissemination-Exploitation-传播推广">Dissemination &amp;  Exploitation 传播推广</h3>
+<p>Dissemination：确定目标受众 target audience，传播途径 dissemination channels，关注 Stackholders 确保有效传播。</p>
+<p>Expliotation：首先确定不同的推广策略，主要分为商业 Commercial、知识 Knowledge、学术 Research/Academic 三种。然后找到其使用场景 Real-life Usage Scenarios 并投放使用，优先确定将有效利用结果的关键参与者  the players who will exploit the results。</p>
+<h2 id="Project-Closure-项目关闭">Project Closure 项目关闭</h2>
+<p>完结撒花！</p>
+<h3 id="Project-Success-or-Failure">Project Success or Failure</h3>
+<p>对于客户和 PM 来说的项目成功性是有区别的。客户只需要考虑是否达到自己的需求就可以了，PM 要考虑的可就多了。比如预算，时间期限，产品质量，客户满意度，团队关系，公司地位。</p>
+<h3 id="Project-Closing">Project Closing</h3>
+<p>PM 的最后一个任务。关闭项目包括：</p>
+<ul>
+<li>output 被交给 stackholders</li>
+<li>Contractual agreements 合同被正确履行</li>
+<li>项目记录在库</li>
+</ul>
+<h4 id="Project-Termination-项目终止">Project Termination 项目终止</h4>
+<p>首先需要停止项目。</p>
+<ul>
+<li>integration 集成终止：常用于成功结束的项目。房地产等资源交还给父组织，项目最终产出作为组织运营的标准组成部分。</li>
+<li>add 添加终止：把项目资源加到其他项目上。</li>
+<li>starvation 饥饿终止：项目因资源枯竭，预算削减或政治因素而结束。</li>
+<li>extinction 灭绝终止：高层管理层停止项目，因为没有达到预期目标，或者觉得效益不好。</li>
+</ul>
+<h4 id="Project-Closure-Process-Actions">Project Closure Process/Actions</h4>
+<p>PM 完成项目的其他阶段后，开始准备：</p>
+<ul>
+<li>
+<p>Conducting project Closure Debrief/Review for closure 项目结案汇报 and Post-mortem 事后分析</p>
+</li>
+<li>
+<p>Creating a Project Archive 项目归档</p>
+</li>
+<li>
+<p>如果项目是后续还会持续提供支持，应该新开一个支持项目 support project。</p>
+</li>
+<li>
+<p>记录风险。</p>
+</li>
+<li>
+<p>确保客户验收，获得客户和测试人员的同意。在这个过程中一直记录。</p>
+</li>
+<li>
+<p>通过会议或者电邮通知其他负责人。</p>
+</li>
+<li>
+<p>CM 商务经理应当检查是否还有需要解决的商业问题，并执行财务结算。</p>
+</li>
+<li>
+<p>PM 释放所有项目成员并将其分配到其他工作中。</p>
+</li>
+</ul>
+<p>当所有要求都完成后，CM 应批准关闭项目。</p>
+<h3 id="Post-Mortem-Analysis-事后分析">Post-Mortem Analysis 事后分析</h3>
+<p>对项目的成功和不成功点进行总结分析，吸取教训。</p>
+<ul>
+<li>
+<p>项目产出质量？</p>
+</li>
+<li>
+<p>时间，花费，行政管理问题是否恰当？</p>
+</li>
+<li>
+<p>开发过程中工具是否有效？遇到了什么技术问题？</p>
+</li>
+<li>
+<p>团队成员表现？</p>
+</li>
+<li>
+<p>……</p>
+</li>
+</ul>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          Contact Me
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://jingqing3948.github.io/2025/01/01/%E4%BC%A6%E6%95%A6%E5%9B%BD%E7%8E%8B%E5%AD%A6%E9%99%A2EEM%E7%AC%94%E8%AE%B0%EF%BC%9AProject%20Management%20%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Project-Management/" rel="tag">Project Management</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2025/01/01/%E4%BC%A6%E6%95%A6%E5%9B%BD%E7%8E%8B%E5%AD%A6%E9%99%A2EEM%E7%AC%94%E8%AE%B0%EF%BC%9AArtificial%20Intelligence%20and%20Decision%20Making%20%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B8%8E%E5%86%B3%E7%AD%96/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            伦敦国王学院EEM笔记：Artificial Intelligence and Decision Making 人工智能与决策
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2025/01/01/%E4%BC%A6%E6%95%A6%E5%9B%BD%E7%8E%8B%E5%AD%A6%E9%99%A2EEM%E7%AC%94%E8%AE%B0%EF%BC%9AMachine%20Learning%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">伦敦国王学院EEM笔记：Machine Learning 机器学习</div>
+      </a>
+    
+  </nav>
+
+  
+   
+  <div class="gitalk" id="gitalk-container"></div>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css">
+
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      const gitalkScript = document.createElement('script');
+      gitalkScript.src = 'https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js';
+      gitalkScript.onload = function () {
+        const md5Script = document.createElement('script');
+        md5Script.src = 'https://cdn.jsdelivr.net/npm/blueimp-md5@2.19.0/js/md5.min.js';
+        md5Script.onload = function () {
+          const gitalk = new Gitalk({
+            clientID: 'Ov23li1TkQEYXFu51qLu',
+            clientSecret: '0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5',
+            repo: 'Jingqing3948.github.io',
+            owner: 'Jingqing3948',
+            admin: ['Jingqing3948'],
+            id: md5(location.pathname),
+            distractionFreeMode: true,
+            pagerDirection: 'last'
+          });
+          gitalk.render('gitalk-container');
+        };
+        document.body.appendChild(md5Script);
+      };
+      document.body.appendChild(gitalkScript);
+    });
+  </script>
+
+  
+    
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022-2025
+        <i class="ri-heart-fill heart_icon"></i> Jingqing3948
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="灰海宽松的博客"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://blog.csdn.net/jtwqwq?spm=1000.2115.3001.5343">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://jingqing3948.github.io/Tianweijiang.github.io/">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>星光不问，梦终有回</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/LinkedIn.jpg">
+      <span class="reward-type">LinkedIn</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/WXOfficalAccount.jpg">
+      <span class="reward-type">公众号</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="/js/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="/css/jquery.modal.min.css">
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="/css/photoswipe.css">
+<link rel="stylesheet" href="/css/default-skin.css">
+<script src="/js/photoswipe.min.js"></script>
+<script src="/js/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+  
+  <script>
+    setTimeout(function () {
+      window.MathJax = {
+        tex2jax: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        },
+        showProcessingMessages: false,
+        messageStyle: 'none',
+        skipStartupTypeset: false
+      };
+      var script = document.createElement('script');
+      script.src = "https://cdn.jsdelivr.net/npm/mathjax@2.7.7/MathJax.js?config=TeX-MML-AM_CHTML";
+      script.async = true;
+      document.head.appendChild(script);
+    }, 1000); // 延迟 1 秒加载
+  </script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="/js/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="/js/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+
+
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>
