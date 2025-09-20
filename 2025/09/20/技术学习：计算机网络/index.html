@@ -7,6 +7,8 @@
     <head>
       <meta charset="utf-8" />
         
+      <meta name="description" content="计算机网络学习笔记" />
+      
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
@@ -14,7 +16,7 @@
 
       <meta name="google-site-verification" content="YwYbA1LbL6DK2afClSAZcmUaT2QiD4rluljLHHU4120" />
       
-      <title> 灰海宽松的博客</title>
+      <title>技术学习：计算机网络 |  灰海宽松的博客</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -75,24 +77,38 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-项目包装"
+  id="post-技术学习：计算机网络"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
   data-scroll-reveal
 >
   <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  技术学习：计算机网络
+</h1>
+ 
+
+      
+    </header>
      
     <div class="article-meta">
-      <a href="/2025/07/15/%E9%A1%B9%E7%9B%AE%E5%8C%85%E8%A3%85/" class="article-date">
-  <time datetime="2025-07-15T14:17:26.006Z" itemprop="datePublished">2025-07-15</time>
-</a>   
+      <a href="/2025/09/20/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%EF%BC%9A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="article-date">
+  <time datetime="2025-09-19T16:00:00.000Z" itemprop="datePublished">2025-09-20</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E9%81%93%EF%BC%88%E8%AF%BE%E5%A4%96IT%E6%8A%80%E8%83%BD%E5%AD%A6%E4%B9%A0%EF%BC%89/">算道（课外IT技能学习）</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E9%81%93%EF%BC%88%E8%AF%BE%E5%A4%96IT%E6%8A%80%E8%83%BD%E5%AD%A6%E4%B9%A0%EF%BC%89/Lecture/">Lecture</a>
+  </div>
+  
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">208</span>
+            <span class="post-count">1.5k</span>
         </span>
     </span>
 
@@ -101,7 +117,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">5 min</span>
         </span>
     </span>
 </div>
@@ -116,23 +132,44 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="项目介绍">项目介绍</h2>
-<ol>
-<li>项目定位：比如苍穹外卖：专门为餐饮企业（餐厅，饭店）定制的一款软件产品。</li>
-<li>项目功能：体现项目中的业务功能模块。分为哪些端？这些端的功能模块分别有哪些？</li>
-</ol>
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202507152221333.png" alt=" " style="zoom: 67%;" />
-<ol start="3">
-<li>技术选型：项目中具体技术框架和中间件等。</li>
-</ol>
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202507152224489.png" alt=" " style="zoom:50%;" />
-<h2 id="后端项目结构">后端项目结构</h2>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202507152228008.png" alt=" " /></p>
-<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202507152229216.png" alt=" " /></p>
-<h2 id="前后端联调">前后端联调</h2>
-<p>使用 nginx 可以实现反向代理，负载均衡（按照一定的规则将请求发送给多台后端服务器），安全性（前端只能直接访问 nginx，nginx 再转发请求给后端服务器）。</p>
-<h2 id="登录安全性：密码-MD5-加密">登录安全性：密码 MD5 加密</h2>
-<p>数据库中存储的是 MD5 处理后的密码，前端拿到的明文密码要先 MD5 运算再和数据库中的密文密码比对。</p>
+  <h2 id="前言">前言</h2>
+<p>学习自：【【网络】半小时看懂&lt;计算机网络&gt;】 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV124411k7uV/?share_source=copy_web&amp;vd_source=dcdc734e318da0cd82bcccb180b12b40">https://www.bilibili.com/video/BV124411k7uV/?share_source=copy_web&amp;vd_source=dcdc734e318da0cd82bcccb180b12b40</a></p>
+<p>等课程。</p>
+<h2 id="速成计网">速成计网</h2>
+<p>计网的诞生，就是为了多台计算机通信。</p>
+<p>如果我的主机想给另一位朋友的主机发消息，只需要我们两个之间建立连接就可以。</p>
+<p>如果有三个人想互发消息，就需要三个顶点三条边建立三个连接。四个人需要6条边，五个人需要10条边……很明显每两个主机之间都建立连接的方法并不合适。服务器就需要和每个客户端都建立连接。</p>
+<p>如果有一个中枢负责路由所有的链路，就可以少建立很多连接。</p>
+<p>于是第一代中枢：Hub 集线器诞生。</p>
+<h3 id="集线器">集线器</h3>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202509202336009.jpeg" alt="图源：轻松共享带宽上网 体验多款优秀集线器_TP-LINK TL-HP5MU_网络设备评测-中关村在线" /></p>
+<p>计算机和集线器之间使用简单的双绞线连接。消息发送采用广播机制，比如1要给4发消息，发送的消息里面带有标识（目标主机是4），集线器群发给所有主机，只有计算机4判断这条消息是要发给自己的然后才处理消息，其他计算机都丢弃。</p>
+<p>此外双绞线是半双工，比如1和2同时发送消息，两者的消息就混了，别的主机收到的可能就是11221212……这样的消息。</p>
+<p>为保证半双工，集线器采用 CSMA/CD 协议，通过载波监听判断是否有其他主机在发送消息，没有的话才允许当前主机发送。</p>
+<p>这样效率也比较低，服务器一次只能给一个客户端服务，那几万客户的高并发都得排队到什么时候。</p>
+<p><strong>集线器只适用于小规模网络，部署在物理层。</strong></p>
+<h3 id="交换机">交换机</h3>
+<p>交换机作为中枢，可以记录每台机器的48 bit 物理地址（MAC）和其连接在交换机上的对应端口。物理地址每台机器都有一个独一无二的地址。</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202509202349976.png" alt="图源：https://blog.csdn.net/ph3_26/article/details/130114865?fromshare=blogdetail&sharetype=blogdetail&sharerId=130114865&sharerefer=PC&sharesource=jtwqwq&sharefrom=from_link" style="zoom:50%;" />
+<p>以及，采用网线作为连接方式的交换机支持全双工通信（网线中的8根线至少有4根在工作）。</p>
+<p>MAC 和端口映射表是不断更新的。比如第一次发消息，A 想发消息给 B，交换机收到 A 的消息，同时就会记录 A 的 MAC 地址和端口的对应关系。然后交换机发现没有记录 B 的 MAC 地址和端口的对应关系，因此去所有端口挨个轮询直到找到对应 MAC 地址的 B 主机，随后记录 B 主机的 MAC 地址和端口的对应关系。</p>
+<p>**交换机位于数据链路层。**数据包含头部和数据部分，头部中包含了源地址和目的地址。</p>
+<p>另外两个交换机之间可以桥接。比如1号交换机的5端口桥接了2号交换机的1端口，1号交换机连接了 AB 主机，2号交换机连接了 CD 主机。那么随着时间推移，1号交换机就会记录 CD 主机的 MAC 地址和5端口对应（先发给5端口，然后交给2号交换机再继续路由到具体主机），2号交换机会记录 AB 主机的 MAC 地址和1端口对应。</p>
+<p>交换机的缺点在于上限还是不高，顶多几千个端口。此外广播机制容易造成消息洪泛。适用于小规模范围内网络，比如工作家庭校园的局域网。</p>
+<h3 id="路由器-网关">路由器/网关</h3>
+<p>如果两个几千设备的网络的交换机桥接，互发消息就需要不停广播，以及可能会顶掉有限的 mac 表中的信息，造成消息洪泛。</p>
+<p>所以我们需要一个新的路由设备来路由多个局域网。这个设备就是路由器或者网关。</p>
+<p>比如一个路由器路由 AB 两个局域网。A 局域网内部通信就只走内部交换机就行，不需要通过路由器。A 局域网内一个设备和 B 局域网内设备通信才需要走路由器。</p>
+<p>之前我们讲过，MAC 地址用于唯一标识物理主机，但是仅靠 MAC 地址查找主机广播效率太低。所以这里引入了一个用于区分网络的标识：IP 地址。</p>
+<p>IP 地址前24位用于标识网段（也就是不同的局域网），加上后8位用于标识具体设备。</p>
+<p>路由表的建立有很多路由优化算法。</p>
+<p>下面是一个例子。家庭地址为192.168.0.0/24，另一个局域网地址是 192.168.1.0/24。路由器的两个端口对应的 IP 地址为 192.168.0.1 和 192.168.1.51。我要从 192.168.0.102 主机发送消息到 192.168.1.52 主机。</p>
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202509210136743.png" alt=" " style="zoom:67%;" />
+<p>**路由器位于网络层。**网络层数据包除了之前提到的，在数据链路层加上的收发 MAC 地址的头部，还有收发 IP 地址的头部。</p>
+<p><img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202509210101746.png" alt="图源：https://blog.csdn.net/wwy0324/article/details/109310658?fromshare=blogdetail&amp;sharetype=blogdetail&amp;sharerId=109310658&amp;sharerefer=PC&amp;sharesource=jtwqwq&amp;sharefrom=from_link" /></p>
+<p>找到对应设备这个过程是通过 ARP 协议广播查找到该网段内对应 IP 地址的设备的 MAC 地址，然后发送。</p>
+<p>也就是说，在上面发送数据包的这个过程中，发送方发到路由器对应网段端口，和路由器端口发送到目标主机的过程，数据包的收发 IP 地址都是 192.168.0.102 到 192.168.1.52. 但是这两个数据包的收发 MAC 地址头部有区别。先是发送主机的 MAC 地址到路由器端口的 MAC 地址，再是路由器两个端口的 MAC 地址（C-&gt;D），再是路由器端口的 MAC 地址到目标主机的 MAC 地址（要查找）。</p>
+<p>不过上面说的发送接收 IP 地址不变也是相对的，NAT 模式会有公私网 IP 地址切换所以数据包的收发 IP 地址也会变。</p>
  
       <!-- reward -->
       
@@ -203,30 +240,23 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://jingqing3948.github.io/2025/07/15/%E9%A1%B9%E7%9B%AE%E5%8C%85%E8%A3%85/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://jingqing3948.github.io/2025/09/20/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%EF%BC%9A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Network/" rel="tag">Network</a></li></ul>
+
     </footer>
   </div>
 
    
   <nav class="article-nav">
     
-      <a href="/2025/09/20/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%EF%BC%9A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            技术学习：计算机网络
-          
-        </div>
-      </a>
     
-    
-      <a href="/2025/07/01/%E4%BC%A6%E6%95%A6%E5%9B%BD%E7%8E%8B%E5%AD%A6%E9%99%A2EEM%E7%AC%94%E8%AE%B0%EF%BC%9AIntelligence%20And%20Autonomy%20%E6%99%BA%E8%83%BD%E8%87%AA%E4%B8%BB/" class="article-nav-link">
+      <a href="/2025/07/15/%E9%A1%B9%E7%9B%AE%E5%8C%85%E8%A3%85/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">伦敦国王学院EEM笔记：Intelligence And Autonomy 智能自主</div>
+        <div class="article-nav-title"></div>
       </a>
     
   </nav>
